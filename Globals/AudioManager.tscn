@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cgvgvhj4l1nis"]
+
+[ext_resource type="Script" uid="uid://bcdilp4oexors" path="res://Globals/AudioManager.gd" id="1_olr0b"]
+
+[node name="AudioManager" type="CanvasLayer" unique_id=410915819]
+process_mode = 3
+script = ExtResource("1_olr0b")
