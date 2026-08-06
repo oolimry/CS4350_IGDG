@@ -5,32 +5,45 @@ const inf = 1e9 + 100
 
 @onready var sprite = $Sprite2D
 
-#x movement related
-@export var xAcceleration := 82*60
-@export var xDrag := 0.26
+## x movement related
+@export var xAcceleration := 80*60			## how fast the character moves
+@export var xDrag := 0.17					## how fast speed decays, slower = more slidy
+"""
+assuming 1s = 60f, i hope the code works at diff FPS
 
-#y movement related
-@export var jumpSpeed := 570
-@export var jumpXBoost := 200
-@export var gravity := 16
-@export var fallMultiplier := 1.9
-@export var breakJumpMultiplier := 1.75
-@export var terminalVelocity := 500
-@export var fastFallTerminalVelocity := 850
+xAcceleration: in one second, how much velocity.x is increased by
+xDrag: in one frame, how much does the speed decay by
+
+This means that:	
+newVelocity.x = oldVelocity.x * xDrag + xAcceleration * delta
+The max running velocity is (xAcceleration / xDrag)
+"""
+
+
+##y movement related
+@export var jumpSpeed := 670				## vertical boost when jumping
+@export var jumpXBoost := 200				## horizontal boost when jumping
+
+@export var gravity := 20 					## the maximum downwards velocity
+@export var fallMultiplier := 2.1			## when moving downwards, apply this multiplier to gravity
+@export var breakJumpMultiplier := 1.75		## if player let go of jump (and still moving upwards)
+@export var breakJumpDropoff := 0.70 		## when let go of jump, multiply speed by this much
+
+@export var terminalVelocity := 900  		## the maximum downwards velocity
+@export var fastFallTerminalVelocity := 1350 	## the maximum downwards velocity
 var hasBrokenJump := false
 
 #leniency related
 var timeSinceOnFloor = 0
 var timeSincePressJump = 100000
 
-var lateJumpBuffer := 0.083
-var earlyJumpBuffer := 0.083
-
-var peakHeight = 0.0
+var lateJumpBuffer := 0.083		## about 5 frames, quite lenient
+var earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
 
 var playerXlength
 var playerYlength
 
+var peakHeight = 0
 
 func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
@@ -44,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	
 	_physics_process_updateVisuals()
 
-func _physics_process_playerMovement(delta):
+func _physics_process_playerMovement(delta):	
 	var freezeInput = false
 	
 	velocity.x *= pow(1.0-xDrag, delta*60)
@@ -58,7 +71,7 @@ func _physics_process_playerMovement(delta):
 	$Sprite2D.rotation = 0
 	
 	if Input.is_action_just_released("jump"):
-		velocity.y *= 0.75
+		velocity.y *= breakJumpDropoff
 	
 	if not Input.is_action_pressed("jump"):
 		hasBrokenJump = true
