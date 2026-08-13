@@ -14,11 +14,12 @@ script = ExtResource("1_4x03u")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("CanvasItemMaterial_cueyq")
+position = Vector2(0, -66.725)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_4x03u")
 region_enabled = true
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
-position = Vector2(0, 30)
+position = Vector2(0, -36.725)
 shape = SubResource("RectangleShape2D_vgaxv")
