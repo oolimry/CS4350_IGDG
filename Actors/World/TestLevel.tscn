@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://bwvwgorhlkvmh" path="res://Actors/World/Room Management/RightLevelTest.tres" id="4_d3ods"]
 [ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Actors/World/Room Management/TopLevelTest.tres" id="5_d3ods"]
 [ext_resource type="Script" uid="uid://cio5u734lglja" path="res://Actors/Managers/HUDManager.gd" id="9_4ntoe"]
+[ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="2_bb27s"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -128,3 +129,8 @@ script = ExtResource("9_4ntoe")
 [connection signal="body_entered" from="Boundaries/TopToCenter" to="Boundaries/TopToCenter" method="_on_body_entered"]
 [connection signal="body_entered" from="Boundaries/CenterToLeft" to="Boundaries/CenterToLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Boundaries/LeftToCenter" to="Boundaries/LeftToCenter" method="_on_body_entered"]
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("2_bb27s")]
+position = Vector2(778, 724)
+
+[node name="PlaceholderSlashableObject2" parent="." unique_id=385502301 instance=ExtResource("2_bb27s")]
+position = Vector2(910, 751)

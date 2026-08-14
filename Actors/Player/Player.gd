@@ -6,6 +6,9 @@ const inf = 1e9 + 100
 @export var health : PlayerHealth
 
 @onready var sprite = $Sprite2D
+@onready var sideSlashHitbox = $SideSlashHitbox
+
+
 
 ## x movement related
 @export var xAcceleration := 80*60			## how fast the character moves
@@ -37,15 +40,25 @@ var hasBrokenJump := false
 
 #leniency related
 var timeSinceOnFloor = 0
-var timeSincePressJump = 100000
+var timeSincePressJump = inf
 
-var lateJumpBuffer := 0.083		## about 5 frames, quite lenient
-var earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
+const lateJumpBuffer := 0.083	## about 5 frames, quite lenient
+const earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
 
-var playerXlength
-var playerYlength
+# slashing related
+@export var slashCooldown = 0.3
+var timeSinceSlash = inf
+var timeSincePressSlash = inf
+const earlySlashBuffer := 0.083
 
 var peakHeight = 0
+
+var freezeInput = false
+	
+# derived variables
+var sideSlashHitboxOffset = 93
+var playerXlength
+var playerYlength
 
 func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
@@ -53,14 +66,18 @@ func _init():
 func _ready():
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
+	
+	sideSlashHitboxOffset = abs(sideSlashHitbox.position.x)
 
 func _physics_process(delta: float) -> void:	
 	_physics_process_playerMovement(delta)
 	
+	_physics_process_slash(delta)
+		
 	_physics_process_updateVisuals()
-
+	
+	
 func _physics_process_playerMovement(delta):	
-	var freezeInput = false
 	
 	velocity.x *= pow(1.0-xDrag, delta*60)
 	if Input.is_action_pressed("left") and not freezeInput:
@@ -124,10 +141,27 @@ func _physics_process_playerMovement(delta):
 	else:
 		peakHeight = min(peakHeight, self.position.y)
 
+func _physics_process_slash(delta):
+	timeSinceSlash += delta
+	
+	if Input.is_action_pressed("Slash") and not freezeInput:
+		timeSincePressSlash = 0
+	else:
+		timeSincePressSlash += delta
+		
+	if timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer:
+		timeSincePressSlash = inf
+		timeSinceSlash = 0.0
+		sideSlashHitbox.appear()
+
 func _physics_process_updateVisuals():
 	if velocity.x > 0 or Input.is_action_pressed("right"):
 		sprite.flip_h = true
+		sideSlashHitbox.position.x = sideSlashHitboxOffset
+		sideSlashHitbox.scale.x = 1
 	if velocity.x < 0 or Input.is_action_pressed("left"):
 		sprite.flip_h = false
+		sideSlashHitbox.position.x = -sideSlashHitboxOffset
+		sideSlashHitbox.scale.x = -1
 		
 		
