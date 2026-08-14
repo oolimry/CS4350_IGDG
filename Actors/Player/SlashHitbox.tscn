@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://byquhfdwuwfyg"]
+
+[ext_resource type="Script" uid="uid://tmdc4gqeq8q8" path="res://Actors/Player/SlashHitbox.gd" id="1_brbb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brbb1"]
+size = Vector2(88.5, 45.5)
+
+[sub_resource type="Gradient" id="Gradient_brbb1"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0.6666667)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vynle"]
+gradient = SubResource("Gradient_brbb1")
+height = 30
+
+[sub_resource type="Animation" id="Animation_vpfx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteSlash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteSlash:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteSlash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_brbb1"]
+resource_name = "Slash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteSlash:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteSlash:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(-32, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteSlash:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 0.43527538, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpfx4"]
+_data = {
+&"RESET": SubResource("Animation_vpfx4"),
+&"Slash": SubResource("Animation_brbb1")
+}
+
+[node name="SlashHitbox" type="Area2D" unique_id=1615505915]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+script = ExtResource("1_brbb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627591827]
+visible = false
+shape = SubResource("RectangleShape2D_brbb1")
+
+[node name="SpriteSlash" type="Sprite2D" parent="." unique_id=1892136982]
+position = Vector2(-32, 0)
+scale = Vector2(1e-05, 1e-05)
+texture = SubResource("GradientTexture2D_vynle")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=314196844]
+libraries/ = SubResource("AnimationLibrary_vpfx4")

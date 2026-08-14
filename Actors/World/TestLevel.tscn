@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cf1kfbpogs6ti"]
 
 [ext_resource type="PackedScene" uid="uid://d3dqiwprm2300" path="res://Actors/Player/Player.tscn" id="1_ubtik"]
+[ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="2_bb27s"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -149,3 +150,9 @@ tile_set = SubResource("TileSet_ou4op")
 
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("1_ubtik")]
 position = Vector2(522, 672)
+
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("2_bb27s")]
+position = Vector2(778, 724)
+
+[node name="PlaceholderSlashableObject2" parent="." unique_id=385502301 instance=ExtResource("2_bb27s")]
+position = Vector2(910, 751)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jiolrxp7rc6m" path="res://Actors/Player/Player.gd" id="1_4x03u"]
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_4x03u"]
+[ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitbox.tscn" id="3_urha2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cueyq"]
 
@@ -22,3 +23,6 @@ region_rect = Rect2(49.731598, 0, 248.3114, 379)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
 position = Vector2(0, 30)
 shape = SubResource("RectangleShape2D_vgaxv")
+
+[node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
+position = Vector2(-93, 28)
