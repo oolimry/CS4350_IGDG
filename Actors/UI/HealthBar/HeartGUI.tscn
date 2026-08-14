@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bt5d5l2cubjat"]
+
+[ext_resource type="Script" uid="uid://cljvqwoa6yxcm" path="res://Actors/UI/HealthBar/HeartGUI.gd" id="1_n1vpc"]
+[ext_resource type="Texture2D" uid="uid://dknl8fgoyhds3" path="res://Assets/PlaceholderHealth.png" id="2_mcenp"]
+
+[node name="HeartGUI" type="Panel" unique_id=1660961104]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(112.8, 108)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1807.2
+offset_bottom = -972.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n1vpc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=321499022]
+position = Vector2(-1, -1)
+scale = Vector2(0.64375, 0.64375)
+texture = ExtResource("2_mcenp")
+centered = false
+hframes = 3

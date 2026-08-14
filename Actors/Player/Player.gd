@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const inf = 1e9 + 100
 
+@export var health : PlayerHealth
+
 @onready var sprite = $Sprite2D
 
 ## x movement related

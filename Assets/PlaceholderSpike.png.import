@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yiw3dkaogjn6"
-path="res://.godot/imported/PlaceholderSpike.png-ad9f1cd2ee8608b023341a12da0acb2a.ctex"
+path="res://.godot/imported/PlaceholderSpike.png-7ad17706f60cf7ab4237c6409efedfd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlaceholderSpike.png"
-dest_files=["res://.godot/imported/PlaceholderSpike.png-ad9f1cd2ee8608b023341a12da0acb2a.ctex"]
+source_file="res://Assets/PlaceholderSpike.png"
+dest_files=["res://.godot/imported/PlaceholderSpike.png-7ad17706f60cf7ab4237c6409efedfd3.ctex"]
 
 [params]
 

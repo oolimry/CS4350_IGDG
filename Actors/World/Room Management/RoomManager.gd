@@ -50,7 +50,5 @@ func _physics_process(delta):
 func changeRoom(location : ORIENTATION):
 	animate_lerp = true
 	movDirection = direction.get(location)
-	# TODO: Switch from using camera position as reference to using room position
-	var oriCameraPos = camera.global_position
 	movDest = movDirection * Vector2(1920,1080) + camera.global_position
 	pass
