@@ -10,8 +10,9 @@
 size = Vector2(60, 73)
 
 [node name="Player" type="CharacterBody2D" unique_id=1817445677]
-collision_mask = 6
+collision_mask = 22
 script = ExtResource("1_4x03u")
+terminalVelocity = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("CanvasItemMaterial_cueyq")
@@ -26,3 +27,25 @@ shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
 position = Vector2(-93, 28)
+
+[node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
+
+[node name="RightRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=240435201]
+position = Vector2(0, 2)
+target_position = Vector2(40, 0)
+collision_mask = 2
+
+[node name="LeftRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=1994605090]
+position = Vector2(0, 2)
+target_position = Vector2(-40, 0)
+collision_mask = 2
+
+[node name="RightRaycastLow" type="RayCast2D" parent="Raycasts" unique_id=176924886]
+position = Vector2(0, 58)
+target_position = Vector2(40, 0)
+collision_mask = 2
+
+[node name="LeftRaycastLow" type="RayCast2D" parent="Raycasts" unique_id=1245983828]
+position = Vector2(0, 58)
+target_position = Vector2(-40, 0)
+collision_mask = 2
