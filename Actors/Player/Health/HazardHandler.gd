@@ -1,4 +1,5 @@
-class_name PainProcessor
+## Whenever 
+class_name HazardHandler
 extends Node
 
 ## Damage dealt to player from environment hazards
@@ -14,6 +15,7 @@ var isInvuln := false
 signal receiveDamage(damage : int)
 
 func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
+	# Do not process hazards when invuln
 	if isInvuln:
 		return
 	
@@ -23,7 +25,8 @@ func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
 		return
 
 	var layers := PhysicsServer2D.body_get_collision_layer(rid)
-
+	
+	# Check if the target collider is on the "hazard" collision layer
 	if (layers & hazard_mask) == 0:
 		return
 
