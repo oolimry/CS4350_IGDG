@@ -15,7 +15,8 @@ shader_parameter/flashAmount = 0.0
 size = Vector2(60, 73)
 
 [node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "hazardHandler")]
-collision_mask = 22
+collision_layer = 33
+collision_mask = 54
 script = ExtResource("1_4x03u")
 health = NodePath("Health")
 hazardHandler = NodePath("HazardHandler")
