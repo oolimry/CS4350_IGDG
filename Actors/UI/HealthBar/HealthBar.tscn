@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhjniepaue6n3"]
+
+[ext_resource type="Script" uid="uid://deaq17ct1dswm" path="res://Actors/UI/HealthBar/HealthBar.gd" id="1_x0etn"]
+[ext_resource type="PackedScene" uid="uid://bt5d5l2cubjat" path="res://Actors/UI/HealthBar/HeartGUI.tscn" id="2_qkub1"]
+
+[node name="HealthBar" type="HBoxContainer" unique_id=1530028198]
+offset_right = 353.0
+offset_bottom = 108.0
+theme_override_constants/separation = 6
+script = ExtResource("1_x0etn")
+heartGuiScene = ExtResource("2_qkub1")

@@ -2,33 +2,45 @@
 
 [ext_resource type="Script" uid="uid://jiolrxp7rc6m" path="res://Actors/Player/Player.gd" id="1_4x03u"]
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_4x03u"]
+[ext_resource type="Shader" uid="uid://dfwfqj7hcqoqo" path="res://Assets/Player/invulnFlash.gdshader" id="2_l6vkj"]
 [ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitbox.tscn" id="3_urha2"]
+[ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/PlayerHealth.gd" id="3_yqfyh"]
+[ext_resource type="Script" uid="uid://dw0tp7x61tpbh" path="res://Actors/Player/Health/HazardHandler.gd" id="5_vywg6"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cueyq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vywg6"]
+shader = ExtResource("2_l6vkj")
+shader_parameter/flashAmount = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
 size = Vector2(60, 73)
 
-[node name="Player" type="CharacterBody2D" unique_id=1817445677]
+[node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "hazardHandler")]
 collision_mask = 22
 script = ExtResource("1_4x03u")
+health = NodePath("Health")
+hazardHandler = NodePath("HazardHandler")
 terminalVelocity = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
-material = SubResource("CanvasItemMaterial_cueyq")
+material = SubResource("ShaderMaterial_vywg6")
+position = Vector2(0, -66.725)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_4x03u")
 region_enabled = true
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
-position = Vector2(0, 30)
+position = Vector2(0, -36.725)
 shape = SubResource("RectangleShape2D_vgaxv")
 
+[node name="Health" type="Node" parent="." unique_id=1705777905]
+script = ExtResource("3_yqfyh")
+
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
-position = Vector2(-93, 28)
+position = Vector2(-93, -37)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
+position = Vector2(0, -58)
 
 [node name="RightRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=240435201]
 position = Vector2(0, 2)
@@ -49,3 +61,8 @@ collision_mask = 2
 position = Vector2(0, 58)
 target_position = Vector2(-40, 0)
 collision_mask = 2
+
+[node name="HazardHandler" type="Node" parent="." unique_id=2032868256 node_paths=PackedStringArray("playerSprite")]
+script = ExtResource("5_vywg6")
+playerSprite = NodePath("../Sprite2D")
+hazard_mask = 4
