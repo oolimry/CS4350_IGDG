@@ -18,9 +18,8 @@ size = Vector2(60, 73)
 collision_mask = 22
 script = ExtResource("1_4x03u")
 health = NodePath("Health")
-terminalVelocity = 800
-
 hazardHandler = NodePath("HazardHandler")
+terminalVelocity = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("ShaderMaterial_vywg6")
@@ -38,9 +37,10 @@ shape = SubResource("RectangleShape2D_vgaxv")
 script = ExtResource("3_yqfyh")
 
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
-position = Vector2(-93, 28)
+position = Vector2(-93, -37)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
+position = Vector2(0, -58)
 
 [node name="RightRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=240435201]
 position = Vector2(0, 2)
