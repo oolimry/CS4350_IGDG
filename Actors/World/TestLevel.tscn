@@ -149,7 +149,7 @@ tile_map_data = PackedByteArray("AAAAADMAAAADAAIAAAAAADQAAAADAAIAAAAAADUAAAADAAI
 tile_set = SubResource("TileSet_ou4op")
 
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("1_ubtik")]
-position = Vector2(522, 672)
+position = Vector2(1373, 598)
 
 [node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("2_bb27s")]
 position = Vector2(778, 724)
