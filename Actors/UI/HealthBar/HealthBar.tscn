@@ -8,4 +8,4 @@ offset_right = 353.0
 offset_bottom = 108.0
 theme_override_constants/separation = 6
 script = ExtResource("1_x0etn")
-HeartGuiClass = ExtResource("2_qkub1")
+heartGuiScene = ExtResource("2_qkub1")

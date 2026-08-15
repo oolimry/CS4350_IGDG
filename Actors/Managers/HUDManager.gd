@@ -4,7 +4,9 @@ extends CanvasLayer
 var maxHearts : int
 
 func connectUI(p : Player) -> void:
-	add_child(HealthBar.create(p.health))
+	var playerHP = p.health
+	var instance = HealthBar.create(p.health)
+	add_child(instance)
 
 
 # Called when the node enters the scene tree for the first time.

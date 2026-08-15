@@ -4,9 +4,9 @@ extends Node
 
 @export var maxHealth := 6
 var currHealth := maxHealth
-signal playerDamaged(currHealth, maxHealth)
+signal playerDamaged(currHealth)
 signal playerDeath()
-signal playerHealed(currHealth, maxHealth)
+signal playerHealed(currHealth)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +26,7 @@ func takeDamage(i : int) -> bool:
 		playerDeath.emit()
 	else: 
 		currHealth - i
-		playerDamaged.emit(currHealth, maxHealth)
+		playerDamaged.emit(i)
 		
 	return true
 
@@ -35,5 +35,5 @@ func heal(i : int) -> bool:
 		return false
 	
 	currHealth = maxHealth if currHealth + i >= maxHealth else currHealth + i
-	playerHealed.emit(currHealth, maxHealth)
+	playerHealed.emit(i)
 	return true

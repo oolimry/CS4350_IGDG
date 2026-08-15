@@ -4,11 +4,10 @@ extends CharacterBody2D
 const inf = 1e9 + 100
 
 @export var health : PlayerHealth
+@export var painProcessor : PainProcessor
 
 @onready var sprite = $Sprite2D
 @onready var sideSlashHitbox = $SideSlashHitbox
-
-
 
 ## x movement related
 @export var xAcceleration := 80*60			## how fast the character moves
@@ -64,6 +63,7 @@ func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
 
 func _ready():
+	painProcessor.receiveDamage.connect(health.takeDamage)
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
 	
@@ -130,6 +130,8 @@ func _physics_process_playerMovement(delta):
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 	
+	checkCollisions()
+	
 	if is_on_floor():
 		timeSinceOnFloor = 0
 		hasBrokenJump = false
@@ -165,3 +167,10 @@ func _physics_process_updateVisuals():
 		sideSlashHitbox.scale.x = -1
 		
 		
+func checkCollisions() -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		painProcessor.actOnPotentialHazard(collision)
+#		
+		#if isHazard(collision):
+			#body.take_damage(1)
