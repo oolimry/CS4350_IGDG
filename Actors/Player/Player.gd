@@ -5,9 +5,19 @@ const inf = 1e9 + 100
 
 @export var health : PlayerHealth
 @export var hazardHandler : HazardHandler
+enum Directions {
+	NONE,
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+}
 
 @onready var sprite = $Sprite2D
 @onready var sideSlashHitbox = $SideSlashHitbox
+
+@onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
+@onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
 
 ## x movement related
 @export var xAcceleration := 80*60			## how fast the character moves
@@ -28,14 +38,23 @@ The max running velocity is (xAcceleration / xDrag)
 @export var jumpSpeed := 670				## vertical boost when jumping
 @export var jumpXBoost := 200				## horizontal boost when jumping
 
-@export var gravity := 20 					## the maximum downwards velocity
-@export var fallMultiplier := 2.1			## when moving downwards, apply this multiplier to gravity
-@export var breakJumpMultiplier := 1.75		## if player let go of jump (and still moving upwards)
+@export var gravity := 22 					## the maximum downwards velocity
+@export var fallMultiplier := 2.2			## when moving downwards, apply this multiplier to gravity
+@export var breakJumpMultiplier := 1.8		## if player let go of jump (and still moving upwards)
 @export var breakJumpDropoff := 0.70 		## when let go of jump, multiply speed by this much
 
 @export var terminalVelocity := 900  		## the maximum downwards velocity
 @export var fastFallTerminalVelocity := 1350 	## the maximum downwards velocity
 var hasBrokenJump := false
+
+## wall jump related
+var wallFacingDirection := Directions.NONE
+@export var wallJumpXBoost := 550
+@export var wallJumpYBoost := 650
+var timeSinceNotTouchingWall = inf
+
+var timeSinceWallJump = inf
+@export var durationAfterWallJumpToHoldAwayFromWall = 0.067
 
 #leniency related
 var timeSinceOnFloor = 0
@@ -76,19 +95,46 @@ func _physics_process(delta: float) -> void:
 		
 	_physics_process_updateVisuals()
 	
+func _physics_process_playerMovement(delta):
+	timeSinceWallJump += delta
 	
-func _physics_process_playerMovement(delta):	
+	var movementDirection = Directions.NONE
 	
+	if timeSinceWallJump < durationAfterWallJumpToHoldAwayFromWall:
+		if wallFacingDirection == Directions.LEFT:
+			movementDirection = Directions.RIGHT
+		elif wallFacingDirection == Directions.RIGHT:
+			movementDirection = Directions.LEFT
+	else:
+		if Input.is_action_pressed("left") and not freezeInput:
+			movementDirection = Directions.LEFT
+		elif Input.is_action_pressed("right") and not freezeInput:
+			movementDirection = Directions.RIGHT
+	
+	
+	## horizontal movement
 	velocity.x *= pow(1.0-xDrag, delta*60)
-	if Input.is_action_pressed("left") and not freezeInput:
+	if movementDirection == Directions.LEFT:
 		velocity.x -= xAcceleration*delta
-	elif Input.is_action_pressed("right") and not freezeInput:
+	elif movementDirection == Directions.RIGHT:
 		velocity.x += xAcceleration*delta
 	else:
 		velocity.x = 0
 
 	$Sprite2D.rotation = 0
 	
+	## wall shit
+	if timeSinceWallJump >= durationAfterWallJumpToHoldAwayFromWall:
+		for raycast : RayCast2D in raycastsLeft:
+			if raycast.is_colliding():
+				timeSinceNotTouchingWall = 0.0
+				wallFacingDirection = Directions.LEFT
+		for raycast : RayCast2D in raycastsRight:
+			if raycast.is_colliding():
+				timeSinceNotTouchingWall = 0.0
+				wallFacingDirection = Directions.RIGHT
+	
+	## jumping movement
 	if Input.is_action_just_released("jump"):
 		velocity.y *= breakJumpDropoff
 	
@@ -103,13 +149,27 @@ func _physics_process_playerMovement(delta):
 		timeSincePressJump += delta
 	
 	if timeSincePressJump < earlyJumpBuffer:
-		#regular jumping
+		## regular jumping
 		if timeSinceOnFloor < lateJumpBuffer:
 			hasBrokenJump = false
 			velocity.y = -jumpSpeed
 			velocity.x += jumpXBoost * sign(velocity.x)
 			timeSincePressJump = inf
 			timeSinceOnFloor = inf
+			
+		## wall jumping
+		elif timeSinceNotTouchingWall < lateJumpBuffer:
+			hasBrokenJump = false
+			timeSincePressJump = inf
+			timeSinceOnFloor = inf
+			timeSinceNotTouchingWall = inf
+			timeSinceWallJump = 0
+			velocity.y = min(velocity.y, -wallJumpYBoost)
+			
+			if wallFacingDirection == Directions.LEFT:
+				velocity.x += wallJumpXBoost
+			else:
+				velocity.x -= wallJumpXBoost
 	
 	if velocity.y > 0:
 		velocity.y += gravity * fallMultiplier * 60 * delta
@@ -146,7 +206,7 @@ func _physics_process_playerMovement(delta):
 func _physics_process_slash(delta):
 	timeSinceSlash += delta
 	
-	if Input.is_action_pressed("Slash") and not freezeInput:
+	if Input.is_action_just_pressed("Slash") and not freezeInput:
 		timeSincePressSlash = 0
 	else:
 		timeSincePressSlash += delta

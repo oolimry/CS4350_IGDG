@@ -80,7 +80,7 @@ tile_map_data = PackedByteArray("AAAHABgAAQAAAAAAAAAIABgAAQAAAAAAAAAJABgAAQAAAAA
 tile_set = SubResource("TileSet_1yhvr")
 
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("1_ubtik")]
-position = Vector2(522, 672)
+position = Vector2(1373, 598)
 
 [node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("camera", "test_boundary", "test_boundary2", "test_boundary3", "test_boundary4")]
 script = ExtResource("2_6fq0g")

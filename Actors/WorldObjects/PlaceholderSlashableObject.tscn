@@ -15,7 +15,7 @@ width = 80
 height = 80
 
 [node name="PlaceholderSlashableObject" type="StaticBody2D" unique_id=1935947710]
-collision_layer = 10
+collision_layer = 24
 collision_mask = 0
 script = ExtResource("1_865f2")
 
