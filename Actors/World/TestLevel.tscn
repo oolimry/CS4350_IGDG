@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="2_6fq0g"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="2_bb27s"]
 [ext_resource type="Resource" uid="uid://dhhdbjxdukqkx" path="res://Actors/World/Room Management/LeftLevelTest.tres" id="3_olxu7"]
-[ext_resource type="Script" uid="uid://b170s8i81vsta" path="res://Actors/World/Room Management/RoomBoundary.gd" id="3_vflo3"]
 [ext_resource type="Resource" uid="uid://bwvwgorhlkvmh" path="res://Actors/World/Room Management/RightLevelTest.tres" id="4_d3ods"]
 [ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Actors/World/Room Management/TopLevelTest.tres" id="5_d3ods"]
+[ext_resource type="PackedScene" uid="uid://bar8kkryke156" path="res://Actors/World/Room Management/RoomBoundary.tscn" id="9_1yhvr"]
 [ext_resource type="Script" uid="uid://cio5u734lglja" path="res://Actors/Managers/HUDManager.gd" id="9_4ntoe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
@@ -62,9 +62,6 @@ custom_data_layer_0/name = "damage"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_mkg4b")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(29.5, 825)
-
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
 [node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("player", "hudManager") instance=ExtResource("1_p3fuy")]
@@ -88,8 +85,8 @@ roomGrid = Array[Array]([[ExtResource("3_olxu7"), ExtResource("4_d3ods")], [ExtR
 camera = NodePath("../Camera2D")
 test_boundary = NodePath("../Boundaries/CenterToLeft")
 test_boundary2 = NodePath("../Boundaries/LeftToCenter")
-test_boundary3 = NodePath("../Boundaries/CenterToTop")
-test_boundary4 = NodePath("../Boundaries/TopToCenter")
+test_boundary3 = NodePath("../Boundaries/CenterToUp")
+test_boundary4 = NodePath("../Boundaries/UpToCenter")
 
 [node name="Node2D" type="Node2D" parent="RoomManager" unique_id=1833428560]
 position = Vector2(960, 540)
@@ -102,42 +99,30 @@ position = Vector2(965, 543)
 
 [node name="Boundaries" type="Node" parent="." unique_id=1263410133]
 
-[node name="CenterToTop" type="Area2D" parent="Boundaries" unique_id=3354584]
-position = Vector2(800, -20)
-rotation = 1.5707964
-script = ExtResource("3_vflo3")
+[node name="CenterToLeft" parent="Boundaries" unique_id=703956753 instance=ExtResource("9_1yhvr")]
+position = Vector2(15, 614)
+collision_layer = 32
+collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/CenterToTop" unique_id=929926568]
-position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_bhunq")
-
-[node name="TopToCenter" type="Area2D" parent="Boundaries" unique_id=786756827]
-position = Vector2(800, 0)
-rotation = 1.5707964
-script = ExtResource("3_vflo3")
-location = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopToCenter" unique_id=748987670]
-position = Vector2(0, 9.536743e-07)
-shape = SubResource("RectangleShape2D_bhunq")
-
-[node name="CenterToLeft" type="Area2D" parent="Boundaries" unique_id=560962343]
-position = Vector2(0, 200)
-script = ExtResource("3_vflo3")
-location = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/CenterToLeft" unique_id=1796316496]
-position = Vector2(27.5, 402.5)
-shape = SubResource("RectangleShape2D_bhunq")
-
-[node name="LeftToCenter" type="Area2D" parent="Boundaries" unique_id=398118510]
-position = Vector2(-28, 200)
-script = ExtResource("3_vflo3")
+[node name="LeftToCenter" parent="Boundaries" unique_id=77228498 instance=ExtResource("9_1yhvr")]
+position = Vector2(15, 614)
+collision_layer = 32
+collision_mask = 32
 location = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftToCenter" unique_id=527767484]
-position = Vector2(8, 399)
-shape = SubResource("RectangleShape2D_bhunq")
+[node name="CenterToUp" parent="Boundaries" unique_id=1245089876 instance=ExtResource("9_1yhvr")]
+position = Vector2(804, -1)
+rotation = 1.5707964
+collision_layer = 32
+collision_mask = 32
+location = 0
+
+[node name="UpToCenter" parent="Boundaries" unique_id=1534578985 instance=ExtResource("9_1yhvr")]
+position = Vector2(804, -1)
+rotation = 1.5707964
+collision_layer = 32
+collision_mask = 32
+location = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=887701598]
 script = ExtResource("9_4ntoe")
@@ -147,8 +132,3 @@ position = Vector2(822, 937)
 
 [node name="PlaceholderSlashableObject2" parent="." unique_id=385502301 instance=ExtResource("2_bb27s")]
 position = Vector2(910, 751)
-
-[connection signal="body_entered" from="Boundaries/CenterToTop" to="Boundaries/CenterToTop" method="_on_body_entered"]
-[connection signal="body_entered" from="Boundaries/TopToCenter" to="Boundaries/TopToCenter" method="_on_body_entered"]
-[connection signal="body_entered" from="Boundaries/CenterToLeft" to="Boundaries/CenterToLeft" method="_on_body_entered"]
-[connection signal="body_entered" from="Boundaries/LeftToCenter" to="Boundaries/LeftToCenter" method="_on_body_entered"]
