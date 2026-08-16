@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Room" format=3 uid="uid://cov6x5n2wgjo3"]
-
-[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/Room.gd" id="1_2epxc"]
-
-[resource]
-script = ExtResource("1_2epxc")
-roomPos = Vector2i(0, 1)
-isDebug = true
-metadata/_custom_type_script = "uid://cij17tnbhukil"

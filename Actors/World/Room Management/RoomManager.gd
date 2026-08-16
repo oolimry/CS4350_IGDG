@@ -15,6 +15,14 @@ const roomCenterOffset := Vector2(960, 540)
 ## Is some variation of: roomCenterCoords + (x * 1920, y * 1080)
 var currRoomCenterWorldCoords : Vector2
 var currRoom : Room
+var currRoomCoords : Vector2i
+
+## The direction in which the player is moving room to
+var transitioningDirection : Vector2
+var nextRoomCenterWorldCoords : Vector2
+var nextRoomCoords : Vector2i
+
+@export var roomWorldCoordsOffset : Vector2
 
 ## Double Array of Rooms (representing the whole map)[br]
 ## 0,0 is the top-left room. Note that y is First Array and x are Sub-Arrays.[br]
@@ -24,9 +32,6 @@ var currRoom : Room
 ## The room which the player starts the game in 
 @export var startRoom : Room 
 
-## The direction in which the player is moving room to
-var movDirection : Vector2
-var movDest : Vector2
 
 var isCameraFollow := false
 
@@ -34,49 +39,69 @@ var isCameraFollow := false
 @export var cameraBounds : Array[Node2D]
 @export var player : Player
 
-## Bunch of Placeholder variables TODO: Delete la
 @export var boundaries : Array[Area2D]
 
-var animate_lerp := false
+## Should the camera pan when transitioning to a new room?
+var shouldAnimateLerp := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# TODO: For actual deployment, needa change this
 	currRoom = startRoom
-	currRoomCenterWorldCoords = roomCenterOffset + Vector2(currRoom.gridPos) * roomCenterInterval
+	currRoomCenterWorldCoords = roomCenterOffset + \
+		Vector2(startRoom.gridPos) * roomCenterInterval - roomWorldCoordsOffset
+	currRoomCoords = startRoom.gridPos
+	
 	for boundary in boundaries:
 		boundary.connect("requestChangeRoom", changeRoom)
 
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	if isCameraFollow:
+	if isCameraFollow and !shouldAnimateLerp:
 		camera.global_position = player.global_position
-		currRoomCenterWorldCoords = movDest
 		return
-	
-	if animate_lerp:
-		camera.global_position = camera.global_position.lerp(movDest, delta * 5)
-		currRoomCenterWorldCoords = movDest
-		if camera.global_position.is_equal_approx(movDest):
-			animate_lerp = false
 
-func changeRoom(location : ORIENTATION, isCameraFollow : bool):
-	animate_lerp = true
-	movDirection = DIRECTION.get(location)
-	movDest = movDirection * roomCenterInterval + currRoomCenterWorldCoords
+	if shouldAnimateLerp:
+		camera.global_position \
+			= camera.global_position.lerp(nextRoomCenterWorldCoords, delta * 5)
+		if camera.global_position.is_equal_approx(nextRoomCenterWorldCoords):
+			shouldAnimateLerp = false
+			if isCameraFollow:
+				camera.limit_enabled = true
+				camera.limit_top = cameraBounds[1].global_position.y
+				camera.limit_bottom = cameraBounds[0].global_position.y
+				camera.limit_left = cameraBounds[1].global_position.x
+				camera.limit_right = cameraBounds[0].global_position.x
+
+func changeRoom(direction : ORIENTATION, isCameraFollow : bool):
 	self.isCameraFollow = isCameraFollow
+	transitioningDirection = DIRECTION.get(direction)
+	nextRoomCenterWorldCoords = currRoomCenterWorldCoords + \
+		transitioningDirection * roomCenterInterval
+	nextRoomCoords = currRoomCoords + Vector2i(transitioningDirection)
+	var nextRoom : Room = roomGrid[nextRoomCoords.x][nextRoomCoords.y] 
+	
+	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
+		currRoom.roomGroup == Room.BIGROOMGROUP.NONE
 
 	if isCameraFollow:
-		camera.limit_enabled = true
-		camera.limit_left = cameraBounds[1].global_position.x
-		camera.limit_top = cameraBounds[1].global_position.y
-		camera.limit_right = cameraBounds[0].global_position.x
-		camera.limit_bottom = cameraBounds[0].global_position.y
-		movDest = player.global_position
+		if direction == ORIENTATION.WEST or direction == ORIENTATION.EAST:		
+			camera.limit_top = cameraBounds[1].global_position.y
+			camera.limit_bottom = cameraBounds[0].global_position.y
+		else:
+			camera.limit_left = cameraBounds[1].global_position.x
+			camera.limit_right = cameraBounds[0].global_position.x
 	else:
-		camera.limit_enabled = false
+		camera.global_position = camera.get_screen_center_position()
 		camera.limit_left = -INF
 		camera.limit_top = -INF
 		camera.limit_right = INF
 		camera.limit_bottom = INF
+		camera.limit_enabled = false
+	
+	currRoomCenterWorldCoords = nextRoomCenterWorldCoords
+	currRoomCoords = nextRoomCoords
+	currRoom = nextRoom
 	pass
