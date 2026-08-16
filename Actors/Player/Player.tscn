@@ -24,24 +24,24 @@ terminalVelocity = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("ShaderMaterial_vywg6")
-position = Vector2(0, -66.725)
+position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("2_4x03u")
 region_enabled = true
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
-position = Vector2(0, -36.725)
+position = Vector2(0, 0.27500153)
 shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="Health" type="Node" parent="." unique_id=1705777905]
 script = ExtResource("3_yqfyh")
 
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
-position = Vector2(-93, -37)
+position = Vector2(-93, 0)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
-position = Vector2(0, -58)
+position = Vector2(0, -21)
 
 [node name="RightRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=240435201]
 position = Vector2(0, 2)

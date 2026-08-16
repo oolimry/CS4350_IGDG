@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bar8kkryke156"]
 
-[ext_resource type="Script" uid="uid://b170s8i81vsta" path="res://Actors/World/Room Management/RoomBoundary.gd" id="1_sjnm7"]
+[ext_resource type="Script" uid="uid://b170s8i81vsta" path="res://Actors/World/Room Management/RoomEntry.gd" id="1_sjnm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(52.25, 825)
+size = Vector2(20, 816)
 
 [node name="CenterToLeft" type="Area2D" unique_id=703956753]
 script = ExtResource("1_sjnm7")

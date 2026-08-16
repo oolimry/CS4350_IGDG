@@ -13,7 +13,7 @@ const ROOM_HEIGHT := 9
 @export var roomName : String
 
 ## Room position (relative to the Map in RoomManager)
-@export var roomPos : Vector2i
+@export var gridPos : Vector2i
 
 @export var roomScene : PackedScene
 
