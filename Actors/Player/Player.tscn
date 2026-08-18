@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitbox.tscn" id="3_urha2"]
 [ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/PlayerHealth.gd" id="3_yqfyh"]
 [ext_resource type="Script" uid="uid://dw0tp7x61tpbh" path="res://Actors/Player/Health/HazardHandler.gd" id="5_vywg6"]
+[ext_resource type="Script" uid="uid://dmv4fi8etyxnc" path="res://Actors/Player/ShaderAnimator.gd" id="7_rsi04"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vywg6"]
 shader = ExtResource("2_l6vkj")
@@ -14,13 +15,15 @@ shader_parameter/flashAmount = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
 size = Vector2(60, 73)
 
-[node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "hazardHandler")]
+[node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler")]
 collision_layer = 33
 collision_mask = 54
 script = ExtResource("1_4x03u")
 health = NodePath("Health")
+shaderAnimator = NodePath("ShaderAnimator")
 hazardHandler = NodePath("HazardHandler")
 terminalVelocity = 800
+knockbackStrength = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("ShaderMaterial_vywg6")
@@ -33,9 +36,6 @@ region_rect = Rect2(49.731598, 0, 248.3114, 379)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
 position = Vector2(0, 0.27500153)
 shape = SubResource("RectangleShape2D_vgaxv")
-
-[node name="Health" type="Node" parent="." unique_id=1705777905]
-script = ExtResource("3_yqfyh")
 
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
 position = Vector2(-93, 0)
@@ -63,7 +63,14 @@ position = Vector2(0, 58)
 target_position = Vector2(-40, 0)
 collision_mask = 2
 
-[node name="HazardHandler" type="Node" parent="." unique_id=2032868256 node_paths=PackedStringArray("playerSprite")]
+[node name="HazardHandler" type="Node" parent="." unique_id=2032868256 node_paths=PackedStringArray("shaderAnimator")]
 script = ExtResource("5_vywg6")
-playerSprite = NodePath("../Sprite2D")
+shaderAnimator = NodePath("../ShaderAnimator")
 hazard_mask = 4
+
+[node name="Health" type="Node" parent="." unique_id=1705777905]
+script = ExtResource("3_yqfyh")
+
+[node name="ShaderAnimator" type="Node" parent="." unique_id=477373721 node_paths=PackedStringArray("playerSprite")]
+script = ExtResource("7_rsi04")
+playerSprite = NodePath("../Sprite2D")

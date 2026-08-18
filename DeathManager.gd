@@ -17,5 +17,6 @@ func registerCheckPoint(c : CheckPoint):
 func onPlayerDeath(p : Player):
 	p.queue_free()
 	
-	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)	
+	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
+	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)

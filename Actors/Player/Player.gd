@@ -4,7 +4,9 @@ extends CharacterBody2D
 const inf = 1e9 + 100
 
 @export var health : PlayerHealth
+@export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
+
 enum Directions {
 	NONE,
 	LEFT,
@@ -78,6 +80,8 @@ var sideSlashHitboxOffset = 93
 var playerXlength
 var playerYlength
 
+@export var knockbackStrength := 5
+
 # Static factory function acting as a custom constructor
 static func create(startingPos : Vector2) -> Player:
 	## Load in HeartGUI
@@ -91,6 +95,8 @@ func _init():
 
 func _ready():
 	hazardHandler.receiveDamage.connect(health.takeDamage)
+	hazardHandler.receiveKnockback.connect(applyKnockback)
+	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
 	
@@ -234,11 +240,10 @@ func _physics_process_updateVisuals():
 		sideSlashHitbox.position.x = -sideSlashHitboxOffset
 		sideSlashHitbox.scale.x = -1
 		
-		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		hazardHandler.actOnPotentialHazard(collision)
-#		
-		#if isHazard(collision):
-			#body.take_damage(1)
+
+func applyKnockback(normalVec : Vector2) -> void:
+	set_velocity(normalVec * knockbackStrength)

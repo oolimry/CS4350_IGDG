@@ -50,6 +50,9 @@ func setHorizontalLimit(topLeftBound : Vector2, bottomRightBound : Vector2):
 	limit_enabled = true
 	limit_left = topLeftBound.x
 	limit_right = bottomRightBound.x
+	limit_top = -10000000
+	limit_bottom = 10000000
+
 	
 func setVerticalLimit(topLeftBound, bottomRightBound):
 	self.topLeftBound = topLeftBound
@@ -58,6 +61,9 @@ func setVerticalLimit(topLeftBound, bottomRightBound):
 	limit_enabled = true
 	limit_top = topLeftBound.y
 	limit_bottom = bottomRightBound.y
+	limit_left = -10000000
+	limit_right = 10000000
+
 
 func setFullLimit(topLeftBound, bottomRightBound) -> void:
 	self.topLeftBound = topLeftBound
@@ -72,11 +78,11 @@ func setFullLimit(topLeftBound, bottomRightBound) -> void:
 func stopFollowing() -> void:
 	isFollowingPlayer = false
 	global_position = get_screen_center_position()
-	limit_left = -INF
-	limit_top = -INF
-	limit_right = INF
-	limit_bottom = INF
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	limit_enabled = false
 	
-	self.topLeftBound = Vector2(-INF, -INF)
-	self.bottomRightBound = Vector2(-INF, -INF)
+	self.topLeftBound = Vector2(-10000000, -10000000)
+	self.bottomRightBound = Vector2(-10000000, -10000000)
