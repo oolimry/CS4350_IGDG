@@ -1,4 +1,6 @@
+class_name RoomEntry
 extends Area2D
+
 enum ORIENTATION {NORTH, SOUTH, EAST, WEST}
 signal requestChangeRoom(direction : ORIENTATION, cameraFollow : bool)
 

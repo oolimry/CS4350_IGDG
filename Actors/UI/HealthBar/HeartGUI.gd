@@ -3,8 +3,8 @@ extends Panel
 
 @export var heartSprite : Sprite2D
 
-## How much HP per Heart icon? (Default is 2)
-@export var hpPerHeart := 2
+## How much HP per Heart icon? Dependent on Spritework
+static var hpPerHeart := 2
 
 ## For each Heart icon, the amount of frames to represent it is hpPerHeart + 1
 var totalFramesPerHeart := hpPerHeart + 1
