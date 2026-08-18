@@ -4,7 +4,11 @@ extends Area2D
 var hitboxActiveDuration = 0.10
 @onready var collisionShape = $CollisionShape2D
 
-func appear():
+var player : Player
+
+func appear(playerReference : Player):
+	player = playerReference
+	
 	$AnimationPlayer.play("Slash")
 	
 	monitoring = true
@@ -28,6 +32,6 @@ func _physics_process(delta):
 			var slashParams : Dictionary = {}
 			## TODO: add more info about slash direction, 
 			
-			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams)
+			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
 	
 	

@@ -38,7 +38,7 @@ position = Vector2(0, 0.27500153)
 shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
-position = Vector2(-93, 0)
+position = Vector2(-78, 0)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
 position = Vector2(0, -21)
