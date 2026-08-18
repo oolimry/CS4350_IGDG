@@ -6,6 +6,7 @@ const inf = 1e9 + 100
 @export var health : PlayerHealth
 @export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
+<<<<<<< HEAD
 
 enum Directions {
 	NONE,
@@ -14,6 +15,8 @@ enum Directions {
 	UP,
 	DOWN
 }
+=======
+>>>>>>> main
 
 @onready var sprite = $Sprite2D
 @onready var sideSlashHitbox = $SideSlashHitbox
@@ -86,7 +89,7 @@ var sideSlashHitboxOffset = 93
 var playerXlength
 var playerYlength
 
-@export var knockbackStrength := 800
+@export var knockbackStrength := 5
 
 # Static factory function acting as a custom constructor
 static func create(startingPos : Vector2) -> Player:
@@ -248,15 +251,25 @@ func _physics_process_updateVisuals():
 	if velocity.x < 0 or Input.is_action_pressed("left"):
 		sprite.flip_h = false
 		sideSlashHitbox.position.x = -sideSlashHitboxOffset
+<<<<<<< HEAD
+		sideSlashHitbox.scale.x = -1
+=======
 		sideSlashHitbox.scale.x = -1		
+>>>>>>> main
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		hazardHandler.actOnPotentialHazard(collision)
+<<<<<<< HEAD
 
 func applyKnockback(normalVec : Vector2) -> void:
-	additionalVelocityInputs.append(normalVec * knockbackStrength)
+	set_velocity(normalVec * knockbackStrength)
+=======
+#		
+		#if isHazard(collision):
+			#body.take_damage(1)
+
 
 func launchByIgnitionPad(direction : Enums.Directions):
 	if direction == Enums.Directions.RIGHT:
@@ -265,3 +278,4 @@ func launchByIgnitionPad(direction : Enums.Directions):
 		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, 0))
 	elif direction == Enums.Directions.UP:
 		additionalVelocityInputs.append(Vector2(0, -ignitionPadVerticalBoost))
+>>>>>>> main

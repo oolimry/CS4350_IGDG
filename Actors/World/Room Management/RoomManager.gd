@@ -1,11 +1,11 @@
+class_name RoomManager
 extends Node
-enum ORIENTATION {NORTH, SOUTH, EAST, WEST}
 
 const DIRECTION = { 
-	ORIENTATION.WEST: Vector2.RIGHT,
-	ORIENTATION.EAST: Vector2.LEFT,
-	ORIENTATION.NORTH: Vector2.DOWN,
-	ORIENTATION.SOUTH: Vector2.UP,
+	RoomEntry.ORIENTATION.WEST: Vector2.RIGHT,
+	RoomEntry.ORIENTATION.EAST: Vector2.LEFT,
+	RoomEntry.ORIENTATION.NORTH: Vector2.DOWN,
+	RoomEntry.ORIENTATION.SOUTH: Vector2.UP,
 }
 
 const roomCenterInterval := Vector2(1920, 1080)
@@ -32,12 +32,10 @@ var nextRoomCoords : Vector2i
 ## The room which the player starts the game in 
 @export var startRoom : Room 
 
-
 var isCameraFollow := false
 
-@export var camera : Camera2D
+@export var camera : GameCamera
 @export var cameraBounds : Array[Node2D]
-@export var player : Player
 
 @export var boundaries : Array[Area2D]
 
@@ -53,29 +51,14 @@ func _ready() -> void:
 		Vector2(startRoom.gridPos) * roomCenterInterval - roomWorldCoordsOffset
 	currRoomCoords = startRoom.gridPos
 	
+	camera.global_position = currRoomCenterWorldCoords
+	
 	for boundary in boundaries:
 		boundary.connect("requestChangeRoom", changeRoom)
 
 	pass # Replace with function body.
 
-func _physics_process(delta):
-	if isCameraFollow and !shouldAnimateLerp:
-		camera.global_position = player.global_position
-		return
-
-	if shouldAnimateLerp:
-		camera.global_position \
-			= camera.global_position.lerp(nextRoomCenterWorldCoords, delta * 5)
-		if camera.global_position.is_equal_approx(nextRoomCenterWorldCoords):
-			shouldAnimateLerp = false
-			if isCameraFollow:
-				camera.limit_enabled = true
-				camera.limit_top = cameraBounds[1].global_position.y
-				camera.limit_bottom = cameraBounds[0].global_position.y
-				camera.limit_left = cameraBounds[1].global_position.x
-				camera.limit_right = cameraBounds[0].global_position.x
-
-func changeRoom(direction : ORIENTATION, isCameraFollow : bool):
+func changeRoom(direction : RoomEntry.ORIENTATION, isCameraFollow : bool):
 	self.isCameraFollow = isCameraFollow
 	transitioningDirection = DIRECTION.get(direction)
 	nextRoomCenterWorldCoords = currRoomCenterWorldCoords + \
@@ -87,21 +70,17 @@ func changeRoom(direction : ORIENTATION, isCameraFollow : bool):
 		currRoom.roomGroup == Room.BIGROOMGROUP.NONE
 
 	if isCameraFollow:
-		if direction == ORIENTATION.WEST or direction == ORIENTATION.EAST:		
-			camera.limit_top = cameraBounds[1].global_position.y
-			camera.limit_bottom = cameraBounds[0].global_position.y
+		camera.startFollowingPlayer()
+		if direction == RoomEntry.ORIENTATION.WEST or direction == RoomEntry.ORIENTATION.EAST:		
+			camera.setVerticalLimit(cameraBounds[0].global_position, cameraBounds[1].global_position)
 		else:
-			camera.limit_left = cameraBounds[1].global_position.x
-			camera.limit_right = cameraBounds[0].global_position.x
+			camera.setHorizontalLimit(cameraBounds[0].global_position, cameraBounds[1].global_position)
 	else:
-		camera.global_position = camera.get_screen_center_position()
-		camera.limit_left = -INF
-		camera.limit_top = -INF
-		camera.limit_right = INF
-		camera.limit_bottom = INF
-		camera.limit_enabled = false
-	
+		camera.stopFollowing()
+		
 	currRoomCenterWorldCoords = nextRoomCenterWorldCoords
 	currRoomCoords = nextRoomCoords
 	currRoom = nextRoom
+	if shouldAnimateLerp:
+		camera.slideTowards(nextRoomCenterWorldCoords)
 	pass
