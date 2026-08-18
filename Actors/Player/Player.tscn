@@ -23,7 +23,6 @@ health = NodePath("Health")
 shaderAnimator = NodePath("ShaderAnimator")
 hazardHandler = NodePath("HazardHandler")
 terminalVelocity = 800
-knockbackStrength = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=213492207]
 material = SubResource("ShaderMaterial_vywg6")
