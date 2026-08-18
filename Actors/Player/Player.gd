@@ -5,13 +5,6 @@ const inf = 1e9 + 100
 
 @export var health : PlayerHealth
 @export var hazardHandler : HazardHandler
-enum Directions {
-	NONE,
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN
-}
 
 @onready var sprite = $Sprite2D
 @onready var sideSlashHitbox = $SideSlashHitbox
@@ -33,7 +26,6 @@ newVelocity.x = oldVelocity.x * xDrag + xAcceleration * delta
 The max running velocity is (xAcceleration / xDrag)
 """
 
-
 ##y movement related
 @export var jumpSpeed := 670				## vertical boost when jumping
 @export var jumpXBoost := 200				## horizontal boost when jumping
@@ -48,7 +40,7 @@ The max running velocity is (xAcceleration / xDrag)
 var hasBrokenJump := false
 
 ## wall jump related
-var wallFacingDirection := Directions.NONE
+var wallFacingDirection := Enums.Directions.NONE
 @export var wallJumpXBoost := 550
 @export var wallJumpYBoost := 650
 var timeSinceNotTouchingWall = inf
@@ -69,9 +61,16 @@ var timeSinceSlash = inf
 var timeSincePressSlash = inf
 const earlySlashBuffer := 0.083
 
+# ignition pad related
+@export var ignitionPadHorizontalBoost = 5000
+@export var ignitionPadVerticalBoost = 1400
+
 var peakHeight = 0
 
 var freezeInput = false
+
+var additionalVelocityInputs = []
+
 	
 # derived variables
 var sideSlashHitboxOffset = 93
@@ -98,25 +97,25 @@ func _physics_process(delta: float) -> void:
 func _physics_process_playerMovement(delta):
 	timeSinceWallJump += delta
 	
-	var movementDirection = Directions.NONE
+	var movementDirection = Enums.Directions.NONE
 	
 	if timeSinceWallJump < durationAfterWallJumpToHoldAwayFromWall:
-		if wallFacingDirection == Directions.LEFT:
-			movementDirection = Directions.RIGHT
-		elif wallFacingDirection == Directions.RIGHT:
-			movementDirection = Directions.LEFT
+		if wallFacingDirection == Enums.Directions.LEFT:
+			movementDirection = Enums.Directions.RIGHT
+		elif wallFacingDirection == Enums.Directions.RIGHT:
+			movementDirection = Enums.Directions.LEFT
 	else:
 		if Input.is_action_pressed("left") and not freezeInput:
-			movementDirection = Directions.LEFT
+			movementDirection = Enums.Directions.LEFT
 		elif Input.is_action_pressed("right") and not freezeInput:
-			movementDirection = Directions.RIGHT
+			movementDirection = Enums.Directions.RIGHT
 	
 	
 	## horizontal movement
 	velocity.x *= pow(1.0-xDrag, delta*60)
-	if movementDirection == Directions.LEFT:
+	if movementDirection == Enums.Directions.LEFT:
 		velocity.x -= xAcceleration*delta
-	elif movementDirection == Directions.RIGHT:
+	elif movementDirection == Enums.Directions.RIGHT:
 		velocity.x += xAcceleration*delta
 	else:
 		velocity.x = 0
@@ -128,11 +127,11 @@ func _physics_process_playerMovement(delta):
 		for raycast : RayCast2D in raycastsLeft:
 			if raycast.is_colliding():
 				timeSinceNotTouchingWall = 0.0
-				wallFacingDirection = Directions.LEFT
+				wallFacingDirection = Enums.Directions.LEFT
 		for raycast : RayCast2D in raycastsRight:
 			if raycast.is_colliding():
 				timeSinceNotTouchingWall = 0.0
-				wallFacingDirection = Directions.RIGHT
+				wallFacingDirection = Enums.Directions.RIGHT
 	
 	## jumping movement
 	if Input.is_action_just_released("jump"):
@@ -166,7 +165,7 @@ func _physics_process_playerMovement(delta):
 			timeSinceWallJump = 0
 			velocity.y = min(velocity.y, -wallJumpYBoost)
 			
-			if wallFacingDirection == Directions.LEFT:
+			if wallFacingDirection == Enums.Directions.LEFT:
 				velocity.x += wallJumpXBoost
 			else:
 				velocity.x -= wallJumpXBoost
@@ -184,6 +183,10 @@ func _physics_process_playerMovement(delta):
 	else:
 		if velocity.y > terminalVelocity:
 			velocity.y = terminalVelocity
+		
+	while len(additionalVelocityInputs) > 0:
+		velocity += additionalVelocityInputs[-1]
+		additionalVelocityInputs.pop_back()
 	
 	set_velocity(velocity)
 	
@@ -214,7 +217,7 @@ func _physics_process_slash(delta):
 	if timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer:
 		timeSincePressSlash = inf
 		timeSinceSlash = 0.0
-		sideSlashHitbox.appear()
+		sideSlashHitbox.appear(self)
 
 func _physics_process_updateVisuals():
 	if velocity.x > 0 or Input.is_action_pressed("right"):
@@ -224,8 +227,7 @@ func _physics_process_updateVisuals():
 	if velocity.x < 0 or Input.is_action_pressed("left"):
 		sprite.flip_h = false
 		sideSlashHitbox.position.x = -sideSlashHitboxOffset
-		sideSlashHitbox.scale.x = -1
-		
+		sideSlashHitbox.scale.x = -1		
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
@@ -234,3 +236,12 @@ func checkCollisions() -> void:
 #		
 		#if isHazard(collision):
 			#body.take_damage(1)
+
+
+func launchByIgnitionPad(direction : Enums.Directions):
+	if direction == Enums.Directions.RIGHT:
+		additionalVelocityInputs.append(Vector2(ignitionPadHorizontalBoost, 0))
+	elif direction == Enums.Directions.LEFT:
+		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, 0))
+	elif direction == Enums.Directions.UP:
+		additionalVelocityInputs.append(Vector2(0, -ignitionPadVerticalBoost))

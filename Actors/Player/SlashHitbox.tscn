@@ -106,7 +106,6 @@ monitorable = false
 script = ExtResource("1_brbb1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627591827]
-visible = false
 shape = SubResource("RectangleShape2D_brbb1")
 
 [node name="SpriteSlash" type="Sprite2D" parent="." unique_id=1892136982]
