@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://jiolrxp7rc6m" path="res://Actors/Player/Player.gd" id="1_4x03u"]
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_4x03u"]
 [ext_resource type="Shader" uid="uid://dfwfqj7hcqoqo" path="res://Assets/Player/invulnFlash.gdshader" id="2_l6vkj"]
-[ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitbox.tscn" id="3_urha2"]
+[ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitboxes/SideSlashHitbox.tscn" id="3_urha2"]
 [ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/PlayerHealth.gd" id="3_yqfyh"]
 [ext_resource type="Script" uid="uid://dw0tp7x61tpbh" path="res://Actors/Player/Health/HazardHandler.gd" id="5_vywg6"]
+[ext_resource type="PackedScene" uid="uid://berfqvu03jhmp" path="res://Actors/Player/SlashHitboxes/DownSlashHitbox.tscn" id="6_rsi04"]
+[ext_resource type="PackedScene" uid="uid://b67dkqowd1e8v" path="res://Actors/Player/SlashHitboxes/UpSlashHitbox.tscn" id="7_kkbrm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vywg6"]
 shader = ExtResource("2_l6vkj")
@@ -37,8 +39,20 @@ shape = SubResource("RectangleShape2D_vgaxv")
 [node name="Health" type="Node" parent="." unique_id=1705777905]
 script = ExtResource("3_yqfyh")
 
-[node name="SideSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
+[node name="LeftSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
 position = Vector2(-78, 0)
+scale = Vector2(-1, 1)
+slashDirection = 1
+
+[node name="RightSlashHitbox" parent="." unique_id=818047188 instance=ExtResource("3_urha2")]
+position = Vector2(78, 0)
+slashDirection = 2
+
+[node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
+position = Vector2(-1, 82)
+
+[node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]
+position = Vector2(1, -84)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
 position = Vector2(0, -21)

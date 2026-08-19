@@ -7,7 +7,10 @@ const inf = 1e9 + 100
 @export var hazardHandler : HazardHandler
 
 @onready var sprite = $Sprite2D
-@onready var sideSlashHitbox = $SideSlashHitbox
+@onready var leftSlashHitbox = $LeftSlashHitbox
+@onready var rightSlashHitbox = $RightSlashHitbox
+@onready var downSlashHitbox = $DownSlashHitbox
+@onready var upSlashHitbox = $UpSlashHitbox
 
 @onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
 @onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
@@ -71,9 +74,7 @@ var freezeInput = false
 
 var additionalVelocityInputs = []
 
-	
 # derived variables
-var sideSlashHitboxOffset = 93
 var playerXlength
 var playerYlength
 
@@ -85,8 +86,6 @@ func _ready():
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
 	
-	sideSlashHitboxOffset = abs(sideSlashHitbox.position.x)
-
 func _physics_process(delta: float) -> void:	
 	_physics_process_playerMovement(delta)
 	
@@ -118,7 +117,7 @@ func _physics_process_playerMovement(delta):
 	elif movementDirection == Enums.Directions.RIGHT:
 		velocity.x += xAcceleration*delta
 	else:
-		velocity.x = 0
+		velocity.x += 0
 
 	$Sprite2D.rotation = 0
 	
@@ -185,6 +184,7 @@ func _physics_process_playerMovement(delta):
 			velocity.y = terminalVelocity
 		
 	while len(additionalVelocityInputs) > 0:
+		Glogger.debug(additionalVelocityInputs[-1])
 		velocity += additionalVelocityInputs[-1]
 		additionalVelocityInputs.pop_back()
 	
@@ -217,17 +217,28 @@ func _physics_process_slash(delta):
 	if timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer:
 		timeSincePressSlash = inf
 		timeSinceSlash = 0.0
-		sideSlashHitbox.appear(self)
+		
+		Glogger.debug("Slash")
+		if Input.is_action_pressed("down") and not is_on_floor():
+			downSlashHitbox.appear(self)
+		elif Input.is_action_pressed("up"):
+			upSlashHitbox.appear(self)
+		elif Input.is_action_pressed("right"):
+			Glogger.debug("RIGHT")
+			rightSlashHitbox.appear(self)
+		elif Input.is_action_pressed("left"):
+			leftSlashHitbox.appear(self)
+		else:
+			if sprite.flip_h:
+				rightSlashHitbox.appear(self)
+			else:
+				leftSlashHitbox.appear(self)
 
 func _physics_process_updateVisuals():
-	if velocity.x > 0 or Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right"):
 		sprite.flip_h = true
-		sideSlashHitbox.position.x = sideSlashHitboxOffset
-		sideSlashHitbox.scale.x = 1
-	if velocity.x < 0 or Input.is_action_pressed("left"):
-		sprite.flip_h = false
-		sideSlashHitbox.position.x = -sideSlashHitboxOffset
-		sideSlashHitbox.scale.x = -1		
+	if Input.is_action_pressed("left"):
+		sprite.flip_h = false	
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():

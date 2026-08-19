@@ -9,7 +9,7 @@ enum Directions {
 	DOWN
 }
 
-func getOppositeDirection(direction : Directions):
+static func getOppositeDirection(direction : Directions):
 	if direction == Directions.NONE:
 		return Directions.NONE
 	if direction == Directions.LEFT:

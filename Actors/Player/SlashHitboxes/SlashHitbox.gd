@@ -1,6 +1,8 @@
 class_name SlashHitbox
 extends Area2D
 
+@export var slashDirection : Enums.Directions
+
 var hitboxActiveDuration = 0.10
 @onready var collisionShape = $CollisionShape2D
 
@@ -30,6 +32,8 @@ func _physics_process(delta):
 		if body.has_method(ScriptConstants.ON_SLASH_METHOD_NAME):
 			
 			var slashParams : Dictionary = {}
+			
+			slashParams[ScriptConstants.SLASH_DIRECTION_PARAM_NAME] = self.slashDirection
 			## TODO: add more info about slash direction, 
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
