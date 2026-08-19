@@ -82,6 +82,7 @@ Slash={
 2d_physics/layer_3="Hazard"
 2d_physics/layer_4="Slashable"
 2d_physics/layer_5="Platform"
+2d_physics/layer_6="Invisible"
 
 [physics]
 

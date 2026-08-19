@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dm8uuetodtrm1"]
+
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="1_81gr4"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_q8xmp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(320, 320)
+
+[node name="Respawn Point" type="Node2D" unique_id=202330827 node_paths=PackedStringArray("referenceImage")]
+script = ExtResource("1_81gr4")
+referenceImage = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=538526534]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_q8xmp")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=598497129]
+position = Vector2(-40, 80)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
