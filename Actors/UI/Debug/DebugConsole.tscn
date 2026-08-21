@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c61ohgc32ko7s"]
+
+[ext_resource type="Script" uid="uid://b4u656503bt8b" path="res://Actors/UI/Debug/DebugConsole.gd" id="1_ls2v8"]
+
+[node name="DebugConsole" type="LineEdit" unique_id=901917177]
+visible = false
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 1049.0
+offset_right = 68.5625
+offset_bottom = 1080.0
+placeholder_text = "enter command"
+script = ExtResource("1_ls2v8")
+
+[connection signal="text_submitted" from="." to="." method="_on_debugCommandEntered"]
