@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="1_scsbk"]
 [ext_resource type="PackedScene" uid="uid://br2l24tbbhygh" path="res://Assets/Rooms/TestRooms/MainRoom.tscn" id="1_yfmkc"]
-[ext_resource type="Texture2D" uid="uid://dxwl7baujo5ty" path="res://Assets/Rooms/TestRooms/MainRoom_preview.png" id="2_bm8t1"]
+[ext_resource type="Texture2D" uid="uid://c3oeicdt6i4sy" path="res://Assets/Rooms/PreviewRoomImages/MainRoom.tres_preview.png" id="2_bm8t1"]
 
 [resource]
 script = ExtResource("1_scsbk")

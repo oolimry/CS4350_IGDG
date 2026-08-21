@@ -6,8 +6,6 @@
 class_name RoomDefinition
 extends Resource
 
-enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
-
 # Number of tiles that make up the room. Should be fixed 
 const ROOM_LENGTH := 16
 const ROOM_HEIGHT := 9
@@ -18,13 +16,16 @@ const ROOM_HEIGHT := 9
 @export var gridPos : Vector2i
 
 @export var gamePlayScene : PackedScene
-@export var previewTexture : Texture2D
-
-@export var previewBounds := Rect2(0, 0, 1920, 1080)
-@export var previewSize := Vector2i(512, 288)
 
 ## Dimension of room by RUs
 @export var roomSize : Vector2i
+
+######## Optional parameters for "safety checks" ########
+
+## Preview of Room for the RoomLoader
+@export var previewTexture : Texture2D
+@export var previewBounds := Rect2(0, 0, 1920, 1080)
+@export var previewImageSize := Vector2i(512, 288)
 
 ## Frees the Camera from being fixed at the centre of the room
 @export var freeCameraOnEntry := false

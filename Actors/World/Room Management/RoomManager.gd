@@ -66,8 +66,8 @@ func changeRoom(direction : RoomEntry.ORIENTATION, isCameraFollow : bool):
 	nextRoomCoords = currRoomCoords + Vector2i(transitioningDirection)
 	var nextRoom : RoomDefinition = roomGrid[nextRoomCoords.x][nextRoomCoords.y] 
 	
-	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
-		currRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
+#	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
+#		currRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
 
 	if isCameraFollow:
 		camera.startFollowingPlayer()

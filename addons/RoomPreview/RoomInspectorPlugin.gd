@@ -1,13 +1,18 @@
+## This class creates the Generate Preview Button in the Inspector whenever you are handling a RoomDefinition
+## Clicking on the button generates the previewTexture used for the RoomDefinition
+
 @tool
 class_name RoomInspectorPlugin
 extends EditorInspectorPlugin
 
-# Use a Callable instead of holding a direct reference to avoid circular ref issues
-var on_generate_requested: Callable
+## Use a Callable instead of holding a direct reference to avoid circular ref issues[br]
+## Function that generates the preview
+var onGenerateRequested: Callable
 
-func _init(generate_callback: Callable = Callable()) -> void:
-	on_generate_requested = generate_callback
+func _init(generateCallback: Callable = Callable()) -> void:
+	onGenerateRequested = generateCallback
 
+## Check if the object being handled is indeed a RoomDefinition instance (find the Resource .tres)
 func _can_handle(object: Object) -> bool:
 	if object == null:
 		return false
@@ -29,10 +34,10 @@ func _parse_begin(object: Object) -> void:
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	button.pressed.connect(func():
-		if on_generate_requested.is_valid():
+		if onGenerateRequested.is_valid():
 			button.disabled = true
 			button.text = "Generating..."
-			await on_generate_requested.call(definition)
+			await onGenerateRequested.call(definition)
 			button.disabled = false
 			button.text = "📸 Generate / Update Room Preview"
 	)

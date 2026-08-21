@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="1_ge7dr"]
 [ext_resource type="PackedScene" uid="uid://bar8kkryke156" path="res://Actors/World/Room Management/RoomEntry.tscn" id="2_arpxx"]
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_aw5th"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -64,3 +65,6 @@ position = Vector2(0, 600)
 position = Vector2(800, 0)
 rotation = 1.5707964
 location = 0
+
+[node name="CheckPoint" parent="." unique_id=202330827 instance=ExtResource("3_aw5th")]
+position = Vector2(1240, 640)

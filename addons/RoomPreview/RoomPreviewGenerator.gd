@@ -1,45 +1,41 @@
+## Script that actually generates the preview PNGs from a Room Scene
+## NGL made this through the help of Gemnini and Codex
 @tool
 class_name RoomPreviewGenerator
 extends RefCounted
 
-func generate_from_definition(
-	definition: RoomDefinition,
-	output_path: String,
-	plugin_context: Node
-) -> Error:
+func generateFromDefinition(definition: RoomDefinition, outputPath: String, 
+	pluginContext: Node) -> Error:
+	
 	if definition == null:
 		return ERR_INVALID_PARAMETER
 
-	var source_scene: PackedScene = definition.gamePlayScene
-	if source_scene == null:
+	var sourceScene: PackedScene = definition.gamePlayScene
+	if sourceScene == null:
 		return ERR_FILE_NOT_FOUND
 
 	return await generate_from_scene(
-		source_scene,
+		sourceScene,
 		definition.previewBounds,
-		definition.previewSize,
-		output_path,
-		plugin_context
+		definition.previewImageSize,
+		outputPath,
+		pluginContext
 	)
 
-func generate_from_scene(
-	source_scene: PackedScene,
-	bounds: Rect2,
-	image_size: Vector2i,
-	output_path: String,
-	plugin_context: Node
-) -> Error:
-	if source_scene == null or image_size.x <= 0 or image_size.y <= 0 or plugin_context == null:
+func generate_from_scene(sourceScene: PackedScene, bounds: Rect2, imageSize: Vector2i,
+	outputPath: String, pluginContext: Node) -> Error:
+		
+	if sourceScene == null or imageSize.x <= 0 or imageSize.y <= 0 or pluginContext == null:
 		return ERR_INVALID_PARAMETER
 
-	var tree := plugin_context.get_tree()
+	var tree := pluginContext.get_tree()
 	if tree == null:
 		return ERR_UNCONFIGURED
 
 	# 1. Setup isolated SubViewport with its own 2D world
 	var viewport := SubViewport.new()
 	viewport.name = "OffscreenPreviewViewport"
-	viewport.size = image_size
+	viewport.size = imageSize
 	viewport.transparent_bg = true
 	viewport.world_2d = World2D.new()
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -48,7 +44,7 @@ func generate_from_scene(
 	viewport.add_child(preview_root)
 
 	# 2. Instantiate and add room scene
-	var room := source_scene.instantiate()
+	var room := sourceScene.instantiate()
 	_disable_processing(room)
 	preview_root.add_child(room)
 
@@ -57,17 +53,17 @@ func generate_from_scene(
 	if bounds.size.x > 0 and bounds.size.y > 0:
 		camera.position = bounds.position + (bounds.size / 2.0)
 		camera.zoom = Vector2(
-			float(image_size.x) / bounds.size.x,
-			float(image_size.y) / bounds.size.y
+			float(imageSize.x) / bounds.size.x,
+			float(imageSize.y) / bounds.size.y
 		)
 	else:
 		# Default fallback centering
-		camera.position = Vector2(image_size) / 2.0
+		camera.position = Vector2(imageSize) / 2.0
 	
 	preview_root.add_child(camera)
 
 	# 4. Attach viewport to editor tree hierarchy via plugin_context
-	plugin_context.add_child(viewport)
+	pluginContext.add_child(viewport)
 
 	# 5. Let the SceneTree register nodes, update canvas transforms, and draw
 	await tree.process_frame
@@ -81,7 +77,7 @@ func generate_from_scene(
 	if texture != null:
 		var image := texture.get_image()
 		if image != null and not image.is_empty():
-			error = image.save_png(output_path)
+			error = image.save_png(outputPath)
 		else:
 			push_error("[RoomPreviewGenerator] Captured texture image data is empty.")
 	else:
