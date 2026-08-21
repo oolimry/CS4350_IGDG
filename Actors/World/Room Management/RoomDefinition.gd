@@ -3,7 +3,7 @@
 
 # If a room needs to be "big", combine these rooms to form
 # the big room.
-class_name Room
+class_name RoomDefinition
 extends Resource
 
 enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
@@ -17,16 +17,17 @@ const ROOM_HEIGHT := 9
 ## Room position (relative to the Map in RoomManager)
 @export var gridPos : Vector2i
 
-@export var roomScene : PackedScene
+@export var gamePlayScene : PackedScene
+@export var previewTexture : Texture2D
+
+@export var previewBounds := Rect2(0, 0, 1920, 1080)
+@export var previewSize := Vector2i(512, 288)
+
+## Dimension of room by RUs
+@export var roomSize : Vector2i
 
 ## Frees the Camera from being fixed at the centre of the room
 @export var freeCameraOnEntry := false
-
-## Group sub-rooms into one big room by a "tag". [br]
-## This lousy system is mostly here to solve differentiation with adjacent big rooms
-## Just make sure the same sub-rooms of a big room have the same room group
-## The exact colour is arbitrary
-@export var roomGroup := BIGROOMGROUP.NONE
 
 ######## Optional parameters for "safety checks" ########
 

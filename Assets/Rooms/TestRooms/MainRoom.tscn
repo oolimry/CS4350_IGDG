@@ -60,7 +60,7 @@ tile_set = SubResource("TileSet_em42l")
 [node name="CenterToLeft" parent="." unique_id=703956753 instance=ExtResource("2_arpxx")]
 position = Vector2(0, 600)
 
-[node name="CenterToLeft" parent="CenterToLeft" unique_id=139778904 instance=ExtResource("2_arpxx")]
-position = Vector2(800, -600)
+[node name="CenterToLeft2" parent="." unique_id=139778904 instance=ExtResource("2_arpxx")]
+position = Vector2(800, 0)
 rotation = 1.5707964
 location = 0

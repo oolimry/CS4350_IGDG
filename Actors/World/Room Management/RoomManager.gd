@@ -14,7 +14,7 @@ const roomCenterOffset := Vector2(960, 540)
 ## The actual world coords of the current room's center
 ## Is some variation of: roomCenterCoords + (x * 1920, y * 1080)
 var currRoomCenterWorldCoords : Vector2
-var currRoom : Room
+var currRoom : RoomDefinition
 var currRoomCoords : Vector2i
 
 ## The direction in which the player is moving room to
@@ -30,7 +30,7 @@ var nextRoomCoords : Vector2i
 @export var roomGrid : Array[Array]
 
 ## The room which the player starts the game in 
-@export var startRoom : Room 
+@export var startRoom : RoomDefinition
 
 var isCameraFollow := false
 
@@ -64,10 +64,10 @@ func changeRoom(direction : RoomEntry.ORIENTATION, isCameraFollow : bool):
 	nextRoomCenterWorldCoords = currRoomCenterWorldCoords + \
 		transitioningDirection * roomCenterInterval
 	nextRoomCoords = currRoomCoords + Vector2i(transitioningDirection)
-	var nextRoom : Room = roomGrid[nextRoomCoords.x][nextRoomCoords.y] 
+	var nextRoom : RoomDefinition = roomGrid[nextRoomCoords.x][nextRoomCoords.y] 
 	
 	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
-		currRoom.roomGroup == Room.BIGROOMGROUP.NONE
+		currRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
 
 	if isCameraFollow:
 		camera.startFollowingPlayer()
