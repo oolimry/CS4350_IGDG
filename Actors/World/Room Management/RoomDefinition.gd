@@ -3,6 +3,7 @@
 
 # If a room needs to be "big", combine these rooms to form
 # the big room.
+@tool
 class_name RoomDefinition
 extends Resource
 
@@ -15,7 +16,11 @@ const ROOM_HEIGHT := 9
 ## Room position (relative to the Map in RoomManager)
 @export var gridPos : Vector2i
 
-@export var gamePlayScene : PackedScene
+@export var gamePlayScene : PackedScene :
+	get:
+		return gamePlayScene
+		
+static var sceneRoomSize := Vector2i(1920, 1080)
 
 ## Dimension of room by RUs
 @export var roomSize : Vector2i
@@ -24,8 +29,13 @@ const ROOM_HEIGHT := 9
 
 ## Preview of Room for the RoomLoader
 @export var previewTexture : Texture2D
-@export var previewBounds := Rect2(0, 0, 1920, 1080)
-@export var previewImageSize := Vector2i(512, 288)
+
+static var previewBounds := Rect2(0, 0, 1920, 1080) :
+	get():
+		return previewBounds
+
+
+static var previewImageSize := Vector2i(512, 288)
 
 ## Frees the Camera from being fixed at the centre of the room
 @export var freeCameraOnEntry := false
@@ -33,4 +43,4 @@ const ROOM_HEIGHT := 9
 ######## Optional parameters for "safety checks" ########
 
 ## Indicates debug room, delete before production
-@export var isDebug := false 
+@export var isDebug := false 	

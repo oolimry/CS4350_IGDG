@@ -27,15 +27,14 @@ var nextRoomCoords : Vector2i
 ## Double Array of Rooms (representing the whole map)[br]
 ## 0,0 is the top-left room. Note that y is First Array and x are Sub-Arrays.[br]
 ## If no room should be at a position, leave the entry in the array as null[br]
-@export var roomGrid : Array[Array]
-
+@export var mapLoader : MapLayoutLoader
 ## The room which the player starts the game in 
 @export var startRoom : RoomDefinition
 
 var isCameraFollow := false
 
 @export var camera : GameCamera
-@export var cameraBounds : Array[Node2D]
+
 
 @export var boundaries : Array[Area2D]
 
@@ -64,17 +63,23 @@ func changeRoom(direction : RoomEntry.ORIENTATION, isCameraFollow : bool):
 	nextRoomCenterWorldCoords = currRoomCenterWorldCoords + \
 		transitioningDirection * roomCenterInterval
 	nextRoomCoords = currRoomCoords + Vector2i(transitioningDirection)
-	var nextRoom : RoomDefinition = roomGrid[nextRoomCoords.x][nextRoomCoords.y] 
+	var nextRoom : RoomDefinition = mapLoader.getRoom(nextRoomCoords)
 	
 #	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
 #		currRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
 
 	if isCameraFollow:
 		camera.startFollowingPlayer()
+		var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.get_previewBounds().size[0], \
+			nextRoomCenterWorldCoords.y - nextRoom.get_previewBounds().size[1])
+			
+		var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.get_previewBounds().size[0], \
+			nextRoomCenterWorldCoords.y + nextRoom.get_previewBounds().size[1])
+			
 		if direction == RoomEntry.ORIENTATION.WEST or direction == RoomEntry.ORIENTATION.EAST:		
-			camera.setVerticalLimit(cameraBounds[0].global_position, cameraBounds[1].global_position)
+			camera.setVerticalLimit(topLeft , btmRight)
 		else:
-			camera.setHorizontalLimit(cameraBounds[0].global_position, cameraBounds[1].global_position)
+			camera.setHorizontalLimit(topLeft, btmRight)
 	else:
 		camera.stopFollowing()
 		
