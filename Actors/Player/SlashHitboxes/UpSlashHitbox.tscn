@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://tmdc4gqeq8q8" path="res://Actors/Player/SlashHitboxes/SlashHitbox.gd" id="1_gg0ce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukk5s"]
-size = Vector2(45, 85)
+size = Vector2(71, 84.5)
 
 [sub_resource type="Gradient" id="Gradient_ukk5s"]
 offsets = PackedFloat32Array(0)
