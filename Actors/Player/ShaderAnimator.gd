@@ -1,6 +1,6 @@
 class_name ShaderAnimator
 extends Node
-@export var playerSprite : Sprite2D
+@export var playerSprite : AnimatedSprite2D
 
 var fadeCount := 0.0
 

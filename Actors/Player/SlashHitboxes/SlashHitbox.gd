@@ -3,7 +3,7 @@ extends Area2D
 
 @export var slashDirection : Enums.Directions
 
-var hitboxActiveDuration = 0.10
+var hitboxActiveDuration = 0.20
 @onready var collisionShape = $CollisionShape2D
 
 var player : Player
