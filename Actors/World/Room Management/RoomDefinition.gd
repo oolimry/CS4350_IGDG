@@ -13,6 +13,11 @@ const ROOM_HEIGHT := 9
 
 @export var roomName : String
 
+@export var hasPlayer : bool
+
+## Whether the camera should follow the player after they enter the room
+@export var doesCameraFollow : bool
+
 ## Room position (relative to the Map in RoomManager)
 @export var gridPos : Vector2i
 
@@ -25,7 +30,15 @@ static var sceneRoomSize := Vector2i(1920, 1080)
 ## Dimension of room by RUs
 @export var roomSize : Vector2i
 
-######## Optional parameters for "safety checks" ########
+enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
+
+## Group sub-rooms into one big room by a "tag". [br]
+## This lousy system is mostly here to solve differentiation with adjacent big rooms
+## Just make sure the same sub-rooms of a big room have the same room group
+## The exact colour is arbitrary
+@export var roomGroup := BIGROOMGROUP.NONE
+
+######## Preview parameters for Map Layout Room Placement ########
 
 ## Preview of Room for the RoomLoader
 @export var previewTexture : Texture2D
@@ -33,8 +46,7 @@ static var sceneRoomSize := Vector2i(1920, 1080)
 static var previewBounds := Rect2(0, 0, 1920, 1080) :
 	get():
 		return previewBounds
-
-
+		
 static var previewImageSize := Vector2i(512, 288)
 
 ## Frees the Camera from being fixed at the centre of the room

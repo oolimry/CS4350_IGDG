@@ -43,9 +43,9 @@ func slideTowards(slideDest : Vector2) -> void:
 	isSliding = true
 	self.slideDest = slideDest
 	
-func setHorizontalLimit(topLeftBound : Vector2, bottomRightBound : Vector2):
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
+func setHorizontalLimit(tlb : Vector2, brb : Vector2):
+	topLeftBound = tlb
+	bottomRightBound = brb
 	
 	limit_enabled = true
 	limit_left = topLeftBound.x
@@ -54,9 +54,9 @@ func setHorizontalLimit(topLeftBound : Vector2, bottomRightBound : Vector2):
 	limit_bottom = 10000000
 
 	
-func setVerticalLimit(topLeftBound, bottomRightBound):
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
+func setVerticalLimit(tlb : Vector2, brb : Vector2):
+	topLeftBound = tlb
+	bottomRightBound = brb
 	
 	limit_enabled = true
 	limit_top = topLeftBound.y
@@ -65,9 +65,9 @@ func setVerticalLimit(topLeftBound, bottomRightBound):
 	limit_right = 10000000
 
 
-func setFullLimit(topLeftBound, bottomRightBound) -> void:
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
+func setFullLimit(tlb : Vector2, brb : Vector2) -> void:
+	topLeftBound = tlb
+	bottomRightBound = brb
 	
 	limit_enabled = true
 	limit_top = topLeftBound.y

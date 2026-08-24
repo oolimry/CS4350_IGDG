@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://blpt4oacinocx"]
+
+[ext_resource type="PackedScene" uid="uid://cml15n6pk8w1s" path="res://Actors/Managers/GameManager.tscn" id="1_i87mu"]
+[ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="2_cp0kg"]
+[ext_resource type="Script" uid="uid://de4oxmxe0rd2y" path="res://Actors/World/Room Management/MapLayoutLoader.gd" id="4_cp0kg"]
+[ext_resource type="PackedScene" uid="uid://px5k0nls11vq" path="res://Assets/Rooms/TestRooms/MapLayout.tscn" id="5_cx0xc"]
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="6_xf085"]
+[ext_resource type="Script" uid="uid://d4fqukl0dj7gu" path="res://Actors/World/Room Management/RoomInstantiator.gd" id="7_cx0xc"]
+[ext_resource type="Resource" uid="uid://dvjcs1rci7alc" path="res://Assets/Rooms/TestRooms/MainRoom.tres" id="7_p3cca"]
+[ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Assets/Rooms/TestRooms/MainRoomTop.tres" id="8_3i23b"]
+[ext_resource type="Script" uid="uid://cxnk476c7iawm" path="res://Actors/World/Room Management/RoomCameraHandler.gd" id="8_xf085"]
+
+[node name="TestLevel" type="Node2D" unique_id=1922114953]
+
+[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "checkPoints") instance=ExtResource("1_i87mu")]
+roomManager = NodePath("../RoomManager")
+checkPoints = [null]
+
+[node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("mapLoader", "roomInstantiator", "roomCamHandler")]
+script = ExtResource("2_cp0kg")
+roomWorldCoordsOffset = Vector2(1920, 1080)
+mapLoader = NodePath("MapLayout")
+roomInstantiator = NodePath("RoomInstantiator")
+roomCamHandler = NodePath("RoomCameraHandler")
+
+[node name="MapLayout" type="Node" parent="RoomManager" unique_id=357030284]
+script = ExtResource("4_cp0kg")
+mapLayoutScene = ExtResource("5_cx0xc")
+mapLayout = Dictionary[Vector2i, ExtResource("6_xf085")]({
+Vector2i(0, -1): ExtResource("8_3i23b"),
+Vector2i(0, 0): ExtResource("7_p3cca")
+})
+
+[node name="RoomInstantiator" type="Node2D" parent="RoomManager" unique_id=2016719982]
+script = ExtResource("7_cx0xc")
+
+[node name="RoomCameraHandler" type="Node" parent="RoomManager" unique_id=2100041786]
+script = ExtResource("8_xf085")

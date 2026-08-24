@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="1_ge7dr"]
 [ext_resource type="PackedScene" uid="uid://bar8kkryke156" path="res://Actors/World/Room Management/RoomEntry.tscn" id="2_arpxx"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_aw5th"]
+[ext_resource type="PackedScene" uid="uid://d3dqiwprm2300" path="res://Actors/Player/Player.tscn" id="4_8xuxo"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -58,13 +59,16 @@ tile_set = SubResource("TileSet_8w5e7")
 tile_map_data = PackedByteArray("AAAHABgAAQAAAAAAAAAIABgAAQAAAAAAAAAJABgAAQAAAAAAAAAIABcAAQAAAAAAAAAJABcAAQAAAAAAAAAKABgAAQAAAAAAAAAJABYAAQAAAAAAAAAKABcAAQAAAAAAAAALABgAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_em42l")
 
-[node name="CenterToLeft" parent="." unique_id=703956753 instance=ExtResource("2_arpxx")]
+[node name="CenterToLeft" parent="." unique_id=703956753 groups=["Interactables"] instance=ExtResource("2_arpxx")]
 position = Vector2(0, 600)
 
-[node name="CenterToLeft2" parent="." unique_id=139778904 instance=ExtResource("2_arpxx")]
+[node name="CenterToLeft2" parent="." unique_id=139778904 groups=["Interactables"] instance=ExtResource("2_arpxx")]
 position = Vector2(800, 0)
 rotation = 1.5707964
 location = 0
 
-[node name="CheckPoint" parent="." unique_id=202330827 instance=ExtResource("3_aw5th")]
+[node name="CheckPoint" parent="." unique_id=202330827 groups=["Interactables"] instance=ExtResource("3_aw5th")]
 position = Vector2(1240, 640)
+
+[node name="Player" parent="." unique_id=1817445677 groups=["Interactables"] instance=ExtResource("4_8xuxo")]
+position = Vector2(1240, 600)

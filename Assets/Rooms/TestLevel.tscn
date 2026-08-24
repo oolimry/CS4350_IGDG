@@ -78,11 +78,10 @@ tile_set = SubResource("TileSet_1yhvr")
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("3_4amqu")]
 position = Vector2(1240, 600)
 
-[node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("cameraBounds", "boundaries")]
+[node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("boundaries")]
 script = ExtResource("4_1pck8")
 roomWorldCoordsOffset = Vector2(1920, 1080)
 startRoom = ExtResource("7_2mgyy")
-cameraBounds = [NodePath("../CameraBounds2"), NodePath("../Node2D2")]
 boundaries = [NodePath("../Boundaries/CenterToLeft"), NodePath("../Boundaries/LeftToCenter"), NodePath("../Boundaries/CenterToUp"), NodePath("../Boundaries/CenterToUp3"), NodePath("../Boundaries/CenterToUp2"), NodePath("../Boundaries/CenterToUp4")]
 
 [node name="Boundaries" type="Node" parent="." unique_id=1263410133]

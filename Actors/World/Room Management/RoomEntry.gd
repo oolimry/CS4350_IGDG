@@ -1,14 +1,15 @@
 class_name RoomEntry
 extends Area2D
 
+signal requestChangeRoom(direction : ORIENTATION)
+
+## Direction at which the player is entering the room[br]
+## Should be opposite of the boundary location
 enum ORIENTATION {NORTH, SOUTH, EAST, WEST}
-signal requestChangeRoom(direction : ORIENTATION, cameraFollow : bool)
 
 ## Location of the Boundary within the Room
 @export var location : ORIENTATION
 
-## Whether the camera should follow the player after they enter the room
-@export var shouldCameraFollow : bool
 const roomCenter := Vector2i(960, 540)
 
 var playerBody : Node2D
@@ -39,7 +40,7 @@ func _on_body_exited(body: Node2D) -> void:
 			is_valid_entry = oriPlayerPos.y > global_position.y and body.global_position.y < oriPlayerPos.y
 
 	if is_valid_entry:
-		requestChangeRoom.emit(location, shouldCameraFollow)
+		requestChangeRoom.emit(location)
 
 	playerBody = null
 	oriPlayerPos = Vector2.INF

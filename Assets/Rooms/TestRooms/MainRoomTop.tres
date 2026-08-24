@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://cov6x5n2wgjo3"]
+
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="1_p2px0"]
+[ext_resource type="PackedScene" uid="uid://db833etc5rs1f" path="res://Assets/Rooms/TestRooms/MainRoomTop.tscn" id="1_stinq"]
+[ext_resource type="Texture2D" uid="uid://dx4064vwibkno" path="res://Assets/Rooms/PreviewRoomImages/MainRoomTop.tres_preview.png" id="2_aiiia"]
+
+[resource]
+script = ExtResource("1_p2px0")
+roomName = "TopRight"
+gridPos = Vector2i(0, -1)
+gamePlayScene = ExtResource("1_stinq")
+previewTexture = ExtResource("2_aiiia")
+isDebug = true
+metadata/_custom_type_script = "uid://cij17tnbhukil"

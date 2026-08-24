@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="4_5lgfu"]
 [ext_resource type="Resource" uid="uid://daurogwaswu18" path="res://Assets/Rooms/TestRooms/TopLeftLevelTest.tres" id="5_q0l4a"]
 [ext_resource type="Resource" uid="uid://dhhdbjxdukqkx" path="res://Assets/Rooms/TestRooms/LeftLevelTest.tres" id="6_suikj"]
-[ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Assets/Rooms/TestRooms/TopRightLevelTest.tres" id="7_s07n6"]
+[ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Assets/Rooms/TestRooms/MainRoomTop.tres" id="7_s07n6"]
 [ext_resource type="Resource" uid="uid://bwvwgorhlkvmh" path="res://Assets/Rooms/TestRooms/RightLevelTest.tres" id="8_wb7nb"]
 [ext_resource type="PackedScene" uid="uid://bar8kkryke156" path="res://Actors/World/Room Management/RoomEntry.tscn" id="9_k43tr"]
 [ext_resource type="Script" uid="uid://cio5u734lglja" path="res://Actors/Managers/HUDManager.gd" id="10_k1svs"]

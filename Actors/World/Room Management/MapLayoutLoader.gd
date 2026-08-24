@@ -2,10 +2,10 @@
 class_name MapLayoutLoader
 extends Node
 
-# The first argument is the button label, the second is an optional icon name
 @export var mapLayoutScene : PackedScene
 @export var mapLayout : Dictionary[Vector2i, RoomDefinition]
 
+# The first argument is the button label, the second is an optional icon name
 @export_tool_button("🗺️ Generate / Map Grid Layout", "Callable")
 var generate_action = _on_generate_pressed
 
@@ -32,7 +32,9 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 				, roomDef.roomName)
 		else:
 			roomLayout[key] = roomDef
+			roomDef.gridPos = key
 	
+	instance.queue_free()
 	return roomLayout
 
 func getRoom(pos: Vector2i) -> RoomDefinition:
@@ -40,3 +42,7 @@ func getRoom(pos: Vector2i) -> RoomDefinition:
 	assert(result != null)
 	
 	return result
+	
+func forEachRoomDef(c : Callable) -> void:
+	for r in mapLayout.values():
+		c.call(r)
