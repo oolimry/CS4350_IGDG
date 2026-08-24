@@ -49,9 +49,6 @@ static var previewBounds := Rect2(0, 0, 1920, 1080) :
 		
 static var previewImageSize := Vector2i(512, 288)
 
-## Frees the Camera from being fixed at the centre of the room
-@export var freeCameraOnEntry := false
-
 ######## Optional parameters for "safety checks" ########
 
 ## Indicates debug room, delete before production

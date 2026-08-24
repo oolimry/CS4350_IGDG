@@ -1,4 +1,4 @@
-class_name RoomEntry
+class_name RoomEntryz
 extends Area2D
 
 signal requestChangeRoom(direction : ORIENTATION)

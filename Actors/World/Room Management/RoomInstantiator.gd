@@ -14,7 +14,6 @@ func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable) -> Node2
 
 func instantiateRoomWithSetup(roomDef : RoomDefinition, \
 	calcWorldPos : Callable, setupCallable : Callable) -> Node2D:
-	
 	var instance = instantiateRoom(roomDef, calcWorldPos) as Node2D
 	setupCallable.call(roomDef, instance)
 	return instance

@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://px5k0nls11vq"]
 
 [ext_resource type="PackedScene" uid="uid://hu0kjwc6yj6a" path="res://Actors/World/Room Management/MapLayout/RoomPreviewPlacement.tscn" id="1_28ix6"]
-[ext_resource type="Resource" uid="uid://dvjcs1rci7alc" path="res://Assets/Rooms/TestRooms/MainRoom.tres" id="2_p7ugb"]
-[ext_resource type="Resource" uid="uid://cov6x5n2wgjo3" path="res://Assets/Rooms/TestRooms/MainRoomTop.tres" id="3_3wcla"]
+[ext_resource type="Resource" uid="uid://8aknwfsp1c8d" path="res://Assets/Rooms/TestRooms/MainLevelTest.tres" id="2_j517d"]
+[ext_resource type="Resource" uid="uid://dly5focppmak3" path="res://Assets/Rooms/TestRooms/MainTopLevelTest.tres" id="3_p7ugb"]
 
 [node name="MapLayout" type="Node2D" unique_id=1475819905]
 
 [node name="RoomPreviewer" parent="." unique_id=1101232982 instance=ExtResource("1_28ix6")]
-roomDefinition = ExtResource("2_p7ugb")
+roomDefinition = ExtResource("2_j517d")
 
 [node name="RoomPreviewer2" parent="." unique_id=1129603482 instance=ExtResource("1_28ix6")]
 position = Vector2(0, -288)
-roomDefinition = ExtResource("3_3wcla")
+roomDefinition = ExtResource("3_p7ugb")
