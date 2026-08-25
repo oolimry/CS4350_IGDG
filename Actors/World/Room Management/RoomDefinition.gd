@@ -13,10 +13,13 @@ const ROOM_HEIGHT := 9
 
 @export var roomName : String
 
-@export var hasPlayer : bool
-
 ## Whether the camera should follow the player after they enter the room
 @export var doesCameraFollow : bool
+
+@export var cameraLimitLeft: bool
+@export var cameraLimitRight: bool
+@export var cameraLimitUp: bool
+@export var cameraLimitDown: bool
 
 ## Room position (relative to the Map in RoomManager)
 @export var gridPos : Vector2i

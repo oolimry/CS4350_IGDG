@@ -1,10 +1,19 @@
-[gd_resource type="Resource" script_class="Room" format=3 uid="uid://daurogwaswu18"]
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://daurogwaswu18"]
 
+[ext_resource type="PackedScene" uid="uid://v8mjug06cdd8" path="res://Assets/Rooms/TestRooms/LeftTop.tscn" id="1_6ak4u"]
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="1_n7vik"]
+[ext_resource type="Texture2D" uid="uid://ddxqellj3hbsc" path="res://Assets/Rooms/PreviewRoomImages/TopLeftLevelTest.tres_preview.png" id="2_emqsy"]
 
 [resource]
 script = ExtResource("1_n7vik")
 roomName = "TopLeft"
+doesCameraFollow = true
+cameraLimitLeft = true
+cameraLimitRight = true
+cameraLimitUp = true
+gridPos = Vector2i(-1, -1)
+gamePlayScene = ExtResource("1_6ak4u")
 roomGroup = 0
+previewTexture = ExtResource("2_emqsy")
 isDebug = true
 metadata/_custom_type_script = "uid://cij17tnbhukil"

@@ -1,46 +1,75 @@
-class_name RoomEntryz
+class_name RoomEntry
 extends Area2D
 
-signal requestChangeRoom(direction : ORIENTATION)
+## Time needed past the threshold
+@export var required_dwell_time: float = 1.4
 
-## Direction at which the player is entering the room[br]
-## Should be opposite of the boundary location
-enum ORIENTATION {NORTH, SOUTH, EAST, WEST}
+## Ignore entry detection if player respawns back inside the room
+@export var isActive := true
 
-## Location of the Boundary within the Room
-@export var location : ORIENTATION
+@export var roomPos : Vector2i
 
-const roomCenter := Vector2i(960, 540)
+signal requestChangeRoom(entryPoint : RoomEntry, roomPos : Vector2i)
 
-var playerBody : Node2D
-var oriPlayerPos : Vector2
+## If the player proceeds far enough into the room (they used wind charge and
+## fly past the outer detection, use a deeper area2d to detect[br]
+## and count them as having enetered
+@export var deeperArea: Area2D 
 
-func _on_body_entered(body: Node2D) -> void:
+var isPendingEntry: bool = false
+var entryTimer: SceneTreeTimer = null
+
+func _ready() -> void:
+	body_entered.connect(_on_outer_body_entered)
+	body_exited.connect(_on_outer_body_exited)
+	if deeperArea:
+		deeperArea.body_entered.connect(_on_deep_checkpoint_entered)
+
+func _on_outer_body_entered(body: Node2D) -> void:
 	if body is not Player:
-		return 
-	
-	playerBody = body
-	oriPlayerPos = body.global_position 
-
-func _on_body_exited(body: Node2D) -> void:
-	if !is_instance_valid(playerBody) or !is_same(body, playerBody) or !oriPlayerPos.is_finite():
 		return
 	
-	var offset := body.global_position - global_position
-	var is_valid_entry := false
+	isPendingEntry = true
 	
-	match location:
-		ORIENTATION.WEST:
-			is_valid_entry = oriPlayerPos.x < global_position.x and body.global_position.x > oriPlayerPos.x
-		ORIENTATION.EAST:
-			is_valid_entry = oriPlayerPos.x > global_position.x and body.global_position.x < oriPlayerPos.x
-		ORIENTATION.NORTH:
-			is_valid_entry = oriPlayerPos.y < global_position.y and body.global_position.y > oriPlayerPos.y
-		ORIENTATION.SOUTH:
-			is_valid_entry = oriPlayerPos.y > global_position.y and body.global_position.y < oriPlayerPos.y
+	# If you don't use a depth checkpoint, use a strict timer for full body clearance
+	entryTimer = get_tree().create_timer(required_dwell_time)
+	entryTimer.timeout.connect(_on_dwell_timeout.bind(body))
 
-	if is_valid_entry:
-		requestChangeRoom.emit(location)
+func _on_outer_body_exited(body: Node2D) -> void:
+	if body is not Player:
+		return
+	
+	# If the player leaves before fully committing, cancel entry
+	if isPendingEntry:
+		_cancel_entry("Player left before fully entering.")
 
-	playerBody = null
-	oriPlayerPos = Vector2.INF
+func _on_deep_checkpoint_entered(body: Node2D) -> void:
+	if body is not Player:
+		return
+	
+	# The player reached deep into the room! Cancel the timer and confirm entry immediately.
+	if entryTimer:
+		entryTimer.time_left = 0 # Effectively stops/invalidates the timer if needed
+	
+	_confirm_room_entry()
+
+func _on_dwell_timeout(body: Node2D) -> void:
+	# If the timer finishes and they haven't left, check if they are still inside
+	if isPendingEntry and overlaps_body(body):
+		_confirm_room_entry()
+	else:
+		_cancel_entry("Dwell timeout expired, but player was not inside.")
+
+func _confirm_room_entry() -> void:		
+	if !isActive:
+		_cancel_entry("EntryPoint set to InActive!")
+		return
+	
+	isPendingEntry = false
+	Glogger.debug("Room fully entered!")
+	requestChangeRoom.emit(self, roomPos)
+
+func _cancel_entry(reason: String) -> void:
+	isPendingEntry = false
+	Glogger.debug("Entry canceled: ")
+	Glogger.debug(reason)

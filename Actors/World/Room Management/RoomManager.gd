@@ -34,7 +34,8 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
-	var transitioningDir : Vector2i = nextRoomPos - currRoom.gridPos	
+	var transitioningDir : Vector2i = nextRoomPos - currRoom.gridPos
+	
 	var nextRoom = mapLoader.getRoom(nextRoomPos)
 	
 	roomCamHandler.changeRoom(currRoom, nextRoom,\
@@ -47,6 +48,7 @@ func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
 	Glogger.debug(roomEntry)
 	for e in entryAreas:
 		if e != roomEntry:
+			Glogger.debug(e.name)
 			e.isActive = true
 	pass
 
@@ -69,7 +71,7 @@ func setupRoom(roomDef : RoomDefinition, sceneRootNode : Node2D) -> void:
 			roomCamHandler.setup(currRoom.gridPos, calcRoomCenterWorldCoords)
 
 			getInitialPlayerInstance.emit(n)
-			
+
 		if n is RoomEntry:
 			entryAreas.append(n)
 			n.roomPos = roomDef.gridPos

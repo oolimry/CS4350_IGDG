@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="6_xf085"]
 [ext_resource type="Resource" uid="uid://dly5focppmak3" path="res://Assets/Rooms/TestRooms/MainTopLevelTest.tres" id="7_3i23b"]
 [ext_resource type="Script" uid="uid://d4fqukl0dj7gu" path="res://Actors/World/Room Management/RoomInstantiator.gd" id="7_cx0xc"]
+[ext_resource type="Resource" uid="uid://daurogwaswu18" path="res://Assets/Rooms/TestRooms/TopLeftLevelTest.tres" id="8_3i23b"]
 [ext_resource type="Script" uid="uid://cxnk476c7iawm" path="res://Actors/World/Room Management/RoomCameraHandler.gd" id="8_xf085"]
+[ext_resource type="Resource" uid="uid://dhhdbjxdukqkx" path="res://Assets/Rooms/TestRooms/LeftLevelTest.tres" id="9_b4o3i"]
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
@@ -27,6 +29,8 @@ roomCamHandler = NodePath("RoomCameraHandler")
 script = ExtResource("4_cp0kg")
 mapLayoutScene = ExtResource("5_cx0xc")
 mapLayout = Dictionary[Vector2i, ExtResource("6_xf085")]({
+Vector2i(-1, -1): ExtResource("8_3i23b"),
+Vector2i(-1, 0): ExtResource("9_b4o3i"),
 Vector2i(0, -1): ExtResource("7_3i23b"),
 Vector2i(0, 0): ExtResource("6_p3cca")
 })

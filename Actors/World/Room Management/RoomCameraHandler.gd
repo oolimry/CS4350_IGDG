@@ -31,16 +31,16 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 
 	if isCameraFollow:
 		camera.startFollowingPlayer()
-		var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.get_previewBounds().size[0], \
-			nextRoomCenterWorldCoords.y - nextRoom.get_previewBounds().size[1])
+		var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.previewBounds.size[0]/2, \
+			nextRoomCenterWorldCoords.y - nextRoom.previewBounds.size[1]/2)
 			
-		var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.get_previewBounds().size[0], \
-			nextRoomCenterWorldCoords.y + nextRoom.get_previewBounds().size[1])
+		var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.previewBounds.size[0]/2, \
+			nextRoomCenterWorldCoords.y + nextRoom.previewBounds.size[1]/2)
 			
-		if direction == Vector2i.LEFT or direction == Vector2i.RIGHT:		
-			camera.setVerticalLimit(topLeft , btmRight)
+		if direction.sign() == Vector2i.LEFT or direction.sign() == Vector2i.RIGHT:
+			camera.setVerticalLimit(topLeft , btmRight, nextRoom)
 		else:
-			camera.setHorizontalLimit(topLeft, btmRight)
+			camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
 	else:
 		camera.stopFollowing()
 		
