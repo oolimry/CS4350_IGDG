@@ -30,6 +30,11 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/RoomPreview/plugin.cfg")
 
+[global_group]
+
+Checkpoint="Player Respawn Points"
+Interactable="Objects that the Player can interact with (need roomPos)"
+
 [input]
 
 left={

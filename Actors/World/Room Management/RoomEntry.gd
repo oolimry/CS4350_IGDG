@@ -73,3 +73,6 @@ func _cancel_entry(reason: String) -> void:
 	isPendingEntry = false
 	Glogger.debug("Entry canceled: ")
 	Glogger.debug(reason)
+
+func getRoomPos()-> Vector2i:
+	return roomPos 

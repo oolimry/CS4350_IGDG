@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="2_1kt3b"]
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="2_6vy3j"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="2_yt7es"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="3_cn3vb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -54,6 +56,9 @@ custom_data_layer_0/name = "damage"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_wd5w5")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
+size = Vector2(320, 320)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tx5nw"]
 size = Vector2(1440, 1121)
 
@@ -72,6 +77,28 @@ position = Vector2(1920, 0)
 tile_map_data = PackedByteArray("AADu/wAAAQAAAAAAAADu/wEAAQAAAAAAAADu/wIAAQAAAAAAAADj/wcAAQAAAAAAAADj/wgAAQAAAAAAAADj/wkAAQAAAAAAAADj/woAAQAAAAAAAADj/wsAAQAAAAAAAADj/wwAAQAAAAAAAADf/wAAAQAAAAAAAADf/wEAAQAAAAAAAADu/wMAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_1yhvr")
 
+[node name="Respawn Point" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint", "Interactable"]]
+position = Vector2(1280, 960)
+script = ExtResource("2_yt7es")
+referenceImage = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=538526534]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_cn3vb")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
+scale = Vector2(4.5, 1)
+shape = SubResource("RectangleShape2D_4cgrj")
+
 [node name="OuterCollision" type="Area2D" parent="." unique_id=44655717 node_paths=PackedStringArray("deeperArea")]
 position = Vector2(960, 521)
 script = ExtResource("2_1kt3b")
@@ -87,5 +114,6 @@ shape = SubResource("RectangleShape2D_tx5nw")
 position = Vector2(240, -1)
 shape = SubResource("RectangleShape2D_1kt3b")
 
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="OuterCollision" to="OuterCollision" method="_on_body_entered"]
 [connection signal="body_exited" from="OuterCollision" to="OuterCollision" method="_on_body_exited"]

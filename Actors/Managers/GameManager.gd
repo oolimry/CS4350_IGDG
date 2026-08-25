@@ -10,12 +10,14 @@ var deathManager : DeathManager
 var hudManager : HUDManager
 var camera : GameCamera
 
-# TODO: Temporary export, would dynamically find this later
-@export var checkPoints : Array[CheckPoint]
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	roomManager.getInitialPlayerInstance.connect(setup)
+	roomManager.generateRooms()
+	
+	## TODO: Throw this into DeathManager
+	for n in get_tree().get_nodes_in_group("Checkpoint"):
+		n.connect("checkPointReached", deathManager.registerCheckPoint)
 	pass # Replace with function body.
 
 func reconnectPlayer(newPlayer : Player) -> void:

@@ -29,8 +29,6 @@ var entryAreas : Array[Area2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mapLoader.forEachRoomDef(instantiateRoom)
-
 	pass # Replace with function body.
 
 func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
@@ -45,10 +43,8 @@ func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
 	currRoom = nextRoom
 	
 	roomEntry.isActive = false
-	Glogger.debug(roomEntry)
 	for e in entryAreas:
 		if e != roomEntry:
-			Glogger.debug(e.name)
 			e.isActive = true
 	pass
 
@@ -56,13 +52,17 @@ func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \
 		Vector2(roomGridPos) * roomCenterInterval
 
+func generateRooms() -> void:
+	mapLoader.forEachRoomDef(func(roomDef : RoomDefinition): 
+		roomInstantiator.instantiateRoomWithSetup(roomDef, \
+		calcRoomCenterWorldCoords, setupRoom)
+	)
+
 func instantiateRoom(roomDef : RoomDefinition) -> void:
 	roomInstantiator.instantiateRoomWithSetup(roomDef, \
 		calcRoomCenterWorldCoords, setupRoom)
 
 func setupRoom(roomDef : RoomDefinition, sceneRootNode : Node2D) -> void:	
-	#var interactables : Array[Node] = \
-		#sceneRootNode.get_tree().get_nodes_in_group("Interactables")
 
 	for n in sceneRootNode.get_children():
 		if n is Player:
@@ -76,3 +76,5 @@ func setupRoom(roomDef : RoomDefinition, sceneRootNode : Node2D) -> void:
 			entryAreas.append(n)
 			n.roomPos = roomDef.gridPos
 			n.connect("requestChangeRoom", changeRoom)
+		
+	

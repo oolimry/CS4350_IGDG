@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="1_8wt68"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="2_8wt68"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="3_bc4yy"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="4_wjusa"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -60,6 +62,9 @@ size = Vector2(2028.5714, 812.6316)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5idhr"]
 size = Vector2(1713.3335, 880)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jah1g"]
+size = Vector2(320, 320)
+
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
@@ -90,5 +95,28 @@ position = Vector2(-16.800049, 0)
 scale = Vector2(0.72, 0.7)
 shape = SubResource("RectangleShape2D_5idhr")
 
+[node name="Respawn Point" type="Node2D" parent="." unique_id=1592802714 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint", "Interactable"]]
+position = Vector2(1240, 560)
+script = ExtResource("3_bc4yy")
+referenceImage = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=1375321437]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_wjusa")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1210823514]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=531254590]
+scale = Vector2(4.5, 1)
+shape = SubResource("RectangleShape2D_jah1g")
+
 [connection signal="body_entered" from="OuterCollision" to="OuterCollision" method="_on_body_entered"]
 [connection signal="body_exited" from="OuterCollision" to="OuterCollision" method="_on_body_exited"]
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

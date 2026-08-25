@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="2_vr8oc"]
 [ext_resource type="PackedScene" uid="uid://d3dqiwprm2300" path="res://Actors/Player/Player.tscn" id="3_4amqu"]
 [ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="4_1pck8"]
-[ext_resource type="Resource" uid="uid://bwvwgorhlkvmh" path="res://Assets/Rooms/TestRooms/RightLevelTest.tres" id="7_2mgyy"]
 [ext_resource type="PackedScene" uid="uid://bar8kkryke156" path="res://Actors/World/Room Management/RoomEntry.tscn" id="8_g5k8m"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="10_dwlbd"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="12_4amqu"]
@@ -78,11 +77,9 @@ tile_set = SubResource("TileSet_1yhvr")
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("3_4amqu")]
 position = Vector2(1240, 600)
 
-[node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("boundaries")]
+[node name="RoomManager" type="Node" parent="." unique_id=421950999]
 script = ExtResource("4_1pck8")
 roomWorldCoordsOffset = Vector2(1920, 1080)
-startRoom = ExtResource("7_2mgyy")
-boundaries = [NodePath("../Boundaries/CenterToLeft"), NodePath("../Boundaries/LeftToCenter"), NodePath("../Boundaries/CenterToUp"), NodePath("../Boundaries/CenterToUp3"), NodePath("../Boundaries/CenterToUp2"), NodePath("../Boundaries/CenterToUp4")]
 
 [node name="Boundaries" type="Node" parent="." unique_id=1263410133]
 
@@ -97,22 +94,18 @@ position = Vector2(0, 240)
 scale = Vector2(1, 2)
 collision_layer = 32
 collision_mask = 32
-location = 2
-shouldCameraFollow = true
 
 [node name="CenterToUp" parent="Boundaries" unique_id=1245089876 instance=ExtResource("8_g5k8m")]
 position = Vector2(800, 0)
 rotation = 1.5707964
 collision_layer = 32
 collision_mask = 32
-location = 0
 
 [node name="CenterToUp3" parent="Boundaries" unique_id=627986791 instance=ExtResource("8_g5k8m")]
 position = Vector2(800, 0)
 rotation = 1.5707964
 collision_layer = 32
 collision_mask = 32
-location = 1
 
 [node name="CenterToUp2" parent="Boundaries" unique_id=833342123 instance=ExtResource("8_g5k8m")]
 position = Vector2(-720, 0)
@@ -120,8 +113,6 @@ rotation = 1.5707964
 scale = Vector2(1, 2)
 collision_layer = 32
 collision_mask = 32
-location = 1
-shouldCameraFollow = true
 
 [node name="CenterToUp4" parent="Boundaries" unique_id=1528883942 instance=ExtResource("8_g5k8m")]
 position = Vector2(-720, 0)
@@ -129,8 +120,6 @@ rotation = 1.5707964
 scale = Vector2(1, 2)
 collision_layer = 32
 collision_mask = 32
-location = 0
-shouldCameraFollow = true
 
 [node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("10_dwlbd")]
 position = Vector2(822, 937)

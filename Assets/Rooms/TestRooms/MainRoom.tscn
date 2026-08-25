@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="1_8xuxo"]
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="1_ge7dr"]
-[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_aw5th"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="3_bqhjn"]
 [ext_resource type="PackedScene" uid="uid://d3dqiwprm2300" path="res://Actors/Player/Player.tscn" id="4_8xuxo"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="4_w8hy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(1960, 1120)
@@ -55,6 +56,9 @@ custom_data_layer_0/name = "damage"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_fyjqp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
+size = Vector2(320, 320)
+
 [node name="MainRoom" type="Node2D" unique_id=655749541]
 
 [node name="AAAA" type="Area2D" parent="." unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
@@ -80,11 +84,31 @@ tile_set = SubResource("TileSet_8w5e7")
 tile_map_data = PackedByteArray("AAAHABgAAQAAAAAAAAAIABgAAQAAAAAAAAAJABgAAQAAAAAAAAAIABcAAQAAAAAAAAAJABcAAQAAAAAAAAAKABgAAQAAAAAAAAAJABYAAQAAAAAAAAAKABcAAQAAAAAAAAALABgAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_em42l")
 
-[node name="CheckPoint" parent="." unique_id=202330827 groups=["Interactables"] instance=ExtResource("3_aw5th")]
+[node name="CheckPoint" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint", "Interactable"]]
 position = Vector2(1240, 640)
+script = ExtResource("3_bqhjn")
+referenceImage = NodePath("Sprite2D")
 
-[node name="Player" parent="." unique_id=1817445677 groups=["Interactables"] instance=ExtResource("4_8xuxo")]
+[node name="Sprite2D" type="Sprite2D" parent="CheckPoint" unique_id=538526534]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_w8hy0")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
+
+[node name="Area2D" type="Area2D" parent="CheckPoint" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPoint/Area2D" unique_id=598497129]
+position = Vector2(-840, 200)
+shape = SubResource("RectangleShape2D_4cgrj")
+
+[node name="Player" parent="." unique_id=1817445677 instance=ExtResource("4_8xuxo")]
 position = Vector2(1240, 600)
 
 [connection signal="body_entered" from="AAAA" to="AAAA" method="_on_body_entered"]
 [connection signal="body_exited" from="AAAA" to="AAAA" method="_on_body_exited"]
+[connection signal="body_entered" from="CheckPoint/Area2D" to="CheckPoint" method="_on_area_2d_body_entered"]

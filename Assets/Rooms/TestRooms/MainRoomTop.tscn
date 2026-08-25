@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="1_goyrc"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="2_goyrc"]
-[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_mcn0r"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="3_pw20m"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="4_mcn0r"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
 load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
@@ -61,6 +62,9 @@ size = Vector2(1960, 780)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_goyrc"]
 size = Vector2(1760, 500)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
+size = Vector2(320, 320)
+
 [node name="MainRoomTop" type="Node2D" unique_id=1940226358]
 
 [node name="World" type="TileMapLayer" parent="." unique_id=2103954460]
@@ -73,7 +77,7 @@ position = Vector2(40, 1040)
 tile_map_data = PackedByteArray("AAACAP7/AQAAAAAAAAACAPn/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAACAPz/AQAAAAAAAAACAP3/AQAAAAAAAAAjAPb/AQAAAAAAAAAjAPf/AQAAAAAAAAAjAPj/AQAAAAAAAAAmAPb/AQAAAAAAAAAmAPf/AQAAAAAAAAAmAPj/AQAAAAAAAAAhAPr/AQAAAAAAAAAiAPv/AQAAAAAAAAAjAPz/AQAAAAAAAAAkAPz/AQAAAAAAAAAlAPz/AQAAAAAAAAAmAPz/AQAAAAAAAAAnAPv/AQAAAAAAAAAoAPr/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_1yhvr")
 
-[node name="OuterCollision" type="Area2D" parent="." unique_id=703956753 node_paths=PackedStringArray("deeperArea") groups=["Interactables"]]
+[node name="OuterCollision" type="Area2D" parent="." unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
 position = Vector2(960, 540)
 script = ExtResource("2_goyrc")
 deeperArea = NodePath("DeeperCollision")
@@ -88,16 +92,28 @@ shape = SubResource("RectangleShape2D_pw20m")
 position = Vector2(0, 190)
 shape = SubResource("RectangleShape2D_goyrc")
 
-[node name="CheckPoint" parent="." unique_id=202330827 groups=["Interactables"] instance=ExtResource("3_mcn0r")]
+[node name="CheckPoint" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint", "Interactable"]]
+position = Vector2(360, 920)
+script = ExtResource("3_pw20m")
+referenceImage = NodePath("Sprite2D")
 
-[node name="Sprite2D" parent="CheckPoint" index="0" unique_id=538526534]
-position = Vector2(320, 880)
+[node name="Sprite2D" type="Sprite2D" parent="CheckPoint" unique_id=538526534]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("4_mcn0r")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
-[node name="CollisionShape2D" parent="CheckPoint/Area2D" parent_id_path=PackedInt32Array(202330827, 1498333101) index="0" unique_id=598497129]
-position = Vector2(960, 680)
+[node name="Area2D" type="Area2D" parent="CheckPoint" unique_id=1498333101]
+position = Vector2(600, -240)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPoint/Area2D" unique_id=598497129]
 scale = Vector2(6, 2.2)
+shape = SubResource("RectangleShape2D_4cgrj")
 
 [connection signal="body_entered" from="OuterCollision" to="OuterCollision" method="_on_body_entered"]
 [connection signal="body_exited" from="OuterCollision" to="OuterCollision" method="_on_body_exited"]
-
-[editable path="CheckPoint"]
+[connection signal="body_entered" from="CheckPoint/Area2D" to="CheckPoint" method="_on_area_2d_body_entered"]
