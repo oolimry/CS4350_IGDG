@@ -73,9 +73,17 @@ var timeSinceSlash = inf
 var timeSincePressSlash = inf
 const earlySlashBuffer := 0.083
 
-# ignition pad related
+## ignition pad related
 @export var ignitionPadHorizontalBoost = 5000
 @export var ignitionPadVerticalBoost = 1400
+
+
+### elemental stuff
+var currentElement : Enums.Elements = Enums.Elements.NONE
+
+## wind movement related
+@export var windHorizontalBoost = 5000
+@export var windDownSlashBoost = 1000
 
 var peakHeight = 0
 
@@ -235,31 +243,57 @@ func _physics_process_slash(delta):
 	else:
 		timeSincePressSlash += delta
 		
-	if timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer:
-		timeSincePressSlash = inf
-		timeSinceSlash = 0.0
+	if not(timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer):
+		return
 		
-		Glogger.debug("Slash")
-		if Input.is_action_pressed("down") and not is_on_floor():
-			downSlashHitbox.appear(self)
-		elif Input.is_action_pressed("up"):
-			upSlashHitbox.appear(self)
-		elif Input.is_action_pressed("right"):
-			Glogger.debug("RIGHT")
-			rightSlashHitbox.appear(self)
-		elif Input.is_action_pressed("left"):
-			leftSlashHitbox.appear(self)
+	timeSincePressSlash = inf
+	timeSinceSlash = 0.0
+	
+	var slashDirection = Enums.Directions.NONE
+	
+	Glogger.debug("Slash")
+	if Input.is_action_pressed("down") and not is_on_floor():
+		slashDirection = Enums.Directions.DOWN
+	elif Input.is_action_pressed("up"):
+		slashDirection = Enums.Directions.UP
+	elif Input.is_action_pressed("right"):
+		slashDirection = Enums.Directions.RIGHT
+	elif Input.is_action_pressed("left"):
+		slashDirection = Enums.Directions.LEFT
+	else:
+		if sprite.flip_h:
+			slashDirection = Enums.Directions.RIGHT
 		else:
-			if sprite.flip_h:
-				rightSlashHitbox.appear(self)
-			else:
-				leftSlashHitbox.appear(self)
+			slashDirection = Enums.Directions.LEFT
+	
+	if slashDirection == Enums.Directions.DOWN:
+		downSlashHitbox.appear(self)
+	elif slashDirection == Enums.Directions.UP:
+		upSlashHitbox.appear(self)
+	elif slashDirection == Enums.Directions.RIGHT:
+		rightSlashHitbox.appear(self)
+	elif slashDirection == Enums.Directions.LEFT:
+		leftSlashHitbox.appear(self)
+		
+	if currentElement == Enums.Elements.WIND:
+		if slashDirection == Enums.Directions.DOWN:
+			additionalVelocityInputs.append(Vector2(0, -windDownSlashBoost))
+		elif slashDirection == Enums.Directions.LEFT:
+			additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
+		elif slashDirection == Enums.Directions.RIGHT:
+			additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
 
 func _physics_process_updateVisuals():
 	if Input.is_action_pressed("right"):
 		sprite.flip_h = true
 	if Input.is_action_pressed("left"):
-		sprite.flip_h = false	
+		sprite.flip_h = false
+	
+	# TODO
+	if currentElement == Enums.Elements.NONE:
+		sprite.material.set_shader_parameter("modulate", Color.WHITE)
+	elif currentElement == Enums.Elements.WIND:
+		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
@@ -276,3 +310,7 @@ func launchByIgnitionPad(direction : Enums.Directions):
 		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, 0))
 	elif direction == Enums.Directions.UP:
 		additionalVelocityInputs.append(Vector2(0, -ignitionPadVerticalBoost))
+
+func setElement(element : Enums.Elements):
+	Glogger.debug("changed element: " +  str(Enums.Elements.keys()[element]))
+	currentElement = element

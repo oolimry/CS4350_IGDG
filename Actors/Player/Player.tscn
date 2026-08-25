@@ -13,6 +13,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vywg6"]
 shader = ExtResource("2_l6vkj")
 shader_parameter/flashAmount = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
 size = Vector2(60, 73)
