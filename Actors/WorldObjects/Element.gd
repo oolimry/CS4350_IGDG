@@ -1,8 +1,9 @@
 class_name Element
-extends Node2D
+extends StaticBody2D
 
 @onready var timer: Timer = $Timer
-@onready var area: Area2D = $Area2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D 
+
 
 func _ready():
 	timer.timeout.connect(respawnElement)
@@ -10,10 +11,10 @@ func _ready():
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	timer.start()
 	self.visible = false;
-	area.set_deferred("monitoring", false)
+	collision_shape.set_deferred("monitoring", false)
 
 func respawnElement() -> void:
-	area.set_deferred("monitoring", true)
+	collision_shape.set_deferred("monitoring", true)
 	self.visible = true
 	
 

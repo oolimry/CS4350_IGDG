@@ -3,17 +3,15 @@
 [ext_resource type="Script" uid="uid://bxf1jhuihy35u" path="res://Actors/WorldObjects/Element.gd" id="1_0jf00"]
 [ext_resource type="Texture2D" uid="uid://csafn0mn6bd6r" path="res://Actors/WorldObjects/Omega_Suit_sprite_%28Morph_Ball%29.webp" id="2_ergxj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0glnl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_meos5"]
 
-[node name="Element" type="Node2D" unique_id=1659718120]
+[node name="Element" type="StaticBody2D" unique_id=1394946886]
 script = ExtResource("1_0jf00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
+shape = SubResource("CircleShape2D_meos5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490223400]
 texture = ExtResource("2_ergxj")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1904384876]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1022072626]
-shape = SubResource("CircleShape2D_0glnl")
 
 [node name="Timer" type="Timer" parent="." unique_id=1123649815]
