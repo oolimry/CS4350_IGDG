@@ -109,6 +109,7 @@ script = ExtResource("1_ip36r")
 shape = SubResource("RectangleShape2D_brbb1")
 
 [node name="SpriteSlash" type="Sprite2D" parent="." unique_id=1892136982]
+visible = false
 position = Vector2(-32, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = SubResource("GradientTexture2D_vynle")

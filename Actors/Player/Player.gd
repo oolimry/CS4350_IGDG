@@ -217,8 +217,11 @@ func _physics_process_playerMovement(delta):
 			velocity.y = terminalVelocity
 		
 	while len(additionalVelocityInputs) > 0:
-		Glogger.debug(additionalVelocityInputs[-1])
-		velocity += additionalVelocityInputs[-1]
+		var addedVelocity : Vector2 = additionalVelocityInputs[-1]
+		velocity.x += addedVelocity.x
+		if addedVelocity.y < velocity.y:
+			hasBrokenJump = true
+			velocity.y = addedVelocity.y
 		additionalVelocityInputs.pop_back()
 	
 	set_velocity(velocity)
@@ -303,6 +306,13 @@ func _physics_process_updateVisuals():
 		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
 		
 	## Animation
+	var showWallSlideAnimation = false
+	if isOnWall:
+		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
+			showWallSlideAnimation = true
+		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
+			showWallSlideAnimation = true
+	
 	if sprite.is_playing() and sprite.animation in \
 		["slashUp", "slashSide", "slashDown"]:
 		pass
@@ -311,7 +321,7 @@ func _physics_process_updateVisuals():
 			sprite.play("idle")
 		else:
 			sprite.play("running")
-	elif isOnWall:
+	elif showWallSlideAnimation:
 		sprite.play("wallSlide")
 	else:
 		if velocity.y >= 0:
