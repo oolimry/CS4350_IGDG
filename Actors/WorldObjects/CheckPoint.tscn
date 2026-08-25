@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm8uuetodtrm1"]
 
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Assets/Rooms/Checkpoint.gd" id="1_81gr4"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="1_81gr4"]
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_q8xmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
