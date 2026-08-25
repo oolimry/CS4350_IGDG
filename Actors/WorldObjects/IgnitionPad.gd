@@ -13,6 +13,11 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	
 	if not isActive:
 		return
+	
+	var slashElement = slashParams.get(ScriptConstants.SLASH_ELEMENT_PARAM_NAME, Enums.Elements.NONE)
+	
+	if slashElement != Enums.Elements.FIRE:
+		return	
 		
 	var slashDirection = slashParams.get(ScriptConstants.SLASH_DIRECTION_PARAM_NAME, \
 		Enums.Directions.NONE)

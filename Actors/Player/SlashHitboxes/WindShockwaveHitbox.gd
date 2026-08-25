@@ -1,33 +1,35 @@
-class_name SlashHitbox
+class_name WindShockwaveHitbox
 extends Area2D
-
 @export var slashDirection : Enums.Directions
 
-@export var hitboxActiveDuration = 0.20
+const hitboxActiveDuration = 0.15
+@export var movementSpeed = 1600
 @onready var collisionShape = $CollisionShape2D
 
 var player : Player
 
-func appear(playerReference : Player):
-	player = playerReference
-	
-	$AnimationPlayer.play("Slash")
-	
+func _ready():
 	monitoring = true
 	monitorable = true
 	collisionShape.visible = true
+	
+	self.rotation = get_angle_to(Enums.getVectorOfDirection(slashDirection))
 	
 	await get_tree().create_timer(hitboxActiveDuration).timeout
 	
 	monitoring = false
 	monitorable = false
 	collisionShape.visible = false
+	self.queue_free()
 
 func _physics_process(delta):
 	if not monitoring:
 		return
 	
-	var element : Enums.Elements = player.currentElement
+	var element : Enums.Elements = Enums.Elements.NONE
+	
+	var velocity = movementSpeed * Enums.getVectorOfDirection(self.slashDirection)
+	self.position += velocity * delta
 	
 	#Glogger.debug(get_overlapping_bodies())
 	for body : Node2D in get_overlapping_bodies():
@@ -40,7 +42,6 @@ func _physics_process(delta):
 			## TODO: add more info about slash direction, 
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
-	
-
+		
 	
 	

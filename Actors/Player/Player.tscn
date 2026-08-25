@@ -274,7 +274,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
-size = Vector2(35, 70.225)
+size = Vector2(34, 70.225)
 
 [node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler")]
 collision_layer = 33
@@ -290,10 +290,10 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"slashUp"
+animation = &"wallSlide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
-position = Vector2(-0.5, -1.1124992)
+position = Vector2(0, -1.1124992)
 shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="Health" type="Node" parent="." unique_id=1705777905]
@@ -318,21 +318,21 @@ position = Vector2(1, -71)
 position = Vector2(0, -21)
 
 [node name="RightRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=240435201]
-target_position = Vector2(40, 0)
+target_position = Vector2(22, 0)
 collision_mask = 2
 
 [node name="LeftRaycastHigh" type="RayCast2D" parent="Raycasts" unique_id=1994605090]
-target_position = Vector2(-40, 0)
+target_position = Vector2(-22, 0)
 collision_mask = 2
 
 [node name="RightRaycastLow" type="RayCast2D" parent="Raycasts" unique_id=176924886]
-position = Vector2(0, 56)
-target_position = Vector2(40, 0)
+position = Vector2(0, 50)
+target_position = Vector2(22, 0)
 collision_mask = 2
 
 [node name="LeftRaycastLow" type="RayCast2D" parent="Raycasts" unique_id=1245983828]
-position = Vector2(0, 56)
-target_position = Vector2(-40, 0)
+position = Vector2(0, 50)
+target_position = Vector2(-22, 0)
 collision_mask = 2
 
 [node name="HazardHandler" type="Node" parent="." unique_id=2032868256 node_paths=PackedStringArray("shaderAnimator")]
