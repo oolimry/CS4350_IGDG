@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+const windShockwaveHitboxTSCN = preload("res://Actors/Player/SlashHitboxes/WindShockwaveHitbox.tscn")
+
 const inf = 1e9 + 100
 
 @export var health : PlayerHealth
@@ -286,12 +288,23 @@ func _physics_process_slash(delta):
 		sprite.play("slashSide")
 		
 	if currentElement == Enums.Elements.WIND:
+		var windHitbox : WindShockwaveHitbox = windShockwaveHitboxTSCN.instantiate()
+		windHitbox.slashDirection = slashDirection
+		windHitbox.player = self
+		get_tree().root.add_child(windHitbox)
+		windHitbox.global_position = self.global_position # TODO
+		
 		if slashDirection == Enums.Directions.DOWN:
 			additionalVelocityInputs.append(Vector2(0, -windDownSlashBoost))
+		elif slashDirection == Enums.Directions.UP:
+			pass
 		elif slashDirection == Enums.Directions.LEFT:
 			additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
 		elif slashDirection == Enums.Directions.RIGHT:
 			additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
+	
+	await get_tree().create_timer(slashCooldown * 0.3).timeout
+	self.currentElement = Enums.Elements.NONE
 
 func _physics_process_updateVisuals():
 	if Input.is_action_pressed("right"):
@@ -304,6 +317,8 @@ func _physics_process_updateVisuals():
 		sprite.material.set_shader_parameter("modulate", Color.WHITE)
 	elif currentElement == Enums.Elements.WIND:
 		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
+	elif currentElement == Enums.Elements.FIRE:
+		sprite.material.set_shader_parameter("modulate", Color.FIREBRICK)
 		
 	## Animation
 	var showWallSlideAnimation = false

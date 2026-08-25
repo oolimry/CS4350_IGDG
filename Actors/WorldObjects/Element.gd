@@ -8,9 +8,9 @@ func _ready():
 	timer.timeout.connect(respawnElement)
 	
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
-		timer.start()
-		self.visible = false;
-		area.set_deferred("monitoring", false)
+	timer.start()
+	self.visible = false;
+	area.set_deferred("monitoring", false)
 
 func respawnElement() -> void:
 	area.set_deferred("monitoring", true)

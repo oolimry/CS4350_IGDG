@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dxxqgdapeda43"]
+
+[ext_resource type="Script" uid="uid://bapp1dcovx5wi" path="res://Actors/Player/SlashHitboxes/WindShockwaveHitbox.gd" id="1_l4347"]
+
+[sub_resource type="Gradient" id="Gradient_l4347"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.49019608, 0.72156864, 0.7294118, 0.85490197)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l4347"]
+gradient = SubResource("Gradient_l4347")
+width = 18
+height = 46
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4347"]
+size = Vector2(20, 50)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4347"]
+
+[node name="WindShockwaveHitbox" type="Area2D" unique_id=368800887]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_l4347")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838082573]
+position = Vector2(8.940697e-07, 0)
+scale = Vector2(2.3333337, 1)
+texture = SubResource("GradientTexture2D_l4347")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105835730]
+visible = false
+shape = SubResource("RectangleShape2D_l4347")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=316324274]
+libraries/ = SubResource("AnimationLibrary_l4347")
