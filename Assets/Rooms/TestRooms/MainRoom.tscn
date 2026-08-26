@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_bqhjn"]
 [ext_resource type="PackedScene" uid="uid://d3dqiwprm2300" path="res://Actors/Player/Player.tscn" id="4_8xuxo"]
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="4_w8hy0"]
+[ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="6_w8hy0"]
+[ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_4cgrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(1960, 1120)
@@ -108,6 +110,12 @@ shape = SubResource("RectangleShape2D_4cgrj")
 
 [node name="Player" parent="." unique_id=1817445677 instance=ExtResource("4_8xuxo")]
 position = Vector2(1240, 600)
+
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("6_w8hy0")]
+position = Vector2(624, 851)
+
+[node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_4cgrj")]
+position = Vector2(1510, 605)
 
 [connection signal="body_entered" from="AAAA" to="AAAA" method="_on_body_entered"]
 [connection signal="body_exited" from="AAAA" to="AAAA" method="_on_body_exited"]
