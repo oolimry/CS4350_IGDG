@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bem5keqw855uo"]
+
+[ext_resource type="Script" uid="uid://p3kq4aocm15j" path="res://Actors/WorldObjects/Bomb.gd" id="1_0lndg"]
+[ext_resource type="Texture2D" uid="uid://csafn0mn6bd6r" path="res://Assets/World Objects/Omega_Suit_sprite_%28Morph_Ball%29.webp" id="2_8csoo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jf00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8csoo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_meos5"]
+radius = 25.0
+
+[node name="Bomb" type="RigidBody2D" unique_id=1858820595]
+collision_layer = 8
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_0lndg")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_0jf00")
+
+[node name="Label" type="Label" parent="Sprite" unique_id=1292801331]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+offset_left = -80.0
+offset_top = -53.333332
+offset_right = 79.999985
+offset_bottom = 46.666668
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
+shape = SubResource("CircleShape2D_meos5")

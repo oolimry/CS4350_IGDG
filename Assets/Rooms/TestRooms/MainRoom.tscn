@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="4_w8hy0"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="6_78oak"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_4cgrj"]
+[ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="8_78oak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(1960, 1120)
@@ -129,6 +130,10 @@ element = 2
 position = Vector2(1427, 543)
 scale = Vector2(1, 1)
 element = 1
+
+[node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_78oak")]
+position = Vector2(1347, 632)
+timeToLive = 7.0
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
 [connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
