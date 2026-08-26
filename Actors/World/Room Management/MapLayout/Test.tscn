@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4q2umbfwdgfn"]
+
+[ext_resource type="PackedScene" uid="uid://hu0kjwc6yj6a" path="res://Actors/World/Room Management/MapLayout/RoomPreviewPlacement.tscn" id="1_7ll47"]
+[ext_resource type="Resource" uid="uid://dvjcs1rci7alc" path="res://Assets/Rooms/TestRooms/MainRoom.tres" id="2_cits5"]
+
+[node name="Test" type="Node2D" unique_id=708947312]
+
+[node name="RoomPreviewer" parent="." unique_id=1101232982 instance=ExtResource("1_7ll47")]
+roomDefinition = ExtResource("2_cits5")

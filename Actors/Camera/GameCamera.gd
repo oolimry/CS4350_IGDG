@@ -6,6 +6,7 @@ var getPlayerFunc : Callable
 var isFollowingPlayer : bool
 var topLeftBound : Vector2
 var bottomRightBound : Vector2
+var currentRoom : RoomDefinition
 
 var slideDest : Vector2
 var isSliding : bool
@@ -28,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	if isFollowingPlayer and !isSliding:
 		var player : Player = getPlayerFunc.call()
 		self.global_position = player.global_position
-		setFullLimit(topLeftBound, bottomRightBound)
+		setFullLimit(topLeftBound, bottomRightBound, currentRoom)
 
 	if isSliding:
 		global_position = global_position.lerp(slideDest, delta * 5)
@@ -43,38 +44,57 @@ func slideTowards(slideDest : Vector2) -> void:
 	isSliding = true
 	self.slideDest = slideDest
 	
-func setHorizontalLimit(topLeftBound : Vector2, bottomRightBound : Vector2):
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
+func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
+	topLeftBound = tlb
+	bottomRightBound = brb
+	currentRoom = roomDef
 	
 	limit_enabled = true
-	limit_left = topLeftBound.x
-	limit_right = bottomRightBound.x
+	if currentRoom.cameraLimitLeft:
+		limit_left = topLeftBound.x
+	
+	if currentRoom.cameraLimitRight:
+		limit_right = bottomRightBound.x
+		
 	limit_top = -10000000
 	limit_bottom = 10000000
 
 	
-func setVerticalLimit(topLeftBound, bottomRightBound):
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
-	
+func setVerticalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
+	topLeftBound = tlb
+	bottomRightBound = brb
+	currentRoom = roomDef
+		
 	limit_enabled = true
-	limit_top = topLeftBound.y
-	limit_bottom = bottomRightBound.y
+	if currentRoom.cameraLimitUp:
+		limit_top = topLeftBound.y
+		
+	if currentRoom.cameraLimitDown:
+		limit_bottom = bottomRightBound.y
+	
 	limit_left = -10000000
 	limit_right = 10000000
 
 
-func setFullLimit(topLeftBound, bottomRightBound) -> void:
-	self.topLeftBound = topLeftBound
-	self.bottomRightBound = bottomRightBound
+func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> void:
+	assert(roomDef != null)
+	topLeftBound = tlb
+	bottomRightBound = brb
+	currentRoom = roomDef
 	
 	limit_enabled = true
-	limit_top = topLeftBound.y
-	limit_bottom = bottomRightBound.y
-	limit_left = topLeftBound.x
-	limit_right = bottomRightBound.x
-
+	if currentRoom.cameraLimitUp:
+		limit_top = topLeftBound.y
+			
+	if currentRoom.cameraLimitDown:
+		limit_bottom = bottomRightBound.y
+	
+	if currentRoom.cameraLimitLeft:
+		limit_left = topLeftBound.x
+	
+	if currentRoom.cameraLimitRight:
+		limit_right = bottomRightBound.x
+		
 func stopFollowing() -> void:
 	isFollowingPlayer = false
 	global_position = get_screen_center_position()

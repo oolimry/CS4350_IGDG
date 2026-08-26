@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ricokeeper"
-run/main_scene="uid://cf1kfbpogs6ti"
+run/main_scene="uid://blpt4oacinocx"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,8 +23,17 @@ buses/default_bus_layout="uid://badbma6yx5sv8"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=4
+window/size/mode=3
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/RoomPreview/plugin.cfg")
+
+[global_group]
+
+Checkpoint="Player Respawn Points"
+Interactable="Objects that the Player can interact with (need roomPos)"
 
 [input]
 

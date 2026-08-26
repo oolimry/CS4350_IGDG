@@ -1,0 +1,119 @@
+[gd_scene format=4 uid="uid://cmfsm3rjjqp6k"]
+
+[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="2_1kt3b"]
+[ext_resource type="Texture2D" uid="uid://c3mgikogosev6" path="res://Assets/Tilesets/PlaceholderSpike.png" id="2_6vy3j"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="2_yt7es"]
+[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="3_cn3vb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6wyvh"]
+load_path = "res://.godot/imported/PlaceholderTileset.png-381290565aeb1c214754d93a808ad31f.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mkg4b"]
+texture = SubResource("CompressedTexture2D_6wyvh")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1yhvr"]
+texture = ExtResource("2_6vy3j")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[sub_resource type="TileSet" id="TileSet_ou4op"]
+tile_size = Vector2i(40, 40)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_mkg4b")
+sources/1 = SubResource("TileSetAtlasSource_1yhvr")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wd5w5"]
+texture = ExtResource("2_6vy3j")
+texture_region_size = Vector2i(40, 40)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+
+[sub_resource type="TileSet" id="TileSet_1yhvr"]
+tile_size = Vector2i(40, 40)
+physics_layer_0/collision_layer = 6
+custom_data_layer_0/name = "damage"
+custom_data_layer_0/type = 2
+sources/1 = SubResource("TileSetAtlasSource_wd5w5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
+size = Vector2(320, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx5nw"]
+size = Vector2(1440, 1121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kt3b"]
+size = Vector2(1250, 960)
+
+[node name="TestLevel" type="Node2D" unique_id=1922114953]
+
+[node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
+position = Vector2(1920, 0)
+tile_map_data = PackedByteArray("AADg/xkAAAABAAEAAADg/xoAAAABAAEAAADh/xkAAAABAAEAAADh/xoAAAABAAEAAADi/xkAAAABAAEAAADi/xoAAAABAAEAAADj/xkAAAABAAEAAADj/xoAAAABAAEAAADk/xkAAAABAAEAAADk/xoAAAABAAEAAADl/xkAAAABAAEAAADl/xoAAAABAAEAAADm/xkAAAABAAEAAADm/xoAAAABAAEAAADn/xkAAAABAAEAAADn/xoAAAABAAEAAADo/xkAAAABAAEAAADo/xoAAAABAAEAAADp/xkAAAABAAEAAADp/xoAAAABAAEAAADq/xkAAAABAAEAAADq/xoAAAABAAEAAADr/xkAAAABAAEAAADr/xoAAAABAAEAAADs/xkAAAABAAEAAADs/xoAAAABAAEAAADt/xkAAAABAAEAAADt/xoAAAABAAEAAADu/xkAAAABAAEAAADu/xoAAAABAAEAAADv/xkAAAABAAEAAADv/xoAAAABAAEAAADw/xkAAAABAAEAAADw/xoAAAABAAEAAADx/xkAAAABAAEAAADx/xoAAAABAAEAAADy/xkAAAABAAEAAADy/xoAAAABAAEAAADz/xkAAAABAAEAAADz/xoAAAABAAEAAAD0/xkAAAABAAEAAAD0/xoAAAABAAEAAAD1/xkAAAABAAEAAAD1/xoAAAABAAEAAAD2/xkAAAABAAEAAAD2/xoAAAABAAEAAAD3/xkAAAABAAEAAAD3/xoAAAABAAEAAAD4/xkAAAABAAEAAAD4/xoAAAABAAEAAAD5/xkAAAABAAEAAAD5/xoAAAABAAEAAAD6/xkAAAABAAEAAAD6/xoAAAABAAEAAAD7/xkAAAABAAEAAAD7/xoAAAABAAEAAAD8/xkAAAABAAEAAAD8/xoAAAABAAEAAAD9/xkAAAABAAEAAAD9/xoAAAABAAEAAAD+/xkAAAABAAEAAAD+/xoAAAABAAEAAAD//xkAAAABAAEAAAD//xoAAAABAAEAAADd/xkAAAABAAEAAADd/xoAAAABAAEAAADe/xkAAAABAAEAAADe/xoAAAABAAEAAADf/xkAAAABAAEAAADf/xoAAAABAAEAAADd/xgAAAABAAEAAADd/xAAAAABAAEAAADd/xEAAAABAAEAAADd/xIAAAABAAEAAADd/xMAAAABAAEAAADd/xQAAAABAAEAAADd/xUAAAABAAEAAADd/xYAAAABAAEAAADd/xcAAAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAADd/wUAAAABAAEAAADd/wYAAAABAAEAAADd/wcAAAABAAEAAADd/wgAAAABAAEAAADd/wkAAAABAAEAAADd/woAAAABAAEAAADd/wsAAAABAAEAAADd/wwAAAABAAEAAADd/w0AAAABAAEAAADd/w4AAAABAAEAAADd/w8AAAABAAEAAADe/wUAAAABAAEAAADe/wYAAAABAAEAAADe/wcAAAABAAEAAADe/wgAAAABAAEAAADe/wkAAAABAAEAAADe/woAAAABAAEAAADe/wsAAAABAAEAAADe/wwAAAABAAEAAADe/w0AAAABAAEAAADe/w4AAAABAAEAAADe/w8AAAABAAEAAADe/xAAAAABAAEAAADe/xEAAAABAAEAAADe/xIAAAABAAEAAADe/xMAAAABAAEAAADe/xQAAAABAAEAAADe/xUAAAABAAEAAADe/xYAAAABAAEAAADe/xcAAAABAAEAAADe/xgAAAABAAEAAADd/wAAAAABAAEAAADd/wEAAAABAAEAAADd/wIAAAABAAEAAADd/wMAAAABAAEAAADd/wQAAAABAAEAAADe/wAAAAABAAEAAADe/wEAAAABAAEAAADe/wIAAAABAAEAAADe/wMAAAABAAEAAADe/wQAAAABAAEAAADk/wAAAAABAAEAAADk/wEAAAABAAEAAADk/wIAAAABAAEAAADk/wMAAAABAAEAAADk/wQAAAABAAEAAADk/wUAAAABAAEAAADk/wYAAAABAAEAAADk/wcAAAABAAEAAADk/wgAAAABAAEAAADk/wkAAAABAAEAAADk/woAAAABAAEAAADk/wsAAAABAAEAAADk/wwAAAABAAEAAADk/w0AAAABAAEAAADk/xIAAAABAAEAAADk/xMAAAABAAEAAADk/xQAAAABAAEAAADl/wAAAAABAAEAAADl/wEAAAABAAEAAADl/wIAAAABAAEAAADl/wMAAAABAAEAAADl/wQAAAABAAEAAADl/wUAAAABAAEAAADl/wYAAAABAAEAAADl/wcAAAABAAEAAADl/wgAAAABAAEAAADl/w4AAAABAAEAAADl/w8AAAABAAEAAADv/wAAAAABAAEAAADv/wEAAAABAAEAAADv/wIAAAABAAEAAADv/wMAAAABAAEAAAD0/wAAAAABAAEAAAD0/wEAAAABAAEAAAD0/wIAAAABAAEAAAD0/wMAAAABAAEAAAD0/wQAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD//wcAAAABAAEAAAD//wgAAAABAAEAAAD//wkAAAABAAEAAAD//woAAAABAAEAAAD//wsAAAABAAEAAAD//wwAAAABAAEAAAD//w0AAAABAAEAAAD//w4AAAABAAEAAAD//w8AAAABAAEAAAD//xAAAAABAAEAAAD0/wUAAAABAAEAAAD0/wYAAAABAAEAAAD0/wcAAAABAAEAAAD0/wgAAAABAAEAAAD0/wkAAAABAAEAAADo/wcAAAABAAEAAADo/wgAAAABAAEAAADo/wkAAAABAAEAAADp/wgAAAABAAEAAADp/wkAAAABAAEAAADq/wgAAAABAAEAAADq/wkAAAABAAEAAAD0/woAAAABAAEAAADl/xQAAAABAAEAAADl/xMAAAABAAEAAADl/xIAAAABAAEAAADl/xAAAAABAAEAAADl/xEAAAABAAEAAADk/xEAAAABAAEAAADk/xAAAAABAAEAAADk/w8AAAABAAEAAADk/w4AAAABAAEAAADl/w0AAAABAAEAAADl/wwAAAABAAEAAADl/wsAAAABAAEAAADl/woAAAABAAEAAADl/wkAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_ou4op")
+
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=40787594]
+position = Vector2(1920, 0)
+tile_map_data = PackedByteArray("AADu/wAAAQAAAAAAAADu/wEAAQAAAAAAAADu/wIAAQAAAAAAAADj/wcAAQAAAAAAAADj/wgAAQAAAAAAAADj/wkAAQAAAAAAAADj/woAAQAAAAAAAADj/wsAAQAAAAAAAADj/wwAAQAAAAAAAADf/wAAAQAAAAAAAADf/wEAAQAAAAAAAADu/wMAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_1yhvr")
+
+[node name="Respawn Point" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint", "Interactable"]]
+position = Vector2(1280, 960)
+script = ExtResource("2_yt7es")
+referenceImage = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=538526534]
+modulate = Color(0.03529412, 1, 1, 1)
+self_modulate = Color(0.023529412, 0.06666667, 1, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_cn3vb")
+region_enabled = true
+region_rect = Rect2(49.731598, 0, 248.3114, 379)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
+scale = Vector2(4.5, 1)
+shape = SubResource("RectangleShape2D_4cgrj")
+
+[node name="OuterCollision" type="Area2D" parent="." unique_id=44655717 node_paths=PackedStringArray("deeperArea")]
+position = Vector2(960, 521)
+script = ExtResource("2_1kt3b")
+deeperArea = NodePath("DeeperCollision")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterCollision" unique_id=1669877041]
+position = Vector2(280, -0.5)
+shape = SubResource("RectangleShape2D_tx5nw")
+
+[node name="DeeperCollision" type="Area2D" parent="OuterCollision" unique_id=1286216589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OuterCollision/DeeperCollision" unique_id=2004345430]
+position = Vector2(240, -1)
+shape = SubResource("RectangleShape2D_1kt3b")
+
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="OuterCollision" to="OuterCollision" method="_on_body_entered"]
+[connection signal="body_exited" from="OuterCollision" to="OuterCollision" method="_on_body_exited"]

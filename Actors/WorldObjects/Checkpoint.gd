@@ -5,6 +5,8 @@ signal checkPointReached(pos : Vector2i)
 
 @export var referenceImage : Sprite2D
 
+@export var roomPos : Vector2i
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	referenceImage.queue_free()
@@ -16,3 +18,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 	checkPointReached.emit(self)
 	pass # Replace with function body.
+	
