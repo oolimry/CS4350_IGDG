@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://hgg1yio62hys"]
+
+[ext_resource type="Script" uid="uid://de12mi4ngcc6f" path="res://Actors/WorldObjects/BombSpawner.gd" id="1_x0mlm"]
+[ext_resource type="PackedScene" uid="uid://bem5keqw855uo" path="res://Actors/WorldObjects/Bomb.tscn" id="2_x0mlm"]
+
+[node name="BombSpawner" type="Node2D" unique_id=323569220]
+script = ExtResource("1_x0mlm")
+
+[node name="Bomb" parent="." unique_id=1394946886 instance=ExtResource("2_x0mlm")]

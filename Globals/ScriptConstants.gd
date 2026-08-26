@@ -8,3 +8,4 @@ const ON_SLASH_METHOD_NAME = "onSlash"
 
 const SLASH_DIRECTION_PARAM_NAME = "slashDirection"
 const SLASH_ELEMENT_PARAM_NAME = "slashElement"
+const WIND_SHOCKWAVE_PARAM_NAME = "isWindShockwave"

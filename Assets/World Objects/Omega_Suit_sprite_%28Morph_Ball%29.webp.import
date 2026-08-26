@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://csafn0mn6bd6r"
-path="res://.godot/imported/Omega_Suit_sprite_%28Morph_Ball%29.webp-4edaf6d7703d6470e1a53310b76f2aa2.ctex"
+path="res://.godot/imported/Omega_Suit_sprite_%28Morph_Ball%29.webp-71489f974ff296f11fb5675c234e7439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/WorldObjects/Omega_Suit_sprite_%28Morph_Ball%29.webp"
-dest_files=["res://.godot/imported/Omega_Suit_sprite_%28Morph_Ball%29.webp-4edaf6d7703d6470e1a53310b76f2aa2.ctex"]
+source_file="res://Assets/World Objects/Omega_Suit_sprite_%28Morph_Ball%29.webp"
+dest_files=["res://.godot/imported/Omega_Suit_sprite_%28Morph_Ball%29.webp-71489f974ff296f11fb5675c234e7439.ctex"]
 
 [params]
 
