@@ -3,7 +3,7 @@ class_name PlayerHealth
 extends Node
 
 @export var maxHealth := 6
-var currHealth := maxHealth
+var currHealth : int
 signal playerDamaged(currHealth)
 signal playerDeath()
 signal playerHealed(currHealth)
@@ -11,6 +11,7 @@ signal playerHealed(currHealth)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	currHealth = maxHealth
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

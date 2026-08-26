@@ -299,6 +299,7 @@ shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="Health" type="Node" parent="." unique_id=1705777905]
 script = ExtResource("3_yqfyh")
+maxHealth = 2
 
 [node name="LeftSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
 position = Vector2(-45, 1)

@@ -24,25 +24,37 @@ static func create(getPlayerFunc : Callable) -> GameCamera:
 
 	return instance
 
+var slide_tween: Tween
+
+
+# Thanks ChatGPT
+func slideTowards(destination : Vector2) -> void:
+	isSliding = true
+	slideDest = destination
+
+	if slide_tween and slide_tween.is_valid():
+		slide_tween.kill()
+
+	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
+	slide_tween.finished.connect(func(): isSliding = false)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if isFollowingPlayer and !isSliding:
 		var player : Player = getPlayerFunc.call()
 		self.global_position = player.global_position
 		setFullLimit(topLeftBound, bottomRightBound, currentRoom)
-
-	if isSliding:
-		global_position = global_position.lerp(slideDest, delta * 5)
-		if global_position.is_equal_approx(slideDest):
-			isSliding = false
+#
+	#if isSliding:
+		#global_position = global_position.lerp(slideDest, delta * 9)
+		#if global_position.is_equal_approx(slideDest):
+			#isSliding = false
 	pass
 
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
 	
-func slideTowards(slideDest : Vector2) -> void:
-	isSliding = true
-	self.slideDest = slideDest
 	
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb

@@ -131,10 +131,15 @@ position = Vector2(1427, 543)
 scale = Vector2(1, 1)
 element = 1
 
+<<<<<<< HEAD
+[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
+[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
+=======
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_78oak")]
 position = Vector2(1347, 632)
 timeToLive = 7.0
 
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
+[connection signal="body_entered" from="AAAA" to="AAAA" method="_on_body_entered"]
+[connection signal="body_exited" from="AAAA" to="AAAA" method="_on_body_exited"]
+>>>>>>> main
 [connection signal="body_entered" from="CheckPoint/Area2D" to="CheckPoint" method="_on_area_2d_body_entered"]

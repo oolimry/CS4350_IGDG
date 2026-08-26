@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm8uuetodtrm1"]
 
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="1_81gr4"]
-[ext_resource type="Texture2D" uid="uid://bso4wjaetlgup" path="res://Assets/Player/PlayerSketch.png" id="2_q8xmp"]
+[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="2_81gr4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
 size = Vector2(320, 320)
@@ -15,8 +15,7 @@ modulate = Color(0.03529412, 1, 1, 1)
 self_modulate = Color(0.023529412, 0.06666667, 1, 1)
 position = Vector2(0, -29)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("2_q8xmp")
-region_enabled = true
+texture = ExtResource("2_81gr4")
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1498333101]
