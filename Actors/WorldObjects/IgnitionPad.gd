@@ -1,12 +1,20 @@
+@tool
 class_name IgnitionPad
 extends StaticBody2D
 
-@export var direction : Enums.Directions = Enums.Directions.RIGHT
 const cooldown = 0.25
 var isActive = true
 
+@export var direction : Enums.Directions:
+	set(value):
+		direction = value
+		self.rotation = Enums.getVectorOfDirection(direction).angle()
+
+
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	# TODO check you're slashing in the right direction
+	
+	Glogger.debug(slashParams)
 	
 	if not is_instance_valid(player):
 		return

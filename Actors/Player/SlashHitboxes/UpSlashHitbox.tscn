@@ -107,6 +107,7 @@ script = ExtResource("1_gg0ce")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627591827]
 shape = SubResource("RectangleShape2D_ukk5s")
+debug_color = Color(0.85335946, 0.36796674, 0.09963217, 0.41960785)
 
 [node name="SpriteSlash" type="Sprite2D" parent="." unique_id=1892136982]
 visible = false
