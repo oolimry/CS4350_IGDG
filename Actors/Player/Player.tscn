@@ -290,7 +290,8 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"wallSlide"
+animation = &"slashUp"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
 position = Vector2(0, -1.1124992)
@@ -310,9 +311,11 @@ slashDirection = 2
 
 [node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
 position = Vector2(0, 65)
+slashDirection = 4
 
 [node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]
 position = Vector2(1, -71)
+slashDirection = 3
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]
 position = Vector2(0, -21)

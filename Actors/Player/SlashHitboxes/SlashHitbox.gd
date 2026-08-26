@@ -7,9 +7,13 @@ extends Area2D
 @onready var collisionShape = $CollisionShape2D
 
 var player : Player
+var globalPositionToFreezeAtDuringSlash = Vector2(0,0)
+var originalPosition = Vector2(0,0)
 
 func appear(playerReference : Player):
 	player = playerReference
+	originalPosition = self.position
+	globalPositionToFreezeAtDuringSlash = self.global_position
 	
 	$AnimationPlayer.play("Slash")
 	
@@ -22,11 +26,15 @@ func appear(playerReference : Player):
 	monitoring = false
 	monitorable = false
 	collisionShape.visible = false
+	
+	player.slashDirection = Enums.Directions.NONE
+	position = originalPosition
 
 func _physics_process(delta):
 	if not monitoring:
 		return
 	
+	self.global_position = globalPositionToFreezeAtDuringSlash
 	var element : Enums.Elements = player.currentElement
 	
 	#Glogger.debug(get_overlapping_bodies())

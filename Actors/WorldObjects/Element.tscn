@@ -1,20 +1,44 @@
 [gd_scene format=3 uid="uid://cycynpa0md52"]
 
 [ext_resource type="Script" uid="uid://bxf1jhuihy35u" path="res://Actors/WorldObjects/Element.gd" id="1_0jf00"]
-[ext_resource type="Texture2D" uid="uid://csafn0mn6bd6r" path="res://Actors/WorldObjects/Omega_Suit_sprite_%28Morph_Ball%29.webp" id="2_ergxj"]
+[ext_resource type="Texture2D" uid="uid://4jyppvh5tc6v" path="res://Assets/Elements/placeholderFireElement.png" id="2_euu5c"]
+[ext_resource type="Texture2D" uid="uid://b6c2jtjcbbnse" path="res://Assets/Elements/placeholderWindElement.png" id="3_6r5bt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jf00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_euu5c")
+}],
+"loop": 1,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6r5bt")
+}],
+"loop": 1,
+"name": &"wind",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_meos5"]
+radius = 30.0
 
 [node name="Element" type="StaticBody2D" unique_id=1394946886]
 scale = Vector2(0.5, 0.5)
-collision_layer = 24
+collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_0jf00")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
-shape = SubResource("CircleShape2D_meos5")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_0jf00")
+animation = &"wind"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490223400]
-texture = ExtResource("2_ergxj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
+visible = false
+shape = SubResource("CircleShape2D_meos5")
 
 [node name="Timer" type="Timer" parent="." unique_id=1123649815]

@@ -75,18 +75,22 @@ const earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
 var timeSinceSlash = inf
 var timeSincePressSlash = inf
 const earlySlashBuffer := 0.120
+var slashDirection : Enums.Directions = Enums.Directions.NONE
 
 ## ignition pad related
-@export var ignitionPadHorizontalBoost = 5000
-@export var ignitionPadVerticalBoost = 1400
+const ignitionPadHorizontalBoost = 5000
+const ignitionPadVerticalBoost = 1200
 
 
 ### elemental stuff
 var currentElement : Enums.Elements = Enums.Elements.NONE
 
 ## wind movement related
-@export var windHorizontalBoost = 5000
-@export var windDownSlashBoost = 1000
+const windHorizontalBoost = 5000
+const windDownSlashBoost = 1000
+
+## pogo related
+const pogoVerticalBoost = 500
 
 var peakHeight = 0
 
@@ -258,7 +262,7 @@ func _physics_process_slash(delta):
 	timeSincePressSlash = inf
 	timeSinceSlash = 0.0
 	
-	var slashDirection = Enums.Directions.NONE
+	slashDirection = Enums.Directions.NONE
 	
 	if Input.is_action_pressed("down") and not is_on_floor():
 		slashDirection = Enums.Directions.DOWN
@@ -352,6 +356,9 @@ func checkCollisions() -> void:
 func applyKnockback(normalVec : Vector2) -> void:
 	additionalVelocityInputs.append(normalVec * knockbackStrength)
 
+func pogo():
+	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))
+
 func launchByIgnitionPad(direction : Enums.Directions):
 	if direction == Enums.Directions.RIGHT:
 		additionalVelocityInputs.append(Vector2(ignitionPadHorizontalBoost, 0))
@@ -362,4 +369,7 @@ func launchByIgnitionPad(direction : Enums.Directions):
 
 func setElement(element : Enums.Elements):
 	Glogger.debug("changed element: " +  str(Enums.Elements.keys()[element]))
+	
+	await get_tree().create_timer(0.05).timeout
+	
 	currentElement = element
