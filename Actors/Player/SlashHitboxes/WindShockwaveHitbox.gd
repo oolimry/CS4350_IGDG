@@ -39,6 +39,7 @@ func _physics_process(delta):
 			
 			slashParams[ScriptConstants.SLASH_DIRECTION_PARAM_NAME] = self.slashDirection
 			slashParams[ScriptConstants.SLASH_ELEMENT_PARAM_NAME] = element
+			slashParams[ScriptConstants.WIND_SHOCKWAVE_PARAM_NAME] = true
 			## TODO: add more info about slash direction, 
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
