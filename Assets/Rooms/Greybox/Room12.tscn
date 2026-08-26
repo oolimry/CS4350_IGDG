@@ -83,8 +83,8 @@ shape = SubResource("RectangleShape2D_i4epa")
 position = Vector2(400, 480)
 element = 1
 
-[node name="Element" parent="Element" unique_id=1243001563 instance=ExtResource("6_da2w0")]
-position = Vector2(2000, -320)
+[node name="Element2" parent="." unique_id=1519558673 instance=ExtResource("6_da2w0")]
+position = Vector2(1400, 320)
 element = 1
 
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]

@@ -83,6 +83,7 @@ collision_mask = 32
 shape = SubResource("RectangleShape2D_3bfmy")
 
 [node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
+visible = false
 position = Vector2(960, 541)
 monitoring = false
 script = ExtResource("4_yxgeu")
@@ -100,11 +101,13 @@ shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("6_dr2ox")]
 position = Vector2(920, 628)
-rotation = 4.712389
+rotation = -1.5707964
+direction = 3
 
 [node name="IgnitionPad2" parent="." unique_id=735343964 instance=ExtResource("6_dr2ox")]
 position = Vector2(1073, 1066)
-rotation = 4.712389
+rotation = -1.5707964
+direction = 3
 
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("8_dr6l8")]
 position = Vector2(1520, 1000)

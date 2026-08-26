@@ -42,6 +42,7 @@ position = Vector2(280, 880)
 position = Vector2(1760, 880)
 
 [node name="EntryPoint" type="Area2D" parent="." unique_id=3222209 node_paths=PackedStringArray("deeperArea")]
+visible = false
 position = Vector2(920, 520)
 monitoring = false
 script = ExtResource("4_csd8j")
