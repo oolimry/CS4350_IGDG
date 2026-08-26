@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_3ev35"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
-size = Vector2(290.625, 960)
+size = Vector2(195, 960)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
 size = Vector2(631.25, 160)
@@ -58,7 +58,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
-position = Vector2(0, -320)
+position = Vector2(-21.5, -320)
 shape = SubResource("RectangleShape2D_3bfmy")
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
