@@ -63,19 +63,19 @@ size = Vector2(320, 320)
 
 [node name="MainRoom" type="Node2D" unique_id=655749541]
 
-[node name="AAAA" type="Area2D" parent="." unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
+[node name="EntryPoint" type="Area2D" parent="." unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
 position = Vector2(920, 520)
 monitoring = false
 script = ExtResource("1_8xuxo")
 deeperArea = NodePath("DeeperCollision")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AAAA" unique_id=1669877041]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=1669877041]
 position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_bhunq")
 
-[node name="DeeperCollision" type="Area2D" parent="AAAA" unique_id=1286216589]
+[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1286216589]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AAAA/DeeperCollision" unique_id=2004345430]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=2004345430]
 shape = SubResource("RectangleShape2D_riqys")
 
 [node name="World" type="TileMapLayer" parent="." unique_id=648034623]
@@ -130,6 +130,6 @@ position = Vector2(1427, 543)
 scale = Vector2(1, 1)
 element = 1
 
-[connection signal="body_entered" from="AAAA" to="AAAA" method="_on_body_entered"]
-[connection signal="body_exited" from="AAAA" to="AAAA" method="_on_body_exited"]
+[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
+[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
 [connection signal="body_entered" from="CheckPoint/Area2D" to="CheckPoint" method="_on_area_2d_body_entered"]

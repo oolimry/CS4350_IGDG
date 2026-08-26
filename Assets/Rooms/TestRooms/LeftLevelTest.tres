@@ -10,7 +10,6 @@ roomName = "Left"
 doesCameraFollow = true
 cameraLimitLeft = true
 cameraLimitRight = true
-cameraLimitUp = null
 cameraLimitDown = true
 gridPos = Vector2i(-1, 0)
 gamePlayScene = ExtResource("1_fuyuy")

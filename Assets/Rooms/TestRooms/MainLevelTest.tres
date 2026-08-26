@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("1_hyglx")
 roomName = "Main"
-hasPlayer = true
 gamePlayScene = ExtResource("1_ximes")
 previewTexture = ExtResource("2_or0do")
 metadata/_custom_type_script = "uid://cij17tnbhukil"

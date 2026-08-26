@@ -14,7 +14,6 @@ static func create(getPlayerFunc : Callable) -> HUDManager:
 	var instance = scene.instantiate() as HUDManager
 
 	instance.initUI(getPlayerFunc.call())
-	instance.connectUI(getPlayerFunc.call())
 	instance.getPlayerFunc = getPlayerFunc
 	
 	return instance

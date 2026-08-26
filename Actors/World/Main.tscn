@@ -2,21 +2,23 @@
 
 [ext_resource type="PackedScene" uid="uid://cml15n6pk8w1s" path="res://Actors/Managers/GameManager.tscn" id="1_i87mu"]
 [ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="2_cp0kg"]
+[ext_resource type="PackedScene" uid="uid://wquu4ok43sma" path="res://Assets/Rooms/TestRooms/MapLayoutGreybox.tscn" id="4_2e1df"]
 [ext_resource type="Script" uid="uid://de4oxmxe0rd2y" path="res://Actors/World/Room Management/MapLayoutLoader.gd" id="4_cp0kg"]
-[ext_resource type="PackedScene" uid="uid://px5k0nls11vq" path="res://Assets/Rooms/TestRooms/MapLayout.tscn" id="5_cx0xc"]
-[ext_resource type="Resource" uid="uid://8aknwfsp1c8d" path="res://Assets/Rooms/TestRooms/MainLevelTest.tres" id="6_p3cca"]
+[ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Room1.tres" id="6_2e1df"]
+[ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Room4-3.tres" id="6_x7obc"]
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="6_xf085"]
-[ext_resource type="Resource" uid="uid://dly5focppmak3" path="res://Assets/Rooms/TestRooms/MainTopLevelTest.tres" id="7_3i23b"]
+[ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Room2.tres" id="7_8nwpv"]
 [ext_resource type="Script" uid="uid://d4fqukl0dj7gu" path="res://Actors/World/Room Management/RoomInstantiator.gd" id="7_cx0xc"]
-[ext_resource type="Resource" uid="uid://daurogwaswu18" path="res://Assets/Rooms/TestRooms/TopLeftLevelTest.tres" id="8_3i23b"]
+[ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Room3.tres" id="8_x7obc"]
 [ext_resource type="Script" uid="uid://cxnk476c7iawm" path="res://Actors/World/Room Management/RoomCameraHandler.gd" id="8_xf085"]
-[ext_resource type="Resource" uid="uid://dhhdbjxdukqkx" path="res://Assets/Rooms/TestRooms/LeftLevelTest.tres" id="9_b4o3i"]
+[ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Room4.tres" id="9_yr2jd"]
+[ext_resource type="Resource" uid="uid://2jggwmlpprix" path="res://Assets/Rooms/Greybox/Room4-2.tres" id="11_yr2jd"]
+[ext_resource type="Resource" uid="uid://chyglce7p16ns" path="res://Assets/Rooms/Greybox/Room12.tres" id="12_yr2jd"]
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
-[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "checkPoints") instance=ExtResource("1_i87mu")]
+[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager") instance=ExtResource("1_i87mu")]
 roomManager = NodePath("../RoomManager")
-checkPoints = [null]
 
 [node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("mapLoader", "roomInstantiator", "roomCamHandler")]
 script = ExtResource("2_cp0kg")
@@ -27,12 +29,15 @@ roomCamHandler = NodePath("RoomCameraHandler")
 
 [node name="MapLayout" type="Node" parent="RoomManager" unique_id=357030284]
 script = ExtResource("4_cp0kg")
-mapLayoutScene = ExtResource("5_cx0xc")
+mapLayoutScene = ExtResource("4_2e1df")
 mapLayout = Dictionary[Vector2i, ExtResource("6_xf085")]({
-Vector2i(-1, -1): ExtResource("8_3i23b"),
-Vector2i(-1, 0): ExtResource("9_b4o3i"),
-Vector2i(0, -1): ExtResource("7_3i23b"),
-Vector2i(0, 0): ExtResource("6_p3cca")
+Vector2i(0, 0): ExtResource("6_2e1df"),
+Vector2i(0, 1): ExtResource("9_yr2jd"),
+Vector2i(0, 2): ExtResource("11_yr2jd"),
+Vector2i(0, 3): ExtResource("6_x7obc"),
+Vector2i(1, 0): ExtResource("7_8nwpv"),
+Vector2i(1, 1): ExtResource("8_x7obc"),
+Vector2i(2, 0): ExtResource("12_yr2jd")
 })
 
 [node name="RoomInstantiator" type="Node2D" parent="RoomManager" unique_id=2016719982]
