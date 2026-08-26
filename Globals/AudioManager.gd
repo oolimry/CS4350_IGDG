@@ -8,7 +8,6 @@ const MUSIC_BUS = 2
 #@onready var CardPickup = $Card/CardPickup
 #@onready var CardPutDown = $Card/CardPutDown
 
-
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):
 		audioPlayer.play()

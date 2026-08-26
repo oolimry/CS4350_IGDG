@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+const windShockwaveHitboxTSCN = preload("res://Actors/Player/SlashHitboxes/WindShockwaveHitbox.tscn")
+
 const inf = 1e9 + 100
 
 @export var health : PlayerHealth
@@ -52,6 +54,7 @@ The max running velocity is (xAcceleration / xDrag)
 var hasBrokenJump := false
 
 ## wall jump related
+var isOnWall = false
 var wallFacingDirection := Enums.Directions.NONE
 @export var wallJumpXBoost := 550
 @export var wallJumpYBoost := 650
@@ -68,10 +71,10 @@ const lateJumpBuffer := 0.083	## about 5 frames, quite lenient
 const earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
 
 # slashing related
-@export var slashCooldown = 0.3
+@export var slashCooldown = 0.334
 var timeSinceSlash = inf
 var timeSincePressSlash = inf
-const earlySlashBuffer := 0.083
+const earlySlashBuffer := 0.120
 
 ## ignition pad related
 @export var ignitionPadHorizontalBoost = 5000
@@ -148,18 +151,21 @@ func _physics_process_playerMovement(delta):
 	else:
 		velocity.x += 0
 
-	$Sprite2D.rotation = 0
+	sprite.rotation = 0
 	
 	## wall shit
+	isOnWall = false
 	if timeSinceWallJump >= durationAfterWallJumpToHoldAwayFromWall:
 		for raycast : RayCast2D in raycastsLeft:
 			if raycast.is_colliding():
 				timeSinceNotTouchingWall = 0.0
 				wallFacingDirection = Enums.Directions.LEFT
+				isOnWall = true
 		for raycast : RayCast2D in raycastsRight:
 			if raycast.is_colliding():
 				timeSinceNotTouchingWall = 0.0
 				wallFacingDirection = Enums.Directions.RIGHT
+				isOnWall = true
 	
 	## jumping movement
 	if Input.is_action_just_released("jump"):
@@ -213,8 +219,11 @@ func _physics_process_playerMovement(delta):
 			velocity.y = terminalVelocity
 		
 	while len(additionalVelocityInputs) > 0:
-		Glogger.debug(additionalVelocityInputs[-1])
-		velocity += additionalVelocityInputs[-1]
+		var addedVelocity : Vector2 = additionalVelocityInputs[-1]
+		velocity.x += addedVelocity.x
+		if addedVelocity.y < velocity.y:
+			hasBrokenJump = true
+			velocity.y = addedVelocity.y
 		additionalVelocityInputs.pop_back()
 	
 	set_velocity(velocity)
@@ -251,7 +260,6 @@ func _physics_process_slash(delta):
 	
 	var slashDirection = Enums.Directions.NONE
 	
-	Glogger.debug("Slash")
 	if Input.is_action_pressed("down") and not is_on_floor():
 		slashDirection = Enums.Directions.DOWN
 	elif Input.is_action_pressed("up"):
@@ -262,38 +270,79 @@ func _physics_process_slash(delta):
 		slashDirection = Enums.Directions.LEFT
 	else:
 		if sprite.flip_h:
-			slashDirection = Enums.Directions.RIGHT
-		else:
 			slashDirection = Enums.Directions.LEFT
+		else:
+			slashDirection = Enums.Directions.RIGHT
 	
 	if slashDirection == Enums.Directions.DOWN:
 		downSlashHitbox.appear(self)
+		sprite.play("slashDown")
 	elif slashDirection == Enums.Directions.UP:
 		upSlashHitbox.appear(self)
+		sprite.play("slashUp")
 	elif slashDirection == Enums.Directions.RIGHT:
 		rightSlashHitbox.appear(self)
+		sprite.play("slashSide")
 	elif slashDirection == Enums.Directions.LEFT:
 		leftSlashHitbox.appear(self)
+		sprite.play("slashSide")
 		
 	if currentElement == Enums.Elements.WIND:
+		var windHitbox : WindShockwaveHitbox = windShockwaveHitboxTSCN.instantiate()
+		windHitbox.slashDirection = slashDirection
+		windHitbox.player = self
+		get_tree().root.add_child(windHitbox)
+		windHitbox.global_position = self.global_position # TODO
+		
 		if slashDirection == Enums.Directions.DOWN:
 			additionalVelocityInputs.append(Vector2(0, -windDownSlashBoost))
+		elif slashDirection == Enums.Directions.UP:
+			pass
 		elif slashDirection == Enums.Directions.LEFT:
 			additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
 		elif slashDirection == Enums.Directions.RIGHT:
 			additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
+	
+	await get_tree().create_timer(slashCooldown * 0.3).timeout
+	self.currentElement = Enums.Elements.NONE
 
 func _physics_process_updateVisuals():
 	if Input.is_action_pressed("right"):
-		sprite.flip_h = true
-	if Input.is_action_pressed("left"):
 		sprite.flip_h = false
-	
-	# TODO
+	if Input.is_action_pressed("left"):
+		sprite.flip_h = true
+		
+	## Elements
 	if currentElement == Enums.Elements.NONE:
 		sprite.material.set_shader_parameter("modulate", Color.WHITE)
 	elif currentElement == Enums.Elements.WIND:
 		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
+	elif currentElement == Enums.Elements.FIRE:
+		sprite.material.set_shader_parameter("modulate", Color.FIREBRICK)
+		
+	## Animation
+	var showWallSlideAnimation = false
+	if isOnWall:
+		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
+			showWallSlideAnimation = true
+		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
+			showWallSlideAnimation = true
+	
+	if sprite.is_playing() and sprite.animation in \
+		["slashUp", "slashSide", "slashDown"]:
+		pass
+	elif is_on_floor():
+		if abs(velocity.x) < 100:
+			sprite.play("idle")
+		else:
+			sprite.play("running")
+	elif showWallSlideAnimation:
+		sprite.play("wallSlide")
+	else:
+		if velocity.y >= 0:
+			sprite.play("rising")
+		else:
+			sprite.play("falling")
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():

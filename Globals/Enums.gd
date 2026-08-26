@@ -12,6 +12,7 @@ enum Directions {
 enum Elements {
 	NONE,
 	WIND,
+	FIRE,
 }
 
 static func getOppositeDirection(direction : Directions):
@@ -25,3 +26,15 @@ static func getOppositeDirection(direction : Directions):
 		return Directions.DOWN
 	if direction == Directions.DOWN:
 		return Directions.UP
+
+static func getVectorOfDirection(direction : Directions):
+	if direction == Directions.NONE:
+		return Vector2.ZERO
+	elif direction == Directions.RIGHT:
+		return Vector2.RIGHT
+	elif direction == Directions.LEFT:
+		return Vector2.LEFT
+	elif direction == Directions.DOWN:
+		return Vector2.DOWN
+	elif direction == Directions.UP:
+		return Vector2.UP
