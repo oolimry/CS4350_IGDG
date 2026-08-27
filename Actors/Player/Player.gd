@@ -41,8 +41,8 @@ The max running velocity is (xAcceleration / xDrag)
 """
 
 ##y movement related
-@export var jumpSpeed := 500				## vertical boost when jumping
-@export var jumpXBoost := 200				## horizontal boost when jumping
+@export var jumpSpeed := 600				## vertical boost when jumping
+@export var jumpXBoost := 100				## horizontal boost when jumping
 
 @export var gravity := 22 					## the maximum downwards velocity
 @export var fallMultiplier := 2.2			## when moving downwards, apply this multiplier to gravity
@@ -79,8 +79,8 @@ var slashDirection : Enums.Directions = Enums.Directions.NONE
 
 ## ignition pad related
 const ignitionPadHorizontalBoost = 6000
-const ignitionPadVerticalLock = 120
-const ignitionPadVerticalBoost = 1300
+const ignitionPadVerticalLock = 240
+const ignitionPadVerticalBoost = 1600
 
 
 ### elemental stuff
