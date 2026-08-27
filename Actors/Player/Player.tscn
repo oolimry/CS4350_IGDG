@@ -274,7 +274,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
-size = Vector2(34, 70.225)
+size = Vector2(32, 66)
 
 [node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler")]
 collision_layer = 33
@@ -290,11 +290,10 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"slashUp"
-frame = 1
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
-position = Vector2(0, -1.1124992)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_vgaxv")
 
 [node name="Health" type="Node" parent="." unique_id=1705777905]
