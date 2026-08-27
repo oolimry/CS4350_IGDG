@@ -41,7 +41,7 @@ The max running velocity is (xAcceleration / xDrag)
 """
 
 ##y movement related
-@export var jumpSpeed := 670				## vertical boost when jumping
+@export var jumpSpeed := 500				## vertical boost when jumping
 @export var jumpXBoost := 200				## horizontal boost when jumping
 
 @export var gravity := 22 					## the maximum downwards velocity
@@ -49,14 +49,14 @@ The max running velocity is (xAcceleration / xDrag)
 @export var breakJumpMultiplier := 1.8		## if player let go of jump (and still moving upwards)
 @export var breakJumpDropoff := 0.70 		## when let go of jump, multiply speed by this much
 
-@export var terminalVelocity := 900  		## the maximum downwards velocity
-@export var fastFallTerminalVelocity := 1350 	## the maximum downwards velocity
+@export var terminalVelocity := 750  		## the maximum downwards velocity
+@export var fastFallTerminalVelocity := 1150 	## the maximum downwards velocity
 var hasBrokenJump := false
 
 ## wall jump related
 var isOnWall = false
 var wallFacingDirection := Enums.Directions.NONE
-@export var wallJumpXBoost := 550
+@export var wallJumpXBoost := 750
 @export var wallJumpYBoost := 650
 var timeSinceNotTouchingWall = inf
 
@@ -78,8 +78,9 @@ const earlySlashBuffer := 0.120
 var slashDirection : Enums.Directions = Enums.Directions.NONE
 
 ## ignition pad related
-const ignitionPadHorizontalBoost = 5000
-const ignitionPadVerticalBoost = 1200
+const ignitionPadHorizontalBoost = 6000
+const ignitionPadVerticalLock = 120
+const ignitionPadVerticalBoost = 1300
 
 
 ### elemental stuff
@@ -361,9 +362,9 @@ func pogo():
 
 func launchByIgnitionPad(direction : Enums.Directions):
 	if direction == Enums.Directions.RIGHT:
-		additionalVelocityInputs.append(Vector2(ignitionPadHorizontalBoost, 0))
+		additionalVelocityInputs.append(Vector2(ignitionPadHorizontalBoost, -ignitionPadVerticalLock))
 	elif direction == Enums.Directions.LEFT:
-		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, 0))
+		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, -ignitionPadVerticalLock))
 	elif direction == Enums.Directions.UP:
 		additionalVelocityInputs.append(Vector2(0, -ignitionPadVerticalBoost))
 

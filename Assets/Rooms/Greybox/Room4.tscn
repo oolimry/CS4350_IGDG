@@ -55,6 +55,7 @@ shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("5_hrln4")]
 position = Vector2(640, 520)
+scale = Vector2(1, 1)
 element = 2
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]

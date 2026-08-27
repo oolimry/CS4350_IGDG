@@ -33,7 +33,7 @@ collision_mask = 8
 script = ExtResource("1_0jf00")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_0jf00")
 animation = &"wind"
 

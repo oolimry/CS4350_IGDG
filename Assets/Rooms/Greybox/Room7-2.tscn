@@ -78,10 +78,12 @@ shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element3" parent="." unique_id=1394946886 instance=ExtResource("6_0blna")]
 position = Vector2(1600, 840)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="Element4" parent="." unique_id=1988154540 instance=ExtResource("6_0blna")]
 position = Vector2(200, 40)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="IgnitionPad4" parent="." unique_id=1935947710 instance=ExtResource("8_h4kns")]

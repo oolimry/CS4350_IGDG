@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_jnmmk"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_7qvnd"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_tiiof"]
-[ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="5_wlqbt"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_01wyq"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_gaoim"]
 
@@ -75,13 +74,9 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element3" parent="." unique_id=1394946886 instance=ExtResource("7_gaoim")]
-position = Vector2(1012, 776)
-element = 2
-
-[node name="IgnitionPad4" parent="." unique_id=1935947710 instance=ExtResource("5_wlqbt")]
-position = Vector2(1187, 598)
-rotation = 3.1415927
-direction = 1
+position = Vector2(1012, 806)
+scale = Vector2(1, 1)
+element = 1
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]

@@ -311,11 +311,11 @@ position = Vector2(45, 1)
 slashDirection = 2
 
 [node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
-position = Vector2(0, 65)
+position = Vector2(0, 45)
 slashDirection = 4
 
 [node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]
-position = Vector2(1, -71)
+position = Vector2(1, -60)
 slashDirection = 3
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]

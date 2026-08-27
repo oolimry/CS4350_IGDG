@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="7_los5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
-size = Vector2(631.25, 160)
+size = Vector2(555.625, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
-size = Vector2(610.625, 320)
+size = Vector2(562.625, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrln4"]
 size = Vector2(1920, 1080)
@@ -59,6 +59,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=1304312360]
+position = Vector2(37.8125, 0)
 shape = SubResource("RectangleShape2D_x80dp")
 
 [node name="Respawn Point" type="Node2D" parent="." unique_id=1161918631 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
@@ -80,7 +81,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
-position = Vector2(14.6875, 0)
+position = Vector2(-9.3125, 0)
 shape = SubResource("RectangleShape2D_3bfmy")
 
 [node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
@@ -101,6 +102,7 @@ shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("7_h45ro")]
 position = Vector2(1520, 800)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="Breakables" type="Node2D" parent="." unique_id=1179057413]

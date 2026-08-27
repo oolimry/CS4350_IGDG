@@ -115,18 +115,22 @@ shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("6_3ev35")]
 position = Vector2(760, 800)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="Element3" parent="." unique_id=1394946886 instance=ExtResource("6_3ev35")]
 position = Vector2(960, 840)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="Element4" parent="." unique_id=423817018 instance=ExtResource("6_3ev35")]
 position = Vector2(1360, 840)
+scale = Vector2(1, 1)
 element = 2
 
 [node name="Element2" parent="." unique_id=10323103 instance=ExtResource("6_3ev35")]
 position = Vector2(360, 800)
+scale = Vector2(1, 1)
 element = 2
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
