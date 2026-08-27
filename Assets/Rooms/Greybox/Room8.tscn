@@ -18,7 +18,7 @@ size = Vector2(269, 320)
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrg38"]
-size = Vector2(1760, 880)
+size = Vector2(1805, 880)
 
 [node name="TestLevel2" type="Node2D" unique_id=1922114953]
 
@@ -85,7 +85,6 @@ position = Vector2(0.5, -80)
 shape = SubResource("RectangleShape2D_1qpw2")
 
 [node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
-visible = false
 position = Vector2(960, 541)
 monitoring = false
 script = ExtResource("5_j7xk0")
@@ -98,6 +97,7 @@ shape = SubResource("RectangleShape2D_hrln4")
 position = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=1929169059]
+position = Vector2(-22.5, 0)
 shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element3" parent="." unique_id=849439216 instance=ExtResource("6_ocrqo")]
