@@ -7,6 +7,8 @@ extends StaticBody2D
 
 @onready var sprite : AnimatedSprite2D = $Sprite
 
+var active = true
+
 @export var element : Enums.Elements:
 	set(value):
 		element = value
@@ -19,8 +21,12 @@ func _ready():
 	timer.timeout.connect(respawnElement)
 	
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
+	if not active:
+		return
+		
 	timer.start()
-	self.visible = false;
+	self.visible = false
+	active = false
 	collision_shape.set_deferred("monitoring", false)
 	
 	player.setElement(self.element)
@@ -34,6 +40,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 func respawnElement() -> void:
 	collision_shape.set_deferred("monitoring", true)
 	self.visible = true
+	active = true
 	
 
 	

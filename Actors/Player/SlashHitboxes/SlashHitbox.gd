@@ -37,6 +37,8 @@ func _physics_process(delta):
 	self.global_position = globalPositionToFreezeAtDuringSlash
 	var element : Enums.Elements = player.currentElement
 	
+	var didFireHitAnything = false
+	
 	#Glogger.debug(get_overlapping_bodies())
 	for body : Node2D in get_overlapping_bodies():
 		if body.has_method(ScriptConstants.ON_SLASH_METHOD_NAME):
@@ -48,6 +50,12 @@ func _physics_process(delta):
 			## TODO: add more info about slash direction, 
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
+			
+			if body is Bomb or body is IgnitionPad and element == Enums.Elements.FIRE:
+				didFireHitAnything = true
+	
+	if didFireHitAnything:
+		player.setElement(Enums.Elements.NONE)
 	
 
 	

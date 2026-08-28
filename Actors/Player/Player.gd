@@ -49,6 +49,7 @@ The max running velocity is (xAcceleration / xDrag)
 @export var breakJumpMultiplier := 1.8		## if player let go of jump (and still moving upwards)
 @export var breakJumpDropoff := 0.70 		## when let go of jump, multiply speed by this much
 
+@export var wallSlideTerminalVelocity := 400 ## when against wall, max fall speed
 @export var terminalVelocity := 750  		## the maximum downwards velocity
 @export var fastFallTerminalVelocity := 1150 	## the maximum downwards velocity
 var hasBrokenJump := false
@@ -67,8 +68,9 @@ var timeSinceWallJump = inf
 var timeSinceOnFloor = 0
 var timeSincePressJump = inf
 
-const lateJumpBuffer := 0.083	## about 5 frames, quite lenient
-const earlyJumpBuffer := 0.083	## about 5 frames, quite lenient
+const lateJumpBuffer := 0.090	## about 5 frames, quite lenient
+const earlyJumpBuffer := 0.090	## about 5 frames, quite lenient
+const lateWallJummpBuffer := 0.040 ## 2 frames, less lenient
 
 # slashing related
 @export var slashCooldown = 0.334
@@ -196,7 +198,7 @@ func _physics_process_playerMovement(delta):
 			timeSinceOnFloor = inf
 			
 		## wall jumping
-		elif timeSinceNotTouchingWall < lateJumpBuffer:
+		elif isOnWall and timeSinceNotTouchingWall < lateWallJummpBuffer:
 			hasBrokenJump = false
 			timeSincePressJump = inf
 			timeSinceOnFloor = inf
@@ -216,9 +218,13 @@ func _physics_process_playerMovement(delta):
 	else:
 		velocity.y += gravity * 60 * delta
 	
+	
 	if Input.is_action_pressed("down") and not freezeInput:
 		if velocity.y > fastFallTerminalVelocity:
 			velocity.y = fastFallTerminalVelocity
+	elif isWallSliding():
+		if velocity.y > wallSlideTerminalVelocity:
+			velocity.y = wallSlideTerminalVelocity
 	else:
 		if velocity.y > terminalVelocity:
 			velocity.y = terminalVelocity
@@ -307,9 +313,11 @@ func _physics_process_slash(delta):
 			additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
 		elif slashDirection == Enums.Directions.RIGHT:
 			additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
-	
-	await get_tree().create_timer(slashCooldown * 0.3).timeout
-	self.currentElement = Enums.Elements.NONE
+			
+		currentElement = Enums.Elements.NONE
+			
+	#await get_tree().create_timer(slashCooldown * 0.3).timeout
+	#self.currentElement = Enums.Elements.NONE
 
 func _physics_process_updateVisuals():
 	if Input.is_action_pressed("right"):
@@ -326,12 +334,7 @@ func _physics_process_updateVisuals():
 		sprite.material.set_shader_parameter("modulate", Color.FIREBRICK)
 		
 	## Animation
-	var showWallSlideAnimation = false
-	if isOnWall:
-		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
-			showWallSlideAnimation = true
-		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
-			showWallSlideAnimation = true
+	var showWallSlideAnimation = isWallSliding()
 	
 	if sprite.is_playing() and sprite.animation in \
 		["slashUp", "slashSide", "slashDown"]:
@@ -374,3 +377,11 @@ func setElement(element : Enums.Elements):
 	await get_tree().create_timer(0.05).timeout
 	
 	currentElement = element
+
+func isWallSliding():
+	if isOnWall:
+		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
+			return true
+		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
+			return true
+	return false
