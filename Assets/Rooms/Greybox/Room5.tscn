@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://4v4qfgk6d86y"]
 
+[ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_bp81x"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_n5cbs"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_dgt5c"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_bp81x"]
@@ -18,7 +19,9 @@ size = Vector2(1920, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4epa"]
 size = Vector2(1760, 880)
 
-[node name="TestLevel2" type="Node2D" unique_id=1922114953]
+[node name="Room 5" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+script = ExtResource("1_bp81x")
+roomEntry = NodePath("EntryPoint")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10

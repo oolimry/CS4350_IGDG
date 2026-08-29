@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_pexxg")
-roomName = "Room1"
+roomName = "Room4-2"
 doesCameraFollow = true
 cameraLimitLeft = true
 cameraLimitRight = true

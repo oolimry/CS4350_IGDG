@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_cbain")
-roomName = "Room1"
+roomName = "Room4-3"
 doesCameraFollow = true
 cameraLimitLeft = true
 cameraLimitRight = true

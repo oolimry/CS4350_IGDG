@@ -52,29 +52,24 @@ func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \
 		Vector2(roomGridPos) * roomCenterInterval
 
-func generateRooms() -> void:
+func generateRooms(cArray : Array[Callable]) -> void:
+	cArray.append(setupRoom)
+	
 	mapLoader.forEachRoomDef(func(roomDef : RoomDefinition): 
 		roomInstantiator.instantiateRoomWithSetup(roomDef, \
-		calcRoomCenterWorldCoords, setupRoom)
+		calcRoomCenterWorldCoords, cArray)
 	)
 
-func instantiateRoom(roomDef : RoomDefinition) -> void:
-	roomInstantiator.instantiateRoomWithSetup(roomDef, \
-		calcRoomCenterWorldCoords, setupRoom)
-
-func setupRoom(roomDef : RoomDefinition, sceneRootNode : Node2D) -> void:	
-
-	for n in sceneRootNode.get_children():
-		if n is Player:
-			currRoom = roomDef
-			currRoomCoords = roomDef.gridPos
-			roomCamHandler.setup(currRoom.gridPos, calcRoomCenterWorldCoords)
-
-			getInitialPlayerInstance.emit(n)
-
-		if n is RoomEntry:
-			entryAreas.append(n)
-			n.roomPos = roomDef.gridPos
-			n.connect("requestChangeRoom", changeRoom)
-		
+func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:	
 	
+	roomInst.roomPos = roomInst.roomPos
+	
+	if roomInst.roomEntry != null:
+		entryAreas.append(roomInst.roomEntry)
+		roomInst.roomEntry.connect("requestChangeRoom", changeRoom)
+	else:
+		push_error("Room has no Entry Collider! ", roomDef.roomName)
+		
+	if roomInst.hasPlayerSpawn:
+		assert(currRoom == null)
+		currRoom = roomDef

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://pyc625syx1ha"]
+
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="1_xup8m"]
+
+[resource]
+script = ExtResource("1_xup8m")
+roomName = "Room5"
+metadata/_custom_type_script = "uid://cij17tnbhukil"

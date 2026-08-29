@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
 size = Vector2(320, 320)
 
-[node name="Respawn Point" type="Node2D" unique_id=202330827 node_paths=PackedStringArray("referenceImage")]
+[node name="Respawn Point" type="Marker2D" unique_id=381613870 node_paths=PackedStringArray("referenceImage")]
 script = ExtResource("1_81gr4")
 referenceImage = NodePath("Sprite2D")
 
