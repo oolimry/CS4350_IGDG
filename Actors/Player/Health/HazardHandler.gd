@@ -1,4 +1,4 @@
-## Whenever 
+## Object-Player Collision Checker 
 class_name HazardHandler
 extends Node
 

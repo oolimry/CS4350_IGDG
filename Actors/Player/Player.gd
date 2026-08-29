@@ -107,6 +107,9 @@ var playerYlength
 
 @export var knockbackStrength := 800
 
+## For Contact Pushing Objects -- DELETE IF NOT NEEDED --
+const pushForce := 2600
+
 # Static factory function acting as a custom constructor
 static func create(startingPos : Vector2) -> Player:
 	## Load in HeartGUI
@@ -355,6 +358,21 @@ func _physics_process_updateVisuals():
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
+		
+		var rid := collision.get_collider_rid()
+
+		if not rid.is_valid():
+			return
+
+		var layers := PhysicsServer2D.body_get_collision_layer(rid)
+		
+		var collider := collision.get_collider()
+
+		if collider.is_in_group("ContactPushable") and collider.has_method("push"):
+			var pushDirection := -collision.get_normal()
+			pushDirection.y = 0
+			collider.push(pushDirection, pushForce)
+		
 		hazardHandler.actOnPotentialHazard(collision)
 
 func applyKnockback(normalVec : Vector2) -> void:

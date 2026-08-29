@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/RoomPreview/plugin.cfg")
 
 Checkpoint="Player Respawn Points"
 Interactable="Objects that the Player can interact with (need roomPos)"
+ContactPushable="Interactable Objects that can be pushed by the Player"
 
 [input]
 

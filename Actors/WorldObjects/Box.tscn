@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bywkacs1kp8hb"]
+
+[ext_resource type="Script" uid="uid://4101b7012u4t" path="res://Actors/WorldObjects/Box.gd" id="1_rhccq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
+size = Vector2(80, 80)
+
+[sub_resource type="Gradient" id="Gradient_y23pg"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.3254902, 0.7490196, 0.78431374, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y23pg"]
+gradient = SubResource("Gradient_y23pg")
+width = 80
+height = 80
+
+[node name="Box" type="RigidBody2D" unique_id=1489572943]
+collision_layer = 24
+collision_mask = 0
+script = ExtResource("1_rhccq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
+shape = SubResource("RectangleShape2D_vynle")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178235108]
+texture = SubResource("GradientTexture2D_y23pg")
+
+[node name="Label" type="Label" parent="Sprite2D" unique_id=763194104]
+offset_left = -33.0
+offset_top = -10.0
+offset_right = 37.0
+offset_bottom = 13.0
+text = "Box"

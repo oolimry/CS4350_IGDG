@@ -7,6 +7,8 @@ var roomPos : Vector2i
 @export var playerSpawnPoint : PlayerSpawn
 
 @export var roomEntry : RoomEntry
+
+#@export var roomResidents : Array[]
  
 func setup(pos : Vector2i) -> void:
 	roomPos = pos
@@ -18,7 +20,7 @@ func setup(pos : Vector2i) -> void:
 		elif n is RoomEntry:
 			roomEntry = n
 			roomEntry.roomPos = roomPos	
-			
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
