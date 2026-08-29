@@ -21,8 +21,9 @@
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
-[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager") instance=ExtResource("1_i87mu")]
+[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "persistentActors") instance=ExtResource("1_i87mu")]
 roomManager = NodePath("../RoomManager")
+persistentActors = NodePath("../PersistentPlayer")
 
 [node name="RoomManager" type="Node" parent="." unique_id=421950999 node_paths=PackedStringArray("mapLoader", "roomInstantiator", "roomCamHandler")]
 script = ExtResource("2_cp0kg")
@@ -53,3 +54,5 @@ script = ExtResource("7_cx0xc")
 
 [node name="RoomCameraHandler" type="Node" parent="RoomManager" unique_id=2100041786]
 script = ExtResource("8_xf085")
+
+[node name="PersistentPlayer" type="Node2D" parent="." unique_id=1283931922]

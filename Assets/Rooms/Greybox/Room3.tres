@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_i70r8")
-roomName = "Room1"
+roomName = "Room3"
 gridPos = Vector2i(1, 1)
 gamePlayScene = ExtResource("1_ifexg")
 previewTexture = ExtResource("2_ifexg")

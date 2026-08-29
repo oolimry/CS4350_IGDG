@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://l24baaw7ayfq"]
+
+[ext_resource type="Script" uid="uid://ckvlrybomcoq7" path="res://Actors/WorldObjects/PlayerSpawn.gd" id="1_7jq0n"]
+[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="2_e0xja"]
+
+[node name="Player Spawn" type="Marker2D" unique_id=285802796 node_paths=PackedStringArray("referenceImage")]
+script = ExtResource("1_7jq0n")
+referenceImage = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=538526534]
+modulate = Color(0, 0.6901961, 0.22745098, 1)
+position = Vector2(0, -29)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_e0xja")
+region_rect = Rect2(49.731598, 0, 248.3114, 379)

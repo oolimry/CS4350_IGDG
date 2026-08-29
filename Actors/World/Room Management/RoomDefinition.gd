@@ -30,9 +30,6 @@ const ROOM_HEIGHT := 9
 		
 static var sceneRoomSize := Vector2i(1920, 1080)
 
-## Dimension of room by RUs
-@export var roomSize : Vector2i
-
 enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 
 ## Group sub-rooms into one big room by a "tag". [br]
@@ -51,8 +48,3 @@ static var previewBounds := Rect2(0, 0, 1920, 1080) :
 		return previewBounds
 		
 static var previewImageSize := Vector2i(512, 288)
-
-######## Optional parameters for "safety checks" ########
-
-## Indicates debug room, delete before production
-@export var isDebug := false 	

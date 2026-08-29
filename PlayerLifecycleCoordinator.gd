@@ -1,4 +1,4 @@
-class_name DeathManager
+class_name PlayerLifecycleCoordinator
 extends RefCounted
 
 var currRespawnCheckpoint : CheckPoint 
@@ -20,3 +20,8 @@ func onPlayerDeath(p : Player):
 	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
 	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)
+
+func spawnPlayer(r : RoomDefinition, roomInst : RoomInstance) -> void:
+	if roomInst.hasPlayerSpawn:
+		var newPlayer : Player = Player.create(roomInst.playerSpawnPoint.global_position)
+		reconnectPlayer.call(newPlayer)

@@ -6,32 +6,41 @@ extends Node
 
 @export var roomManager : RoomManager
 
-var deathManager : DeathManager
+@export var persistentActors : Node2D
+
+var playerCoordinator : PlayerLifecycleCoordinator
 var hudManager : HUDManager
 var camera : GameCamera
 
+var isSetup := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	roomManager.getInitialPlayerInstance.connect(setup)
-	roomManager.generateRooms()
+	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
+	roomManager.generateRooms([playerCoordinator.spawnPlayer])
+	#roomManager.getInitialPlayerInstance.connect(setup)
+	
 	
 	## TODO: Throw this into DeathManager
 	for n in get_tree().get_nodes_in_group("Checkpoint"):
-		n.connect("checkPointReached", deathManager.registerCheckPoint)
+		n.connect("checkPointReached", playerCoordinator.registerCheckPoint)
 	pass # Replace with function body.
 
-func reconnectPlayer(newPlayer : Player) -> void:
-	placeAtRoot(newPlayer)
+func connectPlayer(newPlayer : Player) -> void:
+	persistentActors.add_child(newPlayer)
 	player = newPlayer
 	
-	player.health.connect("playerDeath", deathManager.onPlayerDeath)
+	if !isSetup:
+		setup(player)
+	
+	player.health.connect("playerDeath", playerCoordinator.onPlayerDeath)
 	hudManager.connectUI(player)
 
 func getPlayer() -> Player:
 	return player
 
 func setup(p : Player) -> void:
-	player = p
+	isSetup = true
 	
 	# Managers that rely on the Player to work$"."
 	hudManager = HUDManager.create(getPlayer)
@@ -42,11 +51,7 @@ func setup(p : Player) -> void:
 	
 	roomManager.roomCamHandler.camera = camera
 	
-	deathManager = DeathManager.new(reconnectPlayer)
-	player.health.connect("playerDeath", deathManager.onPlayerDeath)
+	player.health.connect("playerDeath", playerCoordinator.onPlayerDeath)
 	
-#	for cp in checkPoints:
-#		cp.connect("checkPointReached", deathManager.registerCheckPoint)
-
 func placeAtRoot(n : Node) -> void:
 	get_tree().current_scene.add_child(n)
