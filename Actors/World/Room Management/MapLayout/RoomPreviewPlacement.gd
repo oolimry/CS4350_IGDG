@@ -12,6 +12,11 @@ extends Node2D
 		
 		if roomDef.previewTexture != null:
 			$Sprite2D.texture = roomDef.previewTexture
+			
+			var x : float = 0 - (roomDef.previewTexture.get_width() / 2) + 20
+			var y : float = 0 - (roomDef.previewTexture.get_height() / 2) + 20
+			$Label.position = Vector2(x,y)
+			$Label.text = roomDef.roomName
 			roomDefinition = roomDef
 		else:
 			push_error("Please generate a preview Image for this room!")

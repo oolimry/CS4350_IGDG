@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://4v4qfgk6d86y"]
+[gd_scene format=3 uid="uid://bvmft85i6p5nf"]
 
-[ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_bp81x"]
-[ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_n5cbs"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_dgt5c"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_bp81x"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_yxgeu"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="5_iiv1o"]
+[ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_k0rt7"]
+[ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_iqh82"]
+[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_bv4qt"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_lobe3"]
+[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_mtgvb"]
+[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_m7auv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
 size = Vector2(240, 480)
@@ -16,28 +16,28 @@ size = Vector2(1920, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4epa"]
 size = Vector2(1760, 880)
 
-[node name="Room 5" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
-script = ExtResource("1_bp81x")
+[node name="Room 13" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+script = ExtResource("1_k0rt7")
 roomEntry = NodePath("EntryPoint")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
 position = Vector2(3840, 0)
-tile_set = ExtResource("1_n5cbs")
+tile_set = ExtResource("2_iqh82")
 collision_enabled = false
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
 position = Vector2(1920, 0)
-tile_set = ExtResource("1_n5cbs")
+tile_set = ExtResource("2_iqh82")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1800510434]
 position = Vector2(1920, 0)
 scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("2_dgt5c")
+tile_set = ExtResource("3_bv4qt")
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
 position = Vector2(200, 520)
-script = ExtResource("3_bp81x")
+script = ExtResource("4_lobe3")
 referenceImage = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
@@ -45,7 +45,7 @@ modulate = Color(0.03529412, 1, 1, 1)
 self_modulate = Color(0.023529412, 0.06666667, 1, 1)
 position = Vector2(0, -29)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_yxgeu")
+texture = ExtResource("5_mtgvb")
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
 
 [node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=1498333101]
@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_jct8w")
 visible = false
 position = Vector2(920, 520)
 monitoring = false
-script = ExtResource("5_iiv1o")
+script = ExtResource("6_m7auv")
 deeperArea = NodePath("DeeperCollision")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=624457818]
