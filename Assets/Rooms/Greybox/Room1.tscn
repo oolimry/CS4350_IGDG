@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_jct8w"]
 [ext_resource type="PackedScene" uid="uid://l24baaw7ayfq" path="res://Actors/WorldObjects/PlayerSpawn.tscn" id="4_jct8w"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_jct8w"]
+[ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 
 [node name="Room 1" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_41hdi")
@@ -28,4 +29,26 @@ position = Vector2(280, 880)
 position = Vector2(280, 880)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_jct8w")]
+visible = false
 position = Vector2(960, 560)
+
+[node name="Label" type="Label" parent="." unique_id=1214568031]
+offset_left = 192.0
+offset_top = 758.0
+offset_right = 391.0
+offset_bottom = 794.0
+theme_override_font_sizes/font_size = 26
+text = "'WASD' - to move"
+
+[node name="Label2" type="Label" parent="." unique_id=914732823]
+offset_left = 1319.0
+offset_top = 739.0
+offset_right = 1518.0
+offset_bottom = 775.0
+theme_override_font_sizes/font_size = 26
+text = "Press 'K' to swing!"
+
+[node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_41hdi")]
+position = Vector2(1267, 757)
+scale = Vector2(1, 1)
+element = 2
