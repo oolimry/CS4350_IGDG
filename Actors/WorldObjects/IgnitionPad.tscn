@@ -80,7 +80,7 @@ animations = [{
 }]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cdxoi"]
-points = PackedVector2Array(-3.353, -20, -3.353, 20, 3.332, 12, 3.332, -12)
+points = PackedVector2Array(-3.353, -20, -3.353, 20, 8.67918, 12.656995, 8.67918, -11.644435)
 
 [node name="IgnitionPad" type="StaticBody2D" unique_id=1935947710]
 z_index = -1

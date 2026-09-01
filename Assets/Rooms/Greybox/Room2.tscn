@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_csd8j"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_nd2ea"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="4_csd8j"]
+[ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="6_i4epa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd2ea"]
 size = Vector2(1920, 1080)
@@ -69,6 +70,24 @@ offset_right = 685.0
 offset_bottom = 815.0
 theme_override_font_sizes/font_size = 26
 text = "'Spacebar' - to jump"
+
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 760)
+
+[node name="PlaceholderSlashableObject2" parent="." unique_id=900610753 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 680)
+
+[node name="PlaceholderSlashableObject3" parent="." unique_id=1724990231 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 600)
+
+[node name="PlaceholderSlashableObject4" parent="." unique_id=1704994692 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 600)
+
+[node name="PlaceholderSlashableObject5" parent="." unique_id=1909729387 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 681)
+
+[node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 760)
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
 [connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
