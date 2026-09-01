@@ -31,7 +31,7 @@ var entryAreas : Array[Area2D]
 func _ready() -> void:
 	pass # Replace with function body.
 
-func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
+func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
 	var transitioningDir : Vector2i = nextRoomPos - currRoom.gridPos
 	
 	var nextRoom = mapLoader.getRoom(nextRoomPos)
@@ -47,6 +47,13 @@ func changeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
 		if e != roomEntry:
 			e.isActive = true
 	pass
+
+func objectChangeRoom(object : Node, nextRoomPos : Vector2i):
+	# Assumption: all objects (except Player) tracked by this system have a RoomResident component 
+	assert(object.roomResident != null)
+	
+	var roomResident : RoomResident = object.roomResident
+	roomResident.roomPos = nextRoomPos
 
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \
@@ -66,7 +73,8 @@ func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:
 	
 	if roomInst.roomEntry != null:
 		entryAreas.append(roomInst.roomEntry)
-		roomInst.roomEntry.connect("requestChangeRoom", changeRoom)
+		roomInst.roomEntry.connect("playerChangeRoom", playerChangeRoom)
+		roomInst.roomEntry.connect("objectChangeRoom", objectChangeRoom)
 	else:
 		push_error("Room has no Entry Collider! ", roomDef.roomName)
 		

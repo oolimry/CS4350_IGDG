@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://br8goyl1vqof4"]
 
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="1_qn58n"]
+[ext_resource type="Script" uid="uid://bjo2kk1f0utio" path="res://Actors/World/Room Management/RoomEntry2.gd" id="1_o8t8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(1920, 1080)
@@ -9,7 +9,9 @@ size = Vector2(1920, 1080)
 size = Vector2(1760, 920)
 
 [node name="OuterCollision" type="Area2D" unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
-script = ExtResource("1_qn58n")
+collision_layer = 0
+collision_mask = 33
+script = ExtResource("1_o8t8k")
 deeperArea = NodePath("DeeperCollision")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1669877041]
@@ -17,6 +19,8 @@ position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="DeeperCollision" type="Area2D" parent="." unique_id=1286216589]
+collision_layer = 0
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeeperCollision" unique_id=2004345430]
 position = Vector2(0, -20)
@@ -24,3 +28,4 @@ shape = SubResource("RectangleShape2D_riqys")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

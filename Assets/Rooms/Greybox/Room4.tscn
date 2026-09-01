@@ -4,14 +4,8 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_yrg38"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_hrln4"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_hrln4"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="4_rwg7v"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="5_hrln4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrln4"]
-size = Vector2(2000, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrg38"]
-size = Vector2(1800, 880)
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_yrg38"]
 
 [node name="Room 4" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_yrg38")
@@ -39,31 +33,11 @@ tile_set = ExtResource("2_hrln4")
 visible = false
 position = Vector2(1760, 560)
 
-[node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
-position = Vector2(960, 541)
-monitoring = false
-script = ExtResource("4_rwg7v")
-deeperArea = NodePath("DeeperCollision")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=1621731562]
-visible = false
-position = Vector2(40, 0)
-shape = SubResource("RectangleShape2D_hrln4")
-
-[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1507783697]
-visible = false
-position = Vector2(0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=1929169059]
-visible = false
-position = Vector2(20, 0)
-shape = SubResource("RectangleShape2D_yrg38")
-
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("5_hrln4")]
 visible = false
 position = Vector2(640, 520)
 scale = Vector2(1, 1)
 element = 2
 
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_yrg38")]
+position = Vector2(960, 560)

@@ -1,3 +1,4 @@
+class_name RoomResident
 extends Node
 
 @export var roomPos : Vector2i

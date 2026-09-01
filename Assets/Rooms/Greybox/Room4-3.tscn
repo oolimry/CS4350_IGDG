@@ -5,20 +5,14 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_s1kex"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_lcf7a"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_jgau0"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="5_ctc4s"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_h45ro"]
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_los5y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
 size = Vector2(555.625, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
 size = Vector2(533, 276)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrln4"]
-size = Vector2(1920, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrg38"]
-size = Vector2(1760, 880)
 
 [node name="Room 4-3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_s1kex")
@@ -85,22 +79,6 @@ collision_mask = 32
 position = Vector2(53.5, 99)
 shape = SubResource("RectangleShape2D_3bfmy")
 
-[node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
-visible = false
-position = Vector2(960, 541)
-monitoring = false
-script = ExtResource("5_ctc4s")
-deeperArea = NodePath("DeeperCollision")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=1621731562]
-shape = SubResource("RectangleShape2D_hrln4")
-
-[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1507783697]
-position = Vector2(0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=1929169059]
-shape = SubResource("RectangleShape2D_yrg38")
-
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("7_h45ro")]
 position = Vector2(1520, 800)
 scale = Vector2(1, 1)
@@ -109,7 +87,9 @@ element = 2
 [node name="Breakables" type="Node2D" parent="." unique_id=1179057413]
 position = Vector2(1040, 960)
 
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_los5y")]
+visible = false
+position = Vector2(960, 560)
+
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

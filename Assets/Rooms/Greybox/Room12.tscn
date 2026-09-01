@@ -5,18 +5,12 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_xrwb2"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_da2w0"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_exmoo"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="4_qd3ir"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_cmxlx"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_da2w0"]
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_exmoo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_etgqc"]
 size = Vector2(76, 123)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd2ea"]
-size = Vector2(1920, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4epa"]
-size = Vector2(1760, 880)
 
 [node name="Room 12" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_exmoo")
@@ -64,22 +58,7 @@ collision_mask = 32
 position = Vector2(0, -22.5)
 shape = SubResource("RectangleShape2D_etgqc")
 
-[node name="EntryPoint" type="Area2D" parent="." unique_id=3222209 node_paths=PackedStringArray("deeperArea")]
-visible = false
-position = Vector2(920, 520)
-monitoring = false
-script = ExtResource("4_qd3ir")
-deeperArea = NodePath("DeeperCollision")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=2129715583]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_nd2ea")
-
-[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1799759170]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=839681051]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_i4epa")
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_exmoo")]
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_da2w0")]
 position = Vector2(400, 480)
@@ -92,5 +71,3 @@ scale = Vector2(1, 1)
 element = 1
 
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

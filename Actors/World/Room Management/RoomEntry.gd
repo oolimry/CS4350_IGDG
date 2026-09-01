@@ -1,8 +1,8 @@
-class_name RoomEntry
+class_name RoomEntry2
 extends Area2D
 
 ## Time needed past the threshold
-@export var required_dwell_time: float = 1.4
+@export var requiredDwellTime: float = 1.0
 
 ## Ignore entry detection if player respawns back inside the room
 @export var isActive := true
@@ -32,7 +32,7 @@ func _on_outer_body_entered(body: Node2D) -> void:
 	isPendingEntry = true
 	
 	# If you don't use a depth checkpoint, use a strict timer for full body clearance
-	entryTimer = get_tree().create_timer(required_dwell_time)
+	entryTimer = get_tree().create_timer(requiredDwellTime)
 	entryTimer.timeout.connect(_on_dwell_timeout.bind(body))
 
 func _on_outer_body_exited(body: Node2D) -> void:
