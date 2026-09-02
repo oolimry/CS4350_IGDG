@@ -51,7 +51,7 @@ The max running velocity is (xAcceleration / xDrag)
 
 @export var wallSlideTerminalVelocity := 400 ## when against wall, max fall speed
 @export var terminalVelocity := 750  		## the maximum downwards velocity
-@export var fastFallTerminalVelocity := 1150 	## the maximum downwards velocity
+@export var fastFallTerminalVelocity := 750 	## the maximum downwards velocity
 var hasBrokenJump := false
 
 ## wall jump related

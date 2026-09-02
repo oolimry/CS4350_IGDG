@@ -1,18 +1,86 @@
 [gd_scene format=3 uid="uid://cyqqde0jywtgw"]
 
 [ext_resource type="Script" uid="uid://uh2yfxcilsuj" path="res://Actors/WorldObjects/IgnitionPad.gd" id="1_uem5w"]
+[ext_resource type="Texture2D" uid="uid://h6crk35cr2a7" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (7).png" id="2_iwyl6"]
+[ext_resource type="Texture2D" uid="uid://caq06lr6inff3" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (8).png" id="3_l2non"]
+[ext_resource type="Texture2D" uid="uid://cik7kwnd2o86d" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (9).png" id="4_mpn43"]
+[ext_resource type="Texture2D" uid="uid://c35vmtqtm614t" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (10).png" id="5_v7573"]
+[ext_resource type="Texture2D" uid="uid://bgkv6bac5gfjw" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (11).png" id="6_a3qwo"]
+[ext_resource type="Texture2D" uid="uid://caadqiypk246i" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (12).png" id="7_0mhd7"]
+[ext_resource type="Texture2D" uid="uid://bobvbbx3m60uw" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (13).png" id="8_cdxoi"]
+[ext_resource type="Texture2D" uid="uid://dir0t6nec8at8" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (14).png" id="9_f8lxg"]
+[ext_resource type="Texture2D" uid="uid://brhbqfq55d7k8" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (15).png" id="10_ij6bb"]
+[ext_resource type="Texture2D" uid="uid://cdhxwtgkyaipk" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (1).png" id="11_cdxoi"]
+[ext_resource type="Texture2D" uid="uid://kyhblwbi5pi4" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (2).png" id="12_f8lxg"]
+[ext_resource type="Texture2D" uid="uid://bp4h3ixkui6pc" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (3).png" id="13_ij6bb"]
+[ext_resource type="Texture2D" uid="uid://mfnkt5s0i2v8" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (4).png" id="14_f54wv"]
+[ext_resource type="Texture2D" uid="uid://djj1250by4cj5" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (5).png" id="15_snvgs"]
+[ext_resource type="Texture2D" uid="uid://bx7ll55pbfwoa" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (6).png" id="16_3w0jd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
-size = Vector2(16, 40)
+[sub_resource type="SpriteFrames" id="SpriteFrames_uem5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iwyl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l2non")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mpn43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v7573")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a3qwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0mhd7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cdxoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f8lxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ij6bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cdxoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cdxoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cdxoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cdxoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f8lxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ij6bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_f54wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_snvgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3w0jd")
+}],
+"loop": 0,
+"name": &"launch",
+"speed": 24.0
+}]
 
-[sub_resource type="Gradient" id="Gradient_y23pg"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.45932013, 0, 0.06589596, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y23pg"]
-gradient = SubResource("Gradient_y23pg")
-width = 16
-height = 40
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cdxoi"]
+points = PackedVector2Array(-3.353, -20, -3.353, 20, 8.67918, 12.656995, 8.67918, -11.644435)
 
 [node name="IgnitionPad" type="StaticBody2D" unique_id=1935947710]
 z_index = -1
@@ -22,16 +90,16 @@ collision_layer = 24
 collision_mask = 0
 script = ExtResource("1_uem5w")
 
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=824924353]
+position = Vector2(12.032178, -0.50627977)
+rotation = 1.5707964
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_uem5w")
+animation = &"launch"
+frame = 17
+frame_progress = 1.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
-shape = SubResource("RectangleShape2D_vynle")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178235108]
-texture = SubResource("GradientTexture2D_y23pg")
-
-[node name="Label" type="Label" parent="Sprite2D" unique_id=1598743552]
-offset_left = -4.0
-offset_top = -12.0
-offset_right = 8.0
-offset_bottom = 11.0
-text = ">"
-metadata/_edit_use_anchors_ = true
+position = Vector2(-4.668455, -0.50627977)
+scale = Vector2(1.0000001, 1)
+shape = SubResource("ConvexPolygonShape2D_cdxoi")

@@ -1,15 +1,26 @@
 [gd_scene format=3 uid="uid://dxxqgdapeda43"]
 
 [ext_resource type="Script" uid="uid://bapp1dcovx5wi" path="res://Actors/Player/SlashHitboxes/WindShockwaveHitbox.gd" id="1_l4347"]
+[ext_resource type="Texture2D" uid="uid://c3wkm0agk66w5" path="res://Assets/Elements/TurqElementProjectile/frame_1.png" id="2_kem1i"]
+[ext_resource type="Texture2D" uid="uid://cd3630ia67gjp" path="res://Assets/Elements/TurqElementProjectile/frame_2.png" id="3_4x5l5"]
+[ext_resource type="Texture2D" uid="uid://b1wepuwelho1s" path="res://Assets/Elements/TurqElementProjectile/frame_3.png" id="4_052qt"]
 
-[sub_resource type="Gradient" id="Gradient_l4347"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.49019608, 0.72156864, 0.7294118, 0.85490197)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l4347"]
-gradient = SubResource("Gradient_l4347")
-width = 18
-height = 46
+[sub_resource type="SpriteFrames" id="SpriteFrames_vynle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kem1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4x5l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_052qt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4347"]
 size = Vector2(20, 50)
@@ -21,13 +32,12 @@ collision_layer = 0
 collision_mask = 10
 script = ExtResource("1_l4347")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838082573]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=284611951]
 position = Vector2(8.940697e-07, 0)
-scale = Vector2(2.3333337, 1)
-texture = SubResource("GradientTexture2D_l4347")
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_vynle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105835730]
-visible = false
 shape = SubResource("RectangleShape2D_l4347")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=316324274]

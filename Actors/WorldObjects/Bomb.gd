@@ -7,7 +7,7 @@ extends RigidBody2D
 
 const moveDistance = 200  # pixels
 const moveDuration = 0.20
-var timeLeft : float = 5 # seconds
+var timeLeft : float = 50 # seconds
 var isMovementStarted = false
 var movementDirection = Vector2.ZERO
 var distanceRemaining = 0

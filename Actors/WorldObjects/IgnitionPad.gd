@@ -2,8 +2,9 @@
 class_name IgnitionPad
 extends StaticBody2D
 
-const cooldown = 0.25
 var isActive = true
+
+@onready var sprite = $Sprite2D
 
 @export var direction : Enums.Directions:
 	set(value):
@@ -34,12 +35,12 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		return
 	
 	isActive = false
-	self.modulate.a = 0.5
 	
 	Glogger.debug(self.direction)
 	player.launchByIgnitionPad(self.direction)
 	
-	await get_tree().create_timer(cooldown).timeout
+	sprite.play("launch")
+	await sprite.animation_finished
 	
 	isActive = true
 	self.modulate.a = 1
