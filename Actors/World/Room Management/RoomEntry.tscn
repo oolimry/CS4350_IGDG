@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://br8goyl1vqof4"]
 
-[ext_resource type="Script" uid="uid://bjo2kk1f0utio" path="res://Actors/World/Room Management/RoomEntry2.gd" id="1_o8t8k"]
+[ext_resource type="Script" uid="uid://bjo2kk1f0utio" path="res://Actors/World/Room Management/RoomEntry.gd" id="1_o8t8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(1920, 1080)

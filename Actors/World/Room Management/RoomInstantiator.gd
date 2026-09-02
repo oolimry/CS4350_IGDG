@@ -27,3 +27,6 @@ func instantiateRoomWithSetup(roomDef : RoomDefinition, \
 		c.call(roomDef, instance)
 		
 	return instance
+
+func reparentRoomResident(gameObject : Node, newRoomPos : Vector2i):
+	gameObject.reparent(loadedRooms[newRoomPos], true)

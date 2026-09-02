@@ -1,13 +1,6 @@
 class_name RoomManager
 extends Node
 
-#const DIRECTION = { 
-	#RoomEntry.ORIENTATION.WEST: Vector2.RIGHT,
-	#RoomEntry.ORIENTATION.EAST: Vector2.LEFT,
-	#RoomEntry.ORIENTATION.NORTH: Vector2.DOWN,
-	#RoomEntry.ORIENTATION.SOUTH: Vector2.UP,
-#}
-
 const roomCenterInterval := Vector2(1920, 1080)
 const roomCenterOffset := Vector2(960, 540)
 
@@ -54,6 +47,7 @@ func objectChangeRoom(object : Node, nextRoomPos : Vector2i):
 	
 	var roomResident : RoomResident = object.roomResident
 	roomResident.roomPos = nextRoomPos
+	roomInstantiator.reparentRoomResident(object, nextRoomPos)
 
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \
