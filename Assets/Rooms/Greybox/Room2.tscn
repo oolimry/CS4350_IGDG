@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_nd2ea"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="4_csd8j"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="6_i4epa"]
+[ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_dba7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd2ea"]
 size = Vector2(1920, 1080)
@@ -37,13 +38,13 @@ tile_map_data = PackedByteArray("AAC4/y8AAAAAAAAAAAC5/y8AAAAAAAAAAAC6/y8AAAAAAAA
 tile_set = ExtResource("2_csd8j")
 
 [node name="Respawn Point2" parent="." unique_id=202330827 groups=["Checkpoint"] instance=ExtResource("3_nd2ea")]
-position = Vector2(813, 880)
+position = Vector2(803, 872)
 
 [node name="Respawn Point" parent="." unique_id=1676062597 groups=["Checkpoint"] instance=ExtResource("3_nd2ea")]
-position = Vector2(310, 881)
+position = Vector2(318, 876)
 
 [node name="Respawn Point3" parent="." unique_id=1161918631 groups=["Checkpoint"] instance=ExtResource("3_nd2ea")]
-position = Vector2(1760, 788)
+position = Vector2(1713, 757)
 scale = Vector2(0.8, 1)
 
 [node name="EntryPoint" type="Area2D" parent="." unique_id=3222209 node_paths=PackedStringArray("deeperArea")]
@@ -88,6 +89,11 @@ position = Vector2(1799, 681)
 
 [node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
 position = Vector2(1799, 760)
+
+[node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
+position = Vector2(1374, 924)
+scale = Vector2(1, 1)
+element = 1
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
 [connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

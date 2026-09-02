@@ -64,14 +64,14 @@ position = Vector2(-73, -170.5)
 shape = SubResource("RectangleShape2D_f2b6g")
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(1600, 360)
+position = Vector2(1799, 309)
 script = ExtResource("3_dieu2")
 referenceImage = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=1127707980]
 modulate = Color(0.03529412, 1, 1, 1)
 self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(173, -29)
+position = Vector2(4, 25)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("4_hhu35")
 region_rect = Rect2(49.731598, 0, 248.3114, 379)
@@ -82,7 +82,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=1304312360]
-position = Vector2(197.3125, -37.5)
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_x80dp")
 
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("5_f2b6g")]
