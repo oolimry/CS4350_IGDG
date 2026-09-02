@@ -38,17 +38,17 @@ offset_top = 758.0
 offset_right = 391.0
 offset_bottom = 794.0
 theme_override_font_sizes/font_size = 26
-text = "'WASD' - to move"
+text = "'WASD' or Arrow keys - to move"
 
 [node name="Label2" type="Label" parent="." unique_id=914732823]
-offset_left = 1319.0
-offset_top = 739.0
-offset_right = 1518.0
-offset_bottom = 775.0
+offset_left = 1134.0
+offset_top = 852.0
+offset_right = 1427.0
+offset_bottom = 888.0
 theme_override_font_sizes/font_size = 26
-text = "Press 'K' to swing!"
+text = "Press 'K' or 'X' to swing!"
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_41hdi")]
-position = Vector2(1267, 757)
+position = Vector2(1466, 868)
 scale = Vector2(1, 1)
 element = 2
