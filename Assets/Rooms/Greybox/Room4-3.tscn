@@ -104,7 +104,7 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("7_h45ro")]
-position = Vector2(1663, 869)
+position = Vector2(1520, 853)
 scale = Vector2(1, 1)
 element = 2
 
