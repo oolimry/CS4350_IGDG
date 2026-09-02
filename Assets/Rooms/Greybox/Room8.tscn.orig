@@ -80,6 +80,26 @@ collision_mask = 32
 position = Vector2(0.5, -80)
 shape = SubResource("RectangleShape2D_1qpw2")
 
+<<<<<<< HEAD
+=======
+[node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
+visible = false
+position = Vector2(960, 541)
+monitoring = false
+script = ExtResource("5_j7xk0")
+deeperArea = NodePath("DeeperCollision")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=1621731562]
+shape = SubResource("RectangleShape2D_hrln4")
+
+[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1507783697]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=1929169059]
+position = Vector2(-22.5, 0)
+shape = SubResource("RectangleShape2D_yrg38")
+
+>>>>>>> main
 [node name="Element3" parent="." unique_id=849439216 instance=ExtResource("6_ocrqo")]
 position = Vector2(520, 414)
 scale = Vector2(1, 1)
@@ -126,7 +146,6 @@ rotation = -1.5707964
 direction = 3
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("8_mni84")]
-position = Vector2(960, 560)
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]

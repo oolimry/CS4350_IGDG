@@ -5,20 +5,14 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_bs8gc"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_epsxy"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_e34wy"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_cfbf6"]
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_ffpnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
 size = Vector2(240, 480)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd2ea"]
-size = Vector2(1920, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4epa"]
-size = Vector2(1760, 880)
-
 [node name="Room 9" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
 script = ExtResource("1_vslx1")
-roomEntry = NodePath("EntryPoint")
+roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -56,23 +50,8 @@ collision_mask = 32
 position = Vector2(0, -200)
 shape = SubResource("RectangleShape2D_jct8w")
 
-[node name="EntryPoint" type="Area2D" parent="." unique_id=1833792053 node_paths=PackedStringArray("deeperArea")]
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_ffpnt")]
 visible = false
-position = Vector2(920, 520)
-monitoring = false
-script = ExtResource("6_cfbf6")
-deeperArea = NodePath("DeeperCollision")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=624457818]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_nd2ea")
-
-[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=930752325]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=731765031]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_i4epa")
+position = Vector2(960, 560)
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

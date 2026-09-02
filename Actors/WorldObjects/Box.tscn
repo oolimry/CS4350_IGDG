@@ -14,10 +14,11 @@ gradient = SubResource("Gradient_y23pg")
 width = 80
 height = 80
 
-[node name="Box" type="RigidBody2D" unique_id=1489572943]
+[node name="Box" type="RigidBody2D" unique_id=1489572943 groups=["ContactPushable"]]
 collision_layer = 56
-collision_mask = 0
+collision_mask = 2
 gravity_scale = 5.0
+lock_rotation = true
 script = ExtResource("1_rhccq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]

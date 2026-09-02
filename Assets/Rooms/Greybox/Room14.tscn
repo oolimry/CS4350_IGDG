@@ -4,21 +4,15 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_rnv6b"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_4m8kp"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_2a6tm"]
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_aaxl4"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_vkn43"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_tqwbb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
 size = Vector2(240, 480)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd2ea"]
-size = Vector2(1920, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4epa"]
-size = Vector2(1760, 880)
-
 [node name="Room 14-2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
 script = ExtResource("1_aaxl4")
-roomEntry = NodePath("EntryPoint")
+roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -34,6 +28,10 @@ tile_set = ExtResource("2_rnv6b")
 position = Vector2(1920, 0)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_4m8kp")
+
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_aaxl4")]
+visible = false
+position = Vector2(960, 560)
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
 position = Vector2(200, 520)
@@ -56,23 +54,4 @@ collision_mask = 32
 position = Vector2(0, -200)
 shape = SubResource("RectangleShape2D_jct8w")
 
-[node name="EntryPoint" type="Area2D" parent="." unique_id=1833792053 node_paths=PackedStringArray("deeperArea")]
-visible = false
-position = Vector2(920, 520)
-monitoring = false
-script = ExtResource("6_tqwbb")
-deeperArea = NodePath("DeeperCollision")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=624457818]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_nd2ea")
-
-[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=930752325]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=731765031]
-position = Vector2(40, 20)
-shape = SubResource("RectangleShape2D_i4epa")
-
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
-[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]
