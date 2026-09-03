@@ -5,5 +5,6 @@
 
 [node name="BombSpawner" type="Node2D" unique_id=323569220]
 script = ExtResource("1_x0mlm")
+timeToLive = 10.0
 
 [node name="Bomb" parent="." unique_id=1394946886 instance=ExtResource("2_x0mlm")]

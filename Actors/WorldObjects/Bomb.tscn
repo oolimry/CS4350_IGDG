@@ -168,3 +168,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox" unique_id=1959229470]
 shape = SubResource("CircleShape2D_d6ec5")
+
+[connection signal="body_entered" from="ExplosionHitbox" to="." method="_on_explosion_hitbox_body_entered"]

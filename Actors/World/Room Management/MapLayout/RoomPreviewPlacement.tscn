@@ -4,7 +4,6 @@
 
 [node name="RoomPreviewer" type="Node2D" unique_id=1101232982]
 script = ExtResource("1_yur64")
-roomName = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=116456552]
 

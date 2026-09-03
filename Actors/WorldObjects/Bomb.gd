@@ -33,7 +33,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		Enums.Directions.NONE)
 		
 	if element == Enums.Elements.FIRE:
-		player.launchByIgnitionPad(Enums.getOppositeDirection(slashDirection))
+		player.launchByIgnitionPadOrBomb(Enums.getOppositeDirection(slashDirection))
 		explode()
 		return
 	
@@ -99,3 +99,7 @@ func explode():
 	animationPlayer.play("explode")
 	await animationPlayer.animation_finished
 	bringBacktoSpawn.emit()	
+
+func _on_explosion_hitbox_body_entered(body : Node2D):
+	if body.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
+		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)

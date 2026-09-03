@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="5_ctc4s"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_h45ro"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="8_s1kex"]
-[ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="9_lcf7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
 size = Vector2(555.625, 484)
@@ -115,24 +114,6 @@ position = Vector2(1040, 960)
 position = Vector2(1521, 911)
 rotation = -1.5707964
 direction = 3
-
-[node name="PlaceholderSlashableObject" parent="." unique_id=1659074590 instance=ExtResource("9_lcf7a")]
-position = Vector2(1040, 960)
-
-[node name="PlaceholderSlashableObject2" parent="." unique_id=1837454066 instance=ExtResource("9_lcf7a")]
-position = Vector2(1120, 960)
-
-[node name="PlaceholderSlashableObject3" parent="." unique_id=643618728 instance=ExtResource("9_lcf7a")]
-position = Vector2(1200, 960)
-
-[node name="PlaceholderSlashableObject4" parent="." unique_id=786875378 instance=ExtResource("9_lcf7a")]
-position = Vector2(1200, 1040)
-
-[node name="PlaceholderSlashableObject5" parent="." unique_id=463624288 instance=ExtResource("9_lcf7a")]
-position = Vector2(1120, 1040)
-
-[node name="PlaceholderSlashableObject6" parent="." unique_id=563454924 instance=ExtResource("9_lcf7a")]
-position = Vector2(1040, 1040)
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

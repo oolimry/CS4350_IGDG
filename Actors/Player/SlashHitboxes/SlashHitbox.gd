@@ -51,11 +51,11 @@ func _physics_process(delta):
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
 			
-			if body is Bomb or body is IgnitionPad and element == Enums.Elements.FIRE:
-				didFireHitAnything = true
+			#if body is Bomb or body is IgnitionPad and element == Enums.Elements.FIRE:
+			#	didFireHitAnything = true
 	
-	if didFireHitAnything:
-		player.setElement(Enums.Elements.NONE)
+	#if didFireHitAnything:
+		#player.setElement(Enums.Elements.NONE)
 	
 
 	

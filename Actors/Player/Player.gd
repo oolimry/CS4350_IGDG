@@ -363,17 +363,16 @@ func applyKnockback(normalVec : Vector2) -> void:
 func pogo():
 	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))
 
-func launchByIgnitionPad(direction : Enums.Directions):
+func launchByIgnitionPadOrBomb(direction : Enums.Directions):
 	if direction == Enums.Directions.RIGHT:
 		additionalVelocityInputs.append(Vector2(ignitionPadHorizontalBoost, -ignitionPadVerticalLock))
 	elif direction == Enums.Directions.LEFT:
 		additionalVelocityInputs.append(Vector2(-ignitionPadHorizontalBoost, -ignitionPadVerticalLock))
 	elif direction == Enums.Directions.UP:
 		additionalVelocityInputs.append(Vector2(0, -ignitionPadVerticalBoost))
+	self.setElement(Enums.Elements.NONE)
 
-func setElement(element : Enums.Elements):
-	Glogger.debug("changed element: " +  str(Enums.Elements.keys()[element]))
-	
+func setElement(element : Enums.Elements):	
 	await get_tree().create_timer(0.05).timeout
 	
 	currentElement = element
