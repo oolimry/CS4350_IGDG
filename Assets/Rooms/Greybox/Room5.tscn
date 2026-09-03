@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_bp81x"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_yxgeu"]
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="5_iiv1o"]
+[ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="6_5nk4h"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_yxgeu"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="8_iiv1o"]
 
@@ -85,9 +86,15 @@ element = 2
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_iiv1o")]
 position = Vector2(519, 628)
+timeToLive = 15.0
 
 [node name="BombSpawner2" parent="." unique_id=9458697 instance=ExtResource("8_iiv1o")]
 position = Vector2(1295, 767)
+timeToLive = 15.0
+
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("6_5nk4h")]
+position = Vector2(1100.0001, 20)
+scale = Vector2(3.5, 1.5)
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]

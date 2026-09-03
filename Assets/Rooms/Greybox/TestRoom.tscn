@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_5nod2"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_8kr0g"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_aa45t"]
+[ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="7_5nod2"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="7_cgops"]
 
 [node name="Room 1" type="Node2D" unique_id=1922114953]
@@ -42,3 +43,6 @@ element = 1
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_cgops")]
 position = Vector2(839, 766)
 timeToLive = 10.0
+
+[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("7_5nod2")]
+position = Vector2(841, 473)
