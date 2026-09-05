@@ -33,7 +33,7 @@ position = Vector2(960, 560)
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_aa45t")]
 position = Vector2(1466, 868)
 scale = Vector2(1, 1)
-element = 2
+element = 3
 
 [node name="Element2" parent="." unique_id=2057416418 instance=ExtResource("6_aa45t")]
 position = Vector2(394, 551)

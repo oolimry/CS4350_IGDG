@@ -136,6 +136,54 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("39_06dkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_yln03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_7x427")
+}],
+"loop": 0,
+"name": &"purpleSlashDown",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("43_yt85l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_t35ly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_fhqhq")
+}],
+"loop": 0,
+"name": &"purpleSlashSide",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_3t21u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_q0pck")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_4gkb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_mcu3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fhqhq")
+}],
+"loop": 0,
+"name": &"purpleSlashUp",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("21_fhqhq")
 }, {
 "duration": 1.0,
@@ -290,7 +338,7 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"idle"
+animation = &"purpleSlashSide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
 position = Vector2(-1, 0)
@@ -310,7 +358,7 @@ position = Vector2(45, 1)
 slashDirection = 2
 
 [node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
-position = Vector2(0, 45)
+position = Vector2(0, 29)
 slashDirection = 4
 
 [node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]

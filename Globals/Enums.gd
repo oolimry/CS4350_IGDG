@@ -13,6 +13,7 @@ enum Elements {
 	NONE,
 	WIND,
 	FIRE,
+	PURPLE,
 }
 
 static func getOppositeDirection(direction : Directions):

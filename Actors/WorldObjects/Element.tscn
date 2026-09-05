@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dorols2mcsvh" path="res://Assets/Elements/RedElement/frame_5.png" id="6_ounnh"]
 [ext_resource type="Texture2D" uid="uid://cf87smc28qdkf" path="res://Assets/Elements/RedElement/frame_6.png" id="7_facdm"]
 [ext_resource type="Texture2D" uid="uid://b2jpwqmljmh3y" path="res://Assets/Elements/TurqElement/frame_01.png" id="8_43vpb"]
+[ext_resource type="Texture2D" uid="uid://4krutubr1ms3" path="res://Assets/Elements/PurpleElement/tempPurple.png" id="8_d5pr3"]
 [ext_resource type="Texture2D" uid="uid://cxma3ikgoii0c" path="res://Assets/Elements/TurqElement/frame_02.png" id="9_tkq4w"]
 [ext_resource type="Texture2D" uid="uid://cwnyms4bv3g4x" path="res://Assets/Elements/TurqElement/frame_03.png" id="10_hxrkk"]
 [ext_resource type="Texture2D" uid="uid://djlmih0ut0afg" path="res://Assets/Elements/TurqElement/frame_04.png" id="11_k3n0v"]
@@ -41,6 +42,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"fire",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_d5pr3")
+}],
+"loop": 1,
+"name": &"purple",
 "speed": 12.0
 }, {
 "frames": [{
@@ -83,7 +92,6 @@ animations = [{
 radius = 30.0
 
 [node name="Element" type="StaticBody2D" unique_id=1394946886]
-scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_0jf00")
@@ -91,8 +99,8 @@ script = ExtResource("1_0jf00")
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0jf00")
-animation = &"fire"
-frame_progress = 0.9485958
+animation = &"purple"
+frame_progress = 0.6269236
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 visible = false
