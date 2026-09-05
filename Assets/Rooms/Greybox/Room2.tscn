@@ -11,9 +11,6 @@
 [node name="Room 2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_i4epa")
 
-[node name="Box" parent="." unique_id=1489572943 instance=ExtResource("2_dba7y")]
-position = Vector2(1080, 880)
-
 [node name="Background" type="TileMapLayer" parent="." unique_id=1565480011]
 show_behind_parent = true
 z_index = -10
@@ -72,3 +69,8 @@ position = Vector2(1799, 681)
 
 [node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
 position = Vector2(1799, 760)
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=737356501]
+
+[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
+position = Vector2(1080, 880)

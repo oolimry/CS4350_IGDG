@@ -8,46 +8,43 @@ var roomPos : Vector2i
 
 @export var roomEntry : RoomEntry
 
-var roomResidents : Dictionary[Node2D, ResidentSnapshot]
- 
+@export var roomResidentsHolder : Node2D
+
+var snapshotDict : Dictionary[StringName, Dictionary]
+
 func setup(pos : Vector2i) -> void:
 	roomPos = pos
-	for n in find_children("*", "", true, false):
-
+	for n in get_children():
 		if n is PlayerSpawn:
 			playerSpawnPoint = n
 			hasPlayerSpawn = true
 		elif n is RoomEntry:
 			roomEntry = n
-			roomEntry.roomPos = roomPos	
-		elif n is Node2D and n.is_in_group("Interactable"):
-			roomResidents[n as Node2D] = null
-	capture_snapshot()
-
-func capture_snapshot() -> void:
-	var snapshot := ResidentSnapshot.new()
-	var snapshotArray : Array[ResidentSnapshot]
+			roomEntry.roomPos = roomPos
 	
-	for n in roomResidents.keys():
-		# We assume all interactables have a roomResident object
-		assert(n.roomResident != null)
+	roomResidentsHolder = get_node("RoomResidents")
 	
-		snapshot.localPos = to_local(n.global_position)
+	if roomResidentsHolder == null:
+		return
+	
+	for n in roomResidentsHolder.get_children():
+		var rr : RoomResident = n.roomResident
+		assert(rr != null)
+		if !rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
+			snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
 
-		if n is RigidBody2D:
-			snapshot.linearVelocity = n.linear_velocity
-			snapshot.angularVelocity = n.angular_velocity
-			snapshot.sleeping = n.sleeping
+func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
+	Glogger.debug("Capture!")
+	for n in roomResidentsHolder.get_children():
+		# We assume all nodes under this Holder have a roomResident object
+		assert(n.has_method("generateObjectSnapshot"))
+		snapshotDict.get_or_add(n.roomResident.persistentID, 
+			n.generateObjectSnapshot())
 		
-		roomResidents[n] = snapshot
-		
-	return
+	return snapshotDict
 
-func restore_snapshot(snapshot: ResidentSnapshot) -> void:
-	for n in roomResidents.keys():
-		n.local_position = snapshot.localPos
-		
-		if n is RigidBody2D:
-			n.linear_velocity = snapshot.linearVelocity
-			n.angular_velocity = snapshot.angularVelocity
-			n.sleeping = snapshot.sleeping
+func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
+	Glogger.debug("UnCapture!")
+	for object in roomSnapshot.keys():
+		var objectInstance = objectInstantiator.call(roomSnapshot[object])
+		roomResidentsHolder.add_child(objectInstance)

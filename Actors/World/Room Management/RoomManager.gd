@@ -15,6 +15,7 @@ var nextRoomCoords : Vector2i
 @export var mapLoader : MapLayoutLoader
 @export var roomInstantiator : RoomInstantiator
 @export var roomCamHandler : RoomCameraHandler
+var worldStateOwner : WorldStateOwner
 
 signal getInitialPlayerInstance(p : Player) 
 
@@ -22,9 +23,10 @@ var entryAreas : Array[Area2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	worldStateOwner = WorldStateOwner.new()
 	pass # Replace with function body.
 
-func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
+func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	var transitioningDir : Vector2i = nextRoomPos - currRoom.gridPos
 	
 	var nextRoom = mapLoader.getRoom(nextRoomPos)
@@ -41,7 +43,7 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i):
 			e.isActive = true
 	pass
 
-func objectChangeRoom(object : Node, nextRoomPos : Vector2i):
+func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all objects (except Player) tracked by this system have a RoomResident component 
 	assert(object.roomResident != null)
 	
@@ -75,3 +77,11 @@ func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:
 	if roomInst.hasPlayerSpawn:
 		assert(currRoom == null)
 		currRoom = roomDef
+
+func snapshotCurrRoom():
+	var roomInstance = roomInstantiator.loadedRooms.get(currRoom.gridPos)
+	worldStateOwner.snapshotRoom(roomInstance)
+
+func restoreCurrRoom():
+	var roomInstance = roomInstantiator.loadedRooms.get(currRoom.gridPos)
+	worldStateOwner.restoreSnapshot(roomInstance)
