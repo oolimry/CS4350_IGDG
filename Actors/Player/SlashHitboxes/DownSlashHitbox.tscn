@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://tmdc4gqeq8q8" path="res://Actors/Player/SlashHitboxes/SlashHitbox.gd" id="1_ukk5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukk5s"]
-size = Vector2(62, 111)
+size = Vector2(62, 123)
 
 [sub_resource type="Gradient" id="Gradient_ukk5s"]
 offsets = PackedFloat32Array(0)
@@ -106,8 +106,9 @@ monitorable = false
 script = ExtResource("1_ukk5s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627591827]
-position = Vector2(0, 10.5)
+position = Vector2(0, 16.5)
 shape = SubResource("RectangleShape2D_ukk5s")
+debug_color = Color(0.14771166, 0.62294716, 0.48828995, 0.41960785)
 
 [node name="SpriteSlash" type="Sprite2D" parent="." unique_id=1892136982]
 visible = false
