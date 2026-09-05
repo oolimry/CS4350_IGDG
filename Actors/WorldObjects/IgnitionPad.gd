@@ -37,7 +37,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	isActive = false
 	
 	Glogger.debug(self.direction)
-	player.launchByIgnitionPad(self.direction)
+	player.launchByIgnitionPadOrBomb(self.direction)
 	
 	sprite.play("launch")
 	await sprite.animation_finished

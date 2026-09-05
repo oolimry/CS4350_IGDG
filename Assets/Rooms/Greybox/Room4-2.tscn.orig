@@ -5,8 +5,8 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_tuow0"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_3bfmy"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_gxh8l"]
+[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="4_yxgeu"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="6_dr2ox"]
-[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="8_3bfmy"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_dr6l8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
@@ -14,6 +14,12 @@ size = Vector2(110, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
 size = Vector2(80, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrln4"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrg38"]
+size = Vector2(1760, 971)
 
 [node name="Room 4-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_3bfmy")
@@ -32,13 +38,13 @@ tile_set = ExtResource("1_n5cbs")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=924047944]
 position = Vector2(1920, 0)
-scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("2_tuow0")
-
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1977136411]
-position = Vector2(1920, 0)
+<<<<<<< HEAD
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AACk/y8AAAAAAAAAAACm/y8AAAAAAAAAAACn/y8AAAAAAAAAAACl/y8AAAAAAAAAAACo/zAAAAAAAAAAAwCo/zEAAAAAAAAAAwCo/zIAAAAAAAAAAwCo/zMAAAAAAAAAAwCo/zQAAAAAAAAAAwCo/zUAAAAAAAAAAwDu/xwAAAAAAAAAAwDu/x0AAAAAAAAAAwDu/x4AAAAAAAAAAwDu/ywAAAAAAAAAAwDu/x8AAAAAAAAAAwDu/yQAAAAAAAAAAwDu/yAAAAAAAAAAAwDu/yEAAAAAAAAAAwDu/yIAAAAAAAAAAwDu/yMAAAAAAAAAAwDu/yUAAAAAAAAAAwDu/yYAAAAAAAAAAwDu/ycAAAAAAAAAAwDu/ygAAAAAAAAAAwDu/ykAAAAAAAAAAwDu/yoAAAAAAAAAAwDu/ysAAAAAAAAAAwDu/y0AAAAAAAAAAwDo/xsAAAAAAAAAAADp/xsAAAAAAAAAAADq/xsAAAAAAAAAAADr/xsAAAAAAAAAAADs/xsAAAAAAAAAAADt/xsAAAAAAAAAAADn/xwAAAAAAAAAAgDn/x0AAAAAAAAAAgDn/x4AAAAAAAAAAgDn/x8AAAAAAAAAAgDn/yAAAAAAAAAAAgDn/yEAAAAAAAAAAgDn/yIAAAAAAAAAAgDn/yMAAAAAAAAAAgDn/yQAAAAAAAAAAgDn/yUAAAAAAAAAAgDn/yYAAAAAAAAAAgDn/ycAAAAAAAAAAgDn/ygAAAAAAAAAAgDn/ykAAAAAAAAAAgDn/yoAAAAAAAAAAgDn/ysAAAAAAAAAAgDn/ywAAAAAAAAAAgDn/y0AAAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AACk/y8AAAAAAAAAAACl/y8AAAAAAAAAAACm/y8AAAAAAAAAAACn/y8AAAAAAAAAAACo/zAAAAAAAAAAAwCo/zEAAAAAAAAAAwCo/zIAAAAAAAAAAwCo/zMAAAAAAAAAAwCo/zQAAAAAAAAAAwCo/zUAAAAAAAAAAwCp/zUAAAAAAAAAAADu/xwAAAAAAAAAAwDu/x0AAAAAAAAAAwDu/x4AAAAAAAAAAwDu/x8AAAAAAAAAAwDu/yAAAAAAAAAAAwDu/yEAAAAAAAAAAwDu/yIAAAAAAAAAAwDu/yMAAAAAAAAAAwDu/yQAAAAAAAAAAwDu/yUAAAAAAAAAAwDu/yYAAAAAAAAAAwDu/ycAAAAAAAAAAwDu/ygAAAAAAAAAAwDu/ykAAAAAAAAAAwDu/yoAAAAAAAAAAwDu/ysAAAAAAAAAAwDu/ywAAAAAAAAAAwDu/y0AAAAAAAAAAwD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgA=")
+=======
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAAgD+/wEAAAAAAAAAAgD3/w8AAAAAAAAAAwD3/xAAAAAAAAAAAwD3/xEAAAAAAAAAAwD3/xIAAAAAAAAAAwD3/xMAAAAAAAAAAwD3/xQAAAAAAAAAAwD3/xUAAAAAAAAAAwD3/xYAAAAAAAAAAwDS/xcAAAAAAAAAAADT/xcAAAAAAAAAAADU/xgAAAAAAAAAAwDU/xkAAAAAAAAAAwDU/xoAAAAAAAAAAwD3/w4AAAAAAAAAAwD2/w0AAAAAAAAAAAD1/w0AAAAAAAAAAAD0/w0AAAAAAAAAAADz/w4AAAAAAAAAAgDz/w8AAAAAAAAAAgDz/xAAAAAAAAAAAgDz/xEAAAAAAAAAAgDz/xIAAAAAAAAAAgDz/xMAAAAAAAAAAgDz/xQAAAAAAAAAAgDz/xUAAAAAAAAAAgDz/xYAAAAAAAAAAgA=")
+>>>>>>> main
 tile_set = ExtResource("2_tuow0")
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
@@ -85,6 +91,23 @@ collision_mask = 32
 position = Vector2(-320, -7.5)
 shape = SubResource("RectangleShape2D_3bfmy")
 
+[node name="EntryPoint" type="Area2D" parent="." unique_id=1442979973 node_paths=PackedStringArray("deeperArea")]
+visible = false
+position = Vector2(960, 541)
+monitoring = false
+script = ExtResource("4_yxgeu")
+deeperArea = NodePath("DeeperCollision")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint" unique_id=1621731562]
+shape = SubResource("RectangleShape2D_hrln4")
+
+[node name="DeeperCollision" type="Area2D" parent="EntryPoint" unique_id=1507783697]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryPoint/DeeperCollision" unique_id=1929169059]
+position = Vector2(0, -45.5)
+shape = SubResource("RectangleShape2D_yrg38")
+
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("6_dr2ox")]
 position = Vector2(920, 628)
 rotation = -1.5707964
@@ -105,9 +128,7 @@ position = Vector2(145, 456)
 scale = Vector2(1, 1)
 element = 1
 
-[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("8_3bfmy")]
-visible = false
-position = Vector2(960, 560)
-
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
+[connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

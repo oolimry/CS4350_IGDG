@@ -4,6 +4,8 @@ extends RigidBody2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D 
 @onready var sprite : AnimatedSprite2D = $Sprite
 @onready var timeLabel :Label = $Sprite/Label
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var explosionHitbox : Area2D = $ExplosionHitbox
 
 const moveDistance = 200  # pixels
 const moveDuration = 0.20
@@ -15,10 +17,15 @@ var distanceRemaining = 0
 const cooldown = 0.40
 var canBeMoved = true
 
+var hasExploded = false
+
 signal bringBacktoSpawn
 var tween : Tween
 
-func onSlash(slashParams : Dictionary = {}, player : Player = null):	
+func onSlash(slashParams : Dictionary = {}, player : Player = null):
+	if hasExploded:
+		return
+	
 	var element = slashParams.get(ScriptConstants.SLASH_ELEMENT_PARAM_NAME, \
 		Enums.Elements.NONE)
 	
@@ -26,7 +33,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		Enums.Directions.NONE)
 		
 	if element == Enums.Elements.FIRE:
-		player.launchByIgnitionPad(Enums.getOppositeDirection(slashDirection))
+		player.launchByIgnitionPadOrBomb(Enums.getOppositeDirection(slashDirection))
 		explode()
 		return
 	
@@ -77,9 +84,22 @@ func _physics_process(delta):
 	timeLabel.text = str(snappedf(timeLeft, 0.1))
 	
 func reset():
+	animationPlayer.play("RESET")
 	movementDirection = Vector2.ZERO
 	isMovementStarted = false
 	timeLabel.visible = false
+	hasExploded = false
+	explosionHitbox.monitorable = false
+	explosionHitbox.monitoring = false
 
 func explode():
+	explosionHitbox.monitorable = true
+	explosionHitbox.monitoring = true
+	hasExploded = true
+	animationPlayer.play("explode")
+	await animationPlayer.animation_finished
 	bringBacktoSpawn.emit()	
+
+func _on_explosion_hitbox_body_entered(body : Node2D):
+	if body.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
+		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)

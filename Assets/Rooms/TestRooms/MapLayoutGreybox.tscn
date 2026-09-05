@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://hu0kjwc6yj6a" path="res://Actors/World/Room Management/MapLayout/RoomPreviewPlacement.tscn" id="1_e6tte"]
 [ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Room1.tres" id="2_e6tte"]
 [ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Room4-3.tres" id="2_nu8rl"]
+[ext_resource type="Resource" uid="uid://b101163oosxrk" path="res://Assets/Rooms/Greybox/TestRoom.tres" id="2_wctwc"]
 [ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Room2.tres" id="3_e6tte"]
 [ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Room3.tres" id="4_e6tte"]
 [ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Room4.tres" id="5_ydpcq"]
@@ -23,7 +24,11 @@
 
 [node name="MapLayout" type="Node2D" unique_id=1475819905]
 
-[node name="RoomPreviewer6" parent="." unique_id=1101232982 instance=ExtResource("1_e6tte")]
+[node name="TestRoomPreviewer" parent="." unique_id=1101232982 instance=ExtResource("1_e6tte")]
+position = Vector2(-512, 0)
+roomDefinition = ExtResource("2_wctwc")
+
+[node name="RoomPreviewer6" parent="." unique_id=1672820166 instance=ExtResource("1_e6tte")]
 position = Vector2(0, 864)
 roomDefinition = ExtResource("2_nu8rl")
 
