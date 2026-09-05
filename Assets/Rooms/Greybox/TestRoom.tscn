@@ -42,7 +42,6 @@ element = 1
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_cgops")]
 position = Vector2(839, 766)
-timeToLive = 10.0
 
 [node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("7_5nod2")]
 position = Vector2(841, 473)
