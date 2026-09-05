@@ -14,7 +14,7 @@ func generateFromDefinition(definition: RoomDefinition, outputPath: String,
 	if sourceScene == null:
 		return ERR_FILE_NOT_FOUND
 
-	return await generate_from_scene(
+	return await generateFromScene(
 		sourceScene,
 		definition.previewBounds,
 		definition.previewImageSize,
@@ -22,7 +22,7 @@ func generateFromDefinition(definition: RoomDefinition, outputPath: String,
 		pluginContext
 	)
 
-func generate_from_scene(sourceScene: PackedScene, bounds: Rect2, imageSize: Vector2i,
+func generateFromScene(sourceScene: PackedScene, bounds: Rect2, imageSize: Vector2i,
 	outputPath: String, pluginContext: Node) -> Error:
 		
 	if sourceScene == null or imageSize.x <= 0 or imageSize.y <= 0 or pluginContext == null:

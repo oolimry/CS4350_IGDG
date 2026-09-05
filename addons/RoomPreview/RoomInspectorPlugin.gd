@@ -29,17 +29,17 @@ func _parse_begin(object: Object) -> void:
 		return
 
 	var button := Button.new()
-	button.text = "📸 Generate / Update Room Preview"
+	button.text = "📸 Process Room!"
 	button.custom_minimum_size.y = 36
 	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	button.pressed.connect(func():
 		if onGenerateRequested.is_valid():
 			button.disabled = true
-			button.text = "Generating..."
+			button.text = "Processing..."
 			await onGenerateRequested.call(definition)
 			button.disabled = false
-			button.text = "📸 Generate / Update Room Preview"
+			button.text = "📸 Process Room!"
 	)
 
 	add_custom_control(button)

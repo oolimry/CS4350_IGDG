@@ -30,6 +30,9 @@ const ROOM_HEIGHT := 9
 		
 static var sceneRoomSize := Vector2i(1920, 1080)
 
+@export_flags("Left", "Right", "Top", "Bottom")
+var openSides: int = 0
+
 enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 
 ## Group sub-rooms into one big room by a "tag". [br]
@@ -43,8 +46,6 @@ enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 ## Preview of Room for the RoomLoader
 @export var previewTexture : Texture2D
 
-static var previewBounds := Rect2(0, 0, 1920, 1080) :
-	get():
-		return previewBounds
+static var previewBounds := Rect2(0, 0, 1920, 1080)
 		
 static var previewImageSize := Vector2i(512, 288)
