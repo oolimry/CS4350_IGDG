@@ -38,6 +38,7 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 			roomDef.gridPos = key
 	
 		if roomDef.hasPlayer:
+			push_error("We have multiple Players! :O")
 			assert(playerSpawnRoom == null)
 			playerSpawnRoom = roomDef
 	
@@ -57,7 +58,7 @@ func forEachRoomDef(c : Callable) -> void:
 	for r in mapLayout.values():
 		c.call(r)
 		
-func forEachRoomDefBFS(c : Callable, pos: Vector2i, depth := 1) -> void:
+func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1) -> void:
 	var roomDef : RoomDefinition = getRoom(pos)
 	if roomDef == null:
 		return;
@@ -69,13 +70,13 @@ func forEachRoomDefBFS(c : Callable, pos: Vector2i, depth := 1) -> void:
 	var newDepth = depth - 1
 	
 	if roomDef.openSides & RoomDefinition.Side.LEFT:
-		forEachRoomDefBFS(c, pos - Vector2i(1,0), newDepth)
+		forEachRoomDefSurrounding(c, pos - Vector2i(1,0), newDepth)
 		
 	if roomDef.openSides & RoomDefinition.Side.RIGHT:
-		forEachRoomDefBFS(c, pos + Vector2i(1,0), newDepth)
+		forEachRoomDefSurrounding(c, pos + Vector2i(1,0), newDepth)
 		
 	if roomDef.openSides & RoomDefinition.Side.TOP:
-		forEachRoomDefBFS(c, pos - Vector2i(0,1), newDepth)
+		forEachRoomDefSurrounding(c, pos - Vector2i(0,1), newDepth)
 
 	if roomDef.openSides & RoomDefinition.Side.BOTTOM:
-		forEachRoomDefBFS(c, pos + Vector2i(0,1), newDepth)
+		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth)

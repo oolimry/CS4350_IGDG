@@ -13,8 +13,9 @@ size = Vector2(240, 480)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csd8j"]
 size = Vector2(760, 761)
 
-[node name="Room 3" type="Node2D" unique_id=1922114953]
+[node name="Room 3" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_a3qlj")
+roomResidentsHolder = NodePath("RoomResidents")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -34,10 +35,9 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACw/y0AAAAAAAAAAACx/y0AAAAAAAAAAACy/y0AAAAAAAAAAACz/y0AAAAAAAAAAAC0/y0AAAAAAAAAAAC1/y0AAAAAAAAAAAC2/y0AAAAAAAAAAAC3/y0AAAAAAAAAAAC4/y0AAAAAAAAAAAC5/y0AAAAAAAAAAAC6/y0AAAAAAAAAAAC7/y0AAAAAAAAAAAC8/y0AAAAAAAAAAAC9/y0AAAAAAAAAAAC+/y0AAAAAAAAAAAC//y0AAAAAAAAAAADA/y0AAAAAAAAAAADB/y0AAAAAAAAAAADC/y0AAAAAAAAAAADD/y0AAAAAAAAAAADE/y0AAAAAAAAAAADF/y0AAAAAAAAAAADG/y0AAAAAAAAAAADH/y0AAAAAAAAAAADI/y0AAAAAAAAAAADJ/y0AAAAAAAAAAADK/y0AAAAAAAAAAADL/y0AAAAAAAAAAADM/y0AAAAAAAAAAADN/y0AAAAAAAAAAADO/y0AAAAAAAAAAADP/y0AAAAAAAAAAADQ/y0AAAAAAAAAAADR/y0AAAAAAAAAAADS/y0AAAAAAAAAAADT/y0AAAAAAAAAAADU/y0AAAAAAAAAAADV/y0AAAAAAAAAAADw/wgAAAAAAAAAAQDx/wgAAAAAAAAAAQDy/wgAAAAAAAAAAQDz/wgAAAAAAAAAAQD0/wgAAAAAAAAAAQD1/wgAAAAAAAAAAQD2/wgAAAAAAAAAAQD3/wgAAAAAAAAAAQD4/wgAAAAAAAAAAQD5/wgAAAAAAAAAAQD6/wgAAAAAAAAAAQD7/wgAAAAAAAAAAQA=")
 tile_set = ExtResource("2_4tq25")
 
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
+[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 groups=["Checkpoint"]]
 position = Vector2(200, 520)
 script = ExtResource("3_a3qlj")
-referenceImage = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
 modulate = Color(0.03529412, 1, 1, 1)
@@ -55,10 +55,9 @@ collision_mask = 32
 position = Vector2(0, -200)
 shape = SubResource("RectangleShape2D_jct8w")
 
-[node name="Respawn Point" type="Node2D" parent="." unique_id=1676062597 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
+[node name="Respawn Point" type="Node2D" parent="." unique_id=1676062597 groups=["Checkpoint"]]
 position = Vector2(1320, 880)
 script = ExtResource("3_a3qlj")
-referenceImage = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=183123346]
 modulate = Color(0.03529412, 1, 1, 1)
@@ -79,6 +78,8 @@ shape = SubResource("RectangleShape2D_csd8j")
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_a3qlj")]
 visible = false
 position = Vector2(960, 560)
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=2117107831]
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

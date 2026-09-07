@@ -10,9 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
 size = Vector2(240, 480)
 
-[node name="Room 11" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+[node name="Room 11" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_srrmc")
-roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -33,10 +32,9 @@ tile_set = ExtResource("3_tj26a")
 visible = false
 position = Vector2(960, 560)
 
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
+[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 groups=["Checkpoint"]]
 position = Vector2(200, 520)
 script = ExtResource("4_qgnw2")
-referenceImage = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
 modulate = Color(0.03529412, 1, 1, 1)

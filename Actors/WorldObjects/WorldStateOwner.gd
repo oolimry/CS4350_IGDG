@@ -12,7 +12,11 @@ func snapshotRoom(ri : RoomInstance) -> void:
 	snapshots[ri.roomPos] = ri.generateRoomSnapshot()
 
 func restoreSnapshot(ri : RoomInstance) -> void:
-	ri.restoreSnapshot(instantiateResident, snapshots[ri.roomPos])
+	var roomPos := ri.roomPos
+	if !snapshots.has(roomPos):
+		return
+		
+	ri.restoreSnapshot(instantiateResident, snapshots[roomPos])
 
 func instantiateResident(objectSnapshot : Dictionary) -> Node:
 	return roomResidentConstructors[objectSnapshot["objectName"]]\

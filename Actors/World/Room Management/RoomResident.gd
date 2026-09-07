@@ -1,19 +1,21 @@
 class_name RoomResident
 extends RefCounted
 
-@export var roomPos : Vector2i
+var roomPos : Vector2i
 
 ## Local Coords for the object in it's Original Room
-@export var oriCoords : Vector2
-@export var oriRoomPos : Vector2i
+var oriCoords : Vector2
+var oriRoomPos : Vector2i
 
-@export var persistentID : StringName
-@export var objectName : StringName
+var persistentID : StringName
+var objectName : StringName
 
+var isSafeToFree := true
+signal isSafeToFreeUpdate(persistentID : StringName, safety: bool)
 
 ## Should the object always reset back to its initial state?
-@export var shouldAlwaysReset : bool
-
+var shouldAlwaysReset := false
+	
 func toDict() -> Dictionary:
 	return {
 		"roomPos_x": roomPos.x,

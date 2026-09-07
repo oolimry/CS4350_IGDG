@@ -9,6 +9,10 @@ var roomResident : RoomResident
 func _init() -> void:
 	add_to_group("ContactPushable")
 	roomResident = RoomResident.new()
+	
+	roomResident.oriCoords = position
+	roomResident.persistentID = "asdsad"
+	roomResident.objectName = "Box"
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

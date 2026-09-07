@@ -10,39 +10,34 @@ var currRoomPos : Vector2i
 
 @export var mapLoader : MapLayoutLoader
 @export var roomInstantiator : RoomInstantiator
+var roomLoader : RoomLoader
+
 @export var roomCamHandler : RoomCameraHandler
 var worldStateOwner : WorldStateOwner
 
 signal getInitialPlayerInstance(p : Player) 
 
-var entryAreas : Array[Area2D]
-
-var roomSetupCallables : Array[Callable]
+#var entryAreas : Array[Area2D]
 
 ################################## Setup ######################################
 
 func _ready() -> void:
-	worldStateOwner = WorldStateOwner.new()
+	
 	pass # Replace with function body.
 
 func generateRooms(cArray : Array[Callable]) -> void:
+	worldStateOwner = WorldStateOwner.new()
 	currRoomPos = mapLoader.playerSpawnRoom.gridPos
 	
 	cArray.append(setupRoom)
+	roomInstantiator.setup(cArray, calcRoomCenterWorldCoords, worldStateOwner)
 	
-	roomSetupCallables = cArray
-	mapLoader.forEachRoomDefBFS(func(roomDef : RoomDefinition): 
-		roomInstantiator.instantiateRoom(roomDef, \
-		calcRoomCenterWorldCoords, roomSetupCallables), currRoomPos ,1)
-	
-	#mapLoader.forEachRoomDef(func(roomDef : RoomDefinition): 
-		#roomInstantiator.instantiateRoomWithSetup(roomDef, \
-		#calcRoomCenterWorldCoords, cArray)
-	#)
+	roomLoader = RoomLoaderNeighbour.new(mapLoader, roomInstantiator)
+	roomLoader.loadRooms(currRoomPos)
 	
 func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:	
 	if roomInst.roomEntry != null:
-		entryAreas.append(roomInst.roomEntry)
+		#entryAreas.append(roomInst.roomEntry)
 		roomInst.roomEntry.connect("playerChangeRoom", playerChangeRoom)
 		roomInst.roomEntry.connect("objectChangeRoom", objectChangeRoom)
 	else:
@@ -71,16 +66,14 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		transitioningDir, calcRoomCenterWorldCoords)
 		
 	currRoomPos = nextRoomPos
+	#
+	#roomEntry.isActive = false
+	#for e in entryAreas:
+		#if e != roomEntry:
+			#e.isActive = true
 	
-	roomEntry.isActive = false
-	for e in entryAreas:
-		if e != roomEntry:
-			e.isActive = true
+	roomLoader.handleRoomLoading(currRoomPos)
 	
-	mapLoader.forEachRoomDefBFS(func(roomDef : RoomDefinition): 
-		roomInstantiator.instantiateRoom(roomDef, \
-		calcRoomCenterWorldCoords, roomSetupCallables), currRoomPos, 1)
-
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all objects (except Player) tracked by this system have a RoomResident component 
 	assert(object.roomResident != null)
