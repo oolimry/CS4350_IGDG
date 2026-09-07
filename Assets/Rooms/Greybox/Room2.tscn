@@ -72,23 +72,9 @@ offset_bottom = 815.0
 theme_override_font_sizes/font_size = 26
 text = "'Spacebar' - to jump"
 
-[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 760)
-
-[node name="PlaceholderSlashableObject2" parent="." unique_id=900610753 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 680)
-
-[node name="PlaceholderSlashableObject3" parent="." unique_id=1724990231 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 600)
-
-[node name="PlaceholderSlashableObject4" parent="." unique_id=1704994692 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 600)
-
-[node name="PlaceholderSlashableObject5" parent="." unique_id=1909729387 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 681)
-
 [node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 760)
+position = Vector2(1841, 660)
+scale = Vector2(2, 3.5)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)
