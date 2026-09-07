@@ -11,11 +11,14 @@ var active = true
 
 @export var element : Enums.Elements:
 	set(value):
-		element = value
-		if value == Enums.Elements.WIND:
-			$Sprite.play("wind")
-		elif value == Enums.Elements.FIRE:
-			$Sprite.play("fire")
+		if is_instance_valid($Sprite):
+			element = value
+			if value == Enums.Elements.WIND:
+				$Sprite.play("wind")
+			elif value == Enums.Elements.FIRE:
+				$Sprite.play("fire")
+			elif value == Enums.Elements.PURPLE:
+				$Sprite.play("purple")
 
 func _ready():
 	timer.timeout.connect(respawnElement)
