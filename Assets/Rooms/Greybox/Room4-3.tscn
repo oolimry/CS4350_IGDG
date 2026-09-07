@@ -14,7 +14,7 @@
 size = Vector2(555.625, 484)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcf7a"]
-size = Vector2(306, 465)
+size = Vector2(306, 559)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
 size = Vector2(530, 276)
@@ -87,7 +87,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point3/Area2D" unique_id=138156743]
-position = Vector2(82, 193.5)
+position = Vector2(82, 240.5)
 shape = SubResource("RectangleShape2D_lcf7a")
 
 [node name="Respawn Point" type="Node2D" parent="." unique_id=1161918631 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
@@ -139,7 +139,7 @@ direction = 3
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("9_lcf7a")]
 position = Vector2(1195, 66)
-timeToLive = 60.0
+timeToLive = 150.0
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
