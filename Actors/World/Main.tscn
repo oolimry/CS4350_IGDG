@@ -66,6 +66,7 @@ Vector2i(3, 1): ExtResource("22_mhd5c"),
 Vector2i(4, 0): ExtResource("24_yhifw"),
 Vector2i(4, 1): ExtResource("23_iltqb")
 })
+playerSpawnRoom = ExtResource("6_2e1df")
 
 [node name="RoomInstantiator" type="Node2D" parent="RoomManager" unique_id=2016719982]
 script = ExtResource("7_cx0xc")

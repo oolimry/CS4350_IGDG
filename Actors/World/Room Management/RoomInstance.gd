@@ -24,14 +24,20 @@ func setup(pos : Vector2i) -> void:
 	
 	roomResidentsHolder = get_node("RoomResidents")
 	
+	# If this room works with roomResidents
 	if roomResidentsHolder == null:
 		return
 	
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
 		assert(rr != null)
+		
+		# Objects that always reset to their original state should return
+		# back to this original room at their original pos & state.
 		if !rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
 			snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
+
+########################## Snapshot Related ##################################
 
 func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 	Glogger.debug("Capture!")
@@ -44,6 +50,8 @@ func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 	return snapshotDict
 
 func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
+	
+
 	Glogger.debug("UnCapture!")
 	for object in roomSnapshot.keys():
 		var objectInstance = objectInstantiator.call(roomSnapshot[object])

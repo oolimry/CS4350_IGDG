@@ -7,7 +7,6 @@
 [resource]
 script = ExtResource("2_5xf11")
 roomName = "Room10"
-cameraLimits = null
 gridPos = Vector2i(-3, 4)
 gamePlayScene = ExtResource("1_7547g")
 openSides = 4

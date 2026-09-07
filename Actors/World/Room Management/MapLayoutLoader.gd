@@ -5,6 +5,9 @@ extends Node
 @export var mapLayoutScene : PackedScene
 @export var mapLayout : Dictionary[Vector2i, RoomDefinition]
 
+@export var playerSpawnRoom : RoomDefinition
+
+
 # The first argument is the button label, the second is an optional icon name
 @export_tool_button("🗺️ Generate / Map Grid Layout", "Callable")
 var generate_action = _on_generate_pressed
@@ -34,15 +37,45 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 			roomLayout[key] = roomDef
 			roomDef.gridPos = key
 	
+		if roomDef.hasPlayer:
+			assert(playerSpawnRoom == null)
+			playerSpawnRoom = roomDef
+	
 	instance.queue_free()
+	assert(playerSpawnRoom != null)
 	return roomLayout
 
 func getRoom(pos: Vector2i) -> RoomDefinition:
 	var result : RoomDefinition = mapLayout.get(pos)
-	assert(result != null)
+	if result == null:
+		push_error("Room does not exist!")
+		push_error(pos)
 	
 	return result
 	
 func forEachRoomDef(c : Callable) -> void:
 	for r in mapLayout.values():
 		c.call(r)
+		
+func forEachRoomDefBFS(c : Callable, pos: Vector2i, depth := 1) -> void:
+	var roomDef : RoomDefinition = getRoom(pos)
+	if roomDef == null:
+		return;
+	
+	c.call(roomDef)
+	
+	if depth == 0:
+		return
+	var newDepth = depth - 1
+	
+	if roomDef.openSides & RoomDefinition.Side.LEFT:
+		forEachRoomDefBFS(c, pos - Vector2i(1,0), newDepth)
+		
+	if roomDef.openSides & RoomDefinition.Side.RIGHT:
+		forEachRoomDefBFS(c, pos + Vector2i(1,0), newDepth)
+		
+	if roomDef.openSides & RoomDefinition.Side.TOP:
+		forEachRoomDefBFS(c, pos - Vector2i(0,1), newDepth)
+
+	if roomDef.openSides & RoomDefinition.Side.BOTTOM:
+		forEachRoomDefBFS(c, pos + Vector2i(0,1), newDepth)

@@ -8,9 +8,6 @@
 script = ExtResource("2_82dft")
 roomName = "Room14"
 doesCameraFollow = true
-cameraLimitLeft = true
-cameraLimitUp = true
-cameraLimitDown = true
 gridPos = Vector2i(3, 1)
 gamePlayScene = ExtResource("1_tnhmu")
 roomGroup = 0

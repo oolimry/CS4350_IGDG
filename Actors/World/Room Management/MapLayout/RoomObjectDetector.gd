@@ -1,5 +1,5 @@
 @tool
-class_name RoomOpenSideDetector
+class_name RoomObjectDetector
 extends RefCounted
 
 ## Reference implementation for deriving which room boundaries contain an empty

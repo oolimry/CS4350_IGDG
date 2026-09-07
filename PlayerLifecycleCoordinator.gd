@@ -22,6 +22,6 @@ func onPlayerDeath(p : Player):
 	reconnectPlayer.call(newPlayer)
 
 func spawnPlayer(r : RoomDefinition, roomInst : RoomInstance) -> void:
-	if roomInst.hasPlayerSpawn:
+	if r.hasPlayer:
 		var newPlayer : Player = Player.create(roomInst.playerSpawnPoint.global_position)
 		reconnectPlayer.call(newPlayer)

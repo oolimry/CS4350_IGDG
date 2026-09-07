@@ -6,6 +6,10 @@ extends Node2D
 @export var interactableGroupId := "Interactable" 
 
 func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable) -> RoomInstance:
+	
+	if loadedRooms.has(roomDef.gridPos):
+		return loadedRooms.get(roomDef.gridPos)
+	
 	var instance = roomDef.gamePlayScene.instantiate() as RoomInstance
 	instance.setup(roomDef.gridPos)
 	instance.global_position = calcWorldPos.call(roomDef.gridPos)
@@ -14,15 +18,15 @@ func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable) -> RoomI
 		if n.is_in_group(interactableGroupId) and n.has_method("getRoomPos"):
 			n.roomPos = roomDef.gridPos
 	
-	add_child(instance)
+	add_child.call_deferred(instance)
 	loadedRooms[roomDef.gridPos] = instance
 	
 	return instance
 
 func instantiateRoomWithSetup(roomDef : RoomDefinition, \
 	calcWorldPos : Callable, setupCallables : Array[Callable]) -> RoomInstance:
+		
 	var instance = instantiateRoom(roomDef, calcWorldPos) as RoomInstance
-	
 	for c in setupCallables:
 		c.call(roomDef, instance)
 		

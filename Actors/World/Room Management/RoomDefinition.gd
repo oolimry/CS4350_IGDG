@@ -20,6 +20,8 @@ const ROOM_HEIGHT := 9
 
 @export var roomName : String
 
+@export var hasPlayer := false
+
 ## Whether the camera should follow the player after they enter the room
 @export var doesCameraFollow : bool
 

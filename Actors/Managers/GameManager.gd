@@ -18,9 +18,7 @@ var isSetup := false
 func _ready() -> void:
 	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
 	roomManager.generateRooms([playerCoordinator.spawnPlayer])
-	#roomManager.getInitialPlayerInstance.connect(setup)
-	
-	
+		
 	## TODO: Throw this into DeathManager
 	for n in get_tree().get_nodes_in_group("Checkpoint"):
 		n.connect("checkPointReached", playerCoordinator.registerCheckPoint)
