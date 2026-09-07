@@ -57,10 +57,9 @@ visible = false
 position = Vector2(20, 0)
 shape = SubResource("RectangleShape2D_yrg38")
 
-[node name="Element" parent="." unique_id=1394946886 instance=ExtResource("5_hrln4")]
-position = Vector2(609, 272)
-scale = Vector2(1, 1)
-element = 1
+[node name="Element2" parent="." unique_id=1278720004 instance=ExtResource("5_hrln4")]
+position = Vector2(843, 959)
+element = 3
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]
 [connection signal="body_exited" from="EntryPoint" to="EntryPoint" method="_on_body_exited"]

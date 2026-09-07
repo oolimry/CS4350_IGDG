@@ -91,8 +91,7 @@ position = Vector2(1799, 681)
 position = Vector2(1799, 760)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
-position = Vector2(1374, 924)
-scale = Vector2(1, 1)
+position = Vector2(1608, 757)
 element = 1
 
 [connection signal="body_entered" from="EntryPoint" to="EntryPoint" method="_on_body_entered"]

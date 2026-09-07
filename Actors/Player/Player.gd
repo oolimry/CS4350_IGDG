@@ -92,6 +92,17 @@ var currentElement : Enums.Elements = Enums.Elements.NONE
 const windHorizontalBoost = 5000
 const windDownSlashBoost = 1000
 
+## purple movement related
+const purupleHorizontalSpeed = 4000
+const purpleVerticalSpeed = 2000
+var purpleDashDirection : Enums.Directions = Enums.Directions.NONE
+var timeSincePurpleSlashing = 0.0
+const purpleWindUpDuration = 0.25
+const purpleWindUpDistance = 70
+var purpleWindUpTween : Tween
+var originalSpritePosition : Vector2
+var isPurpleDashing = false
+
 ## pogo related
 const pogoVerticalBoost = 500
 
@@ -133,6 +144,10 @@ func _physics_process(delta: float) -> void:
 	_physics_process_updateVisuals()
 	
 func _physics_process_playerMovement(delta):
+	if isPurpleDashing:
+		physics_process_playerMovement_purple(delta)
+		return 
+		
 	timeSinceWallJump += delta
 	
 	var movementDirection = Enums.Directions.NONE
@@ -255,6 +270,36 @@ func _physics_process_playerMovement(delta):
 	else:
 		peakHeight = min(peakHeight, self.position.y)
 
+func physics_process_playerMovement_purple(delta):
+	timeSincePurpleSlashing += delta
+	if timeSincePurpleSlashing < purpleWindUpDuration:
+		if not is_instance_valid(purpleWindUpTween) or not purpleWindUpTween.is_running():
+			originalSpritePosition = sprite.position
+			var windUpVector = originalSpritePosition - \
+				Enums.getVectorOfDirection(purpleDashDirection) * purpleWindUpDistance
+			purpleWindUpTween = get_tree().create_tween()
+			purpleWindUpTween.tween_property(sprite, "position", windUpVector, purpleWindUpDuration)\
+				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		return
+	else:
+		sprite.position = originalSpritePosition
+	
+	if purpleDashDirection == Enums.Directions.LEFT:
+		velocity = Vector2(-purupleHorizontalSpeed, 0)
+	elif purpleDashDirection == Enums.Directions.RIGHT:
+		velocity = Vector2(purupleHorizontalSpeed, 0)
+	elif purpleDashDirection == Enums.Directions.DOWN:
+		velocity = Vector2(0, purpleVerticalSpeed)
+	elif purpleDashDirection == Enums.Directions.UP:
+		velocity = Vector2(0, -purpleVerticalSpeed)
+	
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	
+	if is_on_ceiling() or is_on_floor() or is_on_wall():
+		isPurpleDashing = false	
+
 func _physics_process_slash(delta):
 	timeSinceSlash += delta
 	
@@ -284,6 +329,29 @@ func _physics_process_slash(delta):
 			slashDirection = Enums.Directions.LEFT
 		else:
 			slashDirection = Enums.Directions.RIGHT
+	
+	
+	if currentElement == Enums.Elements.PURPLE:
+		purpleDashDirection = slashDirection
+		isPurpleDashing = true
+		timeSincePurpleSlashing = 0.0
+		
+		if slashDirection == Enums.Directions.DOWN:
+			downSlashHitbox.appear(self)
+			sprite.play("purpleSlashDown")
+		elif slashDirection == Enums.Directions.UP:
+			upSlashHitbox.appear(self)
+			sprite.play("purpleSlashUp")
+		elif slashDirection == Enums.Directions.RIGHT:
+			rightSlashHitbox.appear(self)
+			sprite.play("purpleSlashSide")
+		elif slashDirection == Enums.Directions.LEFT:
+			leftSlashHitbox.appear(self)
+			sprite.play("purpleSlashSide")
+		
+		currentElement = Enums.Elements.NONE
+		return
+		
 	
 	if slashDirection == Enums.Directions.DOWN:
 		downSlashHitbox.appear(self)
@@ -332,12 +400,16 @@ func _physics_process_updateVisuals():
 		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
 	elif currentElement == Enums.Elements.FIRE:
 		sprite.material.set_shader_parameter("modulate", Color.FIREBRICK)
+	elif currentElement == Enums.Elements.PURPLE:
+		sprite.material.set_shader_parameter("modulate", Color.REBECCA_PURPLE)
 		
 	## Animation
 	var showWallSlideAnimation = isWallSliding()
 	
 	if sprite.is_playing() and sprite.animation in \
-		["slashUp", "slashSide", "slashDown"]:
+		["slashUp", "slashSide", "slashDown", "purpleSlashUp", "purpleSlashDown", "purpleSlashSide"]:
+		pass
+	elif isPurpleDashing:
 		pass
 	elif is_on_floor():
 		if abs(velocity.x) < 100:
@@ -375,6 +447,8 @@ func launchByIgnitionPadOrBomb(direction : Enums.Directions):
 func setElement(element : Enums.Elements):	
 	await get_tree().create_timer(0.05).timeout
 	
+	if currentElement != element:
+		Glogger.debug("changed element: " +  str(Enums.Elements.keys()[element]))
 	currentElement = element
 
 func isWallSliding():
