@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyvidqwu1eryt"]
 
-[ext_resource type="Script" uid="uid://bdak31vq81vhf" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
+[ext_resource type="Script" uid="uid://qutf6jmoy2u3" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
 [ext_resource type="Texture2D" uid="uid://by111mjtwtd8b" path="res://Assets/World Objects/CratePlaceholder.png" id="2_ow5d4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
