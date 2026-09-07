@@ -1,20 +1,27 @@
 [gd_scene format=3 uid="uid://dyvidqwu1eryt"]
 
 [ext_resource type="Script" uid="uid://qutf6jmoy2u3" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
-[ext_resource type="Texture2D" uid="uid://by111mjtwtd8b" path="res://Assets/World Objects/CratePlaceholder.png" id="2_ow5d4"]
+
+[sub_resource type="Gradient" id="Gradient_k1n17"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.34855485, 0.18972057, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_drwvd"]
+gradient = SubResource("Gradient_k1n17")
+width = 80
+height = 80
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
-size = Vector2(1999.9996, 1879.9998)
+size = Vector2(80, 80)
 
 [node name="Crate" type="RigidBody2D" unique_id=33089325]
-collision_layer = 8
+collision_layer = 26
 collision_mask = 10
 script = ExtResource("1_k1n17")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029221308]
-position = Vector2(-1.9999986, -3.8146973e-06)
-scale = Vector2(0.1, 0.1)
-shape = SubResource("RectangleShape2D_0glnl")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803576826]
-texture = ExtResource("2_ow5d4")
+texture = SubResource("GradientTexture2D_drwvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029221308]
+visible = false
+shape = SubResource("RectangleShape2D_0glnl")

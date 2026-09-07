@@ -17,7 +17,7 @@ fill_to = Vector2(0, 0)
 
 [node name="ExplodableWall" type="StaticBody2D" unique_id=1935947710]
 z_index = -1
-collision_layer = 80
+collision_layer = 82
 collision_mask = 0
 script = ExtResource("1_akkil")
 
