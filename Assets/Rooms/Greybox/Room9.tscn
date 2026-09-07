@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_cfbf6"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_ffpnt"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="8_bs8gc"]
+[ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_epsxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
 size = Vector2(182, 205)
@@ -106,8 +107,13 @@ shape = SubResource("RectangleShape2D_i4epa")
 position = Vector2(921, 883)
 element = 2
 
-[node name="Crate" parent="." unique_id=33089325 instance=ExtResource("8_bs8gc")]
-position = Vector2(775, 345)
+[node name="Chain" parent="." unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_epsxy")]
+position = Vector2(760, 240)
+attached_crate = NodePath("../Crate")
+
+[node name="Crate" parent="." unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("8_bs8gc")]
+position = Vector2(760, 360)
+attached_chain = NodePath("../Chain")
 
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
