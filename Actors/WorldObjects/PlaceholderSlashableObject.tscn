@@ -16,7 +16,7 @@ height = 80
 fill_to = Vector2(0, 0)
 
 [node name="PlaceholderSlashableObject" type="StaticBody2D" unique_id=1935947710]
-collision_layer = 24
+collision_layer = 26
 collision_mask = 0
 script = ExtResource("1_865f2")
 

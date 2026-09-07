@@ -277,15 +277,17 @@ func physics_process_playerMovement_purple(delta):
 	timeSincePurpleSlashing += delta
 	if timeSincePurpleSlashing < purpleWindUpDuration:
 		if not is_instance_valid(purpleWindUpTween) or not purpleWindUpTween.is_running():
-			originalSpritePosition = sprite.position
-			var windUpVector = originalSpritePosition - \
-				Enums.getVectorOfDirection(purpleDashDirection) * purpleWindUpDistance
+			var windUpTargetPosition = self.global_position
+			
+			# to float the character off the floor abit
+			if is_on_floor():
+				if slashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
+					windUpTargetPosition -= Vector2(0,5)
+			
 			purpleWindUpTween = get_tree().create_tween()
-			purpleWindUpTween.tween_property(sprite, "position", windUpVector, purpleWindUpDuration)\
+			purpleWindUpTween.tween_property(self, "global_position", windUpTargetPosition, purpleWindUpDuration)\
 				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		return
-	else:
-		sprite.position = originalSpritePosition
 	
 	if purpleDashDirection == Enums.Directions.LEFT:
 		velocity = Vector2(-purupleHorizontalSpeed, 0)
