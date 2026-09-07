@@ -26,6 +26,7 @@ tile_set = ExtResource("1_jct8w")
 position = Vector2(280, 880)
 
 [node name="Player Spawn" parent="." unique_id=604891588 instance=ExtResource("4_jct8w")]
+visible = false
 position = Vector2(280, 880)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_jct8w")]
@@ -50,5 +51,4 @@ text = "Press 'K' or 'X' to swing!"
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_41hdi")]
 position = Vector2(1466, 868)
-scale = Vector2(1, 1)
 element = 2
