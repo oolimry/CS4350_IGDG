@@ -26,7 +26,6 @@ static func create(getPlayerFunc : Callable) -> GameCamera:
 
 var slide_tween: Tween
 
-
 # Thanks ChatGPT
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
@@ -45,11 +44,6 @@ func _physics_process(delta: float) -> void:
 		var player : Player = getPlayerFunc.call()
 		self.global_position = player.global_position
 		setFullLimit(topLeftBound, bottomRightBound, currentRoom)
-#
-	#if isSliding:
-		#global_position = global_position.lerp(slideDest, delta * 9)
-		#if global_position.is_equal_approx(slideDest):
-			#isSliding = false
 	pass
 
 func startFollowingPlayer() -> void:
@@ -62,10 +56,10 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	currentRoom = roomDef
 	
 	limit_enabled = true
-	if currentRoom.cameraLimitLeft:
+	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
 		limit_left = topLeftBound.x
 	
-	if currentRoom.cameraLimitRight:
+	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
 		
 	limit_top = -10000000
@@ -78,10 +72,10 @@ func setVerticalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	currentRoom = roomDef
 		
 	limit_enabled = true
-	if currentRoom.cameraLimitUp:
+	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
 		
-	if currentRoom.cameraLimitDown:
+	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
 	
 	limit_left = -10000000
@@ -95,16 +89,16 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 	currentRoom = roomDef
 	
 	limit_enabled = true
-	if currentRoom.cameraLimitUp:
+	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
-			
-	if currentRoom.cameraLimitDown:
+		
+	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
 	
-	if currentRoom.cameraLimitLeft:
+	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
 		limit_left = topLeftBound.x
 	
-	if currentRoom.cameraLimitRight:
+	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
 		
 func stopFollowing() -> void:

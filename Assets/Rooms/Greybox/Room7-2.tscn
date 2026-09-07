@@ -11,9 +11,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
 size = Vector2(269, 709)
 
-[node name="Room 7-2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+[node name="Room 7-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_n2hfk")
-roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=1607767869]
 z_index = -10
@@ -56,6 +55,8 @@ position = Vector2(0.5, -274.5)
 shape = SubResource("RectangleShape2D_x80dp")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_1qpw2")]
+visible = false
+position = Vector2(960, 560)
 
 [node name="Element3" parent="." unique_id=1394946886 instance=ExtResource("6_0blna")]
 position = Vector2(1347, 493)

@@ -7,6 +7,13 @@
 class_name RoomDefinition
 extends Resource
 
+enum Side {
+	LEFT = 1 << 0,
+	RIGHT = 1 << 1,
+	TOP = 1 << 2,
+	BOTTOM = 1 << 3,
+}
+
 # Number of tiles that make up the room. Should be fixed 
 const ROOM_LENGTH := 16
 const ROOM_HEIGHT := 9
@@ -16,10 +23,8 @@ const ROOM_HEIGHT := 9
 ## Whether the camera should follow the player after they enter the room
 @export var doesCameraFollow : bool
 
-@export var cameraLimitLeft: bool
-@export var cameraLimitRight: bool
-@export var cameraLimitUp: bool
-@export var cameraLimitDown: bool
+@export_flags("Left", "Right", "Top", "Bottom")
+var cameraLimits: int = 0
 
 ## Room position (relative to the Map in RoomManager)
 @export var gridPos : Vector2i

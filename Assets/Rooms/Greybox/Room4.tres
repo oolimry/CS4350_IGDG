@@ -8,11 +8,10 @@
 script = ExtResource("3_bonmk")
 roomName = "Room4"
 doesCameraFollow = true
-cameraLimitLeft = true
-cameraLimitRight = true
-cameraLimitUp = true
+cameraLimits = 7
 gridPos = Vector2i(0, 1)
 gamePlayScene = ExtResource("1_n81le")
+openSides = 10
 roomGroup = 0
 previewTexture = ExtResource("2_k3w1d")
 metadata/_custom_type_script = "uid://cij17tnbhukil"

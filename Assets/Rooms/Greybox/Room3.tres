@@ -9,5 +9,6 @@ script = ExtResource("3_i70r8")
 roomName = "Room3"
 gridPos = Vector2i(1, 1)
 gamePlayScene = ExtResource("1_ifexg")
+openSides = 5
 previewTexture = ExtResource("2_ifexg")
 metadata/_custom_type_script = "uid://cij17tnbhukil"

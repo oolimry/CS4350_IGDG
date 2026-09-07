@@ -8,13 +8,6 @@ extends RefCounted
 ## A non-negative result is a bit mask of Side values. INVALID_RESULT means the
 ## authored scene does not satisfy the expected room contract.
 
-enum Side {
-	LEFT = 1 << 0,
-	RIGHT = 1 << 1,
-	TOP = 1 << 2,
-	BOTTOM = 1 << 3,
-}
-
 const error: Error = ERR_INVALID_DATA
 const WORLD_LAYER_NAME := &"World"
 
@@ -64,13 +57,13 @@ func detect(roomDef : RoomDefinition) -> Error:
 
 
 	if _vertical_side_has_gap(room, world, room_bounds, tile_size, true):
-		open_sides |= Side.LEFT
+		open_sides |= RoomDefinition.Side.LEFT
 	if _vertical_side_has_gap(room, world, room_bounds, tile_size, false):
-		open_sides |= Side.RIGHT
+		open_sides |= RoomDefinition.Side.RIGHT
 	if _horizontal_side_has_gap(room, world, room_bounds, tile_size, true):
-		open_sides |= Side.TOP
+		open_sides |= RoomDefinition.Side.TOP
 	if _horizontal_side_has_gap(room, world, room_bounds, tile_size, false):
-		open_sides |= Side.BOTTOM
+		open_sides |= RoomDefinition.Side.BOTTOM
 	
 	room.free()
 	return OK

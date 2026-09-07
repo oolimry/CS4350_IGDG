@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_bs8gc"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_epsxy"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_e34wy"]
-[ext_resource type="Script" uid="uid://bgq1v55rluu3g" path="res://Actors/World/Room Management/RoomEntry.gd" id="6_cfbf6"]
+[ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_bs8gc"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_ffpnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
@@ -14,9 +14,8 @@ size = Vector2(182, 205)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bs8gc"]
 size = Vector2(480, 800)
 
-[node name="Room 9" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+[node name="Room 9" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_vslx1")
-roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -82,6 +81,9 @@ shape = SubResource("RectangleShape2D_bs8gc")
 position = Vector2(921, 883)
 element = 2
 
+[node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_bs8gc")]
+visible = false
+position = Vector2(960, 560)
+
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
-

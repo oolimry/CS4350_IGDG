@@ -58,6 +58,8 @@ position = Vector2(-73, -170.5)
 shape = SubResource("RectangleShape2D_f2b6g")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_1k4of")]
+visible = false
+position = Vector2(960, 560)
 
 [node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
 position = Vector2(1799, 309)

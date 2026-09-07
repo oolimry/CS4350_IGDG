@@ -33,8 +33,8 @@ position = Vector2(1760, 560)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("5_hrln4")]
 position = Vector2(609, 272)
-scale = Vector2(1, 1)
 element = 1
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_yrg38")]
+visible = false
 position = Vector2(960, 560)
