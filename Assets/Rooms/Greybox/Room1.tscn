@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_41hdi"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_jct8w"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_jct8w"]
-[ext_resource type="PackedScene" uid="uid://l24baaw7ayfq" path="res://Actors/WorldObjects/PlayerSpawn.tscn" id="4_jct8w"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_jct8w"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 
@@ -24,10 +23,7 @@ tile_set = ExtResource("1_jct8w")
 
 [node name="Respawn Point" parent="." unique_id=202330827 groups=["Checkpoint"] instance=ExtResource("3_jct8w")]
 position = Vector2(280, 880)
-
-[node name="Player Spawn" parent="." unique_id=604891588 instance=ExtResource("4_jct8w")]
-visible = false
-position = Vector2(280, 880)
+isActive = true
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_jct8w")]
 visible = false

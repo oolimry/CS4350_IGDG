@@ -11,8 +11,10 @@ func _init(reconnectPlayer : Callable) -> void:
 func _ready() -> void:
 	pass # Replace with function body.
 
-func registerCheckPoint(c : CheckPoint):
+func swapActiveCheckPoint(c : CheckPoint) -> void:
+	currRespawnCheckpoint.isActive = false
 	currRespawnCheckpoint = c
+	c.isActive = true
 
 func onPlayerDeath(p : Player):
 	p.queue_free()
@@ -21,7 +23,20 @@ func onPlayerDeath(p : Player):
 	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)
 
-func spawnPlayer(r : RoomDefinition, roomInst : RoomInstance) -> void:
-	if r.hasPlayer:
-		var newPlayer : Player = Player.create(roomInst.playerSpawnPoint.global_position)
-		reconnectPlayer.call(newPlayer)
+
+####################### Setup code ######################
+
+func registerCheckPoint(rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
+	rmInst.forInteractables(_registerCheckPoint)
+
+func _registerCheckPoint(c : Node) -> void:
+	if c is CheckPoint:
+		c.connect("checkPointReached", swapActiveCheckPoint)
+		# At startup, if a checkpoint is active, spawn the player there 
+		if c.isActive:
+			# This check is to ensure that only one Checkpoint is active at the
+			# start of the game
+			assert(currRespawnCheckpoint == null)
+			currRespawnCheckpoint = c
+			var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
+			reconnectPlayer.call(newPlayer)

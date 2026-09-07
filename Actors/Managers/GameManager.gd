@@ -17,7 +17,7 @@ var isSetup := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
-	roomManager.generateRooms([playerCoordinator.spawnPlayer])
+	roomManager.generateRooms([playerCoordinator.registerCheckPoint])
 		
 	## TODO: Throw this into DeathManager
 	for n in get_tree().get_nodes_in_group("Checkpoint"):

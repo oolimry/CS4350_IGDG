@@ -15,13 +15,10 @@ var snapshotDict : Dictionary[StringName, Dictionary]
 func setup(pos : Vector2i) -> void:
 	roomPos = pos
 	for n in get_children():
-		if n is PlayerSpawn:
-			playerSpawnPoint = n
-			hasPlayerSpawn = true
-		elif n is RoomEntry:
+		if n is RoomEntry:
 			roomEntry = n
 			roomEntry.roomPos = roomPos
-	
+			
 	roomResidentsHolder = get_node("RoomResidents")
 	
 	# If this room works with roomResidents
@@ -37,6 +34,9 @@ func setup(pos : Vector2i) -> void:
 		if !rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
 			snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
 
+func forInteractables(c : Callable) -> void:
+	for n in get_children():
+		c.call(n)
 ########################## Snapshot Related ##################################
 
 func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:

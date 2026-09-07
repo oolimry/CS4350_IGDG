@@ -17,7 +17,10 @@ signal getInitialPlayerInstance(p : Player)
 
 var entryAreas : Array[Area2D]
 
-# Called when the node enters the scene tree for the first time.
+var roomSetupCallables : Array[Callable]
+
+################################## Setup ######################################
+
 func _ready() -> void:
 	worldStateOwner = WorldStateOwner.new()
 	pass # Replace with function body.
@@ -26,26 +29,26 @@ func generateRooms(cArray : Array[Callable]) -> void:
 	currRoomPos = mapLoader.playerSpawnRoom.gridPos
 	
 	cArray.append(setupRoom)
+	
+	roomSetupCallables = cArray
 	mapLoader.forEachRoomDefBFS(func(roomDef : RoomDefinition): 
-		roomInstantiator.instantiateRoomWithSetup(roomDef, \
-		calcRoomCenterWorldCoords, cArray), currRoomPos ,1)
+		roomInstantiator.instantiateRoom(roomDef, \
+		calcRoomCenterWorldCoords, roomSetupCallables), currRoomPos ,1)
 	
 	#mapLoader.forEachRoomDef(func(roomDef : RoomDefinition): 
 		#roomInstantiator.instantiateRoomWithSetup(roomDef, \
 		#calcRoomCenterWorldCoords, cArray)
 	#)
 	
-
 func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:	
-	
-	roomInst.roomPos = roomInst.roomPos
-	
 	if roomInst.roomEntry != null:
 		entryAreas.append(roomInst.roomEntry)
 		roomInst.roomEntry.connect("playerChangeRoom", playerChangeRoom)
 		roomInst.roomEntry.connect("objectChangeRoom", objectChangeRoom)
 	else:
 		push_error("Room has no Entry Collider! ", roomDef.roomName)
+
+###################### Snapshot Related ############################################
 
 func snapshotCurrRoom():
 	var roomInstance = roomInstantiator.loadedRooms.get(currRoomPos)
@@ -75,8 +78,8 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 			e.isActive = true
 	
 	mapLoader.forEachRoomDefBFS(func(roomDef : RoomDefinition): 
-		roomInstantiator.instantiateRoomWithSetup(roomDef, \
-		calcRoomCenterWorldCoords, [setupRoom]), currRoomPos, 1)
+		roomInstantiator.instantiateRoom(roomDef, \
+		calcRoomCenterWorldCoords, roomSetupCallables), currRoomPos, 1)
 
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all objects (except Player) tracked by this system have a RoomResident component 

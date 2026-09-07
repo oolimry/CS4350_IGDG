@@ -5,7 +5,11 @@ extends Node2D
 
 @export var interactableGroupId := "Interactable" 
 
-func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable) -> RoomInstance:
+func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable \
+	, roomCallables : Array[Callable]) -> RoomInstance:
+	
+	#objectCallables setup stuff like Checkpoints
+	#roomCallables setup stuff that should be in the room, like the RoomEntry detection
 	
 	if loadedRooms.has(roomDef.gridPos):
 		return loadedRooms.get(roomDef.gridPos)
@@ -18,18 +22,12 @@ func instantiateRoom(roomDef : RoomDefinition, calcWorldPos : Callable) -> RoomI
 		if n.is_in_group(interactableGroupId) and n.has_method("getRoomPos"):
 			n.roomPos = roomDef.gridPos
 	
+	for c in roomCallables:
+		c.call(roomDef, instance)
+	
 	add_child.call_deferred(instance)
 	loadedRooms[roomDef.gridPos] = instance
 	
-	return instance
-
-func instantiateRoomWithSetup(roomDef : RoomDefinition, \
-	calcWorldPos : Callable, setupCallables : Array[Callable]) -> RoomInstance:
-		
-	var instance = instantiateRoom(roomDef, calcWorldPos) as RoomInstance
-	for c in setupCallables:
-		c.call(roomDef, instance)
-		
 	return instance
 
 func reparentRoomResident(gameObject : Node, newRoomPos : Vector2i):
