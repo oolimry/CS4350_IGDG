@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dyvidqwu1eryt"]
+
+[ext_resource type="Script" uid="uid://bdak31vq81vhf" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
+[ext_resource type="Texture2D" uid="uid://by111mjtwtd8b" path="res://Assets/World Objects/CratePlaceholder.png" id="2_ow5d4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
+size = Vector2(1999.9996, 1879.9998)
+
+[node name="Crate" type="RigidBody2D" unique_id=33089325]
+script = ExtResource("1_k1n17")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029221308]
+position = Vector2(-1.9999986, -3.8146973e-06)
+scale = Vector2(0.1, 0.1)
+shape = SubResource("RectangleShape2D_0glnl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803576826]
+texture = ExtResource("2_ow5d4")
