@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bu3vhs0eg7v8a"]
+
+[ext_resource type="Script" uid="uid://bbx5tb83ai6r6" path="res://Actors/WorldObjects/CrystalWall.gd" id="1_w7jdf"]
+
+[sub_resource type="Gradient" id="Gradient_b2gry"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.23921569, 0, 0.24705882, 0.5568628)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b2gry"]
+gradient = SubResource("Gradient_b2gry")
+width = 80
+height = 80
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2gry"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7jdf"]
+size = Vector2(75, 75)
+
+[node name="CrystalWall" type="StaticBody2D" unique_id=2023236522]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_w7jdf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=59114506]
+texture = SubResource("GradientTexture2D_b2gry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1066712675]
+visible = false
+shape = SubResource("RectangleShape2D_b2gry")
+
+[node name="KillZone" type="Area2D" parent="." unique_id=890884203]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=858585517]
+shape = SubResource("RectangleShape2D_w7jdf")
