@@ -60,7 +60,7 @@ position = Vector2(787, 804)
 element = 1
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_jnmmk")]
-position = Vector2(300, 780)
+position = Vector2(276, 780)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_3dia5")]
 visible = false

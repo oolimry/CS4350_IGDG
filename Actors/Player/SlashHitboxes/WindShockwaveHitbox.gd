@@ -2,7 +2,7 @@ class_name WindShockwaveHitbox
 extends Area2D
 @export var slashDirection : Enums.Directions
 
-const hitboxActiveDuration = 0.15
+const hitboxActiveDuration = 0.3
 @export var movementSpeed = 1600
 @onready var collisionShape = $CollisionShape2D
 

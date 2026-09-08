@@ -110,29 +110,9 @@ text = "'Spacebar' - to jump"
 position = Vector2(1080, 880)
 roomResident = SubResource("Resource_alwyu")
 
-[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 760)
-roomResident = SubResource("Resource_ne6ro")
-
-[node name="PlaceholderSlashableObject2" parent="RoomResidents" unique_id=900610753 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 680)
-roomResident = SubResource("Resource_1onsp")
-
-[node name="PlaceholderSlashableObject3" parent="RoomResidents" unique_id=1724990231 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 600)
-roomResident = SubResource("Resource_kh2h4")
-
-[node name="PlaceholderSlashableObject4" parent="RoomResidents" unique_id=1704994692 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 600)
-roomResident = SubResource("Resource_fradc")
-
-[node name="PlaceholderSlashableObject5" parent="RoomResidents" unique_id=1909729387 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 681)
-roomResident = SubResource("Resource_y4pgw")
-
-[node name="PlaceholderSlashableObject6" parent="RoomResidents" unique_id=1573112052 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 760)
-roomResident = SubResource("Resource_5iwcm")
+[node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
+position = Vector2(1841, 660)
+scale = Vector2(2, 3.5)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)
