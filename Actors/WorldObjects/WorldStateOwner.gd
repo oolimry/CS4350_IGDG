@@ -5,7 +5,8 @@ var snapshots : Dictionary[Vector2i, Dictionary] = {}
 
 @export var roomResidentConstructors : Dictionary[StringName, Callable] = \
 	{
-		"Box" : Box.constructObjectBySnapshot
+		Box.objName : Box.constructObjectBySnapshot,
+		PlaceholderSlashableObject.objName : PlaceholderSlashableObject.constructObjectBySnapshot
 	}
 
 func snapshotRoom(ri : RoomInstance) -> void:

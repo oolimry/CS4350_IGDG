@@ -24,12 +24,22 @@ func setup(pos : Vector2i) -> void:
 	# If this room works with roomResidents
 	if roomResidentsHolder == null:
 		return
-	
+		
+	setupRoomResidents.call_deferred()
+
+func setupRoomResidents() -> void:
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
 		assert(rr != null)
 		
 		rr.isSafeToFreeUpdate.connect(isSafeToFreeSelfCheck)
+		
+		# TODO: Check if this works as intended
+		# Ensure that the oriRoomPos of a object moved into a new Room
+		# is not wrongly overwritten
+		if rr.oriRoomPos == null:
+			rr.oriRoomPos = roomPos
+			
 		# Objects that always reset to their original state should return
 		# back to this original room at their original pos & state.
 		if rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
@@ -61,7 +71,9 @@ func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) ->
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
 		persistentIDs[rr.persistentID] = n
-			
+
+	# TODO: Check if instance already exists, whether need to re-update the positioning
+	# Do not re-instantiate something already instantiated but like moved 			
 	for object in roomSnapshot.keys():
 		var objectInstance = objectInstantiator.call(roomSnapshot[object])
 		roomResidentsHolder.add_child(objectInstance)

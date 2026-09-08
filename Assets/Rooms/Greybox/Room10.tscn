@@ -3,18 +3,12 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_l2sf3"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_6v0sr"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_4431r"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_mt3d1"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_vtek0"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_6v0sr"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_4431r"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="8_mt3d1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
-size = Vector2(59, 138)
-
-[node name="Room 10" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomEntry")]
+[node name="Room 10" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_l2sf3")
-roomEntry = NodePath("")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -32,27 +26,6 @@ tile_set = ExtResource("2_6v0sr")
 position = Vector2(1920, 0)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_4431r")
-
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(62, 144)
-script = ExtResource("4_mt3d1")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("5_vtek0")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=1498333101]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=598497129]
-position = Vector2(-2.5, -29)
-shape = SubResource("RectangleShape2D_jct8w")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_6v0sr")]
 visible = false
@@ -101,5 +74,3 @@ element = 3
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_mt3d1")]
 position = Vector2(1015, 341)
 timeToLive = 60.0
-
-[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]

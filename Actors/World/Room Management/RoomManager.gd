@@ -79,7 +79,7 @@ func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	assert(object.roomResident != null)
 	
 	var roomResident : RoomResident = object.roomResident
-	roomResident.roomPos = nextRoomPos
+	#roomResident.roomPos = nextRoomPos
 	roomInstantiator.reparentRoomResident(object, nextRoomPos)
 
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:

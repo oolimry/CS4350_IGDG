@@ -7,7 +7,50 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_nd2ea"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_dba7y"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="6_i4epa"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_alwyu"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_dba7y"]
+
+[sub_resource type="Resource" id="Resource_ne6ro"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1080, 880)
+persistentID = &"b0c1c597-6935-476b-95ab-47e1330cab63"
+objectName = &"Box"
+
+[sub_resource type="Resource" id="Resource_alwyu"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1880, 760)
+persistentID = &"50c82304-f7ee-4b99-a772-fbdd124990fb"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_1onsp"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1880, 680)
+persistentID = &"a0d34659-f2c9-47c6-8959-a06b97d33309"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_kh2h4"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1880, 600)
+persistentID = &"f40c71b3-0f62-49ba-9847-db59a577e11f"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_fradc"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1799, 600)
+persistentID = &"94a6c7a6-6bce-492c-8538-6996a1bc9b40"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_y4pgw"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1799, 681)
+persistentID = &"40a9968f-725c-44bf-9716-add0fd777790"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_5iwcm"]
+script = ExtResource("7_alwyu")
+oriCoords = Vector2(1799, 760)
+persistentID = &"591445f4-c6fd-4743-a0c9-2b8eaebf0908"
+objectName = &"SlashableWall"
 
 [node name="Room 2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_i4epa")
@@ -54,28 +97,35 @@ offset_bottom = 815.0
 theme_override_font_sizes/font_size = 26
 text = "'Spacebar' - to jump"
 
-[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 760)
-
-[node name="PlaceholderSlashableObject2" parent="." unique_id=900610753 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 680)
-
-[node name="PlaceholderSlashableObject3" parent="." unique_id=1724990231 instance=ExtResource("6_i4epa")]
-position = Vector2(1880, 600)
-
-[node name="PlaceholderSlashableObject4" parent="." unique_id=1704994692 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 600)
-
-[node name="PlaceholderSlashableObject5" parent="." unique_id=1909729387 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 681)
-
-[node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
-position = Vector2(1799, 760)
-
 [node name="RoomResidents" type="Node2D" parent="." unique_id=737356501]
 
 [node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
 position = Vector2(1080, 880)
+roomResident = SubResource("Resource_ne6ro")
+
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 760)
+roomResident = SubResource("Resource_alwyu")
+
+[node name="PlaceholderSlashableObject2" parent="RoomResidents" unique_id=900610753 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 680)
+roomResident = SubResource("Resource_1onsp")
+
+[node name="PlaceholderSlashableObject3" parent="RoomResidents" unique_id=1724990231 instance=ExtResource("6_i4epa")]
+position = Vector2(1880, 600)
+roomResident = SubResource("Resource_kh2h4")
+
+[node name="PlaceholderSlashableObject4" parent="RoomResidents" unique_id=1704994692 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 600)
+roomResident = SubResource("Resource_fradc")
+
+[node name="PlaceholderSlashableObject5" parent="RoomResidents" unique_id=1909729387 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 681)
+roomResident = SubResource("Resource_y4pgw")
+
+[node name="PlaceholderSlashableObject6" parent="RoomResidents" unique_id=1573112052 instance=ExtResource("6_i4epa")]
+position = Vector2(1799, 760)
+roomResident = SubResource("Resource_5iwcm")
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)

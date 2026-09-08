@@ -1,18 +1,24 @@
+@tool
 class_name Box
 extends RigidBody2D
 
 const maxVelocity := 160.0
 
-var roomResident : RoomResident
+var roomPos : Vector2i
+@export var roomResident : RoomResident
 
+const objName = "Box"
+
+@export_tool_button("Generate New ID")
+var generate_id_action := generate_new_id
+
+func generate_new_id() -> void:
+	roomResident = RoomResident.new(position, 
+		RoomResident.generateUUID(), objName)
+		
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	add_to_group("ContactPushable")
-	roomResident = RoomResident.new()
-	
-	roomResident.oriCoords = position
-	roomResident.persistentID = "asdsad"
-	roomResident.objectName = "Box"
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,7 +32,7 @@ func push(pushDirection : Vector2, pushForce : int) -> void:
 		apply_central_force(pushDirection * pushForce)
 		
 static func constructObjectBySnapshot(snapshot : Dictionary) -> Box:
-	assert(snapshot["objectName"] == "Box")
+	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://bywkacs1kp8hb") as PackedScene
 	var box := scene.instantiate() as Box
 	box.linear_velocity = snapshot["linear_velocity"]
@@ -37,7 +43,7 @@ static func constructObjectBySnapshot(snapshot : Dictionary) -> Box:
 
 func generateObjectSnapshot() -> Dictionary:
 	var snapshot := {}
-	snapshot["objectName"] = "Box"
+	snapshot["objectName"] = objName
 	snapshot["roomResident"] = roomResident
 	snapshot["linear_velocity"] = linear_velocity
 	snapshot["sleeping"] = sleeping
