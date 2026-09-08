@@ -66,7 +66,8 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		transitioningDir, calcRoomCenterWorldCoords)
 		
 	currRoomPos = nextRoomPos
-	#
+	
+	# This code probably ain't needed but I keeping it here jic
 	#roomEntry.isActive = false
 	#for e in entryAreas:
 		#if e != roomEntry:
@@ -75,11 +76,12 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	roomLoader.handleRoomLoading(currRoomPos)
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
-	# Assumption: all objects (except Player) tracked by this system have a RoomResident component 
+	# Assumption: all moving objects (except Player) tracked by this system
+	# have a RoomResident component 
 	assert(object.roomResident != null)
 	
 	var roomResident : RoomResident = object.roomResident
-	#roomResident.roomPos = nextRoomPos
+	roomResident.currRoomPos = nextRoomPos
 	roomInstantiator.reparentRoomResident(object, nextRoomPos)
 
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:

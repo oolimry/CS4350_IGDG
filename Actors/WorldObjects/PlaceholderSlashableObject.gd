@@ -10,9 +10,12 @@ const objName = "SlashableWall"
 var generate_id_action := generate_new_id
 
 func generate_new_id() -> void:
-	roomResident = RoomResident.new(position, 
-		RoomResident.generateUUID(), objName)
-
+	roomResident = RoomResident.new()
+	roomResident.set_local_to_scene(true)
+	roomResident.objectName = objName
+	roomResident.persistentID = RoomResident.generatePersistentID()
+	roomResident.oriCoords = position
+	
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.queue_free()

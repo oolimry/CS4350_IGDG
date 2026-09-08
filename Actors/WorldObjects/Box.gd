@@ -3,19 +3,17 @@ class_name Box
 extends RigidBody2D
 
 const maxVelocity := 160.0
-
-var roomPos : Vector2i
 @export var roomResident : RoomResident
 
 const objName = "Box"
 
 @export_tool_button("Generate New ID")
-var generate_id_action := generate_new_id
+var generate_id_action := setup
 
-func generate_new_id() -> void:
-	roomResident = RoomResident.new(position, 
-		RoomResident.generateUUID(), objName)
-		
+func setup() -> void:
+	roomResident = RoomResident.new()
+	roomResident.setup(objName, position)
+
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	add_to_group("ContactPushable")
@@ -48,4 +46,9 @@ func generateObjectSnapshot() -> Dictionary:
 	snapshot["linear_velocity"] = linear_velocity
 	snapshot["sleeping"] = sleeping
 	snapshot["localCoords"] = position
+	snapshot["hasStateChanged"] = hasStateChanged()
+	
 	return snapshot			
+
+func hasStateChanged() -> bool:	
+	return roomResident.hasRoomChanged() or roomResident.oriCoords != position

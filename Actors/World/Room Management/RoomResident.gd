@@ -1,7 +1,7 @@
 class_name RoomResident
 extends Resource
 
-#var roomPos : Vector2i
+var currRoomPos : Vector2i
 
 ## Local Coords for the object in it's Original Room
 @export var oriCoords : Vector2
@@ -13,23 +13,25 @@ extends Resource
 ## Should the object always reset back to its initial state?
 @export var shouldAlwaysReset := false
 
+## How does the object check that it's state has been changed
+var checkStateChange : Callable = hasRoomChanged
+
 var isSafeToFree := true
 signal isSafeToFreeUpdate(persistentID : StringName, safety: bool)
 
-func _init(oriCoords : Vector2, persistentID : StringName,\
- 	objectName : StringName, shouldAlwaysReset := false) -> void:
-		self.oriCoords = oriCoords
+func setup(objName : String, position : Vector2, shouldAlwaysReset := false) -> void:
 		
-		# oriRoomPos will be filled by RoomInstance directly
-		
-		self.objectName = objectName
-		self.persistentID = persistentID
-		self.shouldAlwaysReset = shouldAlwaysReset
+	set_local_to_scene(true)
+	objectName = objName
+	persistentID = RoomResident.generatePersistentID()
+	oriCoords = position
+	self.shouldAlwaysReset = shouldAlwaysReset
+	# oriRoomPos is filled later dynamically in-game from RoomInstance
 
 func toDict() -> Dictionary:
-	return {
-		#"roomPos_x": roomPos.x,
-		#"roomPos_y": roomPos.y,
+	var dict := {
+		"currRoomPos_x": currRoomPos.x,
+		"currRoomPos_y": currRoomPos.y,
 		"oriCoords_x": oriCoords.x,
 		"oriCoords_y": oriCoords.y,
 		"oriRoomPos_x": oriRoomPos.x,
@@ -38,15 +40,17 @@ func toDict() -> Dictionary:
 		"shouldAlwaysReset": shouldAlwaysReset
 	}
 
+	return dict
+
 func fromDict(snapshot : Dictionary) -> void:
-	#roomPos = Vector2i(snapshot["roomPos_x"],snapshot["roomPos_y"])
+	currRoomPos = Vector2i(snapshot["roomPos_x"],snapshot["roomPos_y"])
 	oriCoords = Vector2(snapshot["oriCoords_x"], snapshot["oriCoords_y"])
 	oriRoomPos = Vector2i(snapshot["oriRoomPos_x"], snapshot["oriRoomPos_y"])
 	persistentID = snapshot["persistentID"]
 	shouldAlwaysReset = snapshot["shouldAlwaysReset"]
 
 
-static func generateUUID() -> StringName:
+static func generatePersistentID() -> StringName:
 	var bytes := Crypto.new().generate_random_bytes(16)
 
 	# UUID version 4 and RFC 4122 variant bits.
@@ -61,3 +65,7 @@ static func generateUUID() -> StringName:
 		hex.substr(16, 4),
 		hex.substr(20, 12)
 	]
+
+func hasRoomChanged() -> bool:
+	return currRoomPos != null and oriRoomPos != null\
+		and currRoomPos != oriRoomPos

@@ -10,46 +10,53 @@
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_alwyu"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_dba7y"]
 
-[sub_resource type="Resource" id="Resource_ne6ro"]
+[sub_resource type="Resource" id="Resource_alwyu"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1080, 880)
-persistentID = &"b0c1c597-6935-476b-95ab-47e1330cab63"
+persistentID = &"20bf8d35-29d7-4510-b086-7d58b004881b"
 objectName = &"Box"
 
-[sub_resource type="Resource" id="Resource_alwyu"]
+[sub_resource type="Resource" id="Resource_ne6ro"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1880, 760)
-persistentID = &"50c82304-f7ee-4b99-a772-fbdd124990fb"
+persistentID = &"45f31018-2823-4b21-b8d6-e38fd6d8b0d7"
 objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_1onsp"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1880, 680)
-persistentID = &"a0d34659-f2c9-47c6-8959-a06b97d33309"
+persistentID = &"cb556073-920b-40fe-a593-e329e1341a0a"
 objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_kh2h4"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1880, 600)
-persistentID = &"f40c71b3-0f62-49ba-9847-db59a577e11f"
+persistentID = &"728c8134-97ee-402c-bffe-bc2d53230c7b"
 objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_fradc"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1799, 600)
-persistentID = &"94a6c7a6-6bce-492c-8538-6996a1bc9b40"
+persistentID = &"a215979d-9dde-4d5c-ae58-653c54944bda"
 objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_y4pgw"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1799, 681)
-persistentID = &"40a9968f-725c-44bf-9716-add0fd777790"
+persistentID = &"df8a67c9-48fb-4ac7-a681-cd286e298424"
 objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_5iwcm"]
+resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1799, 760)
-persistentID = &"591445f4-c6fd-4743-a0c9-2b8eaebf0908"
+persistentID = &"338914dd-c620-4772-aa00-962095366713"
 objectName = &"SlashableWall"
 
 [node name="Room 2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
@@ -101,11 +108,11 @@ text = "'Spacebar' - to jump"
 
 [node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
 position = Vector2(1080, 880)
-roomResident = SubResource("Resource_ne6ro")
+roomResident = SubResource("Resource_alwyu")
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_i4epa")]
 position = Vector2(1880, 760)
-roomResident = SubResource("Resource_alwyu")
+roomResident = SubResource("Resource_ne6ro")
 
 [node name="PlaceholderSlashableObject2" parent="RoomResidents" unique_id=900610753 instance=ExtResource("6_i4epa")]
 position = Vector2(1880, 680)

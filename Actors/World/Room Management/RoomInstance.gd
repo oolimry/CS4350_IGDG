@@ -58,31 +58,46 @@ func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 	for n in roomResidentsHolder.get_children():
 		# We assume all nodes under this Holder have a roomResident object
 		assert(n.has_method("generateObjectSnapshot"))
-		snapshotDict.get_or_add(n.roomResident.persistentID, 
-			n.generateObjectSnapshot())
+		snapshotDict[n.roomResident.persistentID] = n.generateObjectSnapshot()
 		
 	return snapshotDict
 
 func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
-	var persistentIDs : Dictionary[StringName, Node] = {}
+	var persistentIDstoRemove : Dictionary[StringName, Node] = {}
+	var objectsToAdd : Array[Node] = []
 	if roomResidentsHolder == null:
 		return
 
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
-		persistentIDs[rr.persistentID] = n
+		persistentIDstoRemove[rr.persistentID] = n
 
 	# TODO: Check if instance already exists, whether need to re-update the positioning
 	# Do not re-instantiate something already instantiated but like moved 			
 	for object in roomSnapshot.keys():
+		var objDict : Dictionary = roomSnapshot[object]
+		
+		var roomResident : RoomResident = objDict["roomResident"]
+		
+		# If the object state is not considered to be changed, 
+		# re-use the placed-in-editor, no need to duplicate instantiate
+		if objDict.has("hasStateChanged") and !objDict["hasStateChanged"]:
+			persistentIDstoRemove.erase(roomSnapshot[object]["roomResident"].persistentID)
+			continue
+			
+		# Else create a new object and queue it to be added
 		var objectInstance = objectInstantiator.call(roomSnapshot[object])
-		roomResidentsHolder.add_child(objectInstance)
-		persistentIDs.erase(roomSnapshot[object]["roomResident"].persistentID)
+		objectsToAdd.append(objectInstance)
 	
-	for n in persistentIDs.values():
+	# If the object was present previously in the scene, but was not captured in snapshot
+	# Assume its been moved/destroyed and queue the placed-in-editor copy out
+	for n in persistentIDstoRemove.values():
 		n.queue_free()
 		
-	persistentIDs.clear()
+	for n in objectsToAdd:
+		add_child(n)
+		
+	persistentIDstoRemove.clear()
 
 func isSafeToFree() -> bool:
 	for n in roomResidentsHolder.get_children():
