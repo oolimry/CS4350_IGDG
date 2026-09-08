@@ -7,12 +7,29 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_a3qlj"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="7_vvqk6"]
 [ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_bu51x"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="8_vvqk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bu51x"]
 size = Vector2(760, 879)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1cyr"]
 size = Vector2(240, 480)
+
+[sub_resource type="Resource" id="Resource_vvqk6"]
+resource_local_to_scene = true
+script = ExtResource("8_vvqk6")
+oriCoords = Vector2(879, 479)
+persistentID = &"e3b8d446-20c1-4be4-9bd1-b47c3f98b2c0"
+objectName = &"Chain"
+shouldAlwaysReset = true
+
+[sub_resource type="Resource" id="Resource_bu51x"]
+resource_local_to_scene = true
+script = ExtResource("8_vvqk6")
+oriCoords = Vector2(879, 354)
+persistentID = &"6932d454-321f-40e5-9001-e1646c496580"
+objectName = &"Chain"
+shouldAlwaysReset = true
 
 [node name="Room 3" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_a3qlj")
@@ -56,13 +73,16 @@ position = Vector2(960, 560)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=2117107831]
 
-[node name="Crate" parent="." unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_vvqk6")]
+[node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_vvqk6")]
 position = Vector2(879, 479)
+freeze = true
 attached_chain = NodePath("../Chain")
+roomResident = SubResource("Resource_vvqk6")
 
-[node name="Chain" parent="." unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_bu51x")]
+[node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_bu51x")]
 position = Vector2(879, 354)
 attached_crate = NodePath("../Crate")
+roomResident = SubResource("Resource_bu51x")
 
 [editable path="Respawn Point4"]
 [editable path="Respawn Point3"]

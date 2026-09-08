@@ -31,6 +31,7 @@ func generateObjectSnapshot() -> Dictionary:
 	snapshot["roomResident"] = roomResident
 	snapshot["localCoords"] = position
 	snapshot["hasStateChanged"] = hasStateChanged()
+	snapshot["shouldDestructionPersist"] = shouldDestructionPersist
 	return snapshot
 
 func hasStateChanged() -> bool:

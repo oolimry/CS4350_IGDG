@@ -2,6 +2,9 @@
 class_name Box
 extends RigidBody2D
 
+# REMEMBER TO DICTIONARY ALMOST EVERY SINGLE VARIABLE HERE
+# THE TIME WASTED DEBUGGING THIS MESS... :< :< :<
+
 const maxVelocity := 160.0
 @export var roomResident : RoomResident
 
@@ -11,8 +14,9 @@ const objName = "Box"
 var generate_id_action := setup
 
 @export var alwaysRevert := true
-@export var doesStateChangeConsiderCoords := false
 
+@export var doesStateChangeConsiderCoords := false
+		
 func setup() -> void:
 	Glogger.debug("TEST")
 	roomResident = RoomResident.setup(objName, position, alwaysRevert)
@@ -40,6 +44,8 @@ static func constructObjectBySnapshot(snapshot : Dictionary) -> Box:
 	box.sleeping = snapshot["sleeping"]
 	box.position = snapshot["localCoords"]
 	box.roomResident = snapshot["roomResident"]
+	box.alwaysRevert = snapshot["alwaysRevert"]
+	box.doesStateChangeConsiderCoords = snapshot["doesStateChangeConsiderCoords"]
 	return box
 
 func generateObjectSnapshot() -> Dictionary:
@@ -49,10 +55,12 @@ func generateObjectSnapshot() -> Dictionary:
 	snapshot["linear_velocity"] = linear_velocity
 	snapshot["sleeping"] = sleeping
 	snapshot["localCoords"] = position
+	snapshot["alwaysRevert"] = alwaysRevert
+	snapshot["doesStateChangeConsiderCoords"] = doesStateChangeConsiderCoords
 	snapshot["hasStateChanged"] = hasStateChanged()
 	
 	return snapshot			
 
 func hasStateChanged() -> bool:	
 	return roomResident.hasRoomChanged() or \
-		(doesStateChangeConsiderCoords and roomResident.oriCoords != position)
+		(doesStateChangeConsiderCoords and !roomResident.oriCoords.is_equal_approx(position))

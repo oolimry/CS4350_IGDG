@@ -43,16 +43,6 @@ func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:
 	else:
 		push_error("Room has no Entry Collider! ", roomDef.roomName)
 
-###################### Snapshot Related ############################################
-
-func snapshotCurrRoom():
-	var roomInstance = roomInstantiator.loadedRooms.get(currRoomPos)
-	worldStateOwner.snapshotRoom(roomInstance)
-
-func restoreCurrRoom():
-	var roomInstance = roomInstantiator.loadedRooms.get(currRoomPos)
-	worldStateOwner.restoreSnapshot(roomInstance)
-
 ################### RoomMovement #####################
 
 func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
@@ -60,6 +50,9 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	
 	var nextRoom = mapLoader.getRoom(nextRoomPos)
 	assert(nextRoom != null)
+	
+	#roomInstantiator.snapshotRoom(currRoomPos)
+	#roomInstantiator.restoreSnapshot(nextRoomPos)
 	
 	roomCamHandler.changeRoom(mapLoader.getRoom(currRoomPos), \
 		mapLoader.getRoom(nextRoomPos),\
@@ -73,7 +66,7 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		#if e != roomEntry:
 			#e.isActive = true
 	
-	roomLoader.handleRoomLoading(currRoomPos)
+	#roomLoader.handleRoomLoading(currRoomPos)
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system

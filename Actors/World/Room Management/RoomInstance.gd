@@ -12,8 +12,9 @@ var snapshotDict : Dictionary[StringName, Dictionary]
 var isSafeToFreeRoom := true
 signal isSafeToFreeRoomUpdate(roomPos : Vector2i, safety: bool)
 
-func setup(pos : Vector2i) -> void:
+func setup(pos : Vector2i, restoreSnapshot : Callable, isFirstLoad : bool) -> void:
 	roomPos = pos
+	
 	for n in get_children():
 		if n is RoomEntry:
 			roomEntry = n
@@ -25,9 +26,11 @@ func setup(pos : Vector2i) -> void:
 	if roomResidentsHolder == null:
 		return
 		
-	setupRoomResidents.call_deferred()
+	setupRoomResidents(isFirstLoad)
 
-func setupRoomResidents() -> void:
+	restoreSnapshot.call()
+
+func setupRoomResidents(isFirstLoad : bool) -> void:
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
 		assert(rr != null)
@@ -37,13 +40,14 @@ func setupRoomResidents() -> void:
 		# TODO: Check if this works as intended
 		# Ensure that the oriRoomPos of a object moved into a new Room
 		# is not wrongly overwritten
-		if rr.oriRoomPos != null:
+		if isFirstLoad:
 			rr.oriRoomPos = roomPos
-			
+		
+		rr.currRoomPos = roomPos
 		# AT THE START, objects that always reset to their original state 
 		# should return back to this original room at their original pos & state.
-		if rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
-			snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
+		#if rr.shouldAlwaysResetRoom and n.has_method("generateObjectSnapshot"):
+			#snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
 
 func forInteractables(c : Callable) -> void:
 	for n in get_children():
@@ -64,29 +68,24 @@ func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 		assert(n.has_method("hasStateChanged"))
 		var rr : RoomResident = n.roomResident
 		
-		# Edge case: if you are in a diff room from your original
-		# and you're supposed to always reset. Don't get snapshotted in this 
-		# diff room. 
+		# Edge case: Outsider that is supposed to always reset to their original
+		# room. Don't bother snapshoting.
 		if rr.shouldAlwaysReset and rr.hasRoomChanged():
 			continue
-		# Clarification: Objects that have changed state within the same room
-		# still get snapshotted, but that's only to like mark their attendance.
-		# later on the restoreSnapshot will check whether their state changes
-		# should persist or not.
-		
+
 		snapshotDict[n.roomResident.persistentID] = n.generateObjectSnapshot()
 		
 	return snapshotDict
 
 func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
-	var persistentIDstoRemove : Dictionary[StringName, Node] = {}
+	var persistentIDsToRemove : Dictionary[StringName, Node] = {}
 	var objectsToAdd : Array[Node] = []
 	if roomResidentsHolder == null:
 		return
 
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
-		persistentIDstoRemove[rr.persistentID] = n
+		persistentIDsToRemove[rr.persistentID] = n
 
 	for object in roomSnapshot.keys():
 		var objDict : Dictionary = roomSnapshot[object]
@@ -94,26 +93,26 @@ func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) ->
 		var roomResident : RoomResident = objDict["roomResident"]
 		
 		# Mark an editor-placed object to NOT be deleted 
-		if !(objDict.has("hasStateChanged") and objDict["hasStateChanged"])\
-			or roomResident.hasRoomChanged():
-			persistentIDstoRemove.erase(roomSnapshot[object]["roomResident"].persistentID)
-			continue
+		if !(objDict.has("hasStateChanged") and objDict["hasStateChanged"]):
+			persistentIDsToRemove[roomSnapshot[object]["roomResident"].persistentID]\
+				.roomResident.oriRoomPos = roomResident.oriRoomPos 
 			
-		# Create a newly changed object and queue it to be added
-		if (roomResident.hasRoomChanged() or objDict["hasStateChanged"])\
-			and !roomResident.shouldAlwaysReset:
-			var objectInstance = objectInstantiator.call(roomSnapshot[object])
-			objectsToAdd.append(objectInstance)
+			persistentIDsToRemove.erase(roomSnapshot[object]["roomResident"].persistentID)
+			continue
+
+		var objectInstance = objectInstantiator.call(roomSnapshot[object])
+		objectsToAdd.append(objectInstance)
 	
 	# If the object was present previously in the scene, but was not captured in snapshot
 	# Assume its been moved/destroyed and queue the placed-in-editor copy out
-	for n in persistentIDstoRemove.values():
-		n.queue_free()
+	for n in persistentIDsToRemove.values():
+		if !n.roomResident.shouldAlwaysReset:
+			n.queue_free()
 		
 	for n in objectsToAdd:
 		add_child(n)
 		
-	persistentIDstoRemove.clear()
+	persistentIDsToRemove.clear()
 
 func isSafeToFree() -> bool:
 	for n in roomResidentsHolder.get_children():

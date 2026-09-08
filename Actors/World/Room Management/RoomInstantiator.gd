@@ -22,11 +22,12 @@ func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	
 	var instance = roomDef.gamePlayScene.instantiate() as RoomInstance
 	
-	## TODO: Fix where roomPos is updated
 	instance.roomPos = roomDef.gridPos
 	
-	worldStateOwner.restoreSnapshot(instance)
-	instance.setup(roomDef.gridPos)
+	instance.setup(roomDef.gridPos, \
+		func(): worldStateOwner.restoreSnapshot(instance), \
+		!roomDef.wasLoaded)
+		
 	instance.global_position = calcWorldPosCall.call(roomDef.gridPos)
 	
 	for n in instance.get_children():
@@ -39,6 +40,7 @@ func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	add_child.call_deferred(instance)
 	loadedRooms[roomDef.gridPos] = instance
 	
+	roomDef.wasLoaded = true
 	return instance
 
 func freeRoom(roomPos : Vector2i) -> void:
@@ -48,6 +50,14 @@ func freeRoom(roomPos : Vector2i) -> void:
 	worldStateOwner.snapshotRoom(room)
 	loadedRooms.erase(roomPos)
 	room.queue_free()
+
+func restoreSnapshot(roomPos : Vector2i) -> void:
+	if loadedRooms.has(roomPos):
+		worldStateOwner.restoreSnapshot(loadedRooms[roomPos])
+
+func snapshotRoom(roomPos : Vector2i) -> void:
+	if loadedRooms.has(roomPos):
+		worldStateOwner.snapshotRoom(loadedRooms[roomPos])
 
 func reparentRoomResident(gameObject : Node, newRoomPos : Vector2i):
 	gameObject.reparent.call_deferred(

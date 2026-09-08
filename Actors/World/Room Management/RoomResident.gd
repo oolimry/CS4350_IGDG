@@ -5,7 +5,7 @@ var currRoomPos : Vector2i
 
 ## Local Coords for the object in it's Original Room
 @export var oriCoords : Vector2
-@export var oriRoomPos : Vector2i
+@export var oriRoomPos : Vector2i 
 
 @export var persistentID : StringName
 @export var objectName : StringName

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://4101b7012u4t" path="res://Actors/WorldObjects/Box.gd" id="1_rhccq"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_alwyu"]
+friction = 0.2
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
 size = Vector2(80, 80)
 
@@ -15,8 +18,9 @@ width = 80
 height = 80
 
 [node name="Box" type="RigidBody2D" unique_id=1489572943]
-collision_layer = 56
+collision_layer = 58
 collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_alwyu")
 gravity_scale = 5.0
 lock_rotation = true
 script = ExtResource("1_rhccq")

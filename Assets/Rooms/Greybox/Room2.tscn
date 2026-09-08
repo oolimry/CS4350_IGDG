@@ -3,26 +3,18 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_i4epa"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_nd2ea"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_csd8j"]
-[ext_resource type="PackedScene" uid="uid://bywkacs1kp8hb" path="res://Actors/WorldObjects/Box.tscn" id="2_dba7y"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_nd2ea"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_dba7y"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="6_i4epa"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_alwyu"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_dba7y"]
 
-[sub_resource type="Resource" id="Resource_alwyu"]
+[sub_resource type="Resource" id="Resource_k67so"]
 resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1841, 660)
 persistentID = &"d6d8dfc2-22ae-4ca0-b3b9-a744584fbd0d"
 objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_ne6ro"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1080, 880)
-persistentID = &"b8f7cba1-0151-4b79-9351-c7959fd9bd58"
-objectName = &"Box"
 
 [node name="Room 2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_i4epa")
@@ -74,13 +66,7 @@ text = "'Spacebar' - to jump"
 [node name="PlaceholderSlashableObject6" parent="RoomResidents" unique_id=1573112052 instance=ExtResource("6_i4epa")]
 position = Vector2(1841, 660)
 scale = Vector2(2, 3.5)
-roomResident = SubResource("Resource_alwyu")
-
-[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
-position = Vector2(1080, 880)
-roomResident = SubResource("Resource_ne6ro")
-alwaysRevert = false
-doesStateChangeConsiderCoords = true
+roomResident = SubResource("Resource_k67so")
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)

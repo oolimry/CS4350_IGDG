@@ -48,6 +48,14 @@ enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 ## The exact colour is arbitrary
 @export var roomGroup := BIGROOMGROUP.NONE
 
+######################### Mutable fields ########################
+
+## Has the player explored this room yet
+var wasExplored := false
+
+## Has this room been previously loaded
+var wasLoaded := false
+
 ######## Preview parameters for Map Layout Room Placement ########
 
 ## Preview of Room for the RoomLoader

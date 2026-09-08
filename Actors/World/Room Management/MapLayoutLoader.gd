@@ -85,5 +85,5 @@ func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1) -> void:
 	if roomDef.openSides & RoomDefinition.Side.BOTTOM:
 		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth)
 
-#static func getRoomPosForEditorByInstance() -> Vector2i:
-	#return Vector2i(0,0)
+static func getRoomPosForEditorByInstance() -> Vector2i:
+	return Vector2i(0,0)
