@@ -13,19 +13,18 @@ var currRoomPos : Vector2i
 ## Should the object always reset back to its initial state?
 @export var shouldAlwaysReset := false
 
-## How does the object check that it's state has been changed
-var checkStateChange : Callable = hasRoomChanged
-
 var isSafeToFree := true
 signal isSafeToFreeUpdate(persistentID : StringName, safety: bool)
 
-func setup(objName : String, position : Vector2, shouldAlwaysReset := false) -> void:
-		
-	set_local_to_scene(true)
-	objectName = objName
-	persistentID = RoomResident.generatePersistentID()
-	oriCoords = position
-	self.shouldAlwaysReset = shouldAlwaysReset
+static func setup(objName : String, position : Vector2, 
+	shouldAlwaysReset := true) -> RoomResident:
+	var rr = RoomResident.new()
+	rr.set_local_to_scene(true)
+	rr.objectName = objName
+	rr.persistentID = RoomResident.generatePersistentID()
+	rr.oriCoords = position
+	rr.shouldAlwaysReset = shouldAlwaysReset
+	return rr
 	# oriRoomPos is filled later dynamically in-game from RoomInstance
 
 func toDict() -> Dictionary:

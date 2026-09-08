@@ -18,8 +18,6 @@ func setup(callables : Array[Callable], calcWorldPos : Callable,
 
 func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	if loadedRooms.has(roomDef.gridPos):
-		push_error("Trying to instantiate an already instantiated room")
-		push_error(roomDef.gridPos)
 		return loadedRooms.get(roomDef.gridPos)
 	
 	var instance = roomDef.gamePlayScene.instantiate() as RoomInstance

@@ -13,51 +13,16 @@
 [sub_resource type="Resource" id="Resource_alwyu"]
 resource_local_to_scene = true
 script = ExtResource("7_alwyu")
-oriCoords = Vector2(1080, 880)
-persistentID = &"20bf8d35-29d7-4510-b086-7d58b004881b"
-objectName = &"Box"
+oriCoords = Vector2(1841, 660)
+persistentID = &"d6d8dfc2-22ae-4ca0-b3b9-a744584fbd0d"
+objectName = &"SlashableWall"
 
 [sub_resource type="Resource" id="Resource_ne6ro"]
 resource_local_to_scene = true
 script = ExtResource("7_alwyu")
-oriCoords = Vector2(1880, 760)
-persistentID = &"45f31018-2823-4b21-b8d6-e38fd6d8b0d7"
-objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_1onsp"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1880, 680)
-persistentID = &"cb556073-920b-40fe-a593-e329e1341a0a"
-objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_kh2h4"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1880, 600)
-persistentID = &"728c8134-97ee-402c-bffe-bc2d53230c7b"
-objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_fradc"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1799, 600)
-persistentID = &"a215979d-9dde-4d5c-ae58-653c54944bda"
-objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_y4pgw"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1799, 681)
-persistentID = &"df8a67c9-48fb-4ac7-a681-cd286e298424"
-objectName = &"SlashableWall"
-
-[sub_resource type="Resource" id="Resource_5iwcm"]
-resource_local_to_scene = true
-script = ExtResource("7_alwyu")
-oriCoords = Vector2(1799, 760)
-persistentID = &"338914dd-c620-4772-aa00-962095366713"
-objectName = &"SlashableWall"
+oriCoords = Vector2(1080, 880)
+persistentID = &"b8f7cba1-0151-4b79-9351-c7959fd9bd58"
+objectName = &"Box"
 
 [node name="Room 2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_i4epa")
@@ -106,13 +71,16 @@ text = "'Spacebar' - to jump"
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=737356501]
 
-[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
-position = Vector2(1080, 880)
-roomResident = SubResource("Resource_alwyu")
-
-[node name="PlaceholderSlashableObject6" parent="." unique_id=1573112052 instance=ExtResource("6_i4epa")]
+[node name="PlaceholderSlashableObject6" parent="RoomResidents" unique_id=1573112052 instance=ExtResource("6_i4epa")]
 position = Vector2(1841, 660)
 scale = Vector2(2, 3.5)
+roomResident = SubResource("Resource_alwyu")
+
+[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("2_dba7y")]
+position = Vector2(1080, 880)
+roomResident = SubResource("Resource_ne6ro")
+alwaysRevert = false
+doesStateChangeConsiderCoords = true
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)

@@ -37,11 +37,11 @@ func setupRoomResidents() -> void:
 		# TODO: Check if this works as intended
 		# Ensure that the oriRoomPos of a object moved into a new Room
 		# is not wrongly overwritten
-		if rr.oriRoomPos == null:
+		if rr.oriRoomPos != null:
 			rr.oriRoomPos = roomPos
 			
-		# Objects that always reset to their original state should return
-		# back to this original room at their original pos & state.
+		# AT THE START, objects that always reset to their original state 
+		# should return back to this original room at their original pos & state.
 		if rr.shouldAlwaysReset and n.has_method("generateObjectSnapshot"):
 			snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
 
@@ -57,7 +57,23 @@ func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 	
 	for n in roomResidentsHolder.get_children():
 		# We assume all nodes under this Holder have a roomResident object
+		# and associated functions.
+		#
+		# I would have made an interface to enforce but we are using GDScript :<
 		assert(n.has_method("generateObjectSnapshot"))
+		assert(n.has_method("hasStateChanged"))
+		var rr : RoomResident = n.roomResident
+		
+		# Edge case: if you are in a diff room from your original
+		# and you're supposed to always reset. Don't get snapshotted in this 
+		# diff room. 
+		if rr.shouldAlwaysReset and rr.hasRoomChanged():
+			continue
+		# Clarification: Objects that have changed state within the same room
+		# still get snapshotted, but that's only to like mark their attendance.
+		# later on the restoreSnapshot will check whether their state changes
+		# should persist or not.
+		
 		snapshotDict[n.roomResident.persistentID] = n.generateObjectSnapshot()
 		
 	return snapshotDict
@@ -72,22 +88,22 @@ func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) ->
 		var rr : RoomResident = n.roomResident
 		persistentIDstoRemove[rr.persistentID] = n
 
-	# TODO: Check if instance already exists, whether need to re-update the positioning
-	# Do not re-instantiate something already instantiated but like moved 			
 	for object in roomSnapshot.keys():
 		var objDict : Dictionary = roomSnapshot[object]
 		
 		var roomResident : RoomResident = objDict["roomResident"]
 		
-		# If the object state is not considered to be changed, 
-		# re-use the placed-in-editor, no need to duplicate instantiate
-		if objDict.has("hasStateChanged") and !objDict["hasStateChanged"]:
+		# Mark an editor-placed object to NOT be deleted 
+		if !(objDict.has("hasStateChanged") and objDict["hasStateChanged"])\
+			or roomResident.hasRoomChanged():
 			persistentIDstoRemove.erase(roomSnapshot[object]["roomResident"].persistentID)
 			continue
 			
-		# Else create a new object and queue it to be added
-		var objectInstance = objectInstantiator.call(roomSnapshot[object])
-		objectsToAdd.append(objectInstance)
+		# Create a newly changed object and queue it to be added
+		if (roomResident.hasRoomChanged() or objDict["hasStateChanged"])\
+			and !roomResident.shouldAlwaysReset:
+			var objectInstance = objectInstantiator.call(roomSnapshot[object])
+			objectsToAdd.append(objectInstance)
 	
 	# If the object was present previously in the scene, but was not captured in snapshot
 	# Assume its been moved/destroyed and queue the placed-in-editor copy out

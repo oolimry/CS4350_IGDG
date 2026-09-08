@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_jct8w"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 
-[node name="Room 1" type="Node2D" unique_id=1922114953]
+[node name="Room 1" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_41hdi")
+roomResidentsHolder = NodePath("RoomResidents")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=558003828]
 z_index = -10
@@ -48,3 +49,5 @@ text = "Press 'K' or 'X' to swing!"
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_41hdi")]
 position = Vector2(1466, 868)
 element = 2
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]

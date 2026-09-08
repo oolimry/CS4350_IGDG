@@ -6,31 +6,37 @@ extends StaticBody2D
 
 const objName = "SlashableWall"
 
-@export_tool_button("Generate New ID")
-var generate_id_action := generate_new_id
+@export_tool_button("Generate RoomResident Data")
+var generate_id_action := setup
 
-func generate_new_id() -> void:
-	roomResident = RoomResident.new()
-	roomResident.set_local_to_scene(true)
-	roomResident.objectName = objName
-	roomResident.persistentID = RoomResident.generatePersistentID()
-	roomResident.oriCoords = position
-	
+## Should the wall continued to be destroyed after leaving the room?
+@export var shouldDestructionPersist := true
+
+func setup() -> void:
+	roomResident = RoomResident.setup(objName, position, !shouldDestructionPersist)
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.queue_free()
 
 static func constructObjectBySnapshot(snapshot : Dictionary) -> PlaceholderSlashableObject:
-	assert(snapshot["objectName"] == objName)
-	var scene := load("uid://doqy2y3tyjoxi") as PackedScene
-	var slashable := scene.instantiate() as PlaceholderSlashableObject
-	slashable.position = snapshot["localCoords"]
-	slashable.roomResident = snapshot["roomResident"]
-	return slashable
-
+	# Given how my janky code works, the RoomInstance shouldn't need to call
+	# this constructor at all. The SlashableWall either exists (revert to editor-placed
+	# chain) or doesn't (chain never needs to be reconstructed)
+	assert(false)
+	return null
+	
 func generateObjectSnapshot() -> Dictionary:
 	var snapshot := {}
 	snapshot["objectName"] = objName
 	snapshot["roomResident"] = roomResident
 	snapshot["localCoords"] = position
-	return snapshot			
+	snapshot["hasStateChanged"] = hasStateChanged()
+	return snapshot
+
+func hasStateChanged() -> bool:
+	# This is okay because the state change for a slashable wall
+	# is the entire deletion of said wall.
+	
+	# I.e. If the wall exists there has been no 
+	# state change -> always return false
+	return false

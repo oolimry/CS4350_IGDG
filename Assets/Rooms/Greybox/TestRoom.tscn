@@ -9,6 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="7_cgops"]
 [ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_drwvd"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="9_8kr0g"]
+[ext_resource type="PackedScene" uid="uid://bywkacs1kp8hb" path="res://Actors/WorldObjects/Box.tscn" id="10_aa45t"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="11_1yyt8"]
+
+[sub_resource type="Resource" id="Resource_txbwn"]
+resource_local_to_scene = true
+script = ExtResource("11_1yyt8")
+oriCoords = Vector2(1080, 880)
+persistentID = &"7aa952f4-9b49-4503-bdfb-e0efecc88ee7"
+objectName = &"Box"
+shouldAlwaysReset = true
 
 [node name="Room 1" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_bswgn")
@@ -53,3 +63,9 @@ attached_crate = NodePath("../Crate")
 [node name="Crate" parent="." unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_8kr0g")]
 position = Vector2(1107, 527)
 attached_chain = NodePath("../Chain")
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=1419681411]
+
+[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("10_aa45t")]
+position = Vector2(1080, 880)
+roomResident = SubResource("Resource_txbwn")

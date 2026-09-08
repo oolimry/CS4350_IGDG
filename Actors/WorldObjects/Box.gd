@@ -7,12 +7,15 @@ const maxVelocity := 160.0
 
 const objName = "Box"
 
-@export_tool_button("Generate New ID")
+@export_tool_button("Generate RoomResident Data")
 var generate_id_action := setup
 
+@export var alwaysRevert := true
+@export var doesStateChangeConsiderCoords := false
+
 func setup() -> void:
-	roomResident = RoomResident.new()
-	roomResident.setup(objName, position)
+	Glogger.debug("TEST")
+	roomResident = RoomResident.setup(objName, position, alwaysRevert)
 
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
@@ -51,4 +54,5 @@ func generateObjectSnapshot() -> Dictionary:
 	return snapshot			
 
 func hasStateChanged() -> bool:	
-	return roomResident.hasRoomChanged() or roomResident.oriCoords != position
+	return roomResident.hasRoomChanged() or \
+		(doesStateChangeConsiderCoords and roomResident.oriCoords != position)

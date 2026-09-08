@@ -17,6 +17,10 @@ func _on_generate_pressed() -> void:
 	mapLayout = generateLayout()
 	
 func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
+	if !Engine.is_editor_hint():
+		Glogger.debug("Editor only")
+		return {}
+		
 	var instance = mapLayoutScene.instantiate()
 	var roomLayout : Dictionary[Vector2i, RoomDefinition]
 	var key := Vector2i(0,0)
@@ -80,3 +84,6 @@ func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1) -> void:
 
 	if roomDef.openSides & RoomDefinition.Side.BOTTOM:
 		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth)
+
+#static func getRoomPosForEditorByInstance() -> Vector2i:
+	#return Vector2i(0,0)

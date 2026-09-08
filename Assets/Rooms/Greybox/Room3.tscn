@@ -3,17 +3,16 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_4tq25"]
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_a3qlj"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_4tq25"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_a3qlj"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_i7o22"]
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="4_bu51x"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_a3qlj"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="7_vvqk6"]
 [ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_bu51x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
-size = Vector2(240, 480)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_csd8j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu51x"]
 size = Vector2(760, 879)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1cyr"]
+size = Vector2(240, 480)
 
 [node name="Room 3" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_a3qlj")
@@ -37,45 +36,19 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACw/y0AAAAAAAAAAACx/y0AAAAAAAAAAACy/y0AAAAAAAAAAACz/y0AAAAAAAAAAAC0/y0AAAAAAAAAAAC1/y0AAAAAAAAAAAC2/y0AAAAAAAAAAAC3/y0AAAAAAAAAAAC4/y0AAAAAAAAAAAC5/y0AAAAAAAAAAAC6/y0AAAAAAAAAAAC7/y0AAAAAAAAAAAC8/y0AAAAAAAAAAAC9/y0AAAAAAAAAAAC+/y0AAAAAAAAAAAC//y0AAAAAAAAAAADA/y0AAAAAAAAAAADB/y0AAAAAAAAAAADC/y0AAAAAAAAAAADD/y0AAAAAAAAAAADE/y0AAAAAAAAAAADF/y0AAAAAAAAAAADG/y0AAAAAAAAAAADH/y0AAAAAAAAAAADI/y0AAAAAAAAAAADJ/y0AAAAAAAAAAADK/y0AAAAAAAAAAADL/y0AAAAAAAAAAADM/y0AAAAAAAAAAADN/y0AAAAAAAAAAADO/y0AAAAAAAAAAADP/y0AAAAAAAAAAADQ/y0AAAAAAAAAAADR/y0AAAAAAAAAAADS/y0AAAAAAAAAAADT/y0AAAAAAAAAAADU/y0AAAAAAAAAAADV/y0AAAAAAAAAAADw/wgAAAAAAAAAAQDx/wgAAAAAAAAAAQDy/wgAAAAAAAAAAQDz/wgAAAAAAAAAAQD0/wgAAAAAAAAAAQD1/wgAAAAAAAAAAQD2/wgAAAAAAAAAAQD3/wgAAAAAAAAAAQD4/wgAAAAAAAAAAQD5/wgAAAAAAAAAAQD6/wgAAAAAAAAAAQD7/wgAAAAAAAAAAQA=")
 tile_set = ExtResource("2_4tq25")
 
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 groups=["Checkpoint"]]
-position = Vector2(200, 520)
-script = ExtResource("3_a3qlj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_i7o22")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=1498333101]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=598497129]
-position = Vector2(0, -200)
-shape = SubResource("RectangleShape2D_jct8w")
-
-[node name="Respawn Point" type="Node2D" parent="." unique_id=1676062597 groups=["Checkpoint"]]
+[node name="Respawn Point4" parent="." unique_id=404337279 instance=ExtResource("4_bu51x")]
 position = Vector2(1320, 880)
-script = ExtResource("3_a3qlj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=183123346]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_i7o22")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
+[node name="CollisionShape2D" parent="Respawn Point4/Area2D" parent_id_path=PackedInt32Array(404337279, 1498333101) index="0" unique_id=598497129]
+position = Vector2(139, -279)
+shape = SubResource("RectangleShape2D_bu51x")
 
-[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1935274562]
-collision_layer = 0
-collision_mask = 32
+[node name="Respawn Point3" parent="." unique_id=381613870 instance=ExtResource("4_bu51x")]
+position = Vector2(200, 520)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=1415444373]
-position = Vector2(139, -279.5)
-shape = SubResource("RectangleShape2D_csd8j")
+[node name="CollisionShape2D" parent="Respawn Point3/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
+position = Vector2(0, -200)
+shape = SubResource("RectangleShape2D_u1cyr")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_a3qlj")]
 visible = false
@@ -91,5 +64,5 @@ attached_chain = NodePath("../Chain")
 position = Vector2(879, 354)
 attached_crate = NodePath("../Crate")
 
-[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[editable path="Respawn Point4"]
+[editable path="Respawn Point3"]
