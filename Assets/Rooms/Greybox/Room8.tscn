@@ -105,7 +105,7 @@ position = Vector2(-22.5, 0)
 shape = SubResource("RectangleShape2D_yrg38")
 
 [node name="Element3" parent="." unique_id=849439216 instance=ExtResource("6_ocrqo")]
-position = Vector2(520, 414)
+position = Vector2(520, 420)
 element = 2
 
 [node name="Element4" parent="." unique_id=1394946886 instance=ExtResource("6_ocrqo")]
@@ -113,11 +113,11 @@ position = Vector2(842, 298)
 element = 2
 
 [node name="Element5" parent="." unique_id=1987860204 instance=ExtResource("6_ocrqo")]
-position = Vector2(360.99994, 830)
+position = Vector2(360, 820)
 element = 2
 
 [node name="Element6" parent="." unique_id=1066639486 instance=ExtResource("6_ocrqo")]
-position = Vector2(1361, 873)
+position = Vector2(1360, 860)
 element = 2
 
 [node name="Element7" parent="." unique_id=500903733 instance=ExtResource("6_ocrqo")]
@@ -125,12 +125,12 @@ position = Vector2(1162, 374)
 element = 2
 
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("7_s8jqf")]
-position = Vector2(360, 867)
+position = Vector2(360, 840)
 rotation = -1.5707964
 direction = 3
 
 [node name="IgnitionPad4" parent="." unique_id=65846441 instance=ExtResource("7_s8jqf")]
-position = Vector2(1361.0001, 907)
+position = Vector2(1360, 880)
 rotation = -1.5707964
 direction = 3
 

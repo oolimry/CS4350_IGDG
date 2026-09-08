@@ -26,9 +26,10 @@ enum Directions {
 @onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
 @onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
 
+## xAcceleration / drag should give the main run speed
 ## x movement related
-@export var xAcceleration := 80*60			## how fast the character moves
-@export var xDrag := 0.17					## how fast speed decays, slower = more slidy
+@export var xAcceleration := 128*60			## how fast the character moves
+@export var xDrag := 0.272							## how fast speed decays, slower = more slidy
 """
 assuming 1s = 60f, i hope the code works at diff FPS
 
@@ -102,6 +103,7 @@ const purpleWindUpDistance = 70
 var purpleWindUpTween : Tween
 var originalSpritePosition : Vector2
 var isPurpleDashing = false
+const CRYSTAL_WALL_COLLISION_LAYER = 8
 
 ## pogo related
 const pogoVerticalBoost = 500
@@ -172,6 +174,7 @@ func _physics_process_playerMovement(delta):
 		velocity.x += xAcceleration*delta
 	else:
 		velocity.x += 0
+	
 
 	sprite.rotation = 0
 	
@@ -284,6 +287,9 @@ func physics_process_playerMovement_purple(delta):
 			purpleWindUpTween = get_tree().create_tween()
 			purpleWindUpTween.tween_property(self, "global_position", windUpTargetPosition, purpleWindUpDuration)\
 				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+			
+			set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, false)	
+				
 		return
 	
 	if purpleDashDirection == Enums.Directions.LEFT:
@@ -300,7 +306,8 @@ func physics_process_playerMovement_purple(delta):
 	move_and_slide()
 	
 	if is_on_ceiling() or is_on_floor() or is_on_wall():
-		isPurpleDashing = false	
+		isPurpleDashing = false
+		set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, true)
 
 func _physics_process_slash(delta):
 	timeSinceSlash += delta
@@ -460,3 +467,6 @@ func isWallSliding():
 		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
 			return true
 	return false
+
+func triggerDeath():
+	hazardHandler.receiveDamage.emit(10000)
