@@ -12,12 +12,15 @@ var snapshots : Dictionary[Vector2i, Dictionary] = {}
 func snapshotRoom(ri : RoomInstance) -> void:
 	snapshots[ri.roomPos] = ri.generateRoomSnapshot()
 
-func restoreSnapshot(ri : RoomInstance) -> void:
+func restoreSnapshot(ri : RoomInstance, hasJustLoaded : bool) -> void:
 	var roomPos := ri.roomPos
 	if !snapshots.has(roomPos):
 		return
-		
-	ri.restoreSnapshot(instantiateResident, snapshots[roomPos])
+	
+	if hasJustLoaded:
+		ri.restoreSnapshotJustLoaded(instantiateResident, snapshots[roomPos])
+	else:
+		ri.restoreSnapshotLoaded(instantiateResident, snapshots[roomPos])
 
 func instantiateResident(objectSnapshot : Dictionary) -> Node:
 	return roomResidentConstructors[objectSnapshot["objectName"]]\

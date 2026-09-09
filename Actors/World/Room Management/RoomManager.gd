@@ -66,7 +66,7 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		#if e != roomEntry:
 			#e.isActive = true
 	
-	#roomLoader.handleRoomLoading(currRoomPos)
+	roomLoader.handleRoomLoading(currRoomPos, nextRoomPos)
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system

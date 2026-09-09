@@ -15,8 +15,8 @@ func loadRooms(currRoomPos : Vector2i) -> void:
 func unloadRooms(currRoomPos : Vector2i) -> void:
 	pass
 
-func handleRoomLoading(currRoomPos : Vector2i) -> void:
+func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
 	loadRooms(currRoomPos)
-
+	roomInstantiator.restoreSnapshot(nextRoomPos)
 	#mapLoader.forEachRoomDefBFS(func(roomDef : RoomDefinition): 
 		#roomInstantiator.instantiateRoom(roomDef), currRoomPos, 1)

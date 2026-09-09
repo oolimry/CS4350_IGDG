@@ -25,7 +25,7 @@ func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	instance.roomPos = roomDef.gridPos
 	
 	instance.setup(roomDef.gridPos, \
-		func(): worldStateOwner.restoreSnapshot(instance), \
+		func(): worldStateOwner.restoreSnapshot(instance, true), \
 		!roomDef.wasLoaded)
 		
 	instance.global_position = calcWorldPosCall.call(roomDef.gridPos)
@@ -53,7 +53,7 @@ func freeRoom(roomPos : Vector2i) -> void:
 
 func restoreSnapshot(roomPos : Vector2i) -> void:
 	if loadedRooms.has(roomPos):
-		worldStateOwner.restoreSnapshot(loadedRooms[roomPos])
+		worldStateOwner.restoreSnapshot(loadedRooms[roomPos], false)
 
 func snapshotRoom(roomPos : Vector2i) -> void:
 	if loadedRooms.has(roomPos):

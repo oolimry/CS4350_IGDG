@@ -20,6 +20,8 @@ func unloadRooms(currRoomPos : Vector2i) -> void:
 		roomInstantiator.freeRoom(roomPos)
 
 
-func handleRoomLoading(currRoomPos : Vector2i) -> void:
+func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
+	roomInstantiator.snapshotRoom(currRoomPos)
+	roomInstantiator.restoreSnapshot(nextRoomPos)
 	loadRooms(currRoomPos)
 	unloadRooms(currRoomPos)

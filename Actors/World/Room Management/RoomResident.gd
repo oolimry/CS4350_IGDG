@@ -1,3 +1,17 @@
+## This component tracks the state changes of a gameObject
+## and tells the loader whether to persist the changes or revert 
+## the changes when the player functionally enters or leaves the 
+## room.[br]
+##
+## I assume that if the object leaves the room, its state changes
+## should persist and there's no need to revert that object. I.e.
+## it will no longer be tracked by the RoomInstance. [br]
+## 
+## If you have a complex object where it changes room and then
+## respawns back to its original room. Just use RY's method
+## for the bomb, where there is a bomb spawner, then set
+## shouldAlwaysReset to false.[br]
+
 class_name RoomResident
 extends Resource
 

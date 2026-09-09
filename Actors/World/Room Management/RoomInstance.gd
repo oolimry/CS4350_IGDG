@@ -7,6 +7,7 @@ var roomEntry : RoomEntry
 
 @export var roomResidentsHolder : Node2D
 
+var oriRoomResidents : Dictionary[StringName, Dictionary]
 var snapshotDict : Dictionary[StringName, Dictionary]
 
 var isSafeToFreeRoom := true
@@ -33,6 +34,9 @@ func setup(pos : Vector2i, restoreSnapshot : Callable, isFirstLoad : bool) -> vo
 func setupRoomResidents(isFirstLoad : bool) -> void:
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
+	
+		# If you fail this assert, likely means one of the RoomResident Objects
+		# did not have their button pressed	
 		assert(rr != null)
 		
 		rr.isSafeToFreeUpdate.connect(isSafeToFreeSelfCheck)
@@ -40,14 +44,14 @@ func setupRoomResidents(isFirstLoad : bool) -> void:
 		# TODO: Check if this works as intended
 		# Ensure that the oriRoomPos of a object moved into a new Room
 		# is not wrongly overwritten
-		if isFirstLoad:
-			rr.oriRoomPos = roomPos
-		
+		#if isFirstLoad:
+		rr.oriRoomPos = roomPos
 		rr.currRoomPos = roomPos
-		# AT THE START, objects that always reset to their original state 
-		# should return back to this original room at their original pos & state.
-		#if rr.shouldAlwaysResetRoom and n.has_method("generateObjectSnapshot"):
-			#snapshotDict[rr.persistentID] = n.generateObjectSnapshot()
+	
+		# Setup should always be called when the room is loaded in
+		# When it is loaded in, all nodes should be in their original state
+		oriRoomResidents[rr.persistentID] = n.generateObjectSnapshot()
+		
 
 func forInteractables(c : Callable) -> void:
 	for n in get_children():
@@ -58,7 +62,7 @@ func forInteractables(c : Callable) -> void:
 func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 	if roomResidentsHolder == null:
 		return {}
-	
+	snapshotDict.clear()
 	for n in roomResidentsHolder.get_children():
 		# We assume all nodes under this Holder have a roomResident object
 		# and associated functions.
@@ -74,45 +78,105 @@ func generateRoomSnapshot() -> Dictionary[StringName, Dictionary]:
 			continue
 
 		snapshotDict[n.roomResident.persistentID] = n.generateObjectSnapshot()
-		
+	
 	return snapshotDict
 
-func restoreSnapshot(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
-	var persistentIDsToRemove : Dictionary[StringName, Node] = {}
+## Restore Snapshot for a Loaded Room[br]
+## In this case the children under roomResidentHolder will be the same as the
+## roomSnapshot
+func restoreSnapshotLoaded(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
+	var instancesToDelete : Dictionary[StringName, Node] = {}
+	var objectsToAdd : Array[Node] = []
+	
+	if roomResidentsHolder == null:
+		return
+		
+	# Grab the actual nodes of the already instantiated nodes
+	for n in roomResidentsHolder.get_children():
+		var rr : RoomResident = n.roomResident
+		instancesToDelete[rr.persistentID] = n
+		assert(rr.persistentID in roomSnapshot.keys())
+	assert(roomSnapshot.size() == instancesToDelete.size())
+
+	for id in oriRoomResidents.keys():
+		
+		if instancesToDelete.has(id):
+			# If there's an pre-existing instance of the object that hasn't
+			# been state changed, use that. Don't reinitialize a duplicate
+			if !instancesToDelete[id].hasStateChanged():
+
+				#instancesToDelete[id].roomResident.oriRoomPos \
+					#= oriRoomResident.oriRoomPos
+				instancesToDelete.erase(id)
+				continue
+			
+		# Otherwise we need to reinitialize from the original source
+		if oriRoomResidents[id]["roomResident"]["shouldAlwaysReset"]:
+			var objectInstance = objectInstantiator.call(oriRoomResidents[id])
+			objectsToAdd.append(objectInstance)
+	
+	# These remaining nodes are instances that may have newly moved into 
+	# this room or have been changed from their originals
+	# we need to check if we should delete em or persist em
+	for id in instancesToDelete.keys():
+		
+		# All those remaining in this list, from the original list 
+		# or newly added nodes that shouldAlwaysReset, should be deleted
+		if id in oriRoomResidents.keys() or \
+			instancesToDelete[id].roomResident.shouldAlwaysReset:
+			
+			instancesToDelete[id].queue_free()
+	
+	for n in objectsToAdd:
+		add_child(n)
+
+		#if !(objDict["hasStateChanged"]) or roomResident.shouldAlwaysReset:
+			#var persistentID = roomSnapshot[object]["roomResident"].persistentID
+
+	
+## Restore Snapshot for a Newly Loaded Room[br]
+## In this case the children under roomResidentHolder will be the same as the
+## oriRoomResidents
+func restoreSnapshotJustLoaded(objectInstantiator : Callable, roomSnapshot: Dictionary) -> void:
+	var oriNodesToDelete : Dictionary[StringName, Node] = {}
 	var objectsToAdd : Array[Node] = []
 	if roomResidentsHolder == null:
 		return
 
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
-		persistentIDsToRemove[rr.persistentID] = n
+		oriNodesToDelete[rr.persistentID] = n
+		assert(rr.persistentID in oriRoomResidents.keys())
 
-	for object in roomSnapshot.keys():
-		var objDict : Dictionary = roomSnapshot[object]
+	assert(oriRoomResidents.size() == oriNodesToDelete.size())
+
+	for id in oriRoomResidents.keys():
 		
-		var roomResident : RoomResident = objDict["roomResident"]
-		
-		# Mark an editor-placed object to NOT be deleted 
-		if !(objDict.has("hasStateChanged") and objDict["hasStateChanged"]):
-			persistentIDsToRemove[roomSnapshot[object]["roomResident"].persistentID]\
-				.roomResident.oriRoomPos = roomResident.oriRoomPos 
+		# IF object state was not changed OR object should always reset->
+		# Reuse the original instantiated object (if it exists)
+		if (roomSnapshot.has(id) and !roomSnapshot[id]["hasStateChanged"]) or \
+			oriNodesToDelete[id].roomResident.shouldAlwaysReset:
+			# This stupid statement is here because oriRoomPos should only
+			# filled in at the start of the game, but re-instating the PackedScene
+			# means that the original instantiated object no longer has that
+			# oriRoomPos filled
+			#oriNodesToDelete[id].roomResident.oriRoomPos \
+				#= roomSnapshot[id]["roomResident"].oriRoomPos 
 			
-			persistentIDsToRemove.erase(roomSnapshot[object]["roomResident"].persistentID)
-			continue
-
-		var objectInstance = objectInstantiator.call(roomSnapshot[object])
-		objectsToAdd.append(objectInstance)
+			oriNodesToDelete.erase(id)
+			
+	for id in roomSnapshot.keys():
+		if id in oriNodesToDelete.keys() or \
+			(!oriRoomResidents.has(id) and !roomSnapshot[id]["roomResident"]["shouldAlwaysReset"]):
+			
+			var objectInstance = objectInstantiator.call(roomSnapshot[id])
+			objectsToAdd.append(objectInstance)
 	
-	# If the object was present previously in the scene, but was not captured in snapshot
-	# Assume its been moved/destroyed and queue the placed-in-editor copy out
-	for n in persistentIDsToRemove.values():
-		if !n.roomResident.shouldAlwaysReset:
-			n.queue_free()
-		
+	for n in oriNodesToDelete:
+		oriNodesToDelete[n].queue_free()
+	
 	for n in objectsToAdd:
 		add_child(n)
-		
-	persistentIDsToRemove.clear()
 
 func isSafeToFree() -> bool:
 	for n in roomResidentsHolder.get_children():

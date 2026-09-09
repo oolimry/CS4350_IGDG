@@ -19,17 +19,21 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.queue_free()
 
 static func constructObjectBySnapshot(snapshot : Dictionary) -> PlaceholderSlashableObject:
-	# Given how my janky code works, the RoomInstance shouldn't need to call
-	# this constructor at all. The SlashableWall either exists (revert to editor-placed
-	# chain) or doesn't (chain never needs to be reconstructed)
-	assert(false)
-	return null
+	assert(snapshot["objectName"] == objName)
+	var scene := load("uid://doqy2y3tyjoxi") as PackedScene
+	var slashable := scene.instantiate() as PlaceholderSlashableObject
+	slashable.position = snapshot["localCoords"]
+	slashable.scale = snapshot["localScale"]
+	slashable.roomResident = snapshot["roomResident"]
+	slashable.shouldDestructionPersist = snapshot["shouldDestructionPersist"]
+	return slashable
 	
 func generateObjectSnapshot() -> Dictionary:
 	var snapshot := {}
 	snapshot["objectName"] = objName
 	snapshot["roomResident"] = roomResident
 	snapshot["localCoords"] = position
+	snapshot["localScale"] = scale
 	snapshot["hasStateChanged"] = hasStateChanged()
 	snapshot["shouldDestructionPersist"] = shouldDestructionPersist
 	return snapshot
