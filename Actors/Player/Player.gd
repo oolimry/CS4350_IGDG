@@ -23,8 +23,11 @@ enum Directions {
 @onready var downSlashHitbox = $DownSlashHitbox
 @onready var upSlashHitbox = $UpSlashHitbox
 
-@onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
-@onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
+@onready var raycastsLeft = [$Raycasts/LeftRaycastHigh]
+@onready var raycastsRight = [$Raycasts/RightRaycastHigh]
+
+#@onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
+#@onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
 
 ## xAcceleration / drag should give the main run speed
 ## x movement related
