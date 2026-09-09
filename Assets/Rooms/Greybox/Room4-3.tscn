@@ -117,7 +117,7 @@ position = Vector2(1040, 960)
 visible = false
 position = Vector2(960, 560)
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("8_s1kex")]
-position = Vector2(761, 866.99994)
+position = Vector2(760, 840)
 rotation = -1.5707964
 direction = 3
 

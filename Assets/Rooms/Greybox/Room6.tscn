@@ -109,12 +109,12 @@ position = Vector2(-1, -101.25)
 shape = SubResource("RectangleShape2D_1k4of")
 
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("5_f2b6g")]
-position = Vector2(840, 908.9998)
+position = Vector2(840, 880)
 rotation = -1.5707964
 direction = 3
 
 [node name="IgnitionPad4" parent="." unique_id=263473510 instance=ExtResource("5_f2b6g")]
-position = Vector2(1440.9999, 947.99994)
+position = Vector2(1440, 920)
 rotation = -1.5707964
 direction = 3
 
