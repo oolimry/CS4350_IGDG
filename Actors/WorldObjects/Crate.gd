@@ -29,7 +29,8 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	roomResident.isSafeToSnapshot = floorCast.is_colliding() and (attached_chain == null)
+	if roomResident != null:
+		roomResident.isSafeToSnapshot = floorCast.is_colliding() and (attached_chain == null)
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \
 	constructHandling : Callable) -> Crate:

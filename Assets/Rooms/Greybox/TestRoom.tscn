@@ -24,7 +24,7 @@ shouldAlwaysReset = true
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
 oriCoords = Vector2(1107, 527)
-persistentID = &"9dea3c6e-365e-4935-8fc9-b584e43b05ed"
+persistentID = &"90a8b2f7-6c60-4532-8d0a-fb67cdbf6010"
 objectName = &"Crate"
 
 [sub_resource type="Resource" id="Resource_txbwn"]
@@ -55,7 +55,6 @@ tile_set = ExtResource("2_cgops")
 position = Vector2(1585, 824)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_8kr0g")]
-visible = false
 position = Vector2(960, 560)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_aa45t")]

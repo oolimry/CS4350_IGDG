@@ -21,7 +21,10 @@ func unloadRooms(currRoomPos : Vector2i) -> void:
 
 
 func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
+	if currRoomPos == nextRoomPos:
+		return
+		
 	roomInstantiator.snapshotRoom(currRoomPos)
 	roomInstantiator.restoreSnapshot(nextRoomPos)
-	loadRooms(currRoomPos)
+	loadRooms(nextRoomPos)
 	unloadRooms(currRoomPos)

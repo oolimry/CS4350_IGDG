@@ -58,15 +58,8 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		mapLoader.getRoom(nextRoomPos),\
 		transitioningDir, calcRoomCenterWorldCoords)
 		
-	currRoomPos = nextRoomPos
-	
-	# This code probably ain't needed but I keeping it here jic
-	#roomEntry.isActive = false
-	#for e in entryAreas:
-		#if e != roomEntry:
-			#e.isActive = true
-	
 	roomLoader.handleRoomLoading(currRoomPos, nextRoomPos)
+	currRoomPos = nextRoomPos
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system
