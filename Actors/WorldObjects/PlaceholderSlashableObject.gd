@@ -18,7 +18,8 @@ func setup() -> void:
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.queue_free()
 
-static func constructObjectBySnapshot(snapshot : Dictionary) -> PlaceholderSlashableObject:
+static func constructObjectBySnapshot(snapshot : Dictionary, \
+	constructHandling : Callable) -> PlaceholderSlashableObject:
 	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://doqy2y3tyjoxi") as PackedScene
 	var slashable := scene.instantiate() as PlaceholderSlashableObject
@@ -26,6 +27,7 @@ static func constructObjectBySnapshot(snapshot : Dictionary) -> PlaceholderSlash
 	slashable.scale = snapshot["localScale"]
 	slashable.roomResident = snapshot["roomResident"]
 	slashable.shouldDestructionPersist = snapshot["shouldDestructionPersist"]
+	constructHandling.call(slashable)
 	return slashable
 	
 func generateObjectSnapshot() -> Dictionary:
@@ -41,7 +43,4 @@ func generateObjectSnapshot() -> Dictionary:
 func hasStateChanged() -> bool:
 	# This is okay because the state change for a slashable wall
 	# is the entire deletion of said wall.
-	
-	# I.e. If the wall exists there has been no 
-	# state change -> always return false
 	return false

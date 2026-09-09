@@ -15,28 +15,24 @@
 [sub_resource type="Resource" id="Resource_aa45t"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
-oriCoords = Vector2(1080, 880)
-oriRoomPos = null
-persistentID = &"7aa952f4-9b49-4503-bdfb-e0efecc88ee7"
-objectName = &"Box"
+oriCoords = Vector2(1107, 414)
+persistentID = &"ae4daf06-9a7e-469e-bada-6d61a1f1514c"
+objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_1yyt8"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
-oriCoords = Vector2(1107, 414)
-oriRoomPos = null
-persistentID = &"95b79db8-a3b4-423d-b644-2a69856cdfcb"
-objectName = &"Chain"
-shouldAlwaysReset = true
+oriCoords = Vector2(1107, 527)
+persistentID = &"9dea3c6e-365e-4935-8fc9-b584e43b05ed"
+objectName = &"Crate"
 
 [sub_resource type="Resource" id="Resource_txbwn"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
-oriCoords = Vector2(1107, 527)
-oriRoomPos = null
-persistentID = &"2ade4487-bd71-4e82-b470-ee519c4297f2"
-objectName = &"Chain"
+oriCoords = Vector2(1080, 880)
+persistentID = &"d21f8daf-cdf2-490b-a488-2c7d51f9c453"
+objectName = &"Box"
 shouldAlwaysReset = true
 
 [node name="TestRoom" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
@@ -78,17 +74,17 @@ position = Vector2(841, 473)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1419681411]
 
-[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("10_aa45t")]
-position = Vector2(1080, 880)
-roomResident = SubResource("Resource_aa45t")
-
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_drwvd")]
 position = Vector2(1107, 414)
 attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_1yyt8")
+roomResident = SubResource("Resource_aa45t")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_8kr0g")]
 position = Vector2(1107, 527)
 freeze = true
 attached_chain = NodePath("../Chain")
+roomResident = SubResource("Resource_1yyt8")
+
+[node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("10_aa45t")]
+position = Vector2(1080, 880)
 roomResident = SubResource("Resource_txbwn")

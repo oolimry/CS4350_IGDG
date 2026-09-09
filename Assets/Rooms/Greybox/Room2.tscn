@@ -14,16 +14,16 @@
 resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1080, 880)
-persistentID = &"da55fbff-dde9-41db-a098-dd0bf70b4b97"
+persistentID = &"375c10a9-e325-4c73-b18e-6811b59b118f"
 objectName = &"Box"
+shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_k67so"]
+[sub_resource type="Resource" id="Resource_ne6ro"]
 resource_local_to_scene = true
 script = ExtResource("7_alwyu")
 oriCoords = Vector2(1841, 660)
-persistentID = &"d5ecd089-89a5-4dee-898d-2ac58f57b1aa"
+persistentID = &"dc846c3d-9a3c-4a19-acd9-d591990fa155"
 objectName = &"SlashableWall"
-shouldAlwaysReset = true
 
 [node name="Room 2" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
 script = ExtResource("1_i4epa")
@@ -75,13 +75,11 @@ text = "'Spacebar' - to jump"
 [node name="Box" parent="RoomResidents" unique_id=1489572943 instance=ExtResource("6_alwyu")]
 position = Vector2(1080, 880)
 roomResident = SubResource("Resource_alwyu")
-alwaysRevert = false
 
 [node name="PlaceholderSlashableObject6" parent="RoomResidents" unique_id=1573112052 instance=ExtResource("6_i4epa")]
 position = Vector2(1841, 660)
 scale = Vector2(2, 3.5)
-roomResident = SubResource("Resource_k67so")
-shouldDestructionPersist = false
+roomResident = SubResource("Resource_ne6ro")
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("7_dba7y")]
 position = Vector2(1608, 757)

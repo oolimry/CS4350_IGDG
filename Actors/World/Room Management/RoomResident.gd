@@ -27,6 +27,8 @@ var currRoomPos : Vector2i
 ## Should the object always reset back to its initial state?
 @export var shouldAlwaysReset := false
 
+var isSafeToSnapshot := true
+
 var isSafeToFree := true
 signal isSafeToFreeUpdate(persistentID : StringName, safety: bool)
 

@@ -6,7 +6,10 @@ var snapshots : Dictionary[Vector2i, Dictionary] = {}
 @export var roomResidentConstructors : Dictionary[StringName, Callable] = \
 	{
 		Box.objName : Box.constructObjectBySnapshot,
+		Crate.objName : Crate.constructObjectBySnapshot,
+		Chain.objName : Chain.constructObjectBySnapshot,
 		PlaceholderSlashableObject.objName : PlaceholderSlashableObject.constructObjectBySnapshot
+		
 	}
 
 func snapshotRoom(ri : RoomInstance) -> void:
@@ -22,6 +25,7 @@ func restoreSnapshot(ri : RoomInstance, hasJustLoaded : bool) -> void:
 	else:
 		ri.restoreSnapshotLoaded(instantiateResident, snapshots[roomPos])
 
-func instantiateResident(objectSnapshot : Dictionary) -> Node:
+func instantiateResident(objectSnapshot : Dictionary, 
+	additionalConstruct : Callable) -> Node:
 	return roomResidentConstructors[objectSnapshot["objectName"]]\
-		.call(objectSnapshot)
+		.call(objectSnapshot, additionalConstruct)

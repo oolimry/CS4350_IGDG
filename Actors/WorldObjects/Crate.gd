@@ -1,20 +1,19 @@
 @tool
 class_name Crate
-extends RigidBody2D
+extends RoomResidentRigid
 
 @export var attached_chain: Chain
-
-@export_tool_button("Generate RoomResident Data")
-var generate_id_action := setup
-
-@export var roomResident : RoomResident
+var wasCrateOriAttached := (attached_chain != null)
 
 const objName = "Crate"
 
+@onready var floorCast: RayCast2D = $RayCast2D
+
 func setup() -> void:
-	roomResident = RoomResident.setup(objName, position)
+	roomResident = RoomResident.setup(objName, position, !wasCrateOriAttached)
 
 func attach(chain: Chain) -> void:
+	wasCrateOriAttached = true
 	attached_chain = chain
 	freeze = true
 	
@@ -29,26 +28,25 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 
 	queue_free()
 
-static func constructObjectBySnapshot(snapshot : Dictionary) -> Crate:
-	# Given how my janky code works, the RoomInstance shouldn't need to call
-	# this constructor at all. The chain either exists (revert to editor-placed
-	# chain) or doesn't (chain never needs to be reconstructed)
-	assert(false)
-	return null
+func _physics_process(delta: float) -> void:
+	roomResident.isSafeToSnapshot = floorCast.is_colliding() and (attached_chain == null)
+
+static func constructObjectBySnapshot(snapshot : Dictionary, \
+	constructHandling : Callable) -> Crate:
+	assert(snapshot["objectName"] == objName)
+	var scene := load("uid://dyvidqwu1eryt") as PackedScene
+	var crate := scene.instantiate() as Crate
+	crate.resync(snapshot)
+	#crate.shouldDeleteUponDetach = snapshot["shouldDeleteUponDetach"]
+	constructHandling.call(crate)
+	return crate
 
 func generateObjectSnapshot() -> Dictionary:
-	var snapshot := {}
+	var snapshot := super.generateObjectSnapshot()
 	snapshot["objectName"] = objName
-	snapshot["roomResident"] = roomResident
-	snapshot["localCoords"] = position
-	snapshot["hasStateChanged"] = hasStateChanged()
-	#snapshot["shouldDestructionPersist"] = shouldDestructionPersist
+	#snapshot["shouldDeleteUponDetach"] = shouldDeleteUponDetach
 	return snapshot
 
 func hasStateChanged() -> bool:
-	# This is okay because the state change for a chain
-	# is the entire deletion of said chain.
-	
-	# I.e. If the chain exists there has been no 
-	# state change -> always return false
-	return false
+	return (wasCrateOriAttached and attached_chain == null) or \
+		(!wasCrateOriAttached and attached_chain != null) 

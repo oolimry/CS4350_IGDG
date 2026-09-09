@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://dyvidqwu1eryt"]
 
 [ext_resource type="Script" uid="uid://qutf6jmoy2u3" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="2_ow5d4"]
+
+[sub_resource type="Resource" id="Resource_oo11k"]
+resource_local_to_scene = true
+script = ExtResource("2_ow5d4")
+persistentID = &"a7290e07-b11b-436c-867e-62fae32f6974"
+objectName = &"Crate"
+shouldAlwaysReset = true
 
 [sub_resource type="Gradient" id="Gradient_k1n17"]
 offsets = PackedFloat32Array(0)
@@ -18,6 +26,7 @@ size = Vector2(80, 80)
 collision_layer = 26
 collision_mask = 10
 script = ExtResource("1_k1n17")
+roomResident = SubResource("Resource_oo11k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803576826]
 texture = SubResource("GradientTexture2D_drwvd")
@@ -25,3 +34,6 @@ texture = SubResource("GradientTexture2D_drwvd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029221308]
 visible = false
 shape = SubResource("RectangleShape2D_0glnl")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=446046171]
+collision_mask = 2
