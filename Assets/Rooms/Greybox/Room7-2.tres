@@ -8,6 +8,7 @@
 script = ExtResource("3_uig7p")
 roomName = "Room7-2"
 doesCameraFollow = true
+cameraLimits = 11
 gridPos = Vector2i(-2, 4)
 gamePlayScene = ExtResource("1_3dere")
 openSides = 6

@@ -4,11 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_mcy1y"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_1tbn0"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_5lqlv"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_eogag"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="5_b0iwm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jct8w"]
-size = Vector2(240, 480)
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_7ypad"]
 
 [node name="Room 15" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_5lqlv")
@@ -23,33 +19,18 @@ collision_enabled = false
 position = Vector2(1920, 0)
 tile_set = ExtResource("2_mcy1y")
 
-[node name="Hazards" type="TileMapLayer" parent="." unique_id=1800510434]
+[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1453120718]
 position = Vector2(1920, 0)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("3_1tbn0")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_5lqlv")]
 visible = false
 position = Vector2(960, 560)
 
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=202330827 groups=["Checkpoint"]]
-position = Vector2(200, 520)
-script = ExtResource("4_eogag")
+[node name="Respawn Point3" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_7ypad")]
+position = Vector2(200, 240)
+scale = Vector2(0.8, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=538526534]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("5_b0iwm")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=1498333101]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=598497129]
-position = Vector2(0, -200)
-shape = SubResource("RectangleShape2D_jct8w")
-
-[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
+[node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
+scale = Vector2(0.25, 0.25)

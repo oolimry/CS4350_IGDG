@@ -1,14 +1,9 @@
 @tool
 class_name Chain
-extends StaticBody2D
+extends RoomResidentStatic
 
 var wasCrateOriAttached := false
 @export var attached_crate: Crate
-
-@export_tool_button("Generate RoomResident Data")
-var generate_id_action := setup
-
-@export var roomResident : RoomResident
 
 const objName = "Chain"
 
@@ -39,9 +34,7 @@ static func constructObjectBySnapshot(snapshot : Dictionary,
 	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://dr5hrvoct3vi0") as PackedScene
 	var chain := scene.instantiate() as Chain
-	chain.position = snapshot["localCoords"]
-	chain.scale = snapshot["localScale"]
-	chain.roomResident = snapshot["roomResident"]
+	chain.resync(snapshot)
 	chain.shouldDestructionPersist = snapshot["shouldDestructionPersist"]
 	chain.wasCrateOriAttached = snapshot["wasCrateOriAttached"]
 	
@@ -54,12 +47,8 @@ static func constructObjectBySnapshot(snapshot : Dictionary,
 	return chain
 
 func generateObjectSnapshot() -> Dictionary:
-	var snapshot := {}
+	var snapshot := super.generateObjectSnapshot()
 	snapshot["objectName"] = objName
-	snapshot["roomResident"] = roomResident
-	snapshot["localCoords"] = position
-	snapshot["localScale"] = scale
-	snapshot["hasStateChanged"] = hasStateChanged()
 	snapshot["shouldDestructionPersist"] = shouldDestructionPersist
 	snapshot["wasCrateOriAttached"] = wasCrateOriAttached
 

@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_h45ro"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_los5y"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="8_s1kex"]
+[ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="9_jgau0"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="9_lcf7a"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="10_ctc4s"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="10_jgau0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctc4s"]
@@ -17,6 +19,13 @@ size = Vector2(560, 480)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h45ro"]
 size = Vector2(320, 560)
+
+[sub_resource type="Resource" id="Resource_e31g4"]
+resource_local_to_scene = true
+script = ExtResource("10_ctc4s")
+oriCoords = Vector2(1120.0001, 1040)
+persistentID = &"7fe85ce0-cb18-43c7-b15c-bf84a68f82df"
+objectName = &"SlashableWall"
 
 [node name="Room 4-3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_s1kex")
@@ -76,6 +85,13 @@ position = Vector2(1000, 440)
 [node name="CollisionShape2D" parent="Respawn Point2/Area2D" parent_id_path=PackedInt32Array(1471791476, 1498333101) index="0" unique_id=598497129]
 position = Vector2(80, 200)
 shape = SubResource("RectangleShape2D_h45ro")
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=97286632]
+
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1269534571 instance=ExtResource("9_jgau0")]
+position = Vector2(1120.0001, 1040)
+scale = Vector2(3.5, 1)
+roomResident = SubResource("Resource_e31g4")
 
 [editable path="Respawn Point4"]
 [editable path="Respawn Point"]

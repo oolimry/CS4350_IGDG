@@ -11,6 +11,25 @@
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="10_tqwbb"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="10_vkn43"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vu4"]
+size = Vector2(240, 480)
+
+[sub_resource type="Resource" id="Resource_vkn43"]
+resource_local_to_scene = true
+script = ExtResource("10_tqwbb")
+oriCoords = Vector2(640, 280)
+persistentID = &"bd9a020f-99c0-4508-80cb-65498fc97eb4"
+objectName = &"Chain"
+shouldAlwaysReset = true
+
+[sub_resource type="Resource" id="Resource_tqwbb"]
+resource_local_to_scene = true
+script = ExtResource("10_tqwbb")
+oriCoords = Vector2(1560, 360)
+persistentID = &"b585265c-d313-4e58-9c5b-d7ca3b49769a"
+objectName = &"Chain"
+shouldAlwaysReset = true
+
 [sub_resource type="Resource" id="Resource_mtt3v"]
 resource_local_to_scene = true
 script = ExtResource("10_tqwbb")
@@ -24,9 +43,6 @@ script = ExtResource("10_tqwbb")
 oriCoords = Vector2(1560, 480)
 persistentID = &"ba0887e1-9dde-4ec5-87ab-ff381093cdaa"
 objectName = &"Crate"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vu4"]
-size = Vector2(240, 480)
 
 [node name="Room 14-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_aaxl4")
@@ -53,14 +69,6 @@ tile_set = ExtResource("3_4m8kp")
 visible = false
 position = Vector2(960, 560)
 
-[node name="Chain" parent="." unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_2a6tm")]
-position = Vector2(640, 280)
-attached_crate = NodePath("../Crate")
-
-[node name="Chain2" parent="." unique_id=1911540231 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_2a6tm")]
-position = Vector2(1560, 360)
-attached_crate = NodePath("../Crate2")
-
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_vkn43")]
 position = Vector2(511, 848)
 element = 1
@@ -68,18 +76,6 @@ element = 1
 [node name="Element2" parent="." unique_id=200144462 instance=ExtResource("8_vkn43")]
 position = Vector2(760, 320)
 element = 1
-
-[node name="Crate" parent="." unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_tqwbb")]
-position = Vector2(640, 400)
-freeze = true
-attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_mtt3v")
-
-[node name="Crate2" parent="." unique_id=655330715 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_tqwbb")]
-position = Vector2(1560, 480)
-freeze = true
-attached_chain = NodePath("../Chain2")
-roomResident = SubResource("Resource_t8vu4")
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("10_vkn43")]
 position = Vector2(400, 600)
@@ -90,5 +86,29 @@ position = Vector2(120, 840)
 [node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
 position = Vector2(0, -200)
 shape = SubResource("RectangleShape2D_t8vu4")
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=2021705617]
+
+[node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_2a6tm")]
+position = Vector2(640, 280)
+attached_crate = NodePath("../Crate")
+roomResident = SubResource("Resource_vkn43")
+
+[node name="Chain2" parent="RoomResidents" unique_id=1911540231 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_2a6tm")]
+position = Vector2(1560, 360)
+attached_crate = NodePath("../Crate2")
+roomResident = SubResource("Resource_tqwbb")
+
+[node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_tqwbb")]
+position = Vector2(640, 400)
+freeze = true
+attached_chain = NodePath("../Chain")
+roomResident = SubResource("Resource_mtt3v")
+
+[node name="Crate2" parent="RoomResidents" unique_id=655330715 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_tqwbb")]
+position = Vector2(1560, 480)
+freeze = true
+attached_chain = NodePath("../Chain2")
+roomResident = SubResource("Resource_t8vu4")
 
 [editable path="Respawn Point"]

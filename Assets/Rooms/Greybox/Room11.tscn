@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_tj26a"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_srrmc"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="7_tj26a"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="8_aqyr4"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_qgnw2"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="8_tj26a"]
 [ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="9_qgnw2"]
@@ -14,6 +15,13 @@ size = Vector2(400, 600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqyr4"]
 size = Vector2(200, 240)
+
+[sub_resource type="Resource" id="Resource_nhygi"]
+resource_local_to_scene = true
+script = ExtResource("8_aqyr4")
+oriCoords = Vector2(1679, 1041)
+persistentID = &"49f08368-85da-4072-b8d2-bed428f90bb0"
+objectName = &"SlashableWall"
 
 [node name="Room 11" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_srrmc")
@@ -47,10 +55,6 @@ position = Vector2(557, 843)
 position = Vector2(1641, 466)
 element = 2
 
-[node name="ExplodableWall" parent="." unique_id=1935947710 instance=ExtResource("9_qgnw2")]
-position = Vector2(1679, 1041)
-scale = Vector2(1, 3)
-
 [node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("8_tj26a")]
 position = Vector2(480, 880)
 
@@ -64,6 +68,13 @@ position = Vector2(1840, 200)
 [node name="CollisionShape2D" parent="Respawn Point4/Area2D" parent_id_path=PackedInt32Array(832837242, 1498333101) index="0" unique_id=598497129]
 position = Vector2(-20, -80)
 shape = SubResource("RectangleShape2D_aqyr4")
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=1721712397]
+
+[node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("9_qgnw2")]
+position = Vector2(1679, 1041)
+scale = Vector2(1, 3)
+roomResident = SubResource("Resource_nhygi")
 
 [editable path="Respawn Point"]
 [editable path="Respawn Point4"]

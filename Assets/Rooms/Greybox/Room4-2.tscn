@@ -66,5 +66,7 @@ position = Vector2(1600, 1040)
 position = Vector2(-20, -20)
 shape = SubResource("RectangleShape2D_x80dp")
 
+[node name="RoomResidents" type="Node2D" parent="." unique_id=1897836441]
+
 [editable path="Respawn Point3"]
 [editable path="Respawn Point"]

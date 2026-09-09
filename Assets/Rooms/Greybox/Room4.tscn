@@ -38,3 +38,5 @@ element = 1
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("6_yrg38")]
 visible = false
 position = Vector2(960, 560)
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=530557470]

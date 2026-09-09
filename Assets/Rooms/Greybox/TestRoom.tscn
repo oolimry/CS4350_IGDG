@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bywkacs1kp8hb" path="res://Actors/WorldObjects/Box.tscn" id="10_aa45t"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="11_1yyt8"]
 
-[sub_resource type="Resource" id="Resource_1yyt8"]
+[sub_resource type="Resource" id="Resource_txbwn"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
 oriCoords = Vector2(1107, 414)
@@ -21,14 +21,14 @@ persistentID = &"ae4daf06-9a7e-469e-bada-6d61a1f1514c"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_txbwn"]
+[sub_resource type="Resource" id="Resource_2xpeh"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
 oriCoords = Vector2(1107, 527)
 persistentID = &"90a8b2f7-6c60-4532-8d0a-fb67cdbf6010"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_2xpeh"]
+[sub_resource type="Resource" id="Resource_gxu3e"]
 resource_local_to_scene = true
 script = ExtResource("11_1yyt8")
 oriCoords = Vector2(1080, 880)
@@ -36,9 +36,23 @@ persistentID = &"d21f8daf-cdf2-490b-a488-2c7d51f9c453"
 objectName = &"Box"
 shouldAlwaysReset = true
 
-[node name="TestRoom" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
+[sub_resource type="Resource" id="Resource_1yyt8"]
+resource_local_to_scene = true
+script = ExtResource("11_1yyt8")
+oriCoords = Vector2(841, 473)
+persistentID = &"dd357fda-64d4-4bcf-8b1e-5ce436bf2323"
+objectName = &"SlashableWall"
+
+[sub_resource type="Resource" id="Resource_nsiev"]
+resource_local_to_scene = true
+script = ExtResource("11_1yyt8")
+oriCoords = Vector2(1520, 760)
+persistentID = &"6ce33595-94d8-4366-905c-03ab0d4efe58"
+objectName = &"Crate"
+shouldAlwaysReset = true
+
+[node name="TestRoom" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_bswgn")
-roomResidentsHolder = NodePath("RoomResidents")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=558003828]
 z_index = -10
@@ -70,25 +84,30 @@ element = 1
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_cgops")]
 position = Vector2(839, 766)
 
-[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("7_5nod2")]
-position = Vector2(841, 473)
-
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1419681411]
 
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_drwvd")]
 position = Vector2(1107, 414)
 attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_1yyt8")
+roomResident = SubResource("Resource_txbwn")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_8kr0g")]
 position = Vector2(1107, 527)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_txbwn")
+roomResident = SubResource("Resource_2xpeh")
 
 [node name="Box" parent="RoomResidents" unique_id=1489572943 groups=["Interactable"] instance=ExtResource("10_aa45t")]
 position = Vector2(1080, 880)
-roomResident = SubResource("Resource_2xpeh")
+roomResident = SubResource("Resource_gxu3e")
+
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("7_5nod2")]
+position = Vector2(841, 473)
+roomResident = SubResource("Resource_1yyt8")
+
+[node name="Crate2" parent="RoomResidents" unique_id=1334458006 instance=ExtResource("9_8kr0g")]
+position = Vector2(1320, 680)
+roomResident = SubResource("Resource_nsiev")
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_8kr0g")]
 position = Vector2(600, 560)

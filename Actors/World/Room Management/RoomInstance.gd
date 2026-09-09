@@ -5,7 +5,7 @@ var roomPos : Vector2i
 
 var roomEntry : RoomEntry
 
-@export var roomResidentsHolder : Node2D
+@onready var roomResidentsHolder : Node2D = $RoomResidents
 
 var oriRoomResidents : Dictionary[StringName, Dictionary]
 var snapshotDict : Dictionary[StringName, Dictionary]

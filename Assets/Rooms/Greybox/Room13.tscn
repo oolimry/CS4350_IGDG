@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_lobe3"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_mtgvb"]
 
-[sub_resource type="Resource" id="Resource_m7auv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46hnx"]
+size = Vector2(160, 240)
+
+[sub_resource type="Resource" id="Resource_lobe3"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(1400, 360)
@@ -18,7 +21,7 @@ persistentID = &"2b2077d2-6925-471f-934d-0278da53e05b"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_8evo6"]
+[sub_resource type="Resource" id="Resource_mtgvb"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(1080, 240)
@@ -26,7 +29,7 @@ persistentID = &"c6fb65b2-5ca4-4e6d-b21f-69d6ce27583a"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_hlj7e"]
+[sub_resource type="Resource" id="Resource_m7auv"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(480, 240)
@@ -34,7 +37,7 @@ persistentID = &"e3ebbbf5-6d4e-481d-b764-42e8dbb51d9b"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_8jm2f"]
+[sub_resource type="Resource" id="Resource_8evo6"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(800, 520)
@@ -42,36 +45,33 @@ persistentID = &"11f4abee-2d25-4112-a441-937a3c3c3dcd"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_p5cgd"]
+[sub_resource type="Resource" id="Resource_hlj7e"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(1400, 480)
 persistentID = &"30b5fe53-33fd-4d40-ac3d-d8c9807b1bbd"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_apbu1"]
+[sub_resource type="Resource" id="Resource_8jm2f"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(1080, 320)
 persistentID = &"13805aa6-c1bd-44ae-8b6b-bb4e3a2d0ccf"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_wj2w1"]
+[sub_resource type="Resource" id="Resource_p5cgd"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(800, 640)
 persistentID = &"46f75deb-81fa-4611-82e4-cb8a3437ae2d"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_ry2mq"]
+[sub_resource type="Resource" id="Resource_apbu1"]
 resource_local_to_scene = true
 script = ExtResource("6_lobe3")
 oriCoords = Vector2(480, 360)
 persistentID = &"829aecfd-468e-42b6-a988-20542eab7cfa"
 objectName = &"Crate"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46hnx"]
-size = Vector2(160, 240)
 
 [node name="Room 13" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_k0rt7")
@@ -98,50 +98,6 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACq/zEAAAAAAAAAAACr/zEAAAAAAAAAAACs/zEAAAAAAAAAAACt/zEAAAAAAAAAAACu/zEAAAAAAAAAAACv/zEAAAAAAAAAAACw/zEAAAAAAAAAAACx/zEAAAAAAAAAAACy/zEAAAAAAAAAAACz/zEAAAAAAAAAAAC0/zEAAAAAAAAAAAC1/zEAAAAAAAAAAAC2/zEAAAAAAAAAAAC3/zEAAAAAAAAAAAC4/zEAAAAAAAAAAAC5/zEAAAAAAAAAAAC6/zEAAAAAAAAAAAC7/zEAAAAAAAAAAAC8/zEAAAAAAAAAAAC9/zEAAAAAAAAAAAC+/zEAAAAAAAAAAAC//zEAAAAAAAAAAADA/zEAAAAAAAAAAADB/zEAAAAAAAAAAADC/zEAAAAAAAAAAADD/zEAAAAAAAAAAADE/zEAAAAAAAAAAADF/zEAAAAAAAAAAADG/zEAAAAAAAAAAADH/zEAAAAAAAAAAADI/zEAAAAAAAAAAADJ/zEAAAAAAAAAAADK/zEAAAAAAAAAAADL/zEAAAAAAAAAAADM/zEAAAAAAAAAAADN/zEAAAAAAAAAAADO/zEAAAAAAAAAAADP/zEAAAAAAAAAAADQ/zEAAAAAAAAAAADR/zEAAAAAAAAAAADS/zEAAAAAAAAAAADT/zEAAAAAAAAAAADU/zEAAAAAAAAAAADV/zEAAAAAAAAAAADW/zEAAAAAAAAAAADX/zEAAAAAAAAAAADY/zEAAAAAAAAAAADZ/zEAAAAAAAAAAADa/zEAAAAAAAAAAADb/zEAAAAAAAAAAADc/zEAAAAAAAAAAADd/zEAAAAAAAAAAADe/zEAAAAAAAAAAADf/zEAAAAAAAAAAADg/zEAAAAAAAAAAADh/zEAAAAAAAAAAADi/zEAAAAAAAAAAADj/zEAAAAAAAAAAADk/zEAAAAAAAAAAADl/zEAAAAAAAAAAADm/zEAAAAAAAAAAADn/zEAAAAAAAAAAADo/zEAAAAAAAAAAADp/zEAAAAAAAAAAADq/zEAAAAAAAAAAADr/zEAAAAAAAAAAADs/zEAAAAAAAAAAADt/zEAAAAAAAAAAADu/zEAAAAAAAAAAADv/zEAAAAAAAAAAADw/zEAAAAAAAAAAADx/zEAAAAAAAAAAADy/zEAAAAAAAAAAADz/zEAAAAAAAAAAAD0/zEAAAAAAAAAAAD1/zEAAAAAAAAAAAD2/zEAAAAAAAAAAAD3/zEAAAAAAAAAAAD4/zEAAAAAAAAAAAD5/zEAAAAAAAAAAAD6/zEAAAAAAAAAAAD7/zEAAAAAAAAAAAA=")
 tile_set = ExtResource("3_bv4qt")
 
-[node name="Chain" parent="." unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
-position = Vector2(1400, 360)
-attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_m7auv")
-
-[node name="Chain2" parent="." unique_id=974338962 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
-position = Vector2(1080, 240)
-attached_crate = NodePath("../Crate2")
-roomResident = SubResource("Resource_8evo6")
-
-[node name="Chain4" parent="." unique_id=957047295 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
-position = Vector2(480, 240)
-attached_crate = NodePath("../Crate4")
-roomResident = SubResource("Resource_hlj7e")
-
-[node name="Chain8" parent="." unique_id=135105284 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
-position = Vector2(800, 520)
-attached_crate = NodePath("../Crate8")
-roomResident = SubResource("Resource_8jm2f")
-
-[node name="Crate" parent="." unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
-position = Vector2(1400, 480)
-freeze = true
-attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_p5cgd")
-
-[node name="Crate2" parent="." unique_id=733058964 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
-position = Vector2(1080, 320)
-freeze = true
-attached_chain = NodePath("../Chain2")
-roomResident = SubResource("Resource_apbu1")
-
-[node name="Crate8" parent="." unique_id=1695253872 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
-position = Vector2(800, 640)
-freeze = true
-attached_chain = NodePath("../Chain8")
-roomResident = SubResource("Resource_wj2w1")
-
-[node name="Crate4" parent="." unique_id=1397628169 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
-position = Vector2(480, 360)
-freeze = true
-attached_chain = NodePath("../Chain4")
-roomResident = SubResource("Resource_ry2mq")
-
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_lobe3")]
 position = Vector2(280, 840)
 element = 1
@@ -152,5 +108,51 @@ position = Vector2(1640, 240)
 [node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
 position = Vector2(-40, -80)
 shape = SubResource("RectangleShape2D_46hnx")
+
+[node name="RoomResidents" type="Node2D" parent="." unique_id=488854924]
+
+[node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
+position = Vector2(1400, 360)
+attached_crate = NodePath("../Crate")
+roomResident = SubResource("Resource_lobe3")
+
+[node name="Chain2" parent="RoomResidents" unique_id=974338962 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
+position = Vector2(1080, 240)
+attached_crate = NodePath("../Crate2")
+roomResident = SubResource("Resource_mtgvb")
+
+[node name="Chain4" parent="RoomResidents" unique_id=957047295 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
+position = Vector2(480, 240)
+attached_crate = NodePath("../Crate4")
+roomResident = SubResource("Resource_m7auv")
+
+[node name="Chain8" parent="RoomResidents" unique_id=135105284 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_lobe3")]
+position = Vector2(800, 520)
+attached_crate = NodePath("../Crate8")
+roomResident = SubResource("Resource_8evo6")
+
+[node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
+position = Vector2(1400, 480)
+freeze = true
+attached_chain = NodePath("../Chain")
+roomResident = SubResource("Resource_hlj7e")
+
+[node name="Crate2" parent="RoomResidents" unique_id=733058964 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
+position = Vector2(1080, 320)
+freeze = true
+attached_chain = NodePath("../Chain2")
+roomResident = SubResource("Resource_8jm2f")
+
+[node name="Crate8" parent="RoomResidents" unique_id=1695253872 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
+position = Vector2(800, 640)
+freeze = true
+attached_chain = NodePath("../Chain8")
+roomResident = SubResource("Resource_p5cgd")
+
+[node name="Crate4" parent="RoomResidents" unique_id=1397628169 node_paths=PackedStringArray("attached_chain") instance=ExtResource("7_bv4qt")]
+position = Vector2(480, 360)
+freeze = true
+attached_chain = NodePath("../Chain4")
+roomResident = SubResource("Resource_apbu1")
 
 [editable path="Respawn Point"]
