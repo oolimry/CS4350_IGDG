@@ -3,17 +3,16 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_3bfmy"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_n5cbs"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_tuow0"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_3bfmy"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_gxh8l"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="6_dr2ox"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="8_3bfmy"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_dr6l8"]
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_gxh8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr6l8"]
+size = Vector2(80, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
-size = Vector2(110, 109)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
-size = Vector2(80, 113)
+size = Vector2(120, 120)
 
 [node name="Room 4-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_3bfmy")
@@ -30,60 +29,11 @@ position = Vector2(1920, 0)
 tile_map_data = PackedByteArray("AADd/wAAAgAAAAMAAADQ/xcAAgAAAAMAAADQ/xgAAgAAAAMAAADQ/xkAAgAAAAMAAADQ/xoAAgAAAAMAAADR/xcAAgAAAAMAAADR/xgAAgAAAAMAAADR/xkAAgAAAAMAAADR/xoAAgAAAAMAAADS/xgAAgAAAAMAAADS/xkAAgAAAAMAAADS/xoAAgAAAAMAAADQ/wAAAgAAAAMAAADQ/wEAAgAAAAMAAADQ/wIAAgAAAAMAAADQ/wMAAgAAAAMAAADQ/wQAAgAAAAMAAADQ/wUAAgAAAAMAAADQ/wYAAgAAAAMAAADQ/wcAAgAAAAMAAADQ/wgAAgAAAAMAAADQ/wkAAgAAAAMAAADQ/woAAgAAAAMAAADQ/wsAAgAAAAMAAADR/wAAAgAAAAMAAADR/wEAAgAAAAMAAADR/wIAAgAAAAMAAADR/wMAAgAAAAMAAADR/wQAAgAAAAMAAADR/wUAAgAAAAMAAADR/wYAAgAAAAMAAADR/wcAAgAAAAMAAADR/wgAAgAAAAMAAADR/wkAAgAAAAMAAADS/wAAAgAAAAMAAADS/wEAAgAAAAMAAADT/wAAAgAAAAMAAADT/wEAAgAAAAMAAADU/wAAAgAAAAMAAADU/wEAAgAAAAMAAADV/wAAAgAAAAMAAADV/wEAAgAAAAMAAADW/wAAAgAAAAMAAADW/wEAAgAAAAMAAADX/wAAAgAAAAMAAADX/wEAAgAAAAMAAADY/wAAAgAAAAMAAADY/wEAAgAAAAMAAADZ/wAAAgAAAAMAAADZ/wEAAgAAAAMAAADa/wAAAgAAAAMAAADa/wEAAgAAAAMAAADb/wAAAgAAAAMAAADb/wEAAgAAAAMAAADc/wAAAgAAAAMAAADc/wEAAgAAAAMAAADQ/wwAAgAAAAMAAADQ/w0AAgAAAAMAAADQ/w4AAgAAAAMAAADQ/w8AAgAAAAMAAADQ/xAAAgAAAAMAAADQ/xEAAgAAAAMAAADR/w8AAgAAAAMAAADR/xAAAgAAAAMAAADR/xEAAgAAAAMAAADS/wIAAgAAAAMAAADS/wMAAgAAAAMAAADS/wQAAgAAAAMAAADS/wUAAgAAAAMAAADS/wYAAgAAAAMAAADS/wcAAgAAAAMAAADS/wgAAgAAAAMAAADT/wIAAgAAAAMAAADT/wMAAgAAAAMAAADT/wQAAgAAAAMAAADT/wUAAgAAAAMAAADT/wYAAgAAAAMAAADT/wcAAgAAAAMAAADT/wgAAgAAAAMAAADU/wIAAgAAAAMAAADU/wMAAgAAAAMAAADU/wQAAgAAAAMAAADU/wUAAgAAAAMAAADU/wYAAgAAAAMAAADU/wcAAgAAAAMAAADU/wgAAgAAAAMAAADV/wIAAgAAAAMAAADV/wMAAgAAAAMAAADV/wQAAgAAAAMAAADV/wUAAgAAAAMAAADV/wYAAgAAAAMAAADV/wcAAgAAAAMAAADV/wgAAgAAAAMAAADW/wIAAgAAAAMAAADW/wMAAgAAAAMAAADW/wQAAgAAAAMAAADW/wUAAgAAAAMAAADW/wYAAgAAAAMAAADW/wcAAgAAAAMAAADW/wgAAgAAAAMAAADX/wIAAgAAAAMAAADX/wMAAgAAAAMAAADX/wQAAgAAAAMAAADX/wUAAgAAAAMAAADX/wYAAgAAAAMAAADX/wcAAgAAAAMAAADX/wgAAgAAAAMAAADY/wIAAgAAAAMAAADY/wMAAgAAAAMAAADY/wQAAgAAAAMAAADY/wUAAgAAAAMAAADY/wYAAgAAAAMAAADY/wcAAgAAAAMAAADY/wgAAgAAAAMAAADZ/wIAAgAAAAMAAADZ/wMAAgAAAAMAAADZ/wQAAgAAAAMAAADZ/wUAAgAAAAMAAADZ/wYAAgAAAAMAAADZ/wcAAgAAAAMAAADZ/wgAAgAAAAMAAADa/wIAAgAAAAMAAADa/wMAAgAAAAMAAADa/wQAAgAAAAMAAADa/wUAAgAAAAMAAADa/wYAAgAAAAMAAADa/wcAAgAAAAMAAADa/wgAAgAAAAMAAADb/wIAAgAAAAMAAADb/wMAAgAAAAMAAADb/wQAAgAAAAMAAADb/wUAAgAAAAMAAADb/wYAAgAAAAMAAADc/wIAAgAAAAMAAADc/wMAAgAAAAMAAADc/wQAAgAAAAMAAADc/wUAAgAAAAMAAADc/wYAAgAAAAMAAADd/wMAAgAAAAMAAADd/wQAAgAAAAMAAADd/wUAAgAAAAMAAADd/wYAAgAAAAMAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wIAAgABAAAAAAD+/wMAAgABAAAAAAD+/wQAAgABAAAAAAD+/wUAAgAAAAAAAAD+/wYAAgAAAAAAAAD+/wcAAgAAAAAAAAD+/wgAAgAAAAAAAAD+/wkAAgAAAAAAAAD//wIAAgAAAAAAAAD//wMAAgAAAAAAAAD//wQAAgAAAAAAAAD//wUAAgAAAAAAAAD//wYAAgAAAAAAAAD//wcAAgAAAAAAAAD//wgAAgAAAAAAAAD//wkAAgAAAAAAAAD+/w8AAgABAAAAAAD+/xAAAgABAAAAAAD+/xEAAgABAAAAAAD+/xIAAgABAAAAAAD+/xMAAgABAAAAAAD+/xQAAgABAAAAAAD+/xUAAgABAAAAAAD+/xYAAgABAAAAAAD+/xcAAgABAAAAAAD+/xgAAgABAAAAAAD+/xkAAgABAAAAAAD//w8AAgABAAAAAAD//xAAAgABAAAAAAD//xEAAgABAAAAAAD//xIAAgABAAAAAAD//xMAAgABAAAAAAD//xQAAgABAAAAAAD//xUAAgABAAAAAAD//xYAAgABAAAAAAD//xcAAgABAAAAAAD//xgAAgABAAAAAAD//xkAAgABAAAAAAD+/xoAAgABAAAAAAD//xoAAgABAAAAAAD4/wAAAgAAAAAAAAD4/wEAAgAAAAAAAAD5/wAAAgAAAAAAAAD5/wEAAgAAAAAAAAD0/w8AAgAAAAAAAAD0/xAAAgAAAAAAAAD0/xEAAgAAAAAAAAD0/xIAAgAAAAAAAAD1/w8AAgAAAAAAAAD1/xAAAgAAAAAAAAD1/xEAAgAAAAAAAAD1/xIAAgAAAAAAAAD2/w8AAgAAAAAAAAD2/xAAAgAAAAAAAAD2/xEAAgAAAAAAAAD2/xIAAgAAAAAAAAD0/xMAAgAAAAAAAAD0/xQAAgAAAAAAAAD0/xUAAgAAAAAAAAD1/xMAAgAAAAAAAAD1/xQAAgAAAAAAAAD1/xUAAgAAAAAAAAD2/xMAAgAAAAAAAAD2/xQAAgAAAAAAAAD2/xUAAgAAAAAAAAD0/xYAAgAAAAAAAAD1/xYAAgAAAAAAAAD2/xYAAgAAAAAAAADn/xAAAgAAAAMAAADo/xAAAgAAAAMAAADp/xAAAgAAAAMAAADm/xAAAgAAAAMAAADo/xEAAgAAAAMAAADp/xEAAgAAAAMAAADd/wEAAgAAAAMAAADd/wIAAgAAAAMAAADd/wcAAgAAAAMAAADc/wcAAgAAAAMAAADc/wgAAgAAAAMAAADb/wgAAgAAAAMAAADd/wgAAgAAAAMAAADb/wcAAgAAAAMAAADR/woAAgAAAAMAAADR/wsAAgAAAAMAAADR/wwAAgAAAAMAAADR/w0AAgAAAAMAAADR/w4AAgAAAAMAAADT/xgAAgAAAAMAAADT/xkAAgAAAAMAAADT/xoAAgAAAAMAAADW/w4AAgAAAAMAAADX/w4AAgAAAAMAAAD3/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD+/woAAgAAAAAAAAD//woAAgABAAAAAAD//wsAAgABAAAAAAD//wwAAgABAAAAAAD//w0AAgABAAAAAAD//w4AAgABAAAAAAD+/w4AAgABAAAAAAD+/w0AAgABAAAAAAD+/wwAAgAAAAAAAAD+/wsAAgAAAAAAAAD0/w4AAgAAAAAAAAD2/w4AAgAAAAAAAAD1/w4AAgAAAAAAAADj/xcAAgAAAAMAAADj/xYAAgAAAAMAAADj/xUAAgAAAAMAAADj/xQAAgAAAAMAAADj/xMAAgAAAAMAAADl/xAAAgAAAAMAAADl/xEAAgAAAAMAAADm/xEAAgAAAAMAAADn/xEAAgAAAAMAAADj/xIAAgAAAAMAAADk/xIAAgAAAAMAAADl/xIAAgAAAAMAAADm/xIAAgAAAAMAAADn/xIAAgAAAAMAAADm/xMAAgAAAAMAAADl/xMAAgAAAAMAAADk/xMAAgAAAAMAAADk/xQAAgAAAAMAAADk/xUAAgAAAAMAAADk/xYAAgAAAAMAAADl/xUAAgAAAAMAAADl/xQAAgAAAAMAAADQ/xIAAgAAAAMAAADQ/xMAAgAAAAMAAADQ/xQAAgAAAAMAAADQ/xUAAgAAAAMAAADQ/xYAAgAAAAMAAADj/xgAAgAAAAMAAADm/w8AAgAAAAMAAADn/w8AAgAAAAMAAAD0/wwAAgAAAAAAAAD1/wwAAgAAAAAAAAD2/wwAAgAAAAAAAAD2/w0AAgAAAAAAAAD1/w0AAgAAAAAAAAD0/w0AAgAAAAAAAAD0/wsAAgAAAAAAAAD1/wsAAgAAAAAAAAD2/wsAAgAAAAAAAADk/xAAAgAAAAMAAADk/xEAAgAAAAMAAADe/wgAAAAAAAAAAADf/wgAAAAAAAAAAAA=")
 tile_set = ExtResource("1_n5cbs")
 
-[node name="Hazards" type="TileMapLayer" parent="." unique_id=924047944]
-position = Vector2(1920, 0)
-scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("2_tuow0")
-
 [node name="Hazards2" type="TileMapLayer" parent="." unique_id=1977136411]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACk/y8AAAAAAAAAAACm/y8AAAAAAAAAAACn/y8AAAAAAAAAAACl/y8AAAAAAAAAAACo/zAAAAAAAAAAAwCo/zEAAAAAAAAAAwCo/zIAAAAAAAAAAwCo/zMAAAAAAAAAAwCo/zQAAAAAAAAAAwCo/zUAAAAAAAAAAwDu/xwAAAAAAAAAAwDu/x0AAAAAAAAAAwDu/x4AAAAAAAAAAwDu/ywAAAAAAAAAAwDu/x8AAAAAAAAAAwDu/yQAAAAAAAAAAwDu/yAAAAAAAAAAAwDu/yEAAAAAAAAAAwDu/yIAAAAAAAAAAwDu/yMAAAAAAAAAAwDu/yUAAAAAAAAAAwDu/yYAAAAAAAAAAwDu/ycAAAAAAAAAAwDu/ygAAAAAAAAAAwDu/ykAAAAAAAAAAwDu/yoAAAAAAAAAAwDu/ysAAAAAAAAAAwDu/y0AAAAAAAAAAwDn/xwAAAAAAAAAAgDn/x0AAAAAAAAAAgDn/x4AAAAAAAAAAgDn/x8AAAAAAAAAAgDn/yAAAAAAAAAAAgDn/yEAAAAAAAAAAgDn/yIAAAAAAAAAAgDn/yMAAAAAAAAAAgDn/yQAAAAAAAAAAgDn/yUAAAAAAAAAAgDn/yYAAAAAAAAAAgDn/ycAAAAAAAAAAgDn/ygAAAAAAAAAAgDn/ykAAAAAAAAAAgDn/yoAAAAAAAAAAgDn/ysAAAAAAAAAAgDn/ywAAAAAAAAAAgDn/y0AAAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgDn/xYAAAAAAAAAAgDn/xcAAAAAAAAAAgDn/xgAAAAAAAAAAgDn/xkAAAAAAAAAAgDn/xoAAAAAAAAAAgDn/xsAAAAAAAAAAgDu/xYAAAAAAAAAAwDu/xcAAAAAAAAAAwDu/xgAAAAAAAAAAwDu/xkAAAAAAAAAAwDu/xoAAAAAAAAAAwDu/xsAAAAAAAAAAwDo/xUAAAAAAAAAAADp/xUAAAAAAAAAAADq/xUAAAAAAAAAAADr/xUAAAAAAAAAAADs/xUAAAAAAAAAAADt/xUAAAAAAAAAAADo/y4AAAAAAAAAAQDp/y4AAAAAAAAAAQDq/y4AAAAAAAAAAQDr/y4AAAAAAAAAAQDs/y4AAAAAAAAAAQDt/y4AAAAAAAAAAQA=")
 tile_set = ExtResource("2_tuow0")
-
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(1600, 1040)
-script = ExtResource("3_3bfmy")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=1127707980]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_gxh8l")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=2027108126]
-position = Vector2(-80, -40)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=1304312360]
-position = Vector2(60, 25.5)
-shape = SubResource("RectangleShape2D_x80dp")
-
-[node name="Respawn Point" type="Node2D" parent="." unique_id=1161918631 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(280, 520)
-script = ExtResource("3_3bfmy")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=538526534]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_gxh8l")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
-position = Vector2(320, 0)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
-position = Vector2(-320, -7.5)
-shape = SubResource("RectangleShape2D_3bfmy")
 
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("6_dr2ox")]
 position = Vector2(920, 560)
@@ -102,5 +52,19 @@ element = 1
 visible = false
 position = Vector2(960, 560)
 
-[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[node name="Respawn Point3" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("9_gxh8l")]
+position = Vector2(280, 520)
+
+[node name="CollisionShape2D" parent="Respawn Point3/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_dr6l8")
+
+[node name="Respawn Point" parent="." unique_id=669770854 groups=["Checkpoint"] instance=ExtResource("9_gxh8l")]
+position = Vector2(1600, 1040)
+
+[node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(669770854, 1498333101) index="0" unique_id=598497129]
+position = Vector2(-20, -20)
+shape = SubResource("RectangleShape2D_x80dp")
+
+[editable path="Respawn Point3"]
+[editable path="Respawn Point"]

@@ -1,7 +1,7 @@
 @tool
 class_name RoomResidentRigid
 extends RigidBody2D
-@export var roomResident : RoomResident
+@export var roomResident : RoomResident = null
 
 @export_tool_button("Generate RoomResident Data")
 var generate_id_action := setup

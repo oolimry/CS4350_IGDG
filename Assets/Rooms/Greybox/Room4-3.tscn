@@ -3,21 +3,20 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_los5y"]
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_s1kex"]
 [ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_s1kex"]
-[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="3_lcf7a"]
-[ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="4_jgau0"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_h45ro"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_los5y"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="8_s1kex"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="9_lcf7a"]
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="10_jgau0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
-size = Vector2(555.625, 484)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctc4s"]
+size = Vector2(560, 280)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcf7a"]
-size = Vector2(306, 559)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e31g4"]
+size = Vector2(560, 480)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bfmy"]
-size = Vector2(530, 276)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h45ro"]
+size = Vector2(320, 560)
 
 [node name="Room 4-3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_s1kex")
@@ -40,82 +39,14 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACq/wEAAAAAAAAAAwCq/wIAAAAAAAAAAwCq/wMAAAAAAAAAAwCq/wQAAAAAAAAAAwCq/wUAAAAAAAAAAwCq/wYAAAAAAAAAAwCq/wcAAAAAAAAAAwCq/wAAAAAAAAAAAwC+/xwAAAAAAAAAAwC+/x0AAAAAAAAAAwC+/x4AAAAAAAAAAwC+/x8AAAAAAAAAAwC+/yAAAAAAAAAAAwC+/yEAAAAAAAAAAwC+/yIAAAAAAAAAAwC+/yMAAAAAAAAAAwC+/yQAAAAAAAAAAwC+/yUAAAAAAAAAAwC+/yYAAAAAAAAAAwC+/ycAAAAAAAAAAwC+/ygAAAAAAAAAAwC+/ykAAAAAAAAAAwC+/yoAAAAAAAAAAwC+/ysAAAAAAAAAAwC+/xQAAAAAAAAAAwC+/xUAAAAAAAAAAwC+/xYAAAAAAAAAAwC+/xcAAAAAAAAAAwC+/xgAAAAAAAAAAwC+/xkAAAAAAAAAAwC+/xoAAAAAAAAAAwC+/xsAAAAAAAAAAwD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgD9/wQAAAAAAAAAAgD9/wUAAAAAAAAAAgD9/wYAAAAAAAAAAgD9/wcAAAAAAAAAAgC+/ywAAAAAAAAAAwC+/y0AAAAAAAAAAwC//y0AAAAAAAAAAADA/y0AAAAAAAAAAADB/y0AAAAAAAAAAADC/y0AAAAAAAAAAADD/y0AAAAAAAAAAAA=")
 tile_set = ExtResource("2_s1kex")
 
-[node name="Respawn Point2" type="Node2D" parent="." unique_id=415624873 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(1600, 880)
-script = ExtResource("3_lcf7a")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point2" unique_id=1127707980]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_jgau0")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=2027108126]
-position = Vector2(0, -40)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=1304312360]
-position = Vector2(37.8125, -162)
-shape = SubResource("RectangleShape2D_x80dp")
-
-[node name="Respawn Point3" type="Node2D" parent="." unique_id=196237921 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(1004, 441)
-script = ExtResource("3_lcf7a")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point3" unique_id=33529723]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_jgau0")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point3" unique_id=813612229]
-position = Vector2(0, -40)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point3/Area2D" unique_id=138156743]
-position = Vector2(82, 240.5)
-shape = SubResource("RectangleShape2D_lcf7a")
-
-[node name="Respawn Point" type="Node2D" parent="." unique_id=1161918631 node_paths=PackedStringArray("referenceImage") groups=["Checkpoint"]]
-position = Vector2(240, 360)
-script = ExtResource("3_lcf7a")
-referenceImage = NodePath("Sprite2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="Respawn Point" unique_id=538526534]
-modulate = Color(0.03529412, 1, 1, 1)
-self_modulate = Color(0.023529412, 0.06666667, 1, 1)
-position = Vector2(0, -29)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("4_jgau0")
-region_rect = Rect2(49.731598, 0, 248.3114, 379)
-
-[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
-position = Vector2(40, -40)
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
-position = Vector2(52, 99)
-shape = SubResource("RectangleShape2D_3bfmy")
-
 [node name="Element" parent="." unique_id=1395171320 instance=ExtResource("7_h45ro")]
 position = Vector2(999, 482)
 element = 2
 
-[node name="Breakables" type="Node2D" parent="." unique_id=1179057413]
-position = Vector2(1040, 960)
-
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_los5y")]
 visible = false
 position = Vector2(960, 560)
+
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("8_s1kex")]
 position = Vector2(760, 840)
 rotation = -1.5707964
@@ -125,6 +56,27 @@ direction = 3
 position = Vector2(1195, 66)
 timeToLive = 150.0
 
-[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[node name="Respawn Point4" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("10_jgau0")]
+position = Vector2(240, 360)
+
+[node name="CollisionShape2D" parent="Respawn Point4/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
+position = Vector2(80, 60)
+shape = SubResource("RectangleShape2D_ctc4s")
+
+[node name="Respawn Point" parent="." unique_id=817568462 groups=["Checkpoint"] instance=ExtResource("10_jgau0")]
+position = Vector2(1600, 880)
+
+[node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(817568462, 1498333101) index="0" unique_id=598497129]
+position = Vector2(40, -200)
+shape = SubResource("RectangleShape2D_e31g4")
+
+[node name="Respawn Point2" parent="." unique_id=1471791476 groups=["Checkpoint"] instance=ExtResource("10_jgau0")]
+position = Vector2(1000, 440)
+
+[node name="CollisionShape2D" parent="Respawn Point2/Area2D" parent_id_path=PackedInt32Array(1471791476, 1498333101) index="0" unique_id=598497129]
+position = Vector2(80, 200)
+shape = SubResource("RectangleShape2D_h45ro")
+
+[editable path="Respawn Point4"]
+[editable path="Respawn Point"]
+[editable path="Respawn Point2"]

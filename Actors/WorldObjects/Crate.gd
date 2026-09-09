@@ -29,7 +29,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	if roomResident != null:
+	if not Engine.is_editor_hint():
 		roomResident.isSafeToSnapshot = floorCast.is_colliding() and (attached_chain == null)
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \

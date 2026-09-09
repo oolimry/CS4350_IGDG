@@ -8,17 +8,17 @@ texture = ExtResource("1_1qdul")
 texture_region_size = Vector2i(80, 80)
 0:0/next_alternative_id = 4
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(37.783234, -24.674767, -37.783237, -24.674765, -37.783234, 40, 37.783234, 40)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.676697, -16.72686, 30.755844, -16.547003, 30.036407, 40, -29.676682, 40)
 0:0/1 = 1
 0:0/1/flip_v = true
-0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-37.783234, 24.674767, 37.783237, 24.674765, 37.783234, -40, -37.783234, -40)
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(29.676697, 16.72686, -30.755844, 16.547003, -30.036407, -40, 29.676682, -40)
 0:0/2 = 2
 0:0/2/transpose = true
-0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-24.674767, -37.783234, -24.674765, 37.783237, 40, 37.783234, 40, -37.783234)
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16.72686, -29.676697, -16.547003, 30.755844, 40, 30.036407, 40, -29.676682)
 0:0/3 = 3
 0:0/3/flip_h = true
 0:0/3/transpose = true
-0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(24.674767, 37.783234, 24.674765, -37.783237, -40, -37.783234, -40, 37.783234)
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(16.72686, -29.676697, 16.547003, 30.755844, -40, 30.036407, -40, -29.676682)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51uct"]
 texture = ExtResource("2_bka8r")
@@ -28,7 +28,7 @@ texture_region_size = Vector2i(40, 40)
 
 [resource]
 tile_size = Vector2i(80, 80)
-physics_layer_0/collision_layer = 6
+physics_layer_0/collision_layer = 4
 custom_data_layer_0/name = "damage"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_51uct")
