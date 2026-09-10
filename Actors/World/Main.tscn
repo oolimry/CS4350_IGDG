@@ -27,6 +27,9 @@
 [ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Room14.tres" id="23_ux5yg"]
 [ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Room14-2.tres" id="24_troij"]
 [ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Room15.tres" id="25_gn5ml"]
+[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Room18.tres" id="26_i761g"]
+[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Room18-2.tres" id="27_mhd5c"]
+[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Room19.tres" id="28_iltqb"]
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
@@ -60,6 +63,9 @@ Vector2i(0, 3): ExtResource("7_p6q38"),
 Vector2i(0, 4): ExtResource("19_8cbsw"),
 Vector2i(1, 0): ExtResource("9_i761g"),
 Vector2i(1, 1): ExtResource("10_mhd5c"),
+Vector2i(1, 2): ExtResource("28_iltqb"),
+Vector2i(1, 3): ExtResource("26_i761g"),
+Vector2i(1, 4): ExtResource("27_mhd5c"),
 Vector2i(2, 0): ExtResource("13_tpob3"),
 Vector2i(2, 1): ExtResource("22_6v07m"),
 Vector2i(3, 1): ExtResource("23_ux5yg"),

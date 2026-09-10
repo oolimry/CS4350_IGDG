@@ -9,7 +9,7 @@ func loadRooms(currRoomPos : Vector2i) -> void:
 		func(roomDef : RoomDefinition):
 			roomInstantiator.instantiateRoom(roomDef)
 			recentlyLoadedRoomPoss.append(roomDef.gridPos)\
-		, currRoomPos, 1)
+		, currRoomPos, 2)
 		
 func unloadRooms(currRoomPos : Vector2i) -> void:
 	var difference = roomInstantiator.loadedRooms.keys().filter(

@@ -21,6 +21,9 @@
 [ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Room14.tres" id="18_psga6"]
 [ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Room14-2.tres" id="19_fkhis"]
 [ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Room15.tres" id="20_oe50b"]
+[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Room18.tres" id="22_etjkp"]
+[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Room18-2.tres" id="23_lxqit"]
+[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Room19.tres" id="24_lxqit"]
 
 [node name="MapLayout" type="Node2D" unique_id=1475819905]
 
@@ -102,3 +105,15 @@ roomDefinition = ExtResource("19_fkhis")
 [node name="RoomPreviewer19" parent="." unique_id=1359454493 instance=ExtResource("1_e6tte")]
 position = Vector2(2048, 0)
 roomDefinition = ExtResource("20_oe50b")
+
+[node name="RoomPreviewer20" parent="." unique_id=225023905 instance=ExtResource("1_e6tte")]
+position = Vector2(512, 864)
+roomDefinition = ExtResource("22_etjkp")
+
+[node name="RoomPreviewer21" parent="." unique_id=1123977943 instance=ExtResource("1_e6tte")]
+position = Vector2(512, 1152)
+roomDefinition = ExtResource("23_lxqit")
+
+[node name="RoomPreviewer22" parent="." unique_id=121924473 instance=ExtResource("1_e6tte")]
+position = Vector2(512, 576)
+roomDefinition = ExtResource("24_lxqit")

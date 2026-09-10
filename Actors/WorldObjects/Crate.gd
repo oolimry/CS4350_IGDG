@@ -30,7 +30,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 
 func _physics_process(delta: float) -> void:
 	if not Engine.is_editor_hint():
-		roomResident.isSafeToSnapshot = floorCast.is_colliding() and (attached_chain == null)
+		roomResident.isSafeToSnapshot = floorCast.is_colliding() or (attached_chain != null)
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \
 	constructHandling : Callable) -> Crate:
