@@ -15,23 +15,23 @@ size = Vector2(760, 879)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1cyr"]
 size = Vector2(240, 480)
 
-[sub_resource type="Resource" id="Resource_vvqk6"]
+[sub_resource type="Resource" id="Resource_n37x5"]
 resource_local_to_scene = true
 script = ExtResource("8_vvqk6")
 oriCoords = Vector2(879, 479)
-persistentID = &"e3b8d446-20c1-4be4-9bd1-b47c3f98b2c0"
-objectName = &"Chain"
+persistentID = &"c5adda92-e80e-462e-9aec-714cbe77c29e"
+objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_bu51x"]
+[sub_resource type="Resource" id="Resource_weks3"]
 resource_local_to_scene = true
 script = ExtResource("8_vvqk6")
 oriCoords = Vector2(879, 354)
-persistentID = &"6932d454-321f-40e5-9001-e1646c496580"
+persistentID = &"ad95f0e7-78e0-4d03-9742-188d630aa78c"
 objectName = &"Chain"
+shouldAlwaysReset = true
 
-[node name="Room 3" type="Node2D" unique_id=1922114953 node_paths=PackedStringArray("roomResidentsHolder")]
+[node name="Room 3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_a3qlj")
-roomResidentsHolder = NodePath("RoomResidents")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -75,12 +75,13 @@ position = Vector2(960, 560)
 position = Vector2(879, 479)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_vvqk6")
+roomResident = SubResource("Resource_n37x5")
 
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_bu51x")]
 position = Vector2(879, 354)
 attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_bu51x")
+shouldDestructionPersist = false
+roomResident = SubResource("Resource_weks3")
 
 [editable path="Respawn Point4"]
 [editable path="Respawn Point3"]
