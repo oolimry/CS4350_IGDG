@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://dvo5bk3urcdxx"]
+
+[ext_resource type="PackedScene" uid="uid://dcy5pfh73ntr4" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tscn" id="1_kyrj2"]
+[ext_resource type="Texture2D" uid="uid://da5e3h467ppl2" path="res://Assets/Rooms/PreviewRoomImages/RoomB1.tres_preview.png" id="2_kyrj2"]
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="3_5wqiv"]
+
+[resource]
+script = ExtResource("3_5wqiv")
+roomName = "RoomB1"
+gridPos = Vector2i(4, -1)
+gamePlayScene = ExtResource("1_kyrj2")
+openSides = 15
+previewTexture = ExtResource("2_kyrj2")
+metadata/_custom_type_script = "uid://cij17tnbhukil"

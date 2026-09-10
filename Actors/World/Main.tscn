@@ -5,31 +5,43 @@
 [ext_resource type="PackedScene" uid="uid://wquu4ok43sma" path="res://Assets/Rooms/TestRooms/MapLayoutGreybox.tscn" id="4_2e1df"]
 [ext_resource type="Script" uid="uid://de4oxmxe0rd2y" path="res://Actors/World/Room Management/MapLayoutLoader.gd" id="4_cp0kg"]
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="5_3mi0i"]
-[ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Room1.tres" id="6_2e1df"]
-[ext_resource type="Resource" uid="uid://b101163oosxrk" path="res://Assets/Rooms/Greybox/TestRoom.tres" id="6_hkc2w"]
+[ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Main/Room1.tres" id="6_2e1df"]
+[ext_resource type="Resource" uid="uid://b101163oosxrk" path="res://Assets/Rooms/Greybox/Main/TestRoom.tres" id="6_hkc2w"]
 [ext_resource type="Script" uid="uid://d4fqukl0dj7gu" path="res://Actors/World/Room Management/RoomInstantiator.gd" id="7_cx0xc"]
-[ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Room4-3.tres" id="7_p6q38"]
+[ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Main/Room4-3.tres" id="7_p6q38"]
 [ext_resource type="Script" uid="uid://cxnk476c7iawm" path="res://Actors/World/Room Management/RoomCameraHandler.gd" id="8_xf085"]
-[ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Room2.tres" id="9_i761g"]
-[ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Room3.tres" id="10_mhd5c"]
-[ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Room4.tres" id="11_iltqb"]
-[ext_resource type="Resource" uid="uid://2jggwmlpprix" path="res://Assets/Rooms/Greybox/Room4-2.tres" id="12_yhifw"]
-[ext_resource type="Resource" uid="uid://chyglce7p16ns" path="res://Assets/Rooms/Greybox/Room12.tres" id="13_tpob3"]
-[ext_resource type="Resource" uid="uid://bd6rq2pceoxfx" path="res://Assets/Rooms/Greybox/Room6.tres" id="14_tmxmt"]
-[ext_resource type="Resource" uid="uid://blraahaeu158d" path="res://Assets/Rooms/Greybox/Room7.tres" id="15_p4ek8"]
-[ext_resource type="Resource" uid="uid://bs6e28r5g50pq" path="res://Assets/Rooms/Greybox/Room8.tres" id="16_p0r1i"]
-[ext_resource type="Resource" uid="uid://b686fyflqhed" path="res://Assets/Rooms/Greybox/Room7-2.tres" id="17_g13d2"]
-[ext_resource type="Resource" uid="uid://caifbpvqje58g" path="res://Assets/Rooms/Greybox/Room11.tres" id="18_3tykg"]
-[ext_resource type="Resource" uid="uid://pyc625syx1ha" path="res://Assets/Rooms/Greybox/Room5.tres" id="19_8cbsw"]
-[ext_resource type="Resource" uid="uid://c80nmhs7jb3vf" path="res://Assets/Rooms/Greybox/Room9.tres" id="20_64rco"]
-[ext_resource type="Resource" uid="uid://4komxqjg0mlv" path="res://Assets/Rooms/Greybox/Room10.tres" id="21_8rpwe"]
-[ext_resource type="Resource" uid="uid://wd180jsa88rq" path="res://Assets/Rooms/Greybox/Room13.tres" id="22_6v07m"]
-[ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Room14.tres" id="23_ux5yg"]
-[ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Room14-2.tres" id="24_troij"]
-[ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Room15.tres" id="25_gn5ml"]
-[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Room18.tres" id="26_i761g"]
-[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Room18-2.tres" id="27_mhd5c"]
-[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Room19.tres" id="28_iltqb"]
+[ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Main/Room2.tres" id="9_i761g"]
+[ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Main/Room3.tres" id="10_mhd5c"]
+[ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Main/Room4.tres" id="11_iltqb"]
+[ext_resource type="Resource" uid="uid://2jggwmlpprix" path="res://Assets/Rooms/Greybox/Main/Room4-2.tres" id="12_yhifw"]
+[ext_resource type="Resource" uid="uid://chyglce7p16ns" path="res://Assets/Rooms/Greybox/Blue/Room12.tres" id="13_tpob3"]
+[ext_resource type="Resource" uid="uid://bd6rq2pceoxfx" path="res://Assets/Rooms/Greybox/Red/Room6.tres" id="14_tmxmt"]
+[ext_resource type="Resource" uid="uid://blraahaeu158d" path="res://Assets/Rooms/Greybox/Red/Room7.tres" id="15_p4ek8"]
+[ext_resource type="Resource" uid="uid://bs6e28r5g50pq" path="res://Assets/Rooms/Greybox/Red/Room8.tres" id="16_p0r1i"]
+[ext_resource type="Resource" uid="uid://b686fyflqhed" path="res://Assets/Rooms/Greybox/Red/Room7-2.tres" id="17_g13d2"]
+[ext_resource type="Resource" uid="uid://caifbpvqje58g" path="res://Assets/Rooms/Greybox/Red/Room11.tres" id="18_3tykg"]
+[ext_resource type="Resource" uid="uid://pyc625syx1ha" path="res://Assets/Rooms/Greybox/Red/Room5.tres" id="19_8cbsw"]
+[ext_resource type="Resource" uid="uid://c80nmhs7jb3vf" path="res://Assets/Rooms/Greybox/Red/Room9.tres" id="20_64rco"]
+[ext_resource type="Resource" uid="uid://4komxqjg0mlv" path="res://Assets/Rooms/Greybox/Red/Room10.tres" id="21_8rpwe"]
+[ext_resource type="Resource" uid="uid://wd180jsa88rq" path="res://Assets/Rooms/Greybox/Blue/Room13.tres" id="22_6v07m"]
+[ext_resource type="Resource" uid="uid://34t0n7x4fduf" path="res://Assets/Rooms/Greybox/Red/RoomR1.tres" id="22_8rpwe"]
+[ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Blue/Room14.tres" id="23_ux5yg"]
+[ext_resource type="Resource" uid="uid://d0slexxweo5qp" path="res://Assets/Rooms/Greybox/Purple/Room21.tres" id="24_6v07m"]
+[ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Blue/Room14-2.tres" id="24_troij"]
+[ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Blue/Room15.tres" id="25_gn5ml"]
+[ext_resource type="Resource" uid="uid://blfcixjschbl2" path="res://Assets/Rooms/Greybox/Purple/Room21-3.tres" id="25_ux5yg"]
+[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Purple/Room18.tres" id="26_i761g"]
+[ext_resource type="Resource" uid="uid://2wdmna8fwwo6" path="res://Assets/Rooms/Greybox/Purple/Room21-4.tres" id="26_troij"]
+[ext_resource type="Resource" uid="uid://co7h62gvufess" path="res://Assets/Rooms/Greybox/Purple/Room20.tres" id="27_gn5ml"]
+[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Purple/Room18-2.tres" id="27_mhd5c"]
+[ext_resource type="Resource" uid="uid://bock2s3je4a2" path="res://Assets/Rooms/Greybox/Purple/Room20-2.tres" id="28_b301g"]
+[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Purple/Room19.tres" id="28_iltqb"]
+[ext_resource type="Resource" uid="uid://b0md5pgrhc605" path="res://Assets/Rooms/Greybox/Purple/Room22.tres" id="29_jtrff"]
+[ext_resource type="Resource" uid="uid://bnk1e63oxumcq" path="res://Assets/Rooms/Greybox/Purple/Room23.tres" id="30_hswiw"]
+[ext_resource type="Resource" uid="uid://bfrtsp55bh3jw" path="res://Assets/Rooms/Greybox/Purple/Room21-2.tres" id="31_jifae"]
+[ext_resource type="Resource" uid="uid://cf5s37saurx87" path="res://Assets/Rooms/Greybox/Blue/Room16.tres" id="33_dq56x"]
+[ext_resource type="Resource" uid="uid://b0vramo34mhm7" path="res://Assets/Rooms/Greybox/Blue/Room17.tres" id="34_cpihd"]
+[ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="35_di5tu"]
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
@@ -48,6 +60,7 @@ roomCamHandler = NodePath("RoomCameraHandler")
 script = ExtResource("4_cp0kg")
 mapLayoutScene = ExtResource("4_2e1df")
 mapLayout = Dictionary[Vector2i, ExtResource("5_3mi0i")]({
+Vector2i(-4, 4): ExtResource("22_8rpwe"),
 Vector2i(-3, 2): ExtResource("18_3tykg"),
 Vector2i(-3, 3): ExtResource("20_64rco"),
 Vector2i(-3, 4): ExtResource("21_8rpwe"),
@@ -68,9 +81,20 @@ Vector2i(1, 3): ExtResource("26_i761g"),
 Vector2i(1, 4): ExtResource("27_mhd5c"),
 Vector2i(2, 0): ExtResource("13_tpob3"),
 Vector2i(2, 1): ExtResource("22_6v07m"),
+Vector2i(2, 2): ExtResource("27_gn5ml"),
+Vector2i(2, 3): ExtResource("24_6v07m"),
+Vector2i(2, 4): ExtResource("25_ux5yg"),
+Vector2i(3, -1): ExtResource("34_cpihd"),
+Vector2i(3, 0): ExtResource("33_dq56x"),
 Vector2i(3, 1): ExtResource("23_ux5yg"),
+Vector2i(3, 2): ExtResource("28_b301g"),
+Vector2i(3, 3): ExtResource("31_jifae"),
+Vector2i(3, 4): ExtResource("26_troij"),
+Vector2i(4, -1): ExtResource("35_di5tu"),
 Vector2i(4, 0): ExtResource("25_gn5ml"),
-Vector2i(4, 1): ExtResource("24_troij")
+Vector2i(4, 1): ExtResource("24_troij"),
+Vector2i(4, 2): ExtResource("29_jtrff"),
+Vector2i(4, 4): ExtResource("30_hswiw")
 })
 playerSpawnRoom = ExtResource("6_2e1df")
 
