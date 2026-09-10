@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="10_w324d"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="11_uma6f"]
 
-[sub_resource type="Resource" id="Resource_fmgpq"]
+[sub_resource type="Resource" id="Resource_fswj0"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(560, 120)
@@ -18,7 +18,7 @@ persistentID = &"40284d91-cef0-4986-a829-12b3e84425c7"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_m1ukl"]
+[sub_resource type="Resource" id="Resource_obcue"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(1200, 360)
@@ -26,14 +26,14 @@ persistentID = &"866e95fb-3102-457f-ba74-1ec93703f3f9"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_fjyap"]
+[sub_resource type="Resource" id="Resource_klw6e"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(560, 240)
 persistentID = &"9c3fb446-e296-4038-a614-b234bb2b1451"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_jbtbj"]
+[sub_resource type="Resource" id="Resource_lbi1u"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(1200, 480)
@@ -97,29 +97,29 @@ element = 1
 position = Vector2(520, 960)
 element = 3
 
+[node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("11_uma6f")]
+position = Vector2(40, 120)
+
 [node name="RoomResidents" type="Node2D" parent="." unique_id=336229613]
 
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_klw6e")]
 position = Vector2(560, 120)
 attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_fmgpq")
+roomResident = SubResource("Resource_fswj0")
 
 [node name="Chain2" parent="RoomResidents" unique_id=256736904 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_klw6e")]
 position = Vector2(1200, 360)
 attached_crate = NodePath("../Crate2")
-roomResident = SubResource("Resource_m1ukl")
+roomResident = SubResource("Resource_obcue")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("10_w324d")]
 position = Vector2(560, 240)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_fjyap")
+roomResident = SubResource("Resource_klw6e")
 
 [node name="Crate2" parent="RoomResidents" unique_id=1563445546 node_paths=PackedStringArray("attached_chain") instance=ExtResource("10_w324d")]
 position = Vector2(1200, 480)
 freeze = true
 attached_chain = NodePath("../Chain2")
-roomResident = SubResource("Resource_jbtbj")
-
-[node name="IgnitionPad" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("11_uma6f")]
-position = Vector2(40, 120)
+roomResident = SubResource("Resource_lbi1u")
