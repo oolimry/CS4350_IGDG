@@ -21,9 +21,11 @@ func unloadRooms(currRoomPos : Vector2i) -> void:
 
 
 func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
-	if currRoomPos == nextRoomPos:
-		return
-		
+	# TODO: This is a quick fix to snapshot restore on death
+	# but there's prolly a safer way to do this
+	#if currRoomPos == nextRoomPos:
+		#return
+		#
 	roomInstantiator.snapshotRoom(currRoomPos)
 	roomInstantiator.restoreSnapshot(nextRoomPos)
 	loadRooms(nextRoomPos)

@@ -1,29 +1,41 @@
 [gd_scene format=3 uid="uid://wquu4ok43sma"]
 
 [ext_resource type="PackedScene" uid="uid://hu0kjwc6yj6a" path="res://Actors/World/Room Management/MapLayout/RoomPreviewPlacement.tscn" id="1_e6tte"]
-[ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Room1.tres" id="2_e6tte"]
-[ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Room4-3.tres" id="2_nu8rl"]
-[ext_resource type="Resource" uid="uid://b101163oosxrk" path="res://Assets/Rooms/Greybox/TestRoom.tres" id="2_wctwc"]
-[ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Room2.tres" id="3_e6tte"]
-[ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Room3.tres" id="4_e6tte"]
-[ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Room4.tres" id="5_ydpcq"]
-[ext_resource type="Resource" uid="uid://2jggwmlpprix" path="res://Assets/Rooms/Greybox/Room4-2.tres" id="7_emext"]
-[ext_resource type="Resource" uid="uid://chyglce7p16ns" path="res://Assets/Rooms/Greybox/Room12.tres" id="8_emext"]
-[ext_resource type="Resource" uid="uid://bd6rq2pceoxfx" path="res://Assets/Rooms/Greybox/Room6.tres" id="9_kd3ge"]
-[ext_resource type="Resource" uid="uid://blraahaeu158d" path="res://Assets/Rooms/Greybox/Room7.tres" id="10_vol2u"]
-[ext_resource type="Resource" uid="uid://bs6e28r5g50pq" path="res://Assets/Rooms/Greybox/Room8.tres" id="11_cdvyo"]
-[ext_resource type="Resource" uid="uid://b686fyflqhed" path="res://Assets/Rooms/Greybox/Room7-2.tres" id="12_moits"]
-[ext_resource type="Resource" uid="uid://caifbpvqje58g" path="res://Assets/Rooms/Greybox/Room11.tres" id="13_vol2u"]
-[ext_resource type="Resource" uid="uid://pyc625syx1ha" path="res://Assets/Rooms/Greybox/Room5.tres" id="14_cdvyo"]
-[ext_resource type="Resource" uid="uid://c80nmhs7jb3vf" path="res://Assets/Rooms/Greybox/Room9.tres" id="15_moits"]
-[ext_resource type="Resource" uid="uid://4komxqjg0mlv" path="res://Assets/Rooms/Greybox/Room10.tres" id="16_faelo"]
-[ext_resource type="Resource" uid="uid://wd180jsa88rq" path="res://Assets/Rooms/Greybox/Room13.tres" id="17_gpyln"]
-[ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Room14.tres" id="18_psga6"]
-[ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Room14-2.tres" id="19_fkhis"]
-[ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Room15.tres" id="20_oe50b"]
-[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Room18.tres" id="22_etjkp"]
-[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Room18-2.tres" id="23_lxqit"]
-[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Room19.tres" id="24_lxqit"]
+[ext_resource type="Resource" uid="uid://bil65sbhjojw8" path="res://Assets/Rooms/Greybox/Main/Room1.tres" id="2_e6tte"]
+[ext_resource type="Resource" uid="uid://vh5r1bbbdby2" path="res://Assets/Rooms/Greybox/Main/Room4-3.tres" id="2_nu8rl"]
+[ext_resource type="Resource" uid="uid://b101163oosxrk" path="res://Assets/Rooms/Greybox/Main/TestRoom.tres" id="2_wctwc"]
+[ext_resource type="Resource" uid="uid://ba8hqwedkn601" path="res://Assets/Rooms/Greybox/Main/Room2.tres" id="3_e6tte"]
+[ext_resource type="Resource" uid="uid://5po5b64mdqsn" path="res://Assets/Rooms/Greybox/Main/Room3.tres" id="4_e6tte"]
+[ext_resource type="Resource" uid="uid://bb2ao6u20i256" path="res://Assets/Rooms/Greybox/Main/Room4.tres" id="5_ydpcq"]
+[ext_resource type="Resource" uid="uid://2jggwmlpprix" path="res://Assets/Rooms/Greybox/Main/Room4-2.tres" id="7_emext"]
+[ext_resource type="Resource" uid="uid://chyglce7p16ns" path="res://Assets/Rooms/Greybox/Blue/Room12.tres" id="8_emext"]
+[ext_resource type="Resource" uid="uid://bd6rq2pceoxfx" path="res://Assets/Rooms/Greybox/Red/Room6.tres" id="9_kd3ge"]
+[ext_resource type="Resource" uid="uid://blraahaeu158d" path="res://Assets/Rooms/Greybox/Red/Room7.tres" id="10_vol2u"]
+[ext_resource type="Resource" uid="uid://bs6e28r5g50pq" path="res://Assets/Rooms/Greybox/Red/Room8.tres" id="11_cdvyo"]
+[ext_resource type="Resource" uid="uid://b686fyflqhed" path="res://Assets/Rooms/Greybox/Red/Room7-2.tres" id="12_moits"]
+[ext_resource type="Resource" uid="uid://caifbpvqje58g" path="res://Assets/Rooms/Greybox/Red/Room11.tres" id="13_vol2u"]
+[ext_resource type="Resource" uid="uid://pyc625syx1ha" path="res://Assets/Rooms/Greybox/Red/Room5.tres" id="14_cdvyo"]
+[ext_resource type="Resource" uid="uid://c80nmhs7jb3vf" path="res://Assets/Rooms/Greybox/Red/Room9.tres" id="15_moits"]
+[ext_resource type="Resource" uid="uid://4komxqjg0mlv" path="res://Assets/Rooms/Greybox/Red/Room10.tres" id="16_faelo"]
+[ext_resource type="Resource" uid="uid://wd180jsa88rq" path="res://Assets/Rooms/Greybox/Blue/Room13.tres" id="17_gpyln"]
+[ext_resource type="Resource" uid="uid://34t0n7x4fduf" path="res://Assets/Rooms/Greybox/Red/RoomR1.tres" id="18_gvorn"]
+[ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Blue/Room14.tres" id="18_psga6"]
+[ext_resource type="Resource" uid="uid://d0slexxweo5qp" path="res://Assets/Rooms/Greybox/Purple/Room21.tres" id="19_bbptn"]
+[ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Blue/Room14-2.tres" id="19_fkhis"]
+[ext_resource type="Resource" uid="uid://bfrtsp55bh3jw" path="res://Assets/Rooms/Greybox/Purple/Room21-2.tres" id="20_8fh75"]
+[ext_resource type="Resource" uid="uid://blfcixjschbl2" path="res://Assets/Rooms/Greybox/Purple/Room21-3.tres" id="20_fvtnr"]
+[ext_resource type="Resource" uid="uid://co7h62gvufess" path="res://Assets/Rooms/Greybox/Purple/Room20.tres" id="20_h62ip"]
+[ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Blue/Room15.tres" id="20_oe50b"]
+[ext_resource type="Resource" uid="uid://bock2s3je4a2" path="res://Assets/Rooms/Greybox/Purple/Room20-2.tres" id="21_rd8tj"]
+[ext_resource type="Resource" uid="uid://2wdmna8fwwo6" path="res://Assets/Rooms/Greybox/Purple/Room21-4.tres" id="21_slcdj"]
+[ext_resource type="Resource" uid="uid://cyu7bkmseufv1" path="res://Assets/Rooms/Greybox/Purple/Room18.tres" id="22_etjkp"]
+[ext_resource type="Resource" uid="uid://ddgmx4eebbbo1" path="res://Assets/Rooms/Greybox/Purple/Room18-2.tres" id="23_lxqit"]
+[ext_resource type="Resource" uid="uid://b0md5pgrhc605" path="res://Assets/Rooms/Greybox/Purple/Room22.tres" id="24_cj0jg"]
+[ext_resource type="Resource" uid="uid://svqctbh454em" path="res://Assets/Rooms/Greybox/Purple/Room19.tres" id="24_lxqit"]
+[ext_resource type="Resource" uid="uid://bnk1e63oxumcq" path="res://Assets/Rooms/Greybox/Purple/Room23.tres" id="25_bgmw5"]
+[ext_resource type="Resource" uid="uid://cf5s37saurx87" path="res://Assets/Rooms/Greybox/Blue/Room16.tres" id="28_vsb68"]
+[ext_resource type="Resource" uid="uid://b0vramo34mhm7" path="res://Assets/Rooms/Greybox/Blue/Room17.tres" id="29_rvvne"]
+[ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="31_0r8jp"]
 
 [node name="MapLayout" type="Node2D" unique_id=1475819905]
 
@@ -90,13 +102,61 @@ roomDefinition = ExtResource("15_moits")
 position = Vector2(-1536, 1152)
 roomDefinition = ExtResource("16_faelo")
 
+[node name="RoomPreviewer33" parent="." unique_id=1470981922 instance=ExtResource("1_e6tte")]
+position = Vector2(-2048, 1152)
+roomDefinition = ExtResource("18_gvorn")
+
 [node name="RoomPreviewer16" parent="." unique_id=1933396141 instance=ExtResource("1_e6tte")]
 position = Vector2(1024, 288)
 roomDefinition = ExtResource("17_gpyln")
 
+[node name="RoomPreviewer23" parent="." unique_id=528592156 instance=ExtResource("1_e6tte")]
+position = Vector2(1024, 864)
+roomDefinition = ExtResource("19_bbptn")
+
+[node name="RoomPreviewer27" parent="." unique_id=1373154852 instance=ExtResource("1_e6tte")]
+position = Vector2(1024, 1152)
+roomDefinition = ExtResource("20_fvtnr")
+
+[node name="RoomPreviewer28" parent="." unique_id=1151725940 instance=ExtResource("1_e6tte")]
+position = Vector2(1536, 1152)
+roomDefinition = ExtResource("21_slcdj")
+
+[node name="RoomPreviewer25" parent="." unique_id=1514660028 instance=ExtResource("1_e6tte")]
+position = Vector2(1024, 576)
+roomDefinition = ExtResource("20_h62ip")
+
+[node name="RoomPreviewer26" parent="." unique_id=1245002856 instance=ExtResource("1_e6tte")]
+position = Vector2(1536, 576)
+roomDefinition = ExtResource("21_rd8tj")
+
+[node name="RoomPreviewer29" parent="." unique_id=913418423 instance=ExtResource("1_e6tte")]
+position = Vector2(2048, 576)
+roomDefinition = ExtResource("24_cj0jg")
+
+[node name="RoomPreviewer30" parent="." unique_id=317121787 instance=ExtResource("1_e6tte")]
+position = Vector2(2048, 1152)
+roomDefinition = ExtResource("25_bgmw5")
+
+[node name="RoomPreviewer24" parent="." unique_id=517790002 instance=ExtResource("1_e6tte")]
+position = Vector2(1536, 864)
+roomDefinition = ExtResource("20_8fh75")
+
 [node name="RoomPreviewer17" parent="." unique_id=1884798970 instance=ExtResource("1_e6tte")]
 position = Vector2(1536, 288)
 roomDefinition = ExtResource("18_psga6")
+
+[node name="RoomPreviewer31" parent="." unique_id=2093070317 instance=ExtResource("1_e6tte")]
+position = Vector2(1536, 0)
+roomDefinition = ExtResource("28_vsb68")
+
+[node name="RoomPreviewer32" parent="." unique_id=1126705026 instance=ExtResource("1_e6tte")]
+position = Vector2(1536, -288)
+roomDefinition = ExtResource("29_rvvne")
+
+[node name="RoomPreviewer34" parent="." unique_id=507711573 instance=ExtResource("1_e6tte")]
+position = Vector2(2048, -288)
+roomDefinition = ExtResource("31_0r8jp")
 
 [node name="RoomPreviewer18" parent="." unique_id=480868716 instance=ExtResource("1_e6tte")]
 position = Vector2(2048, 288)

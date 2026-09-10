@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://bock2s3je4a2"]
+
+[ext_resource type="PackedScene" uid="uid://n0dhd4824fos" path="res://Assets/Rooms/Greybox/Purple/Room20-2.tscn" id="1_edsdu"]
+[ext_resource type="Texture2D" uid="uid://dtvvbb148wjys" path="res://Assets/Rooms/PreviewRoomImages/Room21.tres_preview.png" id="2_e3odv"]
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="3_tblur"]
+
+[resource]
+script = ExtResource("3_tblur")
+roomName = "Room20-2"
+doesCameraFollow = true
+gridPos = Vector2i(3, 2)
+gamePlayScene = ExtResource("1_edsdu")
+roomGroup = 1
+previewTexture = ExtResource("2_e3odv")
+metadata/_custom_type_script = "uid://cij17tnbhukil"
