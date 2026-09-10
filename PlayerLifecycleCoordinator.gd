@@ -22,7 +22,7 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 
 func onPlayerDeath(p : Player):
 	p.queue_free()
-	
+	## TODO: Need to find failsafe in case player tries respawning when they have no checkpoint saved
 	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
 	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)

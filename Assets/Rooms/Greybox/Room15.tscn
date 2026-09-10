@@ -67,5 +67,3 @@ element = 1
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
-
-[node name="RoomResidents2" type="Node2D" parent="." unique_id=1264058251]
