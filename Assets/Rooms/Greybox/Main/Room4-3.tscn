@@ -20,7 +20,7 @@ size = Vector2(560, 480)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h45ro"]
 size = Vector2(320, 560)
 
-[sub_resource type="Resource" id="Resource_e31g4"]
+[sub_resource type="Resource" id="Resource_2nht1"]
 resource_local_to_scene = true
 script = ExtResource("10_ctc4s")
 oriCoords = Vector2(1120.0001, 1040)
@@ -89,9 +89,9 @@ shape = SubResource("RectangleShape2D_h45ro")
 [node name="RoomResidents" type="Node2D" parent="." unique_id=97286632]
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1269534571 instance=ExtResource("9_jgau0")]
-position = Vector2(1120.0001, 1040)
-scale = Vector2(3.5, 1)
-roomResident = SubResource("Resource_e31g4")
+position = Vector2(1109.0001, 1060)
+scale = Vector2(3.5, 0.5)
+roomResident = SubResource("Resource_2nht1")
 
 [editable path="Respawn Point4"]
 [editable path="Respawn Point"]

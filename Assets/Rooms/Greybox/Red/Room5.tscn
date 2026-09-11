@@ -100,8 +100,8 @@ shouldDestructionPersist = false
 roomResident = SubResource("Resource_qx82o")
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
-position = Vector2(1100, 40)
-scale = Vector2(3.5, 1)
+position = Vector2(1100.0001, 20)
+scale = Vector2(3.5, 0.5)
 roomResident = SubResource("Resource_tkoe3")
 
 [node name="ExplodableWall2" parent="RoomResidents" unique_id=381610938 instance=ExtResource("6_5nk4h")]
