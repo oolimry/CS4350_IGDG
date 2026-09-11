@@ -66,7 +66,7 @@ func _physics_process(delta):
 			distanceRemaining -= traveled
 			
 			# Reflect direction off the wall
-			movementDirection = movementDirection.bounce(collision.get_normal())
+			movementDirection = movementDirection.bounce(movementDirection * -1)
 			
 			# Move the remaining distance in the new direction this same frame
 			move_and_collide(movementDirection * (step - traveled))
