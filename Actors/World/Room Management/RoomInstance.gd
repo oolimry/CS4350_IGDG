@@ -128,7 +128,7 @@ func restoreSnapshotLoaded(objectInstantiator : Callable, roomSnapshot: Dictiona
 			instancesToDelete[id].queue_free()
 	
 	for n in objectsToAdd:
-		roomResidentsHolder.add_child(n)
+		roomResidentsHolder.add_child.call_deferred(n)
 
 	
 ## Restore Snapshot for a Newly Loaded Room[br]

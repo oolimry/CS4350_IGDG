@@ -50,7 +50,8 @@ enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 
 func isDiffRoomGroup(nextRoom: RoomDefinition) -> bool:	
 	return (roomGroup != nextRoom.roomGroup) or \
-		roomGroup == RoomDefinition.BIGROOMGROUP.NONE
+		roomGroup == RoomDefinition.BIGROOMGROUP.NONE or \
+		nextRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
 
 ######################### Mutable fields ########################
 
