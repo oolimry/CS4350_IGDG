@@ -25,14 +25,16 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
-func generateRooms(cArray : Array[Callable]) -> void:
+func generateRooms(cArray : Array[Callable], \
+	loaderSignals : Dictionary[StringName,Signal] = {}) -> void:
+		
 	worldStateOwner = WorldStateOwner.new()
 	currRoomPos = mapLoader.playerSpawnRoom.gridPos
 	
 	cArray.append(setupRoom)
 	roomInstantiator.setup(cArray, calcRoomCenterWorldCoords, worldStateOwner)
 	
-	roomLoader = RoomLoaderNeighbour.new(mapLoader, roomInstantiator)
+	roomLoader = RoomLoaderNeighbour.new(mapLoader, roomInstantiator, loaderSignals)
 	roomLoader.loadRooms(currRoomPos)
 	
 func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:	
@@ -50,9 +52,6 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	
 	var nextRoom = mapLoader.getRoom(nextRoomPos)
 	assert(nextRoom != null)
-	
-	#roomInstantiator.snapshotRoom(currRoomPos)
-	#roomInstantiator.restoreSnapshot(nextRoomPos)
 	
 	roomCamHandler.changeRoom(mapLoader.getRoom(currRoomPos), \
 		mapLoader.getRoom(nextRoomPos),\

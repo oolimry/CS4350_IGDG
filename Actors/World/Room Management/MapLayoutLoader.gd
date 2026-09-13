@@ -62,28 +62,59 @@ func forEachRoomDef(c : Callable) -> void:
 	for r in mapLayout.values():
 		c.call(r)
 		
-func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1) -> void:
+func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1, \
+	hashmap := {}) -> void:
 	var roomDef : RoomDefinition = getRoom(pos)
 	if roomDef == null:
 		return;
 	
 	c.call(roomDef)
+	hashmap[pos] = pos
 	
-	if depth == 0:
-		return
 	var newDepth = depth - 1
 	
-	if roomDef.openSides & RoomDefinition.Side.LEFT:
-		forEachRoomDefSurrounding(c, pos - Vector2i(1,0), newDepth)
+	if (roomDef.openSides & RoomDefinition.Side.LEFT) && \
+		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.LEFT, hashmap)):
+		forEachRoomDefSurrounding(c, pos - Vector2i(1,0), newDepth, hashmap)
 		
-	if roomDef.openSides & RoomDefinition.Side.RIGHT:
-		forEachRoomDefSurrounding(c, pos + Vector2i(1,0), newDepth)
+	if (roomDef.openSides & RoomDefinition.Side.RIGHT) && \
+		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.RIGHT, hashmap)):
+		forEachRoomDefSurrounding(c, pos + Vector2i(1,0), newDepth, hashmap)
 		
-	if roomDef.openSides & RoomDefinition.Side.TOP:
-		forEachRoomDefSurrounding(c, pos - Vector2i(0,1), newDepth)
+	if roomDef.openSides & RoomDefinition.Side.TOP && \
+		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.TOP, hashmap)):
+		forEachRoomDefSurrounding(c, pos - Vector2i(0,1), newDepth, hashmap)
 
-	if roomDef.openSides & RoomDefinition.Side.BOTTOM:
-		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth)
+	if roomDef.openSides & RoomDefinition.Side.BOTTOM && \
+		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.BOTTOM, hashmap)):
+		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth, hashmap)
+
+func shouldSearchSurrRoom(pos : Vector2i, roomDirection: RoomDefinition.Side, 
+		hashmap : Dictionary) -> bool:
+	var newPos = pos 
+	match roomDirection:
+		RoomDefinition.Side.LEFT:
+			newPos -= Vector2i(1,0)
+		RoomDefinition.Side.RIGHT:
+			newPos += Vector2i(1,0)
+		RoomDefinition.Side.TOP:
+			newPos -= Vector2i(0,1)
+		RoomDefinition.Side.BOTTOM:
+			newPos += Vector2i(0,1)
+	
+	var nextRoomDef = getRoom(newPos) 
+	if nextRoomDef == null:
+		push_error("Empty Room! Likely an open exposed side with no room, like a ceiling")
+		push_error(pos)
+		return false
+		
+	if newPos in hashmap:
+		return false
+	
+	if (getRoom(pos).isDiffRoomGroup(nextRoomDef)):
+		return false
+	
+	return true
 
 static func getRoomPosForEditorByInstance() -> Vector2i:
 	return Vector2i(0,0)

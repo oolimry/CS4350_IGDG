@@ -19,12 +19,20 @@ func unloadRooms(currRoomPos : Vector2i) -> void:
 	for roomPos in difference:
 		roomInstantiator.freeRoom(roomPos)
 
+func reloadRoom(roomPos : Vector2i) -> void:
+	mapLoader.forEachRoomDefSurrounding(
+		func(roomDef : RoomDefinition):
+		roomInstantiator.restoreSnapshot(roomDef.gridPos)
+		, roomPos, 0)
 
 func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
 	if currRoomPos == nextRoomPos:
 		return
 		
 	roomInstantiator.snapshotRoom(currRoomPos)
-	roomInstantiator.restoreSnapshot(nextRoomPos)
+	if mapLoader.getRoom(currRoomPos).isDiffRoomGroup(\
+		mapLoader.getRoom(nextRoomPos)):
+		roomInstantiator.restoreSnapshot(nextRoomPos)
+	
 	loadRooms(nextRoomPos)
 	unloadRooms(currRoomPos)

@@ -26,8 +26,7 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	var nextRoomCenterWorldCoords = calcRoomWorldCoords.call(nextRoom.gridPos) + \
 		cameraCenterOffset
 	
-	shouldAnimateLerp = (currRoom.roomGroup != nextRoom.roomGroup) or \
-		currRoom.roomGroup == RoomDefinition.BIGROOMGROUP.NONE
+	shouldAnimateLerp = currRoom.isDiffRoomGroup(nextRoom)
 
 	if isCameraFollow:
 		camera.startFollowingPlayer()

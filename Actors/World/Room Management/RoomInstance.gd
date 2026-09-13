@@ -51,10 +51,12 @@ func setupRoomResidents(isFirstLoad : bool) -> void:
 		# Setup should always be called when the room is loaded in
 		# When it is loaded in, all nodes should be in their original state
 		oriRoomResidents[rr.persistentID] = n.generateObjectSnapshot()
-		
 
 func forInteractables(c : Callable) -> void:
 	for n in get_children():
+		if n.has_method("setRoomPos"):
+			n.setRoomPos(roomPos)
+		
 		c.call(n)
 		
 ########################## Snapshot Related ##################################

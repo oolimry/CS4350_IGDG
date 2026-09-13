@@ -48,6 +48,10 @@ enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
 ## The exact colour is arbitrary
 @export var roomGroup := BIGROOMGROUP.NONE
 
+func isDiffRoomGroup(nextRoom: RoomDefinition) -> bool:	
+	return (roomGroup != nextRoom.roomGroup) or \
+		roomGroup == RoomDefinition.BIGROOMGROUP.NONE
+
 ######################### Mutable fields ########################
 
 ## Has the player explored this room yet

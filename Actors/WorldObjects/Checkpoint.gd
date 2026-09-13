@@ -41,3 +41,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	checkPointReached.emit(self)
 	pass # Replace with function body.
 	
+func setRoomPos(pos : Vector2i) -> void:
+	roomPos = pos

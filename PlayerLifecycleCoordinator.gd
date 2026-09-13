@@ -4,6 +4,8 @@ extends RefCounted
 var currRespawnCheckpoint : CheckPoint 
 var reconnectPlayer : Callable
 
+signal playerRespawn(roomPos : Vector2i)
+
 var isSetup := true
 
 func _init(reconnectPlayer : Callable) -> void:
@@ -24,9 +26,9 @@ func onPlayerDeath(p : Player):
 	p.queue_free()
 	
 	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
+	playerRespawn.emit(currRespawnCheckpoint.roomPos)
 	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)
-
 
 ####################### Setup code ######################
 
