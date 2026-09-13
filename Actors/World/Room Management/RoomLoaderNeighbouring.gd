@@ -9,7 +9,7 @@ func loadRooms(currRoomPos : Vector2i) -> void:
 		func(roomDef : RoomDefinition):
 			roomInstantiator.instantiateRoom(roomDef)
 			recentlyLoadedRoomPoss.append(roomDef.gridPos)\
-		, currRoomPos, 1)
+		, currRoomPos, 2)
 		
 func unloadRooms(currRoomPos : Vector2i) -> void:
 	var difference = roomInstantiator.loadedRooms.keys().filter(
@@ -26,9 +26,11 @@ func reloadRoom(roomPos : Vector2i) -> void:
 		, roomPos, 0)
 
 func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
-	if currRoomPos == nextRoomPos:
-		return
-		
+	# TODO: This is a quick fix to snapshot restore on death
+	# but there's prolly a safer way to do this
+	#if currRoomPos == nextRoomPos:
+		#return
+		#
 	roomInstantiator.snapshotRoom(currRoomPos)
 	if mapLoader.getRoom(currRoomPos).isDiffRoomGroup(\
 		mapLoader.getRoom(nextRoomPos)):

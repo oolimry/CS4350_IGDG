@@ -85,6 +85,7 @@ scale = Vector2(2, 2)
 collision_layer = 26
 collision_mask = 0
 script = ExtResource("1_uem5w")
+direction = 2
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=824924353]
 rotation = 1.5707964

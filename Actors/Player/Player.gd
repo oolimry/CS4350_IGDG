@@ -23,11 +23,11 @@ enum Directions {
 @onready var downSlashHitbox = $DownSlashHitbox
 @onready var upSlashHitbox = $UpSlashHitbox
 
-@onready var raycastsLeft = [$Raycasts/LeftRaycastHigh]
-@onready var raycastsRight = [$Raycasts/RightRaycastHigh]
+#@onready var raycastsLeft = [$Raycasts/LeftRaycastHigh]
+#@onready var raycastsRight = [$Raycasts/RightRaycastHigh]
 
-#@onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
-#@onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
+@onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
+@onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
 
 ## xAcceleration / drag should give the main run speed
 ## x movement related
@@ -93,8 +93,12 @@ const ignitionPadVerticalBoost = 1600
 var currentElement : Enums.Elements = Enums.Elements.NONE
 
 ## wind movement related
-const windHorizontalBoost = 5000
+const windHorizontalBoost = 1500 * 60
 const windDownSlashBoost = 1000
+var timeSinceWindHorizontalDash = 0.00
+var windHorizontalDirection : Enums.Directions
+const windHorizontalDashDuration = 0.20
+const cutoffToStopGivingBoost = 0.084 # 4 frames
 
 ## purple movement related
 const purupleHorizontalSpeed = 4000
@@ -107,6 +111,8 @@ var purpleWindUpTween : Tween
 var originalSpritePosition : Vector2
 var isPurpleDashing = false
 const CRYSTAL_WALL_COLLISION_LAYER = 8
+var purpleJustEnded = false
+const purpleEndFreezeDuration = 0.20
 
 ## pogo related
 const pogoVerticalBoost = 500
@@ -242,7 +248,6 @@ func _physics_process_playerMovement(delta):
 	else:
 		velocity.y += gravity * 60 * delta
 	
-	
 	if Input.is_action_pressed("down") and not freezeInput:
 		if velocity.y > fastFallTerminalVelocity:
 			velocity.y = fastFallTerminalVelocity
@@ -252,7 +257,18 @@ func _physics_process_playerMovement(delta):
 	else:
 		if velocity.y > terminalVelocity:
 			velocity.y = terminalVelocity
-		
+	
+	timeSinceWindHorizontalDash += delta
+	if timeSinceWindHorizontalDash < windHorizontalDashDuration:
+		velocity.y = 0
+		if windHorizontalDashDuration - timeSinceWindHorizontalDash < cutoffToStopGivingBoost:
+			## i.e. don't give boost if near end of the dash
+			pass
+		else:
+			var additionalVelocity = -Enums.getVectorOfDirection(windHorizontalDirection) * \
+				windHorizontalBoost * (1.0 - timeSinceWindHorizontalDash/windHorizontalDashDuration) * delta
+			additionalVelocityInputs.append(additionalVelocity)
+	
 	while len(additionalVelocityInputs) > 0:
 		var addedVelocity : Vector2 = additionalVelocityInputs[-1]
 		velocity.x += addedVelocity.x
@@ -260,6 +276,10 @@ func _physics_process_playerMovement(delta):
 			hasBrokenJump = true
 			velocity.y = addedVelocity.y
 		additionalVelocityInputs.pop_back()
+	
+	
+	
+	
 	
 	set_velocity(velocity)
 	
@@ -382,6 +402,10 @@ func _physics_process_slash(delta):
 		sprite.play("slashSide")
 		
 	if currentElement == Enums.Elements.WIND:
+		if slashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
+			timeSinceWindHorizontalDash = 0.0
+			windHorizontalDirection = slashDirection
+		
 		var windHitbox : WindShockwaveHitbox = windShockwaveHitboxTSCN.instantiate()
 		windHitbox.slashDirection = slashDirection
 		windHitbox.player = self
@@ -392,10 +416,12 @@ func _physics_process_slash(delta):
 			additionalVelocityInputs.append(Vector2(0, -windDownSlashBoost))
 		elif slashDirection == Enums.Directions.UP:
 			pass
-		elif slashDirection == Enums.Directions.LEFT:
-			additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
-		elif slashDirection == Enums.Directions.RIGHT:
-			additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
+		## note horizontal slash movement is continious, and is handled in the physics_process_movement() part
+		## ctrl F timeSinceWindHorizontalDash for the area of the code
+		#elif slashDirection == Enums.Directions.LEFT:
+		#	additionalVelocityInputs.append(Vector2(windHorizontalBoost, 0))
+		#elif slashDirection == Enums.Directions.RIGHT:
+		#	additionalVelocityInputs.append(Vector2(-windHorizontalBoost, 0))
 			
 		currentElement = Enums.Elements.NONE
 			

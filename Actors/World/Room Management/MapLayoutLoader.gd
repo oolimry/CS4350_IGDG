@@ -15,6 +15,8 @@ var generate_action = _on_generate_pressed
 func _on_generate_pressed() -> void:
 	Glogger.debug("Generating level in editor...")
 	mapLayout = generateLayout()
+	Glogger.debug("Success! :D")
+
 	
 func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 	if !Engine.is_editor_hint():
@@ -42,8 +44,6 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 			roomDef.gridPos = key
 	
 		if roomDef.hasPlayer:
-			push_error("We have multiple Players! :O")
-			assert(playerSpawnRoom == null)
 			playerSpawnRoom = roomDef
 	
 	instance.queue_free()
