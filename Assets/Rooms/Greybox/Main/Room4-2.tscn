@@ -58,7 +58,7 @@ position = Vector2(1600, 840)
 position = Vector2(-98, -20)
 shape = SubResource("RectangleShape2D_x80dp")
 
-[node name="RoomResident" type="Node2D" parent="." unique_id=1897836441]
+[node name="RoomResidents" type="Node2D" parent="." unique_id=1897836441]
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("8_gxh8l")]
 position = Vector2(1880, 500)
