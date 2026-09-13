@@ -36,10 +36,6 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AACk/y8AAAAAAAAAAACm/y8AAAAAAAAAAACn/y8AAAAAAAAAAACl/y8AAAAAAAAAAACo/zAAAAAAAAAAAwCo/zEAAAAAAAAAAwCo/zIAAAAAAAAAAwCo/zMAAAAAAAAAAwCo/zQAAAAAAAAAAwCo/zUAAAAAAAAAAwD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgD9/ywAAAAAAAAAAgD9/y0AAAAAAAAAAgD9/y4AAAAAAAAAAgD9/y8AAAAAAAAAAgD9/zAAAAAAAAAAAgD9/zEAAAAAAAAAAgD9/zIAAAAAAAAAAgD9/zMAAAAAAAAAAgD9/zQAAAAAAAAAAgD9/zUAAAAAAAAAAgA=")
 tile_set = ExtResource("2_tuow0")
 
-[node name="Element2" parent="." unique_id=1394946886 instance=ExtResource("8_dr6l8")]
-position = Vector2(857, 762)
-element = 2
-
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("8_3bfmy")]
 visible = false
 position = Vector2(960, 560)
@@ -66,6 +62,10 @@ scale = Vector2(1, 2.5)
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("11_av0vl")]
 position = Vector2(1506, 817)
+
+[node name="Element2" parent="." unique_id=1394946886 instance=ExtResource("8_dr6l8")]
+position = Vector2(856, 768)
+element = 2
 
 [editable path="Respawn Point3"]
 [editable path="Respawn Point"]
