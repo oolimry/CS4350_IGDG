@@ -8,7 +8,7 @@ var heartArray : Array[Node]
 var currHeartPointer: int
 
 # Static factory function acting as a custom constructor
-static func create(ph: PlayerHealth) -> HealthBar:
+static func create(ph: Health) -> HealthBar:
 	## Load in HeartGUI
 	var scene = load("uid://dhjniepaue6n3") as PackedScene
 	var instance = scene.instantiate() as HealthBar
@@ -52,7 +52,7 @@ func damageHearts(i : int) -> void:
 func fillAllHearts(maxHealth :int) -> void:
 	healHearts(maxHealth)
 
-func registerPlayer(ph: PlayerHealth) -> void:
-	ph.playerDamaged.connect(damageHearts)
-	ph.playerHealed.connect(healHearts)
+func registerPlayer(ph: Health) -> void:
+	ph.hurt.connect(damageHearts)
+	ph.receiveHealing.connect(healHearts)
 	fillAllHearts(ph.maxHealth)

@@ -5,7 +5,7 @@ const windShockwaveHitboxTSCN = preload("res://Actors/Player/SlashHitboxes/WindS
 
 const inf = 1e9 + 100
 
-@export var health : PlayerHealth
+@export var health : Health
 @export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
 

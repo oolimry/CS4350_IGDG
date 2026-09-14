@@ -1,12 +1,12 @@
 # Controls how the 
-class_name PlayerHealth
+class_name Health
 extends Node
 
 @export var maxHealth := 6
 var currHealth : int
-signal playerDamaged(currHealth)
-signal playerDeath()
-signal playerHealed(currHealth)
+signal hurt(currHealth)
+signal death()
+signal receiveHealing(currHealth)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,10 +22,10 @@ func takeDamage(i : int) -> bool:
 		
 	if currHealth - i <= 0:
 		currHealth = 0
-		playerDeath.emit(get_parent())
+		death.emit(get_parent())
 	else: 
 		currHealth -= i
-		playerDamaged.emit(i)
+		hurt.emit(i)
 		
 	return true
 
@@ -34,5 +34,5 @@ func heal(i : int) -> bool:
 		return false
 	
 	currHealth = maxHealth if currHealth + i >= maxHealth else currHealth + i
-	playerHealed.emit(i)
+	receiveHealing.emit(i)
 	return true

@@ -34,7 +34,7 @@ func connectPlayer(newPlayer : Player) -> void:
 	if !isSetup:
 		setup(player)
 	
-	player.health.connect("playerDeath", playerCoordinator.onPlayerDeath)
+	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	hudManager.connectUI(player)
 
 func getPlayer() -> Player:
@@ -52,7 +52,7 @@ func setup(p : Player) -> void:
 	
 	roomManager.roomCamHandler.camera = camera
 	
-	player.health.connect("playerDeath", playerCoordinator.onPlayerDeath)
+	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	
 func placeAtRoot(n : Node) -> void:
 	get_tree().current_scene.add_child(n)
