@@ -34,7 +34,7 @@ func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
 	roomInstantiator.snapshotRoom(currRoomPos)
 	if mapLoader.getRoom(currRoomPos).isDiffRoomGroup(\
 		mapLoader.getRoom(nextRoomPos)):
-		roomInstantiator.restoreSnapshot(nextRoomPos)
+		reloadRoom(nextRoomPos)
 	
 	loadRooms(nextRoomPos)
 	unloadRooms(currRoomPos)

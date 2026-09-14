@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qutf6jmoy2u3" path="res://Actors/WorldObjects/Crate.gd" id="1_k1n17"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="2_ow5d4"]
+[ext_resource type="Texture2D" uid="uid://dqrima00e4700" path="res://Assets/World Objects/bigCrate.png" id="3_oo11k"]
 
 [sub_resource type="Resource" id="Resource_oo11k"]
 resource_local_to_scene = true
@@ -9,15 +10,6 @@ script = ExtResource("2_ow5d4")
 persistentID = &"a7290e07-b11b-436c-867e-62fae32f6974"
 objectName = &"Crate"
 shouldAlwaysReset = true
-
-[sub_resource type="Gradient" id="Gradient_k1n17"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.34855485, 0.18972057, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_drwvd"]
-gradient = SubResource("Gradient_k1n17")
-width = 80
-height = 80
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
 size = Vector2(80, 80)
@@ -30,7 +22,8 @@ script = ExtResource("1_k1n17")
 roomResident = SubResource("Resource_oo11k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803576826]
-texture = SubResource("GradientTexture2D_drwvd")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_oo11k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2029221308]
 visible = false
