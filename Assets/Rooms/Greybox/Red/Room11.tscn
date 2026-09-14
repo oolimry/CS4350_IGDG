@@ -17,7 +17,7 @@ size = Vector2(400, 600)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqyr4"]
 size = Vector2(200, 240)
 
-[sub_resource type="Resource" id="Resource_1a4sd"]
+[sub_resource type="Resource" id="Resource_7qbvb"]
 resource_local_to_scene = true
 script = ExtResource("8_aqyr4")
 oriCoords = Vector2(1679, 1041)
@@ -73,9 +73,9 @@ shape = SubResource("RectangleShape2D_aqyr4")
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1721712397]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("9_qgnw2")]
-position = Vector2(1679, 1041)
+position = Vector2(1680, 1040)
 scale = Vector2(1, 3)
-roomResident = SubResource("Resource_1a4sd")
+roomResident = SubResource("Resource_7qbvb")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1361816187]
 position = Vector2(1920, 0)
