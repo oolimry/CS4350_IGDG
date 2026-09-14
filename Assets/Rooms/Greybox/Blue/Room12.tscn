@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_exmoo"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="8_fw1pf"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="9_wbg63"]
+[ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="10_fw1pf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da2w0"]
 size = Vector2(80, 160)
@@ -21,11 +22,11 @@ persistentID = &"f0eefd46-d710-46b5-9fb5-aad99352f3a7"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_pur11"]
+[sub_resource type="Resource" id="Resource_wbg63"]
 resource_local_to_scene = true
 script = ExtResource("8_fw1pf")
-oriCoords = Vector2(1100, 400)
-persistentID = &"ac1bd148-9453-4af5-956e-eae328594444"
+oriCoords = Vector2(1120, 360)
+persistentID = &"c8238eb8-c855-45b4-a729-66ec7cc8d535"
 objectName = &"Crate"
 shouldAlwaysReset = true
 
@@ -64,8 +65,12 @@ position = Vector2(739, 240)
 element = 1
 
 [node name="Element2" parent="." unique_id=1519558673 instance=ExtResource("6_da2w0")]
-position = Vector2(1640, 300)
+position = Vector2(1460, 580)
 element = 1
+
+[node name="Element3" parent="." unique_id=18504929 instance=ExtResource("6_da2w0")]
+position = Vector2(360, 520)
+element = 2
 
 [node name="Respawn Point2" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("3_da2w0")]
 position = Vector2(1460, 760)
@@ -84,6 +89,9 @@ roomResident = SubResource("Resource_wvfad")
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_wbg63")]
 position = Vector2(1120, 360)
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_pur11")
+roomResident = SubResource("Resource_wbg63")
+
+[node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("10_fw1pf")]
+position = Vector2(120, 760)
 
 [editable path="Respawn Point2"]
