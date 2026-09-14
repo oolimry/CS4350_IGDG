@@ -80,6 +80,10 @@ position = Vector2(960, 560)
 position = Vector2(366, 918)
 element = 2
 
+[node name="Element2" parent="." unique_id=256958437 instance=ExtResource("7_yxgeu")]
+position = Vector2(499, 518)
+element = 2
+
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_iiv1o")]
 position = Vector2(528, 903)
 
