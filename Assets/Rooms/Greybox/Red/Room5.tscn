@@ -14,35 +14,36 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tud8x"]
 size = Vector2(269, 864.5)
 
-[sub_resource type="Resource" id="Resource_tkoe3"]
-resource_local_to_scene = true
-script = ExtResource("9_5nk4h")
-oriCoords = Vector2(598, 642)
-persistentID = &"fc802efe-7800-441c-be17-256089dea292"
-objectName = &"SlashableWall"
-shouldAlwaysReset = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkoe3"]
+size = Vector2(1242.5, 246.5)
 
 [sub_resource type="Resource" id="Resource_p8ick"]
+resource_local_to_scene = true
+script = ExtResource("9_5nk4h")
+oriCoords = Vector2(640, 800)
+persistentID = &"679f4a23-ed21-41bf-bb4f-169c268eb5be"
+objectName = &"ExplodableWall"
+
+[sub_resource type="Resource" id="Resource_bo0d1"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
 oriCoords = Vector2(1100.0001, 20)
 persistentID = &"a23197cb-f207-4eb8-9353-1b0ee92aa07f"
 objectName = &"SlashableWall"
 
-[sub_resource type="Resource" id="Resource_bo0d1"]
-resource_local_to_scene = true
-script = ExtResource("9_5nk4h")
-oriCoords = Vector2(920, 640)
-persistentID = &"8f3d9c67-b1fd-45db-a43f-9ebd29296993"
-objectName = &"SlashableWall"
-shouldAlwaysReset = true
-
 [sub_resource type="Resource" id="Resource_80rma"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
-oriCoords = Vector2(1684, 221)
-persistentID = &"f159195c-d4de-460a-bb25-84474fe17b7c"
-objectName = &"SlashableWall"
+oriCoords = Vector2(800, 481)
+persistentID = &"67ecdc39-2acf-41d8-8e3c-c1b147b742f5"
+objectName = &"ExplodableWall"
+
+[sub_resource type="Resource" id="Resource_j5gbb"]
+resource_local_to_scene = true
+script = ExtResource("9_5nk4h")
+oriCoords = Vector2(1680, 220)
+persistentID = &"c6f97014-a6e3-4014-9eb6-c1cf85f0d2ba"
+objectName = &"ExplodableWall"
 
 [node name="Room 5" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_bp81x")
@@ -98,28 +99,34 @@ position = Vector2(207, 864)
 position = Vector2(-23, -349.75)
 shape = SubResource("RectangleShape2D_tud8x")
 
+[node name="Respawn Point2" parent="." unique_id=1788210547 groups=["Checkpoint"] instance=ExtResource("8_5nk4h")]
+position = Vector2(777, 244)
+
+[node name="CollisionShape2D" parent="Respawn Point2/Area2D" parent_id_path=PackedInt32Array(1788210547, 1498333101) index="0" unique_id=598497129]
+position = Vector2(463.75, -40.75)
+shape = SubResource("RectangleShape2D_tkoe3")
+
 [node name="RoomResidents" type="Node2D" parent="." unique_id=982113744]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=753218192 instance=ExtResource("6_5nk4h")]
 position = Vector2(640, 800)
 scale = Vector2(1, 4)
-shouldDestructionPersist = false
-roomResident = SubResource("Resource_tkoe3")
+roomResident = SubResource("Resource_p8ick")
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
 position = Vector2(1100.0001, 20)
 scale = Vector2(3.5, 0.5)
-roomResident = SubResource("Resource_p8ick")
+roomResident = SubResource("Resource_bo0d1")
 
 [node name="ExplodableWall2" parent="RoomResidents" unique_id=381610938 instance=ExtResource("6_5nk4h")]
 position = Vector2(800, 481)
 scale = Vector2(2, 2)
-shouldDestructionPersist = false
-roomResident = SubResource("Resource_bo0d1")
+roomResident = SubResource("Resource_80rma")
 
 [node name="ExplodableWall3" parent="RoomResidents" unique_id=1351364872 instance=ExtResource("6_5nk4h")]
 position = Vector2(1680, 220)
 scale = Vector2(2, 2.5)
-roomResident = SubResource("Resource_80rma")
+roomResident = SubResource("Resource_j5gbb")
 
 [editable path="Respawn Point"]
+[editable path="Respawn Point2"]

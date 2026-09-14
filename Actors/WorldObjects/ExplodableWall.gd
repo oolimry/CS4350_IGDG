@@ -2,7 +2,7 @@
 class_name ExplodableWall
 extends RoomResidentStatic
 
-const objName = "SlashableWall"
+const objName = "ExplodableWall"
 
 ## Should the wall continued to be destroyed after leaving the room?
 @export var shouldDestructionPersist := true
@@ -14,14 +14,14 @@ func onHitByBombExplosion():
 	self.queue_free()
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \
-	constructHandling : Callable) -> PlaceholderSlashableObject:
+	constructHandling : Callable) -> ExplodableWall:
 	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://cjuxpuixfnc7s") as PackedScene
-	var slashable := scene.instantiate() as PlaceholderSlashableObject
-	slashable.resync(snapshot)
-	slashable.shouldDestructionPersist = snapshot["shouldDestructionPersist"]
-	constructHandling.call(slashable)
-	return slashable
+	var explodable := scene.instantiate() as ExplodableWall
+	explodable.resync(snapshot)
+	explodable.shouldDestructionPersist = snapshot["shouldDestructionPersist"]
+	constructHandling.call(explodable)
+	return explodable
 	
 func generateObjectSnapshot() -> Dictionary:
 	var snapshot := super.generateObjectSnapshot()

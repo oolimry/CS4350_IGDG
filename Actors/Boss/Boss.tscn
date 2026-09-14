@@ -1,5 +1,18 @@
 [gd_scene format=3 uid="uid://dkht80tf3wlnf"]
 
+[ext_resource type="PackedScene" uid="uid://islgunwgpotd" path="res://Actors/Boss/BossWeakPoint.tscn" id="1_a8v7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(1920, 2360)
+
 [node name="Boss" type="CharacterBody2D" unique_id=325248090]
 
+[node name="BossWeakPoint" parent="." unique_id=2041658686 instance=ExtResource("1_a8v7j")]
+
 [node name="Node" type="Node" parent="." unique_id=1368253561]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=201408362]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=904024589]
+position = Vector2(0, -100)
+shape = SubResource("RectangleShape2D_bhunq")

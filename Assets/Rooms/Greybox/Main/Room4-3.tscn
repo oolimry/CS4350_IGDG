@@ -62,9 +62,9 @@ shouldAlwaysReset = true
 [sub_resource type="Resource" id="Resource_syf5x"]
 resource_local_to_scene = true
 script = ExtResource("10_ctc4s")
-oriCoords = Vector2(1120.0001, 1040)
-persistentID = &"7fe85ce0-cb18-43c7-b15c-bf84a68f82df"
-objectName = &"SlashableWall"
+oriCoords = Vector2(1109.0001, 1060)
+persistentID = &"6a72fbc7-0374-4ae5-8140-00b10dd08f21"
+objectName = &"ExplodableWall"
 
 [node name="Room 4-3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_s1kex")
