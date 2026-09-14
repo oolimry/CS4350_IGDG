@@ -8,8 +8,8 @@ var snapshots : Dictionary[Vector2i, Dictionary] = {}
 		Box.objName : Box.constructObjectBySnapshot,
 		Crate.objName : Crate.constructObjectBySnapshot,
 		Chain.objName : Chain.constructObjectBySnapshot,
-		PlaceholderSlashableObject.objName : PlaceholderSlashableObject.constructObjectBySnapshot
-		
+		PlaceholderSlashableObject.objName : PlaceholderSlashableObject.constructObjectBySnapshot,
+		ExplodableWall.objName : ExplodableWall.constructObjectBySnapshot
 	}
 
 func snapshotRoom(ri : RoomInstance) -> void:
