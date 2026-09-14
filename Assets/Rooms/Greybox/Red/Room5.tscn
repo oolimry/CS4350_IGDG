@@ -67,7 +67,7 @@ tile_set = ExtResource("2_dgt5c")
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1188970589]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AADu/w8AAAAAAAAAFADs/w8AAAAAAAAAFgA=")
+tile_map_data = PackedByteArray("AADu/w8AAAAAAAAAEwDs/w8AAAAAAAAAFgA=")
 tile_set = ExtResource("4_tkoe3")
 collision_visibility_mode = 1
 physics_quadrant_size = 20
