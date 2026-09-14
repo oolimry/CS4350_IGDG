@@ -61,6 +61,10 @@ position = Vector2(1506, 817)
 position = Vector2(856, 788)
 element = 2
 
+[node name="Element3" parent="." unique_id=369146347 instance=ExtResource("8_dr6l8")]
+position = Vector2(1410, 819)
+element = 3
+
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1574183046]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
