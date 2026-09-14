@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dfwfqj7hcqoqo" path="res://Assets/Player/invulnFlash.gdshader" id="2_l6vkj"]
 [ext_resource type="PackedScene" uid="uid://byquhfdwuwfyg" path="res://Actors/Player/SlashHitboxes/SideSlashHitbox.tscn" id="3_urha2"]
 [ext_resource type="Texture2D" uid="uid://oc5gwa02uynb" path="res://Assets/Player/Fall/frame_1.png" id="3_v8mwv"]
-[ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/PlayerHealth.gd" id="3_yqfyh"]
+[ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/Health.gd" id="3_yqfyh"]
 [ext_resource type="Texture2D" uid="uid://dq7iscxrqkrqo" path="res://Assets/Player/Fall/frame_2.png" id="4_3mvtf"]
 [ext_resource type="Texture2D" uid="uid://86ffbh8k8alf" path="res://Assets/Player/Fall/frame_3.png" id="5_hdyga"]
 [ext_resource type="Script" uid="uid://dw0tp7x61tpbh" path="res://Actors/Player/Health/HazardHandler.gd" id="5_vywg6"]

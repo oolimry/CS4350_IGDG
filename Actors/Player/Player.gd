@@ -134,7 +134,6 @@ const pushForce := 2600
 
 # Static factory function acting as a custom constructor
 static func create(startingPos : Vector2) -> Player:
-	## Load in HeartGUI
 	var scene = load("uid://d3dqiwprm2300") as PackedScene
 	var instance = scene.instantiate() as Player
 	instance.global_position = startingPos

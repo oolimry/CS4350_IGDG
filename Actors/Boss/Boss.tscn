@@ -1,18 +1,33 @@
 [gd_scene format=3 uid="uid://dkht80tf3wlnf"]
 
 [ext_resource type="PackedScene" uid="uid://islgunwgpotd" path="res://Actors/Boss/BossWeakPoint.tscn" id="1_a8v7j"]
+[ext_resource type="Script" uid="uid://uxo6wb4bov7b" path="res://Actors/Boss/Boss.gd" id="1_h4di7"]
+[ext_resource type="Script" uid="uid://c16pipmwy01a4" path="res://Actors/Player/Health/Health.gd" id="2_ecsg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
-size = Vector2(1920, 2360)
+size = Vector2(1920, 2240)
 
-[node name="Boss" type="CharacterBody2D" unique_id=325248090]
+[node name="Boss" type="CharacterBody2D" unique_id=325248090 node_paths=PackedStringArray("health")]
+script = ExtResource("1_h4di7")
+health = NodePath("Health")
 
-[node name="BossWeakPoint" parent="." unique_id=2041658686 instance=ExtResource("1_a8v7j")]
-
-[node name="Node" type="Node" parent="." unique_id=1368253561]
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=201408362]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=904024589]
-position = Vector2(0, -100)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=904024589]
 shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="BossWeakPoint" parent="." unique_id=2041658686 node_paths=PackedStringArray("health") instance=ExtResource("1_a8v7j")]
+position = Vector2(0, -800)
+scale = Vector2(2, 3)
+health = NodePath("../Health")
+
+[node name="BossWeakPoint2" parent="." unique_id=1278419701 node_paths=PackedStringArray("health") instance=ExtResource("1_a8v7j")]
+position = Vector2(-640, 960)
+scale = Vector2(3, 2)
+health = NodePath("../Health")
+
+[node name="BossWeakPoint3" parent="." unique_id=1800646940 node_paths=PackedStringArray("health") instance=ExtResource("1_a8v7j")]
+position = Vector2(640, 960)
+scale = Vector2(3, 2)
+health = NodePath("../Health")
+
+[node name="Health" type="Node" parent="." unique_id=1368253561]
+script = ExtResource("2_ecsg1")

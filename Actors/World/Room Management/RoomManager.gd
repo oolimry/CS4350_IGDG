@@ -62,12 +62,11 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system
-	# have a RoomResident component 
-	assert(object.roomResident != null)
-	
-	var roomResident : RoomResident = object.roomResident
-	roomResident.currRoomPos = nextRoomPos
-	roomInstantiator.reparentRoomResident(object, nextRoomPos)
+	# have a RoomResident component 	
+	if object.roomResident:
+		var roomResident : RoomResident = object.roomResident
+		roomResident.currRoomPos = nextRoomPos
+		roomInstantiator.reparentRoomResident(object, nextRoomPos)
 
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \

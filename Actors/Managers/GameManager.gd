@@ -9,6 +9,7 @@ extends Node
 @export var persistentActors : Node2D
 
 var playerCoordinator : PlayerLifecycleCoordinator
+@export var bossManager : BossManager
 var hudManager : HUDManager
 var camera : GameCamera
 
@@ -17,14 +18,15 @@ var isSetup := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
-	roomManager.generateRooms([playerCoordinator.registerCheckPoint], 
+	bossManager.setup(connectBoss)
+	roomManager.generateRooms(
+		[playerCoordinator.registerCheckPoint, bossManager.registerBossRoom], 
 	{
 		"playerRespawn" : playerCoordinator.playerRespawn
 	})
 		
-	## TODO: Throw this into DeathManager
-	for n in get_tree().get_nodes_in_group("Checkpoint"):
-		n.connect("checkPointReached", playerCoordinator.registerCheckPoint)
+	#for n in get_tree().get_nodes_in_group("Checkpoint"):
+		#n.connect("checkPointReached", playerCoordinator.registerCheckPoint)
 	pass # Replace with function body.
 
 func connectPlayer(newPlayer : Player) -> void:
@@ -36,6 +38,9 @@ func connectPlayer(newPlayer : Player) -> void:
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	hudManager.connectUI(player)
+
+func connectBoss(boss : Boss) -> void:
+	persistentActors.add_child(boss)
 
 func getPlayer() -> Player:
 	return player

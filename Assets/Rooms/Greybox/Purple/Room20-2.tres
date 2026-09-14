@@ -8,6 +8,7 @@
 script = ExtResource("3_tblur")
 roomName = "Room20-2"
 doesCameraFollow = true
+cameraLimits = 14
 gridPos = Vector2i(3, 2)
 gamePlayScene = ExtResource("1_edsdu")
 roomGroup = 1

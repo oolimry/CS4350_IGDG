@@ -8,6 +8,7 @@
 script = ExtResource("3_urnis")
 roomName = "Room20"
 doesCameraFollow = true
+cameraLimits = 14
 gridPos = Vector2i(2, 2)
 gamePlayScene = ExtResource("1_hqpcx")
 roomGroup = 1
