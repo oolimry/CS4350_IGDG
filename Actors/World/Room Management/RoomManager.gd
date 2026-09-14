@@ -63,7 +63,7 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system
 	# have a RoomResident component 	
-	if object.roomResident:
+	if object.get("roomResident") != null:
 		var roomResident : RoomResident = object.roomResident
 		roomResident.currRoomPos = nextRoomPos
 		roomInstantiator.reparentRoomResident(object, nextRoomPos)
