@@ -78,6 +78,6 @@ position = Vector2(547, 566)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1144177885]
 
-[node name="PlaceholderSlashableObject" parent="." unique_id=1935947710 instance=ExtResource("7_cgei5")]
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("7_cgei5")]
 position = Vector2(1320, 120)
 scale = Vector2(3, 1)

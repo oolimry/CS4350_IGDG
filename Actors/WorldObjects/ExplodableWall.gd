@@ -2,7 +2,7 @@
 class_name ExplodableWall
 extends RoomResidentStatic
 
-const objName = "SlashableWall"
+const objName = "ExplodableWall"
 
 ## Should the wall continued to be destroyed after leaving the room?
 @export var shouldDestructionPersist := true

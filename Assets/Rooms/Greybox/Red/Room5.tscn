@@ -103,7 +103,6 @@ shape = SubResource("RectangleShape2D_tud8x")
 [node name="ExplodableWall" parent="RoomResidents" unique_id=753218192 instance=ExtResource("6_5nk4h")]
 position = Vector2(640, 800)
 scale = Vector2(1, 4)
-shouldDestructionPersist = false
 roomResident = SubResource("Resource_tkoe3")
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
@@ -114,7 +113,6 @@ roomResident = SubResource("Resource_p8ick")
 [node name="ExplodableWall2" parent="RoomResidents" unique_id=381610938 instance=ExtResource("6_5nk4h")]
 position = Vector2(800, 481)
 scale = Vector2(2, 2)
-shouldDestructionPersist = false
 roomResident = SubResource("Resource_bo0d1")
 
 [node name="ExplodableWall3" parent="RoomResidents" unique_id=1351364872 instance=ExtResource("6_5nk4h")]
