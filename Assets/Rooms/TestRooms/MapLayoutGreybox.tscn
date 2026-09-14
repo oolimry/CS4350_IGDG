@@ -15,14 +15,20 @@
 [ext_resource type="Resource" uid="uid://b686fyflqhed" path="res://Assets/Rooms/Greybox/Red/Room7-2.tres" id="12_moits"]
 [ext_resource type="Resource" uid="uid://caifbpvqje58g" path="res://Assets/Rooms/Greybox/Red/Room11.tres" id="13_vol2u"]
 [ext_resource type="Resource" uid="uid://pyc625syx1ha" path="res://Assets/Rooms/Greybox/Red/Room5.tres" id="14_cdvyo"]
+[ext_resource type="Resource" uid="uid://yg1lxlepdie6" path="res://Assets/Rooms/Greybox/Boss/RoomBoss1.tres" id="15_f2vn8"]
 [ext_resource type="Resource" uid="uid://c80nmhs7jb3vf" path="res://Assets/Rooms/Greybox/Red/Room9.tres" id="15_moits"]
+[ext_resource type="Resource" uid="uid://dta6bfb5eist6" path="res://Assets/Rooms/Greybox/Boss/RoomBoss2.tres" id="16_efvbg"]
 [ext_resource type="Resource" uid="uid://4komxqjg0mlv" path="res://Assets/Rooms/Greybox/Red/Room10.tres" id="16_faelo"]
 [ext_resource type="Resource" uid="uid://wd180jsa88rq" path="res://Assets/Rooms/Greybox/Blue/Room13.tres" id="17_gpyln"]
+[ext_resource type="Resource" uid="uid://ros2e05iauhk" path="res://Assets/Rooms/Greybox/Boss/RoomBoss4.tres" id="17_h3b4r"]
+[ext_resource type="Resource" uid="uid://722vx8k60pxu" path="res://Assets/Rooms/Greybox/Boss/RoomBoss3.tres" id="18_0xdvy"]
 [ext_resource type="Resource" uid="uid://34t0n7x4fduf" path="res://Assets/Rooms/Greybox/Red/RoomR1.tres" id="18_gvorn"]
 [ext_resource type="Resource" uid="uid://vgwd7kyme4hu" path="res://Assets/Rooms/Greybox/Blue/Room14.tres" id="18_psga6"]
 [ext_resource type="Resource" uid="uid://d0slexxweo5qp" path="res://Assets/Rooms/Greybox/Purple/Room21.tres" id="19_bbptn"]
+[ext_resource type="Resource" uid="uid://d2phols01mlcb" path="res://Assets/Rooms/Greybox/Boss/RoomBoss5.tres" id="19_bl6vu"]
 [ext_resource type="Resource" uid="uid://7jnkcee6s0rj" path="res://Assets/Rooms/Greybox/Blue/Room14-2.tres" id="19_fkhis"]
 [ext_resource type="Resource" uid="uid://bfrtsp55bh3jw" path="res://Assets/Rooms/Greybox/Purple/Room21-2.tres" id="20_8fh75"]
+[ext_resource type="Resource" uid="uid://bjph272go1g6d" path="res://Assets/Rooms/Greybox/Boss/RoomBoss6.tres" id="20_e6h51"]
 [ext_resource type="Resource" uid="uid://blfcixjschbl2" path="res://Assets/Rooms/Greybox/Purple/Room21-3.tres" id="20_fvtnr"]
 [ext_resource type="Resource" uid="uid://co7h62gvufess" path="res://Assets/Rooms/Greybox/Purple/Room20.tres" id="20_h62ip"]
 [ext_resource type="Resource" uid="uid://clulyjpdewke" path="res://Assets/Rooms/Greybox/Blue/Room15.tres" id="20_oe50b"]
@@ -40,7 +46,7 @@
 [node name="MapLayout" type="Node2D" unique_id=1475819905]
 
 [node name="TestRoomPreviewer" parent="." unique_id=1101232982 instance=ExtResource("1_e6tte")]
-position = Vector2(-512, 0)
+position = Vector2(0, -288)
 roomDefinition = ExtResource("2_wctwc")
 
 [node name="RoomPreviewer6" parent="." unique_id=1672820166 instance=ExtResource("1_e6tte")]
@@ -89,6 +95,30 @@ roomDefinition = ExtResource("12_moits")
 [node name="RoomPreviewer12" parent="." unique_id=749431932 instance=ExtResource("1_e6tte")]
 position = Vector2(-1536, 576)
 roomDefinition = ExtResource("13_vol2u")
+
+[node name="RoomPreviewer35" parent="." unique_id=794448608 instance=ExtResource("1_e6tte")]
+position = Vector2(-1024, 576)
+roomDefinition = ExtResource("15_f2vn8")
+
+[node name="RoomPreviewer36" parent="." unique_id=2081430939 instance=ExtResource("1_e6tte")]
+position = Vector2(-512, 576)
+roomDefinition = ExtResource("16_efvbg")
+
+[node name="RoomPreviewer37" parent="." unique_id=146184886 instance=ExtResource("1_e6tte")]
+position = Vector2(-512, 288)
+roomDefinition = ExtResource("17_h3b4r")
+
+[node name="RoomPreviewer38" parent="." unique_id=1601677070 instance=ExtResource("1_e6tte")]
+position = Vector2(-1024, 288)
+roomDefinition = ExtResource("18_0xdvy")
+
+[node name="RoomPreviewer39" parent="." unique_id=197061344 instance=ExtResource("1_e6tte")]
+position = Vector2(-1024, 0)
+roomDefinition = ExtResource("19_bl6vu")
+
+[node name="RoomPreviewer40" parent="." unique_id=1007959190 instance=ExtResource("1_e6tte")]
+position = Vector2(-512, 0)
+roomDefinition = ExtResource("20_e6h51")
 
 [node name="RoomPreviewer13" parent="." unique_id=646071735 instance=ExtResource("1_e6tte")]
 position = Vector2(0, 1152)

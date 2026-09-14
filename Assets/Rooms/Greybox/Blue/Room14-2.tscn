@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_cc2na"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_r0qwy"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_f0n1k"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_cc2na"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="4_yircd"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_r0qwy"]
 [ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_klw6e"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="9_lbi1u"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="10_w324d"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="11_uma6f"]
 
-[sub_resource type="Resource" id="Resource_2odar"]
+[sub_resource type="Resource" id="Resource_yh1bj"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(560, 120)
@@ -18,7 +18,7 @@ persistentID = &"40284d91-cef0-4986-a829-12b3e84425c7"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_yircd"]
+[sub_resource type="Resource" id="Resource_h8k2f"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(1200, 360)
@@ -26,14 +26,14 @@ persistentID = &"866e95fb-3102-457f-ba74-1ec93703f3f9"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_yh1bj"]
+[sub_resource type="Resource" id="Resource_56t34"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(560, 240)
 persistentID = &"9c3fb446-e296-4038-a614-b234bb2b1451"
 objectName = &"Crate"
 
-[sub_resource type="Resource" id="Resource_h8k2f"]
+[sub_resource type="Resource" id="Resource_keuho"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(1200, 480)
@@ -55,11 +55,12 @@ position = Vector2(1920, 0)
 tile_map_data = PackedByteArray("AAD+/wAAAgAAAAIAAAD+/wEAAgAAAAIAAAD+/wIAAgAAAAIAAAD+/wMAAgAAAAIAAAD+/wQAAgAAAAIAAAD+/wUAAgAAAAIAAAD+/wYAAgAAAAIAAAD+/wcAAgAAAAIAAAD+/wgAAgAAAAIAAAD+/wkAAgAAAAIAAAD+/woAAgAAAAIAAAD+/wsAAgAAAAIAAAD+/wwAAgAAAAIAAAD+/w0AAgAAAAIAAAD+/w4AAgAAAAIAAAD+/w8AAgAAAAIAAAD+/xAAAgAAAAIAAAD+/xEAAgAAAAIAAAD+/xIAAgAAAAIAAAD+/xMAAgAAAAIAAAD+/xQAAgAAAAIAAAD+/xUAAgAAAAIAAAD+/xYAAgAAAAIAAAD+/xcAAgAAAAIAAAD+/xgAAgAAAAIAAAD+/xkAAgAAAAIAAAD+/xoAAgAAAAIAAAD//wAAAgAAAAIAAAD//wEAAgAAAAIAAAD//wIAAgAAAAIAAAD//wMAAgAAAAIAAAD//wQAAgAAAAIAAAD//wUAAgAAAAIAAAD//wYAAgAAAAIAAAD//wcAAgAAAAIAAAD//wgAAgAAAAIAAAD//wkAAgAAAAIAAAD//woAAgAAAAIAAAD//wsAAgAAAAIAAAD//wwAAgAAAAIAAAD//w0AAgAAAAIAAAD//w4AAgAAAAIAAAD//w8AAgAAAAIAAAD//xAAAgAAAAIAAAD//xEAAgAAAAIAAAD//xIAAgAAAAIAAAD//xMAAgAAAAIAAAD//xQAAgAAAAIAAAD//xUAAgAAAAIAAAD//xYAAgAAAAIAAAD//xcAAgAAAAIAAAD//xgAAgAAAAIAAAD//xkAAgAAAAIAAAD//xoAAgAAAAIAAAD3/xoAAgAAAAIAAADQ/xoAAgAAAAIAAADR/xoAAgAAAAIAAADS/xoAAgAAAAIAAADT/xoAAgAAAAIAAADU/xoAAgAAAAIAAADV/xoAAgAAAAIAAADW/xoAAgAAAAIAAADX/xoAAgAAAAIAAADe/xoAAgAAAAIAAADf/xoAAgAAAAIAAADg/xoAAgAAAAIAAADh/xoAAgAAAAIAAADi/xoAAgAAAAIAAADj/xoAAgAAAAIAAADk/xoAAgAAAAIAAADl/xoAAgAAAAIAAADm/xoAAgAAAAIAAADn/xoAAgAAAAIAAADo/xoAAgAAAAIAAADp/xoAAgAAAAIAAADq/xoAAgAAAAIAAADr/xoAAgAAAAIAAADs/xoAAgAAAAIAAADt/xoAAgAAAAIAAADu/xoAAgAAAAIAAADv/xoAAgAAAAIAAADw/xoAAgAAAAIAAADx/xoAAgAAAAIAAADy/xoAAgAAAAIAAADz/xoAAgAAAAIAAAD0/xoAAgAAAAIAAAD1/xoAAgAAAAIAAAD2/xoAAgAAAAIAAADl/xIAAgACAAIAAADl/xMAAgACAAIAAADm/xIAAgACAAIAAADm/xMAAgACAAIAAAD2/wkAAgACAAIAAAD1/wkAAgACAAIAAAD2/woAAgACAAIAAAD1/woAAgACAAIAAADQ/wAAAgAAAAIAAADR/wAAAgAAAAIAAADS/wAAAgAAAAIAAADT/wAAAgAAAAIAAADY/xoAAgAAAAIAAADZ/xoAAgAAAAIAAADa/xoAAgAAAAIAAADb/xoAAgAAAAIAAADc/xoAAgAAAAIAAADd/xoAAgAAAAIAAADY/w0AAgAAAAIAAADY/w4AAgAAAAIAAADY/w8AAgAAAAIAAADY/xAAAgAAAAIAAADY/xEAAgAAAAIAAADY/xIAAgAAAAIAAADY/xMAAgAAAAIAAADY/xQAAgAAAAIAAADY/xUAAgAAAAIAAADY/xYAAgAAAAIAAADY/xcAAgAAAAIAAADY/xgAAgAAAAIAAADY/xkAAgAAAAIAAADZ/w0AAgAAAAIAAADZ/w4AAgAAAAIAAADZ/w8AAgAAAAIAAADZ/xAAAgAAAAIAAADZ/xEAAgAAAAIAAADZ/xIAAgAAAAIAAADZ/xMAAgAAAAIAAADZ/xQAAgAAAAIAAADZ/xUAAgAAAAIAAADZ/xYAAgAAAAIAAADZ/xcAAgAAAAIAAADZ/xgAAgAAAAIAAADZ/xkAAgAAAAIAAADa/xUAAgAAAAIAAADa/xYAAgAAAAIAAADa/xcAAgAAAAIAAADa/xgAAgAAAAIAAADa/xkAAgAAAAIAAAA=")
 tile_set = ExtResource("2_r0qwy")
 
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=925158668]
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=778827641]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AACk/zMAAAAAAAAAAACl/zMAAAAAAAAAAACm/zMAAAAAAAAAAACn/zMAAAAAAAAAAACo/zMAAAAAAAAAAACp/zMAAAAAAAAAAACq/zMAAAAAAAAAAACr/zMAAAAAAAAAAACs/zMAAAAAAAAAAACt/zMAAAAAAAAAAACu/zMAAAAAAAAAAAC6/zMAAAAAAAAAAAC7/zMAAAAAAAAAAAC8/zMAAAAAAAAAAAC9/zMAAAAAAAAAAAC+/zMAAAAAAAAAAAC//zMAAAAAAAAAAADA/zMAAAAAAAAAAADB/zMAAAAAAAAAAADC/zMAAAAAAAAAAADD/zMAAAAAAAAAAADE/zMAAAAAAAAAAADF/zMAAAAAAAAAAADG/zMAAAAAAAAAAADH/zMAAAAAAAAAAADI/zMAAAAAAAAAAADJ/zMAAAAAAAAAAADK/zMAAAAAAAAAAADL/zMAAAAAAAAAAADM/zMAAAAAAAAAAADN/zMAAAAAAAAAAADO/zMAAAAAAAAAAADP/zMAAAAAAAAAAADQ/zMAAAAAAAAAAADR/zMAAAAAAAAAAADS/zMAAAAAAAAAAADT/zMAAAAAAAAAAADU/zMAAAAAAAAAAADV/zMAAAAAAAAAAADW/zMAAAAAAAAAAADX/zMAAAAAAAAAAADY/zMAAAAAAAAAAADZ/zMAAAAAAAAAAADa/zMAAAAAAAAAAADb/zMAAAAAAAAAAADc/zMAAAAAAAAAAADd/zMAAAAAAAAAAADe/zMAAAAAAAAAAADf/zMAAAAAAAAAAADg/zMAAAAAAAAAAADh/zMAAAAAAAAAAADi/zMAAAAAAAAAAADj/zMAAAAAAAAAAADk/zMAAAAAAAAAAADl/zMAAAAAAAAAAADm/zMAAAAAAAAAAADn/zMAAAAAAAAAAADo/zMAAAAAAAAAAADp/zMAAAAAAAAAAADq/zMAAAAAAAAAAADr/zMAAAAAAAAAAADs/zMAAAAAAAAAAADt/zMAAAAAAAAAAADu/zMAAAAAAAAAAADv/zMAAAAAAAAAAAD7/wQAAAAAAAAAAgD7/wUAAAAAAAAAAgD7/wYAAAAAAAAAAgD7/wcAAAAAAAAAAgD7/wgAAAAAAAAAAgD7/wkAAAAAAAAAAgD7/woAAAAAAAAAAgD7/wsAAAAAAAAAAgD7/wwAAAAAAAAAAgD7/w0AAAAAAAAAAgD7/w4AAAAAAAAAAgD7/w8AAAAAAAAAAgD7/xAAAAAAAAAAAgD7/xEAAAAAAAAAAgD7/xIAAAAAAAAAAgD7/xMAAAAAAAAAAgC2/zMAAAAAAAAAAAC3/zMAAAAAAAAAAAC4/zMAAAAAAAAAAAC5/zMAAAAAAAAAAACg/zMAAAAAAAAAAACh/zMAAAAAAAAAAACi/zMAAAAAAAAAAACj/zMAAAAAAAAAAACv/yEAAAAAAAAAAgCv/yIAAAAAAAAAAgCv/yMAAAAAAAAAAgCv/yQAAAAAAAAAAgCv/yUAAAAAAAAAAgCv/yYAAAAAAAAAAgCv/ycAAAAAAAAAAgCv/ygAAAAAAAAAAgCv/ykAAAAAAAAAAgCv/yoAAAAAAAAAAgCv/ysAAAAAAAAAAgCv/ywAAAAAAAAAAgCv/y0AAAAAAAAAAgCv/y4AAAAAAAAAAgCv/y8AAAAAAAAAAgCv/zAAAAAAAAAAAgCv/zEAAAAAAAAAAgCv/zIAAAAAAAAAAgCv/xoAAAAAAAAAAgCv/xsAAAAAAAAAAgCv/xwAAAAAAAAAAgCv/x0AAAAAAAAAAgCv/x4AAAAAAAAAAgCv/x8AAAAAAAAAAgCv/yAAAAAAAAAAAgC0/xoAAAAAAAAAAwC0/xsAAAAAAAAAAwC0/xwAAAAAAAAAAwC0/x0AAAAAAAAAAwC0/x4AAAAAAAAAAwC0/x8AAAAAAAAAAwC0/yAAAAAAAAAAAwC0/yEAAAAAAAAAAwC0/yIAAAAAAAAAAwC0/yMAAAAAAAAAAwC0/yQAAAAAAAAAAwC0/yUAAAAAAAAAAwC0/yYAAAAAAAAAAwC0/ycAAAAAAAAAAwC0/ygAAAAAAAAAAwC0/ykAAAAAAAAAAwCv/zMAAAAAAAAAAAA=")
-tile_set = ExtResource("3_f0n1k")
+tile_map_data = PackedByteArray("AADQ/xkAAAAAAAAADgDR/xkAAAAAAAAADgDS/xkAAAAAAAAADgDT/xkAAAAAAAAADgDU/xkAAAAAAAAADgDV/xkAAAAAAAAADgDW/xkAAAAAAAAADgDX/xkAAAAAAAAAFADX/xgAAAAAAAAAFADX/xcAAAAAAAAAFADX/xYAAAAAAAAAFADX/xUAAAAAAAAAFADX/xQAAAAAAAAAFADX/xMAAAAAAAAAFADX/xIAAAAAAAAAFADX/xEAAAAAAAAAFADX/xAAAAAAAAAAFADX/w8AAAAAAAAAFADX/w4AAAAAAAAAFADX/w0AAAAAAAAAEwDa/w0AAAAAAAAAFgDa/w4AAAAAAAAAFwDa/w8AAAAAAAAAFwDa/xAAAAAAAAAAFwDa/xEAAAAAAAAAFwDa/xIAAAAAAAAAFwDa/xMAAAAAAAAAFwDa/xQAAAAAAAAAFwDb/xkAAAAAAAAADgDc/xkAAAAAAAAADgDd/xkAAAAAAAAADgDe/xkAAAAAAAAADgDf/xkAAAAAAAAADgDg/xkAAAAAAAAADgDh/xkAAAAAAAAADgDi/xkAAAAAAAAADgDj/xkAAAAAAAAADgDk/xkAAAAAAAAADgDl/xkAAAAAAAAADgDm/xkAAAAAAAAADgDn/xkAAAAAAAAADgDo/xkAAAAAAAAADgDp/xkAAAAAAAAADgDq/xkAAAAAAAAADgDr/xkAAAAAAAAADgDs/xkAAAAAAAAADgDt/xkAAAAAAAAADgDu/xkAAAAAAAAADgDv/xkAAAAAAAAADgDw/xkAAAAAAAAADgDx/xkAAAAAAAAADgDy/xkAAAAAAAAADgDz/xkAAAAAAAAADgD0/xkAAAAAAAAADgD1/xkAAAAAAAAADgD2/xkAAAAAAAAADgD3/xkAAAAAAAAADgD9/wkAAAAAAAAAFAD9/wgAAAAAAAAAFAD9/wcAAAAAAAAAFAD9/wYAAAAAAAAAFAD9/wUAAAAAAAAAFAD9/wQAAAAAAAAAFAD9/wMAAAAAAAAAFAD9/wIAAAAAAAAAFAA=")
+tile_set = ExtResource("4_yircd")
+collision_visibility_mode = 1
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_cc2na")]
 visible = false
@@ -99,28 +100,27 @@ element = 3
 
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("11_uma6f")]
 position = Vector2(40, 120)
-direction = 2
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=336229613]
 
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_klw6e")]
 position = Vector2(560, 120)
 attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_2odar")
+roomResident = SubResource("Resource_yh1bj")
 
 [node name="Chain2" parent="RoomResidents" unique_id=256736904 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_klw6e")]
 position = Vector2(1200, 360)
 attached_crate = NodePath("../Crate2")
-roomResident = SubResource("Resource_yircd")
+roomResident = SubResource("Resource_h8k2f")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("10_w324d")]
 position = Vector2(560, 240)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_yh1bj")
+roomResident = SubResource("Resource_56t34")
 
 [node name="Crate2" parent="RoomResidents" unique_id=1563445546 node_paths=PackedStringArray("attached_chain") instance=ExtResource("10_w324d")]
 position = Vector2(1200, 480)
 freeze = true
 attached_chain = NodePath("../Chain2")
-roomResident = SubResource("Resource_h8k2f")
+roomResident = SubResource("Resource_keuho")

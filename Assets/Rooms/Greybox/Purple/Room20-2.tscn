@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_wpvy8"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_rbpx2"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_d3wi8"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_2bj8n"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_0uqaf"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_qcgh0"]
 
 [node name="Room 20-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_wpvy8")
+
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=951138532]
+position = Vector2(1920, 0)
+scale = Vector2(0.25, 0.25)
+tile_set = ExtResource("5_qcgh0")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
 z_index = -10
@@ -18,11 +23,6 @@ collision_enabled = false
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
 position = Vector2(1920, 0)
 tile_set = ExtResource("2_rbpx2")
-
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1453120718]
-position = Vector2(1920, 0)
-scale = Vector2(0.25, 0.25)
-tile_set = ExtResource("3_d3wi8")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_2bj8n")]
 visible = false

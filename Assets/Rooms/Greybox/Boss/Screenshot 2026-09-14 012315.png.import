@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://syq2tpdy20cb"
-path="res://.godot/imported/Screenshot 2026-09-10 083900.png-0d52a1f2b81a2ca54ebd383bed4eb023.ctex"
+uid="uid://gxb28vgpkwmq"
+path="res://.godot/imported/Screenshot 2026-09-14 012315.png-a04b3cc8477ee2384e742a1afdd4a595.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Rooms/Screenshot 2026-09-10 083900.png"
-dest_files=["res://.godot/imported/Screenshot 2026-09-10 083900.png-0d52a1f2b81a2ca54ebd383bed4eb023.ctex"]
+source_file="res://Assets/Rooms/Greybox/Boss/Screenshot 2026-09-14 012315.png"
+dest_files=["res://.godot/imported/Screenshot 2026-09-14 012315.png-a04b3cc8477ee2384e742a1afdd4a595.ctex"]
 
 [params]
 

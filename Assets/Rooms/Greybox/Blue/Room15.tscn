@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_5lqlv"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_mcy1y"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_1tbn0"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_74g0d"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_5lqlv"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_7ypad"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_mcy1y"]
@@ -21,11 +21,11 @@ position = Vector2(1920, 0)
 tile_map_data = PackedByteArray("AADQ/xoAAgAAAAIAAADR/xoAAgAAAAIAAADS/xoAAgAAAAIAAADT/xoAAgAAAAIAAADQ/xkAAgAAAAIAAADR/xkAAgAAAAIAAADS/xkAAgAAAAIAAADT/xkAAgAAAAIAAADT/xgAAgAAAAIAAADQ/xAAAgAAAAIAAADQ/xEAAgAAAAIAAADQ/xIAAgAAAAIAAADQ/xMAAgAAAAIAAADQ/xQAAgAAAAIAAADQ/xUAAgAAAAIAAADQ/xYAAgAAAAIAAADQ/xcAAgAAAAIAAADQ/xgAAgAAAAIAAADR/xAAAgAAAAIAAADR/xEAAgAAAAIAAADR/xIAAgAAAAIAAADR/xMAAgAAAAIAAADR/xQAAgAAAAIAAADR/xUAAgAAAAIAAADR/xYAAgAAAAIAAADR/xcAAgAAAAIAAADR/xgAAgAAAAIAAADS/xAAAgAAAAIAAADS/xEAAgAAAAIAAADS/xIAAgAAAAIAAADS/xMAAgAAAAIAAADS/xQAAgAAAAIAAADS/xUAAgAAAAIAAADS/xYAAgAAAAIAAADS/xcAAgAAAAIAAADS/xgAAgAAAAIAAADT/xAAAgAAAAIAAADT/xEAAgAAAAIAAADT/xIAAgAAAAIAAADT/xMAAgAAAAIAAADT/xQAAgAAAAIAAADT/xUAAgAAAAIAAADT/xYAAgAAAAIAAADT/xcAAgAAAAIAAAD//xoAAgAAAAIAAAD+/wQAAgAAAAIAAAD+/wUAAgAAAAIAAAD+/wYAAgAAAAIAAAD+/wcAAgAAAAIAAAD+/wgAAgAAAAIAAAD+/wkAAgAAAAIAAAD+/woAAgAAAAIAAAD+/wsAAgAAAAIAAAD+/wwAAgAAAAIAAAD+/w0AAgAAAAIAAAD+/w4AAgAAAAIAAAD+/w8AAgAAAAIAAAD+/xAAAgAAAAIAAAD+/xEAAgAAAAIAAAD+/xIAAgAAAAIAAAD+/xMAAgAAAAIAAAD+/xQAAgAAAAIAAAD+/xUAAgAAAAIAAAD+/xYAAgAAAAIAAAD+/xcAAgAAAAIAAAD+/xgAAgAAAAIAAAD+/xkAAgAAAAIAAAD+/xoAAgAAAAIAAAD//wQAAgAAAAIAAAD//wUAAgAAAAIAAAD//wYAAgAAAAIAAAD//wcAAgAAAAIAAAD//wgAAgAAAAIAAAD//wkAAgAAAAIAAAD//woAAgAAAAIAAAD//wsAAgAAAAIAAAD//wwAAgAAAAIAAAD//w0AAgAAAAIAAAD//w4AAgAAAAIAAAD//w8AAgAAAAIAAAD//xAAAgAAAAIAAAD//xEAAgAAAAIAAAD//xIAAgAAAAIAAAD//xMAAgAAAAIAAAD//xQAAgAAAAIAAAD//xUAAgAAAAIAAAD//xYAAgAAAAIAAAD//xcAAgAAAAIAAAD//xgAAgAAAAIAAAD//xkAAgAAAAIAAAD//wMAAgAAAAIAAAD//wAAAgAAAAIAAAD//wEAAgAAAAIAAAD//wIAAgAAAAIAAAA=")
 tile_set = ExtResource("2_mcy1y")
 
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1453120718]
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=208205410]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAD9/wcAAAAAAAAAAgD9/wAAAAAAAAAAAgD9/wEAAAAAAAAAAgD9/wIAAAAAAAAAAgD9/wMAAAAAAAAAAgD9/wQAAAAAAAAAAgD9/wUAAAAAAAAAAgD9/wYAAAAAAAAAAgA=")
-tile_set = ExtResource("3_1tbn0")
+tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAFAD+/wIAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/wAAAAAAAAAAFAA=")
+tile_set = ExtResource("3_74g0d")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_5lqlv")]
 visible = false

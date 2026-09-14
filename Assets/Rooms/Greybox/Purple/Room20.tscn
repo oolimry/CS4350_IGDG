@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_heam1"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_0jovv"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_q3v6n"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_ijyci"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_63rgs"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_powrm"]
 
 [node name="Room 20" type="Node2D" unique_id=1922114953]
@@ -19,11 +19,6 @@ collision_enabled = false
 position = Vector2(1920, 0)
 tile_set = ExtResource("2_0jovv")
 
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1453120718]
-position = Vector2(1920, 0)
-scale = Vector2(0.25, 0.25)
-tile_set = ExtResource("3_q3v6n")
-
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_ijyci")]
 visible = false
 position = Vector2(960, 560)
@@ -33,3 +28,8 @@ scale = Vector2(0.25, 0.25)
 
 [node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_powrm")]
 position = Vector2(256, 301)
+
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=686622031]
+position = Vector2(1920, 0)
+scale = Vector2(0.25, 0.25)
+tile_set = ExtResource("5_63rgs")
