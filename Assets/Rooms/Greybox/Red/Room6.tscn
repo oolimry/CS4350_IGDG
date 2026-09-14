@@ -106,9 +106,10 @@ shape = SubResource("RectangleShape2D_enc0m")
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=630726664]
 
-[node name="PlaceholderSlashableObject" parent="." unique_id=1363395122 instance=ExtResource("8_8k1yj")]
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1363395122 instance=ExtResource("8_8k1yj")]
 position = Vector2(880, 860)
 scale = Vector2(1, 0.5)
+shouldDestructionPersist = false
 
 [node name="Element4" parent="." unique_id=423817018 instance=ExtResource("6_3ev35")]
 position = Vector2(1044, 747)
