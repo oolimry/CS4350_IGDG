@@ -84,7 +84,7 @@ const earlySlashBuffer := 0.120
 var slashDirection : Enums.Directions = Enums.Directions.NONE
 
 ## ignition pad related
-const ignitionPadHorizontalBoost = 12000
+const ignitionPadHorizontalBoost = 9000
 const ignitionPadVerticalLock = 240
 const ignitionPadVerticalBoost = 1600
 
