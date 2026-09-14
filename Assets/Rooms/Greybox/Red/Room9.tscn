@@ -4,26 +4,8 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_ffpnt"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_bs8gc"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_ffpnt"]
-[ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="8_bs8gc"]
-[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="8_e34wy"]
-[ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="8_epsxy"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_cfbf6"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="10_gav54"]
-
-[sub_resource type="Resource" id="Resource_kqeca"]
-resource_local_to_scene = true
-script = ExtResource("8_e34wy")
-oriCoords = Vector2(760, 240)
-persistentID = &"e9dc71af-847e-491d-8e5f-0d2ea9cdd023"
-objectName = &"Chain"
-shouldAlwaysReset = true
-
-[sub_resource type="Resource" id="Resource_gav54"]
-resource_local_to_scene = true
-script = ExtResource("8_e34wy")
-persistentID = &"a7290e07-b11b-436c-867e-62fae32f6974"
-objectName = &"Crate"
-shouldAlwaysReset = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chsxx"]
 size = Vector2(200, 200)
@@ -42,17 +24,6 @@ tile_set = ExtResource("2_ffpnt")
 collision_enabled = false
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=172173794]
-
-[node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("8_epsxy")]
-position = Vector2(524, 83)
-attached_crate = NodePath("../Crate")
-roomResident = SubResource("Resource_kqeca")
-
-[node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("8_bs8gc")]
-position = Vector2(524, 187)
-freeze = true
-attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_gav54")
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
 position = Vector2(1920, 0)

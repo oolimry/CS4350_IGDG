@@ -38,7 +38,7 @@ position = Vector2(280, 1040)
 element = 3
 
 [node name="Element9" parent="." unique_id=1286339578 instance=ExtResource("6_yqw2c")]
-position = Vector2(1720, 680)
+position = Vector2(1764, 777)
 element = 3
 
 [node name="Element10" parent="." unique_id=750792380 instance=ExtResource("6_yqw2c")]
