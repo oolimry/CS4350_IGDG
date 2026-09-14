@@ -8,4 +8,5 @@ func _process(delta):
 			if body.isPurpleDashing:
 				return
 			else:
-				body.triggerDeath()
+				if body.velocity == Vector2(0, 0):
+					body.triggerDeath()
