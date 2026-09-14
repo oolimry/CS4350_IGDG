@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_1k4of"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_3ev35"]
 [ext_resource type="PackedScene" uid="uid://doqy2y3tyjoxi" path="res://Actors/WorldObjects/PlaceholderSlashableObject.tscn" id="8_8k1yj"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="9_cru5i"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_dieu2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhu35"]
@@ -23,6 +24,14 @@ size = Vector2(125, 440)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enc0m"]
 size = Vector2(135, 236)
+
+[sub_resource type="Resource" id="Resource_n5mht"]
+resource_local_to_scene = true
+script = ExtResource("9_cru5i")
+oriCoords = Vector2(880, 860)
+persistentID = &"184b93b2-b636-4633-a62a-98e9b8e68e9d"
+objectName = &"SlashableWall"
+shouldAlwaysReset = true
 
 [node name="Room 6" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_1k4of")
@@ -110,6 +119,7 @@ shape = SubResource("RectangleShape2D_enc0m")
 position = Vector2(880, 860)
 scale = Vector2(1, 0.5)
 shouldDestructionPersist = false
+roomResident = SubResource("Resource_n5mht")
 
 [node name="Element4" parent="." unique_id=423817018 instance=ExtResource("6_3ev35")]
 position = Vector2(1044, 747)
