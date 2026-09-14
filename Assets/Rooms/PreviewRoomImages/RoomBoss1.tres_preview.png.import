@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq2qtefcxqwc5"
-path="res://.godot/imported/Screenshot 2026-09-10 080711.png-431c28bfa2eec5a9f1a8bc8773e2d8ba.ctex"
+uid="uid://b17manfguyqay"
+path="res://.godot/imported/RoomBoss1.tres_preview.png-48fd8c17a533665d09591961c1c58d8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Rooms/Screenshot 2026-09-10 080711.png"
-dest_files=["res://.godot/imported/Screenshot 2026-09-10 080711.png-431c28bfa2eec5a9f1a8bc8773e2d8ba.ctex"]
+source_file="res://Assets/Rooms/PreviewRoomImages/RoomBoss1.tres_preview.png"
+dest_files=["res://.godot/imported/RoomBoss1.tres_preview.png-48fd8c17a533665d09591961c1c58d8a.ctex"]
 
 [params]
 

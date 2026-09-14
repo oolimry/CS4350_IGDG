@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://d2phols01mlcb"]
+
+[ext_resource type="PackedScene" uid="uid://bbuoxfw5f5mob" path="res://Assets/Rooms/Greybox/Boss/RoomBoss5.tscn" id="1_6xs24"]
+[ext_resource type="Texture2D" uid="uid://12rj3ux4apmc" path="res://Assets/Rooms/PreviewRoomImages/RoomBoss5.tres_preview.png" id="2_rid6h"]
+[ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="3_81wvv"]
+
+[resource]
+script = ExtResource("3_81wvv")
+roomName = "RoomBoss5"
+doesCameraFollow = true
+cameraLimits = 5
+gridPos = Vector2i(-2, 0)
+gamePlayScene = ExtResource("1_6xs24")
+openSides = 10
+roomGroup = 3
+previewTexture = ExtResource("2_rid6h")
+metadata/_custom_type_script = "uid://cij17tnbhukil"

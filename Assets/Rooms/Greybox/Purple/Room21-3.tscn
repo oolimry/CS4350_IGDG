@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_qja8c"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_laycn"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="3_o63yg"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_qja8c"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_tad82"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_tn5wy"]
 
@@ -19,10 +19,10 @@ collision_enabled = false
 position = Vector2(1920, 0)
 tile_set = ExtResource("2_laycn")
 
-[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1453120718]
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=1920270251]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_set = ExtResource("3_o63yg")
+tile_set = ExtResource("3_qja8c")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_tad82")]
 visible = false

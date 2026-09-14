@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_1qpw2"]
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_n2hfk"]
-[ext_resource type="TileSet" uid="uid://rdglavbwtjr6" path="res://Assets/Tilesets/HazardTileset.tres" id="2_n2hfk"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="2_nr12j"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_0blna"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_1qpw2"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="6_t4ar8"]
@@ -13,11 +13,13 @@ size = Vector2(320, 720)
 [node name="Room 7-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_n2hfk")
 
-[node name="Hazards" type="TileMapLayer" parent="." unique_id=554354474]
+[node name="Hazards2" type="TileMapLayer" parent="." unique_id=1071767321]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AACk/x8AAAAAAAAAAACl/x8AAAAAAAAAAACm/x8AAAAAAAAAAACn/x8AAAAAAAAAAACo/yMAAAAAAAAAAACp/yMAAAAAAAAAAACq/yMAAAAAAAAAAACr/yMAAAAAAAAAAACs/yMAAAAAAAAAAACt/yMAAAAAAAAAAACu/yMAAAAAAAAAAACv/yMAAAAAAAAAAACx/y8AAAAAAAAAAACy/y8AAAAAAAAAAACz/y8AAAAAAAAAAAC0/y8AAAAAAAAAAAC1/y8AAAAAAAAAAAC2/y8AAAAAAAAAAAC3/y8AAAAAAAAAAAC4/y8AAAAAAAAAAAC5/y8AAAAAAAAAAAC6/y8AAAAAAAAAAAC7/y8AAAAAAAAAAAC8/y8AAAAAAAAAAAC9/y8AAAAAAAAAAAC+/y8AAAAAAAAAAAC//y8AAAAAAAAAAADA/y8AAAAAAAAAAADB/y8AAAAAAAAAAADC/y8AAAAAAAAAAADD/y8AAAAAAAAAAADE/ysAAAAAAAAAAADH/ysAAAAAAAAAAADI/y0AAAAAAAAAAADL/y0AAAAAAAAAAADM/y8AAAAAAAAAAADN/y8AAAAAAAAAAADJ/y0AAAAAAAAAAADK/y0AAAAAAAAAAADF/ysAAAAAAAAAAADG/ysAAAAAAAAAAACw/y8AAAAAAAAAAwCw/y0AAAAAAAAAAwCw/y4AAAAAAAAAAwCw/ywAAAAAAAAAAwCw/yQAAAAAAAAAAwCw/yUAAAAAAAAAAwCw/yYAAAAAAAAAAwCw/ycAAAAAAAAAAwCw/ygAAAAAAAAAAwCw/ykAAAAAAAAAAwCw/yoAAAAAAAAAAwCw/ysAAAAAAAAAAwCz/wsAAAAAAAAAAgCz/woAAAAAAAAAAgCx/wkAAAAAAAAAAgCx/wIAAAAAAAAAAgCx/wMAAAAAAAAAAgCx/wQAAAAAAAAAAgCx/wUAAAAAAAAAAgCx/wYAAAAAAAAAAgCx/wgAAAAAAAAAAgCx/wcAAAAAAAAAAgCy/wEAAAAAAAAAAAC1/wEAAAAAAAAAAACz/wEAAAAAAAAAAAC0/wEAAAAAAAAAAAA=")
-tile_set = ExtResource("2_n2hfk")
+tile_map_data = PackedByteArray("AADa/xcAAAAAAAAADgDb/xcAAAAAAAAADgDc/xcAAAAAAAAADgDZ/wAAAAAAAAAADQDa/wAAAAAAAAAADgDY/wEAAAAAAAAAEwDY/wIAAAAAAAAAFADY/wMAAAAAAAAAFADY/wQAAAAAAAAAFQDZ/wUAAAAAAAAAFQDS/w8AAAAAAAAADgDT/w8AAAAAAAAADgDX/xEAAAAAAAAADgDW/xEAAAAAAAAADgDV/xEAAAAAAAAADgDU/xEAAAAAAAAADgDY/xIAAAAAAAAAFgDY/xMAAAAAAAAAFwDY/xQAAAAAAAAAFwDY/xUAAAAAAAAAFwDY/xYAAAAAAAAAFwDY/xcAAAAAAAAAFwDZ/xcAAAAAAAAADgDd/xcAAAAAAAAADgDe/xcAAAAAAAAADgDf/xcAAAAAAAAADgDg/xcAAAAAAAAADgDh/xcAAAAAAAAADgDi/xUAAAAAAAAADgDj/xUAAAAAAAAADgDl/xYAAAAAAAAADgDk/xYAAAAAAAAADgDm/xcAAAAAAAAADwA=")
+tile_set = ExtResource("2_nr12j")
+collision_visibility_mode = 1
+physics_quadrant_size = 20
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=1607767869]
 z_index = -10

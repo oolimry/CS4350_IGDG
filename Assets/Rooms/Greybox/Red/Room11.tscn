@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_qgnw2"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="8_tj26a"]
 [ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="9_qgnw2"]
+[ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="10_7qbvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgnw2"]
 size = Vector2(400, 600)
@@ -16,7 +17,7 @@ size = Vector2(400, 600)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqyr4"]
 size = Vector2(200, 240)
 
-[sub_resource type="Resource" id="Resource_nhygi"]
+[sub_resource type="Resource" id="Resource_1a4sd"]
 resource_local_to_scene = true
 script = ExtResource("8_aqyr4")
 oriCoords = Vector2(1679, 1041)
@@ -74,7 +75,13 @@ shape = SubResource("RectangleShape2D_aqyr4")
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("9_qgnw2")]
 position = Vector2(1679, 1041)
 scale = Vector2(1, 3)
-roomResident = SubResource("Resource_nhygi")
+roomResident = SubResource("Resource_1a4sd")
+
+[node name="Hazards" type="TileMapLayer" parent="." unique_id=1361816187]
+position = Vector2(1920, 0)
+scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AADW/wkAAAAAAAAAFwDW/wgAAAAAAAAAFwDW/wcAAAAAAAAAFwDW/wYAAAAAAAAAFwDW/wUAAAAAAAAAFwDW/wQAAAAAAAAAFwDW/wMAAAAAAAAAFwDW/wIAAAAAAAAAFwDW/wEAAAAAAAAAFwDW/wAAAAAAAAAAFwD7/wgAAAAAAAAAFAD7/wkAAAAAAAAAFAD7/woAAAAAAAAAFAD7/wsAAAAAAAAAFAD7/wwAAAAAAAAAFAD7/w0AAAAAAAAAFAD7/w4AAAAAAAAAFAD7/w8AAAAAAAAAFAD7/xAAAAAAAAAAFAD7/xEAAAAAAAAAFAD7/xIAAAAAAAAAFAD7/xMAAAAAAAAAFAD7/xQAAAAAAAAAFAD7/xUAAAAAAAAAFAD7/xYAAAAAAAAAFAA=")
+tile_set = ExtResource("10_7qbvb")
 
 [editable path="Respawn Point"]
 [editable path="Respawn Point4"]
