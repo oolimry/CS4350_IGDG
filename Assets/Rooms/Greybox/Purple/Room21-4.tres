@@ -8,6 +8,7 @@
 script = ExtResource("3_njesc")
 roomName = "Room21-4"
 doesCameraFollow = true
+cameraLimits = 10
 gridPos = Vector2i(3, 4)
 gamePlayScene = ExtResource("1_hqhic")
 roomGroup = 2
