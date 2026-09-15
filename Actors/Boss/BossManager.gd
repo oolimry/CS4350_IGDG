@@ -1,8 +1,7 @@
 class_name BossManager
 extends Node
 
-@export var boss : Boss
-
+var boss : Boss
 var spawnLocation : Vector2
 var reconnectBoss : Callable
 
@@ -28,6 +27,12 @@ func _registerBossRoom(c : Node) -> void:
 		spawnLocation = c.global_position
 
 func handlePlayerEntry(playerEntry : StringName) -> void:
-	var b = Boss.create(spawnLocation)
-	reconnectBoss.call_deferred(b)
+	if boss == null:
+		var b = Boss.create(spawnLocation)
+		boss = b
+		reconnectBoss.call_deferred(b)
 	pass
+
+func cleanupBoss() -> void:
+	boss.queue_free()
+	boss = null
