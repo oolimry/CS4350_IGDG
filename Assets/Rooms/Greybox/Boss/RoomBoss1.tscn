@@ -64,7 +64,7 @@ script = ExtResource("6_w82xw")
 shape = SubResource("RectangleShape2D_s5ve0")
 
 [node name="BossSpawnPoint" type="Marker2D" parent="." unique_id=868539698]
-position = Vector2(1880, 0)
+position = Vector2(1920, 920)
 script = ExtResource("8_w82xw")
 
 [connection signal="body_entered" from="BossEntry" to="BossEntry" method="_on_body_entered"]
