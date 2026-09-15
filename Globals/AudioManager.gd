@@ -5,13 +5,21 @@ const AUDIO_BUS = 1
 const MUSIC_BUS = 2
 
 ## put the relevant audios here
-#@onready var CardPickup = $Card/CardPickup
-#@onready var CardPutDown = $Card/CardPutDown
+@onready var Jump : AudioStreamPlayer = $Movement/Jump
+@onready var Die : AudioStreamPlayer = $Movement/Die
+@onready var FootstepA : AudioStreamPlayer = $Movement/FootstepA
+@onready var FootstepB : AudioStreamPlayer = $Movement/FootstepB
+
+@onready var SlashNeutral : AudioStreamPlayer = $Slashing/SlashNeutral
+@onready var WindProjectile : AudioStreamPlayer = $Slashing/WindProjectile
+
+@onready var FireElementStruck : AudioStreamPlayer = $Slashing/FireElementStruck
+@onready var WindElementStruck : AudioStreamPlayer = $Slashing/WindElementStruck
+
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):
 		audioPlayer.play()
-		#printt("Playing Audio", audioPlayer)
 
 func isPlaying(audioPlayer : AudioStreamPlayer):
 	if audioPlayer == null:

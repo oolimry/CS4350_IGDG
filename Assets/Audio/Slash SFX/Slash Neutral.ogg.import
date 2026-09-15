@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://docry8o0y0eh7"
+path="res://.godot/imported/Slash Neutral.ogg-640bb11e2ecc7f0a28b00fdb9b4283c8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Slash SFX/Slash Neutral.ogg"
+dest_files=["res://.godot/imported/Slash Neutral.ogg-640bb11e2ecc7f0a28b00fdb9b4283c8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
