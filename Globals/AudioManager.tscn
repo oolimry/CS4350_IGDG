@@ -1,7 +1,72 @@
 [gd_scene format=3 uid="uid://cgvgvhj4l1nis"]
 
 [ext_resource type="Script" uid="uid://bcdilp4oexors" path="res://Globals/AudioManager.gd" id="1_olr0b"]
+[ext_resource type="AudioStream" uid="uid://kbnewdnufegp" path="res://Assets/Audio/Movement SFX/JumpingFromGround23A.ogg" id="2_03a21"]
+[ext_resource type="AudioStream" uid="uid://c18gvvm2ecawi" path="res://Assets/Audio/Movement SFX/FootstepA3.ogg" id="3_03a21"]
+[ext_resource type="AudioStream" uid="uid://b7hoaiuh2r2h2" path="res://Assets/Audio/Movement SFX/JumpingFromGround23B.ogg" id="3_4t86c"]
+[ext_resource type="AudioStream" uid="uid://ck5evfwljgm4n" path="res://Assets/Audio/Movement SFX/FootstepB3.ogg" id="4_4t86c"]
+[ext_resource type="AudioStream" uid="uid://docry8o0y0eh7" path="res://Assets/Audio/Slash SFX/Slash Neutral.ogg" id="4_ixva1"]
+[ext_resource type="AudioStream" uid="uid://dpov5iqnm1syn" path="res://Assets/Audio/Slash SFX/PlayerDie2.ogg" id="4_l8f8j"]
+[ext_resource type="AudioStream" uid="uid://c4hw3lx3e8nkj" path="res://Assets/Audio/Slash SFX/Slash Neutral 2.ogg" id="5_ixva1"]
+[ext_resource type="AudioStream" uid="uid://06nphmcjhexu" path="res://Assets/Audio/Slash SFX/Wind Projectile.ogg" id="6_21uwq"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
+random_pitch = 1.0594631
+random_volume_offset_db = 1.0
+streams_count = 2
+stream_0/stream = ExtResource("2_03a21")
+stream_1/stream = ExtResource("3_4t86c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1v8rx"]
+random_pitch = 1.0594631
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_03a21")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4t86c"]
+streams_count = 1
+stream_0/stream = ExtResource("4_4t86c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vynle"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("4_ixva1")
+stream_1/stream = ExtResource("5_ixva1")
 
 [node name="AudioManager" type="CanvasLayer" unique_id=410915819]
 process_mode = 3
 script = ExtResource("1_olr0b")
+
+[node name="Movement" type="Node2D" parent="." unique_id=1888496480]
+
+[node name="Jump" type="AudioStreamPlayer" parent="Movement" unique_id=463558909]
+stream = SubResource("AudioStreamRandomizer_olr0b")
+volume_db = -5.0
+
+[node name="Die" type="AudioStreamPlayer" parent="Movement" unique_id=740421040]
+stream = ExtResource("4_l8f8j")
+volume_db = -5.0
+
+[node name="FootstepA" type="AudioStreamPlayer" parent="Movement" unique_id=788135200]
+stream = SubResource("AudioStreamRandomizer_1v8rx")
+volume_db = -5.0
+
+[node name="FootstepB" type="AudioStreamPlayer" parent="Movement" unique_id=1032052879]
+stream = SubResource("AudioStreamRandomizer_4t86c")
+volume_db = -8.0
+
+[node name="Slashing" type="Node2D" parent="." unique_id=1541962458]
+
+[node name="SlashNeutral" type="AudioStreamPlayer" parent="Slashing" unique_id=507469541]
+stream = SubResource("AudioStreamRandomizer_vynle")
+volume_db = -5.0
+
+[node name="WindProjectile" type="AudioStreamPlayer" parent="Slashing" unique_id=1599818199]
+stream = ExtResource("6_21uwq")
+volume_db = -3.0
+
+[node name="FireElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1779547640]
+volume_db = -8.0
+
+[node name="WindElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1981845195]
+volume_db = -8.0

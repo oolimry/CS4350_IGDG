@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbl4wl6wikenp"
+path="res://.godot/imported/FireElementStruck.ogg-74b448dc97d29a81d747e71a53337dfd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Slash SFX/FireElementStruck.ogg"
+dest_files=["res://.godot/imported/FireElementStruck.ogg-74b448dc97d29a81d747e71a53337dfd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

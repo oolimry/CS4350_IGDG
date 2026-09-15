@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kbnewdnufegp"
+path="res://.godot/imported/JumpingFromGround23A.ogg-243c462d72acd63ba0e6c0e9e4071c5a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Movement SFX/JumpingFromGround23A.ogg"
+dest_files=["res://.godot/imported/JumpingFromGround23A.ogg-243c462d72acd63ba0e6c0e9e4071c5a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

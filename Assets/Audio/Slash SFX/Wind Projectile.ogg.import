@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://06nphmcjhexu"
+path="res://.godot/imported/Wind Projectile.ogg-f53690e2df39b16e2c15ec602e7739a7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Slash SFX/Wind Projectile.ogg"
+dest_files=["res://.godot/imported/Wind Projectile.ogg-f53690e2df39b16e2c15ec602e7739a7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
