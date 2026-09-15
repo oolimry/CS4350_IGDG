@@ -82,6 +82,7 @@ var timeSinceSlash = inf
 var timeSincePressSlash = inf
 const earlySlashBuffer := 0.120
 var slashDirection : Enums.Directions = Enums.Directions.NONE
+const downSlashIfGroundedBoost = 350
 
 ## ignition pad related
 const ignitionPadHorizontalBoost = 9000
@@ -221,6 +222,7 @@ func _physics_process_playerMovement(delta):
 	if timeSincePressJump < earlyJumpBuffer:
 		## regular jumping
 		if timeSinceOnFloor < lateJumpBuffer:
+			AudioManager.play(AudioManager.Jump)
 			hasBrokenJump = false
 			velocity.y = -jumpSpeed
 			velocity.x += jumpXBoost * sign(velocity.x)
@@ -229,6 +231,7 @@ func _physics_process_playerMovement(delta):
 			
 		## wall jumping
 		elif isOnWall and timeSinceNotTouchingWall < lateWallJummpBuffer:
+			AudioManager.play(AudioManager.Jump)
 			hasBrokenJump = false
 			timeSincePressJump = inf
 			timeSinceOnFloor = inf
@@ -345,13 +348,15 @@ func _physics_process_slash(delta):
 		
 	if not(timeSinceSlash >= slashCooldown and timeSincePressSlash < earlySlashBuffer):
 		return
+	
+	AudioManager.play(AudioManager.SlashNeutral)
 		
 	timeSincePressSlash = inf
 	timeSinceSlash = 0.0
 	
 	slashDirection = Enums.Directions.NONE
 	
-	if Input.is_action_pressed("down") and not is_on_floor():
+	if Input.is_action_pressed("down"):
 		slashDirection = Enums.Directions.DOWN
 	elif Input.is_action_pressed("up"):
 		slashDirection = Enums.Directions.UP
@@ -365,6 +370,8 @@ func _physics_process_slash(delta):
 		else:
 			slashDirection = Enums.Directions.RIGHT
 	
+	if slashDirection == Enums.Directions.DOWN and is_on_floor():
+		additionalVelocityInputs.append(Vector2(0,-downSlashIfGroundedBoost))
 	
 	if currentElement == Enums.Elements.PURPLE:
 		purpleDashDirection = slashDirection
@@ -402,6 +409,8 @@ func _physics_process_slash(delta):
 		sprite.play("slashSide")
 		
 	if currentElement == Enums.Elements.WIND:
+		AudioManager.play(AudioManager.WindProjectile)
+		
 		if slashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
 			timeSinceWindHorizontalDash = 0.0
 			windHorizontalDirection = slashDirection
@@ -457,6 +466,12 @@ func _physics_process_updateVisuals():
 			sprite.play("idle")
 		else:
 			sprite.play("running")
+			
+			if sprite.frame == 5:
+				AudioManager.play(AudioManager.FootstepA)
+			if sprite.frame == 11:
+				AudioManager.play(AudioManager.FootstepB)
+			
 	elif showWallSlideAnimation:
 		sprite.play("wallSlide")
 	else:
@@ -505,7 +520,14 @@ func setElement(element : Enums.Elements):
 	
 	if currentElement != element:
 		Glogger.debug("changed element: " +  str(Enums.Elements.keys()[element]))
+	
 	currentElement = element
+	if element == Enums.Elements.FIRE:
+		AudioManager.play(AudioManager.FireElementStruck)
+	elif element == Enums.Elements.WIND:
+		AudioManager.play(AudioManager.WindElementStruck)
+	
+	
 
 func isWallSliding():
 	if isOnWall:

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://badbma6yx5sv8"
 
+[autoload]
+
+AudioManager="*uid://cgvgvhj4l1nis"
+
 [display]
 
 window/size/viewport_width=1920
