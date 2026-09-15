@@ -1,17 +1,18 @@
 class_name BossWeakPoint
 extends AnimatableBody2D
 
-@export var health : Health
-
 @export var slashDamage := 2
 @export var windDamage := 2
 @export var explosionDamage := 2
 
+signal bossTakeDamage(damage : int)
+
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
-	health.takeDamage(slashDamage)
+	Glogger.debug("TEST")
+	bossTakeDamage.emit(slashDamage)
 
 func onHitByBombExplosion():
-	health.takeDamage(explosionDamage)
+	bossTakeDamage.emit(explosionDamage)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
