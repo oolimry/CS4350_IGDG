@@ -4,8 +4,12 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_mcy1y"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_74g0d"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_5lqlv"]
-[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_7ypad"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="5_geje2"]
+[ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_36taj"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_mcy1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjaxh"]
+size = Vector2(140, 560)
 
 [node name="Room 15" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_5lqlv")
@@ -31,39 +35,50 @@ tile_set = ExtResource("3_74g0d")
 visible = false
 position = Vector2(960, 560)
 
-[node name="Respawn Point3" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_7ypad")]
-position = Vector2(160, 600)
-scale = Vector2(0.8, 1)
+[node name="Respawn Point3" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
+position = Vector2(97, 600)
+script = ExtResource("5_geje2")
+reference_texture = ExtResource("6_36taj")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point3" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point3/Area2D" unique_id=598497129]
+position = Vector2(-7, -200)
+shape = SubResource("RectangleShape2D_pjaxh")
 
 [node name="Element2" parent="." unique_id=1394946886 instance=ExtResource("6_mcy1y")]
-position = Vector2(1000, 600)
-scale = Vector2(0.8, 1)
+position = Vector2(960, 580)
 element = 1
 
 [node name="Element" parent="." unique_id=641511365 instance=ExtResource("6_mcy1y")]
 position = Vector2(1720, 880)
-scale = Vector2(0.8, 1)
+element = 1
+
+[node name="Element7" parent="." unique_id=2015511658 instance=ExtResource("6_mcy1y")]
+position = Vector2(1720, 1040)
 element = 1
 
 [node name="Element3" parent="." unique_id=1404890475 instance=ExtResource("6_mcy1y")]
 position = Vector2(1720, 720)
-scale = Vector2(0.8, 1)
 element = 1
 
 [node name="Element4" parent="." unique_id=153651075 instance=ExtResource("6_mcy1y")]
 position = Vector2(1720, 560)
-scale = Vector2(0.8, 1)
 element = 1
 
 [node name="Element5" parent="." unique_id=1592842686 instance=ExtResource("6_mcy1y")]
 position = Vector2(1720, 400)
-scale = Vector2(0.8, 1)
 element = 1
 
 [node name="Element6" parent="." unique_id=1703523580 instance=ExtResource("6_mcy1y")]
 position = Vector2(1720, 240)
-scale = Vector2(0.8, 1)
 element = 1
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
+
+[connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]

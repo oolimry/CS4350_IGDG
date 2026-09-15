@@ -57,8 +57,8 @@ text = "'Spacebar' - to jump"
 [node name="RoomResidents" type="Node2D" parent="." unique_id=737356501]
 
 [node name="ExplodableWall" parent="." unique_id=1935947710 instance=ExtResource("6_ills7")]
-position = Vector2(1880, 660.00006)
-scale = Vector2(1, 3.5)
+position = Vector2(1920, 660)
+scale = Vector2(2, 3.5)
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_va7ec")]
 position = Vector2(1784, 748)

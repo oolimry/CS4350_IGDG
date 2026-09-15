@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://blfcixjschbl2"]
 
 [ext_resource type="PackedScene" uid="uid://b8k2s2g01xdpa" path="res://Assets/Rooms/Greybox/Purple/Room21-2.tscn" id="1_mgqe1"]
-[ext_resource type="Texture2D" uid="uid://dtvvbb148wjys" path="res://Assets/Rooms/PreviewRoomImages/Room21.tres_preview.png" id="2_o5mys"]
+[ext_resource type="Texture2D" uid="uid://d8571vbuagrr" path="res://Assets/Rooms/PreviewRoomImages/Room21-3.tres_preview.png" id="2_mgqe1"]
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="3_jimrd"]
 
 [resource]
@@ -11,7 +11,7 @@ doesCameraFollow = true
 cameraLimits = 9
 gridPos = Vector2i(2, 4)
 gamePlayScene = ExtResource("1_mgqe1")
-openSides = 9
+openSides = 15
 roomGroup = 2
-previewTexture = ExtResource("2_o5mys")
+previewTexture = ExtResource("2_mgqe1")
 metadata/_custom_type_script = "uid://cij17tnbhukil"
