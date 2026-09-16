@@ -8,7 +8,6 @@ extends AnimatableBody2D
 signal bossTakeDamage(damage : int)
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
-	Glogger.debug("TEST")
 	bossTakeDamage.emit(slashDamage)
 
 func onHitByBombExplosion():

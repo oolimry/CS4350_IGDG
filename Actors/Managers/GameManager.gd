@@ -39,8 +39,10 @@ func connectPlayer(newPlayer : Player) -> void:
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	hudManager.connectUI(player)
 
-func connectBoss(boss : Boss) -> void:
+# TODO: Give HUDManager as a constructor param instead
+func connectBoss(boss : Boss, bossHealthBar : BossHealthBar) -> void:
 	persistentActors.add_child(boss)
+	hudManager.add_child(bossHealthBar)
 
 func getPlayer() -> Player:
 	return player

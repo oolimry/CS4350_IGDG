@@ -36,9 +36,3 @@ func heal(i : int) -> bool:
 	currHealth = maxHealth if currHealth + i >= maxHealth else currHealth + i
 	receiveHealing.emit(i)
 	return true
-
-
-func _on_boss_take_damage(damage: int) -> void:
-	takeDamage(damage)
-	Glogger.debug("Boss says Ouch!")
-	pass # Replace with function body.

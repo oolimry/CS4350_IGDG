@@ -8,14 +8,6 @@ var reconnectBoss : Callable
 func setup(reconnectBoss : Callable) -> void:
 	self.reconnectBoss = reconnectBoss
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func registerBossRoom(rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
 	rmInst.forInteractables(_registerBossRoom)
 
@@ -30,7 +22,15 @@ func handlePlayerEntry(playerEntry : StringName) -> void:
 	if boss == null:
 		var b = Boss.create(spawnLocation)
 		boss = b
-		reconnectBoss.call_deferred(b)
+		
+		var bHealthbar = BossHealthBar.create(b.health.currHealth, 
+			b.health.maxHealth)
+		
+		## TODO: replace to set Health
+		b.health.hurt.connect(bHealthbar.damage)
+		b.health.death.connect(bHealthbar.death)
+
+		reconnectBoss.call_deferred(b, bHealthbar)
 	pass
 
 func cleanupBoss() -> void:
