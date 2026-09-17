@@ -12,6 +12,6 @@ cameraLimits = 6
 gridPos = Vector2i(-1, 0)
 gamePlayScene = ExtResource("1_8clyg")
 openSides = 11
-roomGroup = 3
+roomGroup = 4
 previewTexture = ExtResource("2_7akhc")
 metadata/_custom_type_script = "uid://cij17tnbhukil"

@@ -40,7 +40,7 @@ static var sceneRoomSize := Vector2i(1920, 1080)
 @export_flags("Left", "Right", "Top", "Bottom")
 var openSides: int = 0
 
-enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, NONE}
+enum BIGROOMGROUP {RED, GREEN, BLUE, YELLOW, BOSS, NONE}
 
 ## Group sub-rooms into one big room by a "tag". [br]
 ## This lousy system is mostly here to solve differentiation with adjacent big rooms

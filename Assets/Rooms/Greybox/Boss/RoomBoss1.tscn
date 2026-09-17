@@ -59,6 +59,7 @@ position = Vector2(1000, 520)
 collision_layer = 0
 collision_mask = 33
 script = ExtResource("6_w82xw")
+entryPointName = &"BottomLeft"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEntry" unique_id=1927773662]
 shape = SubResource("RectangleShape2D_s5ve0")

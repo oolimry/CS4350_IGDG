@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="3_1h8th"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="4_armbt"]
 [ext_resource type="Texture2D" uid="uid://gxb28vgpkwmq" path="res://Assets/Rooms/Greybox/Boss/Screenshot 2026-09-14 012315.png" id="5_n3rh4"]
+[ext_resource type="Script" uid="uid://cwnh3ekhypabd" path="res://Assets/Rooms/Greybox/Boss/BossTrigger.gd" id="6_kb2lp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1h8th"]
+size = Vector2(1840, 1020)
 
 [node name="Room Boss1" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_n3rh4")
@@ -35,3 +39,16 @@ visible = false
 position = Vector2(2880, 560)
 scale = Vector2(2.4489796, 2.849741)
 texture = ExtResource("5_n3rh4")
+
+[node name="BossEntry" type="Area2D" parent="." unique_id=627322789]
+position = Vector2(1000, 520)
+collision_layer = 0
+collision_mask = 33
+script = ExtResource("6_kb2lp")
+entryPointName = &"Top"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossEntry" unique_id=539950219]
+position = Vector2(-80, 40)
+shape = SubResource("RectangleShape2D_1h8th")
+
+[connection signal="body_entered" from="BossEntry" to="BossEntry" method="_on_body_entered"]

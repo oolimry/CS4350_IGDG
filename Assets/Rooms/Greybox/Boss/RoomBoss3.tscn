@@ -22,7 +22,6 @@ tile_map_data = PackedByteArray("AADQ/wAAAgAAAAMAAADQ/wEAAgAAAAMAAADQ/wIAAgAAAAM
 tile_set = ExtResource("2_ioqtd")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("3_uq0li")]
-visible = false
 position = Vector2(960, 560)
 
 [node name="Element2" parent="." unique_id=1772466452 instance=ExtResource("4_tcbu7")]

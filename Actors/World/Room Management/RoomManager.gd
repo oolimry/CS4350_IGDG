@@ -16,9 +16,7 @@ var roomLoader : RoomLoader
 var worldStateOwner : WorldStateOwner
 
 signal getInitialPlayerInstance(p : Player) 
-
-#var entryAreas : Array[Area2D]
-
+signal playerChangedRoom(roomDef : RoomDefinition)
 ################################## Setup ######################################
 
 func _ready() -> void:
@@ -50,8 +48,8 @@ func setupRoom(roomDef : RoomDefinition, roomInst : RoomInstance) -> void:
 func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	var transitioningDir : Vector2i = nextRoomPos - currRoomPos
 	
-	var nextRoom = mapLoader.getRoom(nextRoomPos)
-	assert(nextRoom != null)
+	var nextRoomDef = mapLoader.getRoom(nextRoomPos)
+	assert(nextRoomDef != null)
 	
 	roomCamHandler.changeRoom(mapLoader.getRoom(currRoomPos), \
 		mapLoader.getRoom(nextRoomPos),\
@@ -59,6 +57,7 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 		
 	roomLoader.handleRoomLoading(currRoomPos, nextRoomPos)
 	currRoomPos = nextRoomPos
+	playerChangedRoom.emit(nextRoomDef)
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	# Assumption: all moving objects (except Player) tracked by this system
