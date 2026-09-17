@@ -5,49 +5,39 @@ extends HBoxContainer
 var heartArray : Array[Node]
 
 ## Reference Heart Pointer when healing / being damaged
-var currHeartPointer: int
+var currHealth : int
 
 # Static factory function acting as a custom constructor
 static func create(ph: Health) -> HealthBar:
 	## Load in HeartGUI
 	var scene = load("uid://dhjniepaue6n3") as PackedScene
 	var instance = scene.instantiate() as HealthBar
-	instance.initHearts(ph.maxHealth)
+	instance.initHearts(ph.maxHealth, ph.maxHealth)
 	instance.registerPlayer(ph)
 	
 	return instance
 
-func initHearts(maxHealth : int):
+func initHearts(maxHealth : int, currHealth : int):
 	var heart
-	for i in range(maxHealth / HeartGUI.hpPerHeart):
+	for i in range(maxHealth):
 		heart = heartGuiScene.instantiate()
 		heartArray.append(heart)
 		add_child(heart)
-	currHeartPointer = (maxHealth - 1) / HeartGUI.hpPerHeart
+	self.currHealth = currHealth
 		
-func healHearts(i : int) -> void:
-	var remainingHealing := i
+func healHearts(newHealth : int) -> void:
+	var prevHealth = currHealth
+	currHealth = newHealth
+	for i in range(prevHealth, currHealth):
+		heartArray[i].healHeart()
 	
-	while remainingHealing != 0 and currHeartPointer <= heartArray.size() - 1:
-		remainingHealing = heartArray[currHeartPointer].healHeart(remainingHealing)
-		currHeartPointer += 1
-
-	if remainingHealing != 0:
-		# Reached max hp, no need to heal anymore
-		currHeartPointer = heartArray.size() - 1
-		return
-	
-func damageHearts(i : int) -> void:
-	var remainingDamage := i
-	
-	while remainingDamage != 0 and currHeartPointer >= 0:
-		remainingDamage = heartArray[currHeartPointer].dmgHeart(remainingDamage)
-		currHeartPointer -= 1
-
-	if remainingDamage != 0:
-		# Player is very much dead
-		currHeartPointer = 0
-		return
+func damageHearts(newHealth : int) -> void:
+	var prevHealth = currHealth
+	currHealth = newHealth
+	for i in range(prevHealth- 1, currHealth - 1, -1):
+		heartArray[i].dmgHeart()
+		
+	return
 
 func fillAllHearts(maxHealth :int) -> void:
 	healHearts(maxHealth)
