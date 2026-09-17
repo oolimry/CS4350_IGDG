@@ -4,8 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bt5d5l2cubjat" path="res://Actors/UI/HealthBar/HeartGUI.tscn" id="2_qkub1"]
 
 [node name="HealthBar" type="HBoxContainer" unique_id=1530028198]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -108.0
 offset_right = 353.0
-offset_bottom = 108.0
+grow_vertical = 0
 theme_override_constants/separation = 6
 script = ExtResource("1_x0etn")
 heartGuiScene = ExtResource("2_qkub1")

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://4teqdk4j5ogj"]
+
+[ext_resource type="Script" uid="uid://uvclpuwj8cub" path="res://Actors/UI/HealthBar/BossHealthBar.gd" id="1_150xv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sotvl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnmdn"]
+bg_color = Color(0.6840234, 0.15140298, 0.13466248, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qdul"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.08239316, 0.08358542, 0.012927354, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27450982)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bka8r"]
+bg_color = Color(0.9882738, 0.9881864, 0.9901535, 1)
+
+[node name="BossHealthBar" type="ProgressBar" unique_id=387900199 node_paths=PackedStringArray("damageBar", "damageEffectTimer")]
+z_index = 1
+anchors_preset = -1
+anchor_top = 0.037
+anchor_right = 1.0
+anchor_bottom = 0.074
+offset_left = 40.0
+offset_top = 0.040000916
+offset_right = -40.0
+offset_bottom = 0.08000183
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_sotvl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fnmdn")
+value = 70.0
+show_percentage = false
+script = ExtResource("1_150xv")
+damageBar = NodePath("DamageBar")
+damageEffectTimer = NodePath("Timer")
+
+[node name="DamageBar" type="ProgressBar" parent="." unique_id=1029144742]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1qdul")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bka8r")
+value = 90.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=638170066]
+wait_time = 0.4
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

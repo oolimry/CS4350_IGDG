@@ -41,10 +41,6 @@ func setupRoomResidents(isFirstLoad : bool) -> void:
 		
 		rr.isSafeToFreeUpdate.connect(isSafeToFreeSelfCheck)
 		
-		# TODO: Check if this works as intended
-		# Ensure that the oriRoomPos of a object moved into a new Room
-		# is not wrongly overwritten
-		#if isFirstLoad:
 		rr.oriRoomPos = roomPos
 		rr.currRoomPos = roomPos
 	
