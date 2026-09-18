@@ -30,11 +30,11 @@ size = Vector2(125, 440)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enc0m"]
 size = Vector2(135, 236)
 
-[sub_resource type="Resource" id="Resource_dvlr5"]
+[sub_resource type="Resource" id="Resource_3mooa"]
 resource_local_to_scene = true
 script = ExtResource("9_cru5i")
 oriCoords = Vector2(880, 860)
-persistentID = &"86f8cbda-bba7-41f4-862e-c10faf1483a3"
+persistentID = &"6cd2859b-110d-40a1-a449-9aac7ffce6d1"
 objectName = &"SlashableWall"
 
 [node name="Room 6" type="Node2D" unique_id=1922114953]
@@ -110,7 +110,7 @@ position = Vector2(960, 560)
 
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("5_f2b6g")]
 position = Vector2(1520, 800)
-rotation = 3.1415925
+rotation = 3.1415927
 direction = 1
 
 [node name="IgnitionPad5" parent="." unique_id=231989052 instance=ExtResource("5_f2b6g")]
@@ -156,14 +156,14 @@ shape = SubResource("RectangleShape2D_enc0m")
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=630726664]
 
+[node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1363395122 instance=ExtResource("8_8k1yj")]
+position = Vector2(880, 860)
+scale = Vector2(1, 0.5)
+roomResident = SubResource("Resource_3mooa")
+
 [node name="Element4" parent="." unique_id=423817018 instance=ExtResource("6_3ev35")]
 position = Vector2(881, 655)
 element = 2
-
-[node name="PlaceholderSlashableObject" parent="." unique_id=1363395122 instance=ExtResource("8_8k1yj")]
-position = Vector2(880, 860)
-scale = Vector2(1, 0.5)
-roomResident = SubResource("Resource_dvlr5")
 
 [editable path="Respawn Point"]
 [editable path="Respawn Point2"]
