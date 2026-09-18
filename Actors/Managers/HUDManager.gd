@@ -22,6 +22,7 @@ func initUI(p : Player) -> void:
 	var healthBarinstance : HealthBar = HealthBar.create(p.health)
 	healthbar = healthBarinstance
 	add_child(healthBarinstance)
+	healthbar.hide()
 	
 	var debugConsoleInstance : DebugConsole = DebugConsole.create()
 	debugConsole = debugConsoleInstance
@@ -44,3 +45,6 @@ func _process(_delta: float) -> void:
 		debugConsole.visible = newIsDebugOpen
 		if newIsDebugOpen:
 			debugConsole.grab_focus()
+
+func showHealthBar() -> void:
+	healthbar.show()

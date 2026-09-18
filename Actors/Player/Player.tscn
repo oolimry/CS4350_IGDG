@@ -390,6 +390,7 @@ collision_mask = 130
 
 [node name="HazardHandler" type="Node" parent="." unique_id=2032868256 node_paths=PackedStringArray("shaderAnimator")]
 script = ExtResource("5_vywg6")
+hazardDamage = 1
 shaderAnimator = NodePath("../ShaderAnimator")
 hazard_mask = 4
 

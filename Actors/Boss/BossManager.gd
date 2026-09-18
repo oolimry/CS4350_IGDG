@@ -10,6 +10,10 @@ var hudManager : HUDManager
 
 var bHealthbar : BossHealthBar
 
+var currBossUniversalCheckpoints : Array[BossCheckPoint]
+
+ 
+
 func setup(reconnectBoss : Callable, 
 	hudManager : HUDManager, roomManager : RoomManager) -> void:
 		
@@ -31,12 +35,21 @@ func handlePlayerEntry(playerEntry : StringName) -> void:
 		b.health.death.connect(cleanupBoss.bind(true))
 		reconnectBoss.call_deferred(b)
 		hudManager.add_child(bHealthbar)
+		hudManager.showHealthBar()
+		currBossUniversalCheckpoints.get(0).checkPointReached.emit(
+			currBossUniversalCheckpoints.get(0)
+		)
 	pass
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
-	boss.queue_free()
-	boss = null
-	bHealthbar.queue_free()
+	if boss:
+		boss.queue_free()
+		boss = null
+	if bHealthbar:
+		bHealthbar.queue_free()
+		bHealthbar = null
+	
+	
 	isBossKilled = hasBeenKilled
 
 ##################### Boss Spawn Trigger setup #######################
@@ -49,6 +62,9 @@ func _registerBossRoom(c : Node) -> void:
 	
 	if c is BossSpawnPoint:
 		spawnLocation = c.global_position
+	
+	if c is BossCheckPoint and c.isUniversal:
+		currBossUniversalCheckpoints.append(c)
 
 func checkPlayerStillSeeingBoss(room : RoomDefinition) -> void:
 	if boss != null and room.roomGroup != RoomDefinition.BIGROOMGROUP.BOSS:

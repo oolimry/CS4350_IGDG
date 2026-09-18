@@ -1,7 +1,8 @@
 class_name PlayerLifecycleCoordinator
 extends RefCounted
 
-var currRespawnCheckpoint : CheckPoint 
+var currRespawnCheckpoint : CheckPoint
+
 var reconnectPlayer : Callable
 
 signal playerRespawn(roomPos : Vector2i)
@@ -30,6 +31,9 @@ func onPlayerDeath(p : Player):
 	newPlayer.shaderAnimator.respawnFadeIn()
 	reconnectPlayer.call(newPlayer)
 
+func onPlayerHurt(p : Player):
+	onPlayerDeath(p)
+
 ####################### Setup code ######################
 
 func registerCheckPoint(rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
@@ -46,3 +50,4 @@ func _registerCheckPoint(c : Node) -> void:
 			currRespawnCheckpoint = c
 			var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
 			reconnectPlayer.call(newPlayer)
+	

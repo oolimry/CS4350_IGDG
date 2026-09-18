@@ -34,6 +34,10 @@ func connectPlayer(newPlayer : Player) -> void:
 		setup(player)
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
+	player.health.connect("hurt", func(damage : int):
+		playerCoordinator.onPlayerDeath.call(player)
+	)
+
 	hudManager.connectUI(player)
 
 # TODO: Give HUDManager as a constructor param instead

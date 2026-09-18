@@ -29,8 +29,8 @@ func setHealth(newHealth : int) -> void:
 		damageBar.value = health
 
 ## TODO: replace to set Health
-func damage(hurtDamage : int) -> void:
-	setHealth(health - hurtDamage)
+func damage(newHealth : int) -> void:
+	setHealth(newHealth)
 
 func death(boss : Node) -> void:
 	setHealth(0)

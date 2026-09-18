@@ -2,7 +2,7 @@
 class_name Health
 extends Node
 
-@export var maxHealth := 6
+@export var maxHealth := 1
 var currHealth : int
 signal hurt(currHealth)
 signal death()
@@ -19,13 +19,12 @@ func _process(delta: float) -> void:
 	pass
 
 func takeDamage(i : int) -> bool:
-		
 	if currHealth - i <= 0:
 		currHealth = 0
 		death.emit(get_parent())
 	else: 
 		currHealth -= i
-		hurt.emit(i)
+		hurt.emit(currHealth)
 		
 	return true
 
@@ -33,6 +32,6 @@ func heal(i : int) -> bool:
 	if currHealth >= maxHealth:
 		return false
 	
-	currHealth = maxHealth if currHealth + i >= maxHealth else currHealth + i
-	receiveHealing.emit(i)
+	currHealth = min(maxHealth, currHealth + i)
+	receiveHealing.emit(currHealth)
 	return true

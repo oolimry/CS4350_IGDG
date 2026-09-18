@@ -5,6 +5,8 @@ extends Node2D
 signal checkPointReached(pos : Vector2i)
 @export var roomPos : Vector2i
 @export var isActive := false
+var idleColour := Color(0.0, 0.4, 1.0, 1.0)
+var activeColour := Color(0.0, 1.0, 0.4, 1.0)
 
 @export var reference_texture: Texture2D:
 	set(value):
@@ -31,7 +33,7 @@ func _draw() -> void:
 		reference_texture,
 		Rect2(draw_position, draw_size),
 		false,
-		Color(0.0, 1.0, 0.4, 1.0) if isActive else Color(0.0, 0.4, 1.0, 1.0)
+		activeColour if isActive else idleColour
 	)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
