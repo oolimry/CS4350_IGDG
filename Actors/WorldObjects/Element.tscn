@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cycynpa0md52"]
 
-[ext_resource type="Script" uid="uid://bxf1jhuihy35u" path="res://Actors/WorldObjects/Element.gd" id="1_0jf00"]
+[ext_resource type="Script" uid="uid://dppmc5cnqr3k" path="res://Actors/WorldObjects/RespawningElement.gd" id="1_k1n6q"]
 [ext_resource type="Texture2D" uid="uid://btsbqqjkponxs" path="res://Assets/Elements/RedElement/frame_1.png" id="2_smnig"]
 [ext_resource type="Texture2D" uid="uid://c41vc4ol5aifa" path="res://Assets/Elements/RedElement/frame_2.png" id="3_d5pr3"]
 [ext_resource type="Texture2D" uid="uid://c3dbrxj5cr41v" path="res://Assets/Elements/RedElement/frame_3.png" id="4_pqm6o"]
@@ -186,7 +186,7 @@ radius = 30.0
 [node name="Element" type="StaticBody2D" unique_id=1394946886]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_0jf00")
+script = ExtResource("1_k1n6q")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
 scale = Vector2(0.25, 0.25)
