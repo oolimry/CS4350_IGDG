@@ -10,9 +10,7 @@ var hudManager : HUDManager
 
 var bHealthbar : BossHealthBar
 
-var currBossUniversalCheckpoints : Array[BossCheckPoint]
-
- 
+var currBossUniversalCheckpoint : BossCheckPoint
 
 func setup(reconnectBoss : Callable, 
 	hudManager : HUDManager, roomManager : RoomManager) -> void:
@@ -32,12 +30,14 @@ func handlePlayerEntry(playerEntry : StringName) -> void:
 		## TODO: replace to set Health
 		b.health.hurt.connect(bHealthbar.damage)
 		b.health.death.connect(bHealthbar.death)
-		b.health.death.connect(cleanupBoss.bind(true))
+		b.health.death.connect(func(b : Boss):
+			cleanupBoss(true)
+		)
 		reconnectBoss.call_deferred(b)
 		hudManager.add_child(bHealthbar)
 		hudManager.showHealthBar()
-		currBossUniversalCheckpoints.get(0).checkPointReached.emit(
-			currBossUniversalCheckpoints.get(0)
+		currBossUniversalCheckpoint.checkPointReached.emit(
+			currBossUniversalCheckpoint
 		)
 	pass
 
@@ -64,7 +64,7 @@ func _registerBossRoom(c : Node) -> void:
 		spawnLocation = c.global_position
 	
 	if c is BossCheckPoint and c.isUniversal:
-		currBossUniversalCheckpoints.append(c)
+		currBossUniversalCheckpoint = c
 
 func checkPlayerStillSeeingBoss(room : RoomDefinition) -> void:
 	if boss != null and room.roomGroup != RoomDefinition.BIGROOMGROUP.BOSS:
