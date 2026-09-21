@@ -47,35 +47,35 @@ z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("2_3mooa")
 region_enabled = true
-region_rect = Rect2(1000, 0, 1920, 1080)
+region_rect = Rect2(1000, 300, 1920, 1080)
 
 [node name="RedBgFlat2" type="Sprite2D" parent="Background" unique_id=919043555]
 z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("3_jabkw")
 region_enabled = true
-region_rect = Rect2(1000, 0, 1920, 1080)
+region_rect = Rect2(1000, 300, 1920, 1080)
 
 [node name="RedBgFlat3" type="Sprite2D" parent="Background" unique_id=214517155]
 z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("4_i4gqo")
 region_enabled = true
-region_rect = Rect2(1000, 0, 1920, 1080)
+region_rect = Rect2(1000, 300, 1920, 1080)
 
 [node name="RedBgFlat4" type="Sprite2D" parent="Background" unique_id=319205672]
 z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("5_7ejuf")
 region_enabled = true
-region_rect = Rect2(1000, 0, 1920, 1080)
+region_rect = Rect2(1000, 300, 1920, 1080)
 
 [node name="RedBgFlat5" type="Sprite2D" parent="Background" unique_id=1677037479]
 z_index = -10
 position = Vector2(960, 540)
 texture = ExtResource("6_v1glu")
 region_enabled = true
-region_rect = Rect2(1000, 0, 1920, 1080)
+region_rect = Rect2(1000, 300, 1920, 1080)
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=1607767869]
 z_index = -10
@@ -110,7 +110,7 @@ position = Vector2(960, 560)
 
 [node name="IgnitionPad2" parent="." unique_id=1935947710 instance=ExtResource("5_f2b6g")]
 position = Vector2(1520, 800)
-rotation = 3.1415927
+rotation = 3.1415925
 direction = 1
 
 [node name="IgnitionPad5" parent="." unique_id=231989052 instance=ExtResource("5_f2b6g")]
