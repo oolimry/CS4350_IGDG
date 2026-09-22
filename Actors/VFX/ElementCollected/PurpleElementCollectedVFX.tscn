@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ce28usqxfk2y"]
+
+[ext_resource type="Script" uid="uid://dpunkk1n1ou86" path="res://Actors/VFX/ElementCollected/PurpleElementCollectedVFX.gd" id="1_fgq4h"]
+[ext_resource type="PackedScene" uid="uid://ct00u042q67s0" path="res://Actors/VFX/ElementCollected/PurpleElementCollectedParticle.tscn" id="2_xsu6m"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
+blend_mode = 1
+
+[node name="PurpleElementCollectedVFX" type="Node2D" unique_id=1526437014]
+material = SubResource("CanvasItemMaterial_457ov")
+script = ExtResource("1_fgq4h")
+
+[node name="Particles" type="Node2D" parent="." unique_id=681807923]
+
+[node name="PurpleElementCollected" parent="Particles" unique_id=1148241990 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected2" parent="Particles" unique_id=163518205 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected3" parent="Particles" unique_id=244699600 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected4" parent="Particles" unique_id=558876340 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected5" parent="Particles" unique_id=185548288 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected6" parent="Particles" unique_id=1533305437 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected7" parent="Particles" unique_id=1198592857 instance=ExtResource("2_xsu6m")]
+
+[node name="PurpleElementCollected8" parent="Particles" unique_id=965895973 instance=ExtResource("2_xsu6m")]

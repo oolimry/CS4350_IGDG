@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c2fcrlstvya3o"]
+
+[ext_resource type="Script" uid="uid://c4wp0ufcxkhkr" path="res://Actors/VFX/ElementCollected/FireElementCollectedVFX.gd" id="1_waens"]
+[ext_resource type="PackedScene" uid="uid://crws4qlp12w3q" path="res://Actors/VFX/ElementCollected/FireElementCollectedParticle.tscn" id="2_5iyrj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
+blend_mode = 1
+
+[node name="FireElementCollectedVFX" type="Node2D" unique_id=1526437014]
+material = SubResource("CanvasItemMaterial_457ov")
+script = ExtResource("1_waens")
+
+[node name="Particles" type="Node2D" parent="." unique_id=681807923]
+
+[node name="FireElementCollectedParticle" parent="Particles" unique_id=1148241990 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle2" parent="Particles" unique_id=319136807 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle3" parent="Particles" unique_id=1560367679 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle4" parent="Particles" unique_id=1408883948 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle5" parent="Particles" unique_id=420611779 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle6" parent="Particles" unique_id=1896273714 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle7" parent="Particles" unique_id=1258309621 instance=ExtResource("2_5iyrj")]
+
+[node name="FireElementCollectedParticle8" parent="Particles" unique_id=1095974801 instance=ExtResource("2_5iyrj")]

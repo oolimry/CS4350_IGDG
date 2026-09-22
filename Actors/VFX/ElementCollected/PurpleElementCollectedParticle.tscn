@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ct00u042q67s0"]
+
+[ext_resource type="Texture2D" uid="uid://wuhkltytt745" path="res://Assets/Elements/PurpleElement/frame_13.png" id="1_l6nso"]
+[ext_resource type="Script" uid="uid://c4q2ymhllh038" path="res://Actors/VFX/ElementCollected/PurpleElementCollectedParticle.gd" id="2_l6nso"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
+blend_mode = 1
+
+[node name="PurpleElementCollected" type="Sprite2D" unique_id=1148241990]
+z_index = 500
+material = SubResource("CanvasItemMaterial_5iyrj")
+texture = ExtResource("1_l6nso")
+script = ExtResource("2_l6nso")

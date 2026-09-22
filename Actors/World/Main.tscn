@@ -123,3 +123,6 @@ script = ExtResource("7_cx0xc")
 script = ExtResource("8_xf085")
 
 [node name="PersistentPlayer" type="Node2D" parent="." unique_id=1283931922]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2135336753]
+color = Color(0.6862745, 0.6862745, 0.6862745, 1)

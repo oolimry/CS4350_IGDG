@@ -29,6 +29,9 @@ enum Directions {
 @onready var raycastsLeft = [$Raycasts/LeftRaycastLow, $Raycasts/LeftRaycastHigh]
 @onready var raycastsRight = [$Raycasts/RightRaycastLow, $Raycasts/RightRaycastHigh]
 
+@onready var afterImageHolder = $AfterImageHolder
+const afterImageCycleTime = 0.05
+
 ## xAcceleration / drag should give the main run speed
 ## x movement related
 @export var xAcceleration := 128*60			## how fast the character moves
@@ -316,9 +319,10 @@ func physics_process_playerMovement_purple(delta):
 			purpleWindUpTween.tween_property(self, "global_position", windUpTargetPosition, purpleWindUpDuration)\
 				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			
-			set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, false)	
-				
+			set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, false)				
 		return
+	
+	#startAfterImage()
 	
 	if purpleDashDirection == Enums.Directions.LEFT:
 		velocity = Vector2(-purupleHorizontalSpeed, 0)
@@ -335,6 +339,7 @@ func physics_process_playerMovement_purple(delta):
 	
 	if is_on_ceiling() or is_on_floor() or is_on_wall():
 		isPurpleDashing = false
+		#stopAfterImage()
 		set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, true)
 
 func _physics_process_slash(delta):
@@ -525,7 +530,33 @@ func setElement(element : Enums.Elements):
 		AudioManager.play(AudioManager.FireElementStruck)
 	elif element == Enums.Elements.WIND:
 		AudioManager.play(AudioManager.WindElementStruck)
+
+func startAfterImage():
+	afterImageHolder.visible = true
 	
+	var frameIndex: int = sprite.get_frame()
+	var animationName: String = sprite.animation
+	var spriteFrames: SpriteFrames = sprite.get_sprite_frames()
+	var currentTexture: Texture2D = spriteFrames.get_frame_texture(animationName, frameIndex)
+	
+	var afterImages = afterImageHolder.get_children()
+	for afterImageSprite : Sprite2D in afterImages:
+		afterImageSprite.texture = currentTexture
+		afterImageSprite.global_position = sprite.global_position 
+		afterImageSprite.flip_h = sprite.flip_h
+	
+	while true:
+		if not afterImageHolder.visible:
+			break
+		
+		for i in range(len(afterImages)):
+			afterImages[i].global_position = sprite.global_position - (i+1) * velocity * afterImageCycleTime
+			Glogger.debug(afterImages[i].global_position)
+			
+		await get_tree().create_timer(afterImageCycleTime).timeout
+	
+func stopAfterImage():
+	afterImageHolder.visible = false
 	
 
 func isWallSliding():
