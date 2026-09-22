@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2foixtu3ui3n"]
+
+[ext_resource type="Script" uid="uid://cdiguwedwt7fu" path="res://Actors/VFX/VFXManager.gd" id="1_35w20"]
+
+[node name="VfxManager" type="Node2D" unique_id=532348580]
+script = ExtResource("1_35w20")

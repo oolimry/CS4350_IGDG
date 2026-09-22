@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://crws4qlp12w3q"]
+
+[ext_resource type="Texture2D" uid="uid://dhjcv2gbd7gls" path="res://Assets/VFX/FireParticle.png" id="1_b6si8"]
+[ext_resource type="Script" uid="uid://jtdsotl615ct" path="res://Actors/VFX/ElementCollected/FireElementCollectedParticle.gd" id="2_0fueo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
+blend_mode = 1
+
+[node name="FireElementCollectedParticle" type="Sprite2D" unique_id=1148241990]
+z_index = 500
+material = SubResource("CanvasItemMaterial_5iyrj")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_b6si8")
+script = ExtResource("2_0fueo")

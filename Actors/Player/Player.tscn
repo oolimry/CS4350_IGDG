@@ -63,6 +63,17 @@
 [ext_resource type="Texture2D" uid="uid://behi2lcoe35sm" path="res://Assets/Player/WallSlide/frame_5.png" id="55_4gkb1"]
 [ext_resource type="Texture2D" uid="uid://brbyr3m2fuikr" path="res://Assets/Player/WallSlide/frame_6.png" id="56_mcu3x"]
 
+[sub_resource type="Gradient" id="Gradient_d6ec5"]
+offsets = PackedFloat32Array(0, 0.72156864, 0.74509805)
+colors = PackedColorArray(0.5882353, 0.5882353, 0.5882353, 0.20392157, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vynle"]
+gradient = SubResource("Gradient_d6ec5")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vywg6"]
 shader = ExtResource("2_l6vkj")
 shader_parameter/flashAmount = 0.0
@@ -324,6 +335,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
 size = Vector2(32, 66)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fhqhq"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler")]
 collision_layer = 33
 collision_mask = 182
@@ -333,13 +346,16 @@ shaderAnimator = NodePath("ShaderAnimator")
 hazardHandler = NodePath("HazardHandler")
 terminalVelocity = 800
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1100759629]
+texture = SubResource("GradientTexture2D_vynle")
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1930166679]
 material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"slashSide"
-frame = 3
+animation = &"purpleSlashSide"
+frame = 2
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2104191606]
@@ -351,19 +367,23 @@ script = ExtResource("3_yqfyh")
 maxHealth = 2
 
 [node name="LeftSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
+visible = false
 position = Vector2(-45, 1)
 scale = Vector2(-1, 1)
 slashDirection = 1
 
 [node name="RightSlashHitbox" parent="." unique_id=818047188 instance=ExtResource("3_urha2")]
+visible = false
 position = Vector2(45, 1)
 slashDirection = 2
 
 [node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
+visible = false
 position = Vector2(0, 29)
 slashDirection = 4
 
 [node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]
+visible = false
 position = Vector2(1, -60)
 slashDirection = 3
 
@@ -397,3 +417,22 @@ hazard_mask = 4
 [node name="ShaderAnimator" type="Node" parent="." unique_id=477373721 node_paths=PackedStringArray("playerSprite")]
 script = ExtResource("7_rsi04")
 playerSprite = NodePath("../Sprite2D")
+
+[node name="AfterImageHolder" type="Node2D" parent="." unique_id=1124764614]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AfterImageHolder" unique_id=174878003]
+material = SubResource("CanvasItemMaterial_fhqhq")
+position = Vector2(-100, -29.725)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("45_fhqhq")
+
+[node name="Sprite2D2" type="Sprite2D" parent="AfterImageHolder" unique_id=326331915]
+position = Vector2(-200, -29.725)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("45_fhqhq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="AfterImageHolder" unique_id=1359361059]
+position = Vector2(-300, -29.725)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("45_fhqhq")

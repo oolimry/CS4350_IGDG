@@ -42,6 +42,9 @@
 [ext_resource type="Texture2D" uid="uid://d2riotfjxtvld" path="res://Assets/Elements/PurpleElement/frame_23.png" id="30_oj4l4"]
 [ext_resource type="Texture2D" uid="uid://befqf3idll251" path="res://Assets/Elements/PurpleElement/frame_24.png" id="31_wuvu3"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jf00"]
 animations = [{
 "frames": [{
@@ -189,10 +192,10 @@ collision_mask = 8
 script = ExtResource("1_k1n6q")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
+material = SubResource("CanvasItemMaterial_5iyrj")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0jf00")
 animation = &"purple"
-frame_progress = 0.6541069
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 visible = false
