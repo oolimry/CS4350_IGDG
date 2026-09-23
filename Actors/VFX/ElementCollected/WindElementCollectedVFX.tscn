@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cyrolckhntx2a"]
+
+[ext_resource type="Script" uid="uid://cd2pcmpnf82bt" path="res://Actors/VFX/ElementCollected/WindElementCollectedVFX.gd" id="1_k7hwx"]
+[ext_resource type="PackedScene" uid="uid://cd1mydncn7kh3" path="res://Actors/VFX/ElementCollected/WindElementCollectedParticle.tscn" id="2_k7hwx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
+blend_mode = 1
+
+[node name="WindElementCollectedVFX" type="Node2D" unique_id=1526437014]
+material = SubResource("CanvasItemMaterial_457ov")
+script = ExtResource("1_k7hwx")
+
+[node name="Particles" type="Node2D" parent="." unique_id=1811261800]
+
+[node name="WindElementCollected" parent="Particles" unique_id=1353474843 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected2" parent="Particles" unique_id=1632007820 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected3" parent="Particles" unique_id=783176478 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected4" parent="Particles" unique_id=1443967251 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected5" parent="Particles" unique_id=1962375005 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected6" parent="Particles" unique_id=896653477 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected7" parent="Particles" unique_id=1971077356 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected8" parent="Particles" unique_id=738076810 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected9" parent="Particles" unique_id=1765809777 instance=ExtResource("2_k7hwx")]
+
+[node name="WindElementCollected10" parent="Particles" unique_id=883001410 instance=ExtResource("2_k7hwx")]

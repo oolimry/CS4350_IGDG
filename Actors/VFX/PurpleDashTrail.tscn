@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://fvcgi355v10j"]
+
+[ext_resource type="Shader" uid="uid://biu6d7qn0ioj8" path="res://Actors/VFX/ElementCollected/PurpleElementCollectedParticle.gdshader" id="1_2w22e"]
+[ext_resource type="Script" uid="uid://b6dabti6u1don" path="res://Actors/VFX/PurpleDashTrail.gd" id="1_okg2d"]
+[ext_resource type="Texture2D" uid="uid://de8q4skna2n8m" path="res://Assets/VFX/Lightning/frame_03.png" id="1_thnrs"]
+[ext_resource type="Texture2D" uid="uid://dxwhe3yuynu55" path="res://Assets/VFX/Lightning/frame_04.png" id="2_2w22e"]
+[ext_resource type="Texture2D" uid="uid://dtf1qlwx5gcq4" path="res://Assets/VFX/Lightning/frame_05.png" id="3_46wdy"]
+[ext_resource type="Texture2D" uid="uid://cxpsbk5mapask" path="res://Assets/VFX/Lightning/frame_06.png" id="4_jo6sn"]
+[ext_resource type="Texture2D" uid="uid://do53fnyginsnn" path="res://Assets/VFX/Lightning/frame_13.png" id="5_1k6ww"]
+[ext_resource type="Texture2D" uid="uid://bhmflv0hrfepc" path="res://Assets/VFX/Lightning/frame_14.png" id="6_gndki"]
+[ext_resource type="Texture2D" uid="uid://cgex55idefbw5" path="res://Assets/VFX/Lightning/frame_15.png" id="7_70rfg"]
+[ext_resource type="Texture2D" uid="uid://dh1yqj7tfk8w4" path="res://Assets/VFX/Lightning/frame_16.png" id="8_42dbw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w22e"]
+shader = ExtResource("1_2w22e")
+shader_parameter/glow_color = Color(0.4160448, 0, 0.886699, 1)
+shader_parameter/glow_width = 12.214000580165
+shader_parameter/glow_intensity = 0.6000000285
+shader_parameter/opacity = 1.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nubha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_thnrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2w22e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_46wdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jo6sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1k6ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gndki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_70rfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_42dbw")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="PurpleDashTrail" type="AnimatedSprite2D" unique_id=1349814325]
+material = SubResource("ShaderMaterial_2w22e")
+scale = Vector2(0.25, 0.08)
+sprite_frames = SubResource("SpriteFrames_nubha")
+frame = 7
+frame_progress = 1.0
+script = ExtResource("1_okg2d")

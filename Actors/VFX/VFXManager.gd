@@ -1,7 +1,15 @@
 class_name VFXManager_class
 extends Node2D
 
-@onready var FireElementCollectedVFX = preload("res://Actors/VFX/ElementCollected/FireElementCollectedVFX.tscn")
+@onready var FireElementCollectedVFX = \
+	preload("res://Actors/VFX/ElementCollected/FireElementCollectedVFX.tscn")
+@onready var WindElementCollectedVFX = \
+	preload("res://Actors/VFX/ElementCollected/WindElementCollectedVFX.tscn")
+@onready var PurpleElementCollectedVFX = \
+	preload("res://Actors/VFX/ElementCollected/PurpleElementCollectedVFX.tscn")
+	
+@onready var PurpleDashTrailVFX = \
+	preload("res://Actors/VFX/PurpleDashTrail.tscn")
 
 enum Params {
 	PLAYER,

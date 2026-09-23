@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://42w4wgu0bqw8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f8lxg"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_u5p00"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0892193, 0.126394, 0.509294, 0.881041, 0.907063, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.3027045, 0.15533373, 0.15533373, 1, 0.7499075, 0.34536305, 0.34536305, 1, 0.38162273, 0.14162031, 0.14162031, 1, 0.243137, 0.243137, 0.243137, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e26cq"]
+gradient = SubResource("Gradient_u5p00")
+width = 32
+height = 32
+fill_from = Vector2(0.878632, 0.278632)
+fill_to = Vector2(0.0136752, 0.712821)
+
+[sub_resource type="Curve" id="Curve_m6gvq"]
+bake_resolution = 1000
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.104779, 0.790504), 0.0, 0.0, 0, 0, Vector2(0.998162, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4amim"]
+curve = SubResource("Curve_m6gvq")
+
+[sub_resource type="Curve" id="Curve_kff04"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dj4op"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3369099, 0.08928573), 0.0, 0.0, 0, 0, Vector2(0.808712, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_bptag"]
+_data = [Vector2(0.0511364, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_1hth5"]
+curve_x = SubResource("Curve_kff04")
+curve_y = SubResource("Curve_dj4op")
+curve_z = SubResource("Curve_bptag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rnbb6"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 0, 10)
+emission_shape = 3
+emission_box_extents = Vector3(12, 12, 1)
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(2, 0, 0)
+spread = 30.0
+flatness = 0.294
+initial_velocity_min = 500.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 1000, 0)
+scale_min = 0.5
+scale_max = 0.75
+scale_curve = SubResource("CurveXYZTexture_1hth5")
+alpha_curve = SubResource("CurveTexture_4amim")
+turbulence_noise_strength = 2.98
+
+[node name="IgnitionPadExplosionVFX" type="GPUParticles2D" unique_id=1746739328]
+z_index = 500
+material = SubResource("CanvasItemMaterial_f8lxg")
+emitting = false
+amount = 32
+texture = SubResource("GradientTexture2D_e26cq")
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_rnbb6")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

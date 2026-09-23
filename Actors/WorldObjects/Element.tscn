@@ -195,7 +195,7 @@ script = ExtResource("1_k1n6q")
 material = SubResource("CanvasItemMaterial_5iyrj")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0jf00")
-animation = &"purple"
+animation = &"wind"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 visible = false

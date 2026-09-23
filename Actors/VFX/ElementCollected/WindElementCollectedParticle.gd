@@ -1,4 +1,4 @@
-class_name PurpleElementCollectedParticle
+class_name WindElementCollectedParticle
 extends Sprite2D
 
 @export var baseRotation = -PI / 2
@@ -9,12 +9,15 @@ extends Sprite2D
 var velocity = Vector2(0,0)
 var player : Player
 var timeSinceBurst = 0.0
+var tangentialAcceleration = Vector2(0,0)
+const tangentialAccelerationConstant = 5000
 
 func burstAndChase(thePlayer : Player, initialVelocity : Vector2):
 	velocity = initialVelocity
 	player = thePlayer
+	tangentialAcceleration = velocity.normalized().rotated(PI/2) * tangentialAccelerationConstant
 	$Sprite2D.play("default")
-
+	
 func _process(delta):
 	timeSinceBurst += delta
 	
@@ -29,10 +32,14 @@ func _process(delta):
 	if dist < 60 and timeSinceBurst > delayBeforeChase:
 		queue_free()
 	
+	if timeSinceBurst < delayBeforeChase:
+		velocity += tangentialAcceleration * delta
 	
 	velocity = velocity * (1.0 - drag)
 	velocity += pow(min(1.0, timeSinceBurst/delayBeforeChase), 2) *\
 		 vectorToPlayer.normalized() * chasingSpeed
+	
+		
 		
 	self.position += velocity * delta
 	rotation = velocity.angle() + baseRotation

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cd1mydncn7kh3"]
+
+[ext_resource type="Texture2D" uid="uid://c68c0krk1uvi6" path="res://Assets/VFX/PurpleParticle.png" id="1_r2qcx"]
+[ext_resource type="Script" uid="uid://1085lq6klhbb" path="res://Actors/VFX/ElementCollected/WindElementCollectedParticle.gd" id="2_r2qcx"]
+[ext_resource type="Texture2D" uid="uid://bmqiaxbkt82e" path="res://Assets/VFX/Wind/frame_01.png" id="3_74s2n"]
+[ext_resource type="Texture2D" uid="uid://yoprap4v2xel" path="res://Assets/VFX/Wind/frame_02.png" id="3_o7gq2"]
+[ext_resource type="Texture2D" uid="uid://dancykixlngnd" path="res://Assets/VFX/Wind/frame_03.png" id="5_l57cl"]
+[ext_resource type="Texture2D" uid="uid://bafpjdbx7g4t4" path="res://Assets/VFX/Wind/frame_04.png" id="6_6rg3m"]
+[ext_resource type="Texture2D" uid="uid://bgeo2v80iw5dl" path="res://Assets/VFX/Wind/frame_05.png" id="7_l2a5g"]
+[ext_resource type="Texture2D" uid="uid://dildgqha4geci" path="res://Assets/VFX/Wind/frame_06.png" id="8_5m655"]
+[ext_resource type="Texture2D" uid="uid://cscbswbdyf70w" path="res://Assets/VFX/Wind/frame_07.png" id="9_al381"]
+[ext_resource type="Texture2D" uid="uid://dh82qun0p8vsy" path="res://Assets/VFX/Wind/frame_08.png" id="10_driug"]
+[ext_resource type="Texture2D" uid="uid://dgbibuos1dcur" path="res://Assets/VFX/Wind/frame_09.png" id="11_oxb2h"]
+[ext_resource type="Texture2D" uid="uid://c2d8ml33h7t0u" path="res://Assets/VFX/Wind/frame_10.png" id="12_eb86h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w4quj"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vynle"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vynle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_74s2n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o7gq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_l57cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6rg3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l2a5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5m655")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_al381")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_driug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_oxb2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_eb86h")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WindElementCollected" type="Sprite2D" unique_id=1353474843]
+modulate = Color(0.5797633, 0.81304204, 0.8002189, 1)
+z_index = 500
+material = SubResource("CanvasItemMaterial_w4quj")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_r2qcx")
+script = ExtResource("2_r2qcx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=580748034]
+modulate = Color(1, 1, 1, 0.08627451)
+material = SubResource("CanvasItemMaterial_vynle")
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_vynle")
+frame_progress = 0.21893442
