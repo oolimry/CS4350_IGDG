@@ -12,18 +12,18 @@ script = ExtResource("1_fgq4h")
 
 [node name="Particles" type="Node2D" parent="." unique_id=681807923]
 
-[node name="PurpleElementCollected" parent="Particles" unique_id=1148241990 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected" parent="Particles" unique_id=1353474843 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected2" parent="Particles" unique_id=163518205 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected2" parent="Particles" unique_id=305483861 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected3" parent="Particles" unique_id=244699600 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected3" parent="Particles" unique_id=606967819 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected4" parent="Particles" unique_id=558876340 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected4" parent="Particles" unique_id=1677896361 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected5" parent="Particles" unique_id=185548288 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected5" parent="Particles" unique_id=1106000872 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected6" parent="Particles" unique_id=1533305437 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected6" parent="Particles" unique_id=1543808831 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected7" parent="Particles" unique_id=1198592857 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected7" parent="Particles" unique_id=457233639 instance=ExtResource("2_xsu6m")]
 
-[node name="PurpleElementCollected8" parent="Particles" unique_id=965895973 instance=ExtResource("2_xsu6m")]
+[node name="PurpleElementCollected8" parent="Particles" unique_id=1028950854 instance=ExtResource("2_xsu6m")]

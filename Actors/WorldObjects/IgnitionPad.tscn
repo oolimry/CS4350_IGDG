@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dbbf4dt6qg4or" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (4).png" id="14_f54wv"]
 [ext_resource type="Texture2D" uid="uid://bg7rpa7urrh4j" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (5).png" id="15_snvgs"]
 [ext_resource type="Texture2D" uid="uid://jv4f0ggkd584" path="res://Assets/World Objects/Ignition Pad/Ignition Pad (6).png" id="16_3w0jd"]
+[ext_resource type="PackedScene" uid="uid://42w4wgu0bqw8" path="res://Actors/VFX/IgnitionPadExplosionVFX.tscn" id="17_f8lxg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uem5w"]
 animations = [{
@@ -81,21 +82,23 @@ size = Vector2(13.353, 40)
 
 [node name="IgnitionPad" type="StaticBody2D" unique_id=1935947710]
 z_index = -1
+rotation = -1.5707964
 scale = Vector2(2, 2)
 collision_layer = 26
 collision_mask = 0
 script = ExtResource("1_uem5w")
-direction = 2
+direction = 3
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=824924353]
 rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_uem5w")
 animation = &"launch"
-frame = 16
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
 position = Vector2(-13.369087, 0)
 scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_cdxoi")
+
+[node name="IgnitionPadExplosionVFX" parent="." unique_id=1746739328 instance=ExtResource("17_f8lxg")]
+scale = Vector2(0.5, 0.5)

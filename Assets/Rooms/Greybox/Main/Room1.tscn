@@ -50,3 +50,11 @@ position = Vector2(1466, 868)
 element = 2
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
+
+[node name="Element2" parent="." unique_id=1940181356 instance=ExtResource("6_41hdi")]
+position = Vector2(1061, 733)
+element = 1
+
+[node name="Element3" parent="." unique_id=185976701 instance=ExtResource("6_41hdi")]
+position = Vector2(843, 761)
+element = 3

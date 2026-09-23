@@ -14,16 +14,16 @@ script = ExtResource("1_waens")
 
 [node name="FireElementCollectedParticle" parent="Particles" unique_id=1148241990 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle2" parent="Particles" unique_id=319136807 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle2" parent="Particles" unique_id=1874393241 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle3" parent="Particles" unique_id=1560367679 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle3" parent="Particles" unique_id=1919845295 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle4" parent="Particles" unique_id=1408883948 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle4" parent="Particles" unique_id=175034379 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle5" parent="Particles" unique_id=420611779 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle5" parent="Particles" unique_id=2105318182 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle6" parent="Particles" unique_id=1896273714 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle6" parent="Particles" unique_id=2033232661 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle7" parent="Particles" unique_id=1258309621 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle7" parent="Particles" unique_id=1070349596 instance=ExtResource("2_5iyrj")]
 
-[node name="FireElementCollectedParticle8" parent="Particles" unique_id=1095974801 instance=ExtResource("2_5iyrj")]
+[node name="FireElementCollectedParticle8" parent="Particles" unique_id=628891278 instance=ExtResource("2_5iyrj")]

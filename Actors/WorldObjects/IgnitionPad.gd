@@ -5,6 +5,7 @@ extends StaticBody2D
 var isActive = true
 
 @onready var sprite = $Sprite2D
+@onready var ignitionPadVFXEmitter = $IgnitionPadExplosionVFX
 
 @export var direction : Enums.Directions:
 	set(value):
@@ -40,6 +41,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	player.launchByIgnitionPadOrBomb(self.direction)
 	
 	sprite.play("launch")
+	#ignitionPadVFXEmitter.emitting = true
 	await sprite.animation_finished
 	
 	isActive = true

@@ -18,6 +18,14 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		VfxManager.createVFX(VfxManager.FireElementCollectedVFX, self.global_position, {
 			VFXManager_class.Params.PLAYER : player
 		})
+	elif element == Enums.Elements.WIND:
+		VfxManager.createVFX(VfxManager.WindElementCollectedVFX, self.global_position, {
+			VFXManager_class.Params.PLAYER : player
+		})
+	elif element == Enums.Elements.PURPLE:
+		VfxManager.createVFX(VfxManager.PurpleElementCollectedVFX, self.global_position, {
+			VFXManager_class.Params.PLAYER : player
+		})
 
 func respawnElement() -> void:
 	collision_shape.set_deferred("monitoring", true)
