@@ -26,7 +26,7 @@ VfxManager="*uid://c2foixtu3ui3n"
 
 [display]
 
-window/size/viewport_width=1920
+window/size/viewport_width=960
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
@@ -112,4 +112,5 @@ debugConsole={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
 environment/defaults/default_clear_color=Color(0.7196328, 0.7196329, 0.7196327, 1)
