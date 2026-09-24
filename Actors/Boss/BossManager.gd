@@ -4,42 +4,52 @@ extends Node
 var boss : Boss
 var isBossKilled := false
 var spawnLocation : Vector2
-var reconnectBoss : Callable
+var placePersistent : Callable
 
 var hudManager : HUDManager
 
 var bHealthbar : BossHealthBar
-
 var currBossUniversalCheckpoint : BossCheckPoint
+var bProjFirer : BossProjFirer
 
-func setup(reconnectBoss : Callable, 
-	hudManager : HUDManager, roomManager : RoomManager) -> void:
+
+@export var bossFSM : BossFSM
+var getPlayer : Callable
+
+func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager, 
+	roomManager : RoomManager, getPlayerFunc : Callable) -> void:
 		
-	self.reconnectBoss = reconnectBoss
+	self.placePersistent = placePersistentFunc
 	roomManager.playerChangedRoom.connect(checkPlayerStillSeeingBoss)
-	self.hudManager = hudManager
+	self.hudManager = hudManagerObj
+	self.getPlayer = getPlayerFunc
 
-func handlePlayerEntry(playerEntry : StringName) -> void:
-	if boss == null and !isBossKilled:
-		var b = Boss.create(spawnLocation)
-		boss = b
+func handlePlayerEntry(_playerEntry : StringName) -> void:
+	if boss == null and !isBossKilled:		
+		bProjFirer.setup(func(n : Node): placePersistent.call_deferred(n))
+		setupBoss()
 		
-		bHealthbar = BossHealthBar.create(b.health.currHealth, 
-			b.health.maxHealth)
-		
-		## TODO: replace to set Health
-		b.health.hurt.connect(bHealthbar.damage)
-		b.health.death.connect(bHealthbar.death)
-		b.health.death.connect(func(b : Boss):
-			cleanupBoss(true)
-		)
-		reconnectBoss.call_deferred(b)
 		hudManager.add_child(bHealthbar)
 		hudManager.showHealthBar()
 		currBossUniversalCheckpoint.checkPointReached.emit(
 			currBossUniversalCheckpoint
 		)
+		
 	pass
+
+func setupBoss():
+	boss = Boss.create(spawnLocation, getPlayer, bProjFirer)
+	
+	bHealthbar = BossHealthBar.create(boss.health.currHealth, 
+		boss.health.maxHealth)
+	
+	boss.health.hurt.connect(bHealthbar.damage)
+	boss.health.death.connect(bHealthbar.death)
+	boss.health.death.connect(func(_boss : Boss):
+		cleanupBoss(true)
+	)
+	placePersistent.call_deferred(boss)
+	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
 	if boss:
@@ -48,12 +58,11 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 	if bHealthbar:
 		bHealthbar.queue_free()
 		bHealthbar = null
-	
-	
+
 	isBossKilled = hasBeenKilled
 
 ##################### Boss Spawn Trigger setup #######################
-func registerBossRoom(rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
+func registerBossRoom(_rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
 	rmInst.forInteractables(_registerBossRoom)
 
 func _registerBossRoom(c : Node) -> void:
@@ -65,6 +74,9 @@ func _registerBossRoom(c : Node) -> void:
 	
 	if c is BossCheckPoint and c.isUniversal:
 		currBossUniversalCheckpoint = c
+	
+	if c is BossProjFirer:
+		bProjFirer = c
 
 func checkPlayerStillSeeingBoss(room : RoomDefinition) -> void:
 	if boss != null and room.roomGroup != RoomDefinition.BIGROOMGROUP.BOSS:

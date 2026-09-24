@@ -40,9 +40,8 @@ func connectPlayer(newPlayer : Player) -> void:
 
 	hudManager.connectUI(player)
 
-# TODO: Give HUDManager as a constructor param instead
-func connectBoss(boss : Boss) -> void:
-	persistentActors.add_child(boss)
+func placePersistentObj(object : Node2D) -> void:
+	persistentActors.add_child(object)
 
 func getPlayer() -> Player:
 	return player
@@ -61,8 +60,7 @@ func setup(p : Player) -> void:
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	
-	bossManager.setup(connectBoss, hudManager, roomManager)
-
+	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
 	
 func placeAtRoot(n : Node) -> void:
 	get_tree().current_scene.add_child(n)

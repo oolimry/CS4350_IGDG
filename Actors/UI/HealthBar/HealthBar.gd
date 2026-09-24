@@ -17,6 +17,7 @@ static func create(ph: Health) -> HealthBar:
 	
 	return instance
 
+@warning_ignore("shadowed_variable")
 func initHearts(maxHealth : int, currHealth : int):
 	var heart
 	for i in range(maxHealth):

@@ -2,9 +2,12 @@
 class_name RespawningElement
 extends Element
 
-@onready var timer: Timer = $Timer
+@onready var timer: Timer
 
 func _ready():
+	timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 1.0
 	timer.timeout.connect(respawnElement)
 	
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
@@ -13,19 +16,6 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		
 	timer.start()
 	super.onSlash(slashParams, player)
-	
-	if element == Enums.Elements.FIRE:
-		VfxManager.createVFX(VfxManager.FireElementCollectedVFX, self.global_position, {
-			VFXManager_class.Params.PLAYER : player
-		})
-	elif element == Enums.Elements.WIND:
-		VfxManager.createVFX(VfxManager.WindElementCollectedVFX, self.global_position, {
-			VFXManager_class.Params.PLAYER : player
-		})
-	elif element == Enums.Elements.PURPLE:
-		VfxManager.createVFX(VfxManager.PurpleElementCollectedVFX, self.global_position, {
-			VFXManager_class.Params.PLAYER : player
-		})
 
 func respawnElement() -> void:
 	collision_shape.set_deferred("monitoring", true)

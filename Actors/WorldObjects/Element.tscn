@@ -200,5 +200,3 @@ animation = &"wind"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 visible = false
 shape = SubResource("CircleShape2D_meos5")
-
-[node name="Timer" type="Timer" parent="." unique_id=1123649815]
