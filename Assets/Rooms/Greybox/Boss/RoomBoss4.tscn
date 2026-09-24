@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="4_sw72r"]
 [ext_resource type="Texture2D" uid="uid://dil73swdqhss8" path="res://Assets/Rooms/Greybox/Boss/Screenshot 2026-09-14 012217.png" id="6_nyjtt"]
 
-[node name="Room Boss1" type="Node2D" unique_id=1922114953]
+[node name="Room Boss4" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_b5y17")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=558003828]

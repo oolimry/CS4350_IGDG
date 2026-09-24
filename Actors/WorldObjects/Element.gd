@@ -26,7 +26,6 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.visible = false
 	active = false
 	collision_shape.set_deferred("monitoring", false)
-	
 	player.setElement(self.element)
 	
 	var slashDirection = slashParams.get(ScriptConstants.SLASH_DIRECTION_PARAM_NAME, \

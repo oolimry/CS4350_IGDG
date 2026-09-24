@@ -12,11 +12,15 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 		currBossRespawnCheckpoint.isActive
 		return
 		
-	swapActiveCheckPoint(c)
+	super.swapActiveCheckPoint(c)
 
 func onPlayerDeath(p : Player):
 	p.queue_free()
-	## TODO: Need to find failsafe in case player tries respawning when they have no checkpoint saved
+	
+	if currBossRespawnCheckpoint != null:
+		currBossRespawnCheckpoint.isActive = false
+		currBossRespawnCheckpoint = null
+	
 	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
 	playerRespawn.emit(currRespawnCheckpoint.roomPos)
 	newPlayer.shaderAnimator.respawnFadeIn()
@@ -28,14 +32,15 @@ func onPlayerHurt(p : Player):
 	if checkpoint == null:
 		checkpoint = currRespawnCheckpoint
 	
-	p.queue_free()
-	var newPlayer : Player = Player.create(checkpoint.global_position)
+	p.setElement(Enums.Elements.NONE)	
+	
+	## TODO: Need to find failsafe in case player tries respawning when they have no checkpoint saved
+	p.global_position = checkpoint.global_position
 	playerRespawn.emit(checkpoint.roomPos)
-	newPlayer.shaderAnimator.respawnFadeIn()
-	reconnectPlayer.call(newPlayer)
+	p.shaderAnimator.respawnFadeIn()
 
 ####################### Setup code ######################
 func _registerCheckPoint(c : Node) -> void:
 	if c is BossCheckPoint and c.isUniversal:
 		currBossRespawnCheckpoint = c
-	_registerCheckPoint(c)
+	super._registerCheckPoint(c)
