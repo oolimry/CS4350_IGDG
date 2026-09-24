@@ -12,3 +12,7 @@ func _draw() -> void:
 	activeColour = Color.DARK_OLIVE_GREEN
 	super._draw()
 	
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if !isUniversal:
+		super._on_area_2d_body_entered(body)
+	pass # Replace with function body.

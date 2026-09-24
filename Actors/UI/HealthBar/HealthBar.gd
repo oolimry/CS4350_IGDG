@@ -40,10 +40,7 @@ func damageHearts(newHealth : int) -> void:
 		
 	return
 
-func fillAllHearts(maxHealth :int) -> void:
-	healHearts(maxHealth)
-
 func registerPlayer(ph: Health) -> void:
 	ph.hurt.connect(damageHearts)
 	ph.receiveHealing.connect(healHearts)
-	fillAllHearts(ph.maxHealth)
+	healHearts(ph.maxHealth)

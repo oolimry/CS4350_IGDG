@@ -17,7 +17,7 @@ var isSetup := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
+	playerCoordinator = PlayerBLifecycleCoordinator.new(connectPlayer)
 	roomManager.generateRooms(
 		[playerCoordinator.registerCheckPoint, bossManager.registerBossRoom], 
 	{
@@ -35,7 +35,7 @@ func connectPlayer(newPlayer : Player) -> void:
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	player.health.connect("hurt", func(damage : int):
-		playerCoordinator.onPlayerDeath.call(player)
+		playerCoordinator.onPlayerHurt.call(player)
 	)
 
 	hudManager.connectUI(player)

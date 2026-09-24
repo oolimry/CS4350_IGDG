@@ -199,5 +199,4 @@ sprite_frames = SubResource("SpriteFrames_0jf00")
 animation = &"wind"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
-visible = false
 shape = SubResource("CircleShape2D_meos5")

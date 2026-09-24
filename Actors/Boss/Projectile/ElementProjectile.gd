@@ -24,9 +24,9 @@ static func create(elementToUse : Enums.Elements,
 func fire(initVelocity : Vector2) -> void:
 	currVelocity = initVelocity
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func onSlash(slashParams : Dictionary = {}, player : Player = null):
+	collision_shape.set_deferred("disabled", true)
+	super.onSlash(slashParams, player)
 
 func _physics_process(delta: float) -> void:
 	age += delta

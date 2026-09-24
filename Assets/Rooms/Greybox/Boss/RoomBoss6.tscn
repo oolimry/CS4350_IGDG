@@ -10,7 +10,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h8th"]
 size = Vector2(1840, 1020)
 
-[node name="Room Boss1" type="Node2D" unique_id=1922114953]
+[node name="Room Boss6" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_n3rh4")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=558003828]

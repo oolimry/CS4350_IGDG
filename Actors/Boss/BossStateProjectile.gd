@@ -2,7 +2,7 @@ class_name BossStateProjectile
 extends BossState
 
 ## How often the projectiles should fire in seconds
-@export var projectileCooldownDuration = 2
+@export var projectileCooldownDuration = 1
 var projTimer : Timer
 
 ## Duration of the state in seconds
@@ -54,7 +54,7 @@ func _end() -> void:
 func fireProjectile() -> void:
 	
 	# Randomize Element Projectile
-	var element := randomizer.randi_range(Enums.Elements.NONE, Enums.Elements.size()-1)
+	var element := randomizer.randi_range(Enums.Elements.NONE + 1, Enums.Elements.size()-1)
 	var p := ElementProjectile.create(element, straightMovement)
 	var rot = projFirer.global_position.angle_to_point(getPlayer.call().global_position)
 	rot = rad_to_deg(rot)
