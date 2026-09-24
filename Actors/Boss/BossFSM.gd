@@ -17,8 +17,10 @@ func setup(getBoss : Callable, getPlayer : Callable,
 	
 	for state in stateIDLookup.values():
 		state.setup(getBoss, getPlayer, depedencies)
+		state.transitionTo.connect(startState)
 	
 	initialState.setup(getBoss, getPlayer, depedencies)
+	initialState.transitionTo.connect(startState)
 	
 	currState = initialState
 	
@@ -33,8 +35,8 @@ func _physics_process(delta: float) -> void:
 	currState._physics_process(delta)
 	pass
 
-func startState(roundID : String) -> void:
-	currState = stateIDLookup[roundID]
+func startState(stateID : StringName) -> void:
+	currState = stateIDLookup[stateID]
 	currState._start()
 	pass
 
