@@ -34,7 +34,6 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 func _start() -> void:
 	durationTimer.start(duration)
 	burstFireProjectile()
-	
 	pass
 
 # This gets run by the FSM 
@@ -50,6 +49,9 @@ func burstFireProjectile() -> void:
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
+	durationTimer.stop()
+	projTimer.stop()
+	transitionTo.emit("Idle")
 
 func fireProjectile() -> void:
 	

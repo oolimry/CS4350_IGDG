@@ -16,7 +16,7 @@ func _start() -> void:
 	pass
 
 func _end() -> void:
-	transitionTo.emit("Idle")
+	push_warning("Boss currently perpetually waiting on placeholder state")
 	pass
 	
 # This gets run by the FSM 
