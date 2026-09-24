@@ -4,7 +4,7 @@ extends Node
 
 # Changing damaged to be referenced from the tileset or enemy directly is a bit mafan ngl
 ## Damage dealt to player from environment hazards
-@export var hazardDamage := 2
+@export var hazardDamage := 1
 
 ## Seconds of invuln after hitting hazard
 @export var invulnDuration := 1.0
@@ -13,7 +13,7 @@ var isInvuln := false
 
 @export var shaderAnimator : ShaderAnimator
 
-@export_flags_2d_physics var hazard_mask: int
+@export_flags_2d_physics var hazardMask: int
 signal receiveDamage(damage : int)
 signal receiveKnockback(angle : float)
 
@@ -30,7 +30,7 @@ func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
 	var layers := PhysicsServer2D.body_get_collision_layer(rid)
 	
 	# Check if the target collider is on the "hazard" collision layer
-	if (layers & hazard_mask) == 0:
+	if (layers & hazardMask) == 0:
 		return
 
 	var collider := collision.get_collider()

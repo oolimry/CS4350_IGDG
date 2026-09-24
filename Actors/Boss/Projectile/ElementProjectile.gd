@@ -7,6 +7,7 @@ var movementEqn : ProjectileMovementEquation
 
 ## How many deltas should it take before we the projectile expires
 var ageExpiry := 600 
+const HAZARDMASK := 4
 
 static func create(elementToUse : Enums.Elements,
 	movementEquation : ProjectileMovementEquation) -> ElementProjectile:
@@ -17,6 +18,7 @@ static func create(elementToUse : Enums.Elements,
 	instance = instance as ElementProjectile
 	instance.element = elementToUse
 	instance.movementEqn = movementEquation
+	instance.collision_layer |= HAZARDMASK
 	return instance
 
 func fire(initVelocity : Vector2) -> void:
@@ -32,3 +34,4 @@ func _physics_process(delta: float) -> void:
 	
 	if age > ageExpiry:
 		queue_free.call_deferred()
+		
