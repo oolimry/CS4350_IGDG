@@ -187,6 +187,7 @@ animations = [{
 radius = 30.0
 
 [node name="Element" type="StaticBody2D" unique_id=1394946886]
+z_index = 5
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_k1n6q")
@@ -200,5 +201,3 @@ animation = &"wind"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 visible = false
 shape = SubResource("CircleShape2D_meos5")
-
-[node name="Timer" type="Timer" parent="." unique_id=1123649815]

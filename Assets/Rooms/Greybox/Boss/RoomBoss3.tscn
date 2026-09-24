@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="4_tcbu7"]
 [ext_resource type="Texture2D" uid="uid://cks20qqwdtn52" path="res://Assets/Rooms/Greybox/Boss/Screenshot 2026-09-14 012244.png" id="5_ioqtd"]
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_uq0li"]
+[ext_resource type="Script" uid="uid://btqn0qvf237f5" path="res://Actors/Boss/BossProjFirer.gd" id="7_uq0li"]
 
 [node name="Room Boss1" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_rw5mt")
@@ -39,3 +40,7 @@ texture = ExtResource("5_ioqtd")
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_uq0li")]
 position = Vector2(1900, 980)
 scale = Vector2(0.5, 2.5)
+
+[node name="ProjectileFirer" type="Node2D" parent="." unique_id=773988777]
+position = Vector2(1920, 520)
+script = ExtResource("7_uq0li")
