@@ -37,8 +37,11 @@ func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
 	
 	if !isInvuln:
 		receiveDamage.emit(hazardDamage)
-		receiveKnockback.emit(collision.get_normal())
-		startInvulnPeriod()
+		
+		## TODO: These two lines needa be removed, but removing them
+		## results in the movement glitch
+		# receiveKnockback.emit(collision.get_normal())
+		# startInvulnPeriod()
 
 func startInvulnPeriod() -> void:
 	isInvuln = true
