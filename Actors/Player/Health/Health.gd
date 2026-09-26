@@ -35,3 +35,12 @@ func heal(i : int) -> bool:
 	currHealth = min(maxHealth, currHealth + i)
 	receiveHealing.emit(currHealth)
 	return true
+
+func fullHeal() -> void:
+	currHealth = maxHealth
+	receiveHealing.emit(currHealth)
+
+func wouldKill(i : int) -> bool:
+	if currHealth - i <= 0:
+		return true
+	return false

@@ -33,10 +33,7 @@ func connectPlayer(newPlayer : Player) -> void:
 	if !isSetup:
 		setup(player)
 	
-	player.health.connect("death", playerCoordinator.onPlayerDeath)
-	player.health.connect("hurt", func(damage : int):
-		playerCoordinator.onPlayerHurt.call(player)
-	)
+	player.damageStateHandler.connect("requestRespawn", playerCoordinator.onRespawn)
 
 	hudManager.connectUI(player)
 
@@ -57,9 +54,7 @@ func setup(p : Player) -> void:
 	get_tree().current_scene.add_child.call_deferred(camera)
 	
 	roomManager.roomCamHandler.camera = camera
-	
-	player.health.connect("death", playerCoordinator.onPlayerDeath)
-	
+		
 	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
 	
 func placeAtRoot(n : Node) -> void:
