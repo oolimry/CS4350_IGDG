@@ -17,13 +17,14 @@ static func create(ph: Health) -> HealthBar:
 	
 	return instance
 
-func initHearts(maxHealth : int, currHealth : int):
+@warning_ignore("shadowed_variable")
+func initHearts(maxHealth : int, cHealth : int):
 	var heart
 	for i in range(maxHealth):
 		heart = heartGuiScene.instantiate()
 		heartArray.append(heart)
 		add_child(heart)
-	self.currHealth = currHealth
+	self.currHealth = cHealth
 		
 func healHearts(newHealth : int) -> void:
 	var prevHealth = currHealth
@@ -34,15 +35,12 @@ func healHearts(newHealth : int) -> void:
 func damageHearts(newHealth : int) -> void:
 	var prevHealth = currHealth
 	currHealth = newHealth
-	for i in range(prevHealth- 1, currHealth - 1, -1):
+	for i in range(prevHealth - 1, currHealth - 1, -1):
 		heartArray[i].dmgHeart()
 		
 	return
 
-func fillAllHearts(maxHealth :int) -> void:
-	healHearts(maxHealth)
-
 func registerPlayer(ph: Health) -> void:
 	ph.hurt.connect(damageHearts)
 	ph.receiveHealing.connect(healHearts)
-	fillAllHearts(ph.maxHealth)
+	healHearts(ph.maxHealth)

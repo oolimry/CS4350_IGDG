@@ -63,34 +63,44 @@ func forEachRoomDef(c : Callable) -> void:
 		c.call(r)
 		
 func forEachRoomDefSurrounding(c : Callable, pos: Vector2i, depth := 1, \
-	hashmap := {}) -> void:
+	visited := {}) -> void:
+	
+	if pos in visited:
+		return	
+	
 	var roomDef : RoomDefinition = getRoom(pos)
 	if roomDef == null:
 		return;
-	
-	c.call(roomDef)
-	hashmap[pos] = pos
-	
-	var newDepth = depth - 1
-	
-	if (roomDef.openSides & RoomDefinition.Side.LEFT) && \
-		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.LEFT, hashmap)):
-		forEachRoomDefSurrounding(c, pos - Vector2i(1,0), newDepth, hashmap)
-		
-	if (roomDef.openSides & RoomDefinition.Side.RIGHT) && \
-		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.RIGHT, hashmap)):
-		forEachRoomDefSurrounding(c, pos + Vector2i(1,0), newDepth, hashmap)
-		
-	if roomDef.openSides & RoomDefinition.Side.TOP && \
-		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.TOP, hashmap)):
-		forEachRoomDefSurrounding(c, pos - Vector2i(0,1), newDepth, hashmap)
 
-	if roomDef.openSides & RoomDefinition.Side.BOTTOM && \
-		(newDepth >= 0 || shouldSearchSurrRoom(pos, RoomDefinition.Side.BOTTOM, hashmap)):
-		forEachRoomDefSurrounding(c, pos + Vector2i(0,1), newDepth, hashmap)
+	c.call(roomDef)
+	visited[pos] = pos
+
+	var directions := [
+		{ "side": RoomDefinition.Side.LEFT,   "offset": Vector2i.LEFT },
+		{ "side": RoomDefinition.Side.RIGHT,  "offset": Vector2i.RIGHT },
+		{ "side": RoomDefinition.Side.TOP,    "offset": Vector2i.UP },
+		{ "side": RoomDefinition.Side.BOTTOM, "offset": Vector2i.DOWN },
+	]
+
+	for direction in directions:
+		var side: int = direction.side
+
+		if not (roomDef.openSides & side):
+			continue
+
+		var newDepth := depth - 1
+
+		# `shouldSearchSurrRoom` is only called after the normal depth
+		# allowance has been exhausted.
+		
+		var shouldSearchSurr = shouldSearchSurrRoom(pos, side, visited)
+
+		if newDepth >= 0 or shouldSearchSurr:
+			forEachRoomDefSurrounding(c, pos + direction.offset, 
+				newDepth if !shouldSearchSurr else depth, visited)	
 
 func shouldSearchSurrRoom(pos : Vector2i, roomDirection: RoomDefinition.Side, 
-		hashmap : Dictionary) -> bool:
+		visited : Dictionary) -> bool:
 	var newPos = pos 
 	match roomDirection:
 		RoomDefinition.Side.LEFT:
@@ -104,11 +114,11 @@ func shouldSearchSurrRoom(pos : Vector2i, roomDirection: RoomDefinition.Side,
 	
 	var nextRoomDef = getRoom(newPos) 
 	if nextRoomDef == null:
-		push_error("Empty Room! Likely an open exposed side with no room, like a ceiling")
-		push_error(pos)
+		#push_error("Empty Room! Likely an open exposed side with no room, like a ceiling")
+		#push_error(pos)
 		return false
 		
-	if newPos in hashmap:
+	if newPos in visited:
 		return false
 	
 	if (getRoom(pos).isDiffRoomGroup(nextRoomDef)):

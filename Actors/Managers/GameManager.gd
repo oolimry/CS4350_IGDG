@@ -17,7 +17,7 @@ var isSetup := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	playerCoordinator = PlayerLifecycleCoordinator.new(connectPlayer)
+	playerCoordinator = PlayerBLifecycleCoordinator.new(connectPlayer)
 	roomManager.generateRooms(
 		[playerCoordinator.registerCheckPoint, bossManager.registerBossRoom], 
 	{
@@ -35,14 +35,13 @@ func connectPlayer(newPlayer : Player) -> void:
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	player.health.connect("hurt", func(damage : int):
-		playerCoordinator.onPlayerDeath.call(player)
+		playerCoordinator.onPlayerHurt.call(player)
 	)
 
 	hudManager.connectUI(player)
 
-# TODO: Give HUDManager as a constructor param instead
-func connectBoss(boss : Boss) -> void:
-	persistentActors.add_child(boss)
+func placePersistentObj(object : Node2D) -> void:
+	persistentActors.add_child(object)
 
 func getPlayer() -> Player:
 	return player
@@ -61,8 +60,7 @@ func setup(p : Player) -> void:
 	
 	player.health.connect("death", playerCoordinator.onPlayerDeath)
 	
-	bossManager.setup(connectBoss, hudManager, roomManager)
-
+	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
 	
 func placeAtRoot(n : Node) -> void:
 	get_tree().current_scene.add_child(n)

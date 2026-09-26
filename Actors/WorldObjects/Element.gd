@@ -26,7 +26,6 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	self.visible = false
 	active = false
 	collision_shape.set_deferred("monitoring", false)
-	
 	player.setElement(self.element)
 	
 	var slashDirection = slashParams.get(ScriptConstants.SLASH_DIRECTION_PARAM_NAME, \
@@ -34,3 +33,16 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	
 	if slashDirection == Enums.Directions.DOWN: 
 		player.pogo()
+		
+	if element == Enums.Elements.FIRE:
+		VfxManager.createVFX(VfxManager.FireElementCollectedVFX, self.global_position, {
+			VFXManager_class.Params.PLAYER : player
+		})
+	elif element == Enums.Elements.WIND:
+		VfxManager.createVFX(VfxManager.WindElementCollectedVFX, self.global_position, {
+			VFXManager_class.Params.PLAYER : player
+		})
+	elif element == Enums.Elements.PURPLE:
+		VfxManager.createVFX(VfxManager.PurpleElementCollectedVFX, self.global_position, {
+			VFXManager_class.Params.PLAYER : player
+		})
