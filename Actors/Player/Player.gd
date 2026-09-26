@@ -8,6 +8,7 @@ const inf = 1e9 + 100
 @export var health : Health
 @export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
+var damageStateHandler : DamageStateHandler
 
 enum Directions {
 	NONE,
@@ -90,7 +91,6 @@ const ignitionPadHorizontalBoost = 9000
 const ignitionPadVerticalLock = 240
 const ignitionPadVerticalBoost = 1600
 
-
 ### elemental stuff
 var currentElement : Enums.Elements = Enums.Elements.NONE
 var elementBeforeSlash : Enums.Elements  = Enums.Elements.NONE
@@ -144,10 +144,14 @@ static func create(startingPos : Vector2) -> Player:
 
 func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
+	damageStateHandler = DamageStateHandler.new()
 
 func _ready():
-	hazardHandler.receiveDamage.connect(health.takeDamage)
-	hazardHandler.receiveKnockback.connect(applyKnockback)
+	
+	damageStateHandler.setup(sprite, shaderAnimator, preRespawnHandling,
+		postRespawnHandling, health)
+	damageStateHandler.requestInvuln.connect(hazardHandler.startInvulnPeriod)
+	hazardHandler.hitHazard.connect(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
@@ -553,7 +557,6 @@ func setElement(element : Enums.Elements):
 	elif element == Enums.Elements.WIND:
 		AudioManager.play(AudioManager.WindElementStruck)
 
-
 func isWallSliding():
 	if isOnWall:
 		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
@@ -565,6 +568,17 @@ func isWallSliding():
 func triggerDeath():
 	hazardHandler.receiveDamage.emit(10000)
 
+func preRespawnHandling() -> void:
+	# Do wtv movement pausing code here
+	pass
+
+func postRespawnHandling(respawnPos : Vector2) -> void:
+	setElement(Enums.Elements.NONE)
+	global_position = respawnPos
+	
+	# Do wtv movement unpausing code here
+	
+	
 func _on_sprite_frame_changed():
 	staffTipSprite.frame = sprite.frame
 	staffTipSprite.frame_progress = sprite.frame_progress

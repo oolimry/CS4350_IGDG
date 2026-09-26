@@ -1,3 +1,5 @@
+## This class handles the special case of BossCheckpoint Respawning
+## ontop of normal respawning
 class_name PlayerBLifecycleCoordinator
 extends PlayerLifecycleCoordinator
 
@@ -14,31 +16,18 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 		
 	super.swapActiveCheckPoint(c)
 
-func onPlayerDeath(p : Player):
-	p.queue_free()
-	
-	if currBossRespawnCheckpoint != null:
+func onRespawn(isDead : bool, respawnFunc : Callable) -> void:
+	# Reset BossRoom Checkpoint since the player aint respawning here again	
+	if isDead and currBossRespawnCheckpoint != null:
 		currBossRespawnCheckpoint.isActive = false
 		currBossRespawnCheckpoint = null
-	
-	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
-	playerRespawn.emit(currRespawnCheckpoint.roomPos)
-	newPlayer.shaderAnimator.respawnFadeIn()
-	reconnectPlayer.call(newPlayer)
+		currRespawnCheckpoint = savedNormalRespawnCheckpoint
+		super.onRespawn(isDead, respawnFunc)
+		return
 
-func onPlayerHurt(p : Player):
-	var checkpoint = currBossRespawnCheckpoint
-	
-	if checkpoint == null:
-		checkpoint = currRespawnCheckpoint
-	# Currently the Boss Respawn Checkpoint is active
-	# In this case we want invulnerability
-	elif p.get("hazardHandler") != null:
-		p.hazardHandler.startInvulnPeriod()
+	if currBossRespawnCheckpoint == null:
+		currRespawnCheckpoint = savedNormalRespawnCheckpoint
+		super.onRespawn(isDead, respawnFunc)
+		return
 		
-	p.setElement(Enums.Elements.NONE)	
-	
-	## TODO: Need to find failsafe in case player tries respawning when they have no checkpoint saved
-	p.global_position = checkpoint.global_position
-	playerRespawn.emit(checkpoint.roomPos)
-	p.shaderAnimator.respawnFadeIn()
+	respawnFunc.call(currBossRespawnCheckpoint.global_position, false, true)
