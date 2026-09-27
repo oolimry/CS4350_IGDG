@@ -49,6 +49,7 @@
 [ext_resource type="Resource" uid="uid://cf5s37saurx87" path="res://Assets/Rooms/Greybox/Blue/Room16.tres" id="33_dq56x"]
 [ext_resource type="Resource" uid="uid://b0vramo34mhm7" path="res://Assets/Rooms/Greybox/Blue/Room17.tres" id="34_cpihd"]
 [ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="35_di5tu"]
+[ext_resource type="PackedScene" uid="uid://d1oqf61gk6t67" path="res://Actors/World/BackgroundParallaxes/MainRoomsParallax.tscn" id="50_jifae"]
 
 [sub_resource type="Environment" id="Environment_d6ec5"]
 background_mode = 3
@@ -138,3 +139,5 @@ color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54320991]
 environment = SubResource("Environment_d6ec5")
+
+[node name="MainRoomsParallax" parent="." unique_id=1975145508 instance=ExtResource("50_jifae")]
