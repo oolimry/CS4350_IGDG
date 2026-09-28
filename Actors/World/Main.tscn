@@ -51,6 +51,7 @@
 [ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="35_di5tu"]
 [ext_resource type="Script" uid="uid://cu8glxec5kvdf" path="res://Actors/Managers/BackgroundManager.gd" id="50_dq56x"]
 [ext_resource type="PackedScene" uid="uid://d1oqf61gk6t67" path="res://Actors/World/BackgroundParallaxes/MainRoomsParallax.tscn" id="50_jifae"]
+[ext_resource type="PackedScene" uid="uid://f0cetv04y1wc" path="res://Actors/World/BackgroundParallaxes/BossRoomParallax.tscn" id="51_s64c3"]
 [ext_resource type="PackedScene" uid="uid://c2heqlt15sqyv" path="res://Actors/World/BackgroundParallaxes/RedRoomsParallax.tscn" id="52_cpihd"]
 [ext_resource type="PackedScene" uid="uid://bv77kxhokpcd" path="res://Actors/World/BackgroundParallaxes/TurqRoomsParallax.tscn" id="53_di5tu"]
 [ext_resource type="PackedScene" uid="uid://d4b0jfjmjrmnp" path="res://Actors/World/BackgroundParallaxes/PurpRoomsParallax.tscn" id="54_r2hq1"]
@@ -145,14 +146,17 @@ color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54320991]
 environment = SubResource("Environment_d6ec5")
 
-[node name="BackgroundManager" type="Node" parent="." unique_id=225255953 node_paths=PackedStringArray("main", "red", "blue", "purp")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=225255953 node_paths=PackedStringArray("main", "red", "blue", "purp", "boss")]
 script = ExtResource("50_dq56x")
 main = NodePath("MainRoomsParallax")
 red = NodePath("RedRoomsParallax")
 blue = NodePath("TurqRoomsParallax")
 purp = NodePath("PurpRoomsParallax")
+boss = NodePath("BossRoomParallax")
 
-[node name="MainRoomsParallax" parent="BackgroundManager" unique_id=1975145508 instance=ExtResource("50_jifae")]
+[node name="BossRoomParallax" parent="BackgroundManager" unique_id=1975145508 instance=ExtResource("51_s64c3")]
+
+[node name="MainRoomsParallax" parent="BackgroundManager" unique_id=1914757721 instance=ExtResource("50_jifae")]
 
 [node name="RedRoomsParallax" parent="BackgroundManager" unique_id=272013304 instance=ExtResource("52_cpihd")]
 

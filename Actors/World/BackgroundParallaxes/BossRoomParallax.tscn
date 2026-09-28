@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://f0cetv04y1wc"]
+
+[ext_resource type="Texture2D" uid="uid://iq57c45qo0w4" path="res://Assets/Backgrounds/BossRoomBackground/BossBGFlat-1.png" id="1_2y3fe"]
+[ext_resource type="Texture2D" uid="uid://ddt2vk6544axt" path="res://Assets/Backgrounds/BossRoomBackground/BossBGFlat-2.png" id="2_v4n4n"]
+[ext_resource type="Texture2D" uid="uid://c2wgqaf8qejds" path="res://Assets/Backgrounds/BossRoomBackground/BossBGFlat-3.png" id="3_eyy5r"]
+[ext_resource type="Texture2D" uid="uid://c0bjgq1yvjhlt" path="res://Assets/Backgrounds/BossRoomBackground/BossBGFlat-4.png" id="4_2y3fe"]
+
+[node name="BossRoomParallax" type="Node2D" unique_id=1975145508]
+z_index = -9
+
+[node name="Layer1" type="Parallax2D" parent="." unique_id=1395006205]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer1" unique_id=637459080]
+position = Vector2(960, 540)
+texture = ExtResource("1_2y3fe")
+
+[node name="Layer2" type="Parallax2D" parent="." unique_id=174877436]
+scroll_scale = Vector2(0.02, 0.1)
+scroll_offset = Vector2(-30, 300)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer2" unique_id=606740994]
+position = Vector2(960, 540)
+texture = ExtResource("2_v4n4n")
+
+[node name="Layer3" type="Parallax2D" parent="." unique_id=851384280]
+scroll_scale = Vector2(0.03, 0.15)
+scroll_offset = Vector2(-45, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer3" unique_id=1282351892]
+position = Vector2(960, 540)
+texture = ExtResource("3_eyy5r")
+
+[node name="Layer4" type="Parallax2D" parent="." unique_id=1324195590]
+scroll_scale = Vector2(0.05, 0.3)
+scroll_offset = Vector2(-90, 750)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer4" unique_id=1135017608]
+position = Vector2(960, 540)
+texture = ExtResource("4_2y3fe")

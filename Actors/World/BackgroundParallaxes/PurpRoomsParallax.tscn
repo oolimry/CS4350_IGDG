@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cx6b5sehgop6e" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-3.png" id="3_65yws"]
 [ext_resource type="Texture2D" uid="uid://ceft4u3g2wsnn" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-4.png" id="4_qrjfh"]
 
-[node name="RedRoomsParallax" type="Node2D" unique_id=1975145508]
-z_index = -1
+[node name="PurpRoomsParallax" type="Node2D" unique_id=1975145508]
+z_index = -9
 
 [node name="Layer1" type="Parallax2D" parent="." unique_id=1395006205]
 scroll_scale = Vector2(0, 0)
