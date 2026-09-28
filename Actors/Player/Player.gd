@@ -104,8 +104,8 @@ const windHorizontalDashDuration = 0.20
 const cutoffToStopGivingBoost = 0.084 # 4 frames
 
 ## purple movement related
-const purupleHorizontalSpeed = 4000
-const purpleVerticalSpeed = 2000
+const purupleHorizontalSpeed = 1600
+const purpleVerticalSpeed = 1600
 var purpleDashDirection : Enums.Directions = Enums.Directions.NONE
 var timeSincePurpleSlashing = 0.0
 const purpleWindUpDuration = 0.25

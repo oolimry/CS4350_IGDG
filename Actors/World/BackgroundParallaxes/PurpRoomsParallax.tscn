@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://d4b0jfjmjrmnp"]
+
+[ext_resource type="Texture2D" uid="uid://crfyxlw2vcvfc" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-1.png" id="1_mj5ls"]
+[ext_resource type="Texture2D" uid="uid://3wqkldh1adpo" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-2.png" id="2_hfcrr"]
+[ext_resource type="Texture2D" uid="uid://cx6b5sehgop6e" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-3.png" id="3_65yws"]
+[ext_resource type="Texture2D" uid="uid://ceft4u3g2wsnn" path="res://Assets/Backgrounds/PurpBackground/PurpBGFlat-4.png" id="4_qrjfh"]
+
+[node name="RedRoomsParallax" type="Node2D" unique_id=1975145508]
+z_index = -1
+
+[node name="Layer1" type="Parallax2D" parent="." unique_id=1395006205]
+scroll_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer1" unique_id=637459080]
+position = Vector2(960, 540)
+texture = ExtResource("1_mj5ls")
+
+[node name="Layer2" type="Parallax2D" parent="." unique_id=174877436]
+scroll_scale = Vector2(0.04, 0.02)
+scroll_offset = Vector2(20, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer2" unique_id=606740994]
+position = Vector2(960, 540)
+texture = ExtResource("2_hfcrr")
+
+[node name="Layer3" type="Parallax2D" parent="." unique_id=851384280]
+scroll_scale = Vector2(0.06, 0.04)
+scroll_offset = Vector2(160, 120)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer3" unique_id=1282351892]
+position = Vector2(960, 540)
+texture = ExtResource("3_65yws")
+
+[node name="Layer4" type="Parallax2D" parent="." unique_id=1324195590]
+scroll_scale = Vector2(0.09, 0.06)
+scroll_offset = Vector2(240, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer4" unique_id=1135017608]
+position = Vector2(960, 540)
+texture = ExtResource("4_qrjfh")

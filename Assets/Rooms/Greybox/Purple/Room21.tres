@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_nuqq1")
 roomName = "Room21"
+roomArea = 3
 doesCameraFollow = true
 cameraLimits = 5
 gridPos = Vector2i(2, 3)

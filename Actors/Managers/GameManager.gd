@@ -6,6 +6,8 @@ extends Node
 
 @export var roomManager : RoomManager
 
+@export var bgManager : BackgroundManager
+
 @export var persistentActors : Node2D
 
 var playerCoordinator : PlayerLifecycleCoordinator
@@ -56,6 +58,8 @@ func setup(p : Player) -> void:
 	roomManager.roomCamHandler.camera = camera
 		
 	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
+	
+	roomManager.connect("playerChangedRoom", Callable(bgManager, "swapTo"))
 	
 func placeAtRoot(n : Node) -> void:
 	get_tree().current_scene.add_child(n)

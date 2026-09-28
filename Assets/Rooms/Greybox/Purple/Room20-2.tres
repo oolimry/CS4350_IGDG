@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_tblur")
 roomName = "Room20-2"
+roomArea = 3
 doesCameraFollow = true
 cameraLimits = 14
 gridPos = Vector2i(3, 2)

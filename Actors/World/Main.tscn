@@ -49,7 +49,11 @@
 [ext_resource type="Resource" uid="uid://cf5s37saurx87" path="res://Assets/Rooms/Greybox/Blue/Room16.tres" id="33_dq56x"]
 [ext_resource type="Resource" uid="uid://b0vramo34mhm7" path="res://Assets/Rooms/Greybox/Blue/Room17.tres" id="34_cpihd"]
 [ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="35_di5tu"]
+[ext_resource type="Script" uid="uid://cu8glxec5kvdf" path="res://Actors/Managers/BackgroundManager.gd" id="50_dq56x"]
 [ext_resource type="PackedScene" uid="uid://d1oqf61gk6t67" path="res://Actors/World/BackgroundParallaxes/MainRoomsParallax.tscn" id="50_jifae"]
+[ext_resource type="PackedScene" uid="uid://c2heqlt15sqyv" path="res://Actors/World/BackgroundParallaxes/RedRoomsParallax.tscn" id="52_cpihd"]
+[ext_resource type="PackedScene" uid="uid://bv77kxhokpcd" path="res://Actors/World/BackgroundParallaxes/TurqRoomsParallax.tscn" id="53_di5tu"]
+[ext_resource type="PackedScene" uid="uid://d4b0jfjmjrmnp" path="res://Actors/World/BackgroundParallaxes/PurpRoomsParallax.tscn" id="54_r2hq1"]
 
 [sub_resource type="Environment" id="Environment_d6ec5"]
 background_mode = 3
@@ -62,8 +66,9 @@ glow_hdr_threshold = 2.0
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 
-[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "persistentActors", "bossManager") instance=ExtResource("1_i87mu")]
+[node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "bgManager", "persistentActors", "bossManager") instance=ExtResource("1_i87mu")]
 roomManager = NodePath("../RoomManager")
+bgManager = NodePath("../BackgroundManager")
 persistentActors = NodePath("../PersistentPlayer")
 bossManager = NodePath("BossManager")
 
@@ -140,4 +145,17 @@ color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54320991]
 environment = SubResource("Environment_d6ec5")
 
-[node name="MainRoomsParallax" parent="." unique_id=1975145508 instance=ExtResource("50_jifae")]
+[node name="BackgroundManager" type="Node" parent="." unique_id=225255953 node_paths=PackedStringArray("main", "red", "blue", "purp")]
+script = ExtResource("50_dq56x")
+main = NodePath("MainRoomsParallax")
+red = NodePath("RedRoomsParallax")
+blue = NodePath("TurqRoomsParallax")
+purp = NodePath("PurpRoomsParallax")
+
+[node name="MainRoomsParallax" parent="BackgroundManager" unique_id=1975145508 instance=ExtResource("50_jifae")]
+
+[node name="RedRoomsParallax" parent="BackgroundManager" unique_id=272013304 instance=ExtResource("52_cpihd")]
+
+[node name="TurqRoomsParallax" parent="BackgroundManager" unique_id=2031530585 instance=ExtResource("53_di5tu")]
+
+[node name="PurpRoomsParallax" parent="BackgroundManager" unique_id=1130000653 instance=ExtResource("54_r2hq1")]
