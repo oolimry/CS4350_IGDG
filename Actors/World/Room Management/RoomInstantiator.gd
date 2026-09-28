@@ -48,8 +48,9 @@ func freeRoom(roomPos : Vector2i) -> void:
 	# TODO: Add check for whether there's something impt in the room 
 	# (i.e. ongoing bomb timer)
 	worldStateOwner.snapshotRoom(room)
-	loadedRooms.erase(roomPos)
-	room.queue_free()
+	if room.isSafeToFree():
+		loadedRooms.erase(roomPos)
+		room.queue_free()
 
 func restoreSnapshot(roomPos : Vector2i) -> void:
 	if loadedRooms.has(roomPos):

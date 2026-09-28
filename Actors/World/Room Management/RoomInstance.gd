@@ -126,7 +126,6 @@ func restoreSnapshotLoaded(objectInstantiator : Callable, roomSnapshot: Dictiona
 	for n in objectsToAdd:
 		roomResidentsHolder.add_child.call_deferred(n)
 
-	
 ## Restore Snapshot for a Newly Loaded Room[br]
 ## In this case the children under roomResidentHolder will be the same as the
 ## oriRoomResidents
@@ -165,14 +164,17 @@ func restoreSnapshotJustLoaded(objectInstantiator : Callable, roomSnapshot: Dict
 		roomResidentsHolder.add_child(n)
 
 func isSafeToFree() -> bool:
-	for n in roomResidentsHolder.get_children():
-		var rr : RoomResident = n.roomResident
-		assert(rr != null)
-		
-		if rr.shouldAlwaysReset:
-			continue
-		
-		if !rr.isSafeToFree:
+	#for n in roomResidentsHolder.get_children():
+		#var rr : RoomResident = n.roomResident
+		#assert(rr != null)
+		#
+		#if rr.shouldAlwaysReset:
+			#continue
+		#
+		#if !rr.isSafeToFree:
+			#return false
+	for n in get_children():
+		if n.has_method("isSafeToUnload") and not n.isSafeToUnload:
 			return false
 	return true
 	
