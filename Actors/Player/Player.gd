@@ -8,7 +8,7 @@ const inf = 1e9 + 100
 @export var health : Health
 @export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
-var damageStateHandler : DamageStateHandler
+@export var damageStateHandler : DamageStateHandler
 enum Directions {
 	NONE,
 	LEFT,
@@ -143,12 +143,10 @@ static func create(startingPos : Vector2) -> Player:
 
 func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
-	damageStateHandler = DamageStateHandler.new()
 
 func _ready():
-	damageStateHandler = DamageStateHandler.new()
-	damageStateHandler.setup(sprite, shaderAnimator, preRespawnHandling,
-		postRespawnHandling, hazardHandler.startInvulnPeriod, health)
+	damageStateHandler.setup(shaderAnimator, preRespawnHandling,
+		postRespawnHandling, hazardHandler.startInvulnPeriod)
 	hazardHandler.setup(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0

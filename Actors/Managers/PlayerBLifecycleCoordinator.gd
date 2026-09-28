@@ -16,18 +16,19 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 		
 	super.swapActiveCheckPoint(c)
 
-func onRespawn(isDead : bool, respawnFunc : Callable) -> void:
+func onRespawn(isDead : bool, dmgStateHandler : DamageStateHandler) -> void:
 	# Reset BossRoom Checkpoint since the player aint respawning here again	
 	if isDead and currBossRespawnCheckpoint != null:
 		currBossRespawnCheckpoint.isActive = false
 		currBossRespawnCheckpoint = null
 		currRespawnCheckpoint = savedNormalRespawnCheckpoint
-		super.onRespawn(isDead, respawnFunc)
+		super.onRespawn(isDead, dmgStateHandler)
 		return
 
 	if currBossRespawnCheckpoint == null:
 		currRespawnCheckpoint = savedNormalRespawnCheckpoint
-		super.onRespawn(isDead, respawnFunc)
+		super.onRespawn(isDead, dmgStateHandler)
 		return
-		
-	respawnFunc.call(currBossRespawnCheckpoint.global_position, false, true)
+	
+	dmgStateHandler.postRespawnHandling(currBossRespawnCheckpoint.global_position, 
+		false, true)

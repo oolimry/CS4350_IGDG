@@ -117,6 +117,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8b8jr2ju4d6" path="res://Assets/Player/StaffTip/SlashUp/frame_2.png" id="102_7lbtg"]
 [ext_resource type="Texture2D" uid="uid://cqvei3n50sbfx" path="res://Assets/Player/StaffTip/SlashUp/frame_3.png" id="103_aiqj5"]
 [ext_resource type="Texture2D" uid="uid://bxst0bb7verx2" path="res://Assets/Player/StaffTip/SlashUp/frame_4.png" id="104_oh32w"]
+[ext_resource type="Script" uid="uid://ldkld306k2j6" path="res://Actors/Player/PlayerDamageStateHandler.gd" id="118_aiqj5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_okknf"]
 light_mode = 1
@@ -658,13 +659,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgaxv"]
 size = Vector2(32, 66)
 
-[node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler")]
+[node name="Player" type="CharacterBody2D" unique_id=1817445677 node_paths=PackedStringArray("health", "shaderAnimator", "hazardHandler", "damageStateHandler")]
 collision_layer = 33
 collision_mask = 182
 script = ExtResource("1_4x03u")
 health = NodePath("Health")
 shaderAnimator = NodePath("ShaderAnimator")
 hazardHandler = NodePath("HazardHandler")
+damageStateHandler = NodePath("DamageStateHandler")
 terminalVelocity = 800
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1100759629]
@@ -752,6 +754,11 @@ hazardMask = 4
 [node name="ShaderAnimator" type="Node" parent="." unique_id=477373721 node_paths=PackedStringArray("playerSprite")]
 script = ExtResource("7_rsi04")
 playerSprite = NodePath("../Sprite2D")
+
+[node name="DamageStateHandler" type="Node" parent="." unique_id=231384226 node_paths=PackedStringArray("sprite", "playerHealth")]
+script = ExtResource("118_aiqj5")
+sprite = NodePath("../Sprite2D")
+playerHealth = NodePath("../Health")
 
 [connection signal="animation_changed" from="Sprite2D" to="." method="_on_sprite_animation_changed"]
 [connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_frame_changed"]

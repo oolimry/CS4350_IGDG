@@ -23,18 +23,18 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	projTimer = dependencies["projTimer"]
 	projFirer = dependencies["projFirer"]
 	durationTimer = dependencies["durationTimer"]
-	
-	durationTimer.timeout.connect(_end)
-	projTimer.timeout.connect(burstFireProjectile)
-	
+		
 	straightMovement = ProjectileMovementStraightLine.new()
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
 
+func _start() -> void:	
+	durationTimer.timeout.connect(_end)
+	projTimer.timeout.connect(burstFireProjectile)
 
-func _start() -> void:
 	durationTimer.start(duration)
 	burstFireProjectile()
+	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
 	pass
 
 # This gets run by the FSM 
@@ -50,6 +50,10 @@ func burstFireProjectile() -> void:
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
+	
+	durationTimer.timeout.disconnect(_end)
+	projTimer.timeout.disconnect(burstFireProjectile)
+	
 	durationTimer.stop()
 	projTimer.stop()
 	transitionTo.emit("Idle")

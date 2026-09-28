@@ -4,7 +4,7 @@ extends Node
 
 # Changing damaged to be referenced from the tileset or enemy directly is a bit mafan ngl
 ## Damage dealt to player from hazards
-@export var hazardDmg := 1
+@export var hazardDamage := 1
 
 ## Seconds of invuln after hitting hazard
 @export var invulnDuration := 1.0
@@ -38,13 +38,15 @@ func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
 
 	var collider := collision.get_collider()
 	
-
+	isInvuln = true
+	
 	if collider is TileMapLayer:
 		hitHazard.call(hazardDamage, true)
 	## otherwise damage the player normally
 	else:
-		hitHazard.call(hazardDamage, false)
 		collider.queue_free()
+		hitHazard.call(hazardDamage, false)
+		
 
 
 # This invuln func is called by Lifecycle on respawning.

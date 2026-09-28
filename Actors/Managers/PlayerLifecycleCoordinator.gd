@@ -25,8 +25,8 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 	savedNormalRespawnCheckpoint = c
 	c.isActive = true
 
-func onRespawn(isDead : bool, respawnFunc : Callable) -> void:
-	respawnFunc.call(currRespawnCheckpoint.global_position)
+func onRespawn(isDead : bool, dmgStateHandler : DamageStateHandler) -> void:
+	dmgStateHandler.postRespawnHandling(currRespawnCheckpoint.global_position)
 
 ####################### Setup code ######################
 
