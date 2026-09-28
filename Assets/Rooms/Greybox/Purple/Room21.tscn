@@ -4,7 +4,13 @@
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_8j5oy"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_c4n45"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_51qnq"]
-[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_bbdp3"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="5_36114"]
+[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_d4t4u"]
+[ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_yyckv"]
+[ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_yyckv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cgrj"]
+size = Vector2(320, 320)
 
 [node name="Room 21" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_ivtau")
@@ -17,6 +23,7 @@ collision_enabled = false
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
 position = Vector2(1920, 0)
+tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("2_8j5oy")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=298465667]
@@ -31,5 +38,35 @@ position = Vector2(960, 560)
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
 
-[node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_bbdp3")]
-position = Vector2(256, 301)
+[node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
+position = Vector2(160, 200)
+script = ExtResource("5_36114")
+reference_texture = ExtResource("6_yyckv")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
+position = Vector2(40, 0)
+shape = SubResource("RectangleShape2D_4cgrj")
+
+[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_d4t4u")]
+position = Vector2(1080, 700)
+scale = Vector2(21, 9.5)
+
+[node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_yyckv")]
+position = Vector2(160, 200)
+element = 3
+
+[node name="Element2" parent="." unique_id=32708868 instance=ExtResource("8_yyckv")]
+position = Vector2(1520, 160)
+element = 3
+
+[node name="Element3" parent="." unique_id=531964413 instance=ExtResource("8_yyckv")]
+position = Vector2(160, 440)
+element = 2
+
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

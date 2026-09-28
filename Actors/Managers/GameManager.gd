@@ -57,6 +57,8 @@ func setup(p : Player) -> void:
 		
 	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
 	
+	roomManager.connect("playerChangedRoom", Callable(bgManager, "swapTo"))
+	
 func placePersistentObj(n : Node2D, child_name: StringName = "") -> Node2D:
 	if child_name == "":
 		persistentActors.add_child(n)
