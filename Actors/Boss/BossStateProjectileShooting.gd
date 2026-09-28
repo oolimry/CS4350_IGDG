@@ -1,4 +1,4 @@
-class_name BossStateProjectile
+class_name BossStateProjectileShooting
 extends BossState
 
 ## How often the projectiles should fire in seconds
@@ -30,6 +30,7 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	straightMovement = ProjectileMovementStraightLine.new()
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
+
 
 func _start() -> void:
 	durationTimer.start(duration)

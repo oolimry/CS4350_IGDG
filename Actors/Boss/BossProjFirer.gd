@@ -12,9 +12,13 @@ func fireProjectile(p : ElementProjectile, dirInDegrees : float) -> void:
 	var vectorDirection = degreesToVector(dirInDegrees)
 	
 	p.fire(vectorDirection)
+	p.add_to_group("BossProjectiles", false)
+	addTopersistentActors.call(p, "BossProjectiles")
 	
-	addTopersistentActors.call(p)
-
+	
 func degreesToVector(degrees: float) -> Vector2:
 	var radians = deg_to_rad(degrees)
 	return Vector2(cos(radians), sin(radians))
+
+func clearProjectiles() -> void:
+	get_tree().call_group("BossProjectiles", "queue_free")

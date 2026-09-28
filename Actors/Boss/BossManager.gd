@@ -26,11 +26,12 @@ func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager,
 
 func handlePlayerEntry(_playerEntry : StringName) -> void:
 	if boss == null and !isBossKilled:		
-		bProjFirer.setup(func(n : Node): placePersistent.call_deferred(n))
+		bProjFirer.setup(func(n : Node, containerName : StringName): 
+			placePersistent.call_deferred(n, containerName))
 		setupBoss()
 		
 		hudManager.add_child(bHealthbar)
-		hudManager.showHealthBar()
+		hudManager.hideHealthBar(false)
 		currBossUniversalCheckpoint.checkPointReached.emit(
 			currBossUniversalCheckpoint
 		)
@@ -58,8 +59,10 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 	if bHealthbar:
 		bHealthbar.queue_free()
 		bHealthbar = null
-
+	
+	hudManager.hideHealthBar(true)
 	isBossKilled = hasBeenKilled
+	bProjFirer.clearProjectiles()
 
 ##################### Boss Spawn Trigger setup #######################
 func registerBossRoom(_rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
@@ -81,3 +84,4 @@ func _registerBossRoom(c : Node) -> void:
 func checkPlayerStillSeeingBoss(room : RoomDefinition) -> void:
 	if boss != null and room.roomGroup != RoomDefinition.BIGROOMGROUP.BOSS:
 		cleanupBoss(false)
+		

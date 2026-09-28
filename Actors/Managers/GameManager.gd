@@ -40,8 +40,6 @@ func connectPlayer(newPlayer : Player) -> void:
 
 	hudManager.connectUI(player)
 
-func placePersistentObj(object : Node2D) -> void:
-	persistentActors.add_child(object)
 
 func getPlayer() -> Player:
 	return player
@@ -62,5 +60,18 @@ func setup(p : Player) -> void:
 	
 	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
 	
-func placeAtRoot(n : Node) -> void:
-	get_tree().current_scene.add_child(n)
+func placePersistentObj(n : Node2D, child_name: StringName = "") -> Node2D:
+	if child_name == "":
+		persistentActors.add_child(n)
+		return n
+	
+	var child := persistentActors.get_node_or_null(NodePath(child_name)) as Node2D
+	
+	if child == null:
+		child = Node2D.new()
+		child.name = child_name
+		persistentActors.add_child(child)
+		
+	child.add_child(n)
+	return child
+	

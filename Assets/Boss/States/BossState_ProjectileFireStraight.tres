@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BossStateProjectile" format=3 uid="uid://b48siyfp584tt"]
 
-[ext_resource type="Script" uid="uid://b27tm1xj05vqn" path="res://Actors/Boss/BossStateProjectile.gd" id="1_x74gj"]
+[ext_resource type="Script" uid="uid://b27tm1xj05vqn" path="res://Actors/Boss/BossStateProjectileShooting.gd" id="1_x74gj"]
 
 [resource]
 script = ExtResource("1_x74gj")

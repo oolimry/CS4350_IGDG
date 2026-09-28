@@ -46,5 +46,5 @@ func _process(_delta: float) -> void:
 		if newIsDebugOpen:
 			debugConsole.grab_focus()
 
-func showHealthBar() -> void:
-	healthbar.show()
+func hideHealthBar(isHidden := true) -> void:
+	healthbar.show() if !isHidden else healthbar.hide() 
