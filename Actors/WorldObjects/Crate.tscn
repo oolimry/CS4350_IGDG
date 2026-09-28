@@ -12,7 +12,7 @@ objectName = &"Crate"
 shouldAlwaysReset = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
-size = Vector2(80, 63)
+size = Vector2(79, 63)
 
 [node name="Crate" type="RigidBody2D" unique_id=33089325]
 collision_layer = 26
