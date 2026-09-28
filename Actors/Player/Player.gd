@@ -230,7 +230,13 @@ func _physics_process_playerMovement(delta):
 		if timeSinceOnFloor < lateJumpBuffer:
 			AudioManager.play(AudioManager.Jump)
 			hasBrokenJump = false
-			velocity.y = -jumpSpeed
+			var collision = get_last_slide_collision()
+			if collision != null:
+				var floor_body = collision.get_collider()
+				if floor_body is RigidBody2D:
+					velocity.y = -jumpSpeed - floor_body.linear_velocity.y
+				else:
+					velocity.y = -jumpSpeed
 			velocity.x += jumpXBoost * sign(velocity.x)
 			timeSincePressJump = inf
 			timeSinceOnFloor = inf
