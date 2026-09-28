@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0fmxo08o0hw" path="res://Assets/Backgrounds/MiddleRoomBackground/MiddleBGFlat-4.png" id="4_xlgws"]
 
 [node name="MainRoomsParallax" type="Node2D" unique_id=1975145508]
-z_index = -1
+z_index = -9
 
 [node name="Layer1" type="Parallax2D" parent="." unique_id=1395006205]
 scroll_scale = Vector2(0, 0)
