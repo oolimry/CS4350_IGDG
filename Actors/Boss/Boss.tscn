@@ -162,8 +162,8 @@ scale = Vector2(0.6, 0.6)
 
 [node name="BossFootR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1041100193]
 position = Vector2(-573.40137, 1186.9006)
-rotation = -0.012234995
-scale = Vector2(0.9999161, 0.9999161)
+rotation = -0.012234994
+scale = Vector2(0.9999159, 0.9999159)
 texture = ExtResource("1_gagxu")
 offset = Vector2(573, -1156)
 
@@ -286,11 +286,11 @@ metadata/_local_pose_override_enabled_ = true
 [node name="FootR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=1238437744]
 position = Vector2(1298.0273, 1011.9721)
 rotation = -0.011777705
-scale = Vector2(0.99992055, 0.99992055)
+scale = Vector2(0.9999204, 0.9999204)
 rest = Transform2D(0.9998512, -0.011776497, 0.011776497, 0.9998512, 1298.0273, 1011.9721)
 auto_calculate_length_and_angle = false
 length = 648.645
-bone_angle = 113.683784
+bone_angle = 113.68377
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR" unique_id=1470867022]
@@ -429,8 +429,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL" unique_id=1826379377]
 position = Vector2(596.0028, 1223.0107)
-rotation = 0.086148955
-scale = Vector2(0.9999938, 0.9999938)
+rotation = 0.08614896
+scale = Vector2(0.9999937, 0.9999937)
 rest = Transform2D(0.9962853, 0.086041905, -0.086041905, 0.9962853, 596.0028, 1223.0107)
 auto_calculate_length_and_angle = false
 length = 1024.0

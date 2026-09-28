@@ -90,6 +90,7 @@ script = ExtResource("1_uem5w")
 direction = 3
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=824924353]
+z_index = 1
 rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_uem5w")

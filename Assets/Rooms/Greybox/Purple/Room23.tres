@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_dvc4j")
 roomName = "Room23"
+roomArea = 3
 gridPos = Vector2i(4, 4)
 gamePlayScene = ExtResource("1_3iiuj")
 openSides = 15

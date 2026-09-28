@@ -36,4 +36,3 @@ func _physics_process(delta: float) -> void:
 	
 	if age > ageExpiry:
 		queue_free.call_deferred()
-		

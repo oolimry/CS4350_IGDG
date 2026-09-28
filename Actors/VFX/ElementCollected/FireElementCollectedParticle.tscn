@@ -5,8 +5,10 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
 blend_mode = 1
+light_mode = 1
 
 [node name="FireElementCollectedParticle" type="Sprite2D" unique_id=1148241990]
+modulate = Color(1.0091805, 1.0091805, 1.0091805, 1)
 z_index = 500
 material = SubResource("CanvasItemMaterial_5iyrj")
 scale = Vector2(1.5, 1.5)

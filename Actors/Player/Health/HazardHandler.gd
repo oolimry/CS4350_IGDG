@@ -3,8 +3,8 @@ class_name HazardHandler
 extends Node
 
 # Changing damaged to be referenced from the tileset or enemy directly is a bit mafan ngl
-## Damage dealt to player from environment hazards
-@export var hazardDamage := 1
+## Damage dealt to player from hazards
+@export var hazardDmg := 1
 
 ## Seconds of invuln after hitting hazard
 @export var invulnDuration := 1.0
@@ -15,7 +15,7 @@ var isMonitoringActive := true
 
 @export_flags_2d_physics var hazardMask: int
 
-var hitHazard;
+var hitHazard : Callable;
 signal receiveKnockback(angle : float)
 
 func setup(onHazard : Callable) -> void:

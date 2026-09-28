@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_njesc")
 roomName = "Room21-4"
+roomArea = 3
 doesCameraFollow = true
 cameraLimits = 10
 gridPos = Vector2i(3, 4)

@@ -16,18 +16,17 @@ size = Vector2(80, 160)
 [sub_resource type="Resource" id="Resource_45086"]
 resource_local_to_scene = true
 script = ExtResource("8_fw1pf")
-oriCoords = Vector2(1100, 300)
-persistentID = &"f0eefd46-d710-46b5-9fb5-aad99352f3a7"
+oriCoords = Vector2(1080, 120)
+persistentID = &"4e58df3e-d857-405e-89b7-0dcec18566c6"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_fw1pf"]
 resource_local_to_scene = true
 script = ExtResource("8_fw1pf")
-oriCoords = Vector2(1120, 360)
-persistentID = &"065e6724-25d9-4474-80fa-4ef8856151a0"
+oriCoords = Vector2(1080, 220)
+persistentID = &"a086e50c-be7f-4c98-83d7-7c2d14a8b569"
 objectName = &"Crate"
-shouldAlwaysReset = true
 
 [node name="Room 12" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_exmoo")

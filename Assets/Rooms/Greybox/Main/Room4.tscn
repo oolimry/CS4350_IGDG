@@ -55,13 +55,11 @@ collision_enabled = false
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_fmf2v")]
 position = Vector2(1240, 480)
 attached_crate = NodePath("../Crate")
-shouldDestructionPersist = false
 roomResident = SubResource("Resource_fmf2v")
 
 [node name="Chain2" parent="RoomResidents" unique_id=454203203 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_fmf2v")]
 position = Vector2(1320, 480)
 attached_crate = NodePath("../Crate2")
-shouldDestructionPersist = false
 roomResident = SubResource("Resource_q3pc5")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("8_q3pc5")]
