@@ -15,30 +15,30 @@
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
 oriCoords = Vector2(560, 120)
-persistentID = &"40284d91-cef0-4986-a829-12b3e84425c7"
+persistentID = &"e7f4db5c-1bdf-4f83-838e-096d07a4fde0"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_yh1bj"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
-oriCoords = Vector2(1200, 360)
-persistentID = &"866e95fb-3102-457f-ba74-1ec93703f3f9"
+oriCoords = Vector2(1200, 800)
+persistentID = &"bbe93c5e-f933-4fb6-a3a2-9ec2b71a92fa"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_h8k2f"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
-oriCoords = Vector2(560, 240)
-persistentID = &"9c3fb446-e296-4038-a614-b234bb2b1451"
+oriCoords = Vector2(560, 220)
+persistentID = &"1dd5bc0f-f2c6-42a3-81e2-7fb45b3f0051"
 objectName = &"Crate"
 
 [sub_resource type="Resource" id="Resource_56t34"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
-oriCoords = Vector2(1200, 480)
-persistentID = &"96e6b339-1ea3-40a0-864c-1669d88d4297"
+oriCoords = Vector2(1200, 900)
+persistentID = &"62d11f0a-6c29-43e4-ac8f-3ec66bb2cfd4"
 objectName = &"Crate"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56t34"]

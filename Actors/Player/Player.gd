@@ -8,6 +8,7 @@ const inf = 1e9 + 100
 @export var health : Health
 @export var shaderAnimator : ShaderAnimator
 @export var hazardHandler : HazardHandler
+var damageStateHandler : DamageStateHandler
 
 enum Directions {
 	NONE,
@@ -18,6 +19,7 @@ enum Directions {
 }
 
 @onready var sprite = $Sprite2D
+@onready var staffTipSprite = $StaffTipSprite
 @onready var leftSlashHitbox = $LeftSlashHitbox
 @onready var rightSlashHitbox = $RightSlashHitbox
 @onready var downSlashHitbox = $DownSlashHitbox
@@ -89,9 +91,9 @@ const ignitionPadHorizontalBoost = 9000
 const ignitionPadVerticalLock = 240
 const ignitionPadVerticalBoost = 1600
 
-
 ### elemental stuff
 var currentElement : Enums.Elements = Enums.Elements.NONE
+var elementBeforeSlash : Enums.Elements  = Enums.Elements.NONE
 
 ## wind movement related
 const windHorizontalBoost = 1500 * 60
@@ -142,21 +144,26 @@ static func create(startingPos : Vector2) -> Player:
 
 func _init():
 	printt("TIME after Map Renderer done with _init", Time.get_ticks_msec())
+	damageStateHandler = DamageStateHandler.new()
 
 func _ready():
-	hazardHandler.receiveDamage.connect(health.takeDamage)
-	hazardHandler.receiveKnockback.connect(applyKnockback)
+	
+	damageStateHandler.setup(sprite, shaderAnimator, preRespawnHandling,
+		postRespawnHandling, health)
+	damageStateHandler.requestInvuln.connect(hazardHandler.startInvulnPeriod)
+	hazardHandler.hitHazard.connect(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
 	
-func _physics_process(delta: float) -> void:	
+
+func _physics_process(delta: float) -> void:
 	_physics_process_playerMovement(delta)
 	
 	_physics_process_slash(delta)
 		
 	_physics_process_updateVisuals()
-	
+
 func _physics_process_playerMovement(delta):
 	if isPurpleDashing:
 		physics_process_playerMovement_purple(delta)
@@ -349,6 +356,7 @@ func _physics_process_slash(delta):
 		return
 	
 	AudioManager.play(AudioManager.SlashNeutral)
+	elementBeforeSlash = currentElement
 		
 	timeSincePressSlash = inf
 	timeSinceSlash = 0.0
@@ -389,7 +397,6 @@ func _physics_process_slash(delta):
 		elif slashDirection == Enums.Directions.LEFT:
 			leftSlashHitbox.appear(self)
 			sprite.play("purpleSlashSide")
-		
 		
 		currentElement = Enums.Elements.NONE
 		return
@@ -440,18 +447,38 @@ func _physics_process_slash(delta):
 func _physics_process_updateVisuals():
 	if Input.is_action_pressed("right"):
 		sprite.flip_h = false
+		staffTipSprite.flip_h = false
 	if Input.is_action_pressed("left"):
 		sprite.flip_h = true
-		
+		staffTipSprite.flip_h = true
+	
+	var staffTipColor =  Color.TRANSPARENT
+	var staffTipHDR = 0.0
+	
+	var element = currentElement
 	## Elements
-	if currentElement == Enums.Elements.NONE:
-		sprite.material.set_shader_parameter("modulate", Color.WHITE)
-	elif currentElement == Enums.Elements.WIND:
-		sprite.material.set_shader_parameter("modulate", Color.PALE_TURQUOISE)
-	elif currentElement == Enums.Elements.FIRE:
-		sprite.material.set_shader_parameter("modulate", Color.FIREBRICK)
-	elif currentElement == Enums.Elements.PURPLE:
-		sprite.material.set_shader_parameter("modulate", Color.REBECCA_PURPLE)
+	if sprite.is_playing() and sprite.animation in \
+		["slashUp", "slashSide", "slashDown"] and element == Enums.Elements.NONE:
+			element = elementBeforeSlash
+			
+	if isPurpleDashing:
+		element = Enums.Elements.PURPLE
+	
+	if element == Enums.Elements.NONE:
+		staffTipColor = Color.TRANSPARENT
+		staffTipHDR = 0.0
+	elif element == Enums.Elements.WIND:
+		staffTipColor = Color(0.45, 0.74, 0.74)
+		staffTipHDR = 3.5
+	elif element == Enums.Elements.FIRE:
+		staffTipColor = Color(0.60, 0.2, 0.05)
+		staffTipHDR = 6.0
+	elif element == Enums.Elements.PURPLE:
+		staffTipColor = Color(0.64, 0.05, 0.64)
+		staffTipHDR = 4.5
+		
+	staffTipSprite.material.set_shader_parameter("recolor", staffTipColor)
+	staffTipSprite.material.set_shader_parameter("hdrBrightness", staffTipHDR)
 		
 	## Animation
 	var showWallSlideAnimation = isWallSliding()
@@ -479,6 +506,9 @@ func _physics_process_updateVisuals():
 			sprite.play("rising")
 		else:
 			sprite.play("falling")
+	
+	
+	
 		
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
@@ -527,7 +557,6 @@ func setElement(element : Enums.Elements):
 	elif element == Enums.Elements.WIND:
 		AudioManager.play(AudioManager.WindElementStruck)
 
-
 func isWallSliding():
 	if isOnWall:
 		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
@@ -538,3 +567,23 @@ func isWallSliding():
 
 func triggerDeath():
 	hazardHandler.receiveDamage.emit(10000)
+
+func preRespawnHandling() -> void:
+	# Do wtv movement pausing code here
+	pass
+
+func postRespawnHandling(respawnPos : Vector2) -> void:
+	setElement(Enums.Elements.NONE)
+	global_position = respawnPos
+	
+	# Do wtv movement unpausing code here
+	
+	
+func _on_sprite_frame_changed():
+	staffTipSprite.frame = sprite.frame
+	staffTipSprite.frame_progress = sprite.frame_progress
+
+func _on_sprite_animation_changed():
+	staffTipSprite.animation = sprite.animation
+	staffTipSprite.frame = sprite.frame
+	staffTipSprite.frame_progress = sprite.frame_progress

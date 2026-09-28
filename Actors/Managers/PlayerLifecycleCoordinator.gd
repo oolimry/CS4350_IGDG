@@ -2,6 +2,7 @@ class_name PlayerLifecycleCoordinator
 extends RefCounted
 
 var currRespawnCheckpoint : CheckPoint
+var savedNormalRespawnCheckpoint : CheckPoint
 
 var reconnectPlayer : Callable
 
@@ -21,18 +22,11 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 		currRespawnCheckpoint.isActive = false
 	
 	currRespawnCheckpoint = c
+	savedNormalRespawnCheckpoint = c
 	c.isActive = true
 
-func onPlayerDeath(p : Player):
-	p.queue_free()
-	## TODO: Need to find failsafe in case player tries respawning when they have no checkpoint saved
-	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
-	playerRespawn.emit(currRespawnCheckpoint.roomPos)
-	newPlayer.shaderAnimator.respawnFadeIn()
-	reconnectPlayer.call(newPlayer)
-
-func onPlayerHurt(p : Player):
-	onPlayerDeath(p)
+func onRespawn(isDead : bool, respawnFunc : Callable) -> void:
+	respawnFunc.call(currRespawnCheckpoint.global_position)
 
 ####################### Setup code ######################
 
@@ -47,7 +41,13 @@ func _registerCheckPoint(c : Node) -> void:
 			# This check is to ensure that only one Checkpoint is active at the
 			# start of the game
 			isSetup = false
+			savedNormalRespawnCheckpoint = c
 			currRespawnCheckpoint = c
 			var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
 			reconnectPlayer.call(newPlayer)
-	
+
+#func handlePlayerReset(p : Player) -> Player:
+	#p.queue_free()
+	#var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
+	#reconnectPlayer.call(newPlayer)
+	#return newPlayer

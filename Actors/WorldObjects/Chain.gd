@@ -8,7 +8,7 @@ var wasCrateOriAttached := false
 const objName = "Chain"
 
 ## Should the chain continued to be destroyed after leaving the room?
-@export var shouldDestructionPersist := true
+@export var shouldDestructionPersist := false
 # I'm just gonna assume that the chain and crate always reset cuz
 # it's 2 am demmit and I want some sleep
 

@@ -29,6 +29,7 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w4quj"]
 blend_mode = 1
+light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_h7wi2"]
 blend_mode = 1
@@ -114,7 +115,7 @@ animations = [{
 }]
 
 [node name="PurpleElementCollected" type="Sprite2D" unique_id=1353474843]
-modulate = Color(0.6395151, 0.4067, 0.83, 1)
+modulate = Color(0.7797503, 0.49889603, 1.0091805, 1)
 z_index = 500
 material = SubResource("CanvasItemMaterial_w4quj")
 scale = Vector2(1.5, 1.5)
@@ -123,9 +124,10 @@ script = ExtResource("2_l6nso")
 baseRotation = -1.571
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=960542853]
-modulate = Color(1, 1, 1, 0.31764707)
+modulate = Color(1.353256, 1.353256, 1.353256, 0.31764707)
 material = SubResource("CanvasItemMaterial_h7wi2")
 position = Vector2(0, -1.333333)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_l6nso")
-frame_progress = 0.33652487
+frame = 13
+frame_progress = 0.30882093
