@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="7_va7ec"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_wkw45"]
 
-[sub_resource type="Resource" id="Resource_hh0s1"]
+[sub_resource type="Resource" id="Resource_va7ec"]
 resource_local_to_scene = true
 script = ExtResource("7_wkw45")
 oriCoords = Vector2(1920, 660)
@@ -66,8 +66,8 @@ text = "'Spacebar' - to jump"
 
 [node name="ExplodableWall" parent="." unique_id=1935947710 instance=ExtResource("6_ills7")]
 position = Vector2(1920, 660)
-scale = Vector2(2, 3.5)
-roomResident = SubResource("Resource_hh0s1")
+scale = Vector2(0.5, 3.5)
+roomResident = SubResource("Resource_va7ec")
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_va7ec")]
-position = Vector2(1784, 748)
+position = Vector2(1860, 760)
