@@ -504,7 +504,7 @@ func _physics_process_updateVisuals():
 	elif showWallSlideAnimation:
 		sprite.play("wallSlide")
 	else:
-		if velocity.y >= 0:
+		if velocity.y <= 0:
 			sprite.play("rising")
 		else:
 			sprite.play("falling")

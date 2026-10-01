@@ -6,6 +6,7 @@ var isActive = true
 
 @onready var sprite = $Sprite2D
 @onready var ignitionPadVFXEmitter = $IgnitionPadExplosionVFX
+@onready var animationPlayer = $AnimationPlayer
 
 @export var direction : Enums.Directions:
 	set(value):
@@ -40,9 +41,9 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	Glogger.debug(self.direction)
 	player.launchByIgnitionPadOrBomb(self.direction)
 	
-	sprite.play("launch")
+	animationPlayer.play("launch")
 	#ignitionPadVFXEmitter.emitting = true
-	await sprite.animation_finished
+	await animationPlayer.animation_finished
 	
 	isActive = true
 	self.modulate.a = 1
