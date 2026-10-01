@@ -568,7 +568,7 @@ func isWallSliding():
 	return false
 
 func triggerDeath():
-	hazardHandler.receiveDamage.emit(10000)
+	damageStateHandler.onHurt(0, true)
 
 func preRespawnHandling() -> void:
 	# Do wtv movement pausing code here
