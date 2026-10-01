@@ -13,7 +13,7 @@ var snapshotDict : Dictionary[StringName, Dictionary]
 var isSafeToFreeRoom := true
 signal isSafeToFreeRoomUpdate(roomPos : Vector2i, safety: bool)
 
-func setup(pos : Vector2i, restoreSnapshot : Callable, isFirstLoad : bool) -> void:
+func setup(pos : Vector2i, restoreSnapshot : Callable) -> void:
 	roomPos = pos
 	
 	for n in get_children():
@@ -27,11 +27,10 @@ func setup(pos : Vector2i, restoreSnapshot : Callable, isFirstLoad : bool) -> vo
 	if roomResidentsHolder == null:
 		return
 		
-	setupRoomResidents(isFirstLoad)
-
+	setupRoomResidents()
 	restoreSnapshot.call()
 
-func setupRoomResidents(isFirstLoad : bool) -> void:
+func setupRoomResidents() -> void:
 	for n in roomResidentsHolder.get_children():
 		var rr : RoomResident = n.roomResident
 	

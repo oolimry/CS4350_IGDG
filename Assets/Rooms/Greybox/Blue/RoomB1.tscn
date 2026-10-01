@@ -6,6 +6,9 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_m83n0"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_ql6yg"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_newg8"]
+light_mode = 1
+
 [node name="Room 17" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_yxv5q")
 
@@ -30,6 +33,7 @@ scale = Vector2(0.25, 0.25)
 position = Vector2(256, 301)
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=315722816]
+material = SubResource("CanvasItemMaterial_newg8")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("5_m83n0")

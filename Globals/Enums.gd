@@ -16,6 +16,14 @@ enum Elements {
 	PURPLE,
 }
 
+enum Layers {
+	PLAYER = 1,
+	SOLID = 2,
+	HAZARD = 4,
+	SLASHABLE = 8,
+	PLATFORM = 16
+}
+
 static func getOppositeDirection(direction : Directions):
 	if direction == Directions.NONE:
 		return Directions.NONE

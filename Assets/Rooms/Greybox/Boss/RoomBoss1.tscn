@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_s5ve0"]
 [ext_resource type="Script" uid="uid://cmip6nyv15kbp" path="res://Actors/WorldObjects/BossCheckpoint.gd" id="10_mxlx2"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m83n0"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5ve0"]
 size = Vector2(1840, 1020)
 
@@ -30,6 +33,7 @@ tile_map_data = PackedByteArray("AADg/xkAAgAAAAMAAADg/xoAAgAAAAMAAADh/xkAAgAAAAM
 tile_set = ExtResource("2_21xr3")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1081990034]
+material = SubResource("CanvasItemMaterial_m83n0")
 position = Vector2(2760, 880)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADH/wAAAAAAAAAADwA=")

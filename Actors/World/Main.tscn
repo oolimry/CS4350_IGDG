@@ -49,6 +49,7 @@
 [ext_resource type="Resource" uid="uid://cf5s37saurx87" path="res://Assets/Rooms/Greybox/Blue/Room16.tres" id="33_dq56x"]
 [ext_resource type="Resource" uid="uid://b0vramo34mhm7" path="res://Assets/Rooms/Greybox/Blue/Room17.tres" id="34_cpihd"]
 [ext_resource type="Resource" uid="uid://dvo5bk3urcdxx" path="res://Assets/Rooms/Greybox/Blue/RoomB1.tres" id="35_di5tu"]
+[ext_resource type="Material" uid="uid://bi4jqqh56qi8u" path="res://Assets/World Objects/UnshadedHighlightShader.tres" id="49_funjq"]
 [ext_resource type="Script" uid="uid://cu8glxec5kvdf" path="res://Actors/Managers/BackgroundManager.gd" id="50_dq56x"]
 [ext_resource type="PackedScene" uid="uid://d1oqf61gk6t67" path="res://Actors/World/BackgroundParallaxes/MainRoomsParallax.tscn" id="50_jifae"]
 [ext_resource type="PackedScene" uid="uid://f0cetv04y1wc" path="res://Actors/World/BackgroundParallaxes/BossRoomParallax.tscn" id="51_s64c3"]
@@ -134,6 +135,8 @@ playerSpawnRoom = ExtResource("6_2e1df")
 
 [node name="RoomInstantiator" type="Node2D" parent="RoomManager" unique_id=2016719982]
 script = ExtResource("7_cx0xc")
+worldShaderMaterial = ExtResource("49_funjq")
+hazardModulateColour = Color(1.353, 1.353, 1.353, 1)
 
 [node name="RoomCameraHandler" type="Node" parent="RoomManager" unique_id=2100041786]
 script = ExtResource("8_xf085")

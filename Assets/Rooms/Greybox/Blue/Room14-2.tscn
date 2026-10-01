@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="10_yh1bj"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="11_h8k2f"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wbg63"]
+light_mode = 1
+
 [sub_resource type="Resource" id="Resource_yircd"]
 resource_local_to_scene = true
 script = ExtResource("9_lbi1u")
@@ -63,6 +66,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAgAAAAIAAAD+/wEAAgAAAAIAAAD+/wIAAgAAAAI
 tile_set = ExtResource("2_r0qwy")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=778827641]
+material = SubResource("CanvasItemMaterial_wbg63")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADX/xgAAAAAAAAAFADX/xcAAAAAAAAAFADX/xYAAAAAAAAAFADX/xUAAAAAAAAAFADX/xQAAAAAAAAAFADX/xMAAAAAAAAAFADX/xIAAAAAAAAAFADX/xEAAAAAAAAAFADX/xAAAAAAAAAAFADX/w8AAAAAAAAAFADX/w4AAAAAAAAAFADX/w0AAAAAAAAAEwDa/w0AAAAAAAAAFgDa/w4AAAAAAAAAFwDa/w8AAAAAAAAAFwDa/xAAAAAAAAAAFwDa/xEAAAAAAAAAFwDa/xIAAAAAAAAAFwDa/xMAAAAAAAAAFwDa/xQAAAAAAAAAFwDb/xkAAAAAAAAADgDc/xkAAAAAAAAADgDd/xkAAAAAAAAADgDe/xkAAAAAAAAADgDf/xkAAAAAAAAADgDg/xkAAAAAAAAADgDh/xkAAAAAAAAADgDi/xkAAAAAAAAADgDj/xkAAAAAAAAADgDk/xkAAAAAAAAADgDl/xkAAAAAAAAADgDm/xkAAAAAAAAADgDn/xkAAAAAAAAADgDo/xkAAAAAAAAADgDp/xkAAAAAAAAADgDq/xkAAAAAAAAADgDr/xkAAAAAAAAADgDs/xkAAAAAAAAADgDt/xkAAAAAAAAADgDu/xkAAAAAAAAADgDv/xkAAAAAAAAADgDw/xkAAAAAAAAADgDx/xkAAAAAAAAADgDy/xkAAAAAAAAADgDz/xkAAAAAAAAADgD0/xkAAAAAAAAADgD1/xkAAAAAAAAADgD2/xkAAAAAAAAADgD3/xkAAAAAAAAADgA=")

@@ -40,6 +40,9 @@ oriCoords = Vector2(1320, 600)
 persistentID = &"4da49dfd-3c85-4d52-8111-2feefa56a18d"
 objectName = &"Crate"
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_26p61"]
+light_mode = 1
+
 [node name="Room 4" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_yrg38")
 
@@ -80,6 +83,7 @@ tile_map_data = PackedByteArray("AAD//xkAAgAAAAAAAAD//xoAAgAAAAAAAADd/xkAAgAAAAM
 tile_set = ExtResource("1_rwg7v")
 
 [node name="Hazards2" type="TileMapLayer" parent="." unique_id=1205193974]
+material = SubResource("CanvasItemMaterial_26p61")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADz/wkAAAAAAAAAFwDz/wcAAAAAAAAAFwDz/wgAAAAAAAAAFwDz/wYAAAAAAAAAFwDz/wUAAAAAAAAAFwD+/xgAAAAAAAAAFAD+/xkAAAAAAAAAFAD+/xoAAAAAAAAAFADt/xcAAAAAAAAAFwDt/xkAAAAAAAAAFwDt/xgAAAAAAAAAFwDt/xoAAAAAAAAAFwDz/wQAAAAAAAAAGAA=")

@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="10_ctc4s"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="10_jgau0"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3u34b"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctc4s"]
 size = Vector2(348, 325)
 
@@ -82,6 +85,7 @@ tile_map_data = PackedByteArray("AAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD+/wQAAgAAAAA
 tile_set = ExtResource("1_los5y")
 
 [node name="Hazards2" type="TileMapLayer" parent="." unique_id=999625463]
+material = SubResource("CanvasItemMaterial_3u34b")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAFAD+/wIAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/wAAAAAAAAAAFADU/wIAAAAAAAAAFwDU/wEAAAAAAAAAFwDU/wAAAAAAAAAAFwA=")

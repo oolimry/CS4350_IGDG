@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_lobe3"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_mtgvb"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_keuho"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dy2u"]
 size = Vector2(440, 280)
 
@@ -42,6 +45,8 @@ tile_map_data = PackedByteArray("AAD8/wAAAgAAAAIAAAD9/wAAAgAAAAIAAAD+/wAAAgAAAAI
 tile_set = ExtResource("2_iqh82")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1226169764]
+modulate = Color(1.353, 1.353, 1.353, 1)
+material = SubResource("CanvasItemMaterial_keuho")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADs/xgAAAAAAAAADgDt/xgAAAAAAAAADgDu/xgAAAAAAAAADgDv/xgAAAAAAAAADgDw/xgAAAAAAAAADgDx/xgAAAAAAAAADgDy/xgAAAAAAAAADgDz/xgAAAAAAAAADgD0/xgAAAAAAAAADgD1/xgAAAAAAAAADgDa/xkAAAAAAAAADgDb/xkAAAAAAAAADgDc/xkAAAAAAAAADgDd/xkAAAAAAAAADgDe/xkAAAAAAAAADgDf/xkAAAAAAAAADgDg/xkAAAAAAAAADgDh/xkAAAAAAAAADgDn/wkAAAAAAAAADgDo/wkAAAAAAAAADgDp/wkAAAAAAAAADgDq/wkAAAAAAAAADgDj/woAAAAAAAAADgDk/woAAAAAAAAADgDl/woAAAAAAAAADgDm/woAAAAAAAAADgA=")

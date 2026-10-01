@@ -5,6 +5,9 @@ extends Node2D
 
 @export var interactableGroupId := "Interactable"
 
+@export var worldShaderMaterial : Material 
+@export var hazardModulateColour : Color 
+
 var roomSetupCallables : Array[Callable] = []
 var calcWorldPosCall : Callable = func(v : Vector2i) : return v
 var worldStateOwner : WorldStateOwner = WorldStateOwner.new()
@@ -25,8 +28,7 @@ func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	instance.roomPos = roomDef.gridPos
 	
 	instance.setup(roomDef.gridPos, \
-		func(): worldStateOwner.restoreSnapshot(instance, true), \
-		!roomDef.wasLoaded)
+		func(): worldStateOwner.restoreSnapshot(instance, true))
 		
 	instance.global_position = calcWorldPosCall.call(roomDef.gridPos)
 	
@@ -36,6 +38,8 @@ func instantiateRoom(roomDef : RoomDefinition) -> RoomInstance:
 	
 	for c in roomSetupCallables:
 		c.call(roomDef, instance)
+		
+	instance.forInteractables(setModulationTileMap)
 	
 	add_child.call_deferred(instance)
 	loadedRooms[roomDef.gridPos] = instance
@@ -63,3 +67,11 @@ func snapshotRoom(roomPos : Vector2i) -> void:
 func reparentRoomResident(gameObject : Node, newRoomPos : Vector2i):
 	gameObject.reparent.call_deferred(
 		loadedRooms[newRoomPos].roomResidentsHolder, true)
+
+func setModulationTileMap(n : Node) -> void:
+	if n is TileMapLayer:
+		n.material = worldShaderMaterial
+		var maskVal = n.tile_set.get_physics_layer_collision_layer(0)
+		if (maskVal & Enums.Layers.HAZARD) != 0:
+			n.modulate = hazardModulateColour
+		

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_smarx"]
 
-[sub_resource type="Resource" id="Resource_glb24"]
+[sub_resource type="Resource" id="Resource_2yek6"]
 resource_local_to_scene = true
 script = ExtResource("7_smarx")
 oriCoords = Vector2(53, 718)
@@ -63,4 +63,4 @@ element = 2
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
 position = Vector2(40, 720)
 scale = Vector2(1, 5)
-roomResident = SubResource("Resource_glb24")
+roomResident = SubResource("Resource_2yek6")

@@ -15,6 +15,9 @@ size = Vector2(178, 199)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x80dp"]
 size = Vector2(276, 120)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qq68n"]
+light_mode = 1
+
 [node name="Room 4-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_3bfmy")
 
@@ -62,6 +65,7 @@ position = Vector2(856, 788)
 element = 2
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1574183046]
+material = SubResource("CanvasItemMaterial_qq68n")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/xYAAAAAAAAAFAD+/xcAAAAAAAAAFAD+/xgAAAAAAAAAFAD+/xkAAAAAAAAAFAD+/xoAAAAAAAAAFADU/xgAAAAAAAAAFgDU/xkAAAAAAAAAFwDU/xoAAAAAAAAAFwA=")

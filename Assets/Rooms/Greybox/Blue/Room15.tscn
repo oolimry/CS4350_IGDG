@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_36taj"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_mcy1y"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4dy2u"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjaxh"]
 size = Vector2(140, 560)
 
@@ -26,6 +29,7 @@ tile_map_data = PackedByteArray("AADQ/xoAAgAAAAIAAADR/xoAAgAAAAIAAADS/xoAAgAAAAI
 tile_set = ExtResource("2_mcy1y")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=208205410]
+material = SubResource("CanvasItemMaterial_4dy2u")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAFAD+/wIAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/wAAAAAAAAAAFAA=")

@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="10_vkn43"]
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="11_go387"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f5qnr"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vu4"]
 size = Vector2(240, 480)
 
@@ -61,6 +64,7 @@ tile_map_data = PackedByteArray("AADQ/wAAAgAAAAIAAADR/wAAAgAAAAIAAADS/wAAAgAAAAI
 tile_set = ExtResource("2_rnv6b")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1678214665]
+material = SubResource("CanvasItemMaterial_f5qnr")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADr/xAAAAAAAAAAFwDr/xEAAAAAAAAAFwDr/xIAAAAAAAAAFwDr/xMAAAAAAAAAFwDr/xQAAAAAAAAAFwDr/xUAAAAAAAAAFwDr/xYAAAAAAAAAFwDr/xcAAAAAAAAAFwDo/xAAAAAAAAAAFADo/xEAAAAAAAAAFADo/xQAAAAAAAAAFADo/xUAAAAAAAAAFADo/xYAAAAAAAAAFADo/xcAAAAAAAAAFADo/xgAAAAAAAAAFADo/xMAAAAAAAAAFADo/xIAAAAAAAAAFADo/w8AAAAAAAAAEwDr/w8AAAAAAAAAFgDr/xgAAAAAAAAAFwA=")

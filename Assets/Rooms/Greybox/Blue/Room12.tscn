@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="8_fw1pf"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="9_wbg63"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_go387"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da2w0"]
 size = Vector2(80, 160)
 
@@ -45,6 +48,7 @@ tile_map_data = PackedByteArray("AADg/xkAAgAAAAIAAADg/xoAAgAAAAIAAADh/xkAAgAAAAI
 tile_set = ExtResource("1_5fps0")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1888191162]
+material = SubResource("CanvasItemMaterial_go387")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AAD9/xAAAAAAAAAAFAD9/w8AAAAAAAAAFAD9/w4AAAAAAAAAFAD9/w0AAAAAAAAAFAD9/wwAAAAAAAAAFAD9/wsAAAAAAAAAFAD9/woAAAAAAAAAFAD9/wkAAAAAAAAAFAD9/wgAAAAAAAAAFAD9/wcAAAAAAAAAFAD9/wYAAAAAAAAAEwDj/xQAAAAAAAAADgDk/xQAAAAAAAAADgDl/xQAAAAAAAAADgDm/xQAAAAAAAAADgDs/xQAAAAAAAAADgDt/xQAAAAAAAAADgDu/xQAAAAAAAAADgDv/xQAAAAAAAAADgDx/xQAAAAAAAAADgDy/xQAAAAAAAAADgDw/xQAAAAAAAAADgDr/xQAAAAAAAAADgDq/xQAAAAAAAAADgDp/xQAAAAAAAAADgDo/xQAAAAAAAAADgDn/xQAAAAAAAAADgA=")
@@ -82,7 +86,6 @@ shape = SubResource("RectangleShape2D_da2w0")
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_45086")]
 position = Vector2(1080, 120)
 attached_crate = NodePath("../Crate")
-shouldDestructionPersist = false
 roomResident = SubResource("Resource_45086")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_wbg63")]

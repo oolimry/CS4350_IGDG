@@ -6,7 +6,11 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_newg8"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_vc58g"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y3a2b"]
+light_mode = 1
+
 [node name="Room 17" type="Node2D" unique_id=1922114953]
+material = SubResource("CanvasItemMaterial_y3a2b")
 script = ExtResource("1_newg8")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=907945100]
