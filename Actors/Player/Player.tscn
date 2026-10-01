@@ -679,7 +679,8 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"slashUp"
+animation = &"rising"
+frame_progress = 0.35462466
 
 [node name="StaffTipSprite" type="AnimatedSprite2D" parent="." unique_id=53796913]
 process_priority = 1
