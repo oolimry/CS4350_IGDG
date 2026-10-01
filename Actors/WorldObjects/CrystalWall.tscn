@@ -1,10 +1,21 @@
 [gd_scene format=3 uid="uid://bu3vhs0eg7v8a"]
 
 [ext_resource type="Script" uid="uid://bbx5tb83ai6r6" path="res://Actors/WorldObjects/CrystalWall.gd" id="1_w7jdf"]
+[ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_3agdm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7jdf"]
+shader = ExtResource("2_3agdm")
+shader_parameter/base_color = Color(1.2837998, 0.18065566, 1.4063711, 0.18039216)
+shader_parameter/highlight_color = Color(0.81, 0.44550002, 0.81, 0.34117648)
+shader_parameter/speed = 1.0
+shader_parameter/noise_scale = 9.0
+shader_parameter/turbulence = 1.0
+shader_parameter/edge_softness = 0.0
+shader_parameter/aspect = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_b2gry"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.23921569, 0, 0.24705882, 0.5568628)
+colors = PackedColorArray(0.4679814, 0, 0.4826718, 0.8509804)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b2gry"]
 gradient = SubResource("Gradient_b2gry")
@@ -23,6 +34,7 @@ collision_mask = 0
 script = ExtResource("1_w7jdf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=59114506]
+material = SubResource("ShaderMaterial_w7jdf")
 texture = SubResource("GradientTexture2D_b2gry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1066712675]
@@ -30,6 +42,7 @@ visible = false
 shape = SubResource("RectangleShape2D_b2gry")
 
 [node name="KillZone" type="Area2D" parent="." unique_id=890884203]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=858585517]
