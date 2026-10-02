@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="RoomDefinition" format=3 uid="uid://svqctbh454em"]
 
 [ext_resource type="PackedScene" uid="uid://buwo7mqaawp64" path="res://Assets/Rooms/Greybox/Purple/Room19.tscn" id="1_70jqs"]
-[ext_resource type="Texture2D" uid="uid://cvwi7oya0w5mn" path="res://Assets/Rooms/PreviewRoomImages/Room19.tres_preview.png" id="2_qfbta"]
 [ext_resource type="Script" uid="uid://cij17tnbhukil" path="res://Actors/World/Room Management/RoomDefinition.gd" id="3_psgq5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lk348"]
+load_path = "res://.godot/imported/Room19.tres_preview.png-be4961ea048a1cdeb9506d408689dd91.ctex"
 
 [resource]
 script = ExtResource("3_psgq5")
@@ -11,5 +13,5 @@ roomArea = 3
 gridPos = Vector2i(1, 2)
 gamePlayScene = ExtResource("1_70jqs")
 openSides = 11
-previewTexture = ExtResource("2_qfbta")
+previewTexture = SubResource("CompressedTexture2D_lk348")
 metadata/_custom_type_script = "uid://cij17tnbhukil"
