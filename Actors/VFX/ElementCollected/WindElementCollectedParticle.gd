@@ -35,9 +35,13 @@ func _process(delta):
 	if timeSinceBurst < delayBeforeChase:
 		velocity += tangentialAcceleration * delta
 	
-	velocity = velocity * (1.0 - drag)
+	velocity = velocity * pow(1.0 - drag, 60*delta)
 	velocity += pow(min(1.0, timeSinceBurst/delayBeforeChase), 2) *\
-		 vectorToPlayer.normalized() * chasingSpeed
+		 vectorToPlayer.normalized() * chasingSpeed * (60*delta)
+		
+	self.position += velocity * delta
+	rotation = velocity.angle() + baseRotation
+	
 	
 		
 		

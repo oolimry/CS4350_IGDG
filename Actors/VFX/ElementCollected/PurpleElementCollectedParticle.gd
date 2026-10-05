@@ -26,13 +26,15 @@ func _process(delta):
 	var dist = vectorToPlayer.length()
 	
 	self.modulate.a = min(1.0, (dist - 40) * 0.01)
-	if dist < 60 and timeSinceBurst > delayBeforeChase:
+	if dist < 50 and timeSinceBurst > delayBeforeChase:
 		queue_free()
 	
-	
-	velocity = velocity * (1.0 - drag)
+	velocity = velocity * pow(1.0 - drag, delta*60)
 	velocity += pow(min(1.0, timeSinceBurst/delayBeforeChase), 2) *\
-		 vectorToPlayer.normalized() * chasingSpeed
+		 vectorToPlayer.normalized() * chasingSpeed * 60 * delta
+		
+	self.position += velocity * delta
+	rotation = velocity.angle() + baseRotation
 		
 	self.position += velocity * delta
 	rotation = velocity.angle() + baseRotation

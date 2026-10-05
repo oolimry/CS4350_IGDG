@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var particleHolder = $Particles
 
-const burstChasingSpeed = 1800
+const burstChasingSpeed = 1000
 const timeToLive = 2.0
 
 func init(pos, params):
