@@ -41,14 +41,15 @@ physics_quadrant_size = 20
 position = Vector2(1383, 853)
 element = 2
 
+[node name="Element4" parent="." unique_id=830643904 instance=ExtResource("7_gaoim")]
+position = Vector2(220, 860)
+element = 1
+
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("8_jnmmk")]
 position = Vector2(580, 885)
 
 [node name="BombSpawner3" parent="." unique_id=462748808 instance=ExtResource("8_jnmmk")]
 position = Vector2(859, 840)
-
-[node name="BombSpawner2" parent="." unique_id=1639135548 instance=ExtResource("8_jnmmk")]
-position = Vector2(267, 812)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_3dia5")]
 visible = false

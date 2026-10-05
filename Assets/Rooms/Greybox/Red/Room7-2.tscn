@@ -48,12 +48,8 @@ position = Vector2(960, 560)
 position = Vector2(1560, 480)
 element = 3
 
-[node name="Element5" parent="." unique_id=901750726 instance=ExtResource("6_0blna")]
-position = Vector2(580, 811)
-element = 2
-
 [node name="Element4" parent="." unique_id=1988154540 instance=ExtResource("6_0blna")]
-position = Vector2(240, 540)
+position = Vector2(240, 600)
 element = 2
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=3457823]
