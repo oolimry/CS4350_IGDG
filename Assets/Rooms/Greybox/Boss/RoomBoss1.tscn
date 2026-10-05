@@ -36,7 +36,6 @@ tile_set = ExtResource("2_21xr3")
 material = SubResource("CanvasItemMaterial_m83n0")
 position = Vector2(2760, 880)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AADH/wAAAAAAAAAADwA=")
 tile_set = ExtResource("3_6opch")
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("5_mxlx2")]
