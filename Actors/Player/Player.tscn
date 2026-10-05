@@ -679,8 +679,8 @@ material = SubResource("ShaderMaterial_vywg6")
 position = Vector2(0, -29.724998)
 scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_kkbrm")
-animation = &"rising"
-frame_progress = 0.35462466
+animation = &"slashDown"
+frame = 2
 
 [node name="StaffTipSprite" type="AnimatedSprite2D" parent="." unique_id=53796913]
 process_priority = 1
@@ -706,24 +706,22 @@ script = ExtResource("3_yqfyh")
 maxHealth = 2
 
 [node name="LeftSlashHitbox" parent="." unique_id=1615505915 instance=ExtResource("3_urha2")]
-visible = false
-position = Vector2(-45, 1)
+position = Vector2(-40, -4)
 scale = Vector2(-1, 1)
 slashDirection = 1
 
 [node name="RightSlashHitbox" parent="." unique_id=818047188 instance=ExtResource("3_urha2")]
-visible = false
-position = Vector2(45, 1)
+position = Vector2(40, -4)
 slashDirection = 2
 
 [node name="DownSlashHitbox" parent="." unique_id=1108309814 instance=ExtResource("6_rsi04")]
 visible = false
-position = Vector2(0, 29)
+position = Vector2(0, 27)
 slashDirection = 4
 
 [node name="UpSlashHitbox" parent="." unique_id=826555408 instance=ExtResource("7_kkbrm")]
 visible = false
-position = Vector2(1, -60)
+position = Vector2(1, -45)
 slashDirection = 3
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=775868535]

@@ -54,6 +54,8 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 func _physics_process(delta):
 	if not isMovementStarted:
 		return
+	if hasExploded:
+		return
 		
 	if distanceRemaining > 0:
 		var speed = moveDistance / moveDuration
@@ -97,6 +99,8 @@ func explode():
 	explosionHitbox.monitoring = true
 	hasExploded = true
 	animationPlayer.play("explode")
+	VfxManager.createVFX(VfxManager.BombExplosionVFXTSCN, \
+		 self.global_position, {})
 	await animationPlayer.animation_finished
 	bringBacktoSpawn.emit()	
 
