@@ -113,7 +113,9 @@ var purpleWindUpTween : Tween
 var originalSpritePosition : Vector2
 var isPurpleDashing = false
 const CRYSTAL_WALL_COLLISION_LAYER = 8
-var purpleJustEnded = false
+const HAZARD_COLLISION_LAYER = 3
+var timeSincePurpleDashEnded = 1.00
+var purpleEndForceDirection = Enums.Directions.NONE
 const purpleEndFreezeDuration = 0.20
 
 ## pogo related
@@ -167,18 +169,7 @@ func _physics_process_playerMovement(delta):
 		
 	timeSinceWallJump += delta
 	
-	var movementDirection = Enums.Directions.NONE
-	
-	if timeSinceWallJump < durationAfterWallJumpToHoldAwayFromWall:
-		if wallFacingDirection == Enums.Directions.LEFT:
-			movementDirection = Enums.Directions.RIGHT
-		elif wallFacingDirection == Enums.Directions.RIGHT:
-			movementDirection = Enums.Directions.LEFT
-	else:
-		if Input.is_action_pressed("left") and not freezeInput:
-			movementDirection = Enums.Directions.LEFT
-		elif Input.is_action_pressed("right") and not freezeInput:
-			movementDirection = Enums.Directions.RIGHT
+	var movementDirection = getMovementDirection()
 	
 	
 	## horizontal movement
@@ -245,6 +236,8 @@ func _physics_process_playerMovement(delta):
 			timeSinceOnFloor = inf
 			timeSinceNotTouchingWall = inf
 			timeSinceWallJump = 0
+			timeSincePurpleDashEnded = inf
+			purpleEndForceDirection = Enums.Directions.NONE
 			velocity.y = min(velocity.y, -wallJumpYBoost)
 			
 			if wallFacingDirection == Enums.Directions.LEFT:
@@ -252,7 +245,10 @@ func _physics_process_playerMovement(delta):
 			else:
 				velocity.x -= wallJumpXBoost
 	
-	if velocity.y > 0:
+	if timeSincePurpleDashEnded < purpleEndFreezeDuration:
+		timeSincePurpleDashEnded += delta
+		velocity.y += 0
+	elif velocity.y > 0:
 		velocity.y += gravity * fallMultiplier * 60 * delta
 	elif hasBrokenJump:
 		velocity.y += gravity * breakJumpMultiplier * 60 * delta
@@ -326,6 +322,7 @@ func physics_process_playerMovement_purple(delta):
 				.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 			
 			set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, false)				
+			set_collision_mask_value(HAZARD_COLLISION_LAYER, false)	
 		return
 	
 	if purpleDashDirection == Enums.Directions.LEFT:
@@ -343,8 +340,12 @@ func physics_process_playerMovement_purple(delta):
 	
 	if is_on_ceiling() or is_on_floor() or is_on_wall():
 		isPurpleDashing = false
-		#stopAfterImage()
+		if purpleDashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
+			timeSincePurpleDashEnded = 0.0
+			purpleEndForceDirection = purpleDashDirection
+		
 		set_collision_mask_value(CRYSTAL_WALL_COLLISION_LAYER, true)
+		set_collision_mask_value(HAZARD_COLLISION_LAYER, true)	
 
 func _physics_process_slash(delta):
 	timeSinceSlash += delta
@@ -509,9 +510,7 @@ func _physics_process_updateVisuals():
 		else:
 			sprite.play("falling")
 	
-	
-	
-		
+
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
@@ -559,11 +558,33 @@ func setElement(element : Enums.Elements):
 	elif element == Enums.Elements.WIND:
 		AudioManager.play(AudioManager.WindElementStruck)
 
+func getMovementDirection():
+	var movementDirection = Enums.Directions.NONE
+	
+	if timeSincePurpleDashEnded < purpleEndFreezeDuration \
+		and purpleEndForceDirection == Enums.Directions.LEFT:
+		movementDirection = Enums.Directions.LEFT
+	elif timeSincePurpleDashEnded < purpleEndFreezeDuration \
+		and purpleEndForceDirection == Enums.Directions.RIGHT:
+		movementDirection = Enums.Directions.RIGHT
+	elif timeSinceWallJump < durationAfterWallJumpToHoldAwayFromWall:
+		if wallFacingDirection == Enums.Directions.LEFT:
+			movementDirection = Enums.Directions.RIGHT
+		elif wallFacingDirection == Enums.Directions.RIGHT:
+			movementDirection = Enums.Directions.LEFT
+	else:
+		if Input.is_action_pressed("left") and not freezeInput:
+			movementDirection = Enums.Directions.LEFT
+		elif Input.is_action_pressed("right") and not freezeInput:
+			movementDirection = Enums.Directions.RIGHT
+	
+	return movementDirection
+	
 func isWallSliding():
 	if isOnWall:
-		if wallFacingDirection == Directions.LEFT and Input.is_action_pressed("left"):
+		if wallFacingDirection == Directions.LEFT and getMovementDirection() == Enums.Directions.LEFT:
 			return true
-		if wallFacingDirection == Directions.RIGHT and Input.is_action_pressed("right"):
+		if wallFacingDirection == Directions.RIGHT and getMovementDirection() == Enums.Directions.RIGHT:
 			return true
 	return false
 

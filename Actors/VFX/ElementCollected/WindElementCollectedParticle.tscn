@@ -58,7 +58,7 @@ animations = [{
 }]
 
 [node name="WindElementCollected" type="Sprite2D" unique_id=1353474843]
-modulate = Color(0.58592135, 0.81930727, 0.80744016, 1)
+modulate = Color(0.6560039, 0.91768295, 0.90459895, 1)
 z_index = 500
 material = SubResource("CanvasItemMaterial_w4quj")
 scale = Vector2(1.25, 1.25)

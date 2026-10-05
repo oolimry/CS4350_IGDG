@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://p3kq4aocm15j" path="res://Actors/WorldObjects/Bomb.gd" id="1_0lndg"]
 [ext_resource type="Texture2D" uid="uid://d1qddq5kcp0ss" path="res://Assets/World Objects/bomb.png" id="2_8csoo"]
+[ext_resource type="PackedScene" uid="uid://c1qktcpk0dapx" path="res://Actors/VFX/BombExplosionVFX.tscn" id="3_0lndg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jf00"]
 animations = [{
@@ -13,6 +14,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0lndg"]
+light_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_meos5"]
 radius = 25.0
@@ -67,6 +71,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BombExplosionVFX:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_8csoo"]
 resource_name = "explode"
@@ -82,7 +98,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.016666668, 0.15),
 "transitions": PackedFloat32Array(1, 0.5, 0.5),
 "update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.25, 0.25), Vector2(2.1, 2.1)]
+"values": [Vector2(0.3, 0.3), Vector2(0.25, 0.25), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -91,10 +107,10 @@ tracks/1/path = NodePath("Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.016666668, 0.15),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"times": PackedFloat32Array(0, 0.016666668, 0.033333335, 0.15),
+"transitions": PackedFloat32Array(1, 0.96593636, 0.5, 0.5),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+"values": [Color(1, 1, 1, 1), Color(1.0491903, 1.8247963, 1.8247963, 1), Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1.8247963, 1.8247963, 1.8247963, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -120,6 +136,32 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(7, 7)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("BombExplosionVFX:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.016666668, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("BombExplosionVFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0lndg"]
 _data = {
@@ -142,6 +184,7 @@ sprite_frames = SubResource("SpriteFrames_0jf00")
 
 [node name="Label" type="Label" parent="Sprite" unique_id=1292801331]
 visible = false
+material = SubResource("CanvasItemMaterial_0lndg")
 custom_minimum_size = Vector2(100, 100)
 offset_left = -80.0
 offset_top = -53.333332
@@ -168,5 +211,8 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox" unique_id=1959229470]
 shape = SubResource("CircleShape2D_d6ec5")
+
+[node name="BombExplosionVFX" parent="." unique_id=1746739328 instance=ExtResource("3_0lndg")]
+visible = false
 
 [connection signal="body_entered" from="ExplosionHitbox" to="." method="_on_explosion_hitbox_body_entered"]
