@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_newg8"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="2_kw7jn"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_cojpm"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="4_kw7jn"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_newg8"]
-[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_vc58g"]
+[ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="5_r8qx6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y3a2b"]
 light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cojpm"]
+size = Vector2(403.29028, 262.07892)
 
 [node name="Room 17" type="Node2D" unique_id=1922114953]
 material = SubResource("CanvasItemMaterial_y3a2b")
@@ -21,6 +25,7 @@ collision_enabled = false
 
 [node name="World" type="TileMapLayer" parent="." unique_id=1822681105]
 position = Vector2(1920, 0)
+tile_map_data = PackedByteArray("AADg/xoAAgAAAAIAAADh/xoAAgAAAAIAAADi/xoAAgAAAAIAAADj/xoAAgAAAAIAAADk/xoAAgAAAAIAAADl/xoAAgAAAAIAAADm/xoAAgAAAAIAAADm/xkAAgAAAAIAAADl/xkAAgAAAAIAAADk/xkAAgAAAAIAAADj/xkAAgAAAAIAAADi/xkAAgAAAAIAAADn/xkAAgAAAAIAAADo/xkAAgAAAAIAAADn/xoAAgAAAAIAAADo/xoAAgAAAAIAAADp/xkAAgAAAAIAAADq/xkAAgAAAAIAAADr/xkAAgAAAAIAAADs/xkAAgAAAAIAAADs/xoAAgAAAAIAAADr/xoAAgAAAAIAAADq/xoAAgAAAAIAAADp/xoAAgAAAAIAAADn/xgAAgAAAAIAAADo/xgAAgAAAAIAAADp/xgAAgAAAAIAAADq/xgAAgAAAAIAAADr/xgAAgAAAAIAAADs/xgAAgAAAAIAAADn/w8AAgAAAAIAAADo/w8AAgAAAAIAAADo/w4AAgAAAAIAAADp/w4AAgAAAAIAAADp/w8AAgAAAAIAAADq/w8AAgAAAAIAAADq/w4AAgAAAAIAAADr/w4AAgAAAAIAAADs/w4AAgAAAAIAAADs/w0AAgAAAAIAAADr/w0AAgAAAAIAAADt/w0AAgAAAAIAAADt/w4AAgAAAAIAAADu/w0AAgAAAAIAAADu/w4AAgAAAAIAAADq/xAAAgAAAAIAAADp/xAAAgAAAAIAAADo/xAAAgAAAAIAAADn/xAAAgAAAAIAAADm/xAAAgAAAAIAAADl/xAAAgAAAAIAAADr/w8AAgAAAAIAAADs/w8AAgAAAAIAAADv/wwAAgAAAAIAAADv/w0AAgAAAAIAAADv/w4AAgAAAAIAAADu/wwAAgAAAAIAAADt/wwAAgAAAAIAAADP/wAAAgAAAAIAAADP/wEAAgAAAAIAAADP/wIAAgAAAAIAAADP/wMAAgAAAAIAAADP/wQAAgAAAAIAAADP/wUAAgAAAAIAAADP/wYAAgAAAAIAAADP/wcAAgAAAAIAAADP/wgAAgAAAAIAAADP/wkAAgAAAAIAAADP/woAAgAAAAIAAADP/wsAAgAAAAIAAADP/wwAAgAAAAIAAADP/w0AAgAAAAIAAADP/w4AAgAAAAIAAADP/w8AAgAAAAIAAADP/xUAAgAAAAIAAADP/xYAAgAAAAIAAADP/xcAAgAAAAIAAADP/xgAAgAAAAIAAADP/xkAAgAAAAIAAADP/xoAAgAAAAIAAADP/xQAAgAAAAIAAADP/xMAAgAAAAIAAADP/xIAAgAAAAIAAADP/xEAAgAAAAIAAADP/xAAAgAAAAIAAADv/xMAAgAAAAIAAADw/xMAAgAAAAIAAADw/xIAAgAAAAIAAADx/xIAAgAAAAIAAADx/xMAAgAAAAIAAADy/xEAAgAAAAIAAADy/xIAAgAAAAIAAADy/xMAAgAAAAIAAADz/xIAAgAAAAIAAADz/xEAAgAAAAIAAADz/xMAAgAAAAIAAADw/xQAAgAAAAIAAADx/xQAAgAAAAIAAADy/xQAAgAAAAIAAADv/xQAAgAAAAIAAADu/xMAAgAAAAIAAADt/xkAAgAAAAIAAADt/xoAAgAAAAIAAAA=")
 tile_set = ExtResource("2_kw7jn")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_cojpm")]
@@ -30,10 +35,24 @@ position = Vector2(960, 560)
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
 
-[node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_vc58g")]
-position = Vector2(256, 301)
+[node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
+position = Vector2(1083.6412, 918.3084)
+script = ExtResource("4_kw7jn")
+reference_texture = ExtResource("5_r8qx6")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
+position = Vector2(-130.22314, -8.242249)
+shape = SubResource("RectangleShape2D_cojpm")
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=1000772910]
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("5_newg8")
+
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

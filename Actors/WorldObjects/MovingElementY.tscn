@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://2v35vu2leovv"]
+
+[ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="1_1s2me"]
+[ext_resource type="Script" uid="uid://olsx4lnvovpq" path="res://Actors/WorldObjects/MovingElementY.gd" id="2_1s2me"]
+
+[node name="Element" unique_id=1394946886 instance=ExtResource("1_1s2me")]
+script = ExtResource("2_1s2me")
+speed = 5.0
+distance = 200.0

@@ -10,6 +10,6 @@ roomName = "RoomB1"
 roomArea = 2
 gridPos = Vector2i(4, -1)
 gamePlayScene = ExtResource("1_kyrj2")
-openSides = 15
+openSides = 13
 previewTexture = ExtResource("2_kyrj2")
 metadata/_custom_type_script = "uid://cij17tnbhukil"
