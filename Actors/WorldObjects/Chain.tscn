@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dr5hrvoct3vi0"]
 
-[ext_resource type="Script" uid="uid://df237buavt211" path="res://Actors/WorldObjects/Chain.gd" id="1_agphl"]
-[ext_resource type="Texture2D" uid="uid://s31bbs351ih2" path="res://Assets/World Objects/ChainPlaceholder.png" id="2_rfnd0"]
+[ext_resource type="Script" uid="uid://w2j6ydkb6ltb" path="res://Actors/WorldObjects/Chain_updated.gd" id="1_rfnd0"]
+[ext_resource type="Texture2D" uid="uid://cfjew6ncqyypw" path="res://Assets/World Objects/chainO.png" id="2_y3xdp"]
+[ext_resource type="Texture2D" uid="uid://d3w6qyv20xmip" path="res://Assets/World Objects/chainI.png" id="3_145s6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
 size = Vector2(101, 688)
@@ -10,12 +11,15 @@ size = Vector2(101, 688)
 scale = Vector2(0.25, 0.25)
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_agphl")
+script = ExtResource("1_rfnd0")
+chain_o_texture = ExtResource("2_y3xdp")
+chain_i_texture = ExtResource("3_145s6")
+link_count = 9
+link_spacing = 66.0
+link_scale = 1.25
+vertical_offset = -66.0
+alternate_z_index = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993499524]
 position = Vector2(3, -9)
 shape = SubResource("RectangleShape2D_0glnl")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956408270]
-scale = Vector2(0.5, 1)
-texture = ExtResource("2_rfnd0")
