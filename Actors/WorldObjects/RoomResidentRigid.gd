@@ -13,6 +13,7 @@ func resync(snapshot : Dictionary) -> void:
 	linear_velocity = snapshot["linear_velocity"]
 	sleeping = snapshot["sleeping"]
 	position = snapshot["localCoords"]
+	scale = snapshot["localScale"]
 	roomResident = snapshot["roomResident"]
 	freeze = snapshot["freeze"]
 
@@ -23,6 +24,7 @@ func generateObjectSnapshot() -> Dictionary:
 	snapshot["sleeping"] = sleeping
 	snapshot["localCoords"] = position
 	snapshot["freeze"] = freeze
+	snapshot["localScale"] = scale
 	snapshot["hasStateChanged"] = hasStateChanged()
 	
 	return snapshot

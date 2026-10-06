@@ -41,8 +41,11 @@ static func constructObjectBySnapshot(snapshot : Dictionary,
 	if snapshot["attachedCrate"] != null:
 		chain.attached_crate = Crate.constructObjectBySnapshot(\
 			snapshot["attachedCrate"], constructHandling)
+		chain.attached_crate.z_index = chain.z_index + 1
 	else:
 		chain.attached_crate = null
+	
+	
 	constructHandling.call(chain)
 	return chain
 

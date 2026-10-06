@@ -20,7 +20,7 @@ size = Vector2(240, 960)
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
 oriCoords = Vector2(1760, 560)
-persistentID = &"32adb21e-bb67-4c19-b993-fcbb7f6c9ac2"
+persistentID = &"b4f6e5a7-0e13-411f-ad13-fa24d6cdcd03"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
@@ -28,7 +28,7 @@ shouldAlwaysReset = true
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
 oriCoords = Vector2(3920, 1040)
-persistentID = &"73bc23a0-8b2f-4662-800a-c966a7f5d320"
+persistentID = &"5c9b651b-30df-4c84-80be-1a37211bd421"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
@@ -36,9 +36,8 @@ shouldAlwaysReset = true
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
 oriCoords = Vector2(1760, 880)
-persistentID = &"b60f38fc-473a-4749-bb22-b011022ceea4"
+persistentID = &"e1c6cfdc-7fe6-413c-b93d-c7f52a19f1a5"
 objectName = &"Crate"
-shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_0rkc4"]
 resource_local_to_scene = true
@@ -69,6 +68,7 @@ position = Vector2(960, 560)
 [node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
 position = Vector2(220, 920)
 script = ExtResource("4_bxwkc")
+isActive = true
 reference_texture = ExtResource("5_jadal")
 textureOffset = Vector2(0, -29.725)
 reference_scale = Vector2(0.45, 0.45)
@@ -142,12 +142,14 @@ roomResident = SubResource("Resource_jadal")
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
 position = Vector2(1760, 880)
 scale = Vector2(4, 4)
+freeze = true
 attached_chain = NodePath("../Chain")
 roomResident = SubResource("Resource_r2cc3")
 
 [node name="Crate2" parent="RoomResidents" unique_id=1429524059 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
 position = Vector2(3920, 1360)
 scale = Vector2(4, 4)
+freeze = true
 attached_chain = NodePath("../Chain2")
 roomResident = SubResource("Resource_0rkc4")
 
