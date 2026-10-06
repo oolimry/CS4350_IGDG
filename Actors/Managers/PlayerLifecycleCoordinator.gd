@@ -4,14 +4,14 @@ extends RefCounted
 var currRespawnCheckpoint : CheckPoint
 var savedNormalRespawnCheckpoint : CheckPoint
 
-var reconnectPlayer : Callable
+var connectPlayer : Callable
 
 signal playerRespawn(roomPos : Vector2i)
 
-var isSetup := true
+var isStartOfPlayer := true
 
-func _init(reconnectPlayer : Callable) -> void:
-	self.reconnectPlayer = reconnectPlayer
+func _init(connectPlayer : Callable) -> void:
+	self.connectPlayer = connectPlayer
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +27,7 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 
 func onRespawn(isDead : bool, dmgStateHandler : DamageStateHandler) -> void:
 	dmgStateHandler.postRespawnHandling(currRespawnCheckpoint.global_position)
+	playerRespawn.emit(currRespawnCheckpoint.roomPos)
 
 ####################### Setup code ######################
 
@@ -37,17 +38,15 @@ func _registerCheckPoint(c : Node) -> void:
 	if c is CheckPoint:
 		c.connect("checkPointReached", swapActiveCheckPoint)
 		# At startup, if a checkpoint is active, spawn the player there 
-		if c.isActive and isSetup:
-			# This check is to ensure that only one Checkpoint is active at the
-			# start of the game
-			isSetup = false
-			savedNormalRespawnCheckpoint = c
-			currRespawnCheckpoint = c
-			var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
-			reconnectPlayer.call(newPlayer)
+		if c.isActive and isStartOfPlayer:
+			createPlayerOnStart(c)
 
-#func handlePlayerReset(p : Player) -> Player:
-	#p.queue_free()
-	#var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
-	#reconnectPlayer.call(newPlayer)
-	#return newPlayer
+func createPlayerOnStart(checkpoint : CheckPoint) -> void:
+	# This check is to ensure that only one Checkpoint is active at the
+	# start of the game
+	isStartOfPlayer = false
+	
+	savedNormalRespawnCheckpoint = checkpoint
+	currRespawnCheckpoint = checkpoint
+	var newPlayer : Player = Player.create(currRespawnCheckpoint.global_position)
+	connectPlayer.call(newPlayer)
