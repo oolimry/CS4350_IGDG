@@ -38,7 +38,7 @@ func _registerCheckPoint(c : Node) -> void:
 	if c is CheckPoint:
 		c.connect("checkPointReached", swapActiveCheckPoint)
 		# At startup, if a checkpoint is active, spawn the player there 
-		if c.isActive and isStartOfPlayer:
+		if isStartOfPlayer:
 			createPlayerOnStart(c)
 
 func createPlayerOnStart(checkpoint : CheckPoint) -> void:

@@ -42,10 +42,7 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 		else:
 			roomLayout[key] = roomDef
 			roomDef.gridPos = key
-	
-		if roomDef.hasPlayer:
-			playerSpawnRoom = roomDef
-	
+		
 	instance.queue_free()
 	assert(playerSpawnRoom != null)
 	return roomLayout

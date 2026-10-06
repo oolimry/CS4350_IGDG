@@ -68,7 +68,6 @@ position = Vector2(960, 560)
 [node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
 position = Vector2(220, 920)
 script = ExtResource("4_bxwkc")
-isActive = true
 reference_texture = ExtResource("5_jadal")
 textureOffset = Vector2(0, -29.725)
 reference_scale = Vector2(0.45, 0.45)

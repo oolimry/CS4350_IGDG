@@ -23,8 +23,6 @@ const ROOM_HEIGHT := 9
 enum AREAS {MAIN, RED, TURQ, PURP, BOSS}
 @export var roomArea := AREAS.MAIN
 
-@export var hasPlayer := false
-
 ## Whether the camera should follow the player after they enter the room
 @export var doesCameraFollow : bool
 
