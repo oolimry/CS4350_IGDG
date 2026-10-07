@@ -56,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://c2heqlt15sqyv" path="res://Actors/World/BackgroundParallaxes/RedRoomsParallax.tscn" id="52_cpihd"]
 [ext_resource type="PackedScene" uid="uid://bv77kxhokpcd" path="res://Actors/World/BackgroundParallaxes/TurqRoomsParallax.tscn" id="53_di5tu"]
 [ext_resource type="PackedScene" uid="uid://d4b0jfjmjrmnp" path="res://Actors/World/BackgroundParallaxes/PurpRoomsParallax.tscn" id="54_r2hq1"]
+[ext_resource type="PackedScene" uid="uid://cswps6ssp2jad" path="res://Actors/Cutscenes/IntroCutscene.tscn" id="57_4tuoc"]
 
 [sub_resource type="Environment" id="Environment_d6ec5"]
 background_mode = 3
@@ -166,3 +167,5 @@ boss = NodePath("BossRoomParallax")
 [node name="TurqRoomsParallax" parent="BackgroundManager" unique_id=2031530585 instance=ExtResource("53_di5tu")]
 
 [node name="PurpRoomsParallax" parent="BackgroundManager" unique_id=1130000653 instance=ExtResource("54_r2hq1")]
+
+[node name="IntroCutscene" parent="." unique_id=1756700696 instance=ExtResource("57_4tuoc")]

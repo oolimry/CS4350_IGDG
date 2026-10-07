@@ -1,0 +1,19 @@
+~ scene1
+[i]He sits at the precipice of the world, as ever. Countless ends it has met, and into countless shapes it has been moulded.[/i]
+[i]Death and rebirth. Cycle after cycle. A world unable to breathe.[/i]
+[i]Every reality has sprawled out before my eyes.[/i]
+[i]It was time. I took it all in. I found comfort in the sight I had etched into my mind.[/i]
+[i]That of the tempest. Bolts of lightning shearing down across the horizon. A razorwind cutting across the glade. The brilliance of the flames that spew forth. The capacity for such beauty to raze so wholly. A poignant world.[/i]
+$> CutsceneSignalManager.scene1Finished.emit()
+=> END
+
+~ scene2
+[b]You know what you’re doing, don’t you?[/b]\n\n\n[i]I do[/i].
+[b]You know I can’t allow that.[/b]\n\n\n[i]And all the same, it will[/i].
+[b]There is no victory for you.[/b]\n\n\n[i]Nor for you[/i].
+[b]You cannot bend my world to your will.[/b]\n\n\n[i]I’ll find a way[/i].
+$> CutsceneSignalManager.scene2Finished.emit()
+=> END
+
+~ dummy
+=> END

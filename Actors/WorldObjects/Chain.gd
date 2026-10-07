@@ -1,5 +1,5 @@
 @tool
-class_name Chain
+class_name Chain_Deprecated
 extends RoomResidentStatic
 
 var wasCrateOriAttached := false
@@ -17,7 +17,8 @@ func setup() -> void:
 
 func _ready() -> void:
 	if attached_crate:
-		attached_crate.attach(self)
+		## commented cause it causses problems with compiling the script
+		#attached_crate.attach(self) 
 		wasCrateOriAttached = true
 	roomResident.isSafeToSnapshot = attached_crate and shouldDestructionPersist
 	

@@ -1,0 +1,5 @@
+class_name CutsceneSignalManager_CLASS
+extends Node2D
+
+signal scene1Finished
+signal scene2Finished

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://e7fgfinvtebo"
+path="res://.godot/imported/IntroText.dialogue-0fbeb372c9800003a8eb3022d4320829.tres"
+
+[deps]
+
+source_file="res://Actors/Cutscenes/IntroText.dialogue"
+dest_files=["res://.godot/imported/IntroText.dialogue-0fbeb372c9800003a8eb3022d4320829.tres"]
+
+[params]
+
+defaults=true
