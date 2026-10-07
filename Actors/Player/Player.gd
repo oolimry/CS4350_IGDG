@@ -67,7 +67,7 @@ var wallFacingDirection := Enums.Directions.NONE
 var timeSinceNotTouchingWall = inf
 
 var timeSinceWallJump = inf
-@export var durationAfterWallJumpToHoldAwayFromWall = 0.067
+const durationAfterWallJumpToHoldAwayFromWall = 0.067
 
 #leniency related
 var timeSinceOnFloor = 0
@@ -156,6 +156,8 @@ func _ready():
 	
 
 func _physics_process(delta: float) -> void:
+	
+		
 	_physics_process_playerMovement(delta)
 	
 	_physics_process_slash(delta)
@@ -163,6 +165,9 @@ func _physics_process(delta: float) -> void:
 	_physics_process_updateVisuals()
 
 func _physics_process_playerMovement(delta):
+	if GlobalGameState.phaseOfGame in [GlobalGameState.PhaseOfGame.INTRO_CUTSCENE]:
+		return
+		
 	if isPurpleDashing:
 		physics_process_playerMovement_purple(delta)
 		return 

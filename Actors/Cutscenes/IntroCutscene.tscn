@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://cswps6ssp2jad"]
+
+[ext_resource type="Script" uid="uid://d21bwp8p4tk6" path="res://Actors/Cutscenes/IntroCutscene.gd" id="1_7qyt7"]
+[ext_resource type="Texture2D" uid="uid://dsvyo6dk7mfr6" path="res://Assets/Cutscenes/IntroScene1Background.jpg" id="1_8w2py"]
+[ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_m5aep"]
+[ext_resource type="Texture2D" uid="uid://dwur3qs3gra0b" path="res://Assets/Cutscenes/Scene2Placeholder.png" id="4_uf5c2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5aep"]
+shader = ExtResource("2_m5aep")
+shader_parameter/base_color = Color(0.2869209, 0.2869209, 0.2869209, 0.9647059)
+shader_parameter/highlight_color = Color(0.15539062, 0.15413557, 0.15413557, 1)
+shader_parameter/speed = 0.075
+shader_parameter/noise_scale = 1.0
+shader_parameter/turbulence = 1.5
+shader_parameter/edge_softness = 0.0
+shader_parameter/aspect = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_m5aep"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5aep"]
+gradient = SubResource("Gradient_m5aep")
+width = 2000
+height = 1200
+
+[sub_resource type="Gradient" id="Gradient_7qyt7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d6ec5"]
+gradient = SubResource("Gradient_7qyt7")
+width = 2000
+height = 1200
+
+[sub_resource type="Gradient" id="Gradient_uf5c2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uf5c2"]
+gradient = SubResource("Gradient_uf5c2")
+
+[sub_resource type="Animation" id="Animation_r3nfe"]
+resource_name = "BecomeTransparent"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.7411042),
+"update": 0,
+"values": [Color(1.4369954, 1.4369954, 1.4369954, 1), Color(0.012617188, 0.012617188, 0.012617188, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uf5c2"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(0.37892917, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.4369954, 1.4369954, 1.4369954, 1), Color(1.4369954, 1.4369954, 1.4369954, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x2uss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2uss"]
+_data = {
+&"BecomeTransparent": SubResource("Animation_r3nfe"),
+&"Flash": SubResource("Animation_uf5c2"),
+&"RESET": SubResource("Animation_x2uss")
+}
+
+[node name="IntroCutscene" type="CanvasLayer" unique_id=389250694]
+layer = 2
+script = ExtResource("1_7qyt7")
+
+[node name="Scene1" type="Node2D" parent="." unique_id=1833043371]
+position = Vector2(962, 541)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene1" unique_id=199590191]
+modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+position = Vector2(-57, 371)
+scale = Vector2(3.7252965, 3.3)
+texture = ExtResource("1_8w2py")
+
+[node name="ForegroundFog" type="Sprite2D" parent="Scene1" unique_id=1031286202]
+material = SubResource("ShaderMaterial_m5aep")
+texture = SubResource("GradientTexture2D_m5aep")
+
+[node name="Scene2" type="Node2D" parent="." unique_id=710979736]
+visible = false
+position = Vector2(962, 541)
+
+[node name="FightScene" type="Sprite2D" parent="Scene2" unique_id=377212065]
+modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+position = Vector2(0, -6)
+texture = ExtResource("4_uf5c2")
+
+[node name="Blackness" type="Sprite2D" parent="Scene2" unique_id=222119427]
+modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+position = Vector2(7, -20)
+texture = SubResource("GradientTexture2D_d6ec5")
+
+[node name="WhiteFlash" type="Sprite2D" parent="." unique_id=589531398]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(968.5, 547)
+scale = Vector2(31.265625, 18.09375)
+texture = SubResource("GradientTexture2D_uf5c2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WhiteFlash" unique_id=653747214]
+libraries/ = SubResource("AnimationLibrary_x2uss")
