@@ -64,6 +64,11 @@ const objName = "Chain"
 		vertical_offset = value
 		_request_chain_rebuild()
 
+@export var vertical_start_point: float = -240:
+	set(value):
+		vertical_start_point = value
+		_request_chain_rebuild()
+
 ## If enabled, O links are drawn above I links when they overlap.
 @export var alternate_z_index: bool = true:
 	set(value):
@@ -176,7 +181,7 @@ func rebuild_chain_visuals() -> void:
 		if not is_o_link:
 			offset += perpendicular + Vector2(0, vertical_offset)
 
-		link.position = offset + Vector2(0, -120)
+		link.position = offset + Vector2(0, vertical_start_point)
 		link.scale = Vector2.ONE * link_scale
 
 		if alternate_z_index:
