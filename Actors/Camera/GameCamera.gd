@@ -36,6 +36,7 @@ func slideTowards(destination : Vector2, onSlideFinished : Callable) -> void:
 	if slide_tween and slide_tween.is_valid():
 		slide_tween.kill()
 
+	disableLimit()
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	slide_tween.tween_property(self, "global_position", slideDest, slideSpeed)
 	slide_tween.finished.connect(
