@@ -11,6 +11,8 @@ var currentRoom : RoomDefinition
 var slideDest : Vector2
 var isSliding : bool
 
+var slideSpeed := 0.2
+
 func registerPlayerRetriever(c: Callable):
 	getPlayerFunc = c
 
@@ -35,7 +37,7 @@ func slideTowards(destination : Vector2) -> void:
 		slide_tween.kill()
 
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
+	slide_tween.tween_property(self, "global_position", slideDest, slideSpeed)
 	slide_tween.finished.connect(func(): isSliding = false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
-	setFullLimit(topLeftBound, bottomRightBound, currentRoom)
+	#setFullLimit(topLeftBound, bottomRightBound, currentRoom)
 	
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
@@ -86,7 +88,12 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 	topLeftBound = tlb
 	bottomRightBound = brb
 	currentRoom = roomDef
-	
+
+	limit_top = -10000000
+	limit_bottom = 10000000
+	limit_left = -10000000
+	limit_right = 10000000
+
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
@@ -103,7 +110,6 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 func stopFollowing() -> void:
 	isFollowingPlayer = false
 	global_position = get_screen_center_position()
-	disableLimit()
 
 func disableLimit() -> void:
 	limit_left = -10000000

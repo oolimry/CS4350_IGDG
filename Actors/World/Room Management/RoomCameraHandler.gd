@@ -24,18 +24,21 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	
 	shouldAnimateLerp = currRoom.isDiffRoomGroup(nextRoom)
 
+	var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.previewBounds.size[0]/2, \
+		nextRoomCenterWorldCoords.y - nextRoom.previewBounds.size[1]/2)
+		
+	var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.previewBounds.size[0]/2, \
+		nextRoomCenterWorldCoords.y + nextRoom.previewBounds.size[1]/2)
+	
+	camera.setFullLimit(topLeft, btmRight, nextRoom)
+	#camera.setVerticalLimit(topLeft, btmRight, nextRoom)
+	#camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
+	#if direction.sign() == Vector2i.LEFT or direction.sign() == Vector2i.RIGHT:
+		#
+	#else:
+		
 	if isCameraFollow:
-		var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.previewBounds.size[0]/2, \
-			nextRoomCenterWorldCoords.y - nextRoom.previewBounds.size[1]/2)
-			
-		var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.previewBounds.size[0]/2, \
-			nextRoomCenterWorldCoords.y + nextRoom.previewBounds.size[1]/2)
-			
-		if direction.sign() == Vector2i.LEFT or direction.sign() == Vector2i.RIGHT:
-			camera.setVerticalLimit(topLeft , btmRight, nextRoom)
-		else:
-			camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
-		camera.startFollowingPlayer()
+		camera.startFollowingPlayer()		
 	else:
 		camera.stopFollowing()
 		

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_g8e5u")
 roomName = "Room1"
+cameraLimits = 8
 gamePlayScene = ExtResource("1_ct0x7")
 openSides = 7
 previewTexture = ExtResource("2_6x105")

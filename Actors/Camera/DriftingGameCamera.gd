@@ -1,28 +1,24 @@
 class_name DriftingGameCamera
 extends GameCamera
 
-@export var follow_speed: float = 0.4
+@export var followSpeed: float = 0.6
 @export var follow_distance := 100.0
 
 @export var outer_radii := Vector2(500.0, 300.0)
 
 @export_range(0.01, 0.99) 
-var inner_scale := 0.9
-
-var n
-
+var inner_scale := 0.4
+var n 
 
 # How much the camera will follow the player in a static room
-var driftVector : Vector2 = Vector2(RoomDefinition.previewBounds.size[0] / 2 \
-	, RoomDefinition.previewBounds.size[1] / 2)
+var driftVector : Vector2 = Vector2((RoomDefinition.previewBounds.size[0] * 3) / 7 \
+	, (RoomDefinition.previewBounds.size[1] * 3)/ 7)
 
 func _ready() -> void:
 	outer_radii = driftVector
-	n = Node2D.new()
+	n = DebugDrawNode.new(outer_radii, inner_scale)
 	get_parent().add_child(n)
-	#positionSmoothingEnabled = false
-	#driftHorizontalEnabled = false
-	#driftVerticalEnabled = false
+	n.z_index = -3
 
 static func create(getPlayerFunc : Callable) -> DriftingGameCamera:
 	## Load in HeartGUI
@@ -33,29 +29,28 @@ static func create(getPlayerFunc : Callable) -> DriftingGameCamera:
 
 	return instance
 
-func _draw() -> void:
-	n.draw_ellipse(slideDest, outer_radii.x, outer_radii.y, Color.RED)
-	n.draw_ellipse(slideDest, outer_radii.x * inner_scale, outer_radii.y * inner_scale, Color.GREEN)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	n.global_position = slideDest
 	var player : Player = getPlayerFunc.call()
 	if isFollowingPlayer and !isSliding:
 		self.global_position = player.global_position
 	elif !isSliding:
 		var displacement := player.global_position - slideDest
-		## Scaling an ellipse by its radii turns it into a unit circle.
-		var normalized := displacement / outer_radii
-		var distance := normalized.length()
 		
+		var outside_outer := (
+			absf(displacement.x) > outer_radii.x
+			or absf(displacement.y) > outer_radii.y
+		)
+
 		var target := slideDest
-		var outside_outer := distance > 1.0
 
 		if outside_outer:
-			target = player.global_position \
+			target = (
+				player.global_position
 				- displacement.normalized() * follow_distance
-
-		var weight := 1.0 - exp(-follow_speed * delta)
+			)
+		var weight := 1.0 - exp(-followSpeed * delta)
 		global_position = global_position.lerp(clamp_to_inner(target), weight)
 	pass
 
