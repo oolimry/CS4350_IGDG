@@ -43,12 +43,11 @@ func _physics_process(delta: float) -> void:
 	if isFollowingPlayer and !isSliding:
 		var player : Player = getPlayerFunc.call()
 		self.global_position = player.global_position
-		setFullLimit(topLeftBound, bottomRightBound, currentRoom)
 	pass
 
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
-	
+	setFullLimit(topLeftBound, bottomRightBound, currentRoom)
 	
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
@@ -104,6 +103,9 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 func stopFollowing() -> void:
 	isFollowingPlayer = false
 	global_position = get_screen_center_position()
+	disableLimit()
+
+func disableLimit() -> void:
 	limit_left = -10000000
 	limit_top = -10000000
 	limit_right = 10000000

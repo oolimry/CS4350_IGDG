@@ -68,5 +68,5 @@ var wasLoaded := false
 @export var previewTexture : Texture2D
 
 static var previewBounds := Rect2(0, 0, 1920, 1080)
-		
+
 static var previewImageSize := Vector2i(512, 288)

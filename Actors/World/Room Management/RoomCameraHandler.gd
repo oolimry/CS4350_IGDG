@@ -15,10 +15,6 @@ var currCameraPosition : Vector2 = Vector2(0,0)
 ## Should the camera pan when transitioning to a new room?
 var shouldAnimateLerp := false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	direction : Vector2i, calcRoomWorldCoords : Callable):
 	 
@@ -29,7 +25,6 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	shouldAnimateLerp = currRoom.isDiffRoomGroup(nextRoom)
 
 	if isCameraFollow:
-		camera.startFollowingPlayer()
 		var topLeft = Vector2(nextRoomCenterWorldCoords.x - nextRoom.previewBounds.size[0]/2, \
 			nextRoomCenterWorldCoords.y - nextRoom.previewBounds.size[1]/2)
 			
@@ -40,6 +35,7 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 			camera.setVerticalLimit(topLeft , btmRight, nextRoom)
 		else:
 			camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
+		camera.startFollowingPlayer()
 	else:
 		camera.stopFollowing()
 		

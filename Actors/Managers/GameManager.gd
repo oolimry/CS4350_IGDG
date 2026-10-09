@@ -48,7 +48,7 @@ func setup(p : Player) -> void:
 	
 	# Managers that rely on the Player to work$"."
 	hudManager = HUDManager.create(getPlayer)
-	camera = GameCamera.create(getPlayer)
+	camera = DriftingGameCamera.create(getPlayer)
 	
 	get_tree().current_scene.add_child.call_deferred(hudManager)
 	get_tree().current_scene.add_child.call_deferred(camera)

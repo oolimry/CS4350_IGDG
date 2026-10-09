@@ -15,7 +15,6 @@ var roomLoader : RoomLoader
 @export var roomCamHandler : RoomCameraHandler
 var worldStateOwner : WorldStateOwner
 
-signal getInitialPlayerInstance(p : Player) 
 signal playerChangedRoom(roomDef : RoomDefinition)
 ################################## Setup ######################################
 
