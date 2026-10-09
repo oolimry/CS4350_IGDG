@@ -14,12 +14,12 @@ collision_mask = 8
 script = ExtResource("1_rfnd0")
 chain_o_texture = ExtResource("2_y3xdp")
 chain_i_texture = ExtResource("3_145s6")
-link_count = 9
+link_count = 11
 link_spacing = 66.0
 link_scale = 1.25
 vertical_offset = -66.0
+vertical_start_point = null
 alternate_z_index = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=993499524]
-position = Vector2(3, -9)
 shape = SubResource("RectangleShape2D_0glnl")
