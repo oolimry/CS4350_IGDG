@@ -157,7 +157,6 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-		
 	_physics_process_playerMovement(delta)
 	
 	_physics_process_slash(delta)

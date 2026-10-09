@@ -29,7 +29,7 @@ static func create(getPlayerFunc : Callable) -> GameCamera:
 var slide_tween: Tween
 
 # Thanks ChatGPT
-func slideTowards(destination : Vector2) -> void:
+func slideTowards(destination : Vector2, onSlideFinished : Callable) -> void:
 	isSliding = true
 	slideDest = destination
 
@@ -38,7 +38,10 @@ func slideTowards(destination : Vector2) -> void:
 
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	slide_tween.tween_property(self, "global_position", slideDest, slideSpeed)
-	slide_tween.finished.connect(func(): isSliding = false)
+	slide_tween.finished.connect(
+		func(): 
+			isSliding = false
+			onSlideFinished.call())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -49,7 +52,6 @@ func _physics_process(delta: float) -> void:
 
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
-	#setFullLimit(topLeftBound, bottomRightBound, currentRoom)
 	
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb

@@ -30,7 +30,6 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.previewBounds.size[0]/2, \
 		nextRoomCenterWorldCoords.y + nextRoom.previewBounds.size[1]/2)
 	
-	camera.setFullLimit(topLeft, btmRight, nextRoom)
 	#camera.setVerticalLimit(topLeft, btmRight, nextRoom)
 	#camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
 	#if direction.sign() == Vector2i.LEFT or direction.sign() == Vector2i.RIGHT:
@@ -38,12 +37,14 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 	#else:
 		
 	if isCameraFollow:
-		camera.startFollowingPlayer()		
+		camera.startFollowingPlayer()
 	else:
 		camera.stopFollowing()
 		
 	if shouldAnimateLerp:
-		camera.slideTowards(nextRoomCenterWorldCoords)
+		camera.slideTowards(nextRoomCenterWorldCoords, 
+			camera.setFullLimit.bind(topLeft, btmRight, currRoom))
+	
 	pass
 
 func setup(gridPos : Vector2i, calcRoomCenterWorldCoords : Callable) -> void:

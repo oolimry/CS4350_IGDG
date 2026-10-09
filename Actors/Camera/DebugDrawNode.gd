@@ -2,7 +2,7 @@ class_name DebugDrawNode
 extends Node2D
 
 var outer_radii : Vector2
-var inner_scale : float
+var inner_scale : Vector2
 
 func _init(b, c) -> void:
 	outer_radii = b
