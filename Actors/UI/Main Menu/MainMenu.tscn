@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bfqtbc5ao5wwh"]
+
+[ext_resource type="Texture2D" uid="uid://df8xngx6m308d" path="res://Assets/Backgrounds/TitleScreenBG.png" id="1_1poyy"]
+[ext_resource type="Texture2D" uid="uid://ixu8rgri7s04" path="res://Actors/UI/Main Menu/Metroid_Logo.png" id="2_r5uus"]
+
+[node name="MainMenu" type="Control" unique_id=1956684628]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=935663686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1poyy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1872138385]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 225
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1972588700]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1138238066]
+layout_mode = 2
+texture = ExtResource("2_r5uus")
+stretch_mode = 5
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1071580742]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1423187390]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start"
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=968890847]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+flat = true
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=310318998]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1969695455]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+flat = true
