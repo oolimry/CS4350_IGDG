@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://blpt4oacinocx"]
 
+[ext_resource type="Script" uid="uid://c5o7xrn2ki1u" path="res://Actors/World/Main.gd" id="1_58e1p"]
 [ext_resource type="PackedScene" uid="uid://cml15n6pk8w1s" path="res://Actors/Managers/GameManager.tscn" id="1_i87mu"]
+[ext_resource type="PackedScene" uid="uid://bfqtbc5ao5wwh" path="res://Actors/UI/Main Menu/MainMenu.tscn" id="1_prjtj"]
 [ext_resource type="Script" uid="uid://dlrb7b1dhgkpe" path="res://Actors/World/Room Management/RoomManager.gd" id="2_cp0kg"]
 [ext_resource type="Script" uid="uid://d2d0bp7vebtl4" path="res://Actors/Boss/BossManager.gd" id="2_hswiw"]
 [ext_resource type="PackedScene" uid="uid://wquu4ok43sma" path="res://Assets/Rooms/TestRooms/MapLayoutGreybox.tscn" id="4_2e1df"]
@@ -68,6 +70,7 @@ glow_bloom = 0.05
 glow_hdr_threshold = 2.0
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
+script = ExtResource("1_58e1p")
 
 [node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "bgManager", "persistentActors", "bossManager") instance=ExtResource("1_i87mu")]
 roomManager = NodePath("../RoomManager")
@@ -169,3 +172,9 @@ boss = NodePath("BossRoomParallax")
 [node name="PurpRoomsParallax" parent="BackgroundManager" unique_id=1130000653 instance=ExtResource("54_r2hq1")]
 
 [node name="IntroCutscene" parent="." unique_id=1756700696 instance=ExtResource("57_4tuoc")]
+
+[node name="MainMenuLayer" type="CanvasLayer" parent="." unique_id=1283152869]
+layer = 3
+
+[node name="MainMenu" parent="MainMenuLayer" unique_id=1956684628 instance=ExtResource("1_prjtj")]
+z_index = 600

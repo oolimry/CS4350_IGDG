@@ -11,11 +11,13 @@ extends CanvasLayer
 
 var ifForceSkip = false
 
-func _ready():
-	DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
-	
+func _ready():	
 	CutsceneSignalManager.scene1Finished.connect(onScene1Finished)
 	CutsceneSignalManager.scene2Finished.connect(onScene2Finished)
+
+func startCutscene():
+	DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
+
 
 func _process(delta):
 	if Input.is_action_pressed("left") and Input.is_action_pressed("jump"):
