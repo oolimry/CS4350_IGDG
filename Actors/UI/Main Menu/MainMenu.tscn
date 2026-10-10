@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfqtbc5ao5wwh"]
 
 [ext_resource type="Texture2D" uid="uid://df8xngx6m308d" path="res://Assets/Backgrounds/TitleScreenBG.png" id="1_1poyy"]
+[ext_resource type="Script" uid="uid://ckdvwmhub8jn0" path="res://Actors/UI/Main Menu/MainMenu.gd" id="1_r5uus"]
 [ext_resource type="Texture2D" uid="uid://ixu8rgri7s04" path="res://Actors/UI/Main Menu/Metroid_Logo.png" id="2_r5uus"]
 
 [node name="MainMenu" type="Control" unique_id=1956684628]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r5uus")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=935663686]
 layout_mode = 1
@@ -72,3 +74,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Quit" to="." method="_on_quit_pressed"]
