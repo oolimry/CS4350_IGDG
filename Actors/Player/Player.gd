@@ -607,8 +607,9 @@ func preRespawnHandling() -> void:
 	isDead = true
 	freezeInput = true
 	self.visible = false
-	$OnDeathBlackness/AnimationPlayer.play("FadeInAndOut")
 	
+	$OnDeathBlackness/AnimationPlayer.play("FadeInAndOut")
+	SignalManager.triggerScreenshake.emit()
 	AudioManager.play(AudioManager.Die)
 	VfxManager.createVFX(VfxManager.PlayerDiedVFXTSCN, self.global_position,\
 		{VFXManager_class.Params.PLAYER : self}
