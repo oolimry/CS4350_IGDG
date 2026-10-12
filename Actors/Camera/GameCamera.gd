@@ -49,7 +49,8 @@ func _physics_process(delta: float) -> void:
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
 	
-	
+
+
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
 	bottomRightBound = brb

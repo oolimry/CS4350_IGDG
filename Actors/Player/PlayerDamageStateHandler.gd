@@ -16,7 +16,11 @@ var shaderAnim : ShaderAnimator
 var preRespawnFunc : Callable
 var postRespawnFunc : Callable
 var requestInvuln : Callable
-func setup(sa : ShaderAnimator, 
+
+var isHandlingDeathNow = false
+
+func setup(
+	sa : ShaderAnimator, 
 	handlePreRespawn : Callable, 
 	handlePostRespawn : Callable,
 	handleInvuln : Callable) -> void:
@@ -40,11 +44,14 @@ signal requestRespawn(isDeath : bool, respawnFunc : DamageStateHandler)
 # If kill -> onDeath() only
 
 func onDeath() -> void:
-	preRespawnFunc.call()
+	if isHandlingDeathNow:
+		return
+	isHandlingDeathNow = true
 	
-	## Do your anim here
-	
+	await preRespawnFunc.call()
+
 	requestRespawn.emit(true, self)
+	isHandlingDeathNow =  false
 
 func onHurt(dmg : int, isSpike : bool) -> void:
 	if playerHealth.wouldKill(dmg):
@@ -68,11 +75,16 @@ func onHurt(dmg : int, isSpike : bool) -> void:
 	pass
 	
 func onSpiked() -> void:
-	preRespawnFunc.call()
+	if isHandlingDeathNow:
+		return
+	isHandlingDeathNow = true
 	
-	## Do your anim here
-		
+	await preRespawnFunc.call()
+	
 	requestRespawn.emit(false, self)
+	isHandlingDeathNow =  false
+	
+	
 
 func postRespawnHandling(posToRespawn : Vector2, isFullHeal := true, 
 	shouldStillInvuln := false) -> void:
