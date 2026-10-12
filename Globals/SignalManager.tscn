@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cavxkbpwqqoe6"]
+
+[ext_resource type="Script" uid="uid://sk2injly7mb2" path="res://Globals/SignalManager.gd" id="1_gtkuv"]
+
+[node name="SignalManager" type="Node2D" unique_id=141697712]
+script = ExtResource("1_gtkuv")

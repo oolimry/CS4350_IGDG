@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bon0key66htjk"]
+
+[ext_resource type="Script" uid="uid://tcrokfmi8fn2" path="res://Actors/VFX/PlayerDiedVFX.gd" id="1_08p3r"]
+[ext_resource type="PackedScene" uid="uid://c3wtjkes4ldh4" path="res://Actors/VFX/PlayerDiedParticle.tscn" id="2_08p3r"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
+blend_mode = 1
+
+[node name="PlayerDiedVFX" type="Node2D" unique_id=1526437014]
+material = SubResource("CanvasItemMaterial_457ov")
+script = ExtResource("1_08p3r")
+
+[node name="Particles" type="Node2D" parent="." unique_id=681807923]
+
+[node name="PlayerDiedParticle" parent="Particles" unique_id=1148241990 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle2" parent="Particles" unique_id=1849222209 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle3" parent="Particles" unique_id=1421979552 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle4" parent="Particles" unique_id=1165784434 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle5" parent="Particles" unique_id=966169887 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle6" parent="Particles" unique_id=516639618 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle7" parent="Particles" unique_id=797479726 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle8" parent="Particles" unique_id=677089680 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle9" parent="Particles" unique_id=817201926 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle10" parent="Particles" unique_id=974684267 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle11" parent="Particles" unique_id=1670327134 instance=ExtResource("2_08p3r")]
+
+[node name="PlayerDiedParticle12" parent="Particles" unique_id=143232493 instance=ExtResource("2_08p3r")]

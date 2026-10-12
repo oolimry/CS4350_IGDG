@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c3wtjkes4ldh4"]
+
+[ext_resource type="Texture2D" uid="uid://daemv2l3te0lj" path="res://Assets/VFX/WhiteParticle.png" id="1_erece"]
+[ext_resource type="Script" uid="uid://clm27m3ktf4ee" path="res://Actors/VFX/PlayerDiedParticle.gd" id="2_erece"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
+blend_mode = 1
+light_mode = 1
+
+[node name="PlayerDiedParticle" type="Sprite2D" unique_id=1148241990]
+modulate = Color(1.0091805, 1.0091805, 1.0091805, 1)
+z_index = 500
+material = SubResource("CanvasItemMaterial_5iyrj")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_erece")
+script = ExtResource("2_erece")

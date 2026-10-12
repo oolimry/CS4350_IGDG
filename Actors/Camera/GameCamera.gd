@@ -1,6 +1,23 @@
 class_name GameCamera
 extends Camera2D
 
+# How quickly to move through the noise
+@export var NOISE_SHAKE_SPEED: float = 30.0
+# Noise returns values in the range (-1, 1)
+# So this is how much to multiply the returned value by
+@export var NOISE_SHAKE_STRENGTH: float = 60.0
+# Multiplier for lerping the shake strength to zero
+@export var SHAKE_DECAY_RATE: float = 5.0
+
+@onready var rand = RandomNumberGenerator.new()
+@onready var noise = FastNoiseLite.new()
+
+var noise_i: float = 0.0
+var shake_strength: float = 0.0
+var originalPosition : Vector2
+
+var goodSeeds = []
+
 var getPlayerFunc : Callable
 
 var isFollowingPlayer : bool
@@ -10,6 +27,8 @@ var currentRoom : RoomDefinition
 
 var slideDest : Vector2
 var isSliding : bool
+
+var isShaking = false
 
 func registerPlayerRetriever(c: Callable):
 	getPlayerFunc = c
@@ -21,6 +40,7 @@ static func create(getPlayerFunc : Callable) -> GameCamera:
 	var instance = scene.instantiate() as GameCamera
 
 	instance.registerPlayerRetriever(getPlayerFunc)
+	SignalManager.triggerScreenshake.connect(instance.apply_noise_shake)
 
 	return instance
 
@@ -44,11 +64,17 @@ func _physics_process(delta: float) -> void:
 		var player : Player = getPlayerFunc.call()
 		self.global_position = player.global_position
 		setFullLimit(topLeftBound, bottomRightBound, currentRoom)
-	pass
+	
+	if isShaking:
+		shake_strength = lerp(shake_strength, 0.0, SHAKE_DECAY_RATE * delta)
+		position = originalPosition + get_noise_offset(delta)
+	
+		if shake_strength < 0.001:
+			isShaking = false
+			position = originalPosition
 
 func startFollowingPlayer() -> void:
 	isFollowingPlayer = true
-	
 	
 func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
@@ -112,3 +138,17 @@ func stopFollowing() -> void:
 	
 	self.topLeftBound = Vector2(-10000000, -10000000)
 	self.bottomRightBound = Vector2(-10000000, -10000000)
+
+func apply_noise_shake() -> void:
+	isShaking = true
+	originalPosition = self.position
+	shake_strength = NOISE_SHAKE_STRENGTH
+
+func get_noise_offset(delta: float) -> Vector2:
+	noise_i += delta * NOISE_SHAKE_SPEED
+	# Set the x values of each call to 'get_noise_2d' to a different value
+	# so that our x and y vectors will be reading from unrelated areas of noise
+	return Vector2(
+		noise.get_noise_2d(1, noise_i) * shake_strength,
+		noise.get_noise_2d(100, noise_i) * shake_strength
+	)
