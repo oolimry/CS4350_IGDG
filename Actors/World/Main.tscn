@@ -71,7 +71,6 @@ glow_hdr_threshold = 2.0
 
 [node name="TestLevel" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_58e1p")
-toForceStart = true
 
 [node name="GameManager" parent="." unique_id=1023940434 node_paths=PackedStringArray("roomManager", "bgManager", "persistentActors", "bossManager") instance=ExtResource("1_i87mu")]
 roomManager = NodePath("../RoomManager")
