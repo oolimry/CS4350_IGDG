@@ -4,9 +4,28 @@ extends RoomResidentStatic
 
 const objName = "ExplodableWall"
 
+@export var width : float = 160:
+	set(value):
+		width = value
+		updateVisuals()
+	
+@export var height : float = 240:
+	set(value):
+		height = value
+		updateVisuals()
+
+func updateVisuals():
+	if is_instance_valid($Sprite2D):
+		$Sprite2D.size = Vector2(width, height) / $Sprite2D.scale.x
+	if is_instance_valid($CollisionShape2D):
+		$CollisionShape2D.scale = Vector2(width, height) / 100
+		$CollisionShape2D.position = Vector2(width, height) * 0.5
+	
+
+
 ## Should the wall continued to be destroyed after leaving the room?
 @export var shouldDestructionPersist := true
-
+	
 func setup() -> void:
 	roomResident = RoomResident.setup(objName, position, !shouldDestructionPersist)
 	

@@ -126,8 +126,9 @@ element = 2
 [node name="RoomResidents" type="Node2D" parent="." unique_id=630726664]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1487741450 instance=ExtResource("13_ejcwo")]
-position = Vector2(980, 980)
-scale = Vector2(1.5, 3.5)
+position = Vector2(920, 860)
+width = 120.0
+height = 280.0
 roomResident = SubResource("Resource_n5mht")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 instance=ExtResource("15_jabkw")]
