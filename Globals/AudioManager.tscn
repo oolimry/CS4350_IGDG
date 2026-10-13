@@ -48,31 +48,39 @@ script = ExtResource("1_olr0b")
 [node name="Jump" type="AudioStreamPlayer" parent="Movement" unique_id=463558909]
 stream = SubResource("AudioStreamRandomizer_olr0b")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="Die" type="AudioStreamPlayer" parent="Movement" unique_id=740421040]
 stream = SubResource("AudioStreamRandomizer_l8f8j")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="FootstepA" type="AudioStreamPlayer" parent="Movement" unique_id=788135200]
 stream = SubResource("AudioStreamRandomizer_1v8rx")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="FootstepB" type="AudioStreamPlayer" parent="Movement" unique_id=1032052879]
 stream = SubResource("AudioStreamRandomizer_4t86c")
 volume_db = -8.0
+bus = &"Audio"
 
 [node name="Slashing" type="Node2D" parent="." unique_id=1541962458]
 
 [node name="SlashNeutral" type="AudioStreamPlayer" parent="Slashing" unique_id=507469541]
 stream = SubResource("AudioStreamRandomizer_vynle")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="WindProjectile" type="AudioStreamPlayer" parent="Slashing" unique_id=1599818199]
 stream = ExtResource("6_21uwq")
 volume_db = -3.0
+bus = &"Audio"
 
 [node name="FireElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1779547640]
 volume_db = -8.0
+bus = &"Audio"
 
 [node name="WindElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1981845195]
 volume_db = -8.0
+bus = &"Audio"
