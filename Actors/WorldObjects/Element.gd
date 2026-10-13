@@ -1,6 +1,6 @@
 @tool
 class_name Element
-extends StaticBody2D
+extends Area2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D 
 
@@ -22,7 +22,7 @@ var active = true
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	if not active:
 		return
-		
+	
 	self.visible = false
 	active = false
 	collision_shape.set_deferred("monitoring", false)

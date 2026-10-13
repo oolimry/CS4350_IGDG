@@ -44,7 +44,9 @@ func actOnPotentialHazard(collision: KinematicCollision2D) -> void:
 		hitHazard.call(hazardDamage, true)
 	## otherwise damage the player normally
 	else:
-		collider.queue_free()
+		
+		# Note projectiles don't follow this logic,
+		# they call DamageStateHandler directly
 		hitHazard.call(hazardDamage, false)
 		
 
