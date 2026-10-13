@@ -61,6 +61,6 @@ element = 2
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
-position = Vector2(40, 720)
-scale = Vector2(1, 5)
+position = Vector2(0, 520)
+shouldDestructionPersist = false
 roomResident = SubResource("Resource_2yek6")

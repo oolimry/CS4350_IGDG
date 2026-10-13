@@ -102,18 +102,19 @@ timeToLive = 30.0
 [node name="RoomResidents" type="Node2D" parent="." unique_id=982113744]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=753218192 instance=ExtResource("6_5nk4h")]
-position = Vector2(640, 800)
-scale = Vector2(1, 4)
+position = Vector2(640, 640)
+height = 320.0
 roomResident = SubResource("Resource_tkoe3")
 
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
-position = Vector2(1100.0001, 20)
-scale = Vector2(3.5, 0.5)
+position = Vector2(960, 0)
+width = 280.0
+height = 120.0
 roomResident = SubResource("Resource_p8ick")
 
 [node name="ExplodableWall2" parent="RoomResidents" unique_id=381610938 instance=ExtResource("6_5nk4h")]
-position = Vector2(800, 440)
-scale = Vector2(2, 3)
+position = Vector2(880, 400)
+height = 160.0
 roomResident = SubResource("Resource_bo0d1")
 
 [editable path="Respawn Point"]
