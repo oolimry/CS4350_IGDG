@@ -1,35 +1,20 @@
 [gd_scene format=3 uid="uid://doqy2y3tyjoxi"]
 
 [ext_resource type="Script" uid="uid://bd2bkhxiirqec" path="res://Actors/WorldObjects/PlaceholderSlashableObject.gd" id="1_865f2"]
+[ext_resource type="Texture2D" uid="uid://djtrqbfxq7id3" path="res://Assets/World Objects/BreakableWall.png" id="2_2a1s7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
 size = Vector2(80, 80)
-
-[sub_resource type="Gradient" id="Gradient_ukk5s"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.26293245, 0.26293245, 0.26293245, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y23pg"]
-gradient = SubResource("Gradient_ukk5s")
-width = 80
-height = 80
-fill_to = Vector2(0, 0)
 
 [node name="PlaceholderSlashableObject" type="StaticBody2D" unique_id=1935947710]
 collision_layer = 26
 collision_mask = 0
 script = ExtResource("1_865f2")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178235108]
+position = Vector2(1.4305115e-06, 1.4305115e-06)
+scale = Vector2(0.16666666, 0.16666666)
+texture = ExtResource("2_2a1s7")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
 shape = SubResource("RectangleShape2D_vynle")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178235108]
-texture = SubResource("GradientTexture2D_y23pg")
-
-[node name="Label" type="Label" parent="Sprite2D" unique_id=1176242760]
-offset_left = -39.0
-offset_top = -11.0
-offset_right = 38.0
-offset_bottom = 12.0
-text = "hit me"
-horizontal_alignment = 1
