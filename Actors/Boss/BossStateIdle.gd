@@ -12,6 +12,10 @@ func _start() -> void:
 	durationTimer.timeout.connect(_end)
 	durationTimer.start(duration)
 	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.LIGHT_PINK
+	
+	var ap = getBoss.call().get_node("AnimationPlayer") as AnimationPlayer
+	ap.play("move_left")
+	
 	Glogger.debug("Boss is Idling")
 	pass
 

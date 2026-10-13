@@ -1,5 +1,5 @@
 class_name BossWeakPoint
-extends AnimatableBody2D
+extends Area2D
 
 @export var slashDamage := 2
 @export var windDamage := 2
