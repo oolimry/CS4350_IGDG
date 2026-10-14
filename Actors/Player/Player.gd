@@ -153,7 +153,7 @@ func _init():
 
 func _ready():
 	damageStateHandler.setup(shaderAnimator, preRespawnHandling,
-		postRespawnHandling, hazardHandler.startInvulnPeriod,)
+		postRespawnHandling)
 	hazardHandler.setup(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0

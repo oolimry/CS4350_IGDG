@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://dmv3vx66argqt" path="res://Actors/Boss/BossState.gd" id="20_mgv3b"]
 [ext_resource type="Resource" uid="uid://b48siyfp584tt" path="res://Assets/Boss/States/BossState_ProjectileFireStraight.tres" id="20_ttjjf"]
 [ext_resource type="Resource" uid="uid://cma7a5l6nqenl" path="res://Assets/Boss/States/BossState_Idle.tres" id="23_8sqyj"]
+[ext_resource type="Script" uid="uid://j08ct1425qun" path="res://Actors/Boss/BossStateMeleeAttack.gd" id="23_ig4bl"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_hgopr"]
 execution_mode = 1
@@ -145,13 +146,13 @@ modifications/1 = SubResource("SkeletonModification2DCCDIK_gagxu")
 modifications/2 = SubResource("SkeletonModification2DCCDIK_mypim")
 modifications/3 = SubResource("SkeletonModification2DCCDIK_wvtfw")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
-radius = 18.035583
-height = 823.1477
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i12or"]
 radius = 278.761
 height = 1082.9468
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
+radius = 18.035583
+height = 823.1477
 
 [sub_resource type="Animation" id="Animation_8sqyj"]
 length = 0.001
@@ -287,7 +288,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_ttjjf"]
 resource_name = "move_left"
 length = 4.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -352,7 +352,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_ig4bl"]
 resource_name = "move_right"
 length = 4.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -423,6 +422,10 @@ _data = {
 &"move_right": SubResource("Animation_ig4bl")
 }
 
+[sub_resource type="Resource" id="Resource_ttjjf"]
+script = ExtResource("23_ig4bl")
+metadata/_custom_type_script = "uid://j08ct1425qun"
+
 [node name="Boss" type="Node2D" unique_id=2035268831 node_paths=PackedStringArray("health", "fsm")]
 script = ExtResource("1_2yquw")
 health = NodePath("Health")
@@ -436,45 +439,45 @@ scale = Vector2(0.6, 0.6)
 
 [node name="BossFootR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1041100193]
 modulate = Color(0.98, 0.058800004, 0.0741531, 1)
-position = Vector2(-573.20044, 1186.9891)
-rotation = -0.011973309
-scale = Vector2(0.9999156, 0.9999156)
+position = Vector2(-573.2018, 1186.9916)
+rotation = -0.01197363
+scale = Vector2(0.9999119, 0.9999119)
 texture = ExtResource("1_gagxu")
 offset = Vector2(573, -1156)
 
 [node name="BossFootL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1455065047]
 modulate = Color(0.9264272, 0, 0.00633728, 1)
-position = Vector2(534.75726, 1207.1211)
-rotation = -0.13438238
-scale = Vector2(0.9999858, 0.9999858)
+position = Vector2(545.1123, 1237.7542)
+rotation = -0.11988133
+scale = Vector2(0.9999851, 0.9999851)
 texture = ExtResource("2_2yquw")
 offset = Vector2(-565, -1152)
 
 [node name="BossShinL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=954763846]
-position = Vector2(1890.0531, 273.22986)
-rotation = 0.058861885
-scale = Vector2(0.9999855, 0.9999855)
+position = Vector2(1893.1396, 293.3993)
+rotation = 0.051121376
+scale = Vector2(0.99998593, 0.99998593)
 texture = ExtResource("3_o3gxu")
 offset = Vector2(-1870, -141)
 
 [node name="BossShinR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=94052258]
-position = Vector2(-1871.9879, 176.00513)
-rotation = -0.00075731927
-scale = Vector2(0.9999955, 0.9999955)
+position = Vector2(-1871.988, 176.00586)
+rotation = -0.00075763883
+scale = Vector2(0.9999958, 0.9999958)
 texture = ExtResource("4_i12or")
 offset = Vector2(1874, -140)
 
 [node name="BossThighL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=676494382]
 position = Vector2(155.00165, 549.0006)
-rotation = 0.07617234
-scale = Vector2(0.9999897, 0.9999897)
+rotation = 0.08778712
+scale = Vector2(0.99999076, 0.99999076)
 texture = ExtResource("5_odtgy")
 offset = Vector2(-161, -553)
 
 [node name="BossThighR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=130863287]
 position = Vector2(-155.00125, 549.00354)
-rotation = -0.019841976
-scale = Vector2(0.9999941, 0.9999941)
+rotation = -0.01984245
+scale = Vector2(0.99999416, 0.99999416)
 texture = ExtResource("6_mgv3b")
 offset = Vector2(164, -547)
 
@@ -501,7 +504,7 @@ offset = Vector2(-480, 548)
 
 [node name="BossArmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=790249206]
 position = Vector2(-1061.0288, -559.0051)
-rotation = 0.044670448
+rotation = 0.044670455
 scale = Vector2(0.9999994, 0.9999994)
 texture = ExtResource("7_2je5x")
 offset = Vector2(1068, 557)
@@ -524,9 +527,9 @@ texture = ExtResource("15_41bxp")
 offset = Vector2(4, 843)
 
 [node name="BossForearmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=415876403]
-position = Vector2(-1711.0547, 636.17004)
-rotation = -0.041486707
-scale = Vector2(0.9999939, 0.9999939)
+position = Vector2(-1711.0547, 636.17017)
+rotation = -0.041486703
+scale = Vector2(0.99999404, 0.99999404)
 texture = ExtResource("13_fycjl")
 offset = Vector2(1662, -658)
 
@@ -548,26 +551,26 @@ rest = Transform2D(1, 0, 0, 1, 0, 509)
 
 [node name="LegR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=1201226660]
 position = Vector2(-155.00125, 40.003418)
-rotation = -0.020702187
-scale = Vector2(0.99999404, 0.99999404)
+rotation = -0.019845314
+scale = Vector2(0.99999416, 0.99999416)
 rest = Transform2D(0.99980295, -0.01956166, 0.01956166, 0.99980295, -155.00125, 40.003418)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ShinR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR" unique_id=1680186851]
-position = Vector2(-1709.2585, -406.99365)
-rotation = 0.026001891
-scale = Vector2(1.0000014, 1.0000014)
+position = Vector2(-1709.2584, -406.99365)
+rotation = 0.019114932
+scale = Vector2(1.0000015, 1.0000015)
 rest = Transform2D(0.9998188, 0.019105306, -0.019105306, 0.9998188, -1709.2584, -406.9937)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=1238437744]
-position = Vector2(1298.0276, 1011.97217)
-rotation = -0.019921131
-scale = Vector2(0.99992037, 0.99992037)
+position = Vector2(1298.0276, 1011.97205)
+rotation = -0.0112541355
+scale = Vector2(0.9999203, 0.9999203)
 rest = Transform2D(0.9998512, -0.011776497, 0.011776497, 0.9998512, 1298.0273, 1011.9721)
 auto_calculate_length_and_angle = false
 length = 648.645
-bone_angle = 113.683685
+bone_angle = 113.68368
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR" unique_id=1470867022]
@@ -583,40 +586,26 @@ rotation = 0.7122086
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=200553171]
 remote_path = NodePath("../../../../../../Body/BossShinR")
 
-[node name="RShinPlatform" type="AnimatableBody2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=768735559]
-position = Vector2(271.88538, -0.41358948)
-rotation = -2.748875
-scale = Vector2(0.999988, 0.999988)
-collision_layer = 18
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/RShinPlatform" unique_id=1357070413]
-position = Vector2(-2.6533966, -15.128422)
-rotation = 1.3867891
-scale = Vector2(2.417308, 0.9999999)
-shape = SubResource("CapsuleShape2D_bhunq")
-debug_color = Color(0, 0.10980392, 0.69803923, 0.41960785)
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR" unique_id=614014200]
 remote_path = NodePath("../../../../../Body/BossThighR")
 
 [node name="LegL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=906466173]
 position = Vector2(155.00165, 40.00049)
-rotation = 0.076209255
+rotation = 0.0761714
 scale = Vector2(0.9999897, 0.9999897)
 rest = Transform2D(0.99709177, 0.07607558, -0.07607558, 0.99709177, 155.00165, 40.00049)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ShinL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL" unique_id=463615355]
-position = Vector2(1709.0524, -407.01074)
-rotation = -0.015615288
-scale = Vector2(0.9999963, 0.9999963)
+position = Vector2(1709.0522, -407.0105)
+rotation = -0.017309014
+scale = Vector2(0.99999577, 0.99999577)
 rest = Transform2D(0.99984646, -0.017308561, 0.017308561, 0.99984646, 1709.0525, -407.01062)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FootL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL" unique_id=106637170]
-position = Vector2(-1298.0286, 1012.01746)
-rotation = -0.19515641
+position = Vector2(-1298.0286, 1012.0177)
+rotation = -0.19324382
 scale = Vector2(1.0000004, 1.0000004)
 rest = Transform2D(0.9813947, -0.19200364, 0.19200364, 0.9813947, -1298.0288, 1012.01733)
 auto_calculate_length_and_angle = false
@@ -638,18 +627,6 @@ scale = Vector2(0.99992543, 0.99992543)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL" unique_id=274642864]
 remote_path = NodePath("../../../../../../Body/BossShinL")
 
-[node name="LShinPlatform" type="AnimatableBody2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL" unique_id=2087158857]
-position = Vector2(-254.69994, 13.472893)
-collision_layer = 18
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/LShinPlatform" unique_id=668779656]
-position = Vector2(-0.039173126, 0.1406784)
-rotation = 1.3867891
-scale = Vector2(2.417308, 0.9999999)
-shape = SubResource("CapsuleShape2D_bhunq")
-debug_color = Color(0, 0.10980392, 0.69803923, 0.41960785)
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL" unique_id=1429421222]
 remote_path = NodePath("../../../../../Body/BossThighL")
 
@@ -659,15 +636,15 @@ rest = Transform2D(1, 0, 0, 1, 0, -511)
 
 [node name="ArmR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=752141885]
 position = Vector2(-1061.0288, -557.00525)
-rotation = 0.023102926
-scale = Vector2(0.9999995, 0.9999995)
+rotation = 0.034755167
+scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(0.9990017, 0.04466365, -0.04466365, 0.9990017, -1061.0287, -557.0053)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR" unique_id=547883284]
-position = Vector2(-596.0066, 1223.0138)
-rotation = -0.04948694
-scale = Vector2(0.9999983, 0.9999983)
+position = Vector2(-596.0071, 1223.0137)
+rotation = -0.06939632
+scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(0.99628794, -0.086064555, 0.086064555, 0.99628794, -596.0065, 1223.0137)
 auto_calculate_length_and_angle = false
 length = 1024.0
@@ -685,14 +662,14 @@ remote_path = NodePath("../../../../../../Body/BossArmR")
 
 [node name="ArmL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=321145084]
 position = Vector2(1061.0151, -557.00525)
-rotation = -0.08711511
-scale = Vector2(0.99999857, 0.99999857)
+rotation = -0.06206208
+scale = Vector2(0.9999986, 0.9999986)
 rest = Transform2D(0.999001, -0.044658244, 0.044658244, 0.999001, 1061.0151, -557.0053)
 metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL" unique_id=1826379377]
-position = Vector2(596.0028, 1223.0107)
-rotation = 0.15604706
+position = Vector2(596.0033, 1223.011)
+rotation = 0.115147814
 scale = Vector2(0.9999936, 0.9999936)
 rest = Transform2D(0.9962853, 0.086041905, -0.086041905, 0.9962853, 596.0028, 1223.0107)
 auto_calculate_length_and_angle = false
@@ -742,7 +719,7 @@ remote_path = NodePath("../../../../../../Body/BossCloth")
 position = Vector2(321.4433, -147.1655)
 rotation = 0.77318084
 scale = Vector2(0.999988, 0.999988)
-collision_layer = 18
+collision_layer = 146
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/RShoulderPlatform" unique_id=1854130658]
@@ -750,13 +727,13 @@ position = Vector2(-1140.0817, 380.15784)
 rotation = 0.77318084
 scale = Vector2(2.417308, 1)
 shape = SubResource("CapsuleShape2D_bhunq")
-debug_color = Color(0, 0.10980392, 0.69803923, 0.41960785)
+debug_color = Color(0.37254903, 0.10980392, 0.69803923, 0.41960785)
 
 [node name="LShoulderPlatform" type="AnimatableBody2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=864136578]
 position = Vector2(-321.4309, -147.16309)
 rotation = -2.846632
 scale = Vector2(0.999988, 0.999988)
-collision_layer = 18
+collision_layer = 146
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/LShoulderPlatform" unique_id=1377572091]
@@ -764,7 +741,7 @@ position = Vector2(-884.29895, 809.5384)
 rotation = 1.3867891
 scale = Vector2(2.417308, 0.9999999)
 shape = SubResource("CapsuleShape2D_bhunq")
-debug_color = Color(0, 0.10980392, 0.69803923, 0.41960785)
+debug_color = Color(0.4627451, 0.11372549, 0.69803923, 0.41960785)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=848140235]
 remote_path = NodePath("../../../../Body/BossWaist")
@@ -802,6 +779,7 @@ script = ExtResource("19_odtgy")
 initialState = ExtResource("23_8sqyj")
 stateIDLookup = Dictionary[StringName, ExtResource("20_mgv3b")]({
 &"Idle": ExtResource("23_8sqyj"),
+&"MeleeAttack": SubResource("Resource_ttjjf"),
 &"ProjectileStraight": ExtResource("20_ttjjf")
 })
 
