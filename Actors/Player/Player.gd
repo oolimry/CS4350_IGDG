@@ -542,7 +542,8 @@ func checkCollisions() -> void:
 		hazardHandler.actOnPotentialHazard(collision)
 
 func applyKnockback(normalVec : Vector2) -> void:
-	additionalVelocityInputs.append(normalVec * knockbackStrength)
+	if !isDead:
+		additionalVelocityInputs.append(normalVec * knockbackStrength)
 
 func pogo():
 	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))

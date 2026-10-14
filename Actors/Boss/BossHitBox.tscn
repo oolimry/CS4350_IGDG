@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://dsi8v7fvxj7ty"]
 
-[ext_resource type="Script" uid="uid://hcfgulgya7p8" path="res://Actors/Boss/BossWeakPoint.gd" id="1_1i6aa"]
+[ext_resource type="Script" uid="uid://dnjqjs4tjsd13" path="res://Actors/Boss/BossHitBox.gd" id="1_1i6aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
 radius = 39.00962
 height = 908.503
 
 [node name="AnimatableBody2D" type="Area2D" unique_id=1119173710]
-collision_layer = 72
-collision_mask = 0
+collision_layer = 4
 script = ExtResource("1_1i6aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279516059]
 position = Vector2(114.00001, 398)
 rotation = -0.27816013
 shape = SubResource("CapsuleShape2D_bhunq")
-debug_color = Color(0.9254902, 0.19215687, 0.19215687, 0.41960785)
+debug_color = Color(0.9882353, 0.6, 0.3019608, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
