@@ -134,6 +134,7 @@ roomDefinition = ExtResource("16_faelo")
 
 [node name="RoomPreviewer33" parent="." unique_id=1470981922 instance=ExtResource("1_e6tte")]
 position = Vector2(-2048, 1152)
+scale = Vector2(1, 1.0139133)
 roomDefinition = ExtResource("18_gvorn")
 
 [node name="RoomPreviewer16" parent="." unique_id=1933396141 instance=ExtResource("1_e6tte")]
