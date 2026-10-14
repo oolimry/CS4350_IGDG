@@ -1,37 +1,29 @@
 [gd_scene format=3 uid="uid://cjuxpuixfnc7s"]
 
 [ext_resource type="Script" uid="uid://cn8emw3hx5plg" path="res://Actors/WorldObjects/ExplodableWall.gd" id="1_akkil"]
+[ext_resource type="Texture2D" uid="uid://djvvnhk37mpul" path="res://Assets/World Objects/ExplodableWall.png" id="2_4bt5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
-size = Vector2(80, 80)
-
-[sub_resource type="Gradient" id="Gradient_ukk5s"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.25, 0.17, 0.178, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_y23pg"]
-gradient = SubResource("Gradient_ukk5s")
-width = 80
-height = 80
-fill_to = Vector2(0, 0)
+size = Vector2(100, 100)
 
 [node name="ExplodableWall" type="StaticBody2D" unique_id=1935947710]
 z_index = -1
 collision_layer = 82
 collision_mask = 0
 script = ExtResource("1_akkil")
+height = 400.0
+
+[node name="Sprite2D" type="NinePatchRect" parent="." unique_id=1994385769]
+offset_right = 160.0
+offset_bottom = 400.0
+texture = ExtResource("2_4bt5q")
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
+position = Vector2(80, 200)
 shape = SubResource("RectangleShape2D_vynle")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1178235108]
-texture = SubResource("GradientTexture2D_y23pg")
-
-[node name="Label" type="Label" parent="Sprite2D" unique_id=290482397]
-offset_left = -45.0
-offset_top = -8.0
-offset_right = 45.0
-offset_bottom = 15.0
-theme_override_font_sizes/font_size = 12
-text = "Explode me"
-horizontal_alignment = 1
