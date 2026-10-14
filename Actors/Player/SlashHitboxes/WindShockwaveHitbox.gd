@@ -31,7 +31,6 @@ func _physics_process(delta):
 	var velocity = movementSpeed * Enums.getVectorOfDirection(self.slashDirection)
 	self.position += velocity * delta
 	
-	#Glogger.debug(get_overlapping_bodies())
 	for body : Node2D in get_overlapping_bodies():
 		if body.has_method(ScriptConstants.ON_SLASH_METHOD_NAME):
 			
@@ -44,5 +43,16 @@ func _physics_process(delta):
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
 		
-	
+	for area : Area2D in get_overlapping_areas():
+		if area.has_method(ScriptConstants.ON_SLASH_METHOD_NAME):
+			
+			var slashParams : Dictionary = {}
+			
+			slashParams[ScriptConstants.SLASH_DIRECTION_PARAM_NAME] = self.slashDirection
+			slashParams[ScriptConstants.SLASH_ELEMENT_PARAM_NAME] = element
+			slashParams[ScriptConstants.WIND_SHOCKWAVE_PARAM_NAME] = true
+			## TODO: add more info about slash direction, 
+			
+			area.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
+		
 	

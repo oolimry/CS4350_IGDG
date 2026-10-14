@@ -54,10 +54,10 @@ func setupBoss():
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
 	if boss:
-		boss.queue_free()
+		boss.call_deferred("queue_free")
 		boss = null
 	if bHealthbar:
-		bHealthbar.queue_free()
+		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
 	
 	hudManager.hideHealthBar(true)

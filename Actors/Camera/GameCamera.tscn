@@ -4,3 +4,6 @@
 
 [node name="Camera2D" type="Camera2D" unique_id=1654392102]
 script = ExtResource("1_b2utt")
+NOISE_SHAKE_SPEED = 10.0
+NOISE_SHAKE_STRENGTH = 0.0
+SHAKE_DECAY_RATE = 6.0

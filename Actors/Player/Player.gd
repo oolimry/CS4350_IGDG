@@ -121,9 +121,14 @@ const purpleEndFreezeDuration = 0.20
 ## pogo related
 const pogoVerticalBoost = 500
 
+
+## 
+
 var peakHeight = 0
 
 var freezeInput = false
+var isDead = false
+const deathDelay = 1.60
 
 var additionalVelocityInputs = []
 
@@ -148,7 +153,7 @@ func _init():
 
 func _ready():
 	damageStateHandler.setup(shaderAnimator, preRespawnHandling,
-		postRespawnHandling, hazardHandler.startInvulnPeriod)
+		postRespawnHandling)
 	hazardHandler.setup(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
@@ -156,8 +161,6 @@ func _ready():
 	
 
 func _physics_process(delta: float) -> void:
-	
-		
 	_physics_process_playerMovement(delta)
 	
 	_physics_process_slash(delta)
@@ -166,6 +169,8 @@ func _physics_process(delta: float) -> void:
 
 func _physics_process_playerMovement(delta):
 	if GlobalGameState.phaseOfGame in [GlobalGameState.PhaseOfGame.INTRO_CUTSCENE]:
+		return
+	if isDead:
 		return
 		
 	if isPurpleDashing:
@@ -537,7 +542,8 @@ func checkCollisions() -> void:
 		hazardHandler.actOnPotentialHazard(collision)
 
 func applyKnockback(normalVec : Vector2) -> void:
-	additionalVelocityInputs.append(normalVec * knockbackStrength)
+	if !isDead:
+		additionalVelocityInputs.append(normalVec * knockbackStrength)
 
 func pogo():
 	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))
@@ -594,17 +600,32 @@ func isWallSliding():
 	return false
 
 func triggerDeath():
-	damageStateHandler.onHurt(0, true)
+	damageStateHandler.onSpiked()
 
 func preRespawnHandling() -> void:
-	# Do wtv movement pausing code here
-	pass
+	if isDead:
+		return
+	isDead = true
+	freezeInput = true
+	self.visible = false
+	
+	$OnDeathBlackness/AnimationPlayer.play("FadeInAndOut")
+	SignalManager.triggerScreenshake.emit()
+	AudioManager.play(AudioManager.Die)
+	VfxManager.createVFX(VfxManager.PlayerDiedVFXTSCN, self.global_position,\
+		{VFXManager_class.Params.PLAYER : self}
+	)
+	
+	await get_tree().create_timer(deathDelay).timeout
 
 func postRespawnHandling(respawnPos : Vector2) -> void:
 	setElement(Enums.Elements.NONE)
 	global_position = respawnPos
 	
 	# Do wtv movement unpausing code here
+	isDead = false
+	freezeInput = false
+	self.visible = true
 	
 	
 func _on_sprite_frame_changed():

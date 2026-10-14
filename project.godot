@@ -25,6 +25,7 @@ AudioManager="*uid://cgvgvhj4l1nis"
 VfxManager="*uid://c2foixtu3ui3n"
 DialogueManager="*uid://c3rodes2l3gxb"
 CutsceneSignalManager="*uid://chldm0oh8l7ke"
+SignalManager="*uid://cavxkbpwqqoe6"
 
 [dialogue_manager]
 
@@ -34,7 +35,6 @@ runtime/balloon_path="res://Assets/DialogueBalloon/balloon.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=4
 window/stretch/mode="canvas_items"
 
 [editor_plugins]

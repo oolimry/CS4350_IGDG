@@ -9,7 +9,8 @@ extends Node2D
 	preload("res://Actors/VFX/ElementCollected/PurpleElementCollectedVFX.tscn")
 @onready var BombExplosionVFXTSCN = \
 	preload("res://Actors/VFX/BombExplosionVFX.tscn")
-
+@onready var PlayerDiedVFXTSCN = \
+	preload("res://Actors/VFX/PlayerDiedVFX.tscn")
 	
 @onready var PurpleDashTrailVFX = \
 	preload("res://Actors/VFX/PurpleDashTrail.tscn")

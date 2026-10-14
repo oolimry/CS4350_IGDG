@@ -1,11 +1,5 @@
 class_name DamageStateHandler
 extends Node
-
-# I know I agreed that I would put this code in Player.gd but after coding
-# I realized that I really really really really really really really really
-# hated scrolling through a 520+ LoC mess of dependencies just to find my func
-# please forgive me and hopefully this still works for you
-
 # I put this here so your animation code can be separate from your movement code
 
 # TODO: Honestly if you aint using this can delete
@@ -16,15 +10,23 @@ var shaderAnim : ShaderAnimator
 var preRespawnFunc : Callable
 var postRespawnFunc : Callable
 var requestInvuln : Callable
-func setup(sa : ShaderAnimator, 
+
+var isHandlingDeathNow = false
+
+@export var invulnDuration := 1.0
+@export var blinkInterval := 0.1
+var isInvuln := false
+
+
+func setup(
+	sa : ShaderAnimator, 
 	handlePreRespawn : Callable, 
-	handlePostRespawn : Callable,
-	handleInvuln : Callable) -> void:
+	handlePostRespawn : Callable
+	) -> void:
 		
 	shaderAnim = sa
 	preRespawnFunc = handlePreRespawn
 	postRespawnFunc = handlePostRespawn
-	requestInvuln = handleInvuln
 	pass
 
 signal requestRespawn(isDeath : bool, respawnFunc : DamageStateHandler)
@@ -40,13 +42,21 @@ signal requestRespawn(isDeath : bool, respawnFunc : DamageStateHandler)
 # If kill -> onDeath() only
 
 func onDeath() -> void:
-	preRespawnFunc.call()
+	if isHandlingDeathNow:
+		return
+	isHandlingDeathNow = true
 	
-	## Do your anim here
-	
+	await preRespawnFunc.call()
+
 	requestRespawn.emit(true, self)
+	isHandlingDeathNow =  false
 
 func onHurt(dmg : int, isSpike : bool) -> void:
+	# Do not process damage when invuln
+	if isInvuln:
+		return
+	isInvuln = true
+
 	if playerHealth.wouldKill(dmg):
 		onDeath()
 		return
@@ -61,18 +71,23 @@ func onHurt(dmg : int, isSpike : bool) -> void:
 		onSpiked()
 		return
 	
-	requestInvuln.call(true)
+	startInvulnPeriod(true)
 
 	
 	# but jic it doesn't, place it here
 	pass
 	
 func onSpiked() -> void:
-	preRespawnFunc.call()
+	if isHandlingDeathNow:
+		return
+	isHandlingDeathNow = true
 	
-	## Do your anim here
-		
+	await preRespawnFunc.call()
+	
 	requestRespawn.emit(false, self)
+	isHandlingDeathNow =  false
+	
+	
 
 func postRespawnHandling(posToRespawn : Vector2, isFullHeal := true, 
 	shouldStillInvuln := false) -> void:
@@ -82,10 +97,17 @@ func postRespawnHandling(posToRespawn : Vector2, isFullHeal := true,
 	if isFullHeal:
 		playerHealth.fullHeal()
 	
-	
 	# wtv anim needa do
 	#
 
-	requestInvuln.call(shouldStillInvuln)
+	startInvulnPeriod(shouldStillInvuln)
 
 	shaderAnim.respawnFadeIn()
+
+func startInvulnPeriod(shouldInvuln : bool) -> void:
+	if shouldInvuln:
+		isInvuln = true
+		await shaderAnim.invulnFlash(blinkInterval, invulnDuration)
+		isInvuln = false
+	else:
+		isInvuln = false

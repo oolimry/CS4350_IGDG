@@ -6,8 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://b7hoaiuh2r2h2" path="res://Assets/Audio/Movement SFX/JumpingFromGround23B.ogg" id="3_4t86c"]
 [ext_resource type="AudioStream" uid="uid://ck5evfwljgm4n" path="res://Assets/Audio/Movement SFX/FootstepB3.ogg" id="4_4t86c"]
 [ext_resource type="AudioStream" uid="uid://docry8o0y0eh7" path="res://Assets/Audio/Slash SFX/Slash Neutral.ogg" id="4_ixva1"]
-[ext_resource type="AudioStream" uid="uid://dpov5iqnm1syn" path="res://Assets/Audio/Slash SFX/PlayerDie2.ogg" id="4_l8f8j"]
+[ext_resource type="AudioStream" uid="uid://bpxui2ek8u5dd" path="res://Assets/Audio/Movement SFX/PlayerDie1.ogg" id="4_reo22"]
 [ext_resource type="AudioStream" uid="uid://c4hw3lx3e8nkj" path="res://Assets/Audio/Slash SFX/Slash Neutral 2.ogg" id="5_ixva1"]
+[ext_resource type="AudioStream" uid="uid://bnofxv0thffde" path="res://Assets/Audio/Movement SFX/PlayerDie2.ogg" id="5_vxglj"]
 [ext_resource type="AudioStream" uid="uid://06nphmcjhexu" path="res://Assets/Audio/Slash SFX/Wind Projectile.ogg" id="6_21uwq"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
@@ -16,6 +17,11 @@ random_volume_offset_db = 1.0
 streams_count = 2
 stream_0/stream = ExtResource("2_03a21")
 stream_1/stream = ExtResource("3_4t86c")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l8f8j"]
+streams_count = 2
+stream_0/stream = ExtResource("4_reo22")
+stream_1/stream = ExtResource("5_vxglj")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1v8rx"]
 random_pitch = 1.0594631
@@ -44,7 +50,7 @@ stream = SubResource("AudioStreamRandomizer_olr0b")
 volume_db = -5.0
 
 [node name="Die" type="AudioStreamPlayer" parent="Movement" unique_id=740421040]
-stream = ExtResource("4_l8f8j")
+stream = SubResource("AudioStreamRandomizer_l8f8j")
 volume_db = -5.0
 
 [node name="FootstepA" type="AudioStreamPlayer" parent="Movement" unique_id=788135200]
