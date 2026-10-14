@@ -50,7 +50,18 @@ func _physics_process(delta):
 			## TODO: add more info about slash direction, 
 			
 			body.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
+
+	for area : Area2D in get_overlapping_areas():
+		if area.has_method(ScriptConstants.ON_SLASH_METHOD_NAME):
 			
+			var slashParams : Dictionary = {}
+			
+			slashParams[ScriptConstants.SLASH_DIRECTION_PARAM_NAME] = self.slashDirection
+			slashParams[ScriptConstants.SLASH_ELEMENT_PARAM_NAME] = element
+			## TODO: add more info about slash direction, 
+			
+			area.call(ScriptConstants.ON_SLASH_METHOD_NAME, slashParams, player)
+
 			#if body is Bomb or body is IgnitionPad and element == Enums.Elements.FIRE:
 			#	didFireHitAnything = true
 	

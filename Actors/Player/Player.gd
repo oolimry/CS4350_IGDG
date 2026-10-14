@@ -153,7 +153,7 @@ func _init():
 
 func _ready():
 	damageStateHandler.setup(shaderAnimator, preRespawnHandling,
-		postRespawnHandling, hazardHandler.startInvulnPeriod,)
+		postRespawnHandling)
 	hazardHandler.setup(damageStateHandler.onHurt)
 	
 	playerXlength = $CollisionShape2D.shape.size.x / 2.0
@@ -542,7 +542,8 @@ func checkCollisions() -> void:
 		hazardHandler.actOnPotentialHazard(collision)
 
 func applyKnockback(normalVec : Vector2) -> void:
-	additionalVelocityInputs.append(normalVec * knockbackStrength)
+	if !isDead:
+		additionalVelocityInputs.append(normalVec * knockbackStrength)
 
 func pogo():
 	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))
