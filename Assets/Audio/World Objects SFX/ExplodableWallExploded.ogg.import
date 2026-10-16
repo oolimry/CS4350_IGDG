@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cau78fw3wb7f6"
+path="res://.godot/imported/ExplodableWallExploded.ogg-16342962d304dede884fb1e34ea9a9fd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/World Objects SFX/ExplodableWallExploded.ogg"
+dest_files=["res://.godot/imported/ExplodableWallExploded.ogg-16342962d304dede884fb1e34ea9a9fd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
