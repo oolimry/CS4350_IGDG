@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_41hdi"]
 [ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_jct8w"]
-[ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="3_glb24"]
 [ext_resource type="Texture2D" uid="uid://bbly8a5re1isd" path="res://Assets/Backgrounds/StartingRoomBG.png" id="2_smarx"]
+[ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="3_glb24"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="3_jct8w"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="4_fusx3"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_jct8w"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_smarx"]
 
-[sub_resource type="Resource" id="Resource_smarx"]
+[sub_resource type="Resource" id="Resource_fusx3"]
 resource_local_to_scene = true
 script = ExtResource("7_smarx")
 oriCoords = Vector2(53, 718)
@@ -77,4 +77,4 @@ element = 2
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
 position = Vector2(80, 520)
-roomResident = SubResource("Resource_smarx")
+roomResident = SubResource("Resource_fusx3")
