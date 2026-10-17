@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://cdx0ithmk0s6c"]
 
+[ext_resource type="Script" uid="uid://dftntosy8sy6k" path="res://Actors/Boss/BossStaff.gd" id="1_03wmk"]
 [ext_resource type="Texture2D" uid="uid://bcs8g3wtukp7k" path="res://Assets/Boss/Staff/BossStaff_Front.png" id="1_7bg27"]
 [ext_resource type="Texture2D" uid="uid://dr5re2e7kxulg" path="res://Assets/Boss/Staff/BossStaff_Back.png" id="2_5rjkr"]
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="3_5rjkr"]
+[ext_resource type="Script" uid="uid://btqn0qvf237f5" path="res://Actors/Boss/BossProjFirer.gd" id="5_5jdsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(88, 397)
 
 [node name="BossStaff" type="Node2D" unique_id=1747736719]
+script = ExtResource("1_03wmk")
 
 [node name="BossStaffFront" type="Sprite2D" parent="." unique_id=884089175]
 position = Vector2(-1, -958)
@@ -39,3 +42,7 @@ scale = Vector2(1, 3)
 [node name="CrystalWall2" parent="." unique_id=1699905367 instance=ExtResource("3_5rjkr")]
 position = Vector2(0, -979.00006)
 scale = Vector2(1, 3.5)
+
+[node name="ProjectileFirer" type="Node2D" parent="." unique_id=710342892]
+position = Vector2(2, -1896)
+script = ExtResource("5_5jdsm")
