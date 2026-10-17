@@ -24,8 +24,6 @@ func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager,
 
 func handlePlayerEntry(_playerEntry : StringName) -> void:
 	if boss == null and !isBossKilled:		
-		boss.bProjFirer.setup(func(n : Node, containerName : StringName): 
-			placePersistent.call_deferred(n, containerName))
 		setupBoss()
 		
 		hudManager.add_child(bHealthbar)
@@ -37,7 +35,9 @@ func handlePlayerEntry(_playerEntry : StringName) -> void:
 	pass
 
 func setupBoss():
-	boss = Boss.create(spawnLocation, getPlayer)
+	boss = Boss.create(spawnLocation, getPlayer,
+			placePersistent.call_deferred
+		)
 	
 	bHealthbar = BossHealthBar.create(boss.health.currHealth, 
 		boss.health.maxHealth)
@@ -49,16 +49,13 @@ func setupBoss():
 	)
 	placePersistent.call_deferred(boss)
 	
-	boss.bProjFirer.setup(func(n : Node, containerName : StringName): 
-		placePersistent.call_deferred(n, containerName))
-	
 	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
-	boss.bProjFirer.clearProjectiles()
+	
 	
 	if boss:
-		boss.call_deferred("queue_free")
+		boss.cleanup()
 		boss = null
 	if bHealthbar:
 		bHealthbar.call_deferred("queue_free")
