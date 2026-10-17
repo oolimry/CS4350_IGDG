@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dpwjtsnx633du"]
+
+[ext_resource type="Texture2D" uid="uid://bcs8g3wtukp7k" path="res://Assets/Boss/Staff/BossStaff_Front.png" id="1_7bg27"]
+[ext_resource type="Texture2D" uid="uid://dr5re2e7kxulg" path="res://Assets/Boss/Staff/BossStaff_Back.png" id="2_5rjkr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(88, 400)
+
+[node name="BossStaff" type="Node2D" unique_id=1747736719]
+
+[node name="BossStaffFront" type="Sprite2D" parent="." unique_id=884089175]
+position = Vector2(-1, -958)
+texture = ExtResource("1_7bg27")
+
+[node name="BossStaffBack" type="Sprite2D" parent="." unique_id=236728037]
+position = Vector2(-1, -959)
+texture = ExtResource("2_5rjkr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1176717189]
+position = Vector2(0, -1316)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=183181006]
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=468696150]
+visible = false
+position = Vector2(-1, -542)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=288103120]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_bhunq")
