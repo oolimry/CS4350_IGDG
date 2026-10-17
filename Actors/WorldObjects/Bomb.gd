@@ -99,6 +99,7 @@ func explode():
 	explosionHitbox.monitoring = true
 	hasExploded = true
 	animationPlayer.play("explode")
+	AudioManager.play(AudioManager.BombExploded)
 	VfxManager.createVFX(VfxManager.BombExplosionVFXTSCN, \
 		 self.global_position, {})
 	await animationPlayer.animation_finished

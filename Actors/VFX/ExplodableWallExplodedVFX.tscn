@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c4d1qqj7k3kwd"]
+
+[ext_resource type="Script" uid="uid://hf8x8i0cl5yq" path="res://Actors/VFX/ExplodableWallExplodedVFX.gd" id="1_4rl7g"]
+[ext_resource type="Material" uid="uid://bi4jqqh56qi8u" path="res://Assets/World Objects/UnshadedHighlightShader.tres" id="1_jgg5x"]
+
+[sub_resource type="Gradient" id="Gradient_u5p00"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0892193, 0.126394, 0.509294, 0.881041, 0.907063, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.6604669, 0.5196131, 0.5196131, 1, 0.5289366, 0.34099662, 0.34099662, 1, 0.65882355, 0.52156866, 0.52156866, 1, 0.243137, 0.243137, 0.243137, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e26cq"]
+gradient = SubResource("Gradient_u5p00")
+width = 48
+height = 48
+fill_from = Vector2(0.878632, 0.278632)
+fill_to = Vector2(0.0136752, 0.712821)
+
+[sub_resource type="Curve" id="Curve_m6gvq"]
+bake_resolution = 1000
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.104779, 0.790504), 0.0, 0.0, 0, 0, Vector2(0.998162, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4amim"]
+curve = SubResource("Curve_m6gvq")
+
+[sub_resource type="Curve" id="Curve_kff04"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.15330188, 1), 0.0, 0.0, 0, 0, Vector2(0.7476415, 0.31250006), 0.0, 0.0, 0, 0, Vector2(1, 0.48214287), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_dj4op"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.16273583, 1), 0.0, 0.0, 0, 0, Vector2(0.5212264, 0.1875), 0.0, 0.0, 0, 0, Vector2(0.8419811, 0.40178573), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_bptag"]
+_data = [Vector2(0.0511364, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_1hth5"]
+curve_x = SubResource("Curve_kff04")
+curve_y = SubResource("Curve_dj4op")
+curve_z = SubResource("Curve_bptag")
+
+[sub_resource type="Curve" id="Curve_4rl7g"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jgg5x"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.69642854), 0.0, 0.0, 0, 0, Vector2(1, 1.3392859), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dqwqj"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4rl7g"]
+curve_x = SubResource("Curve_4rl7g")
+curve_y = SubResource("Curve_jgg5x")
+curve_z = SubResource("Curve_dqwqj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rnbb6"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 0, 10)
+emission_shape = 3
+emission_box_extents = Vector3(120, 240, 1)
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 10)
+spread = 180.0
+flatness = 0.975
+initial_velocity_min = 49.55
+initial_velocity_max = 119.84
+angular_velocity_min = 550.57996
+angular_velocity_max = 719.99994
+orbit_velocity_min = -0.09999991
+orbit_velocity_max = 0.1000001
+gravity = Vector3(0, 1600, 0)
+scale_min = 0.14999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveXYZTexture_1hth5")
+scale_over_velocity_curve = SubResource("CurveXYZTexture_4rl7g")
+color = Color(0.745098, 0.745098, 0.745098, 1)
+alpha_curve = SubResource("CurveTexture_4amim")
+turbulence_noise_strength = 2.98
+
+[node name="ExplodeableWallExplodedVFX" type="GPUParticles2D" unique_id=1538984567]
+z_index = 1000
+material = ExtResource("1_jgg5x")
+amount = 160
+texture = SubResource("GradientTexture2D_e26cq")
+lifetime = 0.9
+explosiveness = 1.0
+randomness = 0.33
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_rnbb6")
+script = ExtResource("1_4rl7g")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

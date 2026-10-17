@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://cgvgvhj4l1nis"]
 
 [ext_resource type="Script" uid="uid://bcdilp4oexors" path="res://Globals/AudioManager.gd" id="1_olr0b"]
-[ext_resource type="AudioStream" uid="uid://kbnewdnufegp" path="res://Assets/Audio/Movement SFX/JumpingFromGround23A.ogg" id="2_03a21"]
+[ext_resource type="AudioStream" uid="uid://c6rnwspis8o4k" path="res://Assets/Audio/Movement SFX/JumpV2.wav" id="2_l8f8j"]
 [ext_resource type="AudioStream" uid="uid://c18gvvm2ecawi" path="res://Assets/Audio/Movement SFX/FootstepA3.ogg" id="3_03a21"]
-[ext_resource type="AudioStream" uid="uid://b7hoaiuh2r2h2" path="res://Assets/Audio/Movement SFX/JumpingFromGround23B.ogg" id="3_4t86c"]
 [ext_resource type="AudioStream" uid="uid://ck5evfwljgm4n" path="res://Assets/Audio/Movement SFX/FootstepB3.ogg" id="4_4t86c"]
 [ext_resource type="AudioStream" uid="uid://docry8o0y0eh7" path="res://Assets/Audio/Slash SFX/Slash Neutral.ogg" id="4_ixva1"]
 [ext_resource type="AudioStream" uid="uid://bpxui2ek8u5dd" path="res://Assets/Audio/Movement SFX/PlayerDie1.ogg" id="4_reo22"]
 [ext_resource type="AudioStream" uid="uid://c4hw3lx3e8nkj" path="res://Assets/Audio/Slash SFX/Slash Neutral 2.ogg" id="5_ixva1"]
 [ext_resource type="AudioStream" uid="uid://bnofxv0thffde" path="res://Assets/Audio/Movement SFX/PlayerDie2.ogg" id="5_vxglj"]
 [ext_resource type="AudioStream" uid="uid://06nphmcjhexu" path="res://Assets/Audio/Slash SFX/Wind Projectile.ogg" id="6_21uwq"]
+[ext_resource type="AudioStream" uid="uid://cau78fw3wb7f6" path="res://Assets/Audio/World Objects SFX/ExplodableWallExploded.ogg" id="10_vxglj"]
+[ext_resource type="AudioStream" uid="uid://bufigpqlnexgk" path="res://Assets/Audio/World Objects SFX/IgnitionPad.wav" id="11_vxglj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
 random_volume_offset_db = 1.0
-streams_count = 2
-stream_0/stream = ExtResource("2_03a21")
-stream_1/stream = ExtResource("3_4t86c")
+streams_count = 1
+stream_0/stream = ExtResource("2_l8f8j")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l8f8j"]
 streams_count = 2
@@ -39,6 +39,10 @@ streams_count = 2
 stream_0/stream = ExtResource("4_ixva1")
 stream_1/stream = ExtResource("5_ixva1")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxglj"]
+streams_count = 1
+stream_0/stream = ExtResource("10_vxglj")
+
 [node name="AudioManager" type="CanvasLayer" unique_id=410915819]
 process_mode = 3
 script = ExtResource("1_olr0b")
@@ -48,6 +52,7 @@ script = ExtResource("1_olr0b")
 [node name="Jump" type="AudioStreamPlayer" parent="Movement" unique_id=463558909]
 stream = SubResource("AudioStreamRandomizer_olr0b")
 volume_db = -5.0
+pitch_scale = 1.25
 
 [node name="Die" type="AudioStreamPlayer" parent="Movement" unique_id=740421040]
 stream = SubResource("AudioStreamRandomizer_l8f8j")
@@ -65,7 +70,8 @@ volume_db = -8.0
 
 [node name="SlashNeutral" type="AudioStreamPlayer" parent="Slashing" unique_id=507469541]
 stream = SubResource("AudioStreamRandomizer_vynle")
-volume_db = -5.0
+volume_db = -3.0
+pitch_scale = 1.25
 
 [node name="WindProjectile" type="AudioStreamPlayer" parent="Slashing" unique_id=1599818199]
 stream = ExtResource("6_21uwq")
@@ -76,3 +82,18 @@ volume_db = -8.0
 
 [node name="WindElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1981845195]
 volume_db = -8.0
+
+[node name="WorldObjects" type="Node2D" parent="." unique_id=1691499638]
+
+[node name="ExplodableWallExploded" type="AudioStreamPlayer" parent="WorldObjects" unique_id=786289727]
+stream = SubResource("AudioStreamRandomizer_vxglj")
+volume_db = -15.0
+pitch_scale = 0.75
+
+[node name="IgnitionPadLaunch" type="AudioStreamPlayer" parent="WorldObjects" unique_id=1873959267]
+stream = ExtResource("11_vxglj")
+pitch_scale = 1.2
+
+[node name="BombExploded" type="AudioStreamPlayer" parent="WorldObjects" unique_id=332273520]
+stream = ExtResource("11_vxglj")
+pitch_scale = 0.8

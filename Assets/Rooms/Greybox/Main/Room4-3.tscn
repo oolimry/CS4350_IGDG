@@ -142,7 +142,7 @@ roomResident = SubResource("Resource_72n0c")
 [node name="PlaceholderSlashableObject" parent="RoomResidents" unique_id=1269534571 instance=ExtResource("9_jgau0")]
 position = Vector2(1000, 960)
 width = 240.0
-height = 240.0
+height = 280.0
 roomResident = SubResource("Resource_syf5x")
 
 [editable path="Respawn Point4"]
