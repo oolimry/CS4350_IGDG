@@ -31,6 +31,15 @@ func setup() -> void:
 	roomResident = RoomResident.setup(objName, position, !shouldDestructionPersist)
 	
 func onHitByBombExplosion():
+	VfxManager.createVFX(VfxManager.ExplodableWallExplodedVFXTSCN, 
+		self.global_position + Vector2(width, height) * 0.5,
+		{
+			VfxManager.Params.SIZE : Vector2(width, height)
+		}
+	)
+	
+	AudioManager.play(AudioManager.ExplodableWallExploded, false)
+	$CollisionShape2D.disabled = true
 	self.queue_free()
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \

@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var scene2Blackness = $Scene2/Blackness
 
 @onready var whiteFlashAnimationPlayer = $WhiteFlash/AnimationPlayer
+var dialogueBox
 
 var ifForceSkip = false
 
@@ -16,15 +17,17 @@ func _ready():
 	CutsceneSignalManager.scene2Finished.connect(onScene2Finished)
 
 func startCutscene():
-	DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
+	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
 
 
 func _process(delta):
-	if Input.is_action_pressed("left") and Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("left") and Input.is_action_pressed("jump") and not ifForceSkip:
 		GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.GAMEPLAY
 		scene1.visible = false
 		scene2.visible = false
 		ifForceSkip = true
+		if is_instance_valid(dialogueBox):
+			dialogueBox.visible = false
 		
 
 

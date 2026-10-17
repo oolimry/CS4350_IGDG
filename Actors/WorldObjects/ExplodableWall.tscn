@@ -6,6 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
 size = Vector2(156, 392)
 
+[sub_resource type="Animation" id="Animation_4bt5q"]
+resource_name = "Explode"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuugc"]
+_data = {
+&"Explode": SubResource("Animation_4bt5q")
+}
+
 [node name="ExplodableWall" type="StaticBody2D" unique_id=1935947710]
 z_index = -1
 collision_layer = 82
@@ -27,3 +35,6 @@ axis_stretch_vertical = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
 position = Vector2(78, 200)
 shape = SubResource("RectangleShape2D_vynle")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=473706620]
+libraries/ = SubResource("AnimationLibrary_tuugc")
