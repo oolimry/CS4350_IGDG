@@ -13,12 +13,12 @@ shader_parameter/turbulence = 1.0
 shader_parameter/edge_softness = 0.0
 shader_parameter/aspect = Vector2(1, 1)
 
-[sub_resource type="Gradient" id="Gradient_b2gry"]
+[sub_resource type="Gradient" id="Gradient_3agdm"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.4679814, 0, 0.4826718, 0.8509804)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b2gry"]
-gradient = SubResource("Gradient_b2gry")
+gradient = SubResource("Gradient_3agdm")
 width = 80
 height = 80
 
@@ -26,7 +26,7 @@ height = 80
 size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7jdf"]
-size = Vector2(75, 75)
+size = Vector2(77.5, 77.5)
 
 [node name="CrystalWall" type="StaticBody2D" unique_id=2023236522]
 collision_layer = 128

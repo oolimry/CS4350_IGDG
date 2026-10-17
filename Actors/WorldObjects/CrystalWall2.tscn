@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dt7t1evpufhgl"]
+
+[ext_resource type="Script" uid="uid://bbx5tb83ai6r6" path="res://Actors/WorldObjects/CrystalWall.gd" id="1_kywnk"]
+[ext_resource type="Texture2D" uid="uid://bk8udcfhb0j8m" path="res://Assets/World Objects/CrystalWall.png" id="2_womx1"]
+[ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_wr7vu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_es4v0"]
+shader = ExtResource("2_wr7vu")
+shader_parameter/base_color = Color(1.2837998, 0.18065566, 1.4063711, 0.18039216)
+shader_parameter/highlight_color = Color(0.81, 0.44550002, 0.81, 0.34117648)
+shader_parameter/speed = 1.0
+shader_parameter/noise_scale = 9.0
+shader_parameter/turbulence = 1.0
+shader_parameter/edge_softness = 0.0
+shader_parameter/aspect = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_b2gry"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.4679814, 0, 0.4826718, 0.8509804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wkq4"]
+gradient = SubResource("Gradient_b2gry")
+width = 80
+height = 80
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22p3n"]
+size = Vector2(160, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y05ns"]
+size = Vector2(160, 400)
+
+[node name="CrystalWall" type="StaticBody2D" unique_id=2023236522]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_kywnk")
+
+[node name="Sprite2D" type="NinePatchRect" parent="." unique_id=1749231435]
+offset_right = 160.0
+offset_bottom = 400.0
+texture = ExtResource("2_womx1")
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1687387129]
+visible = false
+material = SubResource("ShaderMaterial_es4v0")
+texture = SubResource("GradientTexture2D_3wkq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=903857377]
+position = Vector2(80, 200)
+shape = SubResource("RectangleShape2D_22p3n")
+
+[node name="KillZone" type="Area2D" parent="." unique_id=1288907808]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1453556016]
+position = Vector2(80, 200)
+shape = SubResource("RectangleShape2D_y05ns")
