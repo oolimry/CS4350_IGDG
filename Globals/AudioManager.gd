@@ -16,6 +16,9 @@ const MUSIC_BUS = 2
 @onready var FireElementStruck : AudioStreamPlayer = $Slashing/FireElementStruck
 @onready var WindElementStruck : AudioStreamPlayer = $Slashing/WindElementStruck
 
+@onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
+@onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
+@onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):

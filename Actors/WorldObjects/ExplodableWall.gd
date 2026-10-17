@@ -18,7 +18,8 @@ func updateVisuals():
 	if is_instance_valid($Sprite2D):
 		$Sprite2D.size = Vector2(width, height) / $Sprite2D.scale.x
 	if is_instance_valid($CollisionShape2D):
-		$CollisionShape2D.scale = Vector2(width, height) / 100
+		$CollisionShape2D.scale = Vector2(width / $CollisionShape2D.shape.size.x, \
+			height / $CollisionShape2D.shape.size.y)
 		$CollisionShape2D.position = Vector2(width, height) * 0.5
 	
 
@@ -30,6 +31,15 @@ func setup() -> void:
 	roomResident = RoomResident.setup(objName, position, !shouldDestructionPersist)
 	
 func onHitByBombExplosion():
+	VfxManager.createVFX(VfxManager.ExplodableWallExplodedVFXTSCN, 
+		self.global_position + Vector2(width, height) * 0.5,
+		{
+			VfxManager.Params.SIZE : Vector2(width, height)
+		}
+	)
+	
+	AudioManager.play(AudioManager.ExplodableWallExploded, false)
+	$CollisionShape2D.disabled = true
 	self.queue_free()
 
 static func constructObjectBySnapshot(snapshot : Dictionary, \

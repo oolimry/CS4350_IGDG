@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bufigpqlnexgk"
+path="res://.godot/imported/IgnitionPad.wav-9d91da816df07b9aa20c5d94afe66a72.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/World Objects SFX/IgnitionPad.wav"
+dest_files=["res://.godot/imported/IgnitionPad.wav-9d91da816df07b9aa20c5d94afe66a72.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

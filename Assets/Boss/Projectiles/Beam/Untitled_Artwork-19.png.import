@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ixu8rgri7s04"
-path="res://.godot/imported/Metroid_Logo.png-7b3c7d47d8c296ec91b0277b90c06fd9.ctex"
+uid="uid://cyei1ssflisp2"
+path="res://.godot/imported/Untitled_Artwork-19.png-88b4ffacabb828b0fcbedfa30f77ba53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/UI/Main Menu/Metroid_Logo.png"
-dest_files=["res://.godot/imported/Metroid_Logo.png-7b3c7d47d8c296ec91b0277b90c06fd9.ctex"]
+source_file="res://Assets/Boss/Projectiles/Beam/Untitled_Artwork-19.png"
+dest_files=["res://.godot/imported/Untitled_Artwork-19.png-88b4ffacabb828b0fcbedfa30f77ba53.ctex"]
 
 [params]
 

@@ -11,6 +11,10 @@ extends Node2D
 	preload("res://Actors/VFX/BombExplosionVFX.tscn")
 @onready var PlayerDiedVFXTSCN = \
 	preload("res://Actors/VFX/PlayerDiedVFX.tscn")
+
+@onready var ExplodableWallExplodedVFXTSCN = \
+	preload("res://Actors/VFX/ExplodableWallExplodedVFX.tscn")
+	
 	
 @onready var PurpleDashTrailVFX = \
 	preload("res://Actors/VFX/PurpleDashTrail.tscn")
@@ -20,6 +24,7 @@ enum Params {
 	ROTATE_RANDOMLY,
 	SPEED,
 	SCALE,
+	SIZE,
 }
 
 func createVFX(vfxScene, pos : Vector2, params : Dictionary = {}):	

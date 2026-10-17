@@ -42,6 +42,7 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	player.launchByIgnitionPadOrBomb(self.direction)
 	
 	animationPlayer.play("launch")
+	AudioManager.play(AudioManager.IgnitionPadLaunch)
 	#ignitionPadVFXEmitter.emitting = true
 	await animationPlayer.animation_finished
 	

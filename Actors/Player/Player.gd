@@ -504,7 +504,7 @@ func _physics_process_updateVisuals():
 	elif is_on_floor():
 		if abs(velocity.x) < 100:
 			sprite.play("idle")
-		else:
+		elif not isDead:
 			sprite.play("running")
 			
 			if sprite.frame == 5:
@@ -619,6 +619,8 @@ func preRespawnHandling() -> void:
 	await get_tree().create_timer(deathDelay).timeout
 
 func postRespawnHandling(respawnPos : Vector2) -> void:
+	additionalVelocityInputs.clear()
+	velocity.y = max(0,velocity.y)
 	setElement(Enums.Elements.NONE)
 	global_position = respawnPos
 	
