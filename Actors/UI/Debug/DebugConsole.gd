@@ -64,9 +64,7 @@ func evaluateDebugCommand(argv : Array) -> Array:
 			
 			return [true, ""]
 	
-	# Ayo RY sorry Imma needa hijack this for testing
-	# Bit of sloppy code, will hopefully have the time to clean this up later
-	# If it bothers ya, just delete it
+
 	elif argv[0] == "snapshot":
 		get_tree().root.get_node("TestLevel/RoomManager").snapshotCurrRoom()
 		return [true, ""]
@@ -74,6 +72,21 @@ func evaluateDebugCommand(argv : Array) -> Array:
 	elif argv[0] == "restore":
 		get_tree().root.get_node("TestLevel/RoomManager").restoreCurrRoom()
 		return [true, ""]
+
+	elif argv[0] == "boss":
+		var ri : RoomInstance = get_tree().root\
+			.get_node("TestLevel/RoomManager/RoomInstantiator").loadedRooms.get(Vector2.ZERO)
+		
+		var toDelete := []
+		if ri != null:
+			toDelete = ri.find_children("*", "CrystalWall", true, false)
+			toDelete.append_array(ri.find_children("*", "ExplodableWall", true, false))
+		
+		for node in toDelete:
+			node.queue_free()
+			
+		return [true, ""]
+
 
 	else:
 		return [false, "command not found"]

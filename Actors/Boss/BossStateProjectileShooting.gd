@@ -67,4 +67,7 @@ func fireProjectile() -> void:
 	rot = rad_to_deg(rot)
 	
 	projFirer.fireProjectile(p, rot)
+	
+	
+	
 	projTimer.start(projectileCooldownDuration)

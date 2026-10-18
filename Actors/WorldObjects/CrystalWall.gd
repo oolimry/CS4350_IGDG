@@ -1,4 +1,5 @@
 @tool
+class_name CrystalWall
 extends StaticBody2D
 
 @onready var killzone : Area2D = $KillZone
