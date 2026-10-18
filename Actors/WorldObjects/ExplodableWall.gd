@@ -22,8 +22,6 @@ func updateVisuals():
 			height / $CollisionShape2D.shape.size.y)
 		$CollisionShape2D.position = Vector2(width, height) * 0.5
 	
-
-
 ## Should the wall continued to be destroyed after leaving the room?
 @export var shouldDestructionPersist := true
 	

@@ -25,7 +25,7 @@ func processRoom(definition: RoomDefinition) -> void:
 
 	var outputPngPath := previewImageFolder + defPath.get_file() + "_preview.png"
 	
-	var roomOpenSideDetect := RoomObjectDetector.new()
+	var roomOpenSideDetect := RoomAccessPointCheck.new()
 	var err : Error = await roomOpenSideDetect.detect(definition)
 	
 	if err != OK:

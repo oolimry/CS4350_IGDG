@@ -16,8 +16,8 @@ light_mode = 1
 [sub_resource type="Resource" id="Resource_wkw45"]
 resource_local_to_scene = true
 script = ExtResource("7_wkw45")
-oriCoords = Vector2(1920, 660)
-persistentID = &"0c30056a-52f6-4316-9746-60ca6042dc21"
+oriCoords = Vector2(1840, 520)
+persistentID = &"921154c9-8238-44f9-bde0-f442233f9d4b"
 objectName = &"ExplodableWall"
 
 [node name="Room 2" type="Node2D" unique_id=1922114953]
@@ -62,7 +62,7 @@ text = "'Spacebar' - to jump"
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=737356501]
 
-[node name="ExplodableWall" parent="." unique_id=1935947710 instance=ExtResource("6_ills7")]
+[node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_ills7")]
 position = Vector2(1840, 520)
 height = 280.0
 roomResident = SubResource("Resource_wkw45")

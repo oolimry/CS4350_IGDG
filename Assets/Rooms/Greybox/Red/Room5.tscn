@@ -18,14 +18,14 @@ size = Vector2(269, 864.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkoe3"]
 size = Vector2(1242.5, 246.5)
 
-[sub_resource type="Resource" id="Resource_bo0d1"]
+[sub_resource type="Resource" id="Resource_p8ick"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
 oriCoords = Vector2(640, 800)
 persistentID = &"8c8e487a-057b-43c9-a91f-4a7bf111d8a6"
 objectName = &"ExplodableWall"
 
-[sub_resource type="Resource" id="Resource_80rma"]
+[sub_resource type="Resource" id="Resource_bo0d1"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
 oriCoords = Vector2(640, 800)
@@ -91,12 +91,12 @@ timeToLive = 30.0
 [node name="ExplodableWall" parent="RoomResidents" unique_id=753218192 instance=ExtResource("6_5nk4h")]
 position = Vector2(640, 640)
 height = 320.0
-roomResident = SubResource("Resource_bo0d1")
+roomResident = SubResource("Resource_p8ick")
 
 [node name="ExplodableWall" parent="RoomResidents/ExplodableWall" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
 position = Vector2(240, -240)
 height = 160.0
-roomResident = SubResource("Resource_80rma")
+roomResident = SubResource("Resource_bo0d1")
 
 [editable path="Respawn Point"]
 [editable path="Respawn Point2"]

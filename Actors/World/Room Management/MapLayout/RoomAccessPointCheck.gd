@@ -1,5 +1,5 @@
 @tool
-class_name RoomObjectDetector
+class_name RoomAccessPointCheck
 extends RefCounted
 
 ## Reference implementation for deriving which room boundaries contain an empty
@@ -12,6 +12,8 @@ const error: Error = ERR_INVALID_DATA
 const WORLD_LAYER_NAME := &"World"
 
 var open_sides := 0
+
+const TILE_SIZE := Vector2(40,40)
 
 func detect(roomDef : RoomDefinition) -> Error:
 	
@@ -30,11 +32,21 @@ func detect(roomDef : RoomDefinition) -> Error:
 	if room == null:
 		push_error("[RoomAccessPointCheck] Cannot detect open sides from a null room.")
 		return ERR_INVALID_DATA
-
-	var world := room.get_node_or_null(NodePath(String(WORLD_LAYER_NAME))) as TileMapLayer
+	
+	var world : TileMapLayer = null
+	#var world := room.get_node_or_null(NodePath(String(WORLD_LAYER_NAME))) as TileMapLayer
+	var tilemaps : Array[Node] = room.find_children("*", "TileMapLayer", false, false)
+	for tm in tilemaps:
+		if tm is TileMapLayer and tm.tile_set.get_physics_layer_collision_layer(0) & Enums.Layers.SOLID:
+			Glogger.debug(tm)
+			if world != null:
+				push_error("[RoomAccessPointCheck] Must have only one World collision TileMap for automatic access detection")
+			else: 
+				world = tm
+				
 	if world == null:
 		push_error(
-			"[RoomAccessPointCheck] '%s' must have a direct TileMapLayer child named World."
+			"[RoomAccessPointCheck] '%s' must have a direct TileMapLayer child on the Solid Collision Layer."
 			% room.name
 		)
 		return error
@@ -55,14 +67,14 @@ func detect(roomDef : RoomDefinition) -> Error:
 		)
 		return error
 
-
-	if _vertical_side_has_gap(room, world, room_bounds, tile_size, true):
+	Glogger.debug("TEST")
+	if _vertical_side_has_gap(room, world, room_bounds, true):
 		open_sides |= RoomDefinition.Side.LEFT
-	if _vertical_side_has_gap(room, world, room_bounds, tile_size, false):
+	if _vertical_side_has_gap(room, world, room_bounds, false):
 		open_sides |= RoomDefinition.Side.RIGHT
-	if _horizontal_side_has_gap(room, world, room_bounds, tile_size, true):
+	if _horizontal_side_has_gap(room, world, room_bounds, true):
 		open_sides |= RoomDefinition.Side.TOP
-	if _horizontal_side_has_gap(room, world, room_bounds, tile_size, false):
+	if _horizontal_side_has_gap(room, world, room_bounds, false):
 		open_sides |= RoomDefinition.Side.BOTTOM
 	
 	room.free()
@@ -72,18 +84,17 @@ func _vertical_side_has_gap(
 	room: Node2D,
 	world: TileMapLayer,
 	room_bounds: Rect2,
-	tile_size: Vector2i,
 	is_left: bool
 ) -> bool:
-	var x := room_bounds.position.x + tile_size.x * 0.5
+	var x := room_bounds.position.x + TILE_SIZE.x * 0.5
 	if not is_left:
-		x = room_bounds.end.x - tile_size.x * 0.5
+		x = room_bounds.end.x - TILE_SIZE.x * 0.5
 
-	var row_count := int(room_bounds.size.y / tile_size.y)
+	var row_count := int(room_bounds.size.y / TILE_SIZE.y)
 	for row in range(row_count):
 		var room_position := Vector2(
 			x,
-			room_bounds.position.y + (row + 0.5) * tile_size.y
+			room_bounds.position.y + (row + 0.5) * TILE_SIZE.y
 		)
 		if _is_empty_world_cell(room, world, room_position):
 			return true
@@ -94,17 +105,16 @@ func _horizontal_side_has_gap(
 	room: Node2D,
 	world: TileMapLayer,
 	room_bounds: Rect2,
-	tile_size: Vector2i,
 	is_top: bool
 ) -> bool:
-	var y := room_bounds.position.y + tile_size.y * 0.5
+	var y := room_bounds.position.y + TILE_SIZE.y * 0.5
 	if not is_top:
-		y = room_bounds.end.y - tile_size.y * 0.5
+		y = room_bounds.end.y - TILE_SIZE.y * 0.5
 
-	var column_count := int(room_bounds.size.x / tile_size.x)
+	var column_count := int(room_bounds.size.x / TILE_SIZE.x)
 	for column in range(column_count):
 		var room_position := Vector2(
-			room_bounds.position.x + (column + 0.5) * tile_size.x,
+			room_bounds.position.x + (column + 0.5) * TILE_SIZE.x,
 			y
 		)
 		if _is_empty_world_cell(room, world, room_position):
@@ -130,8 +140,11 @@ func _bounds_align_with_tiles(
 	tile_size: Vector2i
 ) -> bool:
 	return (
-		is_equal_approx(fmod(room_bounds.size.x, float(tile_size.x)), 0.0)
-		and is_equal_approx(fmod(room_bounds.size.y, float(tile_size.y)), 0.0)
+		is_equal_approx(fmod(tile_size.x, TILE_SIZE.x), 0.0)
+		and is_equal_approx(fmod(tile_size.y, TILE_SIZE.y), 0.0)
+		and 
+		is_equal_approx(fmod(room_bounds.size.x, float(TILE_SIZE.x)), 0.0)
+		and is_equal_approx(fmod(room_bounds.size.y, float(TILE_SIZE.y)), 0.0)
 	)
 
 func _disable_processing(node: Node) -> void:
