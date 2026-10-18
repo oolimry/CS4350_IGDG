@@ -3,7 +3,7 @@ extends Node2D
 
 @export var _getSource: Callable
 @export var _getDest: Callable
-@export var thickness: float = 100.0
+@export var thickness: float = 300.0
 
 @export var beam: AnimatedSprite2D
 
@@ -11,12 +11,13 @@ extends Node2D
 @export var lockDuration: float = 0.1
 @export var beamDuration: float = 4.0
 @export var trackingSpeed: float = 0.2
-@export var maxRange: float = 1200.0
 @export var damage: int = 2
 
 @export var warning: Line2D
 @export var ray: RayCast2D
 @export var distancingRay : RayCast2D
+
+@export var isBlockedByWall := false
 
 enum State { IDLE, AIMING, LOCKED, FIRING }
 
@@ -25,6 +26,7 @@ var timeLeft: float = 0.0
 var aimAngle: float = 0.0
 var lockedEnd := Vector2.ZERO
  
+# basically infinite
 const MAX_RAY_DISTANCE := 100000
 
 func _ready() -> void:
@@ -103,10 +105,23 @@ func update_beam(start: Vector2, end: Vector2) -> void:
 
 	beam.global_position = (start + end) / 2.0
 	beam.global_rotation = direction.angle() - PI / 2.0
+	
+	Glogger.debug(direction.length() / frame_size.y)
+	
+	var lengthModifier
+	if isBlockedByWall:
+		lengthModifier = direction.length() / frame_size.y
+	else:
+		# All I know is that this value works for MAX_RAY_DISTANCE
+		lengthModifier = 350
+
+	
 	beam.global_scale = Vector2(
 		thickness / frame_size.x,
-		direction.length() / frame_size.y
+		lengthModifier
 	)
+	
+	ray.scale.y = thickness / frame_size.x
 	
 func _physics_process(delta: float) -> void:
 	var _source : Node2D = _getSource.call()
@@ -132,8 +147,10 @@ func _physics_process(delta: float) -> void:
 				desired_angle,
 				1.0 - exp(-trackingSpeed * delta)
 			)
-
-			var end := getWallEndpoint(sourceStart, aimAngle)
+			
+			var end = sourceStart + Vector2.RIGHT.rotated(aimAngle) * MAX_RAY_DISTANCE
+			if isBlockedByWall:
+				end = getWallEndpoint(sourceStart, aimAngle)
 			
 			draw_warning(sourceStart, end)
 
