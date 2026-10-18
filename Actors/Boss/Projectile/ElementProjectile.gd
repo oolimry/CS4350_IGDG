@@ -5,6 +5,8 @@ var currVelocity := Vector2(0,0)
 var age := 0.0
 var movementEqn : ProjectileMovementEquation
 
+var isDestroyOnWall := false
+
 ## How many deltas should it take before we the projectile expires
 var ageExpiry := 30 
 
@@ -43,6 +45,6 @@ func _on_body_entered(body : Node2D) -> void:
 		body.damageStateHandler.onHurt(1, false)
 		body.applyKnockback(currVelocity)
 		call_deferred("queue_free")
-	elif body.get_parent().get_parent() is not BossStaff:
+	elif body.get_parent().get_parent() is not BossStaff and isDestroyOnWall:
 		call_deferred("queue_free")
 		

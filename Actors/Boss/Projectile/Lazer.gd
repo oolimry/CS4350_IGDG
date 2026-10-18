@@ -3,7 +3,9 @@ extends Node2D
 
 @export var _getSource: Callable
 @export var _getDest: Callable
-@export var thickness: float = 300.0
+
+@export var thickness: float = 300
+@export var hitboxThicknessOffset : float = 2
 
 @export var beam: AnimatedSprite2D
 
@@ -121,7 +123,7 @@ func update_beam(start: Vector2, end: Vector2) -> void:
 		lengthModifier
 	)
 	
-	ray.scale.y = thickness / frame_size.x
+	ray.scale.y = thickness / frame_size.x - hitboxThicknessOffset 
 	
 func _physics_process(delta: float) -> void:
 	var _source : Node2D = _getSource.call()
