@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cswps6ssp2jad"]
 
 [ext_resource type="Script" uid="uid://d21bwp8p4tk6" path="res://Actors/Cutscenes/IntroCutscene.gd" id="1_7qyt7"]
-[ext_resource type="Texture2D" uid="uid://dsvyo6dk7mfr6" path="res://Assets/Cutscenes/IntroScene1Background.jpg" id="1_8w2py"]
 [ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_m5aep"]
-[ext_resource type="Texture2D" uid="uid://dwur3qs3gra0b" path="res://Assets/Cutscenes/Scene2Placeholder.png" id="4_uf5c2"]
+[ext_resource type="Texture2D" uid="uid://dk3uo3htqyp11" path="res://Assets/Cutscenes/IntroBackground1.png" id="2_uf5c2"]
+[ext_resource type="Texture2D" uid="uid://dbym07q634s23" path="res://Assets/Cutscenes/IntroBackground2.png" id="4_x2uss"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5aep"]
 shader = ExtResource("2_m5aep")
@@ -99,11 +99,10 @@ position = Vector2(962, 541)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scene1" unique_id=199590191]
 modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
-position = Vector2(-57, 371)
-scale = Vector2(3.7252965, 3.3)
-texture = ExtResource("1_8w2py")
+texture = ExtResource("2_uf5c2")
 
 [node name="ForegroundFog" type="Sprite2D" parent="Scene1" unique_id=1031286202]
+visible = false
 material = SubResource("ShaderMaterial_m5aep")
 texture = SubResource("GradientTexture2D_m5aep")
 
@@ -113,8 +112,7 @@ position = Vector2(962, 541)
 
 [node name="FightScene" type="Sprite2D" parent="Scene2" unique_id=377212065]
 modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
-position = Vector2(0, -6)
-texture = ExtResource("4_uf5c2")
+texture = ExtResource("4_x2uss")
 
 [node name="Blackness" type="Sprite2D" parent="Scene2" unique_id=222119427]
 modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
