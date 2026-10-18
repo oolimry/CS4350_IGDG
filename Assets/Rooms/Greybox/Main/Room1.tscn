@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="6_2yek6"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_smarx"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="10_fusx3"]
 
-[sub_resource type="Resource" id="Resource_glb24"]
+[sub_resource type="Resource" id="Resource_e2dhs"]
 resource_local_to_scene = true
 script = ExtResource("7_smarx")
 oriCoords = Vector2(53, 718)
@@ -37,7 +38,7 @@ tile_set = ExtResource("4_fusx3")
 collision_enabled = false
 
 [node name="Respawn Point" parent="." unique_id=202330827 groups=["Checkpoint"] instance=ExtResource("3_jct8w")]
-position = Vector2(280, 880)
+position = Vector2(500, 880)
 isActive = true
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_jct8w")]
@@ -45,10 +46,10 @@ visible = false
 position = Vector2(960, 560)
 
 [node name="Label" type="Label" parent="." unique_id=1214568031]
-offset_left = 192.0
-offset_top = 758.0
-offset_right = 391.0
-offset_bottom = 794.0
+offset_left = 320.0
+offset_top = 780.0
+offset_right = 712.0
+offset_bottom = 816.0
 theme_override_font_sizes/font_size = 26
 text = "'WASD' or Arrow keys - to move"
 
@@ -67,5 +68,8 @@ element = 2
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
-position = Vector2(440, 200)
-roomResident = SubResource("Resource_glb24")
+position = Vector2(160, 520)
+roomResident = SubResource("Resource_e2dhs")
+
+[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_fusx3")]
+position = Vector2(0, 520)
