@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="6_2yek6"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_smarx"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="10_fusx3"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="10_fusx3"]
 
 [sub_resource type="Resource" id="Resource_e2dhs"]
 resource_local_to_scene = true
@@ -72,5 +72,4 @@ position = Vector2(160, 520)
 roomResident = SubResource("Resource_e2dhs")
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_fusx3")]
-position = Vector2(80, 720)
-scale = Vector2(2, 5)
+position = Vector2(0, 520)
