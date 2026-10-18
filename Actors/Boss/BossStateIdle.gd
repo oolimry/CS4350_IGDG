@@ -57,8 +57,8 @@ func _end() -> void:
 	durationTimer.timeout.disconnect(_end)
 		
 	var p = getPlayer.call()
-	if abs(p.global_position.x - getBoss.call().global_position.x) \
-		<= meleeAttackRange:
+	if (abs(p.global_position.x - getBoss.call().global_position.x) \
+		<= meleeAttackRange) and randomizer.randi() % 2 == 0:
 		transitionTo.emit("MeleeAttack")
 	else:
 		transitionTo.emit("ProjectileStraight")

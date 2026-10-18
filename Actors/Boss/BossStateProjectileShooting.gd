@@ -35,6 +35,8 @@ func _start() -> void:
 	durationTimer.start(duration)
 	burstFireProjectile()
 	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
+	
+	projFirer.fireLazer(getPlayer)
 	pass
 
 # This gets run by the FSM 
@@ -67,4 +69,7 @@ func fireProjectile() -> void:
 	rot = rad_to_deg(rot)
 	
 	projFirer.fireProjectile(p, rot)
+	
+	
+	
 	projTimer.start(projectileCooldownDuration)
