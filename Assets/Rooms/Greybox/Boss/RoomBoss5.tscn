@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="3_trjcu"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="4_k1355"]
 [ext_resource type="Texture2D" uid="uid://b3kkgm03gcuhe" path="res://Assets/Rooms/Greybox/Boss/Screenshot 2026-09-14 012348y.png" id="6_j1xl8"]
+[ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="6_trjcu"]
 
 [node name="Room Boss5" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_irdm7")
@@ -39,3 +40,6 @@ visible = false
 position = Vector2(2880, 540)
 scale = Vector2(2.4615386, 2.805195)
 texture = ExtResource("6_j1xl8")
+
+[node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("6_trjcu")]
+position = Vector2(1857, 620)
