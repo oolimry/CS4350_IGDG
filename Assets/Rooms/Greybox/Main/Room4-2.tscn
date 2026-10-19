@@ -53,6 +53,7 @@ scale = Vector2(1, 2.5)
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("11_av0vl")]
 position = Vector2(1506, 817)
+timeToLive = 60.0
 
 [node name="Element2" parent="." unique_id=1394946886 instance=ExtResource("8_dr6l8")]
 position = Vector2(856, 788)

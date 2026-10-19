@@ -69,3 +69,4 @@ roomResident = SubResource("Resource_wkw45")
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_va7ec")]
 position = Vector2(1800, 760)
+timeToLive = 20.0
