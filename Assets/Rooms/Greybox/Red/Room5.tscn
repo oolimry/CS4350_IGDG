@@ -83,7 +83,7 @@ position = Vector2(244, -39)
 shape = SubResource("RectangleShape2D_tkoe3")
 
 [node name="BombSpawner2" parent="." unique_id=9458697 instance=ExtResource("8_iiv1o")]
-position = Vector2(1078, 273)
+position = Vector2(1040, 280)
 timeToLive = 30.0
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=982113744]
@@ -93,8 +93,8 @@ position = Vector2(640, 640)
 height = 320.0
 roomResident = SubResource("Resource_p8ick")
 
-[node name="ExplodableWall" parent="RoomResidents/ExplodableWall" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
-position = Vector2(80, -320)
+[node name="ExplodableWall2" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_5nk4h")]
+position = Vector2(720, 320)
 height = 240.0
 roomResident = SubResource("Resource_bo0d1")
 

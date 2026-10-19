@@ -58,28 +58,28 @@ theme_override_constants/separation = 10
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1423187390]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 39
 text = "Start"
 flat = true
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=968890847]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 39
 text = "Settings"
 flat = true
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=310318998]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 39
 text = "Credits"
 flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1969695455]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 39
 text = "Quit"
 flat = true
 

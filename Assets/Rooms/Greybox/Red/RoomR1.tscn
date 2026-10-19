@@ -124,7 +124,7 @@ position = Vector2(20, 240)
 shape = SubResource("RectangleShape2D_xoo2o")
 
 [node name="Respawn Point3" type="Marker2D" parent="." unique_id=536877484 groups=["Checkpoint"]]
-position = Vector2(700, 580)
+position = Vector2(704, 400)
 script = ExtResource("4_bxwkc")
 reference_texture = ExtResource("5_jadal")
 textureOffset = Vector2(0, -29.725)
@@ -135,7 +135,7 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point3/Area2D" unique_id=1284932147]
-position = Vector2(20, -60)
+position = Vector2(20, 124)
 shape = SubResource("RectangleShape2D_xoo2o")
 
 [node name="Respawn Point4" type="Marker2D" parent="." unique_id=448816567 groups=["Checkpoint"]]
