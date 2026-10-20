@@ -75,7 +75,7 @@ var timeSincePressJump = inf
 
 const lateJumpBuffer := 0.090	## about 5 frames, quite lenient
 const earlyJumpBuffer := 0.090	## about 5 frames, quite lenient
-const lateWallJummpBuffer := 0.090 ## 2 frames, less lenient
+const lateWallJummpBuffer := 0.090 ## now 5 frames, quite lenient
 
 # slashing related
 @export var slashCooldown = 0.334
