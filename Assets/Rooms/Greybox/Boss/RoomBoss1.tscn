@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_s5ve0"]
 [ext_resource type="Script" uid="uid://cmip6nyv15kbp" path="res://Actors/WorldObjects/BossCheckpoint.gd" id="10_mxlx2"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="13_482lr"]
+[ext_resource type="PackedScene" uid="uid://2v35vu2leovv" path="res://Actors/WorldObjects/MovingElementY.tscn" id="14_60xj2"]
+[ext_resource type="PackedScene" uid="uid://cpqqeib5dlr1f" path="res://Actors/WorldObjects/MovingElement.tscn" id="15_k38wu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m83n0"]
 light_mode = 1
@@ -76,19 +78,24 @@ position = Vector2(840, 880)
 script = ExtResource("10_mxlx2")
 isUniversal = true
 
-[node name="Element2" parent="." unique_id=1655824632 instance=ExtResource("5_mxlx2")]
-position = Vector2(640, 840)
-element = 1
-
-[node name="Element3" parent="." unique_id=1516986045 instance=ExtResource("5_mxlx2")]
-position = Vector2(1600, 520)
-element = 1
-
-[node name="Element4" parent="." unique_id=1846402317 instance=ExtResource("5_mxlx2")]
-position = Vector2(1040, 240)
-element = 3
-
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("13_482lr")]
 position = Vector2(440, 240)
+
+[node name="Element5" parent="." unique_id=696245660 instance=ExtResource("14_60xj2")]
+position = Vector2(880, 600)
+speed = 1.0
+distance = 280.0
+element = 3
+
+[node name="Element2" parent="." unique_id=1471119129 instance=ExtResource("14_60xj2")]
+position = Vector2(1600, 680)
+speed = 0.8
+distance = 160.0
+element = 1
+
+[node name="Element3" parent="." unique_id=1374467272 instance=ExtResource("15_k38wu")]
+position = Vector2(1640, 40)
+speed = 1.0
+distance = 160.0
 
 [connection signal="body_entered" from="BossEntry" to="BossEntry" method="_on_body_entered"]
