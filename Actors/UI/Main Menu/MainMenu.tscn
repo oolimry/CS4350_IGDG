@@ -83,4 +83,5 @@ theme_override_font_sizes/font_size = 39
 text = "Quit"
 flat = true
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Quit" to="." method="_on_quit_pressed"]
