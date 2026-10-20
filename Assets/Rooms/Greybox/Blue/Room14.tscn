@@ -41,7 +41,6 @@ script = ExtResource("10_tqwbb")
 oriCoords = Vector2(640, 380)
 persistentID = &"469cc0fc-57a5-4bb4-9124-aeaedd87106c"
 objectName = &"Crate"
-shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_1bx15"]
 resource_local_to_scene = true
@@ -49,9 +48,8 @@ script = ExtResource("10_tqwbb")
 oriCoords = Vector2(1480, 520)
 persistentID = &"4783759a-b25a-4a45-82f6-3f4f35e5a7d5"
 objectName = &"Crate"
-shouldAlwaysReset = true
 
-[node name="Room 14-2" type="Node2D" unique_id=1922114953]
+[node name="Room 14" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_aaxl4")
 
 [node name="WallMap" parent="." unique_id=1944570519 instance=ExtResource("99_wall_map_scene")]
