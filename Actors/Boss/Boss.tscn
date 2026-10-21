@@ -1,31 +1,31 @@
 [gd_scene format=3 uid="uid://dkht80tf3wlnf"]
 
-[ext_resource type="Script" path="res://Actors/Boss/Boss.gd" id="1_2yquw"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-1.png" id="2_wnxsj"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-2.png" id="3_fycjl"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-3.png" id="4_qkfim"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-4.png" id="5_41bxp"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-5.png" id="6_b7nma"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-6.png" id="7_l14qj"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-9.png" id="8_vratk"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-10.png" id="9_yv04i"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-11.png" id="10_2vy40"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-7.png" id="11_7jq52"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-8.png" id="12_cqy2o"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-12.png" id="13_4lsd1"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-15.png" id="14_hje8s"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-13.png" id="15_0ptbr"]
-[ext_resource type="Texture2D" path="res://Assets/Boss/Boss0.5x/Boss_Flat-14.png" id="16_aa1vh"]
-[ext_resource type="PackedScene" path="res://Actors/Boss/BossWeakPoint.tscn" id="17_i12or"]
-[ext_resource type="Script" path="res://Actors/Boss/BossHealth.gd" id="18_i12or"]
-[ext_resource type="PackedScene" path="res://Actors/WorldObjects/CrystalWall.tscn" id="18_ig4bl"]
-[ext_resource type="PackedScene" path="res://Actors/Boss/BossHitBox.tscn" id="18_ocguh"]
-[ext_resource type="Script" path="res://Actors/Boss/BossFSM.gd" id="19_odtgy"]
-[ext_resource type="Script" path="res://Actors/Boss/BossState.gd" id="20_mgv3b"]
-[ext_resource type="Resource" path="res://Assets/Boss/States/BossState_ProjectileFireStraight.tres" id="20_ttjjf"]
-[ext_resource type="Resource" path="res://Assets/Boss/States/BossState_Idle.tres" id="23_8sqyj"]
-[ext_resource type="Script" path="res://Actors/Boss/BossStateMeleeAttack.gd" id="23_ig4bl"]
-[ext_resource type="Script" path="res://Actors/Boss/BossStateBeamFiring.gd" id="26_wnxsj"]
+[ext_resource type="Script" uid="uid://uxo6wb4bov7b" path="res://Actors/Boss/Boss.gd" id="1_2yquw"]
+[ext_resource type="Texture2D" uid="uid://3ecylqonwfeu" path="res://Assets/Boss/Boss0.5x/Boss_Flat-1.png" id="2_wnxsj"]
+[ext_resource type="Texture2D" uid="uid://cl4xj7y6o3jpe" path="res://Assets/Boss/Boss0.5x/Boss_Flat-2.png" id="3_fycjl"]
+[ext_resource type="Texture2D" uid="uid://c2qy1p2881eri" path="res://Assets/Boss/Boss0.5x/Boss_Flat-3.png" id="4_qkfim"]
+[ext_resource type="Texture2D" uid="uid://bwjkb52g0iobs" path="res://Assets/Boss/Boss0.5x/Boss_Flat-4.png" id="5_41bxp"]
+[ext_resource type="Texture2D" uid="uid://bm8blhuusvqdl" path="res://Assets/Boss/Boss0.5x/Boss_Flat-5.png" id="6_b7nma"]
+[ext_resource type="Texture2D" uid="uid://btx5ujr8i0g74" path="res://Assets/Boss/Boss0.5x/Boss_Flat-6.png" id="7_l14qj"]
+[ext_resource type="Texture2D" uid="uid://bboi31s33fncy" path="res://Assets/Boss/Boss0.5x/Boss_Flat-9.png" id="8_vratk"]
+[ext_resource type="Texture2D" uid="uid://wtml1ei3i4a" path="res://Assets/Boss/Boss0.5x/Boss_Flat-10.png" id="9_yv04i"]
+[ext_resource type="Texture2D" uid="uid://6ukxn3gl5wyg" path="res://Assets/Boss/Boss0.5x/Boss_Flat-11.png" id="10_2vy40"]
+[ext_resource type="Texture2D" uid="uid://cghreui80hp3m" path="res://Assets/Boss/Boss0.5x/Boss_Flat-7.png" id="11_7jq52"]
+[ext_resource type="Texture2D" uid="uid://jbo5llimegop" path="res://Assets/Boss/Boss0.5x/Boss_Flat-8.png" id="12_cqy2o"]
+[ext_resource type="Texture2D" uid="uid://d3pf8qbqwyrw6" path="res://Assets/Boss/Boss0.5x/Boss_Flat-12.png" id="13_4lsd1"]
+[ext_resource type="Texture2D" uid="uid://buet2tx8pibx5" path="res://Assets/Boss/Boss0.5x/Boss_Flat-15.png" id="14_hje8s"]
+[ext_resource type="Texture2D" uid="uid://cs0603is2okjm" path="res://Assets/Boss/Boss0.5x/Boss_Flat-13.png" id="15_0ptbr"]
+[ext_resource type="Texture2D" uid="uid://dgup3cl5lm0vx" path="res://Assets/Boss/Boss0.5x/Boss_Flat-14.png" id="16_aa1vh"]
+[ext_resource type="PackedScene" uid="uid://be7yqlxdbboc7" path="res://Actors/Boss/BossWeakPoint.tscn" id="17_i12or"]
+[ext_resource type="Script" uid="uid://dxrawks4ivrlf" path="res://Actors/Boss/BossHealth.gd" id="18_i12or"]
+[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="18_ig4bl"]
+[ext_resource type="PackedScene" uid="uid://dsi8v7fvxj7ty" path="res://Actors/Boss/BossHitBox.tscn" id="18_ocguh"]
+[ext_resource type="Script" uid="uid://nnrl65y0in8t" path="res://Actors/Boss/BossFSM.gd" id="19_odtgy"]
+[ext_resource type="Script" uid="uid://dmv3vx66argqt" path="res://Actors/Boss/BossState.gd" id="20_mgv3b"]
+[ext_resource type="Resource" uid="uid://b48siyfp584tt" path="res://Assets/Boss/States/BossState_ProjectileFireStraight.tres" id="20_ttjjf"]
+[ext_resource type="Resource" uid="uid://cma7a5l6nqenl" path="res://Assets/Boss/States/BossState_Idle.tres" id="23_8sqyj"]
+[ext_resource type="Script" uid="uid://j08ct1425qun" path="res://Actors/Boss/BossStateMeleeAttack.gd" id="23_ig4bl"]
+[ext_resource type="Script" uid="uid://dd83rqerjivo8" path="res://Actors/Boss/BossStateBeamFiring.gd" id="26_wnxsj"]
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_hgopr"]
 execution_mode = 1
@@ -40,6 +40,7 @@ joint_data/0/constraint_angle_min = -99.999985
 joint_data/0/constraint_angle_max = -354.9998
 joint_data/0/constraint_angle_invert = true
 joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
 joint_data/1/bone_index = 2
 joint_data/1/bone2d_node = NodePath("Hip/LegR/ShinR")
 joint_data/1/rotate_from_joint = false
@@ -48,6 +49,7 @@ joint_data/1/constraint_angle_min = -299.9999
 joint_data/1/constraint_angle_max = -15.0
 joint_data/1/constraint_angle_invert = true
 joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
 joint_data/2/bone_index = 3
 joint_data/2/bone2d_node = NodePath("Hip/LegR/ShinR/FootR")
 joint_data/2/rotate_from_joint = false
@@ -56,6 +58,7 @@ joint_data/2/constraint_angle_min = 74.99998
 joint_data/2/constraint_angle_max = -99.999985
 joint_data/2/constraint_angle_invert = true
 joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = false
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_gagxu"]
 execution_mode = 1
@@ -70,6 +73,7 @@ joint_data/0/constraint_angle_min = 354.9998
 joint_data/0/constraint_angle_max = 99.999985
 joint_data/0/constraint_angle_invert = true
 joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
 joint_data/1/bone_index = 5
 joint_data/1/bone2d_node = NodePath("Hip/LegL/ShinL")
 joint_data/1/rotate_from_joint = false
@@ -78,6 +82,7 @@ joint_data/1/constraint_angle_min = 299.9999
 joint_data/1/constraint_angle_max = 15.0
 joint_data/1/constraint_angle_invert = true
 joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
 joint_data/2/bone_index = 6
 joint_data/2/bone2d_node = NodePath("Hip/LegL/ShinL/FootL")
 joint_data/2/rotate_from_joint = false
@@ -86,6 +91,7 @@ joint_data/2/constraint_angle_min = 99.999985
 joint_data/2/constraint_angle_max = -74.99998
 joint_data/2/constraint_angle_invert = true
 joint_data/2/constraint_in_localspace = true
+joint_data/2/editor_draw_gizmo = false
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_wvtfw"]
 execution_mode = 1
@@ -100,6 +106,7 @@ joint_data/0/constraint_angle_min = 0.0
 joint_data/0/constraint_angle_max = 360.0
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
 joint_data/1/bone_index = 11
 joint_data/1/bone2d_node = NodePath("Hip/Torso/ArmL/ForearmL")
 joint_data/1/rotate_from_joint = false
@@ -108,6 +115,7 @@ joint_data/1/constraint_angle_min = 0.0
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_mypim"]
 execution_mode = 1
@@ -122,6 +130,7 @@ joint_data/0/constraint_angle_min = 0.0
 joint_data/0/constraint_angle_max = 360.0
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
 joint_data/1/bone_index = 9
 joint_data/1/bone2d_node = NodePath("Hip/Torso/ArmR/ForearmR")
 joint_data/1/rotate_from_joint = false
@@ -130,6 +139,7 @@ joint_data/1/constraint_angle_min = 0.0
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = true
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_wvtfw"]
 enabled = true
@@ -843,45 +853,45 @@ scale = Vector2(1.2, 1.2)
 
 [node name="BossFootR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1041100193]
 modulate = Color(0.98, 0.058800004, 0.0741531, 1)
-position = Vector2(-286.70074, 593.4508)
-rotation = -0.012234987
-scale = Vector2(0.9999123, 0.9999123)
+position = Vector2(-150.63577, 688.8568)
+rotation = 0.38692236
+scale = Vector2(0.99990934, 0.99990934)
 texture = ExtResource("2_wnxsj")
 offset = Vector2(286.5, -578)
 
 [node name="BossFootL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1455065047]
 modulate = Color(0.9264272, 0, 0.00633728, 1)
-position = Vector2(267.38586, 603.5564)
-rotation = -0.13436258
-scale = Vector2(0.9999826, 0.9999826)
+position = Vector2(188.31644, 667.5165)
+rotation = -0.37760442
+scale = Vector2(0.9999824, 0.9999824)
 texture = ExtResource("3_fycjl")
 offset = Vector2(-282.5, -576)
 
 [node name="BossShinL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=954763846]
-position = Vector2(945.02, 136.59564)
-rotation = 0.058836885
-scale = Vector2(0.9999821, 0.9999821)
+position = Vector2(951.7291, 360.19775)
+rotation = 0.27950224
+scale = Vector2(0.9999834, 0.9999834)
 texture = ExtResource("4_qkfim")
 offset = Vector2(-935, -70.5)
 
 [node name="BossShinR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=94052258]
-position = Vector2(-935.9385, 87.76318)
-rotation = -0.00045347086
-scale = Vector2(0.99999183, 0.99999183)
+position = Vector2(-938.24524, 450.32184)
+rotation = -0.3681132
+scale = Vector2(0.9999886, 0.9999886)
 texture = ExtResource("5_41bxp")
 offset = Vector2(937, -70)
 
 [node name="BossThighL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=676494382]
-position = Vector2(77.500534, 274.50018)
-rotation = 0.0761497
-scale = Vector2(0.99998593, 0.99998593)
+position = Vector2(77.50084, 274.50043)
+rotation = 0.33150932
+scale = Vector2(0.9999919, 0.9999919)
 texture = ExtResource("6_b7nma")
 offset = Vector2(-80.5, -276.5)
 
 [node name="BossThighR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=130863287]
-position = Vector2(-77.500336, 274.50165)
-rotation = -0.019562537
-scale = Vector2(0.99999046, 0.99999046)
+position = Vector2(-77.50076, 274.50165)
+rotation = -0.43525344
+scale = Vector2(0.999994, 0.999994)
 texture = ExtResource("7_l14qj")
 offset = Vector2(82, -273.5)
 
@@ -904,48 +914,51 @@ texture = ExtResource("9_yv04i")
 offset = Vector2(3.5, -254.5)
 
 [node name="BossCloth" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1440620290]
-position = Vector2(238.49431, -265.99268)
-scale = Vector2(0.99997616, 0.99997616)
+position = Vector2(219.42834, -281.98376)
+rotation = -0.069813155
+scale = Vector2(0.9999762, 0.9999762)
 texture = ExtResource("10_2vy40")
 offset = Vector2(-240, 274)
 
 [node name="BossArmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=790249206]
-position = Vector2(-530.5017, -279.495)
-rotation = 0.11281848
-scale = Vector2(0.9999758, 0.9999758)
+position = Vector2(-548.6399, -241.81189)
+rotation = 0.10095954
+scale = Vector2(0.9999784, 0.9999784)
 texture = ExtResource("11_7jq52")
 offset = Vector2(534, 278.5)
 
 [node name="BossArmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=653435422]
-position = Vector2(530.495, -279.495)
-rotation = 0.034488145
-scale = Vector2(0.99997485, 0.99997485)
+position = Vector2(509.7794, -315.82544)
+rotation = 0.019589866
+scale = Vector2(0.9999781, 0.9999781)
 texture = ExtResource("12_cqy2o")
 offset = Vector2(-531.5, 279.5)
 
 [node name="BossTorso" type="Sprite2D" parent="CharacterContainer/Body" unique_id=283587284]
-position = Vector2(2.3389957e-06, -0.99902344)
-scale = Vector2(0.99997616, 0.99997616)
+position = Vector2(0, -0.99902344)
+rotation = -0.069813155
+scale = Vector2(0.9999762, 0.9999762)
 texture = ExtResource("13_4lsd1")
 
 [node name="BossHead" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1327874943]
 modulate = Color(0.93, 0.744, 0.74709994, 1)
-position = Vector2(6.1884202e-06, -421.489)
+position = Vector2(-29.331894, -420.46472)
+rotation = -0.069813155
 scale = Vector2(0.99996287, 0.99996287)
 texture = ExtResource("14_hje8s")
 offset = Vector2(2, 421.5)
 
 [node name="BossForearmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=415876403]
-position = Vector2(-895.44055, 294.55823)
-rotation = -0.08410413
-scale = Vector2(0.9999717, 0.9999717)
+position = Vector2(-906.7467, 336.53156)
+rotation = -0.120222636
+scale = Vector2(0.9999732, 0.9999732)
 texture = ExtResource("15_0ptbr")
 offset = Vector2(831, -329)
 
 [node name="BossForearmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1226613400]
-position = Vector2(807.2312, 341.9026)
-rotation = -0.01784408
-scale = Vector2(0.999951, 0.999951)
+position = Vector2(795.7447, 301.3824)
+rotation = -0.04824529
+scale = Vector2(0.9999487, 0.9999487)
 texture = ExtResource("16_aa1vh")
 offset = Vector2(-832.5, -331)
 
@@ -975,12 +988,12 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=1238437744]
 position = Vector2(649.0137, 505.98605)
-rotation = -0.011777706
-scale = Vector2(0.9999203, 0.9999203)
+rotation = -0.011777707
+scale = Vector2(0.99992025, 0.99992025)
 rest = Transform2D(0.9998512, -0.011776497, 0.011776497, 0.9998512, 649.0137, 505.98605)
 auto_calculate_length_and_angle = false
 length = 324.3225
-bone_angle = 113.68361
+bone_angle = 113.6836
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR" unique_id=1470867022]
