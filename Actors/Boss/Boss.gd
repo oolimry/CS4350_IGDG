@@ -2,6 +2,12 @@ class_name Boss
 extends Node2D
 
 @onready var characterContainer : Node2D = $CharacterContainer
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+
+const MOVE_RIGHT_SKELETON_TRACK := NodePath(
+	"CharacterContainer/Bones/Skeleton2D:position"
+)
+const MOVEMENT_OFFSET_TRACK := NodePath(".:animatedMovementOffset")
 
 @export var health : Health
 @export var fsm : BossFSM
@@ -10,6 +16,65 @@ var bossAnimationStartPos : Vector2
 var _character_transform_at_start := Transform2D.IDENTITY
 
 var isMovementActive := false
+
+func _ready() -> void:
+	_standardize_move_right_tracks()
+
+## Applies move_left's root-offset track structure once when the boss enters
+## the tree; the authored scene resource remains unchanged.
+func _standardize_move_right_tracks() -> void:
+	if not animationPlayer.has_animation(&"move_right"):
+		push_error("Boss AnimationPlayer is missing move_right")
+		return
+
+	var animation := animationPlayer.get_animation(&"move_right")
+	var skeletonTrack := animation.find_track(
+		MOVE_RIGHT_SKELETON_TRACK,
+		Animation.TYPE_VALUE
+	)
+	if skeletonTrack < 0:
+		push_error("move_right is missing its Skeleton2D position track")
+		return
+
+	animation.track_set_enabled(skeletonTrack, false)
+
+	var methodTrack := animation.find_track(NodePath("."), Animation.TYPE_METHOD)
+	if methodTrack < 0:
+		methodTrack = animation.add_track(Animation.TYPE_METHOD)
+		animation.track_set_path(methodTrack, NodePath("."))
+	else:
+		_clear_animation_track(animation, methodTrack)
+
+	animation.track_insert_key(methodTrack, 0.0, {
+		"method": &"prepareAnimatedMovement",
+		"args": [],
+	})
+	animation.track_insert_key(methodTrack, animation.length, {
+		"method": &"finishAnimatedMovement",
+		"args": [],
+	})
+
+	var offsetTrack := animation.find_track(
+		MOVEMENT_OFFSET_TRACK,
+		Animation.TYPE_VALUE
+	)
+	if offsetTrack < 0:
+		offsetTrack = animation.add_track(Animation.TYPE_VALUE)
+		animation.track_set_path(offsetTrack, MOVEMENT_OFFSET_TRACK)
+	else:
+		_clear_animation_track(animation, offsetTrack)
+
+	for keyIndex in animation.track_get_key_count(skeletonTrack):
+		animation.track_insert_key(
+			offsetTrack,
+			animation.track_get_key_time(skeletonTrack, keyIndex),
+			animation.track_get_key_value(skeletonTrack, keyIndex),
+			animation.track_get_key_transition(skeletonTrack, keyIndex)
+		)
+
+func _clear_animation_track(animation : Animation, track : int) -> void:
+	for keyIndex in range(animation.track_get_key_count(track) - 1, -1, -1):
+		animation.track_remove_key(track, keyIndex)
 
 @export var animatedMovementOffset := Vector2.ZERO:
 	set(value):
