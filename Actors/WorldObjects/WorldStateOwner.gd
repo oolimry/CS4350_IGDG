@@ -16,8 +16,10 @@ func snapshotRoom(ri : RoomInstance) -> void:
 	snapshots[ri.roomPos] = ri.generateRoomSnapshot()
 
 func restoreSnapshot(ri : RoomInstance, hasJustLoaded : bool) -> void:
+
 	var roomPos := ri.roomPos
 	if !snapshots.has(roomPos):
+		snapshotRoom(ri)
 		return
 	
 	if hasJustLoaded:

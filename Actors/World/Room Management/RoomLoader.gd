@@ -25,6 +25,5 @@ func handleRoomLoading(currRoomPos : Vector2i, nextRoomPos : Vector2i) -> void:
 func reloadRoom(roomPos : Vector2i) -> void:
 	roomInstantiator.restoreSnapshot(roomPos)
 
-
 func bindSignals(signals : Dictionary[StringName, Signal]) -> void:
 	signals[&"playerRespawn"].connect(reloadRoom)	

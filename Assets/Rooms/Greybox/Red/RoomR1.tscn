@@ -29,55 +29,54 @@ size = Vector2(180, 220)
 [sub_resource type="Resource" id="Resource_jadal"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(1760, 560)
-persistentID = &"b4f6e5a7-0e13-411f-ad13-fa24d6cdcd03"
-objectName = &"Chain"
+oriCoords = Vector2(-40, -80)
+persistentID = &"92ecd4d3-8279-4cad-a5c8-832353b0a25f"
+objectName = &"Crate"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_r2cc3"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(3920, 1040)
-persistentID = &"5c9b651b-30df-4c84-80be-1a37211bd421"
+oriCoords = Vector2(440, 280)
+persistentID = &"e0c7e629-db03-4608-87e3-097799d70e41"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_0rkc4"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(1760, 880)
-persistentID = &"e1c6cfdc-7fe6-413c-b93d-c7f52a19f1a5"
+oriCoords = Vector2(440, 380)
+persistentID = &"fe9d50af-7f7f-4125-a14e-1638ecb8948c"
 objectName = &"Crate"
 
 [sub_resource type="Resource" id="Resource_yis8s"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(3920, 1360)
-persistentID = &"8791b062-0772-4350-9d03-3a6684b2e439"
-objectName = &"Crate"
+oriCoords = Vector2(960, 240)
+persistentID = &"4a2f5c2c-ef8d-4c54-bce2-223a7c3b76ae"
+objectName = &"Chain"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_fc6h7"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(6560, 1600)
-persistentID = &"75338e8d-09a4-4e1c-8791-5b9b6d3afedd"
+oriCoords = Vector2(960, 340)
+persistentID = &"3d75c291-c905-41b5-adfc-3dcbfe42c05c"
 objectName = &"Crate"
-shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_trr7i"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(6400, 1360)
-persistentID = &"eb56946e-2923-4cd3-a239-8aee1a4d6f0d"
+oriCoords = Vector2(680, 60)
+persistentID = &"c5c12790-df2a-4f30-9f53-2b9fe2aef5b9"
 objectName = &"Crate"
 shouldAlwaysReset = true
 
 [sub_resource type="Resource" id="Resource_xoo2o"]
 resource_local_to_scene = true
 script = ExtResource("10_yis8s")
-oriCoords = Vector2(6240, 1120)
-persistentID = &"a02a5462-94f1-44ab-8029-1f169187bd29"
+oriCoords = Vector2(-40, -80)
+persistentID = &"7ed60ca0-e5a7-48f7-9f41-f058348bf537"
 objectName = &"Crate"
 shouldAlwaysReset = true
 
@@ -216,6 +215,47 @@ element = 2
 position = Vector2(980, 560)
 element = 2
 
+[node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
+
+[node name="Crate5" parent="RoomResidents" unique_id=126198746 instance=ExtResource("11_fc6h7")]
+position = Vector2(1600, 334.86)
+freeze = true
+roomResident = SubResource("Resource_jadal")
+
+[node name="Chain2" parent="RoomResidents" unique_id=1224914763 node_paths=PackedStringArray("attached_crate") instance=ExtResource("9_0rkc4")]
+position = Vector2(440, 280)
+attached_crate = NodePath("../Crate2")
+vertical_start_point = -240.0
+roomResident = SubResource("Resource_r2cc3")
+
+[node name="Crate2" parent="RoomResidents" unique_id=1281552557 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
+position = Vector2(440, 380)
+freeze = true
+attached_chain = NodePath("../Chain2")
+roomResident = SubResource("Resource_0rkc4")
+
+[node name="Chain3" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("9_0rkc4")]
+position = Vector2(960, 240)
+attached_crate = NodePath("../Crate3")
+vertical_start_point = -240.0
+roomResident = SubResource("Resource_yis8s")
+
+[node name="Crate3" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
+position = Vector2(960, 340)
+freeze = true
+attached_chain = NodePath("../Chain3")
+roomResident = SubResource("Resource_fc6h7")
+
+[node name="Crate4" parent="RoomResidents" unique_id=775546113 instance=ExtResource("11_fc6h7")]
+position = Vector2(1640, 400)
+freeze = true
+roomResident = SubResource("Resource_trr7i")
+
+[node name="Crate6" parent="RoomResidents" unique_id=1709926491 instance=ExtResource("11_fc6h7")]
+position = Vector2(1560, 269.65)
+freeze = true
+roomResident = SubResource("Resource_xoo2o")
+
 [node name="Element8" parent="." unique_id=2009155314 instance=ExtResource("6_vvnj1")]
 position = Vector2(1280, 940)
 element = 3
@@ -243,55 +283,6 @@ timeToLive = 20.0
 [node name="BombSpawner2" parent="." unique_id=727804524 instance=ExtResource("8_r2cc3")]
 position = Vector2(440, 460)
 timeToLive = 3.0
-
-[node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
-scale = Vector2(0.25, 0.25)
-
-[node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("9_0rkc4")]
-position = Vector2(1760, 1200)
-scale = Vector2(1, 1)
-attached_crate = NodePath("../Crate")
-vertical_start_point = -240.0
-roomResident = SubResource("Resource_jadal")
-
-[node name="Chain2" parent="RoomResidents" unique_id=358104132 node_paths=PackedStringArray("attached_crate") instance=ExtResource("9_0rkc4")]
-position = Vector2(3920, 1040)
-scale = Vector2(1, 1)
-attached_crate = NodePath("../Crate2")
-vertical_start_point = -240.0
-roomResident = SubResource("Resource_r2cc3")
-
-[node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
-position = Vector2(1760, 1520)
-scale = Vector2(4, 4)
-freeze = true
-attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_0rkc4")
-
-[node name="Crate2" parent="RoomResidents" unique_id=1429524059 node_paths=PackedStringArray("attached_chain") instance=ExtResource("11_fc6h7")]
-position = Vector2(3920, 1360)
-scale = Vector2(4, 4)
-freeze = true
-attached_chain = NodePath("../Chain2")
-roomResident = SubResource("Resource_yis8s")
-
-[node name="Crate3" parent="RoomResidents" unique_id=1486855611 instance=ExtResource("11_fc6h7")]
-position = Vector2(6560, 1600)
-scale = Vector2(4, 4)
-freeze = true
-roomResident = SubResource("Resource_fc6h7")
-
-[node name="Crate4" parent="RoomResidents" unique_id=500643430 instance=ExtResource("11_fc6h7")]
-position = Vector2(6400, 1360)
-scale = Vector2(4, 4)
-freeze = true
-roomResident = SubResource("Resource_trr7i")
-
-[node name="Crate5" parent="RoomResidents" unique_id=1069458935 instance=ExtResource("11_fc6h7")]
-position = Vector2(6240, 1120)
-scale = Vector2(4, 4)
-freeze = true
-roomResident = SubResource("Resource_xoo2o")
 
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("12_bxwkc")]
 position = Vector2(220, 960)
