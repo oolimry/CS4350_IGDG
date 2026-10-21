@@ -74,4 +74,9 @@ func setModulationTileMap(n : Node) -> void:
 		var maskVal = n.tile_set.get_physics_layer_collision_layer(0)
 		if (maskVal & Enums.Layers.HAZARD) != 0:
 			n.modulate = hazardModulateColour
-		
+
+func findFirstNodeTypeInRoomInstances(nodeType : StringName) -> Node:
+	var firstNode : Node
+	for room in loadedRooms.values():
+		firstNode = room.findFirstNodeTypeInstance(nodeType)
+	return firstNode

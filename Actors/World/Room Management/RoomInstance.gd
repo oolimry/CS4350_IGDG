@@ -188,4 +188,11 @@ func isSafeToFreeSelfCheck(rr : RoomResident, safety : bool) -> void:
 	# If it wasn't safe to free previously but now is	
 	if safety and !isSafeToFreeRoom and isSafeToFree():
 		isSafeToFreeRoomUpdate.emit(self, true)
+
+func findFirstNodeTypeInstance(nodeType : StringName) -> Node:
+	var types = find_children("*", nodeType, true, false)
 	
+	if len(types) != 0:
+		return types.get(0)
+	
+	return null
