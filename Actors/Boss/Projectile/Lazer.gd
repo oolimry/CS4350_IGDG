@@ -13,7 +13,7 @@ extends Node2D
 @export var lockDuration: float = 0.1
 @export var beamDuration: float = 4.0
 @export var trackingSpeed: float = 0.2
-@export var damage: int = 2
+@export var damage: int = 1
 
 @export var warning: Line2D
 @export var ray: RayCast2D
@@ -65,9 +65,10 @@ func startAttack() -> void:
 	beam.hide()
 
 func fire() -> void:
-	warning.hide()
 	
 	var sourceStart : Vector2 = _getSource.call().global_position
+	
+	beam.frame = 0
 	beam.show()
 	# Show the beam even when it misses.
 	update_beam(sourceStart, lockedEnd)
@@ -102,25 +103,11 @@ func update_beam(start: Vector2, end: Vector2) -> void:
 	var frame_size := frame_texture.get_size()
 	var direction := end - start
 
-	beam.centered = true
-	beam.offset = Vector2.ZERO
-
-	beam.global_position = (start + end) / 2.0
 	beam.global_rotation = direction.angle() - PI / 2.0
-	
-	Glogger.debug(direction.length() / frame_size.y)
-	
-	var lengthModifier
-	if isBlockedByWall:
-		lengthModifier = direction.length() / frame_size.y
-	else:
-		# All I know is that this value works for MAX_RAY_DISTANCE
-		lengthModifier = 350
 
-	
 	beam.global_scale = Vector2(
 		thickness / frame_size.x,
-		lengthModifier
+		clamp(direction.length() / frame_size.y, 1, 5)
 	)
 	
 	ray.scale.y = thickness / frame_size.x - hitboxThicknessOffset 
@@ -172,10 +159,15 @@ func _physics_process(delta: float) -> void:
 			beam.show()
 			
 			ray.force_raycast_update()
+			
+			if beam.frame > 7:
+				warning.hide()
+			
 			if beam.frame > 7 and beam.frame < 14 and ray.is_colliding():
 				var possiblePlayer = ray.get_collider()
 				if possiblePlayer is Player:
 					possiblePlayer.damageStateHandler.onHurt(damage, false)
+					possiblePlayer.applyKnockback(Vector2.RIGHT.rotated(-rotation))
 			
 
 func stopAttack() -> void:
