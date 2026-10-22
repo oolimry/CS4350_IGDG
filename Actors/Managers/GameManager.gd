@@ -19,7 +19,8 @@ var isSetup := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	playerCoordinator = PlayerBLifecycleCoordinator.new(connectPlayer)
+	playerCoordinator = PlayerBLifecycleCoordinator.new(connectPlayer, 
+		roomManager.searchForNearestNodeType)
 	roomManager.generateRooms(
 		[playerCoordinator.registerCheckPoint, bossManager.registerBossRoom], 
 	{

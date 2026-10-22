@@ -23,14 +23,14 @@ func _ready() -> void:
 	
 	pass # Replace with function body.
 
-func generateRooms(cArray : Array[Callable], \
+func generateRooms(nodeSetupCallables : Array[Callable], \
 	loaderSignals : Dictionary[StringName,Signal] = {}) -> void:
 		
 	worldStateOwner = WorldStateOwner.new()
 	currRoomPos = mapLoader.playerSpawnRoom.gridPos
 	
-	cArray.append(setupRoom)
-	roomInstantiator.setup(cArray, calcRoomCenterWorldCoords, worldStateOwner)
+	nodeSetupCallables.append(setupRoom)
+	roomInstantiator.setup(nodeSetupCallables, calcRoomCenterWorldCoords, worldStateOwner)
 	
 	roomLoader = RoomLoaderNeighbour.new(mapLoader, roomInstantiator, loaderSignals)
 	roomLoader.loadRooms(currRoomPos)
@@ -70,3 +70,7 @@ func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 func calcRoomCenterWorldCoords(roomGridPos : Vector2i) -> Vector2:
 	return roomCenterOffset + \
 		Vector2(roomGridPos) * roomCenterInterval
+
+func searchForNearestNodeType(nodeType : StringName) -> Node:
+	return roomInstantiator.findFirstNodeTypeInRoomInstances(nodeType)
+	

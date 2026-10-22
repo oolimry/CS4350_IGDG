@@ -5,13 +5,15 @@ var currRespawnCheckpoint : CheckPoint
 var savedNormalRespawnCheckpoint : CheckPoint
 
 var connectPlayer : Callable
+var searchForBackupCheckpoint : Callable
 
 signal playerRespawn(roomPos : Vector2i)
 
 var isStartOfPlayer := true
 
-func _init(connectPlayer : Callable) -> void:
+func _init(connectPlayer : Callable, searchForBackupCheckpoint : Callable) -> void:
 	self.connectPlayer = connectPlayer
+	self.searchForBackupCheckpoint = searchForBackupCheckpoint
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +28,13 @@ func swapActiveCheckPoint(c : CheckPoint) -> void:
 	c.isActive = true
 
 func onRespawn(isDead : bool, dmgStateHandler : DamageStateHandler) -> void:
+	if currRespawnCheckpoint == null:
+		currRespawnCheckpoint = searchForBackupCheckpoint.call("CheckPoint")
+	
+	if currRespawnCheckpoint == null:
+		dmgStateHandler.postRespawnHandling(searchForBackupCheckpoint.call("RoomEntry")
+			.global_position)
+		
 	dmgStateHandler.postRespawnHandling(currRespawnCheckpoint.global_position)
 	playerRespawn.emit(currRespawnCheckpoint.roomPos)
 
@@ -42,8 +51,6 @@ func _registerCheckPoint(c : Node) -> void:
 			createPlayerOnStart(c)
 
 func createPlayerOnStart(checkpoint : CheckPoint) -> void:
-	# This check is to ensure that only one Checkpoint is active at the
-	# start of the game
 	isStartOfPlayer = false
 	
 	savedNormalRespawnCheckpoint = checkpoint

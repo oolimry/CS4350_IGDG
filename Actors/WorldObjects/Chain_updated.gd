@@ -77,7 +77,6 @@ const objName = "Chain"
 
 const GENERATED_CHAIN_ROOT := "__GeneratedChainVisuals"
 
-
 func setup() -> void:
 	roomResident = RoomResident.setup(objName, position)
 
