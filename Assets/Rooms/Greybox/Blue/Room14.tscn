@@ -61,8 +61,8 @@ tile_set = ExtResource("99_world_map_tileset")
 material = SubResource("CanvasItemMaterial_f5qnr")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
+tile_map_data = PackedByteArray("AADr/xgAAAAAAAAADgDs/xgAAAAAAAAADgDt/xgAAAAAAAAADgDu/xgAAAAAAAAADgDv/xgAAAAAAAAADgDw/xgAAAAAAAAADgDx/xgAAAAAAAAADgDy/xgAAAAAAAAADgDz/xgAAAAAAAAADgD0/xgAAAAAAAAADgD1/xgAAAAAAAAADgD2/xgAAAAAAAAADgD3/xgAAAAAAAAADgD4/xgAAAAAAAAADgD5/xgAAAAAAAAADgD6/xgAAAAAAAAADgD7/xgAAAAAAAAADgD8/xgAAAAAAAAADgD9/xgAAAAAAAAADgD+/xgAAAAAAAAADgD//xgAAAAAAAAADgA=")
 tile_set = ExtResource("3_vtm2f")
-collision_visibility_mode = 1
 
 [node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("10_mtt3v")]
 position = Vector2(120, 840)
