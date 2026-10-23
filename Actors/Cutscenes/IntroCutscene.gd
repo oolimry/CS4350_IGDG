@@ -22,40 +22,41 @@ func startCutscene():
 
 func _process(delta):
 	if Input.is_action_pressed("left") and Input.is_action_pressed("jump") and not ifForceSkip:
-		GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.GAMEPLAY
-		scene1.visible = false
-		scene2.visible = false
-		ifForceSkip = true
-		if is_instance_valid(dialogueBox):
-			dialogueBox.visible = false
-		
+		skipCutscene()
 
 
+func skipCutscene():
+	GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.GAMEPLAY
+	scene1.visible = false
+	scene2.visible = false
+	ifForceSkip = true
+	$Label.visible = false
+	if is_instance_valid(dialogueBox):
+		dialogueBox.visible = false
+	
 func onScene1Finished():
 	if ifForceSkip:
 		return
-		
+	
+	AudioManager.play(AudioManager.Shatter)
 	scene1.visible = false
 	scene2.visible = true
 	
 	# a small delay
 	await get_tree().create_timer(1.0).timeout
 	
-	Glogger.debug("A")
-	
 	# the black fades out
 	var tween = get_tree().create_tween()
-	tween.tween_property(scene2Blackness, "modulate:a", 0, 2.0)\
+	tween.tween_property(scene2Blackness, "modulate:a", 0, 3.0)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	Glogger.debug("B")
 	await tween.finished
-	Glogger.debug("C")
-	DialogueManager.show_dialogue_balloon(dialogueFile, "scene2")
+	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene2")
 	 
 func onScene2Finished():
 	if ifForceSkip:
 		return
-		
+	
+	AudioManager.play(AudioManager.Shatter)	
 	whiteFlashAnimationPlayer.play("Flash")
 	await whiteFlashAnimationPlayer.animation_finished
 	
@@ -63,4 +64,5 @@ func onScene2Finished():
 	
 	GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.GAMEPLAY
 	whiteFlashAnimationPlayer.play("BecomeTransparent")
+	$Label.visible = false
 	

@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cs17jqowvwh3m" path="res://Assets/DialogueBalloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="FontFile" uid="uid://di74gvi3lj2nh" path="res://Assets/Fonts/RubikStorm-Regular.ttf" id="3_5ig5r"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="4_767ds"]
+[ext_resource type="AudioStream" uid="uid://vwlng2iftmnv" path="res://Assets/Audio/Cutscenes/TextScroll2.wav" id="6_pjf4y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 content_margin_left = 20.0
@@ -134,9 +137,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = -649.0
+offset_top = -1080.0
 offset_right = 3.0
-offset_bottom = -430.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -162,16 +164,20 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 40
-theme_override_font_sizes/bold_font_size = 40
-theme_override_font_sizes/bold_italics_font_size = 40
-theme_override_font_sizes/italics_font_size = 40
-text = "[i]dfdf[/i]"
+theme_override_fonts/bold_font = ExtResource("3_5ig5r")
+theme_override_fonts/italics_font = ExtResource("4_767ds")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 48
+text = "[i]dfdfadfadfdf[/i]
+"
 horizontal_alignment = 1
 vertical_alignment = 1
-skip_action = &"ui_cancelsk"
-seconds_per_step = 0.03
-seconds_per_pause_step = 0.5
+skip_action = &"jump"
+seconds_per_step = 0.025
+skip_pause_at_character_if_followed_by = ""
+seconds_per_pause_step = 10.0
 autoAdvanceDelay = 1.5
 
 [node name="Control" type="Control" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=418507161]
@@ -212,6 +218,7 @@ text = "Response example"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1162558754]
 unique_name_in_owner = true
+stream = ExtResource("6_pjf4y")
 
 [node name="AutoAdvanceTimer" type="Timer" parent="." unique_id=1395141990]
 wait_time = 0.6

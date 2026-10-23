@@ -15,7 +15,7 @@ extends CanvasLayer
 @export var will_block_other_input: bool = true
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"jump"
 
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
@@ -193,15 +193,18 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	# See if we need to skip typing of the dialogue
-	"""
+	
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+		var skip_button_was_pressed: bool = event.is_action_pressed("jump")
 		if mouse_was_clicked or skip_button_was_pressed:
 			get_viewport().set_input_as_handled()
-			dialogue_label.skip_typing()
+			
+			if dialogue_label._should_auto_pause():
+				dialogue_label._waiting_seconds = 0
+			else:
+				dialogue_label.skip_typing()
 			return
-	"""
 	
 	if not is_waiting_for_input: return
 	if dialogue_line.responses.size() > 0: return
@@ -219,7 +222,8 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
 func on_finished_typing():
-	autoAdvanceTimer.start(autoAdvanceDelay)
+	pass
+	#autoAdvanceTimer.start(autoAdvanceDelay)
 
 func onAutoAdvanceTimeout():
 	next(dialogue_line.next_id)
