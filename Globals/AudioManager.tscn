@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://06nphmcjhexu" path="res://Assets/Audio/Slash SFX/Wind Projectile.ogg" id="6_21uwq"]
 [ext_resource type="AudioStream" uid="uid://cau78fw3wb7f6" path="res://Assets/Audio/World Objects SFX/ExplodableWallExploded.ogg" id="10_vxglj"]
 [ext_resource type="AudioStream" uid="uid://bufigpqlnexgk" path="res://Assets/Audio/World Objects SFX/IgnitionPad.wav" id="11_vxglj"]
+[ext_resource type="AudioStream" uid="uid://buiyfff52mbbf" path="res://Assets/Audio/Cutscenes/shatter.wav" id="12_to54l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
@@ -53,18 +54,22 @@ script = ExtResource("1_olr0b")
 stream = SubResource("AudioStreamRandomizer_olr0b")
 volume_db = -5.0
 pitch_scale = 1.25
+bus = &"Audio"
 
 [node name="Die" type="AudioStreamPlayer" parent="Movement" unique_id=740421040]
 stream = SubResource("AudioStreamRandomizer_l8f8j")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="FootstepA" type="AudioStreamPlayer" parent="Movement" unique_id=788135200]
 stream = SubResource("AudioStreamRandomizer_1v8rx")
 volume_db = -5.0
+bus = &"Audio"
 
 [node name="FootstepB" type="AudioStreamPlayer" parent="Movement" unique_id=1032052879]
 stream = SubResource("AudioStreamRandomizer_4t86c")
 volume_db = -8.0
+bus = &"Audio"
 
 [node name="Slashing" type="Node2D" parent="." unique_id=1541962458]
 
@@ -72,16 +77,20 @@ volume_db = -8.0
 stream = SubResource("AudioStreamRandomizer_vynle")
 volume_db = -3.0
 pitch_scale = 1.25
+bus = &"Audio"
 
 [node name="WindProjectile" type="AudioStreamPlayer" parent="Slashing" unique_id=1599818199]
 stream = ExtResource("6_21uwq")
 volume_db = -3.0
+bus = &"Audio"
 
 [node name="FireElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1779547640]
 volume_db = -8.0
+bus = &"Audio"
 
 [node name="WindElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1981845195]
 volume_db = -8.0
+bus = &"Audio"
 
 [node name="WorldObjects" type="Node2D" parent="." unique_id=1691499638]
 
@@ -89,11 +98,20 @@ volume_db = -8.0
 stream = SubResource("AudioStreamRandomizer_vxglj")
 volume_db = -15.0
 pitch_scale = 0.75
+bus = &"Audio"
 
 [node name="IgnitionPadLaunch" type="AudioStreamPlayer" parent="WorldObjects" unique_id=1873959267]
 stream = ExtResource("11_vxglj")
 pitch_scale = 1.2
+bus = &"Audio"
 
 [node name="BombExploded" type="AudioStreamPlayer" parent="WorldObjects" unique_id=332273520]
 stream = ExtResource("11_vxglj")
 pitch_scale = 0.8
+bus = &"Audio"
+
+[node name="Cutscene" type="Node2D" parent="." unique_id=54264024]
+
+[node name="Shatter" type="AudioStreamPlayer" parent="Cutscene" unique_id=1878204359]
+stream = ExtResource("12_to54l")
+bus = &"Audio"

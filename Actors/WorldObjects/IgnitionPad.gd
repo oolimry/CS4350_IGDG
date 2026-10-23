@@ -38,7 +38,6 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	
 	isActive = false
 	
-	Glogger.debug(self.direction)
 	player.launchByIgnitionPadOrBomb(self.direction)
 	
 	animationPlayer.play("launch")

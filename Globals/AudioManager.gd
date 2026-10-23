@@ -4,6 +4,8 @@ const MASTER_BUS = 0
 const AUDIO_BUS = 1
 const MUSIC_BUS = 2
 
+
+
 ## put the relevant audios here
 @onready var Jump : AudioStreamPlayer = $Movement/Jump
 @onready var Die : AudioStreamPlayer = $Movement/Die
@@ -19,6 +21,9 @@ const MUSIC_BUS = 2
 @onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
 @onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
+
+
+@onready var Shatter : AudioStreamPlayer = $Cutscene/Shatter
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):

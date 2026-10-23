@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_m5aep"]
 [ext_resource type="Texture2D" uid="uid://dk3uo3htqyp11" path="res://Assets/Cutscenes/IntroBackground1.png" id="2_uf5c2"]
 [ext_resource type="Texture2D" uid="uid://dbym07q634s23" path="res://Assets/Cutscenes/IntroBackground2.png" id="4_x2uss"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="5_x2uss"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5aep"]
 shader = ExtResource("2_m5aep")
@@ -62,8 +63,8 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1),
-"transitions": PackedFloat32Array(0.37892917, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.10511228, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1.4369954, 1.4369954, 1.4369954, 1), Color(1.4369954, 1.4369954, 1.4369954, 1)]
 }
@@ -118,6 +119,18 @@ texture = ExtResource("4_x2uss")
 modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
 position = Vector2(7, -20)
 texture = SubResource("GradientTexture2D_d6ec5")
+
+[node name="Label" type="Label" parent="." unique_id=1818132232]
+offset_left = 2.0
+offset_top = 880.0
+offset_right = 1922.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.7393851, 0.7393851, 0.7393851, 1)
+theme_override_fonts/font = ExtResource("5_x2uss")
+theme_override_font_sizes/font_size = 28
+text = "Press space to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WhiteFlash" type="Sprite2D" parent="." unique_id=589531398]
 modulate = Color(1, 1, 1, 0)

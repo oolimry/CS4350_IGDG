@@ -123,6 +123,8 @@ func type_out() -> void:
 
 ## Stop typing out the text and jump right to the end
 func skip_typing() -> void:
+	
+	
 	_mutate_remaining_mutations()
 	visible_characters = get_total_character_count()
 	is_typing = false
@@ -228,5 +230,7 @@ func _should_auto_pause() -> bool:
 	other_pause_characters.append("\n")
 	if visible_characters > 1 and parsed_text[visible_characters - 1] in other_pause_characters and parsed_text[visible_characters] in other_pause_characters:
 		return false
-
+	
+	pause_at_characters = "\n"
+	Glogger.debug(pause_at_characters.split())
 	return parsed_text[visible_characters - 1] in pause_at_characters.split()

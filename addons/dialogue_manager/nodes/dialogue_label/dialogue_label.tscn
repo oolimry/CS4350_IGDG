@@ -19,4 +19,3 @@ script = ExtResource("1_cital")
 pause_at_characters = ""
 skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
 seconds_per_pause_step = 0.0
-autoAdvanceDelay = null
