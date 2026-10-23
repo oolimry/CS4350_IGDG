@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://dbv00gucyrj2j" path="res://Assets/Boss/Projectiles/Beam/Beam-21.png" id="22_1wvxb"]
 [ext_resource type="Texture2D" uid="uid://dh8fmyenhjp8" path="res://Assets/Boss/Projectiles/Beam/Beam-22.png" id="23_iakbd"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1qdul"]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
 animations = [{
 "frames": [{
@@ -98,18 +101,210 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Lazer" type="Node2D" unique_id=791275844 node_paths=PackedStringArray("beam", "warning", "ray", "distancingRay")]
+[sub_resource type="Animation" id="Animation_nx6ah"]
+resource_name = "Fire"
+length = 1.4333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam2/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.1, 0.16666667, 0.23333333, 0.3, 0.36666667, 0.43333334, 0.5, 0.56666666, 0.6333333, 0.7, 0.76666665, 0.8333333, 0.89999986, 0.96666664, 1.0333333, 1.1, 1.1666666, 1.2333333, 1.3, 1.3666667, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_nx6ah"), ExtResource("3_rmscy"), ExtResource("4_20x27"), ExtResource("5_481bc"), ExtResource("6_ac6vl"), ExtResource("7_qjcwy"), ExtResource("8_q7pr5"), ExtResource("9_bl5x8"), ExtResource("10_t1r2a"), ExtResource("11_nwiww"), ExtResource("12_env6i"), ExtResource("13_svqqn"), ExtResource("17_v0b38"), ExtResource("15_yuvot"), ExtResource("16_6cee7"), ExtResource("17_v0b38"), ExtResource("18_7xne5"), ExtResource("19_uuljg"), ExtResource("20_m7jrn"), ExtResource("21_6iuab"), ExtResource("22_1wvxb"), ExtResource("23_iakbd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Beam2/Beam Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5635914, 0.56632274, 0.8333333, 0.83393323),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Beam2/Source Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.5, 0.56666666, 0.8334428, 0.83390605),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Beam2/Source Hitbox:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.56666666, 0.5691496),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(0.3, 0.3)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Beam2/Beam Hitbox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.6303721, 0.6333333, 0.6980962, 0.7, 0.76582026, 0.83191895),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -6), Vector2(0, -6), Vector2(0, -11), Vector2(0, -11), Vector2(0, -11)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Beam2/Beam Hitbox:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.6303721, 0.6333333, 0.6980962, 0.7, 0.76582026, 0.83191895),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.2, 1), Vector2(1.2, 1), Vector2(1.5, 1), Vector2(1.5, 1), Vector2(1.5, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Beam2/Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.4331342, 1.4333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rmscy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beam2/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_nwiww")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Beam2/Beam Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Beam2/Source Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Beam2/Source Hitbox:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Beam2/Beam Hitbox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Beam2/Beam Hitbox:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Beam2/Sprite2D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20x27"]
+_data = {
+&"Fire": SubResource("Animation_nx6ah"),
+&"RESET": SubResource("Animation_rmscy")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhunq"]
+radius = 25.0
+height = 650.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 62.649822
+
+[node name="Lazer" type="Node2D" unique_id=791275844 node_paths=PackedStringArray("beam", "beamSprite", "animPlayer", "warning", "distancingRay")]
 script = ExtResource("1_nx6ah")
-beam = NodePath("Beam")
+beam = NodePath("Beam2")
+beamSprite = NodePath("Beam2/Sprite2D")
+animPlayer = NodePath("AnimationPlayer")
 trackingSpeed = 9.0
 warning = NodePath("Line2D")
-ray = NodePath("RayCast2D")
 distancingRay = NodePath("DistRay")
 
 [node name="Beam" type="AnimatedSprite2D" parent="." unique_id=1808835095]
+visible = false
 z_index = 3
+material = SubResource("CanvasItemMaterial_1qdul")
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_bhunq")
+frame = 10
 speed_scale = 1.5
 offset = Vector2(2.855028, 288.67853)
 
@@ -117,9 +312,43 @@ offset = Vector2(2.855028, 288.67853)
 collision_mask = 30
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1972257926]
+target_position = Vector2(6.7176825e-07, 56.333336)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1056025831]
 visible = false
 z_index = 3
 points = PackedVector2Array(0, 0, 500, 0)
 default_color = Color(0.9588502, 0.56000876, 0.1617479, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=595985892]
+libraries/ = SubResource("AnimationLibrary_20x27")
+
+[node name="Beam2" type="Node2D" parent="." unique_id=596895019]
+
+[node name="Sprite2D" type="Sprite2D" parent="Beam2" unique_id=164179054]
+visible = false
+position = Vector2(290, -1)
+rotation = -1.5707964
+texture = ExtResource("11_nwiww")
+
+[node name="Beam Hitbox" type="Area2D" parent="Beam2" unique_id=62650108]
+rotation = -1.5707964
+collision_layer = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam2/Beam Hitbox" unique_id=30337222]
+position = Vector2(-5, 343)
+shape = SubResource("CapsuleShape2D_bhunq")
+
+[node name="Source Hitbox" type="Area2D" parent="Beam2" unique_id=1182153424]
+position = Vector2(1, 0)
+rotation = -1.5707964
+collision_layer = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Beam2/Source Hitbox" unique_id=45066675]
+position = Vector2(-1.0000191, -1)
+shape = SubResource("CircleShape2D_bhunq")
+
+[connection signal="body_entered" from="Beam2/Beam Hitbox" to="." method="_on_beam_hitbox_body_entered"]
+[connection signal="body_entered" from="Beam2/Source Hitbox" to="." method="_on_source_hitbox_body_entered"]

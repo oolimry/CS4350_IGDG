@@ -5,9 +5,11 @@ extends Node2D
 @export var _getDest: Callable
 
 @export var thickness: float = 300
-@export var hitboxThicknessOffset : float = 2
+@export var hitboxThicknessOffset : float = 1
 
-@export var beam: AnimatedSprite2D
+@export var beam: Node2D
+@export var beamSprite : Sprite2D
+@export var animPlayer : AnimationPlayer
 
 @export var aimDuration: float = 1.5
 @export var lockDuration: float = 0.1
@@ -16,10 +18,11 @@ extends Node2D
 @export var damage: int = 1
 
 @export var warning: Line2D
-@export var ray: RayCast2D
 @export var distancingRay : RayCast2D
 
 @export var isBlockedByWall := false
+
+var oriRayScale := Vector2(12,12)
 
 enum State { IDLE, AIMING, LOCKED, FIRING }
 
@@ -34,8 +37,7 @@ const MAX_RAY_DISTANCE := 100000
 func _ready() -> void:
 	beam.hide()
 	warning.hide()
-	ray.enabled = false
-	beam.animation_finished.connect(stopAttack)
+	animPlayer.animation_finished.connect(stopAttack)
 
 static func create(source : Callable, dest : Callable) -> Lazer:
 	var scene = load("uid://c13vm6rsuma20") as PackedScene
@@ -68,16 +70,11 @@ func fire() -> void:
 	
 	var sourceStart : Vector2 = _getSource.call().global_position
 	
-	beam.frame = 0
-	beam.show()
+	beamSprite.frame = 0
+	beamSprite.show()
 	# Show the beam even when it misses.
 	update_beam(sourceStart, lockedEnd)
-	beam.play()
-	
-	ray.global_position = sourceStart
-	ray.target_position = ray.to_local(lockedEnd)
-	ray.force_raycast_update()
-	ray.enabled = true
+	animPlayer.play("Fire")
 	
 	state = State.FIRING
 	timeLeft = beamDuration
@@ -99,18 +96,18 @@ func update_beam(start: Vector2, end: Vector2) -> void:
 
 	# Convert the destination to coordinates relative to this laser.
 	var local_end := to_local(end)
-	var frame_texture := beam.sprite_frames.get_frame_texture("default",0)
-	var frame_size := frame_texture.get_size()
+	var frame_size := beamSprite.texture.get_size()
 	var direction := end - start
 
-	beam.global_rotation = direction.angle() - PI / 2.0
+	beam.global_rotation = direction.angle()
 
 	beam.global_scale = Vector2(
-		thickness / frame_size.x,
-		clamp(direction.length() / frame_size.y, 1, 5)
+		clamp(direction.length() / frame_size.y, 1, 5),
+		thickness / frame_size.x
+		
 	)
-	
-	ray.scale.y = thickness / frame_size.x - hitboxThicknessOffset 
+
+	#ray.target_position
 	
 func _physics_process(delta: float) -> void:
 	var _source : Node2D = _getSource.call()
@@ -157,23 +154,16 @@ func _physics_process(delta: float) -> void:
 				
 		State.FIRING:
 			beam.show()
-			
-			ray.force_raycast_update()
-			
-			if beam.frame > 7:
+						
+			if beamSprite.frame > 7:
 				warning.hide()
-			
-			if beam.frame > 7 and beam.frame < 14 and ray.is_colliding():
-				var possiblePlayer = ray.get_collider()
-				if possiblePlayer is Player:
-					possiblePlayer.damageStateHandler.onHurt(damage, false)
-					possiblePlayer.applyKnockback(Vector2.RIGHT.rotated(-rotation))
 			
 
 func stopAttack() -> void:
-	beam.hide()
+	beamSprite.hide()
+	warning.hide()
+
 	state = State.IDLE
-	ray.enabled = false
 
 func getWallEndpoint(start: Vector2, angle: float) -> Vector2:
 	var far_end := start + Vector2.RIGHT.rotated(angle) * MAX_RAY_DISTANCE
@@ -188,3 +178,15 @@ func getWallEndpoint(start: Vector2, angle: float) -> Vector2:
 			return distancingRay.get_collision_point()
 
 	return far_end
+
+
+func _on_beam_hitbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.damageStateHandler.onHurt(damage, false)
+		body.applyKnockback(Vector2.RIGHT.rotated(-beam.rotation))
+
+
+func _on_source_hitbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.damageStateHandler.onHurt(damage, false)
+		body.applyKnockback(Vector2.RIGHT.rotated(-beam.rotation))
