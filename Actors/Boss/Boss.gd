@@ -2,6 +2,8 @@ class_name Boss
 extends Node2D
 
 @onready var characterContainer : Node2D = $CharacterContainer
+@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+
 
 @export var health : Health
 @export var fsm : BossFSM
@@ -43,7 +45,6 @@ static func create(basePos : Vector2, getPlayer : Callable,
 	var instance = scene.instantiate() as Boss
 	instance.bossAnimationStartPos = basePos
 	instance.global_position = basePos
-	instance.animatedMovementOffset = Vector2.ZERO
 	instance.z_index = -5
 	instance.health.maxHealth = startingHP
 	instance.health.currHealth = startingHP

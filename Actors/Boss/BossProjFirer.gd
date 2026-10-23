@@ -22,6 +22,7 @@ func fireLazer(dest : Callable) -> void:
 	if activeLazer == null:
 		activeLazer = Lazer.create(func(): return self , dest)
 		addTopersistentActors.call(activeLazer, "BossProjectiles")
+		activeLazer.global_position = global_position
 	activeLazer.startAttack()
 	
 func degreesToVector(degrees: float) -> Vector2:

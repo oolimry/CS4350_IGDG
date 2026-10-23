@@ -32,30 +32,30 @@ func _start() -> void:
 	var boss = getBoss.call()
 	boss.get_node("CharacterContainer/Body/BossHead").modulate = Color.LIGHT_PINK
 	
-	#var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
-	#
-	#if currRoomPosition == roomPosition.LEFT:
-		#ap.play("move_right")
-		#currRoomPosition = roomPosition.MID
-	#elif currRoomPosition == roomPosition.RIGHT:
-		#ap.play("move_left")
-		#currRoomPosition = roomPosition.MID
-	#else:	
-		#if randomizer.randi() % 2 == 0:
-			#ap.play("move_left")
-			#currRoomPosition = roomPosition.RIGHT
-		#else: 
-			#ap.play("move_right")
-			#currRoomPosition = roomPosition.LEFT
-	#
-	#await ap.animation_finished
-	#reset_to_rest_pose(boss.get_node("CharacterContainer/Bones/Skeleton2D"))
+	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
+	
+	if currRoomPosition == roomPosition.LEFT:
+		ap.play("move_right")
+		currRoomPosition = roomPosition.MID
+	elif currRoomPosition == roomPosition.RIGHT:
+		ap.play("move_left")
+		currRoomPosition = roomPosition.MID
+	else:	
+		if randomizer.randi() % 2 == 0:
+			ap.play("move_left")
+			currRoomPosition = roomPosition.RIGHT
+		else: 
+			ap.play("move_right")
+			currRoomPosition = roomPosition.LEFT
+	
+	await ap.animation_finished
+	ap.play("RESET")
 	Glogger.debug("Boss is Idling")
 	pass
 
 func _end() -> void:
-	durationTimer.timeout.disconnect(_end)
-		
+	durationTimer.timeout.disconnect(_end)	
+	
 	var p = getPlayer.call()
 	if (abs(p.global_position.x - getBoss.call().global_position.x) \
 		<= meleeAttackRange) and randomizer.randi() % 2 == 0:
