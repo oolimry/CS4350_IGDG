@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bk8udcfhb0j8m" path="res://Assets/World Objects/CrystalWall.png" id="2_womx1"]
 [ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="2_wr7vu"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2njae"]
+light_mode = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_es4v0"]
 shader = ExtResource("2_wr7vu")
 shader_parameter/base_color = Color(1.2837998, 0.18065566, 1.4063711, 0.18039216)
@@ -33,15 +36,18 @@ size = Vector2(160, 400)
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("1_kywnk")
+height = 160.0
 
 [node name="Sprite2D" type="NinePatchRect" parent="." unique_id=1749231435]
-offset_right = 160.0
-offset_bottom = 400.0
+material = SubResource("CanvasItemMaterial_2njae")
+offset_right = 640.0
+offset_bottom = 640.0
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_womx1")
-patch_margin_left = 60
-patch_margin_top = 60
-patch_margin_right = 60
-patch_margin_bottom = 60
+patch_margin_left = 160
+patch_margin_top = 160
+patch_margin_right = 160
+patch_margin_bottom = 160
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 metadata/_edit_use_anchors_ = true
@@ -52,7 +58,8 @@ material = SubResource("ShaderMaterial_es4v0")
 texture = SubResource("GradientTexture2D_3wkq4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=903857377]
-position = Vector2(80, 200)
+position = Vector2(80, 80)
+scale = Vector2(1, 0.4)
 shape = SubResource("RectangleShape2D_22p3n")
 
 [node name="KillZone" type="Area2D" parent="." unique_id=1288907808]
@@ -60,5 +67,6 @@ visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=1453556016]
-position = Vector2(80, 200)
+position = Vector2(80, 80)
+scale = Vector2(1, 0.4)
 shape = SubResource("RectangleShape2D_y05ns")

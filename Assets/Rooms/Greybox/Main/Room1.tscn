@@ -73,3 +73,4 @@ roomResident = SubResource("Resource_fusx3")
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_fusx3")]
 position = Vector2(0, 520)
+height = 400.0
