@@ -4,7 +4,6 @@ extends Node2D
 @onready var characterContainer : Node2D = $CharacterContainer
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
 
-
 @export var health : Health
 @export var fsm : BossFSM
 var bossStaff : BossStaff
@@ -52,7 +51,7 @@ static func create(basePos : Vector2, getPlayer : Callable,
 	instance.bossStaff.projFirer.setup(addPersistentCallable)
 	addPersistentCallable.call(instance.bossStaff)
 
-	instance.fsm.setup(func(): return instance, getPlayer, instance.bossStaff.projFirer)
+	instance.fsm.setup(func(): return instance, getPlayer, instance.bossStaff)
 	return instance
 
 func start() -> void:

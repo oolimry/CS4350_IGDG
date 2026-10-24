@@ -10,15 +10,17 @@ var projTimer : Timer
 var durationTimer : Timer
 
 var projFirer : BossProjFirer
+var bossStaff : BossStaff
 
 var randomizer : RandomNumberGenerator
 
 func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	super.setup(getB, getP, dependencies)
 	projTimer = dependencies["projTimer"]
-	projFirer = dependencies["projFirer"]
+	bossStaff = dependencies["bossStaff"]
+	projFirer = bossStaff.projFirer
 	durationTimer = dependencies["durationTimer"]
-		
+	
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
 
@@ -29,6 +31,8 @@ func _start() -> void:
 	durationTimer.start(duration)
 	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
 	
+	bossStaff.gemSprite.self_modulate = Color.ORANGE
+
 	fireBeam()
 	pass
 
@@ -39,6 +43,7 @@ func fireBeam() -> void:
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
+	bossStaff.gemSprite.self_modulate = Color.WHITE
 	
 	durationTimer.timeout.disconnect(_end)
 	projTimer.timeout.disconnect(fireBeam)
