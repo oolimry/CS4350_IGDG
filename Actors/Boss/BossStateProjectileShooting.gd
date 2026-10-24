@@ -36,7 +36,6 @@ func _start() -> void:
 
 	durationTimer.start(duration)
 	burstFireProjectile()
-	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
 	bossStaff.gemSprite.self_modulate = Color.ORANGE
 	pass
 

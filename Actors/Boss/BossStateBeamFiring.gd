@@ -29,8 +29,6 @@ func _start() -> void:
 	projTimer.timeout.connect(fireBeam)
 
 	durationTimer.start(duration)
-	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
-	
 	bossStaff.gemSprite.self_modulate = Color.ORANGE
 
 	fireBeam()

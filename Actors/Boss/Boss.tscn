@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://uxo6wb4bov7b" path="res://Actors/Boss/Boss.gd" id="1_2yquw"]
 [ext_resource type="Texture2D" uid="uid://3ecylqonwfeu" path="res://Assets/Boss/Boss0.5x/Boss_Flat-1.png" id="2_wnxsj"]
 [ext_resource type="Texture2D" uid="uid://cl4xj7y6o3jpe" path="res://Assets/Boss/Boss0.5x/Boss_Flat-2.png" id="3_fycjl"]
+[ext_resource type="Shader" uid="uid://fy0grmb7e4ag" path="res://Assets/Boss/Shaders/LegShader.gdshader" id="3_l14qj"]
 [ext_resource type="Texture2D" uid="uid://c2qy1p2881eri" path="res://Assets/Boss/Boss0.5x/Boss_Flat-3.png" id="4_qkfim"]
 [ext_resource type="Texture2D" uid="uid://bwjkb52g0iobs" path="res://Assets/Boss/Boss0.5x/Boss_Flat-4.png" id="5_41bxp"]
 [ext_resource type="Texture2D" uid="uid://bm8blhuusvqdl" path="res://Assets/Boss/Boss0.5x/Boss_Flat-5.png" id="6_b7nma"]
@@ -37,6 +38,24 @@ colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
 gradient = SubResource("Gradient_wnxsj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l14qj"]
+shader = ExtResource("3_l14qj")
+shader_parameter/speed = 2.0
+shader_parameter/min_brightness = 0.3
+shader_parameter/max_rightness_modifier = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vratk"]
+shader = ExtResource("3_l14qj")
+shader_parameter/speed = 2.0
+shader_parameter/min_brightness = 0.3
+shader_parameter/max_rightness_modifier = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yv04i"]
+shader = ExtResource("3_l14qj")
+shader_parameter/speed = 2.0
+shader_parameter/min_brightness = 0.3
+shader_parameter/max_rightness_modifier = 5.0
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_hgopr"]
 execution_mode = 1
@@ -1293,56 +1312,57 @@ position = Vector2(0, -1185)
 scale = Vector2(1.2, 1.2)
 
 [node name="MotionRoot" type="Node2D" parent="CharacterContainer" unique_id=71638951]
-position = Vector2(-280.35486, 0)
 
 [node name="Body" type="Node2D" parent="CharacterContainer" unique_id=2117354212]
 
 [node name="BossFootR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1041100193]
 self_modulate = Color(0.9254902, 0, 0.007843138, 1)
-position = Vector2(-301.58304, 595.62286)
-rotation = 0.00025616333
-scale = Vector2(0.9997941, 0.9997941)
+material = SubResource("ShaderMaterial_l14qj")
+position = Vector2(-286.73868, 593.50104)
+rotation = -0.012269557
+scale = Vector2(0.99976885, 0.99976885)
 texture = ExtResource("2_wnxsj")
 offset = Vector2(286.5, -578)
 
 [node name="BossFootL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1455065047]
-position = Vector2(261.4302, 613.91943)
-rotation = -0.096362755
-scale = Vector2(0.9998622, 0.9998622)
+material = SubResource("ShaderMaterial_vratk")
+position = Vector2(272.60257, 618.9219)
+rotation = -0.119842075
+scale = Vector2(0.99983543, 0.99983543)
 texture = ExtResource("3_fycjl")
 offset = Vector2(-282.5, -576)
 
 [node name="BossShinL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=954763846]
-position = Vector2(949.318, 162.37726)
-rotation = 0.08133758
-scale = Vector2(0.999864, 0.999864)
+position = Vector2(946.42596, 146.68787)
+rotation = 0.05093173
+scale = Vector2(0.9998378, 0.9998378)
 texture = ExtResource("4_qkfim")
 offset = Vector2(-935, -70.5)
 
 [node name="BossShinR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=94052258]
-position = Vector2(-932.4765, 67.37714)
-rotation = 0.034881517
-scale = Vector2(0.9998742, 0.9998742)
+position = Vector2(-935.8042, 87.78314)
+rotation = -0.000295873
+scale = Vector2(0.99984914, 0.99984914)
 texture = ExtResource("5_41bxp")
 offset = Vector2(937, -70)
 
 [node name="BossThighL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=676494382]
-position = Vector2(77.49143, 268.88495)
-rotation = 0.11223121
-scale = Vector2(0.99986446, 0.99986446)
+position = Vector2(77.48947, 274.4973)
+rotation = 0.087754354
+scale = Vector2(0.99984294, 0.99984294)
 texture = ExtResource("6_b7nma")
 offset = Vector2(-80.5, -276.5)
 
 [node name="BossThighR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=130863287]
-position = Vector2(-77.491234, 268.8864)
-rotation = -0.0022953185
-scale = Vector2(0.9998729, 0.9998729)
+position = Vector2(-77.48927, 274.49884)
+rotation = -0.019558255
+scale = Vector2(0.9998477, 0.9998477)
 texture = ExtResource("7_l14qj")
 offset = Vector2(82, -273.5)
 
 [node name="BossSkirt" type="Polygon2D" parent="CharacterContainer/Body" unique_id=284854280]
-position = Vector2(0, 248.88715)
-scale = Vector2(0.9998788, 0.9998788)
+position = Vector2(0, 254.50006)
+scale = Vector2(0.9998535, 0.9998535)
 offset = Vector2(-1149, -1310)
 texture = ExtResource("8_vratk")
 skeleton = NodePath("../../Bones/Skeleton2D")
@@ -1353,58 +1373,58 @@ bones = ["Hip", PackedFloat32Array(1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0.5, 1, 0), 
 internal_vertex_count = 3
 
 [node name="BossWaist" type="Sprite2D" parent="CharacterContainer/Body" unique_id=943938123]
-position = Vector2(0, 248.88715)
-scale = Vector2(0.9998788, 0.9998788)
+position = Vector2(0, 254.50006)
+scale = Vector2(0.9998535, 0.9998535)
 texture = ExtResource("9_yv04i")
 offset = Vector2(3.5, -254.5)
 
 [node name="BossCloth" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1440620290]
-position = Vector2(219.40262, -287.53357)
-rotation = -0.06981301
-scale = Vector2(0.9998588, 0.9998588)
+position = Vector2(219.39706, -281.9071)
+rotation = -0.06981306
+scale = Vector2(0.9998335, 0.9998335)
 texture = ExtResource("10_2vy40")
 offset = Vector2(-240, 274)
 
 [node name="BossArmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=790249206]
-position = Vector2(-548.5721, -247.36536)
-rotation = 0.104170546
-scale = Vector2(0.9998586, 0.9998586)
+position = Vector2(-548.55817, -241.73987)
+rotation = 0.100671194
+scale = Vector2(0.9998325, 0.9998325)
 texture = ExtResource("11_7jq52")
 offset = Vector2(534, 278.5)
 
 [node name="BossArmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=653435422]
-position = Vector2(509.71597, -321.36792)
-rotation = -0.07117564
-scale = Vector2(0.99985796, 0.99985796)
+position = Vector2(509.70325, -315.74072)
+rotation = 0.021587031
+scale = Vector2(0.9998327, 0.9998327)
 texture = ExtResource("12_cqy2o")
 offset = Vector2(-531.5, 279.5)
 
 [node name="BossTorso" type="Sprite2D" parent="CharacterContainer/Body" unique_id=283587284]
-position = Vector2(0, -6.581909)
-rotation = -0.06981301
-scale = Vector2(0.9998588, 0.9998588)
+position = Vector2(0, -0.9625244)
+rotation = -0.06981306
+scale = Vector2(0.9998335, 0.9998335)
 texture = ExtResource("13_4lsd1")
 
 [node name="BossHead" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1327874943]
 modulate = Color(0.93, 0.744, 0.74709994, 1)
-position = Vector2(-29.328394, -425.9984)
-rotation = -0.06981302
-scale = Vector2(0.99984545, 0.99984545)
+material = SubResource("ShaderMaterial_yv04i")
+position = Vector2(-29.327662, -420.3683)
+rotation = -0.06981305
+scale = Vector2(0.9998202, 0.9998202)
 texture = ExtResource("14_hje8s")
 offset = Vector2(2, 421.5)
 
 [node name="BossForearmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=415876403]
-position = Vector2(-908.4731, 329.73553)
-rotation = -0.09250938
-scale = Vector2(0.99975187, 0.99975187)
+position = Vector2(-906.4276, 336.6006)
+rotation = -0.11983245
+scale = Vector2(0.99972564, 0.99972564)
 texture = ExtResource("15_0ptbr")
 offset = Vector2(831, -329)
 
 [node name="BossForearmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1226613400]
-self_modulate = Color(0.9430701, 0.5371378, 0.25643507, 1)
-position = Vector2(850.4239, 267.3376)
-rotation = 0.1427062
-scale = Vector2(0.9997517, 0.9997517)
+position = Vector2(794.4066, 301.97925)
+rotation = -0.04994933
+scale = Vector2(0.9997278, 0.9997278)
 texture = ExtResource("16_aa1vh")
 offset = Vector2(-832.5, -331)
 
@@ -1434,8 +1454,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=1238437744]
 position = Vector2(649.0137, 505.98605)
-rotation = -0.011777712
-scale = Vector2(0.99991983, 0.99991983)
+rotation = -0.011777713
+scale = Vector2(0.9999198, 0.9999198)
 rest = Transform2D(0.9998512, -0.011776497, 0.011776497, 0.9998512, 649.0137, 505.98605)
 auto_calculate_length_and_angle = false
 length = 324.3225
@@ -1503,6 +1523,7 @@ rotation = -0.14553362
 scale = Vector2(0.49996272, 0.49996272)
 
 [node name="LLegHitbox" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL" unique_id=234830621 instance=ExtResource("17_i12or")]
+visible = false
 self_modulate = Color(0.9764706, 0.5294118, 0, 1)
 position = Vector2(1.7941903, 0.01756668)
 rotation = -0.14553362
@@ -1531,7 +1552,7 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR" unique_id=547883284]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-297.98407, 611.4826)
+position = Vector2(-297.98364, 611.48096)
 rotation = -0.2210663
 scale = Vector2(0.99989295, 0.99989295)
 rest = Transform2D(0.99628794, -0.086064555, 0.086064555, 0.99628794, -298.00323, 611.50684)
@@ -1564,9 +1585,9 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL" unique_id=1826379377]
 visible = false
-position = Vector2(298.02133, 611.53326)
+position = Vector2(298.02115, 611.5334)
 rotation = -0.070873916
-scale = Vector2(0.99989456, 0.99989456)
+scale = Vector2(0.99989516, 0.99989516)
 rest = Transform2D(0.9962853, 0.086041905, -0.086041905, 0.9962853, 298.0014, 611.5054)
 auto_calculate_length_and_angle = false
 length = 512.0
@@ -1639,6 +1660,7 @@ remote_path = NodePath("../../../../Body/BossWaist")
 remote_path = NodePath("../../../../Body/BossSkirt")
 
 [node name="Area2D" type="Area2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=207795679]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterContainer/Bones/Skeleton2D/Area2D" unique_id=914256211]
@@ -1657,7 +1679,6 @@ planted = true
 [node name="FootLTarget" type="Node2D" parent="CharacterContainer/IKTargets" unique_id=1856529167]
 position = Vector2(489.5, 977.5)
 script = ExtResource("28_contact")
-planted = true
 
 [node name="IKTarget" type="Node2D" parent="CharacterContainer/IKTargets/FootLTarget" unique_id=589375382]
 

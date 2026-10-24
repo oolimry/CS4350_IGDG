@@ -26,8 +26,9 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	randomizer.randomize()
 
 func _start() -> void:
-	var boss = getBoss.call()
-	boss.get_node("CharacterContainer/Body/BossHead").modulate = Color.LIGHT_PINK
+	var boss : Node2D = getBoss.call()
+	boss.get_node("CharacterContainer/Body/BossFootL").self_modulate = Color.RED
+	boss.get_node("CharacterContainer/Body/BossFootR").self_modulate = Color.RED	
 	
 	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
 	ap.animation_finished.connect(_on_animation_finished)
@@ -39,28 +40,30 @@ func _start() -> void:
 		ap.play("move_left")
 		currRoomPosition = roomPosition.MID
 	else:
-		
 		var rand = randomizer.randi() % 3
 		if rand == 0:
 			ap.play("move_left")
 			currRoomPosition = roomPosition.LEFT
+			
 		elif rand == 1: 
 			ap.play("move_right")
 			currRoomPosition = roomPosition.RIGHT
-		
+		else:
+			_end()
 	movementAnimName = ap.assigned_animation
 
 func _on_animation_finished(animation_name: StringName) -> void:
 	if animation_name != movementAnimName:
 		return
-	var ap: AnimationPlayer = getBoss.call().get_node("AnimationPlayer")
-	ap.animation_finished.disconnect(_on_animation_finished)
-	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
-	# targets through RESET, which previously moved feet after touchdown.
 	_end()
 		
 
-func _end() -> void:	
+func _end() -> void:
+	var ap: AnimationPlayer = getBoss.call().get_node("AnimationPlayer")
+	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
+	# targets through RESET, which previously moved feet after touchdown.
+	ap.animation_finished.disconnect(_on_animation_finished)
+
 	var p = getPlayer.call()
 	if (abs(p.global_position.x - getBoss.call().global_position.x) \
 		<= meleeAttackRange) and randomizer.randi() % 2 == 0:
