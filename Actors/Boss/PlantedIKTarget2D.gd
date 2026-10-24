@@ -1,3 +1,7 @@
+# Written with help of GPT-6.1 Sol medium 
+# tldr this ensures the feet that land on the ground
+# remain planted when moving. Prevents the glide effect
+
 class_name PlantedIKTarget2D
 extends Node2D
 ## AnimationPlayer animates this node. CCDIK follows the separate IKTarget child.

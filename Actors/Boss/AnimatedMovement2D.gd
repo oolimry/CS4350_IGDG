@@ -1,3 +1,7 @@
+# Written with help of GPT-6.1 Sol medium 
+# tldr this controls how the entire Boss moves,
+# so movement positioning persists after animation eneds
+
 class_name AnimatedMovement2D
 extends Node
 ## A small 2D root-motion consumer, independent of Boss and animation names.

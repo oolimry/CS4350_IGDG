@@ -1,13 +1,10 @@
 class_name BossStateIdle
 extends BossState
 
-var durationTimer : Timer
 ## Minimum idle time, including movement. A longer animation always finishes.
 @export var duration := 4
 var randomizer : RandomNumberGenerator
-var _movement_finished := false
-var _minimum_duration_finished := false
-var _movement_animation: StringName
+var movementAnimName: StringName
 
 enum roomPosition {
 	LEFT,
@@ -24,17 +21,11 @@ var currRoomPosition = roomPosition.MID
 
 func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	super.setup(getB, getP, dependencies)
-	durationTimer = dependencies["durationTimer"]
 	
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
 
 func _start() -> void:
-	_movement_finished = false
-	_minimum_duration_finished = false
-	durationTimer.timeout.connect(_on_minimum_duration_finished, CONNECT_ONE_SHOT)
-	durationTimer.start(duration)
-	
 	var boss = getBoss.call()
 	boss.get_node("CharacterContainer/Body/BossHead").modulate = Color.LIGHT_PINK
 	
@@ -47,36 +38,29 @@ func _start() -> void:
 	elif currRoomPosition == roomPosition.RIGHT:
 		ap.play("move_left")
 		currRoomPosition = roomPosition.MID
-	else:	
-		if randomizer.randi() % 2 == 0:
+	else:
+		
+		var rand = randomizer.randi() % 3
+		if rand == 0:
 			ap.play("move_left")
 			currRoomPosition = roomPosition.LEFT
-		else: 
+		elif rand == 1: 
 			ap.play("move_right")
 			currRoomPosition = roomPosition.RIGHT
-	_movement_animation = ap.assigned_animation
+		
+	movementAnimName = ap.assigned_animation
 
 func _on_animation_finished(animation_name: StringName) -> void:
-	if animation_name != _movement_animation:
+	if animation_name != movementAnimName:
 		return
 	var ap: AnimationPlayer = getBoss.call().get_node("AnimationPlayer")
 	ap.animation_finished.disconnect(_on_animation_finished)
 	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
 	# targets through RESET, which previously moved feet after touchdown.
-	_movement_finished = true
-	_try_end()
+	_end()
+		
 
-func _on_minimum_duration_finished() -> void:
-	_minimum_duration_finished = true
-	_try_end()
-
-func _try_end() -> void:
-	if _movement_finished and _minimum_duration_finished:
-		_end()
-
-func _end() -> void:
-	durationTimer.stop()
-	
+func _end() -> void:	
 	var p = getPlayer.call()
 	if (abs(p.global_position.x - getBoss.call().global_position.x) \
 		<= meleeAttackRange) and randomizer.randi() % 2 == 0:
