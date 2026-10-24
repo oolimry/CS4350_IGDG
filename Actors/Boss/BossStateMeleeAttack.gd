@@ -18,7 +18,7 @@ func _start() -> void:
 		
 		if randomizer.randi() % 2 == 0:
 			if boss.global_position\
-				.distance_squared_to(boss.global_position) < kickRadius:
+				.distance_squared_to(boss.global_position) <= kickRadius:
 				ap.play("foot_r_stomp")
 			else:
 				ap.play("arm_r_hit")
