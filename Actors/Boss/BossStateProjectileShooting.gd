@@ -13,6 +13,7 @@ var durationTimer : Timer
 @export var numBurstProjectiles := 4
 var currNumBurstProjectiles := 0
 
+var bossStaff : BossStaff
 var projFirer : BossProjFirer
 
 var straightMovement : ProjectileMovementStraightLine
@@ -21,9 +22,10 @@ var randomizer : RandomNumberGenerator
 func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	super.setup(getB, getP, dependencies)
 	projTimer = dependencies["projTimer"]
-	projFirer = dependencies["projFirer"]
+	bossStaff = dependencies["bossStaff"]
 	durationTimer = dependencies["durationTimer"]
-		
+	
+	projFirer = bossStaff.projFirer	
 	straightMovement = ProjectileMovementStraightLine.new()
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
@@ -34,7 +36,7 @@ func _start() -> void:
 
 	durationTimer.start(duration)
 	burstFireProjectile()
-	getBoss.call().get_node("CharacterContainer/Body/BossHead").modulate = Color.SKY_BLUE
+	bossStaff.gemSprite.self_modulate = Color.ORANGE
 	pass
 
 # This gets run by the FSM 
@@ -50,7 +52,8 @@ func burstFireProjectile() -> void:
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
-	
+	bossStaff.gemSprite.self_modulate = Color.WHITE
+
 	durationTimer.timeout.disconnect(_end)
 	projTimer.timeout.disconnect(burstFireProjectile)
 	

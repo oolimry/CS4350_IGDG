@@ -15,7 +15,3 @@ func _on_boss_take_damage(damage: int) -> void:
 func _on_timer_timeout() -> void:
 	isInvuln = false
 	pass # Replace with function body.
-
-
-func _on_head_hurt_box_boss_take_damage(damage: int) -> void:
-	pass # Replace with function body.

@@ -31,13 +31,16 @@ var timeLeft: float = 0.0
 var aimAngle: float = 0.0
 var lockedEnd := Vector2.ZERO
  
+signal lazerFinished 
+
 # basically infinite
 const MAX_RAY_DISTANCE := 100000
 
 func _ready() -> void:
 	beam.hide()
 	warning.hide()
-	animPlayer.animation_finished.connect(stopAttack)
+	animPlayer.animation_finished.connect(func(animName : StringName):
+		stopAttack())
 
 static func create(source : Callable, dest : Callable) -> Lazer:
 	var scene = load("uid://c13vm6rsuma20") as PackedScene
@@ -158,12 +161,12 @@ func _physics_process(delta: float) -> void:
 			if beamSprite.frame > 7:
 				warning.hide()
 			
-
 func stopAttack() -> void:
 	beamSprite.hide()
 	warning.hide()
 
 	state = State.IDLE
+	lazerFinished.emit()
 
 func getWallEndpoint(start: Vector2, angle: float) -> Vector2:
 	var far_end := start + Vector2.RIGHT.rotated(angle) * MAX_RAY_DISTANCE
