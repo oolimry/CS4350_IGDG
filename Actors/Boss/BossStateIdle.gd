@@ -2,8 +2,12 @@ class_name BossStateIdle
 extends BossState
 
 var durationTimer : Timer
+## Minimum idle time, including movement. A longer animation always finishes.
 @export var duration := 4
 var randomizer : RandomNumberGenerator
+var _movement_finished := false
+var _minimum_duration_finished := false
+var _movement_animation: StringName
 
 enum roomPosition {
 	LEFT,
@@ -26,13 +30,16 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	randomizer.randomize()
 
 func _start() -> void:
-	durationTimer.timeout.connect(_end)
+	_movement_finished = false
+	_minimum_duration_finished = false
+	durationTimer.timeout.connect(_on_minimum_duration_finished, CONNECT_ONE_SHOT)
 	durationTimer.start(duration)
 	
 	var boss = getBoss.call()
 	boss.get_node("CharacterContainer/Body/BossHead").modulate = Color.LIGHT_PINK
 	
 	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
+	ap.animation_finished.connect(_on_animation_finished)
 	
 	if currRoomPosition == roomPosition.LEFT:
 		ap.play("move_right")
@@ -43,18 +50,32 @@ func _start() -> void:
 	else:	
 		if randomizer.randi() % 2 == 0:
 			ap.play("move_left")
-			currRoomPosition = roomPosition.RIGHT
+			currRoomPosition = roomPosition.LEFT
 		else: 
 			ap.play("move_right")
-			currRoomPosition = roomPosition.LEFT
-	
-	await ap.animation_finished
-	ap.play("RESET")
-	Glogger.debug("Boss is Idling")
-	pass
+			currRoomPosition = roomPosition.RIGHT
+	_movement_animation = ap.assigned_animation
+
+func _on_animation_finished(animation_name: StringName) -> void:
+	if animation_name != _movement_animation:
+		return
+	var ap: AnimationPlayer = getBoss.call().get_node("AnimationPlayer")
+	ap.animation_finished.disconnect(_on_animation_finished)
+	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
+	# targets through RESET, which previously moved feet after touchdown.
+	_movement_finished = true
+	_try_end()
+
+func _on_minimum_duration_finished() -> void:
+	_minimum_duration_finished = true
+	_try_end()
+
+func _try_end() -> void:
+	if _movement_finished and _minimum_duration_finished:
+		_end()
 
 func _end() -> void:
-	durationTimer.timeout.disconnect(_end)	
+	durationTimer.stop()
 	
 	var p = getPlayer.call()
 	if (abs(p.global_position.x - getBoss.call().global_position.x) \
