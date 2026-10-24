@@ -2,7 +2,7 @@ class_name BossStateBeamFiring
 extends BossState
 
 ## How often the projectiles should fire in seconds
-@export var projectileCooldownDuration = 1
+@export var beamCooldownDuration = 2
 var projTimer : Timer
 
 ## Duration of the state in seconds
@@ -34,8 +34,8 @@ func _start() -> void:
 
 
 func fireBeam() -> void:
-	projFirer.fireLazer(getPlayer)
-	projTimer.start(projectileCooldownDuration)
+	projFirer.fireLazer(getPlayer, func():
+		projTimer.start(beamCooldownDuration))
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
