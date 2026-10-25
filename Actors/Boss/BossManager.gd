@@ -31,16 +31,14 @@ func handlePlayerEntry(_playerEntry : StringName) -> void:
 		currBossUniversalCheckpoint.checkPointReached.emit(
 			currBossUniversalCheckpoint
 		)
-		
 	pass
 
 func setupBoss():
 	boss = Boss.create(spawnLocation, getPlayer,
 			placePersistent.call_deferred
 		)
-	
-	bHealthbar = BossHealthBar.create(boss.health.currHealth, 
-		boss.health.maxHealth)
+		
+	bHealthbar = BossHealthBar.create(boss.health.maxHealth)
 	
 	boss.health.hurt.connect(bHealthbar.damage)
 	boss.health.death.connect(bHealthbar.death)
@@ -52,8 +50,6 @@ func setupBoss():
 	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
-	
-	
 	if boss:
 		boss.cleanup()
 		boss = null
