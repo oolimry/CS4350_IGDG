@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cdx0ithmk0s6c"]
 
 [ext_resource type="Script" uid="uid://dftntosy8sy6k" path="res://Actors/Boss/BossStaff.gd" id="1_03wmk"]
-[ext_resource type="Texture2D" uid="uid://bcs8g3wtukp7k" path="res://Assets/Boss/Staff/BossStaff_Front.png" id="1_7bg27"]
-[ext_resource type="Texture2D" uid="uid://dr5re2e7kxulg" path="res://Assets/Boss/Staff/BossStaff_Back.png" id="2_5rjkr"]
+[ext_resource type="Texture2D" uid="uid://c0ggwf0jnfos0" path="res://Assets/Boss/Staff/BossStaff_Front.png" id="1_7bg27"]
+[ext_resource type="Texture2D" uid="uid://bhn2seo3ontqq" path="res://Assets/Boss/Staff/BossStaff_BackNoGem.png" id="3_5jdsm"]
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="3_5rjkr"]
+[ext_resource type="Texture2D" uid="uid://bldyepql0wakw" path="res://Assets/Boss/Staff/BossStaff_Gem.png" id="4_a3jj2"]
 [ext_resource type="Script" uid="uid://btqn0qvf237f5" path="res://Actors/Boss/BossProjFirer.gd" id="5_5jdsm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
@@ -12,9 +13,10 @@ size = Vector2(88, 397)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03wmk"]
 size = Vector2(88, 594)
 
-[node name="BossStaff" type="Node2D" unique_id=1747736719 node_paths=PackedStringArray("projFirer")]
+[node name="BossStaff" type="Node2D" unique_id=1747736719 node_paths=PackedStringArray("projFirer", "gemSprite")]
 script = ExtResource("1_03wmk")
 projFirer = NodePath("ProjectileFirer")
+gemSprite = NodePath("BossStaffGem")
 
 [node name="BossStaffFront" type="Sprite2D" parent="." unique_id=884089175]
 position = Vector2(-1, -958)
@@ -22,7 +24,12 @@ texture = ExtResource("1_7bg27")
 
 [node name="BossStaffBack" type="Sprite2D" parent="." unique_id=236728037]
 position = Vector2(-1, -959)
-texture = ExtResource("2_5rjkr")
+texture = ExtResource("3_5jdsm")
+
+[node name="BossStaffGem" type="Sprite2D" parent="." unique_id=26232743]
+self_modulate = Color(1, 0.47389704, 0.006250024, 1)
+position = Vector2(-1, -959)
+texture = ExtResource("4_a3jj2")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1176717189]
 position = Vector2(0, -1316)

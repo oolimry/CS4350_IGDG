@@ -7,10 +7,10 @@ var currState : BossState
 @export var stateIDLookup : Dictionary[StringName, BossState]
 
 func setup(getBoss : Callable, getPlayer : Callable, 
-	bProjFirer : BossProjFirer) -> void:
+	bStaff : BossStaff) -> void:
 	
 	var depedencies = {
-		"projFirer": bProjFirer,
+		"bossStaff": bStaff,
 		"durationTimer" : $DurationTimer,
 		"projTimer" : $ProjectileCoolDownTimer
 	}

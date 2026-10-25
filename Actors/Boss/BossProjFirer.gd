@@ -6,6 +6,8 @@ var addTopersistentActors : Callable
 var activeLazer : Lazer
 var getLazerDest : Callable
 
+signal beamAttackFinished
+
 func setup(addTopersistentActors : Callable) -> void:
 	self.addTopersistentActors = addTopersistentActors
 	
@@ -18,12 +20,14 @@ func fireProjectile(p : ElementProjectile, dirInDegrees : float) -> void:
 	p.add_to_group("BossProjectiles", false)
 	addTopersistentActors.call(p, "BossProjectiles")
 
-func fireLazer(dest : Callable) -> void:
+func fireLazer(dest : Callable, onLazerFinish : Callable) -> void:
 	if activeLazer == null:
 		activeLazer = Lazer.create(func(): return self , dest)
 		addTopersistentActors.call(activeLazer, "BossProjectiles")
 		activeLazer.global_position = global_position
+		activeLazer.lazerFinished.connect(onLazerFinish)
 	activeLazer.startAttack()
+	
 	
 func degreesToVector(degrees: float) -> Vector2:
 	var radians = deg_to_rad(degrees)

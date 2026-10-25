@@ -49,9 +49,9 @@ func generateLayout() -> Dictionary[Vector2i, RoomDefinition]:
 
 func getRoom(pos: Vector2i) -> RoomDefinition:
 	var result : RoomDefinition = mapLayout.get(pos)
-	if result == null:
-		push_error("Room does not exist!")
-		push_error(pos)
+	#if result == null:
+		#push_error("Room does not exist!")
+		#push_error(pos)
 	
 	return result
 	
