@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://bq2h5kio7nq23"]
+
+[ext_resource type="Script" uid="uid://ctt21r0idws6w" path="res://Actors/WorldObjects/Crown.gd" id="1_stusv"]
+[ext_resource type="Texture2D" uid="uid://cryfvq1w0cyaw" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_1.png" id="2_abcxf"]
+[ext_resource type="Texture2D" uid="uid://c05ew3ufqagud" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_2.png" id="3_wp3hs"]
+[ext_resource type="Texture2D" uid="uid://1vt77d5arf8h" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_3.png" id="4_j7qid"]
+[ext_resource type="Texture2D" uid="uid://bqye10qu1it1d" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_4.png" id="5_6sn72"]
+[ext_resource type="Texture2D" uid="uid://dqdc37dupqgtd" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_5.png" id="6_332qg"]
+[ext_resource type="Texture2D" uid="uid://bkeh67jjnlt2p" path="res://Assets/World Objects/Collectibles/CollectibleRed/frame_6.png" id="7_ahv8v"]
+[ext_resource type="Texture2D" uid="uid://cfxe7j7abjruq" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_1.png" id="8_i3rin"]
+[ext_resource type="Texture2D" uid="uid://b55ovkrvyofro" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_2.png" id="9_ncyet"]
+[ext_resource type="Texture2D" uid="uid://dv8se0rh8ao7t" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_3.png" id="10_li1fy"]
+[ext_resource type="Texture2D" uid="uid://b2b7fsxkspvyy" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_4.png" id="11_vtar6"]
+[ext_resource type="Texture2D" uid="uid://bks020bsfgo0t" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_5.png" id="12_51iuo"]
+[ext_resource type="Texture2D" uid="uid://dpmms7va23y87" path="res://Assets/World Objects/Collectibles/CollectiblePurp/frame_6.png" id="13_0o6pv"]
+[ext_resource type="Texture2D" uid="uid://bms6mxnjdhh4o" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_1.png" id="14_gkp8w"]
+[ext_resource type="Texture2D" uid="uid://b760os6gdkc11" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_2.png" id="15_tetbg"]
+[ext_resource type="Texture2D" uid="uid://bv0cx2qpb7c7p" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_3.png" id="16_co2qm"]
+[ext_resource type="Texture2D" uid="uid://cs7bx1i7cnjva" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_4.png" id="17_pvee2"]
+[ext_resource type="Texture2D" uid="uid://wyydk2wojyie" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_5.png" id="18_imlcn"]
+[ext_resource type="Texture2D" uid="uid://uy5vrkm54jhw" path="res://Assets/World Objects/Collectibles/CollectibleTurq/frame_6.png" id="19_q4r4f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pl4ed"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o5kme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_abcxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wp3hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j7qid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6sn72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_332qg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ahv8v")
+}],
+"loop": 1,
+"name": &"Fire",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_i3rin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ncyet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_li1fy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vtar6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_51iuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0o6pv")
+}],
+"loop": 1,
+"name": &"Purple",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_gkp8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tetbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_co2qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_pvee2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_imlcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q4r4f")
+}],
+"loop": 1,
+"name": &"Wind",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meos5"]
+size = Vector2(48, 53)
+
+[node name="Crown" type="Area2D" unique_id=2109143653]
+script = ExtResource("1_stusv")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=366934880]
+material = SubResource("CanvasItemMaterial_pl4ed")
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_o5kme")
+animation = &"Wind"
+frame_progress = 0.14018239
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2048424763]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_meos5")

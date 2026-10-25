@@ -26,6 +26,7 @@ VfxManager="*uid://c2foixtu3ui3n"
 DialogueManager="*uid://c3rodes2l3gxb"
 CutsceneSignalManager="*uid://chldm0oh8l7ke"
 SignalManager="*uid://cavxkbpwqqoe6"
+CollectibleManager="*uid://c0d14x8g37jt1"
 
 [dialogue_manager]
 
