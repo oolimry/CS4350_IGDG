@@ -10,14 +10,12 @@ var bossStaff : BossStaff
 
 # Static factory function acting as a custom constructor
 static func create(basePos : Vector2, getPlayer : Callable, 
-	addPersistentCallable : Callable, startingHP := 10) -> Boss:
+	addPersistentCallable : Callable) -> Boss:
 		
 	var scene = load("uid://dkht80tf3wlnf") as PackedScene
 	var instance = scene.instantiate() as Boss
 	instance.global_position = basePos
 	instance.z_index = -5
-	instance.health.maxHealth = startingHP
-	instance.health.currHealth = startingHP
 	instance.bossStaff = BossStaff.create(basePos)
 	instance.bossStaff.projFirer.setup(addPersistentCallable)
 	addPersistentCallable.call(instance.bossStaff)

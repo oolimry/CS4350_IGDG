@@ -10,14 +10,8 @@ var active = true
 
 @export var element : Enums.Elements:
 	set(value):
-		if is_instance_valid($Sprite):
-			element = value
-			if value == Enums.Elements.WIND:
-				$Sprite.play("wind")
-			elif value == Enums.Elements.FIRE:
-				$Sprite.play("fire")
-			elif value == Enums.Elements.PURPLE:
-				$Sprite.play("purple")
+		element = value
+		setElementSprite(value)
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	if not active:
@@ -46,3 +40,12 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		VfxManager.createVFX(VfxManager.PurpleElementCollectedVFX, self.global_position, {
 			VFXManager_class.Params.PLAYER : player
 		})
+		
+func setElementSprite(value : Enums.Elements) -> void:
+	if is_instance_valid($Sprite):
+		if value == Enums.Elements.WIND:
+			$Sprite.play("wind")
+		elif value == Enums.Elements.FIRE:
+			$Sprite.play("fire")
+		elif value == Enums.Elements.PURPLE:
+			$Sprite.play("purple")

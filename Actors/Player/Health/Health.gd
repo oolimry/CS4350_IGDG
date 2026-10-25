@@ -3,7 +3,7 @@ class_name Health
 extends Node
 
 @export var maxHealth := 1
-var currHealth : int
+var currHealth : int = maxHealth
 signal hurt(currHealth)
 signal death()
 signal receiveHealing(currHealth)

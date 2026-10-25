@@ -6,7 +6,7 @@ extends ProgressBar
 
 var health := 0 : set = setHealth
 
-static func create(currHealth: int, maxHealth : int) -> BossHealthBar:
+static func create(maxHealth : int, currHealth : int = maxHealth) -> BossHealthBar:
 	var scene := load("uid://4teqdk4j5ogj") as PackedScene
 	var healthbar := scene.instantiate() as BossHealthBar
 	

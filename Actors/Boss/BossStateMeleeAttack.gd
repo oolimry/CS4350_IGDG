@@ -12,13 +12,16 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 func _start() -> void:
 	var player : Node2D = getPlayer.call()
 	var boss : Node2D = getBoss.call()
-	var ap = getBoss.call().get_node("AnimationPlayer") as AnimationPlayer
+	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
+	
+	var feetReferencePoint : Vector2 = \
+		boss.get_node("CharacterContainer/FootReference").global_position
+	
 	if getPlayer.call().global_position.x <= getBoss.call().global_position.x:
 		var randValue = randomizer.randi()
 		
 		if randomizer.randi() % 2 == 0:
-			if boss.global_position\
-				.distance_squared_to(boss.global_position) <= kickRadius:
+			if feetReferencePoint.y < player.global_position.y:
 				ap.play("foot_r_stomp")
 			else:
 				ap.play("arm_r_hit")
@@ -26,8 +29,7 @@ func _start() -> void:
 			ap.play("arm_r_swing")
 	else:
 		if randomizer.randi() % 2 == 0:
-			if boss.global_position\
-				.distance_squared_to(boss.global_position) < kickRadius:
+			if feetReferencePoint.y < player.global_position.y:
 				ap.play("foot_l_stomp")
 			else:
 				ap.play("arm_l_hit")

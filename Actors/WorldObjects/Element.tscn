@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cf87smc28qdkf" path="res://Assets/Elements/RedElement/frame_6.png" id="7_facdm"]
 [ext_resource type="Texture2D" uid="uid://b2jpwqmljmh3y" path="res://Assets/Elements/TurqElement/frame_01.png" id="8_43vpb"]
 [ext_resource type="Texture2D" uid="uid://cvsp0cruvg54a" path="res://Assets/Elements/PurpleElement/frame_01.png" id="8_k1n6q"]
+[ext_resource type="Texture2D" uid="uid://dipbqeyafqvai" path="res://Assets/Elements/RedProjectileSharp/frame_1.png" id="8_pl4ed"]
+[ext_resource type="Texture2D" uid="uid://d4h6tv4oxmxm0" path="res://Assets/Elements/RedProjectileSharp/frame_2.png" id="9_1xt4y"]
 [ext_resource type="Texture2D" uid="uid://7luvknrtjj16" path="res://Assets/Elements/PurpleElement/frame_02.png" id="9_7fr6l"]
 [ext_resource type="Texture2D" uid="uid://cxma3ikgoii0c" path="res://Assets/Elements/TurqElement/frame_02.png" id="9_tkq4w"]
 [ext_resource type="Texture2D" uid="uid://cwnyms4bv3g4x" path="res://Assets/Elements/TurqElement/frame_03.png" id="10_hxrkk"]
+[ext_resource type="Texture2D" uid="uid://buhlwktxx7wl4" path="res://Assets/Elements/RedProjectileSharp/frame_3.png" id="10_u8ytd"]
 [ext_resource type="Texture2D" uid="uid://d37bwhcu8tkyk" path="res://Assets/Elements/PurpleElement/frame_03.png" id="10_ww40q"]
 [ext_resource type="Texture2D" uid="uid://djlmih0ut0afg" path="res://Assets/Elements/TurqElement/frame_04.png" id="11_k3n0v"]
 [ext_resource type="Texture2D" uid="uid://conxv7i0boj4" path="res://Assets/Elements/PurpleElement/frame_04.png" id="11_ldrwo"]
@@ -41,6 +44,12 @@
 [ext_resource type="Texture2D" uid="uid://bc116id8t3stv" path="res://Assets/Elements/PurpleElement/frame_22.png" id="29_ip4li"]
 [ext_resource type="Texture2D" uid="uid://d2riotfjxtvld" path="res://Assets/Elements/PurpleElement/frame_23.png" id="30_oj4l4"]
 [ext_resource type="Texture2D" uid="uid://befqf3idll251" path="res://Assets/Elements/PurpleElement/frame_24.png" id="31_wuvu3"]
+[ext_resource type="Texture2D" uid="uid://bwdpprosjj28r" path="res://Assets/Elements/PurpProjectileSharp/frame_1.png" id="35_fhvrm"]
+[ext_resource type="Texture2D" uid="uid://b5hi57bpm4see" path="res://Assets/Elements/PurpProjectileSharp/frame_2.png" id="36_c143f"]
+[ext_resource type="Texture2D" uid="uid://cvp1yh30mk55w" path="res://Assets/Elements/PurpProjectileSharp/frame_3.png" id="37_yklr6"]
+[ext_resource type="Texture2D" uid="uid://kiru7dup5s0k" path="res://Assets/Elements/TurqProjectileSharp/frame_1.png" id="48_eblfk"]
+[ext_resource type="Texture2D" uid="uid://dlf3x60uba3d" path="res://Assets/Elements/TurqProjectileSharp/frame_2.png" id="49_dsf34"]
+[ext_resource type="Texture2D" uid="uid://c3v28trrqnutq" path="res://Assets/Elements/TurqProjectileSharp/frame_3.png" id="50_jdxth"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
 light_mode = 1
@@ -69,6 +78,20 @@ animations = [{
 "loop": 1,
 "name": &"fire",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pl4ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1xt4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_u8ytd")
+}],
+"loop": 1,
+"name": &"fire-proj",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,6 +172,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("35_fhvrm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_c143f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_yklr6")
+}],
+"loop": 1,
+"name": &"purple-proj",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_43vpb")
 }, {
 "duration": 1.0,
@@ -181,6 +218,20 @@ animations = [{
 "loop": 1,
 "name": &"wind",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_eblfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_dsf34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_jdxth")
+}],
+"loop": 1,
+"name": &"wind-proj",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_meos5"]
@@ -196,7 +247,7 @@ script = ExtResource("1_k1n6q")
 material = SubResource("CanvasItemMaterial_5iyrj")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0jf00")
-animation = &"wind"
+animation = &"wind-proj"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
 shape = SubResource("CircleShape2D_meos5")

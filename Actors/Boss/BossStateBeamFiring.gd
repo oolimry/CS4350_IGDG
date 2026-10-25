@@ -34,7 +34,6 @@ func _start() -> void:
 	fireBeam()
 	pass
 
-
 func fireBeam() -> void:
 	projFirer.fireLazer(getPlayer, func():
 		projTimer.start(beamCooldownDuration))

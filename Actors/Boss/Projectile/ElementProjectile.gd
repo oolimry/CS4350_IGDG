@@ -28,6 +28,7 @@ static func create(elementToUse : Enums.Elements,
 
 func fire(initVelocity : Vector2) -> void:
 	currVelocity = initVelocity
+	rotation = initVelocity.angle()
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	collision_shape.set_deferred("disabled", true)
@@ -47,4 +48,12 @@ func _on_body_entered(body : Node2D) -> void:
 		call_deferred("queue_free")
 	elif body.get_parent().get_parent() is not BossStaff and isDestroyOnWall:
 		call_deferred("queue_free")
-		
+
+func setElementSprite(value : Enums.Elements) -> void:
+	if is_instance_valid($Sprite):
+		if value == Enums.Elements.WIND:
+			$Sprite.play("wind-proj")
+		elif value == Enums.Elements.FIRE:
+			$Sprite.play("fire-proj")
+		elif value == Enums.Elements.PURPLE:
+			$Sprite.play("purple-proj")
