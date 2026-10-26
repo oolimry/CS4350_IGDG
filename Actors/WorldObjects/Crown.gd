@@ -22,8 +22,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if unique_id != "":
 			CollectibleManager.collect_item(unique_id)
-	
+
 		self.queue_free()
+		
 		
 func setCrownSprite(value : Enums.Elements) -> void:	
 	if is_instance_valid($Sprite):
@@ -33,3 +34,13 @@ func setCrownSprite(value : Enums.Elements) -> void:
 			$Sprite.play("Fire")
 		elif value == Enums.Elements.PURPLE:
 			$Sprite.play("Purple")
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print("COLLIDED")
+	if area is WindShockwaveHitbox:
+		if unique_id != "":
+			CollectibleManager.collect_item(unique_id)
+		
+		self.queue_free()
+		
