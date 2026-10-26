@@ -56,6 +56,8 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 	if bHealthbar:
 		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
+		
+		
 	
 	hudManager.hideHealthBar(true)
 	isBossKilled = hasBeenKilled

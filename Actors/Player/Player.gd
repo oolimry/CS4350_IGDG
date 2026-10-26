@@ -168,7 +168,7 @@ func _physics_process(delta: float) -> void:
 	_physics_process_updateVisuals()
 
 func _physics_process_playerMovement(delta):
-	if GlobalGameState.phaseOfGame in [GlobalGameState.PhaseOfGame.INTRO_CUTSCENE]:
+	if GlobalGameState.phaseOfGame != GlobalGameState.PhaseOfGame.GAMEPLAY:
 		return
 	if isDead:
 		return

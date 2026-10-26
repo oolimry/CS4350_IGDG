@@ -59,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://bv77kxhokpcd" path="res://Actors/World/BackgroundParallaxes/TurqRoomsParallax.tscn" id="53_di5tu"]
 [ext_resource type="PackedScene" uid="uid://d4b0jfjmjrmnp" path="res://Actors/World/BackgroundParallaxes/PurpRoomsParallax.tscn" id="54_r2hq1"]
 [ext_resource type="PackedScene" uid="uid://cswps6ssp2jad" path="res://Actors/Cutscenes/IntroCutscene.tscn" id="57_4tuoc"]
+[ext_resource type="PackedScene" uid="uid://btpejwrs6bxj3" path="res://Actors/Cutscenes/OutroCutscene.tscn" id="59_sw7vr"]
 [ext_resource type="PackedScene" uid="uid://c0ipfgi7s4hmy" path="res://Actors/UI/Settings Menu/SettingsMenu.tscn" id="60_13c6b"]
 
 [sub_resource type="Environment" id="Environment_d6ec5"]
@@ -173,6 +174,9 @@ boss = NodePath("BossRoomParallax")
 [node name="PurpRoomsParallax" parent="BackgroundManager" unique_id=1130000653 instance=ExtResource("54_r2hq1")]
 
 [node name="IntroCutscene" parent="." unique_id=1756700696 instance=ExtResource("57_4tuoc")]
+
+[node name="OutroCutscene" parent="." unique_id=389250694 instance=ExtResource("59_sw7vr")]
+visible = false
 
 [node name="MainMenuLayer" type="CanvasLayer" parent="." unique_id=1283152869]
 layer = 3

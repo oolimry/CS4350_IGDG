@@ -3,3 +3,6 @@ extends Node2D
 
 signal scene1Finished
 signal scene2Finished
+
+signal outroScene1Finished
+signal outroScene2Finished
