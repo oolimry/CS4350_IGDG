@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_rh82c"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="5_y2sye"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_t8hgj"]
+[ext_resource type="PackedScene" uid="uid://bq2h5kio7nq23" path="res://Actors/WorldObjects/Crown.tscn" id="9_t8hgj"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
@@ -88,8 +89,9 @@ element = 3
 position = Vector2(721.6014, 524.284)
 element = 3
 
-[node name="Element15" parent="." unique_id=1211899436 instance=ExtResource("7_t8hgj")]
-position = Vector2(1243.7795, 520.42535)
-element = 3
+[node name="Crown" parent="." unique_id=2109143653 instance=ExtResource("9_t8hgj")]
+position = Vector2(1255, 524)
+unique_id = "Purple-Crown"
+crown = 3
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
