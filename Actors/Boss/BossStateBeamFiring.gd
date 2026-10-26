@@ -11,6 +11,7 @@ var durationTimer : Timer
 
 var projFirer : BossProjFirer
 var bossStaff : BossStaff
+var lazer : Lazer
 
 var randomizer : RandomNumberGenerator
 
@@ -23,27 +24,23 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
+	
+	lazer = projFirer.createLazer(getPlayer, func():
+		projTimer.start(beamCooldownDuration))
 
 func _start() -> void:	
 	durationTimer.timeout.connect(_end)
-	projTimer.timeout.connect(fireBeam)
+	projTimer.timeout.connect(lazer.startAttack)
 
 	durationTimer.start(duration)
 	bossStaff.gemSprite.self_modulate = Color.ORANGE
-
-	fireBeam()
-	pass
-
-func fireBeam() -> void:
-	projFirer.fireLazer(getPlayer, func():
-		projTimer.start(beamCooldownDuration))
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
 	bossStaff.gemSprite.self_modulate = Color.WHITE
 	
 	durationTimer.timeout.disconnect(_end)
-	projTimer.timeout.disconnect(fireBeam)
+	projTimer.timeout.disconnect(lazer.startAttack)
 	
 	durationTimer.stop()
 	projTimer.stop()

@@ -5,6 +5,7 @@ var addTopersistentActors : Callable
 
 var activeLazer : Lazer
 var getLazerDest : Callable
+var projectileWarning : ProjectileWarning
 
 signal beamAttackFinished
 
@@ -20,14 +21,20 @@ func fireProjectile(p : ElementProjectile, dirInDegrees : float) -> void:
 	p.add_to_group("BossProjectiles", false)
 	addTopersistentActors.call(p, "BossProjectiles")
 
-func fireLazer(dest : Callable, onLazerFinish : Callable) -> void:
+func createLazer(dest : Callable, onLazerFinish : Callable) -> Lazer:
 	if activeLazer == null:
 		activeLazer = Lazer.create(func(): return self , dest)
 		addTopersistentActors.call(activeLazer, "BossProjectiles")
 		activeLazer.global_position = global_position
 		activeLazer.lazerFinished.connect(onLazerFinish)
-	activeLazer.startAttack()
+	return activeLazer
 	
+func createProjectileWarning(dest : Callable) -> ProjectileWarning:
+	if projectileWarning == null:
+		projectileWarning = ProjectileWarning.create(func(): return self, dest)
+		addTopersistentActors.call(projectileWarning, "BossProjectiles")
+		
+	return projectileWarning
 	
 func degreesToVector(degrees: float) -> Vector2:
 	var radians = deg_to_rad(degrees)
@@ -37,4 +44,6 @@ func clearProjectiles() -> void:
 	get_tree().call_group("BossProjectiles", "queue_free")
 	if (activeLazer != null):
 		activeLazer.queue_free()
-	
+		
+	if (projectileWarning != null):
+		projectileWarning.queue_free() 

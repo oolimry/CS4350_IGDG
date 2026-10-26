@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://rd5txna8401b"]
+
+[ext_resource type="Script" uid="uid://dqh0lhlr8o11g" path="res://Actors/Boss/Projectile/ProjectileWarning.gd" id="1_xgeny"]
+
+[node name="ProjectileWarning" type="Polygon2D" unique_id=914825703]
+script = ExtResource("1_xgeny")
