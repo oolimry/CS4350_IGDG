@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="10_yis8s"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="11_fc6h7"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="12_bxwkc"]
+[ext_resource type="PackedScene" uid="uid://bq2h5kio7nq23" path="res://Actors/WorldObjects/Crown.tscn" id="14_r2cc3"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
@@ -260,10 +261,6 @@ roomResident = SubResource("Resource_xoo2o")
 position = Vector2(1280, 940)
 element = 3
 
-[node name="Element4" parent="." unique_id=471539242 instance=ExtResource("6_vvnj1")]
-position = Vector2(1860, 860)
-element = 2
-
 [node name="Element6" parent="." unique_id=903217490 instance=ExtResource("6_vvnj1")]
 position = Vector2(1800, 100)
 element = 3
@@ -318,6 +315,11 @@ direction = 2
 position = Vector2(1480, 840)
 rotation = 0.0
 direction = 2
+
+[node name="Crown" parent="." unique_id=2109143653 instance=ExtResource("14_r2cc3")]
+position = Vector2(1859, 865)
+unique_id = "Fire-Crown"
+crown = 2
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]

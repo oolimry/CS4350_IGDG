@@ -59,6 +59,7 @@
 [ext_resource type="PackedScene" uid="uid://bv77kxhokpcd" path="res://Actors/World/BackgroundParallaxes/TurqRoomsParallax.tscn" id="53_di5tu"]
 [ext_resource type="PackedScene" uid="uid://d4b0jfjmjrmnp" path="res://Actors/World/BackgroundParallaxes/PurpRoomsParallax.tscn" id="54_r2hq1"]
 [ext_resource type="PackedScene" uid="uid://cswps6ssp2jad" path="res://Actors/Cutscenes/IntroCutscene.tscn" id="57_4tuoc"]
+[ext_resource type="PackedScene" uid="uid://c0ipfgi7s4hmy" path="res://Actors/UI/Settings Menu/SettingsMenu.tscn" id="60_13c6b"]
 
 [sub_resource type="Environment" id="Environment_d6ec5"]
 background_mode = 3
@@ -178,3 +179,9 @@ layer = 3
 
 [node name="MainMenu" parent="MainMenuLayer" unique_id=1956684628 instance=ExtResource("1_prjtj")]
 z_index = 600
+
+[node name="SettingsMenu" type="CanvasLayer" parent="." unique_id=905259755]
+layer = 4
+
+[node name="SettingsMenu" parent="SettingsMenu" unique_id=1695426614 instance=ExtResource("60_13c6b")]
+visible = false

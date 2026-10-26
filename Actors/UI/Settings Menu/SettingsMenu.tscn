@@ -11,6 +11,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k7q2q")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=336769891]
+z_index = -1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.9647059)
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1387612631]
 layout_mode = 1
 anchors_preset = 15
@@ -28,6 +35,9 @@ text = "Volume"
 
 [node name="Master" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=812919999]
 layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1635539969]
 layout_mode = 2
@@ -35,6 +45,9 @@ text = "Music"
 
 [node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1296776160]
 layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=234137564]
 layout_mode = 2
@@ -42,6 +55,9 @@ text = "Sound Effects"
 
 [node name="Sound Effects" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1081355774]
 layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 0.5
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=860685483]
 layout_mode = 2
