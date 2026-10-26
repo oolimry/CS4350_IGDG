@@ -13,17 +13,17 @@ extends Area2D
 
 func _ready() -> void:
 	if unique_id != "" and CollectibleManager.is_item_collected(unique_id):
-		queue_free()
+		self.queue_free()
 		return
 		
 	setCrownSprite(crown)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body is Player:
 		if unique_id != "":
 			CollectibleManager.collect_item(unique_id)
-		
-		queue_free()
+	
+		self.queue_free()
 		
 func setCrownSprite(value : Enums.Elements) -> void:	
 	if is_instance_valid($Sprite):
