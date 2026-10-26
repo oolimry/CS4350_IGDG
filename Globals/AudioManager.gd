@@ -4,8 +4,6 @@ const MASTER_BUS = 0
 const AUDIO_BUS = 1
 const MUSIC_BUS = 2
 
-
-
 ## put the relevant audios here
 @onready var Jump : AudioStreamPlayer = $Movement/Jump
 @onready var Die : AudioStreamPlayer = $Movement/Die
