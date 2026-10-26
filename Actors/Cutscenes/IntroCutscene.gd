@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var dialogueFile = preload("res://Actors/Cutscenes/IntroText.dialogue")
 
 @onready var scene1 = $Scene1
-
 @onready var scene2 = $Scene2
 @onready var scene2Blackness = $Scene2/Blackness
 

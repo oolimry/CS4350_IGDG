@@ -5,3 +5,5 @@ signal triggerScreenshake()
 signal openSettings()
 
 signal closeSettings()
+
+signal bossDefeated()

@@ -1,0 +1,429 @@
+[gd_scene format=3 uid="uid://btpejwrs6bxj3"]
+
+[ext_resource type="Script" uid="uid://d28c7atgu7ul3" path="res://Actors/Cutscenes/OutroCutscene.gd" id="1_pnt4c"]
+[ext_resource type="Texture2D" uid="uid://dlouqereall13" path="res://Assets/Cutscenes/OutroBackground1.png" id="2_pnt4c"]
+[ext_resource type="Shader" uid="uid://ds4yakks7qt0f" path="res://Actors/WorldObjects/CrystalWall.gdshader" id="3_c7nb3"]
+[ext_resource type="Texture2D" uid="uid://c5jesa7ki1rbo" path="res://Assets/Cutscenes/OutroBackground2.png" id="4_2h3m5"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="5_wg47o"]
+[ext_resource type="Texture2D" uid="uid://ctmwn01q5x10t" path="res://Assets/UI/UnwoundLogo.png" id="6_2h3m5"]
+[ext_resource type="FontFile" uid="uid://di74gvi3lj2nh" path="res://Assets/Fonts/RubikStorm-Regular.ttf" id="7_c7nb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5aep"]
+shader = ExtResource("3_c7nb3")
+shader_parameter/base_color = Color(0.2869209, 0.2869209, 0.2869209, 0.9647059)
+shader_parameter/highlight_color = Color(0.15539062, 0.15413557, 0.15413557, 1)
+shader_parameter/speed = 0.075
+shader_parameter/noise_scale = 1.0
+shader_parameter/turbulence = 1.5
+shader_parameter/edge_softness = 0.0
+shader_parameter/aspect = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_m5aep"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5aep"]
+gradient = SubResource("Gradient_m5aep")
+width = 2000
+height = 1200
+
+[sub_resource type="Gradient" id="Gradient_7qyt7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d6ec5"]
+gradient = SubResource("Gradient_7qyt7")
+width = 2000
+height = 1200
+
+[sub_resource type="Animation" id="Animation_pnt4c"]
+resource_name = "Credits"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackness:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5803922, 0.5803922, 0.5803922, 0), Color(0.5803922, 0.5803922, 0.5803922, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.56666666, 1.4333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits/Control2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5333333, 3.2333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Credits/Control:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.0666666, 2.7666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.1, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.5, 5.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2h3m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackness:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5803922, 0.5803922, 0.5803922, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits/Control2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Credits/Control:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7nb3"]
+_data = {
+&"Credits": SubResource("Animation_pnt4c"),
+&"RESET": SubResource("Animation_2h3m5")
+}
+
+[sub_resource type="Gradient" id="Gradient_uf5c2"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uf5c2"]
+gradient = SubResource("Gradient_uf5c2")
+
+[sub_resource type="Animation" id="Animation_r3nfe"]
+resource_name = "BecomeTransparent"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.7411042),
+"update": 0,
+"values": [Color(1.4369954, 1.4369954, 1.4369954, 1), Color(0.012617188, 0.012617188, 0.012617188, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uf5c2"]
+resource_name = "Flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.10511228, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.4369954, 1.4369954, 1.4369954, 1), Color(1.4369954, 1.4369954, 1.4369954, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x2uss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x2uss"]
+_data = {
+&"BecomeTransparent": SubResource("Animation_r3nfe"),
+&"Flash": SubResource("Animation_uf5c2"),
+&"RESET": SubResource("Animation_x2uss")
+}
+
+[node name="OutroCutscene" type="CanvasLayer" unique_id=389250694]
+layer = 3
+script = ExtResource("1_pnt4c")
+
+[node name="Scene1" type="Node2D" parent="." unique_id=1833043371]
+position = Vector2(962, 541)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene1" unique_id=199590191]
+modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+texture = ExtResource("2_pnt4c")
+
+[node name="ForegroundFog" type="Sprite2D" parent="Scene1" unique_id=1031286202]
+visible = false
+material = SubResource("ShaderMaterial_m5aep")
+texture = SubResource("GradientTexture2D_m5aep")
+
+[node name="Scene2" type="Node2D" parent="." unique_id=710979736]
+visible = false
+position = Vector2(962, 541)
+
+[node name="FightScene" type="Sprite2D" parent="Scene2" unique_id=377212065]
+modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+texture = ExtResource("4_2h3m5")
+
+[node name="Label" type="Label" parent="." unique_id=1818132232]
+offset_left = 2.0
+offset_top = 880.0
+offset_right = 1922.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.7393851, 0.7393851, 0.7393851, 1)
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 28
+text = "Press space to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Node2D" parent="." unique_id=650690230]
+
+[node name="Blackness" type="Sprite2D" parent="Credits" unique_id=222119427]
+modulate = Color(0.5803922, 0.5803922, 0.5803922, 0)
+position = Vector2(969, 521)
+texture = SubResource("GradientTexture2D_d6ec5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Credits" unique_id=874628740]
+libraries/ = SubResource("AnimationLibrary_c7nb3")
+
+[node name="Title" type="TextureRect" parent="Credits" unique_id=941258210]
+modulate = Color(1, 1, 1, 0)
+offset_left = 480.0
+offset_top = 100.0
+offset_right = 1440.0007
+offset_bottom = 284.392
+size_flags_vertical = 3
+texture = ExtResource("6_2h3m5")
+expand_mode = 3
+
+[node name="Credits" type="Control" parent="Credits" unique_id=1097442801]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 100.0
+
+[node name="Control" type="HBoxContainer" parent="Credits/Credits" unique_id=2001608356]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 289.0
+offset_right = 1770.0
+offset_bottom = 589.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Credits/Credits/Control" unique_id=563097274]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "ElriC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/Credits/Control" unique_id=1502341352]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "Cellenite"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits/Credits/Control" unique_id=1306756129]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "Somebody"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits/Credits/Control" unique_id=1897861528]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "Zayd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="HBoxContainer" parent="Credits/Credits" unique_id=2064780285]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 429.0
+offset_right = 1770.0
+offset_bottom = 729.0
+alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/Credits/Control2" unique_id=110994461]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "oolimry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Credits/Credits/Control2" unique_id=1518131835]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "kerksnek"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Credits/Credits/Control2" unique_id=1519498724]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 48
+text = "jaye"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Credits" unique_id=906848254]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1920, 120)
+offset_left = 5.0
+offset_top = 847.0
+offset_right = 1925.0
+offset_bottom = 967.0
+theme_override_fonts/font = ExtResource("7_c7nb3")
+theme_override_font_sizes/font_size = 80
+text = "Thank you for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Credits" unique_id=341829579]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1555.0
+offset_top = 1008.0
+offset_right = 1900.0
+offset_bottom = 1049.0
+theme_override_fonts/font = ExtResource("5_wg47o")
+theme_override_font_sizes/font_size = 32
+text = "Return To Main Menu"
+
+[node name="WhiteFlash" type="Sprite2D" parent="." unique_id=589531398]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(968.5, 547)
+scale = Vector2(31.265625, 18.09375)
+texture = SubResource("GradientTexture2D_uf5c2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WhiteFlash" unique_id=653747214]
+libraries/ = SubResource("AnimationLibrary_x2uss")
+
+[connection signal="pressed" from="Credits/Button" to="." method="_on_button_pressed"]
