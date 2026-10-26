@@ -34,6 +34,7 @@ func _start() -> void:
 
 	durationTimer.start(duration)
 	bossStaff.gemSprite.self_modulate = Color.ORANGE
+	lazer.startAttack()
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")

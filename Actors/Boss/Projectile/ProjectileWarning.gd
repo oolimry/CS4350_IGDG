@@ -4,8 +4,7 @@ extends Polygon2D
 @export var warningAngleDegrees = 24.0
 
 const NUM_SEGMENTS := 24
-const WARNING_CONE_LENGTH := 1200.0
-
+const WARNING_CONE_LENGTH := 2000.0
 
 var warningTimeLeft := 0.0
 var halfAngle
@@ -32,7 +31,7 @@ func setup() -> void:
 	z_as_relative = false
 	z_index = 1
 	
-	halfAngle = rad_to_deg(warningAngleDegrees) * 0.5
+	halfAngle = deg_to_rad(warningAngleDegrees) * 0.5
 	constructCone()
 	global_position = _getSource.call().global_position
 
@@ -55,3 +54,7 @@ func _physics_process(delta: float) -> void:
 	).angle()
 	
 	global_rotation = aimAngle
+	
+func hideWarning() -> void:
+	await get_tree().create_timer(2.0).timeout
+	super.hide()

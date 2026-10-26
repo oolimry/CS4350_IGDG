@@ -51,8 +51,9 @@ func burstFireProjectile() -> void:
 	currNumBurstProjectiles += 1
 	if currNumBurstProjectiles >= numBurstProjectiles:
 		currNumBurstProjectiles = 0
-		projectileWarning.hide()
 		projTimer.start(burstCooldownDuration)
+		
+		projectileWarning.hideWarning()
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
