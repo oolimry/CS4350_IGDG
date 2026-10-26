@@ -16,6 +16,8 @@ var currNumBurstProjectiles := 0
 var bossStaff : BossStaff
 var projFirer : BossProjFirer
 
+var projectileWarning : ProjectileWarning
+
 var straightMovement : ProjectileMovementStraightLine
 var randomizer : RandomNumberGenerator
 
@@ -25,7 +27,9 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	bossStaff = dependencies["bossStaff"]
 	durationTimer = dependencies["durationTimer"]
 	
-	projFirer = bossStaff.projFirer	
+	projFirer = bossStaff.projFirer
+	projectileWarning = projFirer.createProjectileWarning(getP)
+	
 	straightMovement = ProjectileMovementStraightLine.new()
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
@@ -40,11 +44,16 @@ func _start() -> void:
 	pass
 
 func burstFireProjectile() -> void:
+	if currNumBurstProjectiles == 0:
+		projectileWarning.show()
+		
 	fireProjectile()
 	currNumBurstProjectiles += 1
-	if currNumBurstProjectiles > numBurstProjectiles:
+	if currNumBurstProjectiles >= numBurstProjectiles:
 		currNumBurstProjectiles = 0
 		projTimer.start(burstCooldownDuration)
+		
+		projectileWarning.hideWarning()
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
