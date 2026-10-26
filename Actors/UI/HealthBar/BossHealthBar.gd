@@ -33,6 +33,8 @@ func damage(newHealth : int) -> void:
 	setHealth(newHealth)
 
 func death(boss : Node) -> void:
+	SignalManager.bossDefeated.emit()
+	
 	setHealth(0)
 	damageEffectTimer.start()
 	await damageEffectTimer.timeout

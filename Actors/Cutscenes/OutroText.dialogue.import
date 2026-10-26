@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://borbqp2x6uspn"
+path="res://.godot/imported/OutroText.dialogue-0d6b1a6ba633b12c174d0f8ae73e15e2.tres"
+
+[deps]
+
+source_file="res://Actors/Cutscenes/OutroText.dialogue"
+dest_files=["res://.godot/imported/OutroText.dialogue-0d6b1a6ba633b12c174d0f8ae73e15e2.tres"]
+
+[params]
+
+defaults=true

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://df8xngx6m308d" path="res://Assets/Backgrounds/TitleScreenBG.png" id="1_1poyy"]
 [ext_resource type="Script" uid="uid://bbc4ldpnkgb3r" path="res://Actors/UI/Main Menu/Main Menu.gd" id="1_r5uus"]
 [ext_resource type="Texture2D" uid="uid://ctmwn01q5x10t" path="res://Assets/UI/UnwoundLogo.png" id="3_r5uus"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="4_lf7wr"]
 
 [node name="MainMenu" type="Control" unique_id=1956684628]
 layout_mode = 3
@@ -58,28 +59,32 @@ theme_override_constants/separation = 10
 [node name="Start" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1423187390]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 39
+theme_override_fonts/font = ExtResource("4_lf7wr")
+theme_override_font_sizes/font_size = 48
 text = "Start"
 flat = true
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=968890847]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 39
+theme_override_fonts/font = ExtResource("4_lf7wr")
+theme_override_font_sizes/font_size = 48
 text = "Settings"
 flat = true
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=310318998]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 39
+theme_override_fonts/font = ExtResource("4_lf7wr")
+theme_override_font_sizes/font_size = 48
 text = "Credits"
 flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/ButtonContainer" unique_id=1969695455]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 39
+theme_override_fonts/font = ExtResource("4_lf7wr")
+theme_override_font_sizes/font_size = 48
 text = "Quit"
 flat = true
 

@@ -86,7 +86,10 @@ func evaluateDebugCommand(argv : Array) -> Array:
 			node.queue_free()
 			
 		return [true, ""]
-
+	
+	elif argv[0] == "kill":
+		SignalManager.bossDefeated.emit()
+		return [true, ""]
 
 	else:
 		return [false, "command not found"]

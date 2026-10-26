@@ -1,0 +1,23 @@
+~ scene1
+[font_size=70][b]Are you prepared?[/b][/font_size]\n\n\n[i]There is nothing to prepare for.[/i]
+[font_size=70][b]Take the staff.[/b][/font_size]\n\n\n[i]No. I must have my answer.[/i]
+[font_size=70][b]Answer?[/b][/font_size]
+[font_size=70][b]...[/b][/font_size]
+[font_size=70][b]...[/b][/font_size]
+[font_size=70][b]You seek to imprint upon the world a shape it has never known before...[/b][/font_size]
+[font_size=70][b]A shape for which it is not yet ready.[/b][/font_size]\n\n\n[i]As opposed to one it never asked for?[/i]
+[font_size=70][b]What would such a world look like?[/b][/font_size]\n\n\n[i]We shall have our answer.[/i]
+[font_size=70][b]And in it, may your curiosity be sated.[/b][/font_size]
+$> CutsceneSignalManager.outroScene1Finished.emit()
+=> END
+
+~ scene2
+[i]...[/i]
+[i]A shape it has never known before...[/i]
+[i]Form without will.[/i]
+[i]My own included.[/i]
+$> CutsceneSignalManager.outroScene2Finished.emit()
+=> END
+
+~ dummy
+=> END

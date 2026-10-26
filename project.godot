@@ -104,7 +104,7 @@ debugConsole={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Actors/Cutscenes/IntroText.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Actors/Cutscenes/IntroText.dialogue", "res://Actors/Cutscenes/OutroText.dialogue")
 
 [layer_names]
 
