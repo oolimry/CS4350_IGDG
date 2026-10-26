@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var mainMenu : MainMenu = $MainMenuLayer/MainMenu
+@onready var settingsMenu
 @onready var introCutscene = $IntroCutscene
 
 @export var toForceStart = false
