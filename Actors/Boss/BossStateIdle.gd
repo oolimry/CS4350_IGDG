@@ -5,6 +5,7 @@ extends BossState
 @export var duration := 4
 var randomizer : RandomNumberGenerator
 var movementAnimName: StringName
+var durationTimer : Timer
 
 enum roomPosition {
 	LEFT,
@@ -12,7 +13,8 @@ enum roomPosition {
 	RIGHT
 }
 
-var meleeAttackRange := 1500
+const MAX_MELEE_ATTACK_RANGE := 1500
+const MIN_MELEE_ATTACK_RANGE := 400
 
 ## The relative position the boss is in
 ## in reference to the boss Room [br]
@@ -22,6 +24,8 @@ var currRoomPosition = roomPosition.MID
 func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	super.setup(getB, getP, dependencies)
 	
+	durationTimer = dependencies["durationTimer"]
+	
 	randomizer = RandomNumberGenerator.new()
 	randomizer.randomize()
 
@@ -29,7 +33,9 @@ func _start() -> void:
 	var boss : Node2D = getBoss.call()
 	boss.get_node("CharacterContainer/Body/BossFootL").self_modulate = Color.RED
 	boss.get_node("CharacterContainer/Body/BossFootR").self_modulate = Color.RED	
-	
+	durationTimer.timeout.connect(_end)
+	durationTimer.start(duration)
+
 	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
 	ap.animation_finished.connect(_on_animation_finished)
 	
@@ -63,10 +69,16 @@ func _end() -> void:
 	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
 	# targets through RESET, which previously moved feet after touchdown.
 	ap.animation_finished.disconnect(_on_animation_finished)
-
+	durationTimer.timeout.disconnect(_end)
+	durationTimer.stop()
+	
 	var p = getPlayer.call()
-	if (abs(p.global_position.x - getBoss.call().global_position.x) \
-		<= meleeAttackRange) and randomizer.randi() % 2 == 0:
+	var b = getBoss.call()
+	var distToPlayer = abs(p.global_position.x - getBoss.call().global_position.x)
+	
+	if (distToPlayer <= MAX_MELEE_ATTACK_RANGE and \
+		distToPlayer >= MIN_MELEE_ATTACK_RANGE) and \
+		randomizer.randi() % 2 == 0:
 		transitionTo.emit("MeleeAttack")
 	elif randomizer.randi() % 2 == 0:
 		transitionTo.emit("ProjectileStraight")

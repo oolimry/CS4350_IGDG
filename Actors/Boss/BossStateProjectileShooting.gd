@@ -39,10 +39,6 @@ func _start() -> void:
 	bossStaff.gemSprite.self_modulate = Color.ORANGE
 	pass
 
-# This gets run by the FSM 
-func _physics_process(delta: float) -> void:
-	pass
-
 func burstFireProjectile() -> void:
 	fireProjectile()
 	currNumBurstProjectiles += 1
@@ -70,7 +66,4 @@ func fireProjectile() -> void:
 	rot = rad_to_deg(rot)
 	
 	projFirer.fireProjectile(p, rot)
-	
-	
-	
 	projTimer.start(projectileCooldownDuration)
