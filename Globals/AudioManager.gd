@@ -22,8 +22,9 @@ const MUSIC_BUS = 2
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
 @onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
 
-
 @onready var Shatter : AudioStreamPlayer = $Cutscene/Shatter
+
+@onready var BGM : AudioStreamPlayer = $Music/BGM
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):

@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cau78fw3wb7f6" path="res://Assets/Audio/World Objects SFX/ExplodableWallExploded.ogg" id="10_vxglj"]
 [ext_resource type="AudioStream" uid="uid://bufigpqlnexgk" path="res://Assets/Audio/World Objects SFX/IgnitionPad.wav" id="11_vxglj"]
 [ext_resource type="AudioStream" uid="uid://buiyfff52mbbf" path="res://Assets/Audio/Cutscenes/shatter.wav" id="12_to54l"]
+[ext_resource type="AudioStream" uid="uid://cugtbdu60eaal" path="res://Assets/Audio/Music/BGM_V1.wav" id="13_p3wqe"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
@@ -114,4 +115,11 @@ bus = &"Audio"
 
 [node name="Shatter" type="AudioStreamPlayer" parent="Cutscene" unique_id=1878204359]
 stream = ExtResource("12_to54l")
+bus = &"Audio"
+
+[node name="Music" type="Node2D" parent="." unique_id=46101856]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Music" unique_id=715519625]
+stream = ExtResource("13_p3wqe")
+volume_db = -3.0
 bus = &"Audio"
