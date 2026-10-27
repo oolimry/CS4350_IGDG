@@ -41,7 +41,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is WindShockwaveHitbox:
 		if unique_id != "":
 			CollectibleManager.collect_item(unique_id, \
-				sprite.frames.get_frame_texture(sprite.animation, 0)
+				sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
 	)
 		
 		self.queue_free()
