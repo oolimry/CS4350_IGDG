@@ -42,9 +42,9 @@ element = 3
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_ioqtd")]
-position = Vector2(820, 40)
+position = Vector2(1080, 0)
 width = 120.0
-height = 120.0
+height = 80.0
 
 [node name="CrystalWall3" parent="." unique_id=1908066336 instance=ExtResource("6_ioqtd")]
 position = Vector2(920, 320)
