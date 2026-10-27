@@ -4,8 +4,10 @@ extends BossState
 ## Minimum idle time, including movement. A longer animation always finishes.
 @export var duration := 4
 var randomizer : RandomNumberGenerator
-var movementAnimName: StringName
 var durationTimer : Timer
+var _movementAnimation : StringName
+var _movementFinished := false
+var _minimumDurationFinished := false
 
 enum roomPosition {
 	LEFT,
@@ -32,8 +34,12 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 func _start() -> void:
 	var boss : Node2D = getBoss.call()
 	boss.get_node("CharacterContainer/Body/BossFootL").self_modulate = Color.RED
-	boss.get_node("CharacterContainer/Body/BossFootR").self_modulate = Color.RED	
-	durationTimer.timeout.connect(_end)
+	boss.get_node("CharacterContainer/Body/BossFootR").self_modulate = Color.RED
+
+	_movementAnimation = &""
+	_movementFinished = false
+	_minimumDurationFinished = false
+	durationTimer.timeout.connect(_on_minimum_duration_finished, CONNECT_ONE_SHOT)
 	durationTimer.start(duration)
 
 	var ap = boss.get_node("AnimationPlayer") as AnimationPlayer
@@ -55,13 +61,23 @@ func _start() -> void:
 			ap.play("move_right")
 			currRoomPosition = roomPosition.RIGHT
 		else:
-			_end()
-	movementAnimName = ap.assigned_animation
+			_movementFinished = true
+	_movementAnimation = ap.assigned_animation if not _movementFinished else &""
+	_try_end()
 
 func _on_animation_finished(animation_name: StringName) -> void:
-	if animation_name != movementAnimName:
+	if animation_name != _movementAnimation:
 		return
-	_end()
+	_movementFinished = true
+	_try_end()
+
+func _on_minimum_duration_finished() -> void:
+	_minimumDurationFinished = true
+	_try_end()
+
+func _try_end() -> void:
+	if _movementFinished and _minimumDurationFinished:
+		_end()
 		
 
 func _end() -> void:
@@ -69,7 +85,6 @@ func _end() -> void:
 	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
 	# targets through RESET, which previously moved feet after touchdown.
 	ap.animation_finished.disconnect(_on_animation_finished)
-	durationTimer.timeout.disconnect(_end)
 	durationTimer.stop()
 	
 	var p = getPlayer.call()
