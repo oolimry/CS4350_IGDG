@@ -17,7 +17,7 @@
 light_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vu4"]
-size = Vector2(240, 480)
+size = Vector2(1769, 846)
 
 [sub_resource type="Resource" id="Resource_beaud"]
 resource_local_to_scene = true
@@ -68,7 +68,7 @@ tile_set = ExtResource("3_vtm2f")
 position = Vector2(120, 840)
 
 [node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
-position = Vector2(0, -200)
+position = Vector2(795.5, -374)
 shape = SubResource("RectangleShape2D_t8vu4")
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("4_aaxl4")]

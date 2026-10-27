@@ -6,8 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="5_cyprr"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_hwsto"]
 [ext_resource type="PackedScene" uid="uid://cyqqde0jywtgw" path="res://Actors/WorldObjects/IgnitionPad.tscn" id="7_swbgx"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="9_57hal"]
+[ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="10_h0r43"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf3re"]
+size = Vector2(120, 120)
 
 [node name="Room 21-4" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_cyprr")
@@ -52,3 +57,20 @@ element = 2
 
 [node name="IgnitionPad" parent="." unique_id=1935947710 instance=ExtResource("7_swbgx")]
 position = Vector2(1740, 360)
+
+[node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870]
+position = Vector2(1840, 800)
+script = ExtResource("9_57hal")
+reference_texture = ExtResource("10_h0r43")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1498333101]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_cf3re")
+
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
