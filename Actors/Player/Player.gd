@@ -600,7 +600,7 @@ func isWallSliding():
 	return false
 
 func triggerDeath():
-	damageStateHandler.onSpiked()
+	damageStateHandler.onDeath()
 
 func preRespawnHandling() -> void:
 	if isDead:
