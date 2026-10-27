@@ -227,7 +227,6 @@ element = 2
 
 [node name="Crate5" parent="RoomResidents" unique_id=126198746 instance=ExtResource("11_fc6h7")]
 position = Vector2(1600, 334.86)
-freeze = true
 roomResident = SubResource("Resource_r2cc3")
 
 [node name="Chain2" parent="RoomResidents" unique_id=1224914763 node_paths=PackedStringArray("attached_crate") instance=ExtResource("9_0rkc4")]
@@ -261,7 +260,6 @@ roomResident = SubResource("Resource_xoo2o")
 
 [node name="Crate6" parent="RoomResidents" unique_id=1709926491 instance=ExtResource("11_fc6h7")]
 position = Vector2(1560, 269.65)
-freeze = true
 roomResident = SubResource("Resource_2ne1p")
 
 [node name="Crown" parent="RoomResidents" unique_id=2109143653 instance=ExtResource("14_r2cc3")]
