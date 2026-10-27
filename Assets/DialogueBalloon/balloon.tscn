@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cs17jqowvwh3m" path="res://Assets/DialogueBalloon/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="FontFile" uid="uid://di74gvi3lj2nh" path="res://Assets/Fonts/RubikStorm-Regular.ttf" id="3_5ig5r"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://3s5kd38f0blj" path="res://Assets/Fonts/RubikGlitch-Regular.ttf" id="3_pjf4y"]
 [ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="4_767ds"]
 [ext_resource type="AudioStream" uid="uid://vwlng2iftmnv" path="res://Assets/Audio/Cutscenes/TextScroll2.wav" id="6_pjf4y"]
 
@@ -164,14 +164,16 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/bold_font = ExtResource("3_5ig5r")
+theme_override_fonts/bold_font = ExtResource("3_pjf4y")
 theme_override_fonts/italics_font = ExtResource("4_767ds")
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 48
 theme_override_font_sizes/bold_italics_font_size = 48
 theme_override_font_sizes/italics_font_size = 48
-text = "[i]dfdfadfadfdf[/i]
-"
+text = "[font_size=70][b]What would such a world look like?[/b][/font_size]
+
+
+[i]We shall have our answer.[/i]"
 horizontal_alignment = 1
 vertical_alignment = 1
 skip_action = &"jump"
