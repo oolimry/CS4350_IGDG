@@ -4,12 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_n78pv"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_m83n0"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="5_ql6yg"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="6_8lc4p"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_h32ni"]
 [ext_resource type="PackedScene" uid="uid://cpqqeib5dlr1f" path="res://Actors/WorldObjects/MovingElement.tscn" id="7_oxclw"]
 [ext_resource type="PackedScene" uid="uid://2v35vu2leovv" path="res://Actors/WorldObjects/MovingElementY.tscn" id="8_lo75r"]
 [ext_resource type="PackedScene" uid="uid://bq2h5kio7nq23" path="res://Actors/WorldObjects/Crown.tscn" id="10_j8fx1"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
+
+[sub_resource type="Resource" id="Resource_v2fl2"]
+resource_local_to_scene = true
+script = ExtResource("6_8lc4p")
+persistentID = &"5f5c5a78-e465-4e5c-9a32-ef751a0ba32d"
+objectName = &"Crown"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_newg8"]
 light_mode = 1
@@ -27,7 +34,12 @@ visible = false
 position = Vector2(960, 560)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
-scale = Vector2(0.25, 0.25)
+
+[node name="Crown" parent="RoomResidents" unique_id=2109143653 instance=ExtResource("10_j8fx1")]
+position = Vector2(1600, 80)
+unique_id = &"CrownBlue"
+roomResident = SubResource("Resource_v2fl2")
+crown = 1
 
 [node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_ql6yg")]
 position = Vector2(190.91193, 793.07214)
@@ -130,8 +142,3 @@ position = Vector2(1060, 240)
 speed = -2.0
 distance = 100.0
 element = 2
-
-[node name="Crown" parent="." unique_id=2109143653 instance=ExtResource("10_j8fx1")]
-position = Vector2(1565, 111)
-unique_id = "Wind-Crown"
-crown = 1
