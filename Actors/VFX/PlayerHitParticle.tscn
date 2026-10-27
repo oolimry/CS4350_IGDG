@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bgvrr4sfb1x7a"]
+
+[ext_resource type="Texture2D" uid="uid://daemv2l3te0lj" path="res://Assets/VFX/WhiteParticle.png" id="1_x6p8d"]
+[ext_resource type="Script" uid="uid://dcpbrqhsnmhbe" path="res://Actors/VFX/PlayerHitParticle.gd" id="2_ykusr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5iyrj"]
+blend_mode = 1
+light_mode = 1
+
+[node name="PlayerHitParticle" type="Sprite2D" unique_id=1148241990]
+modulate = Color(1.0091805, 1.0091805, 1.0091805, 1)
+z_index = 500
+material = SubResource("CanvasItemMaterial_5iyrj")
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_x6p8d")
+script = ExtResource("2_ykusr")

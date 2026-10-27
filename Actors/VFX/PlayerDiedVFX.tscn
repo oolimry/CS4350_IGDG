@@ -6,7 +6,7 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
 blend_mode = 1
 
-[node name="PlayerDiedVFX" type="Node2D" unique_id=1526437014]
+[node name="PlayerDiedVFX2" type="Node2D" unique_id=1526437014]
 material = SubResource("CanvasItemMaterial_457ov")
 script = ExtResource("1_08p3r")
 

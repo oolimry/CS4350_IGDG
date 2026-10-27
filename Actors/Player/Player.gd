@@ -136,7 +136,7 @@ var additionalVelocityInputs = []
 var playerXlength
 var playerYlength
 
-@export var knockbackStrength := 800
+@export var knockbackStrength := 2400
 
 ## For Contact Pushing Objects -- DELETE IF NOT NEEDED --
 const pushForce := 2600
@@ -543,7 +543,10 @@ func checkCollisions() -> void:
 
 func applyKnockback(normalVec : Vector2) -> void:
 	if !isDead:
-		additionalVelocityInputs.append(normalVec * knockbackStrength)
+		if normalVec.x < 0:
+			additionalVelocityInputs.append(Vector2(-knockbackStrength, 0))
+		else:
+			additionalVelocityInputs.append(Vector2(knockbackStrength, 0))
 
 func pogo():
 	additionalVelocityInputs.append(Vector2(0, -pogoVerticalBoost))
@@ -628,7 +631,6 @@ func postRespawnHandling(respawnPos : Vector2) -> void:
 	isDead = false
 	freezeInput = false
 	self.visible = true
-	
 	
 func _on_sprite_frame_changed():
 	staffTipSprite.frame = sprite.frame
