@@ -7,8 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="5_y2sye"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_t8hgj"]
 [ext_resource type="PackedScene" uid="uid://bq2h5kio7nq23" path="res://Actors/WorldObjects/Crown.tscn" id="9_t8hgj"]
+[ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="10_2hltu"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
+
+[sub_resource type="Resource" id="Resource_2hltu"]
+resource_local_to_scene = true
+script = ExtResource("10_2hltu")
+oriCoords = Vector2(1255, 524)
+persistentID = &"ffaefbe7-0d50-41c8-bb25-f3ab382e51a1"
+objectName = &"Crown"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2hltu"]
 size = Vector2(279, 315)
@@ -26,7 +34,12 @@ visible = false
 position = Vector2(960, 560)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
-scale = Vector2(0.25, 0.25)
+
+[node name="Crown" parent="RoomResidents" unique_id=2109143653 instance=ExtResource("9_t8hgj")]
+position = Vector2(1280, 520)
+unique_id = &"CrownPurple"
+roomResident = SubResource("Resource_2hltu")
+crown = 3
 
 [node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
 position = Vector2(260, 799)
@@ -88,10 +101,5 @@ element = 3
 [node name="Element11" parent="." unique_id=526861404 instance=ExtResource("7_t8hgj")]
 position = Vector2(721.6014, 524.284)
 element = 3
-
-[node name="Crown" parent="." unique_id=2109143653 instance=ExtResource("9_t8hgj")]
-position = Vector2(1255, 524)
-unique_id = "Purple-Crown"
-crown = 3
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
