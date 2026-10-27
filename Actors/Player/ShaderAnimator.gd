@@ -19,8 +19,21 @@ func _process(delta: float) -> void:
 ## Invlun Flash animation
 func invulnFlash(blinkInterval : float, duration : float) -> void:
 	# Strong white flash right when hit
+	AudioManager.play(AudioManager.Die)
+	
 	playerSprite.material.set_shader_parameter("flashAmount", 1.0)
-	await get_tree().create_timer(0.08).timeout
+	
+	var player : Player = playerSprite.get_parent()
+	VfxManager.createVFX(VfxManager.PlayerHitVFXTSCN, player.global_position,\
+		{VFXManager_class.Params.PLAYER : player}
+	)
+	
+	await get_tree().create_timer(0.10, true).timeout
+	
+	var timer = get_tree().create_timer(0.090, true)
+	get_tree().paused = true
+	await timer.timeout
+	get_tree().paused = false
 	
 	var elapsed := 0.0
 

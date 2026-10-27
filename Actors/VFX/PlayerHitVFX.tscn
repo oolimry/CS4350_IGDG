@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bbh8yg22qdl07"]
+
+[ext_resource type="Script" uid="uid://dlygijpiqjrhp" path="res://Actors/VFX/PlayerHitVFX.gd" id="1_dmera"]
+[ext_resource type="PackedScene" uid="uid://bgvrr4sfb1x7a" path="res://Actors/VFX/PlayerHitParticle.tscn" id="2_dmera"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_457ov"]
+blend_mode = 1
+
+[node name="PlayerHitVFX" type="Node2D" unique_id=1526437014]
+material = SubResource("CanvasItemMaterial_457ov")
+script = ExtResource("1_dmera")
+
+[node name="Particles" type="Node2D" parent="." unique_id=681807923]
+
+[node name="PlayerHitParticle" parent="Particles" unique_id=1148241990 instance=ExtResource("2_dmera")]
+
+[node name="PlayerHitParticle2" parent="Particles" unique_id=574928038 instance=ExtResource("2_dmera")]
+
+[node name="PlayerHitParticle3" parent="Particles" unique_id=557771025 instance=ExtResource("2_dmera")]
+
+[node name="PlayerHitParticle4" parent="Particles" unique_id=1177811395 instance=ExtResource("2_dmera")]
+
+[node name="PlayerHitParticle5" parent="Particles" unique_id=41115890 instance=ExtResource("2_dmera")]
+
+[node name="PlayerHitParticle6" parent="Particles" unique_id=582199349 instance=ExtResource("2_dmera")]
