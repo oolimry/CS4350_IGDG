@@ -11,6 +11,8 @@ extends Node2D
 	preload("res://Actors/VFX/BombExplosionVFX.tscn")
 @onready var PlayerDiedVFXTSCN = \
 	preload("res://Actors/VFX/PlayerDiedVFX.tscn")
+@onready var PlayerHitVFXTSCN = \
+	preload("res://Actors/VFX/PlayerHitVFX.tscn")
 
 @onready var ExplodableWallExplodedVFXTSCN = \
 	preload("res://Actors/VFX/ExplodableWallExplodedVFX.tscn")
