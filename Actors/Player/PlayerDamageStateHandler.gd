@@ -69,25 +69,27 @@ func onHurt(dmg : int, isSpike : bool) -> void:
 	
 	if isSpike:
 		onSpiked()
-		return
+		## NOTE: UNCOMMENT BELOW IF WE WANT TO SWITCH BACK
+		#return
 	
 	startInvulnPeriod(true)
 
-	
 	# but jic it doesn't, place it here
 	pass
 	
 func onSpiked() -> void:
 	if isHandlingDeathNow:
 		return
-	isHandlingDeathNow = true
 	
-	await preRespawnFunc.call()
+	## NOTE: UNCOMMENT BELOW IF WE WANT TO SWITCH BACK
 	
-	requestRespawn.emit(false, self)
-	isHandlingDeathNow =  false
+	#isHandlingDeathNow = true
 	
+	#await preRespawnFunc.call()
 	
+	#requestRespawn.emit(false, self)
+	#isHandlingDeathNow =  false
+
 
 func postRespawnHandling(posToRespawn : Vector2, isFullHeal := true, 
 	shouldStillInvuln := false) -> void:

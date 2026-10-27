@@ -4,7 +4,7 @@ extends Area2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D 
 @onready var sprite : AnimatedSprite2D = $Sprite
-@export var unique_id: String = ""
+@export var unique_id: StringName = ""
 
 @export var crown : Enums.Elements:
 	set(value):
@@ -21,7 +21,8 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if unique_id != "":
-			CollectibleManager.collect_item(unique_id)
+			CollectibleManager.collect_item(unique_id, \
+				sprite.sprite_frames.get_frame_texture(sprite.animation, 0))
 
 		self.queue_free()
 		
@@ -39,7 +40,9 @@ func setCrownSprite(value : Enums.Elements) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is WindShockwaveHitbox:
 		if unique_id != "":
-			CollectibleManager.collect_item(unique_id)
+			CollectibleManager.collect_item(unique_id, \
+				sprite.frames.get_frame_texture(sprite.animation, 0)
+	)
 		
 		self.queue_free()
 		
