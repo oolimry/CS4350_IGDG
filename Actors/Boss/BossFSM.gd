@@ -12,7 +12,8 @@ func setup(getBoss : Callable, getPlayer : Callable,
 	var depedencies = {
 		"bossStaff": bStaff,
 		"durationTimer" : $DurationTimer,
-		"projTimer" : $ProjectileCoolDownTimer
+		"projTimer" : $ProjectileCoolDownTimer,
+		"delayTimer" : $DelayTimer
 	}
 	
 	for state in stateIDLookup.values():

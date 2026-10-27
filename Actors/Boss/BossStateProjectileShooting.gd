@@ -1,8 +1,11 @@
 class_name BossStateProjectileShooting
 extends BossState
 
+@export var projectileDelayDuration = 1.2
+var delayTimer : Timer
+
 ## How often the projectiles should fire in seconds
-@export var projectileCooldownDuration = 1
+@export var projectileCooldownDuration = 0.5
 var projTimer : Timer
 
 ## Duration of the state in seconds
@@ -26,6 +29,7 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 	projTimer = dependencies["projTimer"]
 	bossStaff = dependencies["bossStaff"]
 	durationTimer = dependencies["durationTimer"]
+	delayTimer = dependencies["delayTimer"]
 	
 	projFirer = bossStaff.projFirer
 	projectileWarning = projFirer.createProjectileWarning(getP)
@@ -40,20 +44,22 @@ func _start() -> void:
 
 	durationTimer.start(duration)
 	burstFireProjectile()
-	bossStaff.gemSprite.self_modulate = Color.ORANGE
+	bossStaff.gemSprite.self_modulate = Color.REBECCA_PURPLE
 	pass
 
 func burstFireProjectile() -> void:
 	if currNumBurstProjectiles == 0:
 		projectileWarning.show()
+		delayTimer.start(projectileDelayDuration)
+		projectileWarning.hideWarning()
+		await delayTimer.timeout
+		
 		
 	fireProjectile()
 	currNumBurstProjectiles += 1
 	if currNumBurstProjectiles >= numBurstProjectiles:
 		currNumBurstProjectiles = 0
 		projTimer.start(burstCooldownDuration)
-		
-		projectileWarning.hideWarning()
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")

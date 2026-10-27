@@ -23,10 +23,6 @@ position = Vector2(960, 560)
 position = Vector2(740, 640)
 element = 2
 
-[node name="Element7" parent="." unique_id=1149891557 instance=ExtResource("4_sw72r")]
-position = Vector2(140, 140)
-element = 3
-
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("5_b5y17")]

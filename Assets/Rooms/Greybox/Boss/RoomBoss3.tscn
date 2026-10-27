@@ -24,16 +24,12 @@ visible = false
 position = Vector2(960, 560)
 
 [node name="Element2" parent="." unique_id=1772466452 instance=ExtResource("4_tcbu7")]
-position = Vector2(1348, 974)
+position = Vector2(1100, 960)
 element = 1
 
 [node name="Element4" parent="." unique_id=1655824632 instance=ExtResource("4_tcbu7")]
-position = Vector2(1360, 400)
+position = Vector2(1360, 500)
 element = 1
-
-[node name="Element3" parent="." unique_id=2002705309 instance=ExtResource("4_tcbu7")]
-position = Vector2(960, 600)
-element = 3
 
 [node name="Element5" parent="." unique_id=1806927268 instance=ExtResource("4_tcbu7")]
 position = Vector2(680, 140)
@@ -46,40 +42,29 @@ element = 3
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_ioqtd")]
-position = Vector2(760, 0)
-height = 160.0
-
-[node name="CrystalWall2" parent="." unique_id=1697069455 instance=ExtResource("6_ioqtd")]
-position = Vector2(840, 640)
-width = 200.0
-height = 160.0
-
-[node name="CrystalWall6" parent="." unique_id=590282728 instance=ExtResource("6_ioqtd")]
-position = Vector2(1520, 840)
-height = 160.0
+position = Vector2(820, 40)
+width = 120.0
+height = 120.0
 
 [node name="CrystalWall3" parent="." unique_id=1908066336 instance=ExtResource("6_ioqtd")]
-position = Vector2(940, 280)
+position = Vector2(920, 320)
 width = 280.0
-height = 160.0
+height = 120.0
 
 [node name="CrystalWall5" parent="." unique_id=1169242925 instance=ExtResource("6_ioqtd")]
-position = Vector2(1200, 560)
+position = Vector2(1200, 600)
 width = 400.0
-height = 160.0
+height = 80.0
 
 [node name="CrystalWall4" parent="." unique_id=744379145 instance=ExtResource("6_ioqtd")]
-position = Vector2(1440, 40)
-height = 320.0
-
-[node name="CrystalWall7" parent="." unique_id=834152235 instance=ExtResource("6_ioqtd")]
-position = Vector2(1760, 100)
-height = 480.0
+position = Vector2(1400, 80)
+width = 80.0
+height = 120.0
 
 [node name="Hazards" type="TileMapLayer" parent="." unique_id=558462454]
 modulate = Color(1.353, 1.353, 1.353, 1)
 material = SubResource("CanvasItemMaterial_tcbu7")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AADc/w8AAAAAAAAAFwDc/w4AAAAAAAAAFwDc/w0AAAAAAAAAFwDc/wkAAAAAAAAAFwDc/wgAAAAAAAAAFwDc/wcAAAAAAAAAFwDc/wYAAAAAAAAAFwDc/wUAAAAAAAAAFwDc/wQAAAAAAAAAFwDc/wMAAAAAAAAAFwDc/wIAAAAAAAAAFwDc/wEAAAAAAAAAFwDc/wAAAAAAAAAAFwDc/woAAAAAAAAAFwDc/wsAAAAAAAAAFwDc/wwAAAAAAAAAFwDz/wIAAAAAAAAAFADz/wMAAAAAAAAAFADz/wQAAAAAAAAAFADz/wUAAAAAAAAAFADz/wYAAAAAAAAAFADz/wcAAAAAAAAAFADz/wgAAAAAAAAAFAD0/wkAAAAAAAAAEQD1/wkAAAAAAAAAEQD2/wkAAAAAAAAAEQD3/wkAAAAAAAAAEQDt/w8AAAAAAAAAFADt/xAAAAAAAAAAFADt/xEAAAAAAAAAFADz/wEAAAAAAAAAEwDt/w4AAAAAAAAAEwDn/wIAAAAAAAAAFwDn/wMAAAAAAAAAFwDn/wEAAAAAAAAAFwDn/wAAAAAAAAAAFgA=")
+tile_map_data = PackedByteArray("AADc/w8AAAAAAAAAFwDc/w4AAAAAAAAAFwDc/w0AAAAAAAAAFwDc/wkAAAAAAAAAFwDc/wgAAAAAAAAAFwDc/wcAAAAAAAAAFwDc/wYAAAAAAAAAFwDc/wUAAAAAAAAAFwDc/wQAAAAAAAAAFwDc/wMAAAAAAAAAFwDc/wIAAAAAAAAAFwDc/wEAAAAAAAAAFwDc/wAAAAAAAAAAFwDc/woAAAAAAAAAFwDc/wsAAAAAAAAAFwDc/wwAAAAAAAAAFwA=")
 tile_set = ExtResource("7_uq0li")
