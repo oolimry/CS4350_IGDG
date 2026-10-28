@@ -10,7 +10,7 @@ const objName = "Crate"
 @onready var floorCast: RayCast2D = $RayCast2D
 
 func setup() -> void:
-	roomResident = RoomResident.setup(objName, position, !wasCrateOriAttached)
+	roomResident = RoomResident.setup(objName, position, (attached_chain == null))
 
 func attach(chain: Chain) -> void:
 	wasCrateOriAttached = true
