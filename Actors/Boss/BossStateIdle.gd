@@ -31,8 +31,6 @@ func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
 
 func _start() -> void:
 	var boss : Node2D = getBoss.call()
-	boss.get_node("CharacterContainer/Body/BossFootL").self_modulate = Color.RED
-	boss.get_node("CharacterContainer/Body/BossFootR").self_modulate = Color.RED	
 	durationTimer.timeout.connect(_end)
 	durationTimer.start(duration)
 
