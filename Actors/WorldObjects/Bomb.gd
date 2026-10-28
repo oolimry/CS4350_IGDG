@@ -52,6 +52,9 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 		canBeMoved = true
 	
 func _physics_process(delta):
+	# in case there's weird crate interactions w rotation
+	self.rotation = 0
+	
 	if not isMovementStarted:
 		return
 	if hasExploded:

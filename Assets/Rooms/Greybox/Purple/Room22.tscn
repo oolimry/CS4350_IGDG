@@ -32,6 +32,9 @@ objectName = &"Crate"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlcoq"]
 size = Vector2(300, 300)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa56i"]
+size = Vector2(150, 170)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4q2ss"]
 size = Vector2(260, 880)
 
@@ -63,11 +66,11 @@ roomResident = SubResource("Resource_evwdk")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("8_qa56i")]
 position = Vector2(240, 423)
+freeze = true
 attached_chain = NodePath("../Chain")
 roomResident = SubResource("Resource_1qkv4")
 
 [node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
-visible = false
 position = Vector2(140, 360)
 script = ExtResource("5_4q2ss")
 reference_texture = ExtResource("6_c8em2")
@@ -82,8 +85,22 @@ collision_mask = 32
 position = Vector2(45, -67)
 shape = SubResource("RectangleShape2D_wlcoq")
 
+[node name="Respawn Point3" type="Marker2D" parent="." unique_id=1771432279 groups=["Checkpoint"]]
+position = Vector2(120, 1000)
+script = ExtResource("5_4q2ss")
+reference_texture = ExtResource("6_c8em2")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point3" unique_id=177719935]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point3/Area2D" unique_id=1972078639]
+position = Vector2(-15, -15)
+shape = SubResource("RectangleShape2D_qa56i")
+
 [node name="Respawn Point2" type="Marker2D" parent="." unique_id=410000125 groups=["Checkpoint"]]
-visible = false
 position = Vector2(1760, 900)
 script = ExtResource("5_4q2ss")
 reference_texture = ExtResource("6_c8em2")
@@ -123,4 +140,5 @@ position = Vector2(420, 340)
 timeToLive = 30.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
