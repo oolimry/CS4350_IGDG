@@ -15,6 +15,7 @@ const MUSIC_BUS = 2
 
 @onready var FireElementStruck : AudioStreamPlayer = $Slashing/FireElementStruck
 @onready var WindElementStruck : AudioStreamPlayer = $Slashing/WindElementStruck
+@onready var PurpleElementStruck : AudioStreamPlayer = $Slashing/PurpleElementStruck
 
 @onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch

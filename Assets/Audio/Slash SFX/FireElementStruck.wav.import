@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dag6h01nevlp0"
+path="res://.godot/imported/FireElementStruck.wav-5b9f2a165b3a564e9a36ce965de43cc3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Slash SFX/FireElementStruck.wav"
+dest_files=["res://.godot/imported/FireElementStruck.wav-5b9f2a165b3a564e9a36ce965de43cc3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
