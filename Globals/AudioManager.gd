@@ -15,12 +15,15 @@ const MUSIC_BUS = 2
 
 @onready var FireElementStruck : AudioStreamPlayer = $Slashing/FireElementStruck
 @onready var WindElementStruck : AudioStreamPlayer = $Slashing/WindElementStruck
+@onready var PurpleElementStruck : AudioStreamPlayer = $Slashing/PurpleElementStruck
 
 @onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
 @onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
 
 @onready var Shatter : AudioStreamPlayer = $Cutscene/Shatter
+@onready var EntityDialogue : AudioStreamPlayer = $Cutscene/EntityDialogue
+@onready var PlayerDialogue : AudioStreamPlayer = $Cutscene/PlayerDialogue
 
 @onready var BGM : AudioStreamPlayer = $Music/BGM
 

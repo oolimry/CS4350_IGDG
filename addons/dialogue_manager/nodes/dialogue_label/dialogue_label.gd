@@ -123,12 +123,12 @@ func type_out() -> void:
 
 ## Stop typing out the text and jump right to the end
 func skip_typing() -> void:
-	
-	
 	_mutate_remaining_mutations()
 	visible_characters = get_total_character_count()
 	is_typing = false
 	skipped_typing.emit()
+
+
 
 
 # Type out the next character(s)
@@ -150,8 +150,31 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		_waiting_seconds += waiting_seconds
 	else:
 		visible_characters += 1
+		
+		var actualString = ""
+		var isOpen = false
+		var lastThing = ""
+		for c in text:
+			if c == "[":
+				isOpen = true
+			elif c == "]":
+				isOpen = false
+			else:
+				if not isOpen:
+					actualString += c
+				else:
+					lastThing = c
+			if len(actualString) >= visible_characters:
+				break
+
+		if lastThing == "b":
+			AudioManager.play(AudioManager.EntityDialogue)
+		elif lastThing == "i":
+			AudioManager.play(AudioManager.PlayerDialogue)
+		
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+		
 		# See if there's time to type out some more in this frame
 		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
 		if seconds_needed > delta:
@@ -232,5 +255,4 @@ func _should_auto_pause() -> bool:
 		return false
 	
 	pause_at_characters = "\n"
-	Glogger.debug(pause_at_characters.split())
 	return parsed_text[visible_characters - 1] in pause_at_characters.split()
