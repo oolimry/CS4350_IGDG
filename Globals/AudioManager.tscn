@@ -16,6 +16,11 @@
 [ext_resource type="AudioStream" uid="uid://c154wym6k66i5" path="res://Assets/Audio/Slash SFX/PurpleElementStruck.wav" id="12_3te4c"]
 [ext_resource type="AudioStream" uid="uid://buiyfff52mbbf" path="res://Assets/Audio/Cutscenes/shatter.wav" id="12_to54l"]
 [ext_resource type="AudioStream" uid="uid://cugtbdu60eaal" path="res://Assets/Audio/Music/BGM_V1.wav" id="13_p3wqe"]
+[ext_resource type="AudioStream" uid="uid://dfovaihxt3wdw" path="res://Assets/Audio/Dialogue/EntityDialogue1.wav" id="16_dvcqq"]
+[ext_resource type="AudioStream" uid="uid://lhip88hlxkql" path="res://Assets/Audio/Dialogue/EntityDialogue2.wav" id="17_ig0xw"]
+[ext_resource type="AudioStream" uid="uid://b2pb8gtkf26mm" path="res://Assets/Audio/Dialogue/EntityDialogue3.wav" id="18_d0chm"]
+[ext_resource type="AudioStream" uid="uid://dgk5r41m11qvc" path="res://Assets/Audio/Dialogue/PlayerDialogue1.wav" id="19_kndt1"]
+[ext_resource type="AudioStream" uid="uid://dsu662xfk2wyk" path="res://Assets/Audio/Dialogue/PlayerDialogue2.wav" id="20_hwta7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
@@ -47,6 +52,17 @@ stream_1/stream = ExtResource("5_ixva1")
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxglj"]
 streams_count = 1
 stream_0/stream = ExtResource("10_vxglj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_d6ec5"]
+streams_count = 3
+stream_0/stream = ExtResource("16_dvcqq")
+stream_1/stream = ExtResource("17_ig0xw")
+stream_2/stream = ExtResource("18_d0chm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dvcqq"]
+streams_count = 2
+stream_0/stream = ExtResource("19_kndt1")
+stream_1/stream = ExtResource("20_hwta7")
 
 [node name="AudioManager" type="CanvasLayer" unique_id=410915819]
 process_mode = 3
@@ -95,6 +111,7 @@ bus = &"Audio"
 
 [node name="WindElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1981845195]
 stream = ExtResource("11_txyti")
+volume_db = 6.0
 bus = &"Audio"
 
 [node name="PurpleElementStruck" type="AudioStreamPlayer" parent="Slashing" unique_id=1908816921]
@@ -125,6 +142,15 @@ bus = &"Audio"
 [node name="Shatter" type="AudioStreamPlayer" parent="Cutscene" unique_id=1878204359]
 stream = ExtResource("12_to54l")
 bus = &"Audio"
+
+[node name="EntityDialogue" type="AudioStreamPlayer" parent="Cutscene" unique_id=33057281]
+stream = SubResource("AudioStreamRandomizer_d6ec5")
+volume_db = -8.0
+max_polyphony = 10
+
+[node name="PlayerDialogue" type="AudioStreamPlayer" parent="Cutscene" unique_id=904380865]
+stream = SubResource("AudioStreamRandomizer_dvcqq")
+max_polyphony = 10
 
 [node name="Music" type="Node2D" parent="." unique_id=46101856]
 

@@ -37,6 +37,8 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+
+			
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):

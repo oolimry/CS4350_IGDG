@@ -100,6 +100,7 @@ position = Vector2(962, 541)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scene1" unique_id=199590191]
 modulate = Color(0.5815488, 0.5815488, 0.5815488, 1)
+scale = Vector2(1.01, 1)
 texture = ExtResource("2_uf5c2")
 
 [node name="ForegroundFog" type="Sprite2D" parent="Scene1" unique_id=1031286202]
