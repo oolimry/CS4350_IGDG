@@ -25,7 +25,11 @@ const MUSIC_BUS = 2
 @onready var EntityDialogue : AudioStreamPlayer = $Cutscene/EntityDialogue
 @onready var PlayerDialogue : AudioStreamPlayer = $Cutscene/PlayerDialogue
 
+@onready var Lazer : AudioStreamPlayer = $Boss/Lazer
+
+
 @onready var BGM : AudioStreamPlayer = $Music/BGM
+
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):

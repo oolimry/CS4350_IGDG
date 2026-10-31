@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://b2pb8gtkf26mm" path="res://Assets/Audio/Dialogue/EntityDialogue3.wav" id="18_d0chm"]
 [ext_resource type="AudioStream" uid="uid://dgk5r41m11qvc" path="res://Assets/Audio/Dialogue/PlayerDialogue1.wav" id="19_kndt1"]
 [ext_resource type="AudioStream" uid="uid://dsu662xfk2wyk" path="res://Assets/Audio/Dialogue/PlayerDialogue2.wav" id="20_hwta7"]
+[ext_resource type="AudioStream" uid="uid://7qc6tdgaqttr" path="res://Assets/Audio/Boss/Lazer_V1.wav" id="22_kndt1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
@@ -151,6 +152,12 @@ max_polyphony = 10
 [node name="PlayerDialogue" type="AudioStreamPlayer" parent="Cutscene" unique_id=904380865]
 stream = SubResource("AudioStreamRandomizer_dvcqq")
 max_polyphony = 10
+
+[node name="Boss" type="Node2D" parent="." unique_id=1235804857]
+
+[node name="Lazer" type="AudioStreamPlayer" parent="Boss" unique_id=977389951]
+stream = ExtResource("22_kndt1")
+bus = &"Audio"
 
 [node name="Music" type="Node2D" parent="." unique_id=46101856]
 

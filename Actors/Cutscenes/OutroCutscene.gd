@@ -18,6 +18,19 @@ func _ready():
 
 func startCutscene():
 	self.visible = true
+	
+	Engine.time_scale = 0.10
+	
+	await get_tree().create_timer(0.10).timeout
+	
+	whiteFlashAnimationPlayer.play("Flash")
+	await whiteFlashAnimationPlayer.animation_finished
+	
+	Engine.time_scale = 1.0
+	
+	whiteFlashAnimationPlayer.play("BecomeTransparent")
+	scene1.visible = true
+	
 	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
 
 
