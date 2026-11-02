@@ -14,6 +14,7 @@ const FRAME_BORDER_WIDTH := 2
 
 var health := 0 : set = setHealth
 var _damageTween : Tween
+var _visibilityTween : Tween
 
 func _ready() -> void:
 	_applyStyle()
@@ -30,6 +31,21 @@ static func create(maxHealth : int, currHealth : int = maxHealth) -> BossHealthB
 	healthbar.damageBar.value = currHealth
 	
 	return healthbar
+
+func prepareForIntro() -> void:
+	_stopVisibilityTween()
+	modulate.a = 0.0
+	show()
+
+func fadeIn(duration : float) -> Tween:
+	_stopVisibilityTween()
+	show()
+	_visibilityTween = create_tween()\
+		.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_OUT)
+	_visibilityTween.tween_property(self, "modulate:a", 1.0, duration)
+	return _visibilityTween
 
 func setHealth(newHealth : int) -> void:
 	var prevHealth = health
@@ -65,6 +81,11 @@ func _stopDamageTween() -> void:
 	if _damageTween != null and _damageTween.is_valid():
 		_damageTween.kill()
 	_damageTween = null
+
+func _stopVisibilityTween() -> void:
+	if _visibilityTween != null and _visibilityTween.is_valid():
+		_visibilityTween.kill()
+	_visibilityTween = null
 
 func _applyStyle() -> void:
 	var healthFill := get_theme_stylebox("fill") as StyleBoxFlat
