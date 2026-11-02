@@ -27,6 +27,7 @@ var currentRoom : RoomDefinition
 
 var slideDest : Vector2
 var isSliding : bool
+var _savedLimitEnabled : bool
 
 var isShaking = false
 
@@ -46,17 +47,43 @@ static func create(getPlayerFunc : Callable) -> GameCamera:
 
 var slide_tween: Tween
 
+func _stopPositionTween() -> void:
+	if slide_tween and slide_tween.is_valid():
+		slide_tween.kill()
+	slide_tween = null
+
 # Thanks ChatGPT
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
 	slideDest = destination
 
-	if slide_tween and slide_tween.is_valid():
-		slide_tween.kill()
+	_stopPositionTween()
 
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
 	slide_tween.finished.connect(func(): isSliding = false)
+
+func beginPositionOverride() -> void:
+	_stopPositionTween()
+	isSliding = true
+	_savedLimitEnabled = limit_enabled
+	limit_enabled = false
+
+func panTo(destination : Vector2, duration : float) -> void:
+	_stopPositionTween()
+
+	slide_tween = create_tween()\
+		.set_process_mode(Tween.TWEEN_PROCESS_IDLE)\
+		.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+	slide_tween.tween_property(self, "global_position", destination, duration)
+	await slide_tween.finished
+
+func endPositionOverride() -> void:
+	_stopPositionTween()
+	limit_enabled = _savedLimitEnabled
+	isSliding = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

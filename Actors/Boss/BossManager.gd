@@ -10,33 +10,56 @@ var hudManager : HUDManager
 
 var bHealthbar : BossHealthBar
 var currBossUniversalCheckpoint : BossCheckPoint
+var cameraPanStart : BossCameraPanStart
 
 @export var bossFSM : BossFSM
+@export var moveToBottomDuration := 0.4
+@export var bottomHoldDuration := 0.25
+@export var upwardPanDuration := 3.0
+@export var topHoldDuration := 0.75
+@export var returnToPlayerDuration := 1.0
+@export var healthBarFadeDuration := 0.5
+
 var getPlayer : Callable
+var camera : GameCamera
+var hasPlayedBossIntro := false
+var isIntroPlaying := false
 
 func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager, 
-	roomManager : RoomManager, getPlayerFunc : Callable) -> void:
+		roomManager : RoomManager, getPlayerFunc : Callable,
+		cameraObj : GameCamera) -> void:
 		
 	self.placePersistent = placePersistentFunc
 	roomManager.playerChangedRoom.connect(checkPlayerStillSeeingBoss)
 	self.hudManager = hudManagerObj
 	self.getPlayer = getPlayerFunc
+	self.camera = cameraObj
 
 func handlePlayerEntry(_playerEntry : StringName) -> void:
-	if boss == null and !isBossKilled:		
-		setupBoss()
-		
-		hudManager.add_child(bHealthbar)
-		hudManager.hideHealthBar(false)
-		currBossUniversalCheckpoint.checkPointReached.emit(
-			currBossUniversalCheckpoint
-		)
-	pass
+	if boss != null or isBossKilled or isIntroPlaying:
+		return
 
-func setupBoss():
+	setupBoss()
+	hudManager.add_child(bHealthbar)
+	hudManager.hideHealthBar(false)
+	currBossUniversalCheckpoint.checkPointReached.emit(
+			currBossUniversalCheckpoint
+	)
+
+	if hasPlayedBossIntro:
+		await _startBossFight()
+		return
+
+	bHealthbar.prepareForIntro()
+	hasPlayedBossIntro = true
+	isIntroPlaying = true
+	await _playBossIntro()
+
+func setupBoss() -> void:
 	boss = Boss.create(spawnLocation, getPlayer,
 			placePersistent.call_deferred
 		)
+	boss.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	bHealthbar = BossHealthBar.create(boss.health.maxHealth)
 	
@@ -46,7 +69,40 @@ func setupBoss():
 		cleanupBoss(true)
 	)
 	placePersistent.call_deferred(boss)
-	
+
+func _playBossIntro() -> void:
+	assert(camera != null, "BossManager requires the GameCamera dependency")
+	assert(is_instance_valid(cameraPanStart), \
+		"RoomBoss1 requires a direct BossCameraPanStart child")
+
+	get_tree().paused = true
+	if not boss.is_node_ready():
+		await boss.ready
+
+	camera.beginPositionOverride()
+	await camera.panTo(cameraPanStart.global_position, moveToBottomDuration)
+	await get_tree().create_timer(bottomHoldDuration, true).timeout
+
+	var bossHeadPosition := boss.getHeadGlobalPosition()
+	var revealPosition := Vector2(cameraPanStart.global_position.x, bossHeadPosition.y)
+	await camera.panTo(revealPosition, upwardPanDuration)
+	await get_tree().create_timer(topHoldDuration, true).timeout
+
+	var healthBarTween := bHealthbar.fadeIn(healthBarFadeDuration)
+	await camera.panTo(getPlayer.call().global_position, returnToPlayerDuration)
+	if healthBarTween.is_valid() and healthBarTween.is_running():
+		await healthBarTween.finished
+
+	camera.endPositionOverride()
+	get_tree().paused = false
+	isIntroPlaying = false
+	boss.process_mode = Node.PROCESS_MODE_INHERIT
+	boss.start()
+
+func _startBossFight() -> void:
+	if not boss.is_node_ready():
+		await boss.ready
+	boss.process_mode = Node.PROCESS_MODE_INHERIT
 	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
@@ -74,6 +130,9 @@ func _registerBossRoom(c : Node) -> void:
 	
 	if c is BossSpawnPoint:
 		spawnLocation = c.global_position
+
+	if c is BossCameraPanStart:
+		cameraPanStart = c
 	
 	if c is BossCheckPoint and c.isUniversal:
 		currBossUniversalCheckpoint = c

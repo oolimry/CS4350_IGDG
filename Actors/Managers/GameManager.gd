@@ -56,7 +56,7 @@ func setup(p : Player) -> void:
 	
 	roomManager.roomCamHandler.camera = camera
 		
-	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer)
+	bossManager.setup(placePersistentObj, hudManager, roomManager, getPlayer, camera)
 	
 	roomManager.connect("playerChangedRoom", Callable(bgManager, "swapTo"))
 	
