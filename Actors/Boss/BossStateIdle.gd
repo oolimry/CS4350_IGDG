@@ -15,16 +15,16 @@ enum roomPosition {
 	RIGHT
 }
 
-const MAX_MELEE_ATTACK_RANGE := 1500
-const MIN_MELEE_ATTACK_RANGE := 400
+const SPECIAL_MELEE_ATTACK_RANGE := 400
 
 ## The relative position the boss is in
 ## in reference to the boss Room [br]
 ## Not to be mistaken for the RoomDef roomPos
 var currRoomPosition = roomPosition.MID
 
-func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
-	super.setup(getB, getP, dependencies)
+func setup(getB : Callable, getP : Callable, isPreconditionFulfilled : Callable,
+	dependencies : Dictionary) -> void:
+	super.setup(getB, getP, isPreconditionFulfilled, dependencies)
 	
 	durationTimer = dependencies["durationTimer"]
 	
@@ -85,9 +85,10 @@ func _end() -> void:
 	var b = getBoss.call()
 	var distToPlayer = abs(p.global_position.x - getBoss.call().global_position.x)
 	
-	if (distToPlayer <= MAX_MELEE_ATTACK_RANGE and \
-		distToPlayer >= MIN_MELEE_ATTACK_RANGE) and \
-		randomizer.randi() % 2 == 0:
+	var r = randomizer.randi() % 4
+	
+	if (isPreconditionFulfilled.call("MeleeAttack") \
+		and r <= 2) or r == 0:
 		transitionTo.emit("MeleeAttack")
 	elif randomizer.randi() % 2 == 0:
 		transitionTo.emit("ProjectileStraight")

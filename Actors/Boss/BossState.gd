@@ -7,10 +7,16 @@ signal transitionTo(stateID : StringName)
 
 var getBoss : Callable
 var getPlayer : Callable
+var isPreconditionFulfilled : Callable
 
-func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
+func setup(getB : Callable, getP : Callable, isStateConditionFulfilled : Callable, \
+	dependencies : Dictionary) -> void:
 	getBoss = getB
 	getPlayer = getP
+	isPreconditionFulfilled = isStateConditionFulfilled
+
+func _isPreconditionFulfilled() -> bool:
+	return true
 
 func _start() -> void:
 	pass
