@@ -11,12 +11,13 @@ var hudManager : HUDManager
 var bHealthbar : BossHealthBar
 var currBossUniversalCheckpoint : BossCheckPoint
 var cameraPanStart : BossCameraPanStart
+var roomManager : RoomManager
 
 @export var bossFSM : BossFSM
 @export var moveToBottomDuration := 0.4
-@export var bottomHoldDuration := 0.25
-@export var upwardPanDuration := 3.0
-@export var topHoldDuration := 0.75
+@export var bottomHoldDuration := 0.75
+@export var upwardPanDuration := 5.0
+@export var topHoldDuration := 1.0
 @export var returnToPlayerDuration := 1.0
 @export var healthBarFadeDuration := 0.5
 
@@ -31,6 +32,7 @@ func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager,
 		
 	self.placePersistent = placePersistentFunc
 	roomManager.playerChangedRoom.connect(checkPlayerStillSeeingBoss)
+	self.roomManager = roomManager
 	self.hudManager = hudManagerObj
 	self.getPlayer = getPlayerFunc
 	self.camera = cameraObj
@@ -93,7 +95,10 @@ func _playBossIntro() -> void:
 
 	var healthBarTween := bHealthbar.fadeIn(healthBarFadeDuration)
 	
-	await camera.panAndZoomTo(oriDest, oriZoom, returnToPlayerDuration)
+	var dest = Vector2(roomManager.calcRoomCenterWorldCoords(roomManager.currRoomPos).x 
+	+ roomManager.roomCamHandler.cameraCenterOffset.x, getPlayer.call().global_position.y) 
+	
+	await camera.panAndZoomTo(dest, oriZoom, returnToPlayerDuration)
 	if healthBarTween.is_valid() and healthBarTween.is_running():
 		await healthBarTween.finished
 

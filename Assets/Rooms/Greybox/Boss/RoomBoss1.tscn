@@ -106,7 +106,7 @@ distance = 160.0
 element = 1
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=426250526]
-position = Vector2(1920, 540)
+position = Vector2(1920, 261)
 script = ExtResource("16_vf4gv")
 
 [connection signal="body_entered" from="BossEntry" to="BossEntry" method="_on_body_entered"]
