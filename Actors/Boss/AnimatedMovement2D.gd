@@ -61,6 +61,11 @@ func _physics_process(delta: float) -> void:
 		_priming = true
 		animation_player.advance(0.0)
 		_priming = false
+		# Do not depend on mixer_applied being emitted for a zero-time advance.
+		# A stale offset from the preceding clip would move the actor by nearly
+		# that clip's entire displacement on the first frame of this one.
+		_previous_offset = motion_root.position
+		_previous_time = animation_player.current_animation_position
 	animation_player.advance(delta)
 
 func _on_pose_applied() -> void:

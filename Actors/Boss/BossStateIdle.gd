@@ -4,8 +4,10 @@ extends BossState
 ## Minimum idle time, including movement. A longer animation always finishes.
 @export var duration := 4
 var randomizer : RandomNumberGenerator
-var movementAnimName: StringName
 var durationTimer : Timer
+var _movementAnimation : StringName
+var _movementFinished := false
+var _minimumDurationFinished := false
 
 enum roomPosition {
 	LEFT,
@@ -13,16 +15,16 @@ enum roomPosition {
 	RIGHT
 }
 
-const MAX_MELEE_ATTACK_RANGE := 1500
-const MIN_MELEE_ATTACK_RANGE := 400
+const SPECIAL_MELEE_ATTACK_RANGE := 400
 
 ## The relative position the boss is in
 ## in reference to the boss Room [br]
 ## Not to be mistaken for the RoomDef roomPos
 var currRoomPosition = roomPosition.MID
 
-func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
-	super.setup(getB, getP, dependencies)
+func setup(getB : Callable, getP : Callable, isPreconditionFulfilled : Callable,
+	dependencies : Dictionary) -> void:
+	super.setup(getB, getP, isPreconditionFulfilled, dependencies)
 	
 	durationTimer = dependencies["durationTimer"]
 	
@@ -53,13 +55,23 @@ func _start() -> void:
 			ap.play("move_right")
 			currRoomPosition = roomPosition.RIGHT
 		else:
-			_end()
-	movementAnimName = ap.assigned_animation
+			_movementFinished = true
+	_movementAnimation = ap.assigned_animation if not _movementFinished else &""
+	_try_end()
 
 func _on_animation_finished(animation_name: StringName) -> void:
-	if animation_name != movementAnimName:
+	if animation_name != _movementAnimation:
 		return
-	_end()
+	_movementFinished = true
+	_try_end()
+
+func _on_minimum_duration_finished() -> void:
+	_minimumDurationFinished = true
+	_try_end()
+
+func _try_end() -> void:
+	if _movementFinished and _minimumDurationFinished:
+		_end()
 		
 
 func _end() -> void:
@@ -67,16 +79,16 @@ func _end() -> void:
 	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
 	# targets through RESET, which previously moved feet after touchdown.
 	ap.animation_finished.disconnect(_on_animation_finished)
-	durationTimer.timeout.disconnect(_end)
 	durationTimer.stop()
 	
 	var p = getPlayer.call()
 	var b = getBoss.call()
 	var distToPlayer = abs(p.global_position.x - getBoss.call().global_position.x)
 	
-	if (distToPlayer <= MAX_MELEE_ATTACK_RANGE and \
-		distToPlayer >= MIN_MELEE_ATTACK_RANGE) and \
-		randomizer.randi() % 2 == 0:
+	var r = randomizer.randi() % 4
+	
+	if (isPreconditionFulfilled.call("MeleeAttack") \
+		and r <= 2) or r == 0:
 		transitionTo.emit("MeleeAttack")
 	elif randomizer.randi() % 2 == 0:
 		transitionTo.emit("ProjectileStraight")

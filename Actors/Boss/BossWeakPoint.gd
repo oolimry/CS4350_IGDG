@@ -3,7 +3,7 @@ extends Area2D
 
 @export var slashDamage := 2
 @export var windDamage := 2
-@export var explosionDamage := 2
+@export var explosionDamage := 8
 
 signal bossTakeDamage(damage : int)
 

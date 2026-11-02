@@ -24,8 +24,9 @@ var projectileWarning : ProjectileWarning
 var straightMovement : ProjectileMovementStraightLine
 var randomizer : RandomNumberGenerator
 
-func setup(getB : Callable, getP : Callable, dependencies : Dictionary) -> void:
-	super.setup(getB, getP, dependencies)
+func setup(getB : Callable, getP : Callable, isPreconditionFulfilled : Callable, 
+	dependencies : Dictionary) -> void:
+	super.setup(getB, getP, isPreconditionFulfilled, dependencies)
 	projTimer = dependencies["projTimer"]
 	bossStaff = dependencies["bossStaff"]
 	durationTimer = dependencies["durationTimer"]
