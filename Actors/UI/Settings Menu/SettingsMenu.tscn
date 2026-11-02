@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c0ipfgi7s4hmy"]
 
 [ext_resource type="Script" uid="uid://ct0gte1hyxb5o" path="res://Actors/UI/Settings Menu/settings_menu.gd" id="1_k7q2q"]
+[ext_resource type="Texture2D" uid="uid://df8xngx6m308d" path="res://Assets/Backgrounds/TitleScreenBG.png" id="2_yj2ko"]
+[ext_resource type="Texture2D" uid="uid://ctmwn01q5x10t" path="res://Assets/UI/UnwoundLogo.png" id="3_84lpw"]
 
 [node name="SettingsMenu" type="Control" unique_id=1695426614]
 layout_mode = 3
@@ -26,12 +28,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1509768985]
+layout_mode = 2
+texture = ExtResource("2_yj2ko")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1545718867]
 layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=769455610]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1402813494]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1096381668]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Volume"
+clip_text = true
 
 [node name="Master" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=812919999]
 layout_mode = 2
@@ -41,6 +59,7 @@ value = 0.5
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1635539969]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Music"
 
 [node name="Music" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1296776160]
@@ -51,6 +70,7 @@ value = 0.5
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=234137564]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Sound Effects"
 
 [node name="Sound Effects" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1081355774]
@@ -61,7 +81,12 @@ value = 0.5
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=860685483]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Return to Main Menu"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=365811174]
+layout_mode = 2
+texture = ExtResource("3_84lpw")
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Master" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Music" to="." method="_on_music_value_changed"]
