@@ -79,8 +79,11 @@ func _playBossIntro() -> void:
 	if not boss.is_node_ready():
 		await boss.ready
 
+	# Override the camera to pan
+	var oriDest = camera.slideDest
+	var oriZoom = camera.zoom
 	camera.beginPositionOverride()
-	await camera.panTo(cameraPanStart.global_position, moveToBottomDuration)
+	await camera.panAndZoomTo(cameraPanStart.global_position, Vector2(0.8, 0.8), moveToBottomDuration)
 	await get_tree().create_timer(bottomHoldDuration, true).timeout
 
 	var bossHeadPosition := boss.getHeadGlobalPosition()
@@ -89,13 +92,15 @@ func _playBossIntro() -> void:
 	await get_tree().create_timer(topHoldDuration, true).timeout
 
 	var healthBarTween := bHealthbar.fadeIn(healthBarFadeDuration)
-	await camera.panTo(getPlayer.call().global_position, returnToPlayerDuration)
+	
+	await camera.panAndZoomTo(oriDest, oriZoom, returnToPlayerDuration)
 	if healthBarTween.is_valid() and healthBarTween.is_running():
 		await healthBarTween.finished
 
 	camera.endPositionOverride()
 	get_tree().paused = false
 	isIntroPlaying = false
+	
 	boss.process_mode = Node.PROCESS_MODE_INHERIT
 	boss.start()
 

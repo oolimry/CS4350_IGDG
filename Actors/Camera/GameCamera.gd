@@ -80,6 +80,20 @@ func panTo(destination : Vector2, duration : float) -> void:
 	slide_tween.tween_property(self, "global_position", destination, duration)
 	await slide_tween.finished
 
+func panAndZoomTo(destination : Vector2, zoomFinal : Vector2, duration : float) -> void:
+	_stopPositionTween()
+	
+	slide_tween = create_tween()\
+		.set_parallel(true)\
+		.set_process_mode(Tween.TWEEN_PROCESS_IDLE)\
+		.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
+		.set_trans(Tween.TRANS_SINE)\
+		.set_ease(Tween.EASE_IN_OUT)
+	slide_tween.tween_property(self, "global_position", destination, duration)
+	slide_tween.tween_property(self, "zoom", zoomFinal, duration)
+	await slide_tween.finished
+
+
 func endPositionOverride() -> void:
 	_stopPositionTween()
 	limit_enabled = _savedLimitEnabled
