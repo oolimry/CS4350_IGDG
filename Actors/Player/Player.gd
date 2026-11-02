@@ -571,6 +571,8 @@ func setElement(element : Enums.Elements):
 		AudioManager.play(AudioManager.FireElementStruck)
 	elif element == Enums.Elements.WIND:
 		AudioManager.play(AudioManager.WindElementStruck)
+	elif element == Enums.Elements.PURPLE:
+		AudioManager.play(AudioManager.PurpleElementStruck)
 
 func getMovementDirection():
 	var movementDirection = Enums.Directions.NONE

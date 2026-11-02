@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
-[sub_resource type="Resource" id="Resource_v2fl2"]
+[sub_resource type="Resource" id="Resource_8lc4p"]
 resource_local_to_scene = true
 script = ExtResource("6_8lc4p")
 persistentID = &"5f5c5a78-e465-4e5c-9a32-ef751a0ba32d"
@@ -36,9 +36,9 @@ position = Vector2(960, 560)
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 
 [node name="Crown" parent="RoomResidents" unique_id=2109143653 instance=ExtResource("10_j8fx1")]
-position = Vector2(1600, 80)
+position = Vector2(1561, 125)
 unique_id = &"CrownBlue"
-roomResident = SubResource("Resource_v2fl2")
+roomResident = SubResource("Resource_8lc4p")
 crown = 1
 
 [node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("5_ql6yg")]

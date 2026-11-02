@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cjtw7auwukqrr"]
+
+[ext_resource type="Shader" uid="uid://fy0grmb7e4ag" path="res://Assets/Boss/Shaders/LegShader.gdshader" id="1_oprch"]
+
+[resource]
+shader = ExtResource("1_oprch")
+shader_parameter/speed = 2.0
+shader_parameter/min_brightness = 0.3
+shader_parameter/max_rightness_modifier = 5.0

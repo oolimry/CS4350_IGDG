@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://uxo6wb4bov7b" path="res://Actors/Boss/Boss.gd" id="1_2yquw"]
 [ext_resource type="Texture2D" uid="uid://3ecylqonwfeu" path="res://Assets/Boss/Boss0.5x/Boss_Flat-1.png" id="2_wnxsj"]
 [ext_resource type="Texture2D" uid="uid://cl4xj7y6o3jpe" path="res://Assets/Boss/Boss0.5x/Boss_Flat-2.png" id="3_fycjl"]
-[ext_resource type="Shader" uid="uid://fy0grmb7e4ag" path="res://Assets/Boss/Shaders/LegShader.gdshader" id="3_l14qj"]
 [ext_resource type="Texture2D" uid="uid://c2qy1p2881eri" path="res://Assets/Boss/Boss0.5x/Boss_Flat-3.png" id="4_qkfim"]
 [ext_resource type="Texture2D" uid="uid://bwjkb52g0iobs" path="res://Assets/Boss/Boss0.5x/Boss_Flat-4.png" id="5_41bxp"]
 [ext_resource type="Texture2D" uid="uid://bm8blhuusvqdl" path="res://Assets/Boss/Boss0.5x/Boss_Flat-5.png" id="6_b7nma"]
@@ -16,46 +15,20 @@
 [ext_resource type="Texture2D" uid="uid://d3pf8qbqwyrw6" path="res://Assets/Boss/Boss0.5x/Boss_Flat-12.png" id="13_4lsd1"]
 [ext_resource type="Texture2D" uid="uid://buet2tx8pibx5" path="res://Assets/Boss/Boss0.5x/Boss_Flat-15.png" id="14_hje8s"]
 [ext_resource type="Texture2D" uid="uid://cs0603is2okjm" path="res://Assets/Boss/Boss0.5x/Boss_Flat-13.png" id="15_0ptbr"]
+[ext_resource type="Material" uid="uid://cjtw7auwukqrr" path="res://Assets/Boss/Shaders/BossImportantShader.tres" id="15_b7nma"]
 [ext_resource type="Texture2D" uid="uid://dgup3cl5lm0vx" path="res://Assets/Boss/Boss0.5x/Boss_Flat-14.png" id="16_aa1vh"]
 [ext_resource type="PackedScene" uid="uid://be7yqlxdbboc7" path="res://Actors/Boss/BossWeakPoint.tscn" id="17_i12or"]
-[ext_resource type="Script" uid="uid://dnjqjs4tjsd13" path="res://Actors/Boss/BossHitBox.gd" id="18_fycjl"]
 [ext_resource type="Script" uid="uid://dxrawks4ivrlf" path="res://Actors/Boss/BossHealth.gd" id="18_i12or"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="18_ig4bl"]
 [ext_resource type="PackedScene" uid="uid://dsi8v7fvxj7ty" path="res://Actors/Boss/BossHitBox.tscn" id="18_ocguh"]
 [ext_resource type="Script" uid="uid://nnrl65y0in8t" path="res://Actors/Boss/BossFSM.gd" id="19_odtgy"]
 [ext_resource type="Script" uid="uid://dmv3vx66argqt" path="res://Actors/Boss/BossState.gd" id="20_mgv3b"]
 [ext_resource type="Script" uid="uid://cpu71kvpb5egu" path="res://Actors/Boss/BossHeadHurtbox.gd" id="20_qkfim"]
 [ext_resource type="Resource" uid="uid://b48siyfp584tt" path="res://Assets/Boss/States/BossState_ProjectileFireStraight.tres" id="20_ttjjf"]
 [ext_resource type="Resource" uid="uid://cma7a5l6nqenl" path="res://Assets/Boss/States/BossState_Idle.tres" id="23_8sqyj"]
-[ext_resource type="Resource" uid="uid://chpgoknfj5nn8" path="res://Assets/Boss/States/BossState_BeamFiring.tres" id="27_41bxp"]
+[ext_resource type="Script" uid="uid://j08ct1425qun" path="res://Actors/Boss/BossStateMeleeAttack.gd" id="23_ig4bl"]
+[ext_resource type="Script" uid="uid://dd83rqerjivo8" path="res://Actors/Boss/BossStateBeamFiring.gd" id="26_wnxsj"]
 [ext_resource type="Script" uid="uid://ccn2kt7aghbei" path="res://Actors/Boss/AnimatedMovement2D.gd" id="27_motion"]
-[ext_resource type="Resource" uid="uid://y6xopqnap8fv" path="res://Assets/Boss/States/BossState_MeleeAttack.tres" id="28_41bxp"]
 [ext_resource type="Script" uid="uid://crj60x31b8h1n" path="res://Actors/Boss/PlantedIKTarget2D.gd" id="28_contact"]
-
-[sub_resource type="Gradient" id="Gradient_wnxsj"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
-gradient = SubResource("Gradient_wnxsj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l14qj"]
-shader = ExtResource("3_l14qj")
-shader_parameter/speed = 2.0
-shader_parameter/min_brightness = 0.3
-shader_parameter/max_rightness_modifier = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vratk"]
-shader = ExtResource("3_l14qj")
-shader_parameter/speed = 2.0
-shader_parameter/min_brightness = 0.3
-shader_parameter/max_rightness_modifier = 5.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yv04i"]
-shader = ExtResource("3_l14qj")
-shader_parameter/speed = 2.0
-shader_parameter/min_brightness = 0.3
-shader_parameter/max_rightness_modifier = 5.0
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_hgopr"]
 execution_mode = 1
@@ -283,7 +256,7 @@ tracks/7/keys = {
 }
 tracks/8/type = "value"
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL/ForearmL/LArmHitbox:monitoring")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
@@ -295,7 +268,7 @@ tracks/8/keys = {
 }
 tracks/9/type = "value"
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR/ForearmR/RArmHitbox:monitoring")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
@@ -391,27 +364,200 @@ tracks/16/keys = {
 }
 tracks/17/type = "value"
 tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL/LLegHitbox:monitoring")
+tracks/17/enabled = false
+tracks/17/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR/RLegHitbox:monitoring")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
 }
 tracks/18/type = "value"
 tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR/RLegHitbox:monitoring")
+tracks/18/enabled = false
+tracks/18/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL/LLegHitbox:monitoring")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("CharacterContainer/Body/BossFootR:self_modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("CharacterContainer/Body/BossForearmR:material")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [null]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("CharacterContainer/IKTargets/ArmRTarget/IKTarget:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -255.5)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("CharacterContainer/Body/BossForearmR:self_modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7jq52"]
+resource_name = "arm_l_face_swipe"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -255.5), Vector2(-20, -280), Vector2(-20, -280), Vector2(0, -255.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.7484555e-07, -0.07679448708775011, -0.07679448708775011, -1.7484555e-07]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterContainer/IKTargets/ArmLTarget:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 2, 2.3166666, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(647, 977.5), Vector2(219.167, -210), Vector2(238.333, -434.167), Vector2(238.333, -434.167), Vector2(-267.5, -425), Vector2(-267.5, -425), Vector2(647, 977.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL/ForearmL/LArmHitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.7055225e-08, 1.1333333, 1.2, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterContainer/Body/BossForearmL:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.8259504, 0.3555942, 0, 1), Color(0.9433712, 0.5376045, 0.25709426, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Warning:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.44666666, 0.68, 0.90666664, 1.14, 1.3266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Warning:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -1517)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Warning:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterContainer/Body/BossForearmL:material")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.4333, 2.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null]
 }
 
 [sub_resource type="Animation" id="Animation_wnxsj"]
@@ -513,6 +659,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(22.812, 50)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterContainer/Body/BossForearmL:material")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.026666641, 0.9933333, 1.0266666, 2.6666667, 2.7, 3.06),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null, null]
+}
 
 [sub_resource type="Animation" id="Animation_l14qj"]
 resource_name = "arm_l_swing"
@@ -600,6 +758,130 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(24.812, 45.087)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterContainer/Body/BossForearmL:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.43333334, 2.1733334, 2.2233334, 2.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null, null]
+}
+
+[sub_resource type="Animation" id="Animation_cqy2o"]
+resource_name = "arm_r_face_swipe"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -255.5), Vector2(20, -280), Vector2(20, -280), Vector2(0, -255.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.7484555e-07, 0.07679449, 0.07679449, -1.7484555e-07]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterContainer/IKTargets/ArmRTarget:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.8, 2, 2.3166666, 2.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-647, 977.5), Vector2(-219.16666, -210.00005), Vector2(-238.33337, -434.1665), Vector2(-238.33337, -434.1665), Vector2(267.5, -425), Vector2(267.5, -425), Vector2(-647, 977.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Warning:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.44666666, 0.68, 0.90666664, 1.14, 1.3266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0), Color(1, 0.14901961, 0.15686275, 0.27058825), Color(1, 0.14901961, 0.15686275, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Warning:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, -1517)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Warning:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR/ForearmR/RArmHitbox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.1333332, 1.1999999, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterContainer/Body/BossForearmR:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3917, 0.425, 2.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterContainer/Body/BossForearmR:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.5, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.8259504, 0.3555942, 0, 1), Color(0.9433712, 0.5376045, 0.25709426, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ocguh"]
@@ -701,6 +983,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(22.812, 54)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CharacterContainer/Body/BossForearmR:material")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 1, 2.74, 2.79),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null]
+}
 
 [sub_resource type="Animation" id="Animation_vratk"]
 resource_name = "arm_r_swing"
@@ -748,7 +1042,7 @@ tracks/3/path = NodePath("CharacterContainer/Body/BossForearmR:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.93333334, 3, 3.2),
+"times": PackedFloat32Array(0, 0.93333334, 3, 3.1333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.8259504, 0.3555942, 0, 1), Color(0.9433712, 0.5376045, 0.25709426, 1), Color(1, 1, 1, 1)]
@@ -789,6 +1083,34 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(35.802, 45.087)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterContainer/Body/BossForearmR:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 0.70000005, 2.94, 2.99, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null, null]
+}
+
+[sub_resource type="Animation" id="Animation_4lsd1"]
+resource_name = "died"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.46666667),
+"transitions": PackedFloat32Array(1, 0.4204483),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_b7nma"]
 resource_name = "foot_l_stomp"
@@ -827,7 +1149,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.10000001, 0.59575915, 2.5344265, 2.6097064),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.9254902, 0, 0.007843138, 1), Color(0.84313726, 0.4117647, 0.09019608, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(0.9254902, 0, 0.007843138, 1)]
+"values": [Color(0.9254902, 0, 0.007843138, 1), Color(0.84313726, 0.4117647, 0.09019608, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -872,10 +1194,22 @@ tracks/6/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/Foo
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.010037332, 1.1, 1.1666666, 2.5333333, 2.6),
+"times": PackedFloat32Array(0, 0.66666675, 0.73333335, 2.5232959, 2.5899625),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterContainer/Body/BossFootL:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.2, 2.4066668, 2.4566667, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null, null]
 }
 
 [sub_resource type="Animation" id="Animation_41bxp"]
@@ -915,7 +1249,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.10000001, 0.59575915, 2.5344265, 2.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.9254902, 0, 0.007843138, 1), Color(0.84313726, 0.4117647, 0.09019608, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(0.9254902, 0, 0.007843138, 1)]
+"values": [Color(0.9254902, 0, 0.007843138, 1), Color(0.84313726, 0.4117647, 0.09019608, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(3.825541, 1.9617289, 0.5723421, 1), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -960,66 +1294,22 @@ tracks/6/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/Foo
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.56666666, 0.6333333, 2.5333333, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.56666666, 0.6333333, 2.5333333, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, true, false]
+"values": [false, false, true, true, false]
 }
-
-[sub_resource type="Animation" id="Animation_fycjl"]
-resource_name = "head_shake_left"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/Head:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.2617993877991494, 0.12217304763960309, 0.17453292519943295, 0.08726646259971647, 0.10471976, 0.04363323, 0.08726645, 0.01745329, 0.052359883, 0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.275, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.06981316, 0.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_qkfim"]
-resource_name = "head_shake_right"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso/Head:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.2617993877991494, -0.12217304763960309, -0.17453292519943295, -0.08726646259971647, -0.10471975511965978, -0.04363323129985824, -0.08726646259971647, -0.01745329251994329, -0.05235987755982989, 0.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterContainer/Bones/Skeleton2D/Hip/Torso:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.275, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.06981317007977318, 0.0, 0.0]
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterContainer/Body/BossFootR:material")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.2, 2.6333334, 2.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, null, ExtResource("15_b7nma"), ExtResource("15_b7nma"), null]
 }
 
 [sub_resource type="Animation" id="Animation_ttjjf"]
@@ -1273,14 +1563,15 @@ tracks/9/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sqyj"]
 _data = {
 &"RESET": SubResource("Animation_8sqyj"),
+&"arm_l_face_swipe": SubResource("Animation_7jq52"),
 &"arm_l_hit": SubResource("Animation_wnxsj"),
 &"arm_l_swing": SubResource("Animation_l14qj"),
+&"arm_r_face_swipe": SubResource("Animation_cqy2o"),
 &"arm_r_hit": SubResource("Animation_ocguh"),
 &"arm_r_swing": SubResource("Animation_vratk"),
+&"died": SubResource("Animation_4lsd1"),
 &"foot_l_stomp": SubResource("Animation_b7nma"),
 &"foot_r_stomp": SubResource("Animation_41bxp"),
-&"head_shake_left": SubResource("Animation_fycjl"),
-&"head_shake_right": SubResource("Animation_qkfim"),
 &"move_left": SubResource("Animation_ttjjf"),
 &"move_right": SubResource("Animation_ig4bl")
 }
@@ -1354,16 +1645,18 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bhunq"]
 gradient = SubResource("Gradient_wnxsj")
 
+[sub_resource type="Resource" id="Resource_wnxsj"]
+script = ExtResource("26_wnxsj")
+metadata/_custom_type_script = "uid://dd83rqerjivo8"
+
+[sub_resource type="Resource" id="Resource_ttjjf"]
+script = ExtResource("23_ig4bl")
+metadata/_custom_type_script = "uid://j08ct1425qun"
+
 [node name="Boss" type="Node2D" unique_id=2035268831 node_paths=PackedStringArray("health", "fsm")]
 script = ExtResource("1_2yquw")
 health = NodePath("Health")
 fsm = NodePath("FSM")
-
-[node name="Warning" type="Sprite2D" parent="." unique_id=608109346]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(1118.9999, -1333.5)
-scale = Vector2(22.812496, 41.453133)
-texture = SubResource("GradientTexture2D_bhunq")
 
 [node name="CharacterContainer" type="Node2D" parent="." unique_id=1060723736]
 position = Vector2(0, -1185)
@@ -1375,51 +1668,50 @@ scale = Vector2(1.2, 1.2)
 
 [node name="BossFootR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1041100193]
 material = ExtResource("15_b7nma")
-position = Vector2(-286.74286, 593.50037)
-rotation = -0.012279518
-scale = Vector2(0.99976635, 0.99976635)
+position = Vector2(-286.74194, 593.50024)
+rotation = -0.0122776795
+scale = Vector2(0.99976754, 0.99976754)
 texture = ExtResource("2_wnxsj")
 offset = Vector2(286.5, -578)
 
 [node name="BossFootL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1455065047]
-material = SubResource("ShaderMaterial_vratk")
-position = Vector2(272.6024, 618.92175)
-rotation = -0.11984237
-scale = Vector2(0.999837, 0.999837)
+position = Vector2(272.60233, 618.9214)
+rotation = -0.119842224
+scale = Vector2(0.9998381, 0.9998381)
 texture = ExtResource("3_fycjl")
 offset = Vector2(-282.5, -576)
 
 [node name="BossShinL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=954763846]
-position = Vector2(946.4258, 146.68652)
-rotation = 0.050930478
-scale = Vector2(0.99983805, 0.99983805)
+position = Vector2(946.4284, 146.68732)
+rotation = 0.050933525
+scale = Vector2(0.9998388, 0.9998388)
 texture = ExtResource("4_qkfim")
 offset = Vector2(-935, -70.5)
 
 [node name="BossShinR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=94052258]
-position = Vector2(-935.8081, 87.78351)
-rotation = -0.00029629725
-scale = Vector2(0.9998477, 0.9998477)
+position = Vector2(-935.809, 87.78302)
+rotation = -0.00029827442
+scale = Vector2(0.9998499, 0.9998499)
 texture = ExtResource("5_41bxp")
 offset = Vector2(937, -70)
 
 [node name="BossThighL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=676494382]
-position = Vector2(77.48947, 274.4973)
-rotation = 0.087753095
-scale = Vector2(0.9998428, 0.9998428)
+position = Vector2(77.48939, 274.4973)
+rotation = 0.08775472
+scale = Vector2(0.999844, 0.999844)
 texture = ExtResource("6_b7nma")
 offset = Vector2(-80.5, -276.5)
 
 [node name="BossThighR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=130863287]
 position = Vector2(-77.48918, 274.49884)
-rotation = -0.019558258
+rotation = -0.019559208
 scale = Vector2(0.9998467, 0.9998467)
 texture = ExtResource("7_l14qj")
 offset = Vector2(82, -273.5)
 
 [node name="BossSkirt" type="Polygon2D" parent="CharacterContainer/Body" unique_id=284854280]
 position = Vector2(0, 254.50006)
-scale = Vector2(0.9998535, 0.9998535)
+scale = Vector2(0.9998524, 0.9998524)
 offset = Vector2(-1149, -1310)
 texture = ExtResource("8_vratk")
 skeleton = NodePath("../../Bones/Skeleton2D")
@@ -1431,57 +1723,58 @@ internal_vertex_count = 3
 
 [node name="BossWaist" type="Sprite2D" parent="CharacterContainer/Body" unique_id=943938123]
 position = Vector2(0, 254.50006)
-scale = Vector2(0.9998535, 0.9998535)
+scale = Vector2(0.9998524, 0.9998524)
 texture = ExtResource("9_yv04i")
 offset = Vector2(3.5, -254.5)
 
 [node name="BossCloth" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1440620290]
-position = Vector2(219.36607, -281.8672)
-rotation = -0.069813095
-scale = Vector2(0.99969244, 0.99969244)
+position = Vector2(219.3663, -281.86755)
+rotation = -0.06981316
+scale = Vector2(0.9996934, 0.9996934)
 texture = ExtResource("10_2vy40")
 offset = Vector2(-240, 274)
 
 [node name="BossArmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=790249206]
-position = Vector2(-548.4806, -241.70569)
-rotation = 0.100499175
-scale = Vector2(0.9996926, 0.9996926)
+position = Vector2(-548.48114, -241.70593)
+rotation = 0.100497626
+scale = Vector2(0.9996914, 0.9996914)
 texture = ExtResource("11_7jq52")
 offset = Vector2(534, 278.5)
 
 [node name="BossArmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=653435422]
-position = Vector2(509.63113, -315.69592)
-rotation = 0.021861337
-scale = Vector2(0.99969256, 0.99969256)
+position = Vector2(509.63165, -315.6964)
+rotation = 0.021860791
+scale = Vector2(0.9996885, 0.9996885)
 texture = ExtResource("12_cqy2o")
 offset = Vector2(-531.5, 279.5)
 
 [node name="BossTorso" type="Sprite2D" parent="CharacterContainer/Body" unique_id=283587284]
 position = Vector2(0, -0.9622803)
-rotation = -0.069813095
-scale = Vector2(0.99969244, 0.99969244)
+rotation = -0.06981316
+scale = Vector2(0.9996934, 0.9996934)
 texture = ExtResource("13_4lsd1")
 
 [node name="BossHead" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1327874943]
 modulate = Color(0.93, 0.744, 0.74709994, 1)
 material = ExtResource("15_b7nma")
-position = Vector2(-29.323542, -420.30896)
-rotation = -0.06981309
-scale = Vector2(0.9996787, 0.9996787)
+position = Vector2(-29.323599, -420.30945)
+rotation = -0.06981316
+scale = Vector2(0.9996796, 0.9996796)
 texture = ExtResource("14_hje8s")
 offset = Vector2(2, 421.5)
 
 [node name="BossForearmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=415876403]
-position = Vector2(-906.1997, 336.6131)
-rotation = -0.11953383
-scale = Vector2(0.9995851, 0.9995851)
+position = Vector2(-906.1987, 336.6137)
+rotation = -0.1195325
+scale = Vector2(0.999584, 0.999584)
 texture = ExtResource("15_0ptbr")
 offset = Vector2(831, -329)
 
 [node name="BossForearmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1226613400]
-position = Vector2(794.12463, 302.01636)
-rotation = -0.050336875
-scale = Vector2(0.9995876, 0.9995876)
+self_modulate = Color(0.8259504, 0.3555942, 0, 1)
+position = Vector2(794.1233, 302.01563)
+rotation = -0.05033886
+scale = Vector2(0.9995841, 0.9995841)
 texture = ExtResource("16_aa1vh")
 offset = Vector2(-832.5, -331)
 
@@ -1492,7 +1785,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_wvtfw")
 
 [node name="Hip" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D" unique_id=950118138]
 position = Vector2(0, 254.5)
-scale = Vector2(0.99985343, 0.99985343)
+scale = Vector2(0.99985236, 0.99985236)
 rest = Transform2D(1, 0, 0, 1, 0, 254.5)
 
 [node name="LegR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=1201226660]
@@ -1511,8 +1804,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="FootR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=1238437744]
 position = Vector2(649.0137, 505.98605)
-rotation = -0.01177772
-scale = Vector2(0.9999191, 0.9999191)
+rotation = -0.011777719
+scale = Vector2(0.9999193, 0.9999193)
 rest = Transform2D(0.9998512, -0.011776497, 0.011776497, 0.9998512, 649.0137, 505.98605)
 auto_calculate_length_and_angle = false
 length = 324.3225
@@ -1526,9 +1819,9 @@ remote_path = NodePath("../../../../../../../Body/BossFootR")
 position = Vector2(-172.5, 382)
 
 [node name="RLegHitbox" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR" unique_id=1119173710 instance=ExtResource("18_ocguh")]
-visible = false
 rotation = 0.70162237
 scale = Vector2(0.5, 0.5)
+monitoring = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR" unique_id=200553171]
 remote_path = NodePath("../../../../../../Body/BossShinR")
@@ -1567,7 +1860,6 @@ remote_path = NodePath("../../../../../../../Body/BossFootL")
 position = Vector2(172.5, 382)
 
 [node name="LLegHitbox" parent="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL" unique_id=2064012497 instance=ExtResource("18_ocguh")]
-visible = false
 rotation = -0.15707964
 scale = Vector2(0.5, 0.5)
 monitoring = false
@@ -1581,7 +1873,7 @@ remote_path = NodePath("../../../../../Body/BossThighL")
 [node name="Torso" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=1063150825]
 position = Vector2(0, -255.5)
 rotation = -0.06981316
-scale = Vector2(0.99983996, 0.99983996)
+scale = Vector2(0.99984103, 0.99984103)
 rest = Transform2D(1, 0, 0, 1, 0, -255.5)
 
 [node name="ArmR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=752141885]
@@ -1593,9 +1885,9 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmR" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR" unique_id=547883284]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-297.98297, 611.4786)
+position = Vector2(-297.98267, 611.47925)
 rotation = -0.2210663
-scale = Vector2(0.9998929, 0.9998929)
+scale = Vector2(0.9998927, 0.9998927)
 rest = Transform2D(0.99628794, -0.086064555, 0.086064555, 0.99628794, -298.00323, 611.50684)
 auto_calculate_length_and_angle = false
 length = 512.0
@@ -1603,7 +1895,6 @@ bone_angle = 74.2
 metadata/_local_pose_override_enabled_ = true
 
 [node name="RArmHitbox" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmR/ForearmR" unique_id=154731311 instance=ExtResource("18_ocguh")]
-visible = false
 rotation = -0.075049154
 scale = Vector2(0.5425, 0.8125)
 monitoring = false
@@ -1626,9 +1917,9 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/ArmL" unique_id=1826379377]
 visible = false
-position = Vector2(298.0197, 611.5339)
+position = Vector2(298.01947, 611.5366)
 rotation = -0.070873916
-scale = Vector2(0.9998935, 0.9998935)
+scale = Vector2(0.99989474, 0.99989474)
 rest = Transform2D(0.9962853, 0.086041905, -0.086041905, 0.9962853, 298.0014, 611.5054)
 auto_calculate_length_and_angle = false
 length = 512.0
@@ -1682,18 +1973,6 @@ rest = Transform2D(1, 0, 0, 1, 238.5, -265)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso/Cloth" unique_id=1057077073]
 remote_path = NodePath("../../../../../../Body/BossCloth")
 
-[node name="CrystalWall" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=2023236522 instance=ExtResource("18_ig4bl")]
-position = Vector2(379.99994, -349.00003)
-rotation = 0.06981317
-scale = Vector2(5, 0.5)
-hasKillzoneExclusion = true
-
-[node name="CrystalWall2" parent="CharacterContainer/Bones/Skeleton2D/Hip/Torso" unique_id=1869329706 instance=ExtResource("18_ig4bl")]
-position = Vector2(-378.33334, -340.6667)
-rotation = -0.06981317
-scale = Vector2(5, 0.5)
-hasKillzoneExclusion = true
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterContainer/Bones/Skeleton2D/Hip" unique_id=848140235]
 remote_path = NodePath("../../../../Body/BossWaist")
 
@@ -1729,11 +2008,9 @@ script = ExtResource("28_contact")
 [node name="IKTarget" type="Node2D" parent="CharacterContainer/IKTargets/ArmLTarget" unique_id=325359656]
 
 [node name="FootReference" type="Marker2D" parent="CharacterContainer" unique_id=1613756408]
-visible = false
 position = Vector2(0, 546)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=547421789]
-callback_mode_process = 2
 libraries/ = SubResource("AnimationLibrary_8sqyj")
 
 [node name="HurtAnimationPlayer" type="AnimationPlayer" parent="." unique_id=465922062]
@@ -1747,6 +2024,12 @@ animation_player = NodePath("../AnimationPlayer")
 motion_root = NodePath("../CharacterContainer/MotionRoot")
 targets = [NodePath("../CharacterContainer/IKTargets/FootRTarget"), NodePath("../CharacterContainer/IKTargets/FootLTarget"), NodePath("../CharacterContainer/IKTargets/ArmRTarget"), NodePath("../CharacterContainer/IKTargets/ArmLTarget")]
 
+[node name="Warning" type="Sprite2D" parent="." unique_id=608109346]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1118.9999, -1333.5)
+scale = Vector2(22.812496, 41.453133)
+texture = SubResource("GradientTexture2D_bhunq")
+
 [node name="Health" type="Node" parent="." unique_id=918916175 node_paths=PackedStringArray("timer")]
 script = ExtResource("18_i12or")
 timer = NodePath("Timer")
@@ -1759,9 +2042,9 @@ wait_time = 0.2
 script = ExtResource("19_odtgy")
 initialState = ExtResource("23_8sqyj")
 stateIDLookup = Dictionary[StringName, ExtResource("20_mgv3b")]({
-&"BeamFiring": ExtResource("27_41bxp"),
+&"BeamFiring": SubResource("Resource_wnxsj"),
 &"Idle": ExtResource("23_8sqyj"),
-&"MeleeAttack": ExtResource("28_41bxp"),
+&"MeleeAttack": SubResource("Resource_ttjjf"),
 &"ProjectileStraight": ExtResource("20_ttjjf")
 })
 
@@ -1773,10 +2056,8 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[connection signal="bossTakeDamage" from="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR/RLegHurtbox" to="Health" method="_on_boss_take_damage"]
-[connection signal="bossTakeDamage" from="CharacterContainer/Bones/Skeleton2D/Hip/LegR/ShinR/FootR/RLegHitbox" to="Health" method="_on_boss_take_damage"]
-[connection signal="bossTakeDamage" from="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL/LLegHurtbox" to="Health" method="_on_boss_take_damage"]
-[connection signal="body_entered" from="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL/LLegHitbox" to="CharacterContainer/Bones/Skeleton2D/Hip/LegL/ShinL/FootL/LLegHitbox" method="_on_body_entered"]
+[node name="DelayTimer" type="Timer" parent="FSM" unique_id=1622426574]
+
 [connection signal="bossTakeDamage" from="CharacterContainer/Bones/Skeleton2D/Hip/Torso/Head/HeadHurtBox" to="Health" method="_on_boss_take_damage"]
 [connection signal="timeout" from="Health/Timer" to="Health" method="_on_timer_timeout"]
 

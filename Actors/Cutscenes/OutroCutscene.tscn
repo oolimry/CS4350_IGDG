@@ -191,14 +191,14 @@ _data = {
 &"RESET": SubResource("Animation_2h3m5")
 }
 
-[sub_resource type="Gradient" id="Gradient_uf5c2"]
+[sub_resource type="Gradient" id="Gradient_wg47o"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uf5c2"]
-gradient = SubResource("Gradient_uf5c2")
+gradient = SubResource("Gradient_wg47o")
 
-[sub_resource type="Animation" id="Animation_r3nfe"]
+[sub_resource type="Animation" id="Animation_hy1s0"]
 resource_name = "BecomeTransparent"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -213,8 +213,9 @@ tracks/0/keys = {
 "values": [Color(1.4369954, 1.4369954, 1.4369954, 1), Color(0.012617188, 0.012617188, 0.012617188, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_uf5c2"]
+[sub_resource type="Animation" id="Animation_dwx3v"]
 resource_name = "Flash"
+length = 0.39999999999999997
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -222,13 +223,13 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(0.10511228, 1, 1),
+"times": PackedFloat32Array(0, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(0.28717506, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1.4369954, 1.4369954, 1.4369954, 1), Color(1.4369954, 1.4369954, 1.4369954, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_x2uss"]
+[sub_resource type="Animation" id="Animation_e3di5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -245,9 +246,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x2uss"]
 _data = {
-&"BecomeTransparent": SubResource("Animation_r3nfe"),
-&"Flash": SubResource("Animation_uf5c2"),
-&"RESET": SubResource("Animation_x2uss")
+&"BecomeTransparent": SubResource("Animation_hy1s0"),
+&"Flash": SubResource("Animation_dwx3v"),
+&"RESET": SubResource("Animation_e3di5")
 }
 
 [node name="OutroCutscene" type="CanvasLayer" unique_id=389250694]
@@ -255,6 +256,7 @@ layer = 3
 script = ExtResource("1_pnt4c")
 
 [node name="Scene1" type="Node2D" parent="." unique_id=1833043371]
+visible = false
 position = Vector2(962, 541)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scene1" unique_id=199590191]
@@ -424,6 +426,7 @@ scale = Vector2(31.265625, 18.09375)
 texture = SubResource("GradientTexture2D_uf5c2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WhiteFlash" unique_id=653747214]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_x2uss")
 
 [connection signal="pressed" from="Credits/Button" to="." method="_on_button_pressed"]

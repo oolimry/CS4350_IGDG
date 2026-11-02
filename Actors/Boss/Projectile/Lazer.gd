@@ -182,6 +182,8 @@ func getWallEndpoint(start: Vector2, angle: float) -> Vector2:
 
 	return far_end
 
+func playSFX():
+	AudioManager.play(AudioManager.Lazer)
 
 func _on_beam_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:

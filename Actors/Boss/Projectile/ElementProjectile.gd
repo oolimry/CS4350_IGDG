@@ -29,6 +29,13 @@ static func create(elementToUse : Enums.Elements,
 func fire(initVelocity : Vector2) -> void:
 	currVelocity = initVelocity
 	rotation = initVelocity.angle()
+	
+	if element == Enums.Elements.FIRE:
+		AudioManager.play(AudioManager.FireElementStruck)
+	elif element == Enums.Elements.WIND:
+		AudioManager.play(AudioManager.WindElementStruck)
+	elif element == Enums.Elements.PURPLE:
+		AudioManager.play(AudioManager.PurpleElementStruck)
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	collision_shape.set_deferred("disabled", true)

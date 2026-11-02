@@ -110,6 +110,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [true, true, false]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playSFX"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rmscy"]
 length = 0.001
@@ -262,6 +276,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam2/Source Hitbox" unique_id=45066675]
 position = Vector2(-1.0000191, -1)
 shape = SubResource("CircleShape2D_bhunq")
+disabled = true
 
 [connection signal="body_entered" from="Beam2/Beam Hitbox" to="." method="_on_beam_hitbox_body_entered"]
 [connection signal="body_entered" from="Beam2/Source Hitbox" to="." method="_on_source_hitbox_body_entered"]

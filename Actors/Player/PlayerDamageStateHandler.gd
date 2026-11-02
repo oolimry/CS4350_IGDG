@@ -13,7 +13,7 @@ var requestInvuln : Callable
 
 var isHandlingDeathNow = false
 
-@export var invulnDuration := 1.0
+@export var invulnDuration := 0.6
 @export var blinkInterval := 0.1
 var isInvuln := false
 
