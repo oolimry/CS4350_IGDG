@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BossStateBeamFiring" format=3 uid="uid://chpgoknfj5nn8"]
+
+[ext_resource type="Script" uid="uid://dd83rqerjivo8" path="res://Actors/Boss/BossStateBeamFiring.gd" id="1_vak51"]
+
+[resource]
+script = ExtResource("1_vak51")
+stateID = &"BeamFiring"
+metadata/_custom_type_script = "uid://dd83rqerjivo8"

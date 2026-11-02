@@ -16,11 +16,12 @@ func setup(getBoss : Callable, getPlayer : Callable,
 	}
 	
 	for state in stateIDLookup.values():
-		state.setup(getBoss, getPlayer, depedencies)
+		state.setup(getBoss, getPlayer, isPreconditionFulfilled, depedencies)
 		state.transitionTo.connect(startState)
 	
-	initialState.setup(getBoss, getPlayer, depedencies)
+	initialState.setup(getBoss, getPlayer, isPreconditionFulfilled, depedencies)
 	initialState.transitionTo.connect(startState)
+	
 	
 	currState = initialState
 	
@@ -28,6 +29,10 @@ func startFSM():
 	initialState._start.call_deferred()
 	#startState(initialState.getID())
 
+func isPreconditionFulfilled(stateID : StringName) -> bool:
+	currState = stateIDLookup[stateID]
+	return currState._isPreconditionFulfilled()
+	
 func _process(delta: float) -> void:
 	pass
 
