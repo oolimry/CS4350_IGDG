@@ -21,15 +21,15 @@ size = Vector2(1242.5, 246.5)
 [sub_resource type="Resource" id="Resource_p8ick"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
-oriCoords = Vector2(640, 800)
-persistentID = &"8c8e487a-057b-43c9-a91f-4a7bf111d8a6"
+oriCoords = Vector2(640, 640)
+persistentID = &"40157f05-4eff-42cf-99a6-d067fb6b0849"
 objectName = &"ExplodableWall"
 
 [sub_resource type="Resource" id="Resource_bo0d1"]
 resource_local_to_scene = true
 script = ExtResource("9_5nk4h")
-oriCoords = Vector2(640, 800)
-persistentID = &"8c8e487a-057b-43c9-a91f-4a7bf111d8a6"
+oriCoords = Vector2(720, 320)
+persistentID = &"303a83b3-f77a-446a-8f7a-15e2b37b5694"
 objectName = &"ExplodableWall"
 
 [node name="Room 5" type="Node2D" unique_id=1922114953]
