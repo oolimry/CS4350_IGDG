@@ -2,6 +2,7 @@ class_name DebugConsole
 extends LineEdit
 
 var player : Player
+var crownCount : int = 0
 const debugConsoleTSCN = preload("res://Actors/UI/Debug/DebugConsole.tscn")
 
 func _ready():
@@ -71,6 +72,16 @@ func evaluateDebugCommand(argv : Array) -> Array:
 	
 	elif argv[0] == "restore":
 		get_tree().root.get_node("TestLevel/RoomManager").restoreCurrRoom()
+		return [true, ""]
+		
+	elif argv[0] == "crown":
+		var crown : PackedScene = load("uid://bq2h5kio7nq23")
+		var instance := crown.instantiate() as Crown
+		instance.crown = Enums.Elements.FIRE
+		instance.unique_id = str(crownCount)
+		instance.global_position = player.global_position
+		get_tree().root.add_child(instance)
+		crownCount += 1
 		return [true, ""]
 
 	elif argv[0] == "boss":
