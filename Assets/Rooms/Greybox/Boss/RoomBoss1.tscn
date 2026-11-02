@@ -82,20 +82,25 @@ isUniversal = true
 position = Vector2(440, 240)
 
 [node name="Element5" parent="." unique_id=696245660 instance=ExtResource("14_60xj2")]
-position = Vector2(880, 600)
-speed = 1.0
-distance = 280.0
+position = Vector2(880, 480)
+speed = 0.0
 element = 3
 
 [node name="Element2" parent="." unique_id=1471119129 instance=ExtResource("14_60xj2")]
-position = Vector2(1600, 680)
+position = Vector2(1680, 680)
 speed = 0.8
 distance = 160.0
 element = 1
 
 [node name="Element3" parent="." unique_id=1374467272 instance=ExtResource("15_k38wu")]
-position = Vector2(1640, 40)
+position = Vector2(1640, -40)
 speed = 1.0
+distance = 160.0
+element = 1
+
+[node name="Element4" parent="." unique_id=832464941 instance=ExtResource("15_k38wu")]
+position = Vector2(1440, 320)
+speed = 1.2
 distance = 160.0
 element = 1
 
