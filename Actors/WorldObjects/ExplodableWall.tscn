@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cn8emw3hx5plg" path="res://Actors/WorldObjects/ExplodableWall.gd" id="1_akkil"]
 [ext_resource type="Texture2D" uid="uid://djvvnhk37mpul" path="res://Assets/World Objects/ExplodableWall.png" id="2_4bt5q"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4bt5q"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vynle"]
 size = Vector2(156, 392)
 
@@ -22,6 +25,7 @@ script = ExtResource("1_akkil")
 height = 400.0
 
 [node name="Sprite2D" type="NinePatchRect" parent="." unique_id=1994385769]
+material = SubResource("CanvasItemMaterial_4bt5q")
 offset_right = 160.0
 offset_bottom = 400.0
 texture = ExtResource("2_4bt5q")

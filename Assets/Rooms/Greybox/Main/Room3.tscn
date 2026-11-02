@@ -1,12 +1,10 @@
 [gd_scene format=4 uid="uid://6k8b4ecbfl26"]
 
-[ext_resource type="TileSet" uid="uid://cvl7i52okme6s" path="res://Assets/Tilesets/WorldTileset.tres" id="1_4tq25"]
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_a3qlj"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="2_weks3"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_23kq4"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="3_vwm2q"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="4_bu51x"]
-[ext_resource type="Material" uid="uid://bi4jqqh56qi8u" path="res://Assets/World Objects/UnshadedHighlightShader.tres" id="4_qq68n"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_a3qlj"]
 [ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_eeqjw"]
 
@@ -24,6 +22,15 @@ size = Vector2(232, 480)
 
 [node name="Room 3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_a3qlj")
+
+[node name="Label" type="Label" parent="." unique_id=647075699]
+offset_left = 697.0
+offset_top = 551.0
+offset_right = 946.0
+offset_bottom = 626.0
+theme_override_font_sizes/font_size = 26
+text = "Wall jump
+here!"
 
 [node name="WallMap" parent="." unique_id=415475928 instance=ExtResource("2_weks3")]
 scale = Vector2(0.25, 0.25)

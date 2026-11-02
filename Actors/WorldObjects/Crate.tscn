@@ -11,6 +11,9 @@ persistentID = &"a7290e07-b11b-436c-867e-62fae32f6974"
 objectName = &"Crate"
 shouldAlwaysReset = true
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oo11k"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0glnl"]
 size = Vector2(79, 63)
 
@@ -23,6 +26,7 @@ script = ExtResource("1_k1n17")
 roomResident = SubResource("Resource_oo11k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1803576826]
+material = SubResource("CanvasItemMaterial_oo11k")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_oo11k")
 

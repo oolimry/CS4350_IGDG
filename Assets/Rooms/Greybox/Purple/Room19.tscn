@@ -46,7 +46,7 @@ position = Vector2(1102, 826)
 element = 3
 
 [node name="Element9" parent="." unique_id=1286339578 instance=ExtResource("5_sy2t8")]
-position = Vector2(1560, 680)
+position = Vector2(1481, 445)
 element = 3
 
 [node name="Element10" parent="." unique_id=750792380 instance=ExtResource("5_sy2t8")]
