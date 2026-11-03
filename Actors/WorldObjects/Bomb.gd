@@ -1,11 +1,11 @@
 class_name Bomb
 extends RigidBody2D
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D 
-@onready var sprite : AnimatedSprite2D = $Sprite
-@onready var timeLabel :Label = $Sprite/Label
-@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
-@onready var explosionHitbox : Area2D = $ExplosionHitbox
+@export var collision_shape: CollisionShape2D  
+@export var sprite : AnimatedSprite2D
+@export var timeLabel :Label
+@export var animationPlayer : AnimationPlayer
+@export var explosionHitbox : Area2D
 
 const moveDistance = 200  # pixels
 const moveDuration = 0.20
@@ -18,6 +18,8 @@ const cooldown = 0.40
 var canBeMoved = true
 
 var hasExploded = false
+
+var isActive = false
 
 signal bringBacktoSpawn(isFastSpawn)
 var tween : Tween
@@ -98,6 +100,7 @@ func reset():
 	explosionHitbox.monitoring = false
 	show()
 	freeze = false
+	isActive = true
 
 func explode():
 	explosionHitbox.monitorable = true
@@ -115,6 +118,9 @@ func _on_explosion_hitbox_body_entered(body : Node2D):
 		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
 
 func attemptRespawn(isFastRespawn : bool) -> void:
+	if not isActive:
+		return
+	isActive = true
 	hide()
 	freeze = true
 	bringBacktoSpawn.emit(isFastRespawn)	

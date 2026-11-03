@@ -1,21 +1,21 @@
 class_name BombSpawner
 extends Node2D
 
-@onready var bomb : Bomb = $Bomb
+var bomb : Bomb
 
 @export var timeToLive : float = 5.0 # in seconds
 
-var resetSignal
+var resetSignal : Signal
 
-func _init() -> void:
+func _ready() -> void:
 	if bomb == null:
-		bomb = Bomb.new()
+		var bombScene : PackedScene = load("uid://bem5keqw855uo")
+		bomb = bombScene.instantiate() as Bomb
 	
-	bomb.bringBacktoSpawn.connect(respawnBomb)
-	#resetSignal.connect(bomb.bringBacktoSpawn)
+	#bomb.bringBacktoSpawn.connect(respawnBomb)
+	resetSignal.connect(bomb.attemptRespawn.bind(true).unbind(1))
 	
-	bomb.timeLeft = timeToLive
-	add_child(bomb)
+	addBomb()
 
 func respawnBomb(isFastRespawn := false):
 	removeBomb()
@@ -23,14 +23,17 @@ func respawnBomb(isFastRespawn := false):
 	if not isFastRespawn:
 		await get_tree().create_timer(1.0).timeout
 	
-	add_child(bomb)
+	addBomb()
+	
+func removeBomb() -> void:
+	remove_child(bomb)
+
+func addBomb() -> void:
+	get_parent().add_child.call_deferred(bomb)
 	
 	bomb.global_position = global_position
 	bomb.timeLeft = timeToLive
 	bomb.reset()
-	
-func removeBomb() -> void:
-	remove_child(bomb)
 
 func setResetSignal(resetSignal : Signal) -> void:
 	self.resetSignal = resetSignal

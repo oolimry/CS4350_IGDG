@@ -11,4 +11,5 @@ func registerBombSpawner(rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
 
 func _registerBombSpawner(c : Node) -> void:
 	if c is BombSpawner:
-		onPlayerDeath.connect(c.bomb.attemptRespawn.bind(true).unbind(1))
+		c.setResetSignal(onPlayerDeath)
+		#onPlayerDeath.connect(c.bomb.attemptRespawn.bind(true).unbind(1))
