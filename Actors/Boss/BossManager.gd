@@ -117,8 +117,9 @@ func _startBossFight() -> void:
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
 	if boss:
-		boss.animationPlayer.play("died")
-		await boss.animationPlayer.animation_finished 
+		if hasBeenKilled:
+			boss.animationPlayer.play("died")
+			await boss.animationPlayer.animation_finished 
 		boss.cleanup()
 		boss = null
 	if bHealthbar:
