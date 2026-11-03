@@ -175,11 +175,16 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6ec5"]
 radius = 25.0
 
-[node name="Bomb" type="RigidBody2D" unique_id=1858820595]
+[node name="Bomb" type="RigidBody2D" unique_id=1858820595 node_paths=PackedStringArray("collision_shape", "sprite", "timeLabel", "animationPlayer", "explosionHitbox")]
 collision_layer = 8
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_0lndg")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite")
+timeLabel = NodePath("Sprite/Label")
+animationPlayer = NodePath("AnimationPlayer")
+explosionHitbox = NodePath("ExplosionHitbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
 material = SubResource("CanvasItemMaterial_qid5e")

@@ -11,6 +11,9 @@ extends Node
 @export var persistentActors : Node2D
 
 var playerCoordinator : PlayerLifecycleCoordinator
+
+var bombCoordinator : BombCoordinator
+
 @export var bossManager : BossManager
 var hudManager : HUDManager
 var camera : GameCamera
@@ -21,12 +24,14 @@ var isSetup := false
 func _ready() -> void:
 	playerCoordinator = PlayerBLifecycleCoordinator.new(connectPlayer, 
 		roomManager.searchForNearestNodeType)
+	bombCoordinator = BombCoordinator.new(playerCoordinator.playerRespawn)
+
 	roomManager.generateRooms(
-		[playerCoordinator.registerCheckPoint, bossManager.registerBossRoom], 
+		[playerCoordinator.registerCheckPoint, bombCoordinator.registerBombSpawner, 
+			bossManager.registerBossRoom], 
 	{
 		"playerRespawn" : playerCoordinator.playerRespawn
 	})
-
 	pass # Replace with function body.
 
 func connectPlayer(newPlayer : Player) -> void:

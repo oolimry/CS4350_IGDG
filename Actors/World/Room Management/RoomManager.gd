@@ -60,6 +60,10 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	playerChangedRoom.emit(nextRoomDef)
 	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
+	if object is Bomb:
+		roomInstantiator.reparentTransientObject(object, nextRoomPos)
+		return
+
 	# Assumption: all moving objects (except Player) tracked by this system
 	# have a RoomResident component 	
 	if object.get("roomResident") != null:
