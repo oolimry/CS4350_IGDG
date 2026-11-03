@@ -92,8 +92,12 @@ func _physics_process(delta):
 	
 func reset():
 	animationPlayer.play("RESET")
+	set_physics_process(true)
+	collision_shape.set_deferred("disabled", false)
 	movementDirection = Vector2.ZERO
 	isMovementStarted = false
+	distanceRemaining = 0
+	canBeMoved = true
 	timeLabel.visible = false
 	hasExploded = false
 	explosionHitbox.monitorable = false
@@ -111,6 +115,8 @@ func explode():
 	VfxManager.createVFX(VfxManager.BombExplosionVFXTSCN, \
 		 self.global_position, {})
 	await animationPlayer.animation_finished
+	if not hasExploded:
+		return
 	attemptRespawn(false)
 
 func _on_explosion_hitbox_body_entered(body : Node2D):
@@ -120,7 +126,9 @@ func _on_explosion_hitbox_body_entered(body : Node2D):
 func attemptRespawn(isFastRespawn : bool) -> void:
 	if not isActive:
 		return
-	isActive = true
+	isActive = false
 	hide()
 	freeze = true
+	set_physics_process(false)
+	collision_shape.set_deferred("disabled", true)
 	bringBacktoSpawn.emit(isFastRespawn)	

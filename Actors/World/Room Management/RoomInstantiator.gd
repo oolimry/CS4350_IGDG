@@ -68,6 +68,14 @@ func reparentRoomResident(gameObject : Node, newRoomPos : Vector2i):
 	gameObject.reparent.call_deferred(
 		loadedRooms[newRoomPos].roomResidentsHolder, true)
 
+func reparentTransientObject(gameObject : Node, newRoomPos : Vector2i) -> void:
+	var destinationRoom := loadedRooms.get(newRoomPos) as RoomInstance
+	if destinationRoom == null:
+		push_error("Cannot move object into unloaded room: ", newRoomPos)
+		return
+
+	gameObject.reparent.call_deferred(destinationRoom, true)
+
 func setModulationTileMap(n : Node) -> void:
 	if n is TileMapLayer:
 		n.material = worldShaderMaterial
