@@ -19,7 +19,7 @@ var canBeMoved = true
 
 var hasExploded = false
 
-signal bringBacktoSpawn
+signal bringBacktoSpawn(isFastSpawn)
 var tween : Tween
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
@@ -82,7 +82,7 @@ func _physics_process(delta):
 	timeLeft -= delta
 	if timeLeft < 0:
 		isMovementStarted = false
-		bringBacktoSpawn.emit()
+		attemptRespawn(false)
 		return
 	
 	timeLabel.visible = true
@@ -96,6 +96,8 @@ func reset():
 	hasExploded = false
 	explosionHitbox.monitorable = false
 	explosionHitbox.monitoring = false
+	show()
+	freeze = false
 
 func explode():
 	explosionHitbox.monitorable = true
@@ -106,8 +108,13 @@ func explode():
 	VfxManager.createVFX(VfxManager.BombExplosionVFXTSCN, \
 		 self.global_position, {})
 	await animationPlayer.animation_finished
-	bringBacktoSpawn.emit()	
+	attemptRespawn(false)
 
 func _on_explosion_hitbox_body_entered(body : Node2D):
 	if body.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
 		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
+
+func attemptRespawn(isFastRespawn : bool) -> void:
+	hide()
+	freeze = true
+	bringBacktoSpawn.emit(isFastRespawn)	
