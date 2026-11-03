@@ -23,7 +23,9 @@ var getPlayerFunc : Callable
 var isFollowingPlayer : bool
 var topLeftBound : Vector2
 var bottomRightBound : Vector2
+
 var currentRoom : RoomDefinition
+var limitedSides : int = 0
 
 var slideDest : Vector2
 var isSliding : bool
@@ -53,15 +55,46 @@ func _stopPositionTween() -> void:
 	slide_tween = null
 
 # Thanks ChatGPT
+#func slideTowards(destination : Vector2) -> void:
+	#isSliding = true
+	#slideDest = destination
+#
+	#_stopPositionTween()
+#
+	#slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	#slide_tween.tween_property(self, "global_position", slideDest, 0.2)
+	#slide_tween.finished.connect(func(): isSliding = false)
+
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
 	slideDest = destination
 
 	_stopPositionTween()
+	
+	var playerPos : Vector2 = getPlayerFunc.call().global_position
+	var slideDestY : float
+	var slideDestX : float
+	
+	slideDestX = slideDest.x
+	slideDestY = slideDest.y
+	
+	if limitedSides & RoomDefinition.Side.TOP:
+		slideDestY = max(slideDest.y, playerPos.y)
+		
+	if limitedSides & RoomDefinition.Side.BOTTOM:
+		slideDestY = min(slideDest.y, playerPos.y)
 
+	if limitedSides & RoomDefinition.Side.LEFT:
+		slideDestX = max(slideDest.x, playerPos.x)
+
+	if limitedSides & RoomDefinition.Side.RIGHT:
+		slideDestX = min(slideDest.x, playerPos.x)
+
+	
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
+	slide_tween.tween_property(self, "global_position", Vector2(slideDestX, slideDestY), 0.2)
 	slide_tween.finished.connect(func(): isSliding = false)
+	
 
 func beginPositionOverride() -> void:
 	_stopPositionTween()
@@ -122,12 +155,16 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	bottomRightBound = brb
 	currentRoom = roomDef
 	
+	limitedSides = 0
+	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
 		limit_left = topLeftBound.x
+		limitedSides |= RoomDefinition.Side.LEFT
 	
 	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
+		limitedSides |= RoomDefinition.Side.RIGHT
 		
 	limit_top = -10000000
 	limit_bottom = 10000000
@@ -137,14 +174,18 @@ func setVerticalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
 	bottomRightBound = brb
 	currentRoom = roomDef
-		
+	
+	limitedSides = 0
+	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
+		limitedSides |= RoomDefinition.Side.TOP
 		
 	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
-	
+		limitedSides |= RoomDefinition.Side.BOTTOM	
+		
 	limit_left = -10000000
 	limit_right = 10000000
 
@@ -154,19 +195,25 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 	topLeftBound = tlb
 	bottomRightBound = brb
 	currentRoom = roomDef
+	limitedSides = 0
+	
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
-		
+		limitedSides |= RoomDefinition.Side.TOP
+
 	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
+		limitedSides |= RoomDefinition.Side.BOTTOM
 	
 	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
 		limit_left = topLeftBound.x
+		limitedSides |= RoomDefinition.Side.LEFT
 	
 	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
+		limitedSides |= RoomDefinition.Side.RIGHT
 		
 func stopFollowing() -> void:
 	isFollowingPlayer = false
@@ -177,6 +224,7 @@ func stopFollowing() -> void:
 	limit_bottom = 10000000
 	limit_enabled = false
 	
+	limitedSides = 0
 	self.topLeftBound = Vector2(-10000000, -10000000)
 	self.bottomRightBound = Vector2(-10000000, -10000000)
 
