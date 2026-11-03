@@ -27,7 +27,6 @@ position = Vector2(-1, -959)
 texture = ExtResource("3_5jdsm")
 
 [node name="BossStaffGem" type="Sprite2D" parent="." unique_id=26232743]
-self_modulate = Color(1, 0.47389704, 0.006250024, 1)
 position = Vector2(-1, -959)
 texture = ExtResource("4_a3jj2")
 

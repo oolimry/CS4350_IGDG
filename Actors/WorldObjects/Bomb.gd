@@ -123,6 +123,10 @@ func _on_explosion_hitbox_body_entered(body : Node2D):
 	if body.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
 		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
 
+func _on_explosion_hitbox_area_entered(area : Node2D):
+	if area.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
+		area.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
+
 func attemptRespawn(isFastRespawn : bool) -> void:
 	if not isActive:
 		return
