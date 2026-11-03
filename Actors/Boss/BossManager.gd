@@ -126,9 +126,6 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
 		
-		
-	
-	hudManager.hideHealthBar(true)
 	isBossKilled = hasBeenKilled
 
 ##################### Boss Spawn Trigger setup #######################
