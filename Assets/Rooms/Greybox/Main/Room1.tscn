@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="5_jct8w"]
 [ext_resource type="PackedScene" uid="uid://cjuxpuixfnc7s" path="res://Actors/WorldObjects/ExplodableWall.tscn" id="6_2yek6"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_41hdi"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="7_e2dhs"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_smarx"]
 [ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="10_fusx3"]
 
-[sub_resource type="Resource" id="Resource_fusx3"]
+[sub_resource type="Resource" id="Resource_qhjin"]
 resource_local_to_scene = true
 script = ExtResource("7_smarx")
 oriCoords = Vector2(53, 718)
@@ -50,6 +51,7 @@ offset_left = 815.0
 offset_top = 773.0
 offset_right = 1207.0
 offset_bottom = 809.0
+theme_override_fonts/font = ExtResource("7_e2dhs")
 theme_override_font_sizes/font_size = 26
 text = "'WASD' or Arrow keys - to move"
 
@@ -58,6 +60,7 @@ offset_left = 1535.0
 offset_top = 861.0
 offset_right = 1828.0
 offset_bottom = 897.0
+theme_override_fonts/font = ExtResource("7_e2dhs")
 theme_override_font_sizes/font_size = 26
 text = "Press 'K' or 'X' to swing!"
 
@@ -73,7 +76,7 @@ element = 3
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
 position = Vector2(360, 520)
-roomResident = SubResource("Resource_fusx3")
+roomResident = SubResource("Resource_qhjin")
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_fusx3")]
 position = Vector2(200, 520)

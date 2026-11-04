@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_c4n45"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_51qnq"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="5_36114"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_d4t4u"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_yyckv"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="8_vv5j2"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_yyckv"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
@@ -48,9 +48,19 @@ collision_mask = 32
 position = Vector2(40, 0)
 shape = SubResource("RectangleShape2D_4cgrj")
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_d4t4u")]
-position = Vector2(1080, 700)
-scale = Vector2(21, 9.5)
+[node name="CrystalWall5" parent="." unique_id=2023236522 instance=ExtResource("8_vv5j2")]
+position = Vector2(80, 240)
+height = 320.0
+
+[node name="CrystalWall4" parent="." unique_id=138718841 instance=ExtResource("8_vv5j2")]
+position = Vector2(240, 320)
+width = 1680.0
+height = 760.0
+
+[node name="CrystalWall6" parent="." unique_id=918854545 instance=ExtResource("8_vv5j2")]
+position = Vector2(720, 80)
+width = 80.0
+height = 120.0
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_yyckv")]
 position = Vector2(160, 200)
@@ -63,13 +73,5 @@ element = 3
 [node name="Element3" parent="." unique_id=531964413 instance=ExtResource("8_yyckv")]
 position = Vector2(160, 640)
 element = 1
-
-[node name="CrystalWall2" parent="." unique_id=1819424425 instance=ExtResource("6_d4t4u")]
-position = Vector2(760, 140)
-scale = Vector2(1, 1.5)
-
-[node name="CrystalWall3" parent="." unique_id=1961265651 instance=ExtResource("6_d4t4u")]
-position = Vector2(160, 400)
-scale = Vector2(2, 4)
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
