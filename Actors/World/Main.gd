@@ -9,6 +9,7 @@ extends Node2D
 func _ready():
 	mainMenu.startButton.pressed.connect(startButtonPressed)
 	SignalManager.bossDefeated.connect(playOutroCutscene)
+	SignalManager.showCredits.connect(showCredits)
 	
 	if toForceStart:
 		forceStart() ## COMMENT THIS OUT TO NOT START
@@ -28,3 +29,9 @@ func playOutroCutscene():
 	GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.CREDITS
 	outroCutscene.visible = true
 	outroCutscene.startCutscene()
+	
+func showCredits():
+	GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.CREDITS
+	mainMenu.visible = false
+	outroCutscene.visible = true
+	outroCutscene.onScene2Finished()

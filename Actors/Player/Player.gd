@@ -160,7 +160,7 @@ func _ready():
 	playerYlength = $CollisionShape2D.shape.size.y / 2.0
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	_physics_process_playerMovement(delta)
 	
 	_physics_process_slash(delta)
@@ -314,6 +314,8 @@ func _physics_process_playerMovement(delta):
 		peakHeight = min(peakHeight, self.position.y)
 
 func physics_process_playerMovement_purple(delta):
+	
+	
 	timeSincePurpleSlashing += delta
 	if timeSincePurpleSlashing < purpleWindUpDuration:
 		if not is_instance_valid(purpleWindUpTween) or not purpleWindUpTween.is_running():
@@ -348,7 +350,15 @@ func physics_process_playerMovement_purple(delta):
 	set_up_direction(Vector2.UP)
 	move_and_slide()
 	
-	if is_on_ceiling() or is_on_floor() or is_on_wall():
+	var toStopPurple = false
+	if is_on_ceiling() and purpleDashDirection == Enums.Directions.UP:
+		toStopPurple = true
+	if is_on_floor() and purpleDashDirection == Enums.Directions.DOWN:
+		toStopPurple = true
+	if is_on_wall() and purpleDashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
+		toStopPurple = true
+	
+	if toStopPurple:
 		isPurpleDashing = false
 		if purpleDashDirection in [Enums.Directions.LEFT, Enums.Directions.RIGHT]:
 			timeSincePurpleDashEnded = 0.0
@@ -613,6 +623,9 @@ func preRespawnHandling() -> void:
 	isDead = true
 	freezeInput = true
 	self.visible = false
+	isPurpleDashing = false
+	purpleEndForceDirection = Enums.Directions.NONE
+	Glogger.debug("DIED")
 	
 	$OnDeathBlackness/AnimationPlayer.play("FadeInAndOut")
 	SignalManager.triggerScreenshake.emit()
@@ -626,8 +639,12 @@ func preRespawnHandling() -> void:
 func postRespawnHandling(respawnPos : Vector2) -> void:
 	additionalVelocityInputs.clear()
 	velocity.y = max(0,velocity.y)
+	velocity.x = 0
 	setElement(Enums.Elements.NONE)
 	global_position = respawnPos
+	isPurpleDashing = false
+	purpleEndForceDirection = Enums.Directions.NONE
+	Glogger.debug("RESPAWN")
 	
 	# Do wtv movement unpausing code here
 	isDead = false

@@ -118,6 +118,7 @@ func _startBossFight() -> void:
 func cleanupBoss(hasBeenKilled : bool) -> void:
 	if boss:
 		if hasBeenKilled:
+			AudioManager.fadeOutMusic()
 			boss.animationPlayer.play("died")
 			await boss.animationPlayer.animation_finished 
 		boss.cleanup()

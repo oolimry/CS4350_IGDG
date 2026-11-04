@@ -27,6 +27,7 @@ func _ready() -> void:
 		return
 		
 	setCrownSprite(crown)
+	$AnimationPlayer.play("pulsate")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -35,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 				sprite.sprite_frames.get_frame_texture(sprite.animation, 0))
 
 		self.queue_free()
+		AudioManager.play(AudioManager.CrownCollected)
 		
 func setCrownSprite(value : Enums.Elements) -> void:	
 	if is_instance_valid($Sprite):

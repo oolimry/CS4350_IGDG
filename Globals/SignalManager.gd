@@ -6,4 +6,6 @@ signal openSettings()
 
 signal closeSettings()
 
+signal showCredits()
+
 signal bossDefeated()
