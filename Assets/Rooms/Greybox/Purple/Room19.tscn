@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://buwo7mqaawp64"]
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_vn07c"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="2_s37vw"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_hyfgi"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_s3a0g"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="5_sy2t8"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="6_yi1g4"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="7_2t7px"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="8_yi1g4"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
@@ -34,9 +34,10 @@ tile_set = ExtResource("3_hyfgi")
 visible = false
 position = Vector2(960, 560)
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("2_s37vw")]
-position = Vector2(160, 500)
-scale = Vector2(4, 2.5)
+[node name="CrystalWall4" parent="." unique_id=2023236522 instance=ExtResource("6_yi1g4")]
+position = Vector2(0, 400)
+width = 320.0
+height = 200.0
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
@@ -87,9 +88,9 @@ collision_mask = 32
 position = Vector2(3, -71.5)
 shape = SubResource("RectangleShape2D_2t7px")
 
-[node name="CrystalWall2" parent="." unique_id=1557505299 instance=ExtResource("2_s37vw")]
-position = Vector2(1720, 440)
-scale = Vector2(2, 1)
+[node name="CrystalWall5" parent="." unique_id=2053325137 instance=ExtResource("6_yi1g4")]
+position = Vector2(1640, 400)
+height = 80.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]

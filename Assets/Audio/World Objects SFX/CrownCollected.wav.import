@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3q8d4pmw3k3t"
+path="res://.godot/imported/CrownCollected.wav-e82e408ae6c08b665899b4efe7c0958f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/World Objects SFX/CrownCollected.wav"
+dest_files=["res://.godot/imported/CrownCollected.wav-e82e408ae6c08b665899b4efe7c0958f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

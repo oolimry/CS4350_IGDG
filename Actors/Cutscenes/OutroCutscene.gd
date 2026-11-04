@@ -33,7 +33,6 @@ func startCutscene():
 	
 	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
 
-
 func skipCutscene():
 	GlobalGameState.phaseOfGame = GlobalGameState.PhaseOfGame.GAMEPLAY
 	scene1.visible = false

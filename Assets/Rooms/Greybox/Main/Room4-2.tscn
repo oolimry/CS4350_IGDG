@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://cp411kax1wmjx"]
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_3bfmy"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="6_eec1f"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="8_3bfmy"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="8_3u34b"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_dr6l8"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="8_gxh8l"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="9_gxh8l"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="11_av0vl"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
@@ -50,9 +50,10 @@ shape = SubResource("RectangleShape2D_x80dp")
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1897836441]
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("8_gxh8l")]
-position = Vector2(1880, 500)
-scale = Vector2(1, 2.5)
+[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_eec1f")]
+position = Vector2(1840, 400)
+width = 80.0
+height = 200.0
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("11_av0vl")]
 position = Vector2(1241, 171)

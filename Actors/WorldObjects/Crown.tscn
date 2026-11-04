@@ -97,21 +97,63 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meos5"]
 size = Vector2(48, 53)
 
+[sub_resource type="Animation" id="Animation_stusv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="Animation" id="Animation_abcxf"]
+resource_name = "pulsate"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 0.78458315, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.25, 0.25), Vector2(0.27, 0.27), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wp3hs"]
+_data = {
+&"RESET": SubResource("Animation_stusv"),
+&"pulsate": SubResource("Animation_abcxf")
+}
+
 [node name="Crown" type="Area2D" unique_id=2109143653]
 collision_layer = 255
 collision_mask = 33023
 script = ExtResource("1_stusv")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=366934880]
+modulate = Color(2.4146836, 2.4146836, 2.4146836, 1)
 material = SubResource("CanvasItemMaterial_pl4ed")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_o5kme")
-animation = &"Wind"
-frame_progress = 0.6879037
+animation = &"Fire"
+frame_progress = 0.36341718
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2048424763]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_meos5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1713548558]
+libraries/ = SubResource("AnimationLibrary_wp3hs")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

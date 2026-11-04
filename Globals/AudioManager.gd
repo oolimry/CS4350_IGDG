@@ -20,6 +20,7 @@ const MUSIC_BUS = 2
 @onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
 @onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
+@onready var CrownCollected : AudioStreamPlayer = $WorldObjects/CrownCollected
 
 @onready var Shatter : AudioStreamPlayer = $Cutscene/Shatter
 @onready var EntityDialogue : AudioStreamPlayer = $Cutscene/EntityDialogue
@@ -29,7 +30,6 @@ const MUSIC_BUS = 2
 
 
 @onready var BGM : AudioStreamPlayer = $Music/BGM
-
 
 func play(audioPlayer : AudioStreamPlayer, playIfAlreadyPlaying = false):
 	if playIfAlreadyPlaying or not isPlaying(audioPlayer):
@@ -43,3 +43,6 @@ func isPlaying(audioPlayer : AudioStreamPlayer):
 func stop(audioPlayer):
 	if audioPlayer != null:
 		audioPlayer.stop()
+
+func fadeOutMusic():
+	get_tree().create_tween().tween_property(BGM, "volume_db", -80, 5.0)

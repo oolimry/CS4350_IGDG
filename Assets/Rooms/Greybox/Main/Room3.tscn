@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://6k8b4ecbfl26"]
 
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_a3qlj"]
+[ext_resource type="FontFile" uid="uid://sw7ukhu8fon0" path="res://Assets/Fonts/SpecialElite-Regular.ttf" id="2_n37x5"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="2_weks3"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_23kq4"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="3_vwm2q"]
 [ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="4_bu51x"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="6_a3qlj"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_eeqjw"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="8_n37x5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wkw45"]
 light_mode = 1
@@ -28,6 +29,7 @@ offset_left = 697.0
 offset_top = 551.0
 offset_right = 946.0
 offset_bottom = 626.0
+theme_override_fonts/font = ExtResource("2_n37x5")
 theme_override_font_sizes/font_size = 26
 text = "Wall jump
 here!"
@@ -73,9 +75,10 @@ position = Vector2(960, 560)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=2117107831]
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_eeqjw")]
-position = Vector2(1920, 220)
-scale = Vector2(3, 1.5)
+[node name="CrystalWall2" parent="." unique_id=2023236522 instance=ExtResource("8_n37x5")]
+position = Vector2(1800, 160)
+width = 240.0
+height = 120.0
 
 [editable path="Respawn Point4"]
 [editable path="Respawn Point5"]

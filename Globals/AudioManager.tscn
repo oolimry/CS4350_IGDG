@@ -15,12 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://bufigpqlnexgk" path="res://Assets/Audio/World Objects SFX/IgnitionPad.wav" id="11_vxglj"]
 [ext_resource type="AudioStream" uid="uid://c154wym6k66i5" path="res://Assets/Audio/Slash SFX/PurpleElementStruck.wav" id="12_3te4c"]
 [ext_resource type="AudioStream" uid="uid://buiyfff52mbbf" path="res://Assets/Audio/Cutscenes/shatter.wav" id="12_to54l"]
-[ext_resource type="AudioStream" uid="uid://cugtbdu60eaal" path="res://Assets/Audio/Music/BGM_V1.wav" id="13_p3wqe"]
+[ext_resource type="AudioStream" uid="uid://3q8d4pmw3k3t" path="res://Assets/Audio/World Objects SFX/CrownCollected.wav" id="15_hwta7"]
 [ext_resource type="AudioStream" uid="uid://dfovaihxt3wdw" path="res://Assets/Audio/Dialogue/EntityDialogue1.wav" id="16_dvcqq"]
 [ext_resource type="AudioStream" uid="uid://lhip88hlxkql" path="res://Assets/Audio/Dialogue/EntityDialogue2.wav" id="17_ig0xw"]
 [ext_resource type="AudioStream" uid="uid://b2pb8gtkf26mm" path="res://Assets/Audio/Dialogue/EntityDialogue3.wav" id="18_d0chm"]
 [ext_resource type="AudioStream" uid="uid://dgk5r41m11qvc" path="res://Assets/Audio/Dialogue/PlayerDialogue1.wav" id="19_kndt1"]
 [ext_resource type="AudioStream" uid="uid://dsu662xfk2wyk" path="res://Assets/Audio/Dialogue/PlayerDialogue2.wav" id="20_hwta7"]
+[ext_resource type="AudioStream" uid="uid://dsaq50pbq0rkn" path="res://Assets/Audio/Music/BGM_V2.wav" id="22_hwta7"]
 [ext_resource type="AudioStream" uid="uid://7qc6tdgaqttr" path="res://Assets/Audio/Boss/Lazer_V1.wav" id="22_kndt1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
@@ -138,6 +139,11 @@ stream = ExtResource("11_vxglj")
 pitch_scale = 0.8
 bus = &"Audio"
 
+[node name="CrownCollected" type="AudioStreamPlayer" parent="WorldObjects" unique_id=1781998770]
+stream = ExtResource("15_hwta7")
+volume_db = -3.0
+bus = &"Audio"
+
 [node name="Cutscene" type="Node2D" parent="." unique_id=54264024]
 
 [node name="Shatter" type="AudioStreamPlayer" parent="Cutscene" unique_id=1878204359]
@@ -162,6 +168,6 @@ bus = &"Audio"
 [node name="Music" type="Node2D" parent="." unique_id=46101856]
 
 [node name="BGM" type="AudioStreamPlayer" parent="Music" unique_id=715519625]
-stream = ExtResource("13_p3wqe")
+stream = ExtResource("22_hwta7")
 volume_db = -3.0
 bus = &"Music"

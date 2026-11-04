@@ -7,14 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_c8em2"]
 [ext_resource type="PackedScene" uid="uid://dr5hrvoct3vi0" path="res://Actors/WorldObjects/Chain.tscn" id="6_evwdk"]
 [ext_resource type="Script" uid="uid://dagp35o6llhq" path="res://Actors/World/Room Management/RoomResident.gd" id="7_1qkv4"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="7_wlcoq"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="8_imwue"]
 [ext_resource type="PackedScene" uid="uid://dyvidqwu1eryt" path="res://Actors/WorldObjects/Crate.tscn" id="8_qa56i"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="13_2mukd"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="14_1qkv4"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
-[sub_resource type="Resource" id="Resource_evwdk"]
+[sub_resource type="Resource" id="Resource_qa56i"]
 resource_local_to_scene = true
 script = ExtResource("7_1qkv4")
 oriCoords = Vector2(237, 324)
@@ -22,7 +22,7 @@ persistentID = &"c38d735c-0436-43d5-9977-79d0ccac53fd"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_1qkv4"]
+[sub_resource type="Resource" id="Resource_2mukd"]
 resource_local_to_scene = true
 script = ExtResource("7_1qkv4")
 oriCoords = Vector2(239, 424)
@@ -61,14 +61,13 @@ position = Vector2(960, 560)
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("6_evwdk")]
 position = Vector2(237, 324)
 attached_crate = NodePath("../Crate")
-vertical_start_point = -240.0
-roomResident = SubResource("Resource_evwdk")
+roomResident = SubResource("Resource_qa56i")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("8_qa56i")]
 position = Vector2(240, 423)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_1qkv4")
+roomResident = SubResource("Resource_2mukd")
 
 [node name="Respawn Point" type="Marker2D" parent="." unique_id=381613870 groups=["Checkpoint"]]
 position = Vector2(140, 360)
@@ -115,14 +114,6 @@ collision_mask = 32
 position = Vector2(-30, -380)
 shape = SubResource("RectangleShape2D_4q2ss")
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("7_wlcoq")]
-position = Vector2(720, 700)
-scale = Vector2(2, 6.5)
-
-[node name="CrystalWall2" parent="." unique_id=2046120345 instance=ExtResource("7_wlcoq")]
-position = Vector2(860, 760)
-scale = Vector2(1.5, 5)
-
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_imwue")]
 position = Vector2(580, 900)
 element = 3
@@ -138,6 +129,15 @@ element = 3
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("13_2mukd")]
 position = Vector2(420, 340)
 timeToLive = 30.0
+
+[node name="CrystalWall17" parent="." unique_id=1037692230 instance=ExtResource("14_1qkv4")]
+position = Vector2(640, 440)
+height = 520.0
+
+[node name="CrystalWall18" parent="." unique_id=1438434759 instance=ExtResource("14_1qkv4")]
+position = Vector2(800, 560)
+width = 120.0
+height = 400.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point3/Area2D" to="Respawn Point3" method="_on_area_2d_body_entered"]

@@ -89,4 +89,5 @@ text = "Quit"
 flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonContainer/Quit" to="." method="_on_quit_pressed"]

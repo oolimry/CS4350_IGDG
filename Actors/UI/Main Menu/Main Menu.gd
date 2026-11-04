@@ -8,3 +8,6 @@ func _on_quit_pressed():
 
 func _on_settings_pressed() -> void:
 	SignalManager.openSettings.emit()
+
+func _on_credits_pressed():
+	SignalManager.showCredits.emit()
