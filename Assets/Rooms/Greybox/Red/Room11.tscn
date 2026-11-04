@@ -38,6 +38,7 @@ position = Vector2(960, 560)
 
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_tj26a")]
 position = Vector2(557, 843)
+timeToLive = 30.0
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("8_qgnw2")]
 position = Vector2(1660, 480)
