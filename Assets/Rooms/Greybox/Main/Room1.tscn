@@ -38,7 +38,7 @@ tile_set = ExtResource("4_fusx3")
 collision_enabled = false
 
 [node name="Respawn Point" parent="." unique_id=202330827 groups=["Checkpoint"] instance=ExtResource("3_jct8w")]
-position = Vector2(500, 880)
+position = Vector2(995, 873)
 isActive = true
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("5_jct8w")]
@@ -46,18 +46,18 @@ visible = false
 position = Vector2(960, 560)
 
 [node name="Label" type="Label" parent="." unique_id=1214568031]
-offset_left = 320.0
-offset_top = 780.0
-offset_right = 712.0
-offset_bottom = 816.0
+offset_left = 815.0
+offset_top = 773.0
+offset_right = 1207.0
+offset_bottom = 809.0
 theme_override_font_sizes/font_size = 26
 text = "'WASD' or Arrow keys - to move"
 
 [node name="Label2" type="Label" parent="." unique_id=914732823]
-offset_left = 1134.0
-offset_top = 852.0
-offset_right = 1427.0
-offset_bottom = 888.0
+offset_left = 1535.0
+offset_top = 861.0
+offset_right = 1828.0
+offset_bottom = 897.0
 theme_override_font_sizes/font_size = 26
 text = "Press 'K' or 'X' to swing!"
 
@@ -65,12 +65,16 @@ text = "Press 'K' or 'X' to swing!"
 position = Vector2(1480, 880)
 element = 2
 
+[node name="Element3" parent="." unique_id=2069814667 instance=ExtResource("6_41hdi")]
+position = Vector2(80, 880)
+element = 3
+
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1801070443]
 
 [node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("6_2yek6")]
-position = Vector2(160, 520)
+position = Vector2(360, 520)
 roomResident = SubResource("Resource_fusx3")
 
 [node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("10_fusx3")]
-position = Vector2(0, 520)
+position = Vector2(200, 520)
 height = 400.0
