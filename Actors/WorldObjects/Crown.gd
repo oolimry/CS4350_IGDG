@@ -57,10 +57,10 @@ func _on_area_entered(area: Area2D) -> void:
 		self.queue_free()
 		
 static func constructObjectBySnapshot(snapshot : Dictionary, \
-	constructHandling : Callable) -> PlaceholderSlashableObject:
+	constructHandling : Callable) -> Crown:
 	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://bq2h5kio7nq23") as PackedScene
-	var crown := scene.instantiate() as PlaceholderSlashableObject
+	var crown := scene.instantiate() as Crown
 	crown.scale = snapshot["localScale"]
 	crown.position = snapshot["localCoords"]
 	crown.roomResident = snapshot["roomResident"]	
