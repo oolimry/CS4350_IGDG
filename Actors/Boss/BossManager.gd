@@ -73,6 +73,9 @@ func setupBoss() -> void:
 	placePersistent.call_deferred(boss)
 
 func _playBossIntro() -> void:
+	Glogger.debug("WHAT")
+	AudioManager.fadeToMusic(AudioManager.BossMusic)
+		
 	assert(camera != null, "BossManager requires the GameCamera dependency")
 	assert(is_instance_valid(cameraPanStart), \
 		"RoomBoss1 requires a direct BossCameraPanStart child")

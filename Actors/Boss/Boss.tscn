@@ -1699,16 +1699,16 @@ texture = ExtResource("2_wnxsj")
 offset = Vector2(286.5, -578)
 
 [node name="BossFootL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1455065047]
-position = Vector2(272.56464, 618.8722)
-rotation = -0.119857945
-scale = Vector2(0.999985, 0.999985)
+position = Vector2(272.56357, 618.87256)
+rotation = -0.119860776
+scale = Vector2(0.99998516, 0.99998516)
 texture = ExtResource("3_fycjl")
 offset = Vector2(-282.5, -576)
 
 [node name="BossShinL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=954763846]
-position = Vector2(946.5689, 146.68317)
-rotation = 0.05110231
-scale = Vector2(0.99998605, 0.99998605)
+position = Vector2(946.56775, 146.68237)
+rotation = 0.05110139
+scale = Vector2(0.9999863, 0.9999863)
 texture = ExtResource("4_qkfim")
 offset = Vector2(-935, -70.5)
 
@@ -1721,8 +1721,8 @@ offset = Vector2(937, -70)
 
 [node name="BossThighL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=676494382]
 position = Vector2(77.500824, 274.5003)
-rotation = 0.087768055
-scale = Vector2(0.9999912, 0.9999912)
+rotation = 0.087766655
+scale = Vector2(0.99999046, 0.99999046)
 texture = ExtResource("6_b7nma")
 offset = Vector2(-80.5, -276.5)
 
@@ -1756,8 +1756,8 @@ offset = Vector2(-240, 274)
 
 [node name="BossArmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=790249206]
 position = Vector2(-530.51434, -279.50256)
-rotation = 0.044673994
-scale = Vector2(0.99999905, 0.99999905)
+rotation = 0.044675775
+scale = Vector2(0.9999994, 0.9999994)
 texture = ExtResource("11_7jq52")
 offset = Vector2(534, 278.5)
 
@@ -1781,17 +1781,17 @@ offset = Vector2(2, 421.5)
 
 [node name="BossForearmR" type="Sprite2D" parent="CharacterContainer/Body" unique_id=415876403]
 material = SubResource("CanvasItemMaterial_l14qj")
-position = Vector2(-855.5298, 318.08466)
-rotation = -0.04148984
-scale = Vector2(0.9999951, 0.9999951)
+position = Vector2(-855.53076, 318.08374)
+rotation = -0.041490916
+scale = Vector2(0.99999666, 0.99999666)
 texture = ExtResource("15_0ptbr")
 offset = Vector2(831, -329)
 
 [node name="BossForearmL" type="Sprite2D" parent="CharacterContainer/Body" unique_id=1226613400]
 material = SubResource("CanvasItemMaterial_b7nma")
 position = Vector2(855.5202, 318.08374)
-rotation = 0.04147605
-scale = Vector2(0.99999255, 0.99999255)
+rotation = 0.041476052
+scale = Vector2(0.9999924, 0.9999924)
 texture = ExtResource("16_aa1vh")
 offset = Vector2(-832.5, -331)
 
@@ -1934,7 +1934,7 @@ metadata/_local_pose_override_enabled_ = true
 visible = false
 position = Vector2(298.0014, 611.5054)
 rotation = -0.070873916
-scale = Vector2(0.9999938, 0.9999938)
+scale = Vector2(0.9999936, 0.9999936)
 rest = Transform2D(0.9962853, 0.086041905, -0.086041905, 0.9962853, 298.0014, 611.5054)
 auto_calculate_length_and_angle = false
 length = 512.0
