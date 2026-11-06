@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dsu662xfk2wyk" path="res://Assets/Audio/Dialogue/PlayerDialogue2.wav" id="20_hwta7"]
 [ext_resource type="AudioStream" uid="uid://dsaq50pbq0rkn" path="res://Assets/Audio/Music/BGM_V2.wav" id="22_hwta7"]
 [ext_resource type="AudioStream" uid="uid://7qc6tdgaqttr" path="res://Assets/Audio/Boss/Lazer_V1.wav" id="22_kndt1"]
+[ext_resource type="AudioStream" uid="uid://c34stb6shryri" path="res://Assets/Audio/Music/Boss Music.wav" id="24_dn336"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olr0b"]
 random_pitch = 1.0594631
@@ -169,5 +170,10 @@ bus = &"Audio"
 
 [node name="BGM" type="AudioStreamPlayer" parent="Music" unique_id=715519625]
 stream = ExtResource("22_hwta7")
+volume_db = -3.0
+bus = &"Music"
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="Music" unique_id=435356716]
+stream = ExtResource("24_dn336")
 volume_db = -3.0
 bus = &"Music"

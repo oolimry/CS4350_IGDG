@@ -59,6 +59,12 @@ func playerChangeRoom(roomEntry : RoomEntry, nextRoomPos : Vector2i) -> void:
 	currRoomPos = nextRoomPos
 	playerChangedRoom.emit(nextRoomDef)
 	
+	if GlobalGameState.phaseOfGame == GlobalGameState.PhaseOfGame.GAMEPLAY:
+		if nextRoomDef.roomArea == nextRoomDef.AREAS.BOSS:
+			AudioManager.fadeToMusic(AudioManager.BossMusic)
+		else:
+			AudioManager.fadeToMusic(AudioManager.BGM)
+	
 func objectChangeRoom(object : Node, nextRoomPos : Vector2i) -> void:
 	if object is Bomb:
 		roomInstantiator.reparentTransientObject(object, nextRoomPos)
