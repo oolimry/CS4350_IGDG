@@ -14,6 +14,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cf3re"]
 size = Vector2(120, 120)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57hal"]
+size = Vector2(220, 200)
+
 [node name="Room 21-4" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_cyprr")
 
@@ -69,8 +72,24 @@ collision_mask = 32
 position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_cf3re")
 
+[node name="Respawn Point2" type="Marker2D" parent="." unique_id=1420243707]
+position = Vector2(1620, 360)
+script = ExtResource("9_57hal")
+reference_texture = ExtResource("10_h0r43")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point2" unique_id=1240411977]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point2/Area2D" unique_id=1722695701]
+position = Vector2(-50, -60)
+shape = SubResource("RectangleShape2D_57hal")
+
 [node name="CrystalWall4" parent="." unique_id=1242489158 instance=ExtResource("11_h0r43")]
 width = 1440.0
 height = 480.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]
