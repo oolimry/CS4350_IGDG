@@ -233,3 +233,41 @@ func get_noise_offset(delta: float) -> Vector2:
 		noise.get_noise_2d(1, noise_i) * shake_strength,
 		noise.get_noise_2d(100, noise_i) * shake_strength
 	)
+
+func transitionToFollowingRoom(tlb: Vector2, brb: Vector2, roomDef: RoomDefinition) -> void:
+	var start := get_screen_center_position()
+	_stopPositionTween()
+	isFollowingPlayer = true
+	isSliding = true
+	# Clear inherited limits only when crossing into a different room group.
+	limit_left = -10000000
+	limit_right = 10000000
+	limit_top = -10000000
+	limit_bottom = 10000000
+	# Rebuilds limitedSides using only the destination room flags.
+	setFullLimit(tlb, brb, roomDef)
+	limit_enabled = false
+	global_position = start
+	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	slide_tween.tween_method(func(weight: float):
+		slideDest = _getFollowingPositionWithinLimits()
+		global_position = start.lerp(slideDest, weight)
+	, 0.0, 1.0, 0.2)
+	slide_tween.finished.connect(func():
+		global_position = _getFollowingPositionWithinLimits()
+		limit_enabled = true
+		isSliding = false
+	)
+
+func _getFollowingPositionWithinLimits() -> Vector2:
+	var target: Vector2 = getPlayerFunc.call().global_position
+	var half_view := get_viewport_rect().size / zoom / 2.0
+	if limitedSides & RoomDefinition.Side.LEFT:
+		target.x = maxf(target.x, limit_left + half_view.x)
+	if limitedSides & RoomDefinition.Side.RIGHT:
+		target.x = minf(target.x, limit_right - half_view.x)
+	if limitedSides & RoomDefinition.Side.TOP:
+		target.y = maxf(target.y, limit_top + half_view.y)
+	if limitedSides & RoomDefinition.Side.BOTTOM:
+		target.y = minf(target.y, limit_bottom - half_view.y)
+	return target
