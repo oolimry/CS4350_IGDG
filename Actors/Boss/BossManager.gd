@@ -76,7 +76,6 @@ func setupBoss() -> void:
 	placePersistent.call_deferred(boss)
 
 func _playBossIntro() -> void:
-	Glogger.debug("WHAT")
 	AudioManager.fadeToMusic(AudioManager.BossMusic)
 		
 	assert(camera != null, "BossManager requires the GameCamera dependency")
@@ -134,7 +133,10 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 	if is_instance_valid(boss):
 		boss.cleanup()
 		boss = null
-		
+	
+	if !hasBeenKilled:
+		AudioManager.fadeToMusic(AudioManager.BGM)
+			
 	if is_instance_valid(bHealthbar):
 		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
