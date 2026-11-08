@@ -16,6 +16,7 @@ func _ready():
 	CutsceneSignalManager.scene2Finished.connect(onScene2Finished)
 
 func startCutscene():
+	AudioManager.resetVolumes()
 	AudioManager.play(AudioManager.BGM)
 	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
 

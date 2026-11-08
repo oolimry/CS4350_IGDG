@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c154wym6k66i5" path="res://Assets/Audio/Slash SFX/PurpleElementStruck.wav" id="12_3te4c"]
 [ext_resource type="AudioStream" uid="uid://buiyfff52mbbf" path="res://Assets/Audio/Cutscenes/shatter.wav" id="12_to54l"]
 [ext_resource type="AudioStream" uid="uid://3q8d4pmw3k3t" path="res://Assets/Audio/World Objects SFX/CrownCollected.wav" id="15_hwta7"]
-[ext_resource type="AudioStream" uid="uid://dv58gu42l1hvb" path="res://Assets/Audio/World Objects SFX/CrateBreak.wav" id="15_yob0w"]
+[ext_resource type="AudioStream" uid="uid://b367x8451js0c" path="res://Assets/Audio/World Objects SFX/CrateBreak.wav" id="15_yob0w"]
 [ext_resource type="AudioStream" uid="uid://dfovaihxt3wdw" path="res://Assets/Audio/Dialogue/EntityDialogue1.wav" id="16_dvcqq"]
 [ext_resource type="AudioStream" uid="uid://lhip88hlxkql" path="res://Assets/Audio/Dialogue/EntityDialogue2.wav" id="17_ig0xw"]
 [ext_resource type="AudioStream" uid="uid://b2pb8gtkf26mm" path="res://Assets/Audio/Dialogue/EntityDialogue3.wav" id="18_d0chm"]
