@@ -64,6 +64,7 @@ static func constructObjectBySnapshot(snapshot : Dictionary, \
 	crown.scale = snapshot["localScale"]
 	crown.position = snapshot["localCoords"]
 	crown.roomResident = snapshot["roomResident"]	
+	crown.unique_id = snapshot["unique_id"]
 	constructHandling.call(crown)
 	return crown
 	
@@ -74,6 +75,7 @@ func generateObjectSnapshot() -> Dictionary:
 	snapshot["localScale"] = scale
 	snapshot["hasStateChanged"] = hasStateChanged()
 	snapshot["objectName"] = objName
+	snapshot["unique_id"] = unique_id
 	return snapshot
 
 func hasStateChanged() -> bool:

@@ -62,4 +62,5 @@ func onScene2Finished():
 	$Credits/AnimationPlayer.play("Credits")
 	
 func _on_button_pressed():
+	CollectibleManager.reset_items()
 	get_tree().change_scene_to_file("res://Actors/World/Main.tscn")

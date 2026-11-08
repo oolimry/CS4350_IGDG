@@ -11,3 +11,6 @@ func collect_item(item_id: StringName, item_texture : Texture) -> void:
 		collected_items[item_id] = item_texture
 		collected.emit(item_id, item_texture)
 		Glogger.debug("Collected: " + item_id)
+
+func reset_items() -> void:
+	collected_items.clear()
