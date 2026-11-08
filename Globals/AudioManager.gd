@@ -20,7 +20,9 @@ const MUSIC_BUS = 2
 @onready var ExplodableWallExploded : AudioStreamPlayer = $WorldObjects/ExplodableWallExploded
 @onready var IgnitionPadLaunch : AudioStreamPlayer = $WorldObjects/IgnitionPadLaunch
 @onready var BombExploded : AudioStreamPlayer = $WorldObjects/BombExploded
+@onready var CrateBreak : AudioStreamPlayer = $WorldObjects/CrateBreak
 @onready var CrownCollected : AudioStreamPlayer = $WorldObjects/CrownCollected
+
 
 @onready var Shatter : AudioStreamPlayer = $Cutscene/Shatter
 @onready var EntityDialogue : AudioStreamPlayer = $Cutscene/EntityDialogue

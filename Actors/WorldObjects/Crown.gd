@@ -53,7 +53,7 @@ func _on_area_entered(area: Area2D) -> void:
 			CollectibleManager.collect_item(unique_id, \
 				sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
 	)
-		
+		AudioManager.play(AudioManager.CrownCollected)
 		self.queue_free()
 		
 static func constructObjectBySnapshot(snapshot : Dictionary, \
