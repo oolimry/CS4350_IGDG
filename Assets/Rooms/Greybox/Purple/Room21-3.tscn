@@ -3,11 +3,16 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_qja8c"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_qja8c"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_tad82"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="6_o63yg"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_tad82"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="7_tn5wy"]
+[ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="9_h7h4v"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="9_tn5wy"]
+[ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="10_lm10y"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkrpj"]
+size = Vector2(151, 440)
 
 [node name="Room 21-3" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_qja8c")
@@ -30,10 +35,6 @@ position = Vector2(960, 560)
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("6_o63yg")]
-position = Vector2(1080, 240)
-scale = Vector2(21, 6)
-
 [node name="Element2" parent="." unique_id=1418545967 instance=ExtResource("7_tad82")]
 position = Vector2(1040, 620)
 element = 3
@@ -45,3 +46,25 @@ element = 3
 [node name="BombSpawner" parent="." unique_id=323569220 instance=ExtResource("7_tn5wy")]
 position = Vector2(1400, 780)
 timeToLive = 60.0
+
+[node name="CrystalWall4" parent="." unique_id=793260908 instance=ExtResource("9_tn5wy")]
+position = Vector2(240, 0)
+width = 1680.0
+height = 480.0
+
+[node name="Respawn Point" type="Marker2D" parent="." unique_id=204193744 groups=["Checkpoint"]]
+position = Vector2(1820, 800)
+script = ExtResource("9_h7h4v")
+reference_texture = ExtResource("10_lm10y")
+textureOffset = Vector2(0, -29.725)
+reference_scale = Vector2(0.45, 0.45)
+
+[node name="Area2D" type="Area2D" parent="Respawn Point" unique_id=1436418860]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=1623292166]
+position = Vector2(-8.5, -100)
+shape = SubResource("RectangleShape2D_fkrpj")
+
+[connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

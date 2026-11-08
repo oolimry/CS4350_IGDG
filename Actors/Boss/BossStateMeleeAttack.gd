@@ -31,9 +31,9 @@ func _start() -> void:
 			ap.play("arm_r_swing")
 	else:
 		if isPlayerNearHead(boss, player):
-			ap.play("arm_r_face_swipe")
+			ap.play("arm_l_face_swipe")
 		elif isPlayerAtFeet(boss, player) and randomizer.randi() % 2 == 0:
-			ap.play("foot_r_stomp")
+			ap.play("foot_l_stomp")
 		elif randomizer.randi() % 2 == 0:
 			ap.play("arm_l_hit")
 		else:

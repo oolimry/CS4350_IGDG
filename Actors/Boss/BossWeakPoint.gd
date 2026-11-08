@@ -2,8 +2,8 @@ class_name BossWeakPoint
 extends Area2D
 
 @export var slashDamage := 2
-@export var windDamage := 2
-@export var explosionDamage := 8
+@export var windDamage := 1
+@export var explosionDamage := 12
 
 signal bossTakeDamage(damage : int)
 

@@ -77,6 +77,9 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f8lxg"]
+light_mode = 1
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdxoi"]
 size = Vector2(13.353, 40)
 
@@ -197,6 +200,7 @@ sprite_frames = SubResource("SpriteFrames_uem5w")
 animation = &"launch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109776650]
+material = SubResource("CanvasItemMaterial_f8lxg")
 position = Vector2(-13.369087, 0)
 scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_cdxoi")

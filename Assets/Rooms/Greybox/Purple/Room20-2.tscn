@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="5_qcgh0"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_3eepx"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="6_801g2"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="7_4fwve"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="10_u8riq"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
@@ -74,13 +74,15 @@ element = 3
 position = Vector2(1750, 660)
 element = 3
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("7_4fwve")]
-position = Vector2(799.99994, 280)
-scale = Vector2(20, 3)
+[node name="CrystalWall4" parent="." unique_id=1941620707 instance=ExtResource("10_u8riq")]
+position = Vector2(0, 480)
+width = 1600.0
+height = 320.0
 
-[node name="CrystalWall2" parent="." unique_id=701172789 instance=ExtResource("7_4fwve")]
-position = Vector2(799.99994, 640)
-scale = Vector2(20, 4)
+[node name="CrystalWall5" parent="." unique_id=1844424990 instance=ExtResource("10_u8riq")]
+position = Vector2(0, 160)
+width = 1600.0
+height = 240.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]

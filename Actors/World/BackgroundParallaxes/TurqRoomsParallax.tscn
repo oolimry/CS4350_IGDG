@@ -31,6 +31,7 @@ texture = ExtResource("3_ew46j")
 
 [node name="Layer4" type="Parallax2D" parent="." unique_id=1324195590]
 scroll_scale = Vector2(0.09, 0.06)
+scroll_offset = Vector2(200, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Layer4" unique_id=1135017608]
 position = Vector2(960, 540)

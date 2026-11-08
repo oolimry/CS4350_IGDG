@@ -16,6 +16,7 @@ func _ready():
 	CutsceneSignalManager.scene2Finished.connect(onScene2Finished)
 
 func startCutscene():
+	AudioManager.resetVolumes()
 	AudioManager.play(AudioManager.BGM)
 	dialogueBox = DialogueManager.show_dialogue_balloon(dialogueFile, "scene1")
 
@@ -56,7 +57,7 @@ func onScene2Finished():
 	if ifForceSkip:
 		return
 	
-	AudioManager.play(AudioManager.Shatter)	
+	AudioManager.play(AudioManager.Lazer)	
 	whiteFlashAnimationPlayer.play("Flash")
 	await whiteFlashAnimationPlayer.animation_finished
 	

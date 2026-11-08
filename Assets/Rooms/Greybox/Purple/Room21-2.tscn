@@ -3,15 +3,15 @@
 [ext_resource type="Script" uid="uid://cqg2b8g7l6il2" path="res://Actors/World/Room Management/RoomInstance.gd" id="1_ecgd7"]
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_jsbd3"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="4_kvdl4"]
-[ext_resource type="PackedScene" uid="uid://bu3vhs0eg7v8a" path="res://Actors/WorldObjects/CrystalWall.tscn" id="5_8wejb"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="6_pj0pa"]
 [ext_resource type="Script" uid="uid://dedajofecie8y" path="res://Actors/WorldObjects/Checkpoint.gd" id="8_k6rnq"]
 [ext_resource type="Texture2D" uid="uid://cpjp4am8t336x" path="res://Assets/Player/Idle/frame_01.png" id="9_y7rhs"]
+[ext_resource type="PackedScene" uid="uid://dt7t1evpufhgl" path="res://Actors/WorldObjects/CrystalWall2.tscn" id="10_y7rhs"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7ile"]
-size = Vector2(320, 240)
+size = Vector2(320, 80)
 
 [node name="Room 21-2" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_ecgd7")
@@ -34,10 +34,6 @@ position = Vector2(960, 560)
 [node name="RoomResidents" type="Node2D" parent="." unique_id=815432606]
 scale = Vector2(0.25, 0.25)
 
-[node name="CrystalWall" parent="." unique_id=2023236522 instance=ExtResource("5_8wejb")]
-position = Vector2(720, 700)
-scale = Vector2(18, 9.5)
-
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_pj0pa")]
 position = Vector2(1280, 240)
 element = 3
@@ -58,7 +54,12 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Respawn Point/Area2D" unique_id=598497129]
-position = Vector2(0, -60)
+position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_b7ile")
+
+[node name="CrystalWall4" parent="." unique_id=805371729 instance=ExtResource("10_y7rhs")]
+position = Vector2(0, 320)
+width = 1440.0
+height = 760.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]

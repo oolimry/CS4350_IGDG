@@ -64,6 +64,7 @@ func burstFireProjectile() -> void:
 
 func _end() -> void:
 	Glogger.debug("Boss out of ammo :P")
+	currNumBurstProjectiles = 0
 	bossStaff.gemSprite.self_modulate = Color.WHITE
 
 	durationTimer.timeout.disconnect(_end)

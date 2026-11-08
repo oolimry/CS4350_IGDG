@@ -27,6 +27,7 @@ func _ready() -> void:
 		return
 		
 	setCrownSprite(crown)
+	$AnimationPlayer.play("pulsate")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -35,6 +36,7 @@ func _on_body_entered(body: Node2D) -> void:
 				sprite.sprite_frames.get_frame_texture(sprite.animation, 0))
 
 		self.queue_free()
+		AudioManager.play(AudioManager.CrownCollected)
 		
 func setCrownSprite(value : Enums.Elements) -> void:	
 	if is_instance_valid($Sprite):
@@ -51,14 +53,14 @@ func _on_area_entered(area: Area2D) -> void:
 			CollectibleManager.collect_item(unique_id, \
 				sprite.sprite_frames.get_frame_texture(sprite.animation, 0)
 	)
-		
+		AudioManager.play(AudioManager.CrownCollected)
 		self.queue_free()
 		
 static func constructObjectBySnapshot(snapshot : Dictionary, \
-	constructHandling : Callable) -> PlaceholderSlashableObject:
+	constructHandling : Callable) -> Crown:
 	assert(snapshot["objectName"] == objName)
 	var scene := load("uid://bq2h5kio7nq23") as PackedScene
-	var crown := scene.instantiate() as PlaceholderSlashableObject
+	var crown := scene.instantiate() as Crown
 	crown.scale = snapshot["localScale"]
 	crown.position = snapshot["localCoords"]
 	crown.roomResident = snapshot["roomResident"]	

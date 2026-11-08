@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var characterContainer : Node2D = $CharacterContainer
 @onready var animationPlayer : AnimationPlayer = $AnimationPlayer
+@onready var head : Node2D = $CharacterContainer/Bones/Skeleton2D/Hip/Torso/Head
 
 @export var health : Health
 @export var fsm : BossFSM
@@ -25,6 +26,9 @@ static func create(basePos : Vector2, getPlayer : Callable,
 
 func start() -> void:
 	fsm.startFSM()
+
+func getHeadGlobalPosition() -> Vector2:
+	return head.global_position
 
 func cleanup() -> void:
 	bossStaff.projFirer.clearProjectiles()

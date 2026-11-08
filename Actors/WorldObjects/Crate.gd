@@ -25,7 +25,14 @@ func onSlash(slashParams : Dictionary = {}, player : Player = null):
 	if attached_chain:
 		attached_chain.attached_crate = null
 		attached_chain = null
-
+	
+	AudioManager.play(AudioManager.CrateBreak)
+	VfxManager.createVFX(VfxManager.ExplodableWallExplodedVFXTSCN, 
+		self.global_position + Vector2(0,5),
+		{
+			VfxManager.Params.SIZE : Vector2(8,8)
+		}
+	)
 	queue_free()
 
 func _physics_process(delta: float) -> void:

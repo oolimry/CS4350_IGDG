@@ -1,11 +1,11 @@
 class_name Bomb
 extends RigidBody2D
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D 
-@onready var sprite : AnimatedSprite2D = $Sprite
-@onready var timeLabel :Label = $Sprite/Label
-@onready var animationPlayer : AnimationPlayer = $AnimationPlayer
-@onready var explosionHitbox : Area2D = $ExplosionHitbox
+@export var collision_shape: CollisionShape2D  
+@export var sprite : AnimatedSprite2D
+@export var timeLabel :Label
+@export var animationPlayer : AnimationPlayer
+@export var explosionHitbox : Area2D
 
 const moveDistance = 200  # pixels
 const moveDuration = 0.20
@@ -19,7 +19,9 @@ var canBeMoved = true
 
 var hasExploded = false
 
-signal bringBacktoSpawn
+var isActive = false
+
+signal bringBacktoSpawn(isFastSpawn)
 var tween : Tween
 
 func onSlash(slashParams : Dictionary = {}, player : Player = null):
@@ -82,7 +84,7 @@ func _physics_process(delta):
 	timeLeft -= delta
 	if timeLeft < 0:
 		isMovementStarted = false
-		bringBacktoSpawn.emit()
+		attemptRespawn(false)
 		return
 	
 	timeLabel.visible = true
@@ -90,12 +92,19 @@ func _physics_process(delta):
 	
 func reset():
 	animationPlayer.play("RESET")
+	set_physics_process(true)
+	collision_shape.set_deferred("disabled", false)
 	movementDirection = Vector2.ZERO
 	isMovementStarted = false
+	distanceRemaining = 0
+	canBeMoved = true
 	timeLabel.visible = false
 	hasExploded = false
 	explosionHitbox.monitorable = false
 	explosionHitbox.monitoring = false
+	show()
+	freeze = false
+	isActive = true
 
 func explode():
 	explosionHitbox.monitorable = true
@@ -106,8 +115,24 @@ func explode():
 	VfxManager.createVFX(VfxManager.BombExplosionVFXTSCN, \
 		 self.global_position, {})
 	await animationPlayer.animation_finished
-	bringBacktoSpawn.emit()	
+	if not hasExploded:
+		return
+	attemptRespawn(false)
 
 func _on_explosion_hitbox_body_entered(body : Node2D):
 	if body.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
 		body.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
+
+func _on_explosion_hitbox_area_entered(area : Node2D):
+	if area.has_method(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION):
+		area.call(ScriptConstants.ON_HIT_BY_BOMB_EXPLOSION)
+
+func attemptRespawn(isFastRespawn : bool) -> void:
+	if not isActive:
+		return
+	isActive = false
+	hide()
+	freeze = true
+	set_physics_process(false)
+	collision_shape.set_deferred("disabled", true)
+	bringBacktoSpawn.emit(isFastRespawn)	

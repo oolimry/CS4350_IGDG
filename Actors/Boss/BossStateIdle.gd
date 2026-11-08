@@ -79,6 +79,7 @@ func _end() -> void:
 	# Locomotion now ends in the rest pose. Keep it rather than snapping IK
 	# targets through RESET, which previously moved feet after touchdown.
 	ap.animation_finished.disconnect(_on_animation_finished)
+	durationTimer.timeout.disconnect(_end)
 	durationTimer.stop()
 	
 	var p = getPlayer.call()

@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d1qddq5kcp0ss" path="res://Assets/World Objects/bomb.png" id="2_8csoo"]
 [ext_resource type="PackedScene" uid="uid://c1qktcpk0dapx" path="res://Actors/VFX/BombExplosionVFX.tscn" id="3_0lndg"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qid5e"]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0jf00"]
 animations = [{
 "frames": [{
@@ -172,13 +175,19 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6ec5"]
 radius = 25.0
 
-[node name="Bomb" type="RigidBody2D" unique_id=1858820595]
+[node name="Bomb" type="RigidBody2D" unique_id=1858820595 node_paths=PackedStringArray("collision_shape", "sprite", "timeLabel", "animationPlayer", "explosionHitbox")]
 collision_layer = 8
 collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_0lndg")
+collision_shape = NodePath("CollisionShape2D")
+sprite = NodePath("Sprite")
+timeLabel = NodePath("Sprite/Label")
+animationPlayer = NodePath("AnimationPlayer")
+explosionHitbox = NodePath("ExplosionHitbox")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1184100286]
+material = SubResource("CanvasItemMaterial_qid5e")
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_0jf00")
 
@@ -198,6 +207,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=604194400]
+visible = false
 shape = SubResource("CircleShape2D_meos5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1585084314]
@@ -210,9 +220,11 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionHitbox" unique_id=1959229470]
+visible = false
 shape = SubResource("CircleShape2D_d6ec5")
 
 [node name="BombExplosionVFX" parent="." unique_id=1746739328 instance=ExtResource("3_0lndg")]
 visible = false
 
+[connection signal="area_entered" from="ExplosionHitbox" to="." method="_on_explosion_hitbox_area_entered"]
 [connection signal="body_entered" from="ExplosionHitbox" to="." method="_on_explosion_hitbox_body_entered"]

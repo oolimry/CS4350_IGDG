@@ -1,0 +1,2 @@
+class_name BossCameraPanStart
+extends Marker2D
