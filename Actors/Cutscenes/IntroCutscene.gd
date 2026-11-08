@@ -56,7 +56,7 @@ func onScene2Finished():
 	if ifForceSkip:
 		return
 	
-	AudioManager.play(AudioManager.Shatter)	
+	AudioManager.play(AudioManager.Lazer)	
 	whiteFlashAnimationPlayer.play("Flash")
 	await whiteFlashAnimationPlayer.animation_finished
 	
