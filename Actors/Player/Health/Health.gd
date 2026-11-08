@@ -19,6 +19,9 @@ func _process(delta: float) -> void:
 	pass
 
 func takeDamage(i : int) -> bool:
+	if currHealth <= 0:
+		return false
+	
 	if currHealth - i <= 0:
 		currHealth = 0
 		death.emit(get_parent())

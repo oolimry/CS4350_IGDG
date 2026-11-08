@@ -14,6 +14,8 @@ var currBossUniversalCheckpoint : BossCheckPoint
 @export var bossFSM : BossFSM
 var getPlayer : Callable
 
+var isCleaningBoss := false
+
 func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager, 
 	roomManager : RoomManager, getPlayerFunc : Callable) -> void:
 		
@@ -23,12 +25,15 @@ func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager,
 	self.getPlayer = getPlayerFunc
 
 func handlePlayerEntry(_playerEntry : StringName) -> void:
-	if boss == null and !isBossKilled:		
-		setupBoss()
-		
-		hudManager.add_child(bHealthbar)
-		hudManager.hideHealthBar(false)
-		currBossUniversalCheckpoint.checkPointReached.emit(
+	if !is_instance_valid(boss) or isBossKilled or\
+		isIntroPlaying or isCleaningBoss:
+			
+		return
+
+	setupBoss()
+	hudManager.add_child(bHealthbar)
+	hudManager.hideHealthBar(false)
+	currBossUniversalCheckpoint.checkPointReached.emit(
 			currBossUniversalCheckpoint
 		)
 	pass
@@ -50,19 +55,27 @@ func setupBoss():
 	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
-	if boss:
+	if isCleaningBoss:
+		return
+		
+	isCleaningBoss = true
+	
+	if is_instance_valid(boss) and hasBeenKilled:
+		AudioManager.fadeOutMusic()
 		boss.animationPlayer.play("died")
 		await boss.animationPlayer.animation_finished 
+	
+	# Separate cuz the await may cause a race condition
+	if is_instance_valid(boss):
 		boss.cleanup()
 		boss = null
-	if bHealthbar:
+		
+	if is_instance_valid(bHealthbar):
 		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
 		
-		
-	
-	hudManager.hideHealthBar(true)
-	isBossKilled = hasBeenKilled
+	isBossKilled = isBossKilled or hasBeenKilled
+	isCleaningBoss = false
 
 ##################### Boss Spawn Trigger setup #######################
 func registerBossRoom(_rmDef : RoomDefinition, rmInst : RoomInstance) -> void:
