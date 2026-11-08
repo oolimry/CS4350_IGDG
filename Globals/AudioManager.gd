@@ -68,8 +68,7 @@ func fadeToMusic(newAudioPlayer : AudioStreamPlayer, duration = 2.50):
 	
 	if newAudioPlayer == currentAudioPlayer:
 		return
-	currentAudioPlayer = newAudioPlayer
-	
+		
 	newAudioPlayer.play()
 	var tween = create_tween()
 	tween.tween_property(currentAudioPlayer, "volume_db", baseVolumes[currentAudioPlayer] - volumeFadeDifference, \
@@ -77,8 +76,10 @@ func fadeToMusic(newAudioPlayer : AudioStreamPlayer, duration = 2.50):
 	tween.parallel().tween_property(newAudioPlayer, "volume_db", baseVolumes[newAudioPlayer], \
 	duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	
-	printt("SWITCHING FROM", currentAudioPlayer, newAudioPlayer)
-	
+	Glogger.debug("SWITCHING FROM")
+	Glogger.debug(currentAudioPlayer)
+	Glogger.debug(newAudioPlayer)
+	currentAudioPlayer = newAudioPlayer
 	
 	
 	
