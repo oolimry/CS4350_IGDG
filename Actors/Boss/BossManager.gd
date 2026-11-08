@@ -26,6 +26,8 @@ var camera : GameCamera
 var hasPlayedBossIntro := false
 var isIntroPlaying := false
 
+var isCleaningBoss := false
+
 func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager, 
 		roomManager : RoomManager, getPlayerFunc : Callable,
 		cameraObj : GameCamera) -> void:
@@ -38,7 +40,8 @@ func setup(placePersistentFunc : Callable, hudManagerObj : HUDManager,
 	self.camera = cameraObj
 
 func handlePlayerEntry(_playerEntry : StringName) -> void:
-	if boss != null or isBossKilled or isIntroPlaying:
+	if is_instance_valid(boss) or isBossKilled or \
+		isIntroPlaying or isCleaningBoss:
 		return
 
 	setupBoss()
@@ -98,8 +101,7 @@ func _playBossIntro() -> void:
 
 	var healthBarTween := bHealthbar.fadeIn(healthBarFadeDuration)
 	
-	var dest = Vector2(roomManager.calcRoomCenterWorldCoords(roomManager.currRoomPos).x 
-	+ roomManager.roomCamHandler.cameraCenterOffset.x, getPlayer.call().global_position.y) 
+	var dest = camera.getDestWithinPlayerCameraLimits(oriDest)
 	
 	await camera.panAndZoomTo(dest, oriZoom, returnToPlayerDuration)
 	if healthBarTween.is_valid() and healthBarTween.is_running():
@@ -119,18 +121,26 @@ func _startBossFight() -> void:
 	boss.start()
 
 func cleanupBoss(hasBeenKilled : bool) -> void:
-	if boss:
-		if hasBeenKilled:
-			AudioManager.fadeOutMusic()
-			boss.animationPlayer.play("died")
-			await boss.animationPlayer.animation_finished 
+	if isCleaningBoss:
+		return
+	isCleaningBoss = true
+
+	if is_instance_valid(boss) and hasBeenKilled:
+		AudioManager.fadeOutMusic()
+		boss.animationPlayer.play("died")
+		await boss.animationPlayer.animation_finished 
+	
+	# Separate cuz the await may cause a race condition
+	if is_instance_valid(boss):
 		boss.cleanup()
 		boss = null
-	if bHealthbar:
+		
+	if is_instance_valid(bHealthbar):
 		bHealthbar.call_deferred("queue_free")
 		bHealthbar = null
 		
-	isBossKilled = hasBeenKilled
+	isBossKilled = isBossKilled or hasBeenKilled
+	isCleaningBoss = false
 
 ##################### Boss Spawn Trigger setup #######################
 func registerBossRoom(_rmDef : RoomDefinition, rmInst : RoomInstance) -> void:

@@ -55,22 +55,18 @@ func _stopPositionTween() -> void:
 	slide_tween = null
 
 # Thanks ChatGPT
-#func slideTowards(destination : Vector2) -> void:
-	#isSliding = true
-	#slideDest = destination
-#
-	#_stopPositionTween()
-#
-	#slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	#slide_tween.tween_property(self, "global_position", slideDest, 0.2)
-	#slide_tween.finished.connect(func(): isSliding = false)
-
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
-	slideDest = destination
+	slideDest = getDestWithinPlayerCameraLimits(destination)
 
 	_stopPositionTween()
 	
+	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
+	slide_tween.finished.connect(func(): isSliding = false)
+	
+
+func getDestWithinPlayerCameraLimits(slideDest : Vector2) -> Vector2:
 	var playerPos : Vector2 = getPlayerFunc.call().global_position
 	var slideDestY : float
 	var slideDestX : float
@@ -89,13 +85,9 @@ func slideTowards(destination : Vector2) -> void:
 
 	if limitedSides & RoomDefinition.Side.RIGHT:
 		slideDestX = min(slideDest.x, playerPos.x)
-
+		
+	return Vector2(slideDestX, slideDestY)
 	
-	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-	slide_tween.tween_property(self, "global_position", Vector2(slideDestX, slideDestY), 0.2)
-	slide_tween.finished.connect(func(): isSliding = false)
-	
-
 func beginPositionOverride() -> void:
 	_stopPositionTween()
 	isSliding = true
