@@ -8,3 +8,6 @@ enum PhaseOfGame {
 }
 
 static var phaseOfGame : PhaseOfGame = PhaseOfGame.INTRO_CUTSCENE
+
+static func isGameplay() -> bool:
+	return phaseOfGame == PhaseOfGame.GAMEPLAY

@@ -53,7 +53,7 @@ func onDeath() -> void:
 
 func onHurt(dmg : int, isSpike : bool) -> void:
 	# Do not process damage when invuln
-	if isInvuln:
+	if isInvuln or !GlobalGameState.isGameplay():
 		return
 	isInvuln = true
 

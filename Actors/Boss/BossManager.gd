@@ -125,6 +125,8 @@ func cleanupBoss(hasBeenKilled : bool) -> void:
 	isCleaningBoss = true
 
 	if is_instance_valid(boss) and hasBeenKilled:
+		boss.fsm.process_mode = Node.PROCESS_MODE_DISABLED
+		boss.bossStaff.projFirer.clearProjectiles()
 		AudioManager.fadeOutMusic()
 		boss.animationPlayer.play("died")
 		await boss.animationPlayer.animation_finished 
