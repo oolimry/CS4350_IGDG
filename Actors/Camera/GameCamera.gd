@@ -58,13 +58,34 @@ func _stopPositionTween() -> void:
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
 	slideDest = getDestWithinPlayerCameraLimits(destination)
-
+	
+	var d = closestDirection(global_position, slideDest)
+	if d == Vector2.RIGHT:
+		limit_right = 10000000
+	if d == Vector2.LEFT:
+		limit_left = -10000000
+	if d == Vector2.UP:
+		limit_top = -10000000
+	if d == Vector2.DOWN:
+		limit_bottom = 10000000
+		
 	_stopPositionTween()
 	
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	slide_tween.tween_property(self, "global_position", slideDest, 0.2)
 	slide_tween.finished.connect(func(): isSliding = false)
 	
+
+func closestDirection(source : Vector2, dest : Vector2) -> Vector2:
+	var direction := source - dest
+
+	if direction == Vector2.ZERO:
+		return Vector2.ZERO
+
+	if abs(direction.x) > abs(direction.y):
+		return Vector2.RIGHT if direction.x > 0.0 else Vector2.LEFT
+	else:
+		return Vector2.DOWN if direction.y > 0.0 else Vector2.UP
 
 func getDestWithinPlayerCameraLimits(slideDest : Vector2) -> Vector2:
 	var playerPos : Vector2 = getPlayerFunc.call().global_position

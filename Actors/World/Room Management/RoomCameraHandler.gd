@@ -36,10 +36,7 @@ func changeRoom(currRoom : RoomDefinition, nextRoom : RoomDefinition,
 		var btmRight = Vector2(nextRoomCenterWorldCoords.x + nextRoom.previewBounds.size[0]/2, \
 			nextRoomCenterWorldCoords.y + nextRoom.previewBounds.size[1]/2)
 			
-		if direction.sign() == Vector2i.LEFT or direction.sign() == Vector2i.RIGHT:
-			camera.setVerticalLimit(topLeft , btmRight, nextRoom)
-		else:
-			camera.setHorizontalLimit(topLeft, btmRight, nextRoom)
+		camera.setFullLimit(topLeft, btmRight, nextRoom)
 	else:
 		camera.stopFollowing()
 		
