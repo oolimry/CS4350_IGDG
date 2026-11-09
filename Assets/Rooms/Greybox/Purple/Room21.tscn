@@ -54,8 +54,8 @@ height = 320.0
 
 [node name="CrystalWall4" parent="." unique_id=138718841 instance=ExtResource("8_vv5j2")]
 position = Vector2(280, 320)
-width = 1680.0
-height = 760.0
+width = 3080.0
+height = 1240.0
 
 [node name="CrystalWall6" parent="." unique_id=918854545 instance=ExtResource("8_vv5j2")]
 position = Vector2(720, 80)
