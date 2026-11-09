@@ -91,7 +91,6 @@ position = Vector2(1035, 72)
 element = 1
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_los5y")]
-visible = false
 position = Vector2(960, 560)
 
 [node name="Respawn Point4" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("10_jgau0")]

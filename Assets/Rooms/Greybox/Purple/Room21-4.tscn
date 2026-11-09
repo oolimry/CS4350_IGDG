@@ -88,8 +88,9 @@ position = Vector2(-50, -60)
 shape = SubResource("RectangleShape2D_57hal")
 
 [node name="CrystalWall4" parent="." unique_id=1242489158 instance=ExtResource("11_h0r43")]
-width = 1440.0
-height = 480.0
+position = Vector2(-40, -40)
+width = 1480.0
+height = 520.0
 
 [connection signal="body_entered" from="Respawn Point/Area2D" to="Respawn Point" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Respawn Point2/Area2D" to="Respawn Point2" method="_on_area_2d_body_entered"]

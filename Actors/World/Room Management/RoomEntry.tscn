@@ -6,7 +6,7 @@
 size = Vector2(1920, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
-size = Vector2(1760, 920)
+size = Vector2(1809, 964)
 
 [node name="OuterCollision" type="Area2D" unique_id=703956753 node_paths=PackedStringArray("deeperArea")]
 collision_layer = 0
@@ -23,7 +23,7 @@ collision_layer = 0
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeeperCollision" unique_id=2004345430]
-position = Vector2(0, -20)
+position = Vector2(1.5, -16)
 shape = SubResource("RectangleShape2D_riqys")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
