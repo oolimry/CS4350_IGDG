@@ -65,6 +65,13 @@ oriCoords = Vector2(1480, 520)
 persistentID = &"4783759a-b25a-4a45-82f6-3f4f35e5a7d5"
 objectName = &"Crate"
 
+[sub_resource type="Resource" id="Resource_rn5yb"]
+resource_local_to_scene = true
+script = ExtResource("10_tqwbb")
+oriCoords = Vector2(960, 960)
+persistentID = &"6b701ad3-10c1-4a15-b1ab-c0c7152ab176"
+objectName = &"ExplodableWall"
+
 [node name="Room 14" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_aaxl4")
 
@@ -142,14 +149,15 @@ freeze = true
 attached_chain = NodePath("../Chain2")
 roomResident = SubResource("Resource_ig5mf")
 
+[node name="ExplodableWall" parent="RoomResidents" unique_id=1935947710 instance=ExtResource("13_0ypqg")]
+position = Vector2(960, 960)
+width = 120.0
+height = 280.0
+roomResident = SubResource("Resource_rn5yb")
+
 [node name="CrystalWall17" parent="." unique_id=224206473 instance=ExtResource("13_aw3c6")]
 position = Vector2(-240, 160)
 width = 480.0
 height = 120.0
-
-[node name="ExplodableWall" parent="." unique_id=1935947710 instance=ExtResource("13_0ypqg")]
-position = Vector2(960, 960)
-width = 120.0
-height = 280.0
 
 [editable path="Respawn Point"]
