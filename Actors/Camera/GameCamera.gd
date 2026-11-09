@@ -71,20 +71,20 @@ func getDestWithinPlayerCameraLimits(slideDest : Vector2) -> Vector2:
 	var slideDestY : float
 	var slideDestX : float
 	
-	slideDestX = slideDest.x
-	slideDestY = slideDest.y
+	slideDestX = playerPos.x if isFollowingPlayer else slideDest.x
+	slideDestY = playerPos.y if isFollowingPlayer else slideDest.y
 	
 	if limitedSides & RoomDefinition.Side.TOP:
-		slideDestY = max(slideDest.y, playerPos.y)
+		slideDestY = clamp(playerPos.y, slideDest.y, playerPos.y)
 		
 	if limitedSides & RoomDefinition.Side.BOTTOM:
-		slideDestY = min(slideDest.y, playerPos.y)
+		slideDestY = clamp(playerPos.y, playerPos.y, slideDest.y)
 
 	if limitedSides & RoomDefinition.Side.LEFT:
-		slideDestX = max(slideDest.x, playerPos.x)
+		slideDestX = clamp(playerPos.x, slideDest.x, playerPos.x)
 
 	if limitedSides & RoomDefinition.Side.RIGHT:
-		slideDestX = min(slideDest.x, playerPos.x)
+		slideDestX = clamp(playerPos.x, playerPos.x, slideDest.x)
 		
 	return Vector2(slideDestX, slideDestY)
 	
@@ -118,7 +118,6 @@ func panAndZoomTo(destination : Vector2, zoomFinal : Vector2, duration : float) 
 	slide_tween.tween_property(self, "zoom", zoomFinal, duration)
 	await slide_tween.finished
 
-
 func endPositionOverride() -> void:
 	_stopPositionTween()
 	limit_enabled = _savedLimitEnabled
@@ -148,6 +147,10 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	currentRoom = roomDef
 	
 	limitedSides = 0
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
@@ -157,31 +160,27 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
 		limitedSides |= RoomDefinition.Side.RIGHT
-		
-	limit_top = -10000000
-	limit_bottom = 10000000
 
-	
 func setVerticalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
 	bottomRightBound = brb
 	currentRoom = roomDef
 	
 	limitedSides = 0
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
 		limitedSides |= RoomDefinition.Side.TOP
-		
+	
 	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
 		limitedSides |= RoomDefinition.Side.BOTTOM	
 		
-	limit_left = -10000000
-	limit_right = 10000000
-
-
 func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> void:
 	assert(roomDef != null)
 	topLeftBound = tlb
@@ -189,6 +188,10 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 	currentRoom = roomDef
 	limitedSides = 0
 	
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
