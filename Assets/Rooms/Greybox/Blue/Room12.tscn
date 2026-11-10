@@ -17,7 +17,7 @@ light_mode = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da2w0"]
 size = Vector2(80, 160)
 
-[sub_resource type="Resource" id="Resource_fw1pf"]
+[sub_resource type="Resource" id="Resource_wbg63"]
 resource_local_to_scene = true
 script = ExtResource("8_fw1pf")
 oriCoords = Vector2(1080, 120)
@@ -25,7 +25,7 @@ persistentID = &"4e58df3e-d857-405e-89b7-0dcec18566c6"
 objectName = &"Chain"
 shouldAlwaysReset = true
 
-[sub_resource type="Resource" id="Resource_wbg63"]
+[sub_resource type="Resource" id="Resource_wvfad"]
 resource_local_to_scene = true
 script = ExtResource("8_fw1pf")
 oriCoords = Vector2(1080, 220)
@@ -51,7 +51,6 @@ tile_set = ExtResource("3_h2rho")
 position = Vector2(167, 733)
 
 [node name="OuterCollision" parent="." unique_id=703956753 instance=ExtResource("7_exmoo")]
-visible = false
 position = Vector2(960, 560)
 
 [node name="Element" parent="." unique_id=1394946886 instance=ExtResource("6_da2w0")]
@@ -78,13 +77,12 @@ shape = SubResource("RectangleShape2D_da2w0")
 [node name="Chain" parent="RoomResidents" unique_id=111341181 node_paths=PackedStringArray("attached_crate") instance=ExtResource("7_45086")]
 position = Vector2(1080, 120)
 attached_crate = NodePath("../Crate")
-vertical_start_point = -240.0
-roomResident = SubResource("Resource_fw1pf")
+roomResident = SubResource("Resource_wbg63")
 
 [node name="Crate" parent="RoomResidents" unique_id=33089325 node_paths=PackedStringArray("attached_chain") instance=ExtResource("9_wbg63")]
 position = Vector2(1080, 220)
 freeze = true
 attached_chain = NodePath("../Chain")
-roomResident = SubResource("Resource_wbg63")
+roomResident = SubResource("Resource_wvfad")
 
 [editable path="Respawn Point2"]

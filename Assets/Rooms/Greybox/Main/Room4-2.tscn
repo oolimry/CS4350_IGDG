@@ -71,7 +71,7 @@ element = 2
 material = SubResource("CanvasItemMaterial_qq68n")
 position = Vector2(1920, 0)
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/xYAAAAAAAAAFAD+/xcAAAAAAAAAFAD+/xgAAAAAAAAAFAD+/xkAAAAAAAAAFAD+/xoAAAAAAAAAFADU/xgAAAAAAAAAFgDU/xkAAAAAAAAAFwDU/xoAAAAAAAAAFwDU/xcAAAAAAAAAFwA=")
+tile_map_data = PackedByteArray("AAD+/wAAAAAAAAAAFAD+/wEAAAAAAAAAFAD+/xYAAAAAAAAAFAD+/xcAAAAAAAAAFAD+/xgAAAAAAAAAFAD+/xkAAAAAAAAAFAD+/xoAAAAAAAAAFADU/xgAAAAAAAAAFgDU/xkAAAAAAAAAFwDU/xoAAAAAAAAAFwDU/xcAAAAAAAAAFgA=")
 tile_set = ExtResource("8_3u34b")
 physics_quadrant_size = 20
 

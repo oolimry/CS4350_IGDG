@@ -58,7 +58,17 @@ func _stopPositionTween() -> void:
 func slideTowards(destination : Vector2) -> void:
 	isSliding = true
 	slideDest = getDestWithinPlayerCameraLimits(destination)
-
+	
+	var d = closestDirection(global_position, slideDest)
+	if d == Vector2.RIGHT:
+		limit_right = 10000000
+	if d == Vector2.LEFT:
+		limit_left = -10000000
+	if d == Vector2.UP:
+		limit_top = -10000000
+	if d == Vector2.DOWN:
+		limit_bottom = 10000000
+		
 	_stopPositionTween()
 	
 	slide_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -66,25 +76,36 @@ func slideTowards(destination : Vector2) -> void:
 	slide_tween.finished.connect(func(): isSliding = false)
 	
 
+func closestDirection(source : Vector2, dest : Vector2) -> Vector2:
+	var direction := source - dest
+
+	if direction == Vector2.ZERO:
+		return Vector2.ZERO
+
+	if abs(direction.x) > abs(direction.y):
+		return Vector2.RIGHT if direction.x > 0.0 else Vector2.LEFT
+	else:
+		return Vector2.DOWN if direction.y > 0.0 else Vector2.UP
+
 func getDestWithinPlayerCameraLimits(slideDest : Vector2) -> Vector2:
 	var playerPos : Vector2 = getPlayerFunc.call().global_position
 	var slideDestY : float
 	var slideDestX : float
 	
-	slideDestX = slideDest.x
-	slideDestY = slideDest.y
+	slideDestX = playerPos.x if isFollowingPlayer else slideDest.x
+	slideDestY = playerPos.y if isFollowingPlayer else slideDest.y
 	
 	if limitedSides & RoomDefinition.Side.TOP:
-		slideDestY = max(slideDest.y, playerPos.y)
+		slideDestY = clamp(playerPos.y, slideDest.y, playerPos.y)
 		
 	if limitedSides & RoomDefinition.Side.BOTTOM:
-		slideDestY = min(slideDest.y, playerPos.y)
+		slideDestY = clamp(playerPos.y, playerPos.y, slideDest.y)
 
 	if limitedSides & RoomDefinition.Side.LEFT:
-		slideDestX = max(slideDest.x, playerPos.x)
+		slideDestX = clamp(playerPos.x, slideDest.x, playerPos.x)
 
 	if limitedSides & RoomDefinition.Side.RIGHT:
-		slideDestX = min(slideDest.x, playerPos.x)
+		slideDestX = clamp(playerPos.x, playerPos.x, slideDest.x)
 		
 	return Vector2(slideDestX, slideDestY)
 	
@@ -118,7 +139,6 @@ func panAndZoomTo(destination : Vector2, zoomFinal : Vector2, duration : float) 
 	slide_tween.tween_property(self, "zoom", zoomFinal, duration)
 	await slide_tween.finished
 
-
 func endPositionOverride() -> void:
 	_stopPositionTween()
 	limit_enabled = _savedLimitEnabled
@@ -148,6 +168,10 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	currentRoom = roomDef
 	
 	limitedSides = 0
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.LEFT:
@@ -157,31 +181,27 @@ func setHorizontalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	if currentRoom.cameraLimits & RoomDefinition.Side.RIGHT:
 		limit_right = bottomRightBound.x
 		limitedSides |= RoomDefinition.Side.RIGHT
-		
-	limit_top = -10000000
-	limit_bottom = 10000000
 
-	
 func setVerticalLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition):
 	topLeftBound = tlb
 	bottomRightBound = brb
 	currentRoom = roomDef
 	
 	limitedSides = 0
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:
 		limit_top = topLeftBound.y
 		limitedSides |= RoomDefinition.Side.TOP
-		
+	
 	if currentRoom.cameraLimits & RoomDefinition.Side.BOTTOM:
 		limit_bottom = bottomRightBound.y
 		limitedSides |= RoomDefinition.Side.BOTTOM	
 		
-	limit_left = -10000000
-	limit_right = 10000000
-
-
 func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> void:
 	assert(roomDef != null)
 	topLeftBound = tlb
@@ -189,6 +209,10 @@ func setFullLimit(tlb : Vector2, brb : Vector2, roomDef : RoomDefinition) -> voi
 	currentRoom = roomDef
 	limitedSides = 0
 	
+	limit_left = -10000000
+	limit_top = -10000000
+	limit_right = 10000000
+	limit_bottom = 10000000
 	
 	limit_enabled = true
 	if currentRoom.cameraLimits & RoomDefinition.Side.TOP:

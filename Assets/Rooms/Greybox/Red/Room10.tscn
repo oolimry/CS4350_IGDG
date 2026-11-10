@@ -4,9 +4,13 @@
 [ext_resource type="TileSet" uid="uid://cgpi1wmpy36ju" path="res://Assets/Tilesets/HazardTileset2.tres" id="3_nenj7"]
 [ext_resource type="PackedScene" uid="uid://br8goyl1vqof4" path="res://Actors/World/Room Management/RoomEntry.tscn" id="7_6v0sr"]
 [ext_resource type="PackedScene" uid="uid://cycynpa0md52" path="res://Actors/WorldObjects/Element.tscn" id="7_4431r"]
+[ext_resource type="PackedScene" uid="uid://dm8uuetodtrm1" path="res://Actors/WorldObjects/CheckPoint.tscn" id="8_du88i"]
 [ext_resource type="PackedScene" uid="uid://hgg1yio62hys" path="res://Actors/WorldObjects/BombSpawner.tscn" id="8_mt3d1"]
 [ext_resource type="PackedScene" uid="uid://dv1qt7xtfegqb" path="res://Actors/WorldObjects/WallMap.tscn" id="99_wall_map_scene"]
 [ext_resource type="TileSet" uid="uid://c8vfxa04ik1jy" path="res://Assets/World Objects/WorldMapTileSet.tres" id="99_world_map_tileset"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqovx"]
+size = Vector2(828, 956)
 
 [node name="Room 10" type="Node2D" unique_id=1922114953]
 script = ExtResource("1_l2sf3")
@@ -76,3 +80,12 @@ element = 3
 position = Vector2(547, 566)
 
 [node name="RoomResidents" type="Node2D" parent="." unique_id=1144177885]
+
+[node name="Respawn Point" parent="." unique_id=381613870 groups=["Checkpoint"] instance=ExtResource("8_du88i")]
+position = Vector2(1596, 854)
+
+[node name="CollisionShape2D" parent="Respawn Point/Area2D" parent_id_path=PackedInt32Array(381613870, 1498333101) index="0" unique_id=598497129]
+position = Vector2(-294, -318)
+shape = SubResource("RectangleShape2D_vqovx")
+
+[editable path="Respawn Point"]
