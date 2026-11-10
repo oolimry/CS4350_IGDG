@@ -529,7 +529,6 @@ func _physics_process_updateVisuals():
 			sprite.play("rising")
 		else:
 			sprite.play("falling")
-	
 
 func checkCollisions() -> void:
 	for i in get_slide_collision_count():

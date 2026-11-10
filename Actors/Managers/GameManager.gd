@@ -80,3 +80,8 @@ func placePersistentObj(n : Node2D, child_name: StringName = "") -> Node2D:
 	child.add_child(n)
 	return child
 	
+func _physics_process(delta) -> void:
+	if Input.is_action_pressed("settings"):
+		SignalManager.openSettings.emit()
+	elif Input.is_action_pressed("reset"):
+		SignalManager.showCredits.emit()
