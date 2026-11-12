@@ -186,8 +186,10 @@ func _physics_process_playerMovement(delta):
 	velocity.x *= pow(1.0-xDrag, delta*60)
 	if movementDirection == Enums.Directions.LEFT:
 		velocity.x -= xAcceleration*delta
+		$CollisionShape2D.position.x = playerXlength/2
 	elif movementDirection == Enums.Directions.RIGHT:
 		velocity.x += xAcceleration*delta
+		$CollisionShape2D.position.x = -playerXlength/2
 	else:
 		velocity.x += 0
 	
